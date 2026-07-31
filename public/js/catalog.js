@@ -83,8 +83,13 @@
     const allTypes = uniq(items.flatMap((t) => t.questionTypes || [])).sort();
     if (!allTypes.length) { bar.style.display = 'none'; return; }
 
+    // Deep-link support: /reading.html?qtype=Matching%20Headings pre-selects
+    // that filter chip (used by the Insights page's "Practice this" links).
+    const preselect = new URLSearchParams(location.search).get('qtype');
+    if (preselect && allTypes.includes(preselect)) state.qtypes.add(preselect);
+
     bar.innerHTML = allTypes.map((qt) =>
-      `<button class="filter-chip" data-qtype="${escapeHtml(qt)}">${escapeHtml(qt)}</button>`
+      `<button class="filter-chip${state.qtypes.has(qt) ? ' active' : ''}" data-qtype="${escapeHtml(qt)}">${escapeHtml(qt)}</button>`
     ).join('');
 
     bar.querySelectorAll('.filter-chip').forEach((btn) => {

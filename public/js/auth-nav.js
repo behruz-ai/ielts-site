@@ -10,11 +10,13 @@
     slot.innerHTML = '<a class="btn-login" href="/login.html">Log in</a>';
   }
 
-  function renderLoggedIn(email, role) {
+  function renderLoggedIn(email, role, isPremium) {
     const short = email.length > 20 ? email.slice(0, 18) + '…' : email;
     const adminLink = role === 'admin' ? '<a class="nav-link-sm" href="/admin.html">Admin</a>' : '';
+    const analyticsLink = isPremium ? '<a class="nav-link-sm" href="/analytics.html">✨ Insights</a>' : '';
     slot.innerHTML =
       adminLink +
+      analyticsLink +
       '<a class="nav-link-sm" href="/progress.html">My Progress</a>' +
       '<span class="user-chip" title="' + escapeHtml(email) + '">👤 ' + escapeHtml(short) + '</span>' +
       '<button class="btn-logout" id="logout-btn" type="button">Log out</button>';
@@ -34,10 +36,10 @@
     if (!session || !session.user) { renderLoggedOut(); return; }
     const { data: profile } = await supabaseClient
       .from('profiles')
-      .select('role')
+      .select('role, is_premium')
       .eq('id', session.user.id)
       .maybeSingle();
-    renderLoggedIn(session.user.email, profile ? profile.role : 'user');
+    renderLoggedIn(session.user.email, profile ? profile.role : 'user', !!(profile && profile.is_premium));
   }
 
   supabaseClient.auth.getSession().then(({ data }) => refresh(data.session));
