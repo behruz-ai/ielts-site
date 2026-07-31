@@ -116,6 +116,35 @@ nav.main-nav a.active{background-image:var(--grad); color:#0a0a0f; font-weight:8
 }
 .hero p{font-size:17.5px; color:var(--subtext); max-width:620px; margin:0 auto}
 
+/* module grid ("Choose Your Test Section") on homepage */
+.module-section{max-width:1140px; margin:60px auto 70px; padding:0 20px; position:relative; z-index:1}
+.module-hdr{text-align:center; margin-bottom:34px}
+.module-hdr h2{font-size:clamp(24px,3.4vw,34px); font-weight:900; margin:0 0 8px; letter-spacing:-.5px}
+.module-hdr p{color:var(--subtext); margin:0}
+.module-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px}
+.module-card{
+  background-color:var(--panel); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border); border-radius:18px; padding:26px 22px;
+  display:flex; flex-direction:column; align-items:flex-start; gap:8px;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+}
+.module-card:not(.soon):hover{transform:translateY(-4px); box-shadow:0 16px 38px rgba(239,68,68,.14); border-color:rgba(239,68,68,.35)}
+.module-icon{font-size:30px; margin-bottom:2px}
+.module-card h3{font-size:17px; font-weight:800; margin:2px 0 0}
+.module-card p{font-size:13px; color:var(--subtext); margin:0}
+.module-btn{
+  margin-top:10px; font-size:13px; font-weight:800; color:var(--accent);
+}
+.module-card.soon{opacity:.6}
+.module-card.soon .module-btn{color:var(--subtext)}
+
+/* about section on homepage */
+.about-section{border-top:1px solid var(--border); padding:60px 20px; position:relative; z-index:1}
+.about-inner{max-width:720px; margin:0 auto; text-align:center}
+.about-inner h2{font-size:clamp(22px,3vw,28px); font-weight:900; margin:10px 0 20px; letter-spacing:-.4px}
+.about-inner p{color:var(--subtext); font-size:15px; line-height:1.75; margin:0 0 16px; text-align:left}
+.about-inner a{color:#7fb3ff; font-weight:700}
+
 /* section cards on homepage */
 .section-cards{
   max-width:1140px; margin:44px auto 70px; padding:0 20px;

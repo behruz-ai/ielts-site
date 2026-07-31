@@ -190,10 +190,13 @@
           : `<span class="badge-tier badge-premium">🔒 ${escapeHtml(t.passageType || '')} Premium</span>`)
       : '';
     const meta = `${t.questionCount} questions · ${t.durationMinutes} min`;
+    const needsLogin = state.attemptsByPath === null;
     const startBtn = soon
       ? '<span class="tc-start">Coming soon</span>'
       : locked
       ? '<a class="tc-start tc-locked" href="/premium.html">🔒 Get Premium →</a>'
+      : needsLogin
+      ? `<a class="tc-start tc-locked" href="/login.html?next=${encodeURIComponent('/tests/' + t.file)}">🔒 Log in to start →</a>`
       : `<a class="tc-start" href="/tests/${t.file}">Start Test →</a>`;
 
     let doneBadge = '';

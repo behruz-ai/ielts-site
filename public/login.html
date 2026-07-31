@@ -16,6 +16,12 @@
       <a href="/">Home</a>
       <a href="/reading.html">Reading</a>
       <a href="/listening.html">Listening</a>
+      <a href="/speaking.html">Speaking</a>
+      <a href="/writing.html">Writing</a>
+      <a href="/vocabulary.html">Vocabulary</a>
+      <a href="/mock.html">Mock</a>
+      <a href="/books.html">Books</a>
+      <a href="/premium.html">✨ Premium</a>
     </nav>
     <div class="hdr-actions">
       <a class="tg-follow" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">📣 @bekhruzposts</a>
@@ -37,7 +43,7 @@
 
     <div id="panel-login">
       <h1>Welcome back</h1>
-      <p class="auth-sub">Log in to track your practice progress.</p>
+      <p class="auth-sub">Log in to start any test and track your progress.</p>
       <form id="form-login">
         <div class="auth-field"><label>Email</label><input type="email" id="login-email" required autocomplete="email"></div>
         <div class="auth-field"><label>Password</label><input type="password" id="login-password" required autocomplete="current-password"></div>
@@ -47,7 +53,7 @@
 
     <div id="panel-signup" style="display:none">
       <h1>Create your account</h1>
-      <p class="auth-sub">Free — track scores and pick up where you left off.</p>
+      <p class="auth-sub">Free, 30 seconds — required to start a test, so we can save your scores and mistakes for review.</p>
       <form id="form-signup">
         <div class="auth-field"><label>Email</label><input type="email" id="signup-email" required autocomplete="email"></div>
         <div class="auth-field"><label>Password</label><input type="password" id="signup-password" required autocomplete="new-password" minlength="6"></div>
@@ -56,7 +62,7 @@
     </div>
 
     <div class="auth-note" id="auth-message" style="display:none"></div>
-    <a class="auth-back" href="/">← Back to practice tests (no account needed)</a>
+    <a class="auth-back" href="/">← Back to home</a>
   </div>
 </div>
 
@@ -90,9 +96,14 @@
   }
   function hideMessage() { msgBox.style.display = 'none'; }
 
+  function nextUrl() {
+    const raw = new URLSearchParams(location.search).get('next');
+    return (raw && raw.startsWith('/')) ? raw : '/';
+  }
+
   // If already logged in, redirecting away avoids a confusing state.
   supabaseClient.auth.getSession().then(({ data }) => {
-    if (data.session) window.location.href = '/';
+    if (data.session) window.location.href = nextUrl();
   });
 
   document.getElementById('form-login').addEventListener('submit', async (e) => {
@@ -108,7 +119,7 @@
       showMessage(error.message || 'Could not log in. Check your email and password.', true);
       return;
     }
-    window.location.href = '/';
+    window.location.href = nextUrl();
   });
 
   document.getElementById('form-signup').addEventListener('submit', async (e) => {
@@ -120,7 +131,7 @@
     hideMessage();
     const { data, error } = await supabaseClient.auth.signUp({
       email, password,
-      options: { emailRedirectTo: window.location.origin + '/login.html' },
+      options: { emailRedirectTo: window.location.origin + '/login.html' + location.search },
     });
     btn.disabled = false; btn.textContent = 'Create account';
     if (error) {
@@ -128,7 +139,7 @@
       return;
     }
     if (data.session) {
-      window.location.href = '/';
+      window.location.href = nextUrl();
       return;
     }
     showMessage('Account created! Check your email for a confirmation link before logging in.', false);
