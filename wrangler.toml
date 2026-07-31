@@ -1,0 +1,5 @@
+name = "ielts-site"
+compatibility_date = "2026-07-31"
+
+[assets]
+directory = "./public"

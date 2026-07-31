@@ -6,12 +6,12 @@ complete, self-contained HTML file that already has its own timer and scoring.
 ## How to add a new test
 
 1. Finish and verify the test HTML file as usual.
-2. Copy that one file into the matching folder under `tests/`:
-   - Full volume Reading test → `tests/reading/volume-<N>/test-<M>.html`
-   - Full volume Listening test → `tests/listening/volume-<N>/test-<M>.html`
-   - Single-passage Lite practice → `tests/lite/<slug>.html`
-3. Open `data/tests.json` and add one entry (copy an existing one of the same
-   type and edit the fields). Example for a full-volume Reading test:
+2. Copy that one file into the matching folder under `public/tests/`:
+   - Full volume Reading test → `public/tests/reading/volume-<N>/test-<M>.html`
+   - Full volume Listening test → `public/tests/listening/volume-<N>/test-<M>.html`
+   - Single-passage Lite practice → `public/tests/lite/<slug>.html`
+3. Open `public/data/tests.json` and add one entry (copy an existing one of the
+   same type and edit the fields). Example for a full-volume Reading test:
 
    ```json
    { "id": "reading-vol3-t1", "section": "reading", "tier": "full-volume",
@@ -36,9 +36,10 @@ files are ready — it shows up in the catalog with a disabled Start button.
 
 ## Local preview
 
-No Node.js needed. Any static file server works, e.g. from this folder:
+No Node.js needed. Any static file server works, e.g. from the `public/` folder:
 
 ```
+cd public
 py -m http.server 8080
 ```
 
@@ -46,5 +47,8 @@ then open http://localhost:8080
 
 ## Deployment
 
-This is a 100%-static folder — point Cloudflare Pages (or Netlify/GitHub
-Pages) at this repo with **no build command** and output directory `/`.
+Deployed via Cloudflare Workers Static Assets (`wrangler.toml` in the repo
+root points at `public/` as the assets directory, no Worker script needed).
+`npx wrangler deploy` (or Cloudflare's own Git-connected deploy) serves
+everything in `public/` directly — `.git`, `README.md` and `wrangler.toml`
+itself are never exposed since they live outside that folder.
