@@ -37,9 +37,9 @@
       <h1>Welcome back</h1>
       <p class="auth-sub">Log in to track your practice progress.</p>
       <form id="form-login">
-        <div class="auth-field"><label>Email</label><input type="email" required autocomplete="email"></div>
-        <div class="auth-field"><label>Password</label><input type="password" required autocomplete="current-password"></div>
-        <button class="auth-submit" type="submit">Log in</button>
+        <div class="auth-field"><label>Email</label><input type="email" id="login-email" required autocomplete="email"></div>
+        <div class="auth-field"><label>Password</label><input type="password" id="login-password" required autocomplete="current-password"></div>
+        <button class="auth-submit" type="submit" id="login-submit">Log in</button>
       </form>
     </div>
 
@@ -47,37 +47,88 @@
       <h1>Create your account</h1>
       <p class="auth-sub">Free — track scores and pick up where you left off.</p>
       <form id="form-signup">
-        <div class="auth-field"><label>Email</label><input type="email" required autocomplete="email"></div>
-        <div class="auth-field"><label>Password</label><input type="password" required autocomplete="new-password" minlength="6"></div>
-        <button class="auth-submit" type="submit">Create account</button>
+        <div class="auth-field"><label>Email</label><input type="email" id="signup-email" required autocomplete="email"></div>
+        <div class="auth-field"><label>Password</label><input type="password" id="signup-password" required autocomplete="new-password" minlength="6"></div>
+        <button class="auth-submit" type="submit" id="signup-submit">Create account</button>
       </form>
     </div>
 
-    <div class="auth-note">⚙️ Accounts are being connected right now — this form isn't live yet. Check back soon, or follow <a href="https://t.me/bekhruzposts" target="_blank" rel="noopener" style="color:#fde68a;font-weight:700">@bekhruzposts</a> for the announcement.</div>
+    <div class="auth-note" id="auth-message" style="display:none"></div>
     <a class="auth-back" href="/">← Back to practice tests (no account needed)</a>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
 <script>
   const tabLogin = document.getElementById('tab-login');
   const tabSignup = document.getElementById('tab-signup');
   const panelLogin = document.getElementById('panel-login');
   const panelSignup = document.getElementById('panel-signup');
+  const msgBox = document.getElementById('auth-message');
+
   tabLogin.addEventListener('click', () => {
     tabLogin.classList.add('active'); tabSignup.classList.remove('active');
     panelLogin.style.display = ''; panelSignup.style.display = 'none';
+    hideMessage();
   });
   tabSignup.addEventListener('click', () => {
     tabSignup.classList.add('active'); tabLogin.classList.remove('active');
     panelSignup.style.display = ''; panelLogin.style.display = 'none';
+    hideMessage();
   });
-  document.getElementById('form-login').addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Login isn\'t connected yet — check back soon!');
+
+  function showMessage(text, isError) {
+    msgBox.textContent = text;
+    msgBox.style.display = 'block';
+    msgBox.style.background = isError ? 'rgba(239,68,68,.1)' : 'rgba(250,204,21,.08)';
+    msgBox.style.borderColor = isError ? 'rgba(239,68,68,.35)' : 'rgba(250,204,21,.25)';
+    msgBox.style.color = isError ? '#fca5a5' : '#fde68a';
+  }
+  function hideMessage() { msgBox.style.display = 'none'; }
+
+  // If already logged in, redirecting away avoids a confusing state.
+  supabaseClient.auth.getSession().then(({ data }) => {
+    if (data.session) window.location.href = '/';
   });
-  document.getElementById('form-signup').addEventListener('submit', (e) => {
+
+  document.getElementById('form-login').addEventListener('submit', async (e) => {
     e.preventDefault();
-    alert('Sign-up isn\'t connected yet — check back soon!');
+    const btn = document.getElementById('login-submit');
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+    btn.disabled = true; btn.textContent = 'Logging in…';
+    hideMessage();
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    btn.disabled = false; btn.textContent = 'Log in';
+    if (error) {
+      showMessage(error.message || 'Could not log in. Check your email and password.', true);
+      return;
+    }
+    window.location.href = '/';
+  });
+
+  document.getElementById('form-signup').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('signup-submit');
+    const email = document.getElementById('signup-email').value.trim();
+    const password = document.getElementById('signup-password').value;
+    btn.disabled = true; btn.textContent = 'Creating account…';
+    hideMessage();
+    const { data, error } = await supabaseClient.auth.signUp({
+      email, password,
+      options: { emailRedirectTo: window.location.origin + '/login.html' },
+    });
+    btn.disabled = false; btn.textContent = 'Create account';
+    if (error) {
+      showMessage(error.message || 'Could not create your account.', true);
+      return;
+    }
+    if (data.session) {
+      window.location.href = '/';
+      return;
+    }
+    showMessage('Account created! Check your email for a confirmation link before logging in.', false);
   });
 </script>
 </body>

@@ -52,6 +52,17 @@ nav.main-nav a.active{background:var(--grad); color:#0a0a0f; font-weight:800}
   box-shadow:0 4px 18px rgba(239,68,68,.35); transition:transform .15s,box-shadow .15s;
 }
 .btn-login:hover{transform:translateY(-1px); box-shadow:0 6px 22px rgba(239,68,68,.5)}
+#auth-slot{display:flex; align-items:center; gap:8px}
+.user-chip{
+  display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:9999px;
+  background:var(--panel); border:1px solid var(--border-strong); font-size:13px; font-weight:700;
+  color:var(--text); white-space:nowrap; max-width:170px; overflow:hidden; text-overflow:ellipsis;
+}
+.btn-logout{
+  padding:7px 14px; border-radius:9999px; border:1px solid var(--border-strong); background:transparent;
+  color:var(--subtext); font-weight:700; font-size:12.5px; cursor:pointer; transition:all .15s; font-family:inherit;
+}
+.btn-logout:hover{border-color:rgba(239,68,68,.5); color:#fca5a5}
 
 /* animated gradient hero */
 .hero{
