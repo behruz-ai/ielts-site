@@ -13,9 +13,9 @@
 html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
 
 /* ── THEME ── */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
 [data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
 [data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
-:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
 body{background:var(--bg);color:var(--text)}
 [data-theme=night] body{background:var(--bg)}
 [data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
@@ -153,6 +153,24 @@ select.ai{height:32px;cursor:pointer}
 [data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
 [data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
 
+/* ── MATCHING MATRIX ── */
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+
 /* ── BOTTOM NAV ── */
 #nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
 .arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
@@ -270,6 +288,7 @@ mark.uhl:hover{background:#FDE047}
       <span id="fsz-lbl">100%</span>
       <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
     </div>
+    <span id="mode-badge" style="display:none;"></span>
     <div id="timer">60:00</div>
     <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
       <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
@@ -401,12 +420,14 @@ mark.uhl:hover{background:#FDE047}
       <div class="qblock">
         <p class="qnum-head"><em>Questions 14–19</em></p>
         <p class="qinst">Reading Passage 2 has nine paragraphs, <strong>A–I</strong>.<br>Which paragraph contains the following information?</p>
-        <div class="qitem"><p class="qprompt"><strong>14.</strong>&nbsp; how an organism turns a basic material into something incredibly strong &nbsp;<select class="ai" id="q14" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>15.</strong>&nbsp; a claim that biomimetics has had limited commercial impact so far &nbsp;<select class="ai" id="q15" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>16.</strong>&nbsp; a difficulty that led to a researcher's accidental discovery &nbsp;<select class="ai" id="q16" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>17.</strong>&nbsp; an example of nature being far more efficient than a common household object &nbsp;<select class="ai" id="q17" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>18.</strong>&nbsp; an ancient specimen that inspired a modern innovation &nbsp;<select class="ai" id="q18" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>19.</strong>&nbsp; situations where it is preferable to replace a human with a machine &nbsp;<select class="ai" id="q19" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option></select></p></div>
+        <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th></tr></thead><tbody>
+        <tr><td class="mx-stmt"><span class="mx-num">14</span> how an organism turns a basic material into something incredibly strong</td><td><label class="mx-cell"><input type="radio" name="q14" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="I" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">15</span> a claim that biomimetics has had limited commercial impact so far</td><td><label class="mx-cell"><input type="radio" name="q15" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="I" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">16</span> a difficulty that led to a researcher's accidental discovery</td><td><label class="mx-cell"><input type="radio" name="q16" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="I" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">17</span> an example of nature being far more efficient than a common household object</td><td><label class="mx-cell"><input type="radio" name="q17" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="I" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">18</span> an ancient specimen that inspired a modern innovation</td><td><label class="mx-cell"><input type="radio" name="q18" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="I" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">19</span> situations where it is preferable to replace a human with a machine</td><td><label class="mx-cell"><input type="radio" name="q19" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="I" onchange="upd()"></label></td></tr>
+        </tbody></table></div>
       </div>
       <div class="qblock">
         <p class="qnum-head"><em>Questions 20–22</em></p>
@@ -417,9 +438,11 @@ mark.uhl:hover{background:#FDE047}
           <div class="frow"><span class="fkey">C</span> Robert Cohen</div>
           <div class="frow"><span class="fkey">D</span> Ronald Fearing</div>
         </div>
-        <div class="qitem"><p class="qprompt"><strong>20.</strong>&nbsp; All living things provide something useful for humans to discover. &nbsp;<select class="ai" id="q20" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>21.</strong>&nbsp; Natural designs are sometimes impossible for people to copy. &nbsp;<select class="ai" id="q21" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>22.</strong>&nbsp; Biomimetics achieves nothing unless it has a practical application. &nbsp;<select class="ai" id="q22" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option></select></p></div>
+        <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
+        <tr><td class="mx-stmt"><span class="mx-num">20</span> All living things provide something useful for humans to discover.</td><td><label class="mx-cell"><input type="radio" name="q20" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="D" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">21</span> Natural designs are sometimes impossible for people to copy.</td><td><label class="mx-cell"><input type="radio" name="q21" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="D" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">22</span> Biomimetics achieves nothing unless it has a practical application.</td><td><label class="mx-cell"><input type="radio" name="q22" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="D" onchange="upd()"></label></td></tr>
+        </tbody></table></div>
       </div>
       <div class="qblock">
         <p class="qnum-head"><em>Questions 23–26</em></p>
@@ -579,6 +602,7 @@ const CAL = {
 
 // ── STATE ──
 let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
 let checked=false, timeExpired=false;
 let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
 // ── INIT ──
@@ -596,35 +620,38 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 function showWelcomePopup() {
     const overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,8,16,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
     const box = document.createElement('div');
-    box.style.cssText = 'background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 55%,#063847 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(0,200,180,0.3);position:relative;overflow:hidden;';
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
     box.innerHTML = `
-        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(0,200,180,0.12);border-radius:50%;"></div>
-        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(0,200,180,0.08);border-radius:50%;"></div>
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(56,189,248,0.07);border-radius:50%;"></div>
         <div style="position:relative;z-index:2;">
-            <div style="font-size:50px;margin-bottom:10px;">📖</div>
-            <div style="display:inline-block;background:rgba(0,200,180,0.2);color:#7ffcec;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(0,200,180,0.3);">Authentic Full Test</div>
+            <div style="position:relative;width:70px;height:70px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+                <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);border-radius:50%;box-shadow:0 0 26px 6px rgba(56,189,248,0.22);"></div>
+                <div style="position:relative;font-size:42px;">📖</div>
+            </div>
+            <div style="display:inline-block;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(251,191,36,0.35);">Authentic Full Test</div>
             <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
             <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
-            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong>I. Bekhruz</strong></p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
             <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
-            <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
-                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">⚠️ <strong>This simulates real exam conditions.</strong> Once started, the 60-minute timer cannot be paused or reset, just like the real IELTS test. Find a quiet space, stay focused, and treat it like exam day.</p>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">⚠️ <strong>Choose how you want to practise.</strong> <strong>Exam mode</strong> runs a 60-minute countdown that auto-submits at 0, just like the real IELTS test. <strong>Casual mode</strong> uses a count-up stopwatch, so you can finish whenever you like and still see how long you took.</p>
             </div>
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0d7a8a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
-                    <svg style="width:17px;height:17px;fill:#0d7a8a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:stretch;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                     Join @bekhruzposts
                 </a>
-                <button id="welcomeStartBtn" style="background:rgba(0,200,180,0.18);color:#fff;border:1.5px solid rgba(0,200,180,0.5);font-weight:800;font-size:15px;padding:13px 26px;border-radius:12px;cursor:pointer;">
-                    Start Test &#9654;
-                </button>
+                <button id="examBtn" style="background:linear-gradient(90deg,#38bdf8,#0ea5e9);color:#052033;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.2;box-shadow:0 6px 18px rgba(0,0,0,0.25);">🎯 Exam mode<span style="font-weight:600;font-size:11px;opacity:.8;">60-minute timer &middot; auto-submit at 0</span></button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(56,189,248,0.4);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.2;">🧘 Casual mode<span style="font-weight:600;font-size:11px;opacity:.8;">stopwatch &middot; finish whenever you like</span></button>
             </div>
         </div>`;
     overlay.appendChild(box);
     document.body.appendChild(overlay);
-    document.getElementById('welcomeStartBtn').addEventListener('click', () => {
+    function go(m){
+        startMode(m);
         overlay.style.transition = 'opacity 0.3s';
         overlay.style.opacity = '0';
         setTimeout(() => {
@@ -632,8 +659,9 @@ function showWelcomePopup() {
             toggleTimer();
             toggleFullscreen();
         }, 300);
-    });
-    overlay.addEventListener('click', e => { if (e.target === overlay) document.getElementById('welcomeStartBtn').click(); });
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
 }
 window.addEventListener('resize', adjustMainTop);
 
@@ -718,17 +746,38 @@ function upd(){
   document.getElementById('cnt').textContent=tot+' of 40 answered';
 }
 
-// ── TIMER ──
+// ── TIMER / STOPWATCH ──
+function fmt(s){const m=Math.floor(s/60),sec=s%60;return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const badge=document.getElementById('mode-badge');
+  const d=document.getElementById('timer');
+  if(m==='exam'){
+    timerS=3600; elapsed=0;
+    d.textContent=fmt(timerS); d.title='Time remaining';
+    badge.textContent='⏳ Exam';
+    badge.style.cssText='display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:4px 10px;border-radius:9999px;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;';
+  } else {
+    timerS=3600; elapsed=0;
+    d.textContent=fmt(0); d.title='Time elapsed (stopwatch)'; d.classList.remove('warn');
+    badge.textContent='🧘 Casual';
+    badge.style.cssText='display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:4px 10px;border-radius:9999px;background:#0f172a;color:#fbbf24;border:1px solid #1e293b;';
+  }
+}
 function toggleTimer(){
   if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
 }
 function tick(){
-  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
-  timerS--;
-  const m=Math.floor(timerS/60),s=timerS%60;
+  elapsed++;
   const d=document.getElementById('timer');
-  d.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-  d.classList.toggle('warn',timerS<=300&&timerS>0);
+  if(mode==='exam'){
+    timerS--; if(timerS<0)timerS=0;
+    d.textContent=fmt(timerS);
+    d.classList.toggle('warn',timerS<=300&&timerS>0);
+    if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  } else {
+    d.textContent=fmt(elapsed);
+  }
 }
 // ── FULLSCREEN ──
 function toggleFullscreen(){
@@ -938,7 +987,7 @@ function markQ(n,ok){
 // ── BAND ──
 function band(n){
   if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
-  if(n>=32)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
   if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
   if(n>=13)return'4.5';return'4.0';
 }
@@ -972,7 +1021,10 @@ function showResults(){
       </div>
       <div class="res-hero-info">
         <div class="res-title">${titleTxt}</div>
-        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+          <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+        </div>
       </div>
     </div>
     <div class="res-parts">
@@ -1138,7 +1190,6 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')nextQ();
 });
 </script>
-
 <script src="/js/report-progress.js"></script>
 </body>
 </html>

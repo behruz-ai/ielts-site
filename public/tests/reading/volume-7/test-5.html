@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth-gate.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 5 (Volume 7) | bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* ── THEME ── */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+/* ── FONT SIZE CONTROL ── */
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ── HEADER ── */
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+/* ── BANNER ── */
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+/* ── MAIN SPLIT ── */
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+/* ── PASSAGE TABS ── */
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+/* ── QUESTIONS ── */
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+/* notes / inline block */
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+/* TF / MC options */
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+/* selects / text inputs */
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+/* feature / word list boxes */
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+/* ── SUMMARY DRAG & DROP (word bank → gaps) ── */
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+/* ── BOTTOM NAV ── */
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+/* ── HIGHLIGHT (shohrukhposts style: select → button → yellow mark) ── */
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+/* ── MODALS ── */
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+/* results */
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+/* ── FLASHY RESULTS ── */
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+/* ── REAL-EXAM MATCHING MATRIX ── */
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+/* ── MATCHING HEADINGS (drag into passage) ── */
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+/* ── lifted completion blocks ── */
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<!-- BANNER -->
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1–13.</span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <!-- LEFT -->
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">Rubber</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <span class="subtitle">T and W Musgrove discuss the origins and early uses of rubber</span>
+      <p>The plants that produce rubber are spread right across the globe, and grow in many different habitats. One might think it likely, therefore, that humankind has known about rubber for thousands of years. Yet, unlike other crops of economic importance, rubber led a relatively anonymous life until the last 150 years or so. The Indians of South America appear to be the first people to have understood the properties of rubber, and the Aztecs of what is now Mexico were the first to be recorded using the substance; a wall painting dating back to the sixth century depicts a scene of a tributary offering of crude rubber. With the arrival of Columbus in the Americas and the resulting Spanish influx, further evidence starts to appear concerning the Native American use of rubber. Antonio de Herrera y Tordesillas describes a ritual game played with a rubber ball at the court of the Aztec Emperor Montezuma II, and the Mayan and Toltec people are known to have taken part in similar activities. Rubber was also used to make raincoats, shoes, jars, torches and musical instruments, all of which must have been made from the indigenous Castilla elastica, as the Para plant now favoured for rubber cultivation does not grow in the Mexican region.</p>
+      <p>The first description of latex (liquid rubber) extraction is made by Juan de Torquemada, who noted that if a receptacle was not at hand the Native Americans would place the latex on their bodies to allow it to solidify. However, no real interest in rubber was shown by any European until Charles de la Condamine, a French mathematician, published an account of his journey to South America in 1735. The journey was undertaken on behalf of the Paris Academy of Sciences to measure an arc of the meridian line on the equator, but the journey home was to turn out to be more significant than the true purpose of the trip. Condamine explored Brazil and Peru and discovered how the local people used one single piece of coagulated latex to make boots. The boots were impervious to water and, when smoked, looked like real leather. In 1747 the first description of the rubber tree and latex tapping was made by a military engineer and amateur botanist, François Fresneau, who was posted to French Guiana. The publications of Condamine and Fresneau created considerable excitement among French scientists, and an attempt was made to discover a solvent that could turn the crude rubber into a substance for commercial exploitation.</p>
+      <p>In 1818 a British medical student named James Syme first used rubber to make waterproof cloth. Another early use of the substance was as an eraser of pencil marks, hence the name 'rubber'. This was complemented by balloons, rubber bands, braces, boots for the army and other ideas that met with varying degrees of success. In 1820 Thomas Hancock, an English manufacturer of rubber goods such as driving belts, industrial rollers and rubber hoses, invented a machine he called the 'pickle', which chewed up waste strips for re-use. It was discovered that the masticated rubber was more malleable, while maintaining much of its elasticity. In Scotland at the same time Charles Mackintosh had discovered a way of using rubber as waterproofing material, by a process he patented in 1823. Hancock and Mackintosh joined forces in 1834, and three years later Hancock invented a machine for spreading rubber onto material.</p>
+      <p>Despite their beneficial qualities, such as waterproofing, rubber goods were still not particularly popular as they had some major flaws, including the fact that they dissolved malodorously. They also became pliant when warm and rigid when cold. Then in 1839 the American Charles Goodyear discovered that it was possible to stabilise rubber by mixing it with sulphur while exposing it to heat - a process he called vulcanisation - and the full versatility of this extraordinary substance became apparent.</p>
+      <p>Rubber goods could now be manufactured which had all the beneficial qualities of the material, such as durability, elasticity and variability, but which were not sticky, soluble or governed by the vagaries of the weather. The economic potential of rubber was now clearly evident. It played an important role in the Industrial Revolution, being employed in the steam engines found in factories, mills, mines and railways. It made a triumphant entrance as a new and innovative material at the Great Exhibition of 1851, where shoes, airbeds, furniture and clothing made out of newly improved rubber were proudly displayed.</p>
+      <p>One of the most important rubber inventions was made in 1888, when an Irishman called John Boyd Dunlop produced the first pneumatic tyre. Solid rubber tyres had been used for the previous 18 years, but Dunlop's new design, which he updated in 1890, immediately became popular. In 1895 Dunlop's tyres were first used in motor cars, and with the mass production of cars just over the horizon the rubber industry had never looked healthier. The import levels of rubber over the nineteenth century bear witness to its irrepressible rise. In 1830 Britain had imported just 211 kg of crude rubber. This had risen to 10,000kg in 1857, and by 1874 levels were just under six times as much again.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">The Myth of the Eight-hour Sleep</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <span class="subtitle">We often worry about lying awake in the middle of the night – but it could be good for you</span>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q14" data-q="14" data-bank="p2" draggable="false">14</span></p>
+      <p id="p2-s1">Indications from both science and history suggest that the eight-hour sleep may not be a natural or inborn pattern for humans. In the early 1990s, psychiatrist Thomas Wehr conducted research which implies just that. Wehr kept a group of people in a darkened room for 14 hours a day for a month. It took some time for their sleep to regulate, but by the fourth week the subjects had settled into a very distinct sleeping pattern. Firstly, they slept four hours, then woke for one or two hours before falling into a second four-hour sleep. Though sleep scientists were impressed by the implications of the study, the idea that we must sleep for eight consecutive hours persists amongst the general public.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q15" data-q="15" data-bank="p2" draggable="false">15</span></p>
+      <p id="p2-s2">In 2001, historian Roger Ekirch of Virginia Tech University in the US published a paper drawn from 16 years of research, revealing historical evidence that humans used to sleep in two distinct periods of time each night. Ekirch's research found more than 500 references to a segmented sleeping pattern – in diaries, court recorders, medical books and literature, from the ancient Greeks to tribes in Nigeria. Much like Wehr's findings, these references describe a first sleep which began not long following sunset. Then there was a waking period of one or two hours and after that a second sleep. During the waking period, people could be quite active. They sometimes got up and moved around the house, although most people stayed in bed, and perhaps read or wrote if they had enough money for candles. In many historic accounts, Ekirch found that people used the time that they were awake between periods of sleep to think about and attempt to analyse their dreams.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q16" data-q="16" data-bank="p2" draggable="false">16</span></p>
+      <p id="p2-s3">In his book, Evening's Empire, historian Craig Koslofsky suggested an explanation for this divided sleep pattern in Europe. 'Associations with night before the 17th century were not good,' he writes. He goes on to explain that the streets of cities and towns at night were often populated by thieves or worse. The streets at night consequently scared many people. Even the wealthy, who could afford to light their way, had better things to spend their money on. There was no prestige or social value with going out or staying up late at night.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q17" data-q="17" data-bank="p2" draggable="false">17</span></p>
+      <p id="p2-s4">Ekirch found that references to the first and second sleep started to disappear during the late 17th century. The pattern began to alter first among the urban upper classes changing amongst the rest of Western society. By the 1920s, the idea of a first and second sleep had receded entirely from our social consciousness. Ekirch attributes the initial shift to improvements in street and home lighting. As the night became a time for all kinds of activity, the length of time people used for rest declined. In 1667, Paris became the first city in the world to light its streets, using wax candles in glass lamps. It was followed by another French city, Lille, in the same year and by Amsterdam in Holland two years later, where a much more efficient oil-powered lamp was developed. London didn't light its streets until 1684, but by the end of the 17th century, more than 50 of Europe's major towns and cities were lit at night. Coffee houses emerged as a fashionable phenomenon and many were open virtually around the clock. Going out at night became commonplace, and spending hours lying in bed was considered a waste of time. 'People were becoming increasingly time-conscious and sensitive to efficiency, certainly before the 19th century,' says Ekirch. 'But the Industrial Revolution intensified that attitude considerably.' Strong evidence of this shifting attitude is contained in a medical journal from 1829 which urged parents to force their children out of the pattern of first and second sleep.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q18" data-q="18" data-bank="p2" draggable="false">18</span></p>
+      <p id="p2-s5">Today, most people seem to have adapted quite well to the eight-hour sleep, but Ekirch believes many sleeping problems may have roots in the human body's natural preference for divided sleep, as well as in difficulties caused by extended exposure to artificial light in the modern world. This could be the cause of a condition called sleep maintenance insomnia, where people wake during the night and have trouble getting back to sleep. The condition first appears in literature at the end of the 19th century, at the same time as accounts of interrupted sleep disappear. Sleep psychologist, Gregg Jacobs, says that the idea that we must sleep for an extended period of time could be changing. If it makes people who wake up in the night anxious, as this anxiety can itself discourage sleep and is likely to affect waking life too. Jacobs suggests that the waking period between sleeping, when people simply rested and relaxed, could have played an important part in the human capacity to regulate stress naturally. Russell Foster, a professor of circadian (body clock) neuroscience at Oxford University in the UK, shares this point of view. 'Over 30% of the medical problems that doctors are faced with stem directly or indirectly from sleep. But sleep has been ignored in medical training, and there are very few countries where sleep is studied,' Foster says. He feels this needs to change.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">Living Dunes</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <span class="subtitle">Things don't come much stranger than heaps of sand that can move and sing of their own accord. Sally Palmer investigates</span>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q27" data-q="27" data-bank="p3" draggable="false">27</span></p>
+      <p id="p3-p1">Armies of giant sand dunes are advancing across the world's deserts, engulfing anything that crosses their path. They are tens of metres tall and hundreds of metres long. Fortunately, they aren't going very fast. Even the smallest, speediest dunes only travel about 100 metres over the course of a year, while the bigger ones, which weigh something in the order of 10,000 tonnes, barely move one metre in that time. However, their insidious creep can have serious consequences if there is an oil installation or a railway line in their path.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q28" data-q="28" data-bank="p3" draggable="false">28</span></p>
+      <p id="p3-p2">About 47% of the world's land mass, including Antarctica, most of Australia and large areas of Africa, is classified as arid or semi-arid desert. Only around 20% of that is sand-covered, however, and over half of that is classified as 'linear' sand dunes. These form in a long curving wave, as a result of wind blowing strongly from several quarters, flipping them from side to side. Although linear dunes are static, sand blowing off them can cause problems for desert villages, burying crops and buildings.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q29" data-q="29" data-bank="p3" draggable="false">29</span></p>
+      <p id="p3-p3">Moving dunes make up just a small percentage of the rest, but they are of the most interest to scientists. They are known as 'barchans': heavy, crescent-shaped sand piles with a ridged crest and two elongated arms, one curving away to either side. 'Barchan dunes only tend to form where you have one-directional winds on the edge of sandy deserts near coastal areas,' says Giles Wiggs, a geomorphologist at Oxford University, who has been studying the formation and movement of sand dunes for more than a decade.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q30" data-q="30" data-bank="p3" draggable="false">30</span></p>
+      <p id="p3-p4">But even with strong winds, how can entire barchans move while retaining their form? That question was first answered in the mid-20th century by British explorer Ralph Alger Bagnold, and his answer hinges on the fact that dunes aren't solid, but granular. Bagnold figured out how barchan dunes are able to move grain by grain. Imagine a single grain of sand being blown up the back of a dune by the wind and deposited on the top. More grains follow the same pattern, until the accumulated weight of piled-up sand finally pushes the top down the dune face. The grain tumbles, then stops on the face until subsequent mini-avalanches bury it. Eventually, it reappears at the back of the dune, ready to repeat the process. As this happens to every grain of sand in the dune, the whole thing creeps in the direction of the prevailing wind.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q31" data-q="31" data-bank="p3" draggable="false">31</span></p>
+      <p id="p3-p5">The relationship between the wind and barchan dunes is complex. As a dune grows, it modifies the speed and course of the wind, which in turn alters how that dune and its neighbours evolve. 'Interestingly, the dune can regulate its own shape, and maintain it as it moves,' says Dr Stéphane Douady, a physicist at Ecole Normale Supérieure (ENS) in France. 'Even when two dunes collide, they quickly take on their distinctive shapes again. It's like a living organism.'</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q32" data-q="32" data-bank="p3" draggable="false">32</span></p>
+      <p id="p3-p6">Douady and his colleagues have also been studying an even odder phenomenon than moving dunes: some barchans actually sing. Local legends attributed the sounds to dangerous spirits which were trying to trap unwary travellers. Douady is more pragmatic. 'It's a strong booming noise with a low frequency,' he explains, making a noise like a foghorn to demonstrate. 'It can last for a long time - up to several minutes. It's a very loud sound and you don't understand where it's coming from when you first hear it.' There are about 50 dunes distributed across 35 deserts round the world that are known to sing. Douady says the sound is caused by the way sand avalanches down the faces of particular dunes. Rather than tumbling randomly, the sand grains flow in synchrony and set each other vibrating like the membrane on a gigantic loudspeaker. The synchronisation causes the air to move in and out between the grains, creating a powerful sound wave.</p>
+      
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q33" data-q="33" data-bank="p3" draggable="false">33</span></p>
+      <p id="p3-p7">What really surprised the scientists, however, was that they were able to take samples of the singing sand back to France and replicate the sound at ENS, proving that it's the sand, not the dune shape, that causes the sound. Their studies show the grains are a uniform shape, well-rounded from years of striking each other, and that the variations in size affect the tone. Crucially, the grains are coated with a special veneer, which Douady calls 'desert glaze', made from a precise combination of minerals from surrounding rocks including iron, aluminium, manganese, silicon and calcium. The team found that after a month or so, the veneer wore off and the grains lost their 'voice'. 'We managed to reproduce the desert glaze and then the grains started to sing again,' says Douady. 'We tried putting the coating onto different grains, but they weren't round enough and it didn't work. But some American colleagues made some artificial grains and managed to make them sing, after covering them in desert glaze.' Douady has now made recordings of dunesong from all over the world which are to be made into a CD.</p>
+    </div>
+  </div>
+
+  <div id="drag"></div>
+
+  <!-- RIGHT -->
+  <div id="right-pane">
+    <div class="qsec on" id="qs1"><p class="qnum-head"><em>Questions 1–6</em></p><p class="qinst">Choose <strong>TRUE</strong> if the statement agrees with the information given in the text, choose <strong>FALSE</strong> if the statement contradicts the information, or choose <strong>NOT GIVEN</strong> if there is no information on this.</p><div class="qitem"><p class="qprompt"><strong>1.</strong>&nbsp; Rubber plants grow only in certain regions of the world.</p><div class="rgroup" id="rg1"><label class="rlabel"><input type="radio" name="q1" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q1" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q1" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>2.</strong>&nbsp; Rubber was extracted in Mexico as early as the sixth century.</p><div class="rgroup" id="rg2"><label class="rlabel"><input type="radio" name="q2" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q2" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q2" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>3.</strong>&nbsp; Rubber from the Castilla elastica plant is of poorer quality than that from the Para plant.</p><div class="rgroup" id="rg3"><label class="rlabel"><input type="radio" name="q3" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q3" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q3" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>4.</strong>&nbsp; A French mathematician inspired real interest in rubber amongst Europeans.</p><div class="rgroup" id="rg4"><label class="rlabel"><input type="radio" name="q4" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q4" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q4" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>5.</strong>&nbsp; The process of vulcanisation was discovered by accident.</p><div class="rgroup" id="rg5"><label class="rlabel"><input type="radio" name="q5" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q5" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q5" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>6.</strong>&nbsp; Imports of crude rubber into Britain fell during the nineteenth century.</p><div class="rgroup" id="rg6"><label class="rlabel"><input type="radio" name="q6" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q6" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q6" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><p class="qnum-head"><em>Questions 7–13</em></p><p class="qinst">Complete the summary below. Write <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer.</p><div class="qtitle">The Commercial Development of Rubber</div><div class="sbox"><p>Early European travellers gave accounts of various rubber objects in use in Central and South America, and these accounts created interest in the commercial exploitation of rubber. In 1818, <strong>7.</strong>&nbsp;<input type="text" class="ai sm" id="q7" oninput="upd()"> was produced using rubber, and in 1820 a machine was invented for recycling <strong>8.</strong>&nbsp;<input type="text" class="ai sm" id="q8" oninput="upd()"> of rubber. Over the next few years, other attempts were made to improve rubber, but some problems remained. For example, rubber products smelt bad when they were dissolved, and could turn either soft or <strong>9.</strong>&nbsp;<input type="text" class="ai sm" id="q9" oninput="upd()"> depending on the temperature. However, in 1839 a new process to <strong>10.</strong>&nbsp;<input type="text" class="ai sm" id="q10" oninput="upd()"> the substance greatly increased its potential. For example, rubber was used in the creation of the <strong>11.</strong>&nbsp;<input type="text" class="ai sm" id="q11" oninput="upd()"> industry during the Industrial Revolution. Then in 1888 the <strong>12.</strong>&nbsp;<input type="text" class="ai sm" id="q12" oninput="upd()"> was developed, and a few years later the <strong>13.</strong>&nbsp;<input type="text" class="ai sm" id="q13" oninput="upd()"> of the motor car began.</p></div></div>
+    <div class="qsec" id="qs2"><p class="qnum-head"><em>Questions 14–18</em></p><p class="qinst">Reading Passage 2 has five sections. Choose the correct heading for each section from the list of headings below. Choose the correct number, <strong>i–vii</strong>, in boxes 14–18.</p><div class="headings-box" id="mhHeadings-p2" data-bank="p2"><div class="mh-heading-card" draggable="true" data-code="i" data-label="historical reasons why interrupted sleep became uncommon"><strong>i</strong>&nbsp;&nbsp;historical reasons why interrupted sleep became uncommon</div><div class="mh-heading-card" draggable="true" data-code="ii" data-label="Brain structures involved in sleep patterns"><strong>ii</strong>&nbsp;&nbsp;Brain structures involved in sleep patterns</div><div class="mh-heading-card" draggable="true" data-code="iii" data-label="Potential health issues related to sleep"><strong>iii</strong>&nbsp;&nbsp;Potential health issues related to sleep</div><div class="mh-heading-card" draggable="true" data-code="iv" data-label="Famous cases in literature of sleep"><strong>iv</strong>&nbsp;&nbsp;Famous cases in literature of sleep</div><div class="mh-heading-card" draggable="true" data-code="v" data-label="An analysis of old documents to discover sleep patterns"><strong>v</strong>&nbsp;&nbsp;An analysis of old documents to discover sleep patterns</div><div class="mh-heading-card" draggable="true" data-code="vi" data-label="Biological and environmental factors preventing people from falling asleep again"><strong>vi</strong>&nbsp;&nbsp;Biological and environmental factors preventing people from falling asleep again</div><div class="mh-heading-card" draggable="true" data-code="vii" data-label="Scientific evidence that divided sleep is a natural phenomenon"><strong>vii</strong>&nbsp;&nbsp;Scientific evidence that divided sleep is a natural phenomenon</div></div><p class="qnum-head"><em>Questions 19–23</em></p><p class="qinst">Match each statement with the correct researcher, A–E. You may use any letter more than once.</p><div class="fbox"><strong>List of Researchers</strong><div class="frow"><span class="fkey">A</span> Thomas Wehr</div><div class="frow"><span class="fkey">B</span> Roger Ekirch</div><div class="frow"><span class="fkey">C</span> Craig Koslofsky</div><div class="frow"><span class="fkey">D</span> Gregg Jacobs</div><div class="frow"><span class="fkey">E</span> Russell Foster</div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">19</span> In certain historical periods, the threat of criminal danger led to segmented sleep.</td><td><label class="mx-cell"><input type="radio" name="q19" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="E" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">20</span> Physicians should learn more about treating people with sleeping difficulties.</td><td><label class="mx-cell"><input type="radio" name="q20" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="E" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">21</span> Historically, when people experienced interrupted sleep, they used the waking period at night for different activities.</td><td><label class="mx-cell"><input type="radio" name="q21" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="E" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">22</span> Technological changes in Europe made people more likely to sleep throughout the night.</td><td><label class="mx-cell"><input type="radio" name="q22" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="E" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">23</span> The belief that humans should have a long continuous sleep can be psychologically harmful.</td><td><label class="mx-cell"><input type="radio" name="q23" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="E" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 24–26</em></p><p class="qinst">Complete the summary below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="qtitle">Historical patterns of interrupted sleep</div><div class="sbox"><p>Historical evidence seems to show that humans had common sleep patterns which were quite unlike today's eight hours of unbroken sleep each night. People habitually went to bed early, soon after <strong>24.</strong>&nbsp;<input type="text" class="ai sm" id="q24" oninput="upd()">, slept for a while, then woke up for a few hours of activity or perhaps to consider, for example, the meaning of <strong>25.</strong>&nbsp;<input type="text" class="ai sm" id="q25" oninput="upd()">. There was little else to do at home in the dark, since what little means of lighting they had, such as using candles, was costly. In 16th-century Europe, people tended to stay at home at night because they feared <strong>26.</strong>&nbsp;<input type="text" class="ai sm" id="q26" oninput="upd()"> on large unlit city streets.</p></div></div>
+    <div class="qsec" id="qs3"><p class="qnum-head"><em>Questions 27–33</em></p><p class="qinst">Reading Passage 3 has seven paragraphs. Choose the correct heading for each paragraph from the list of headings below.</p><div class="headings-box" id="mhHeadings-p3" data-bank="p3"><div class="mh-heading-card" draggable="true" data-code="i" data-label="Moving rapidly across the desert"><strong>i</strong>&nbsp;&nbsp;Moving rapidly across the desert</div><div class="mh-heading-card" draggable="true" data-code="ii" data-label="Recreating the process in a laboratory"><strong>ii</strong>&nbsp;&nbsp;Recreating the process in a laboratory</div><div class="mh-heading-card" draggable="true" data-code="iii" data-label="Strange music created by human movement"><strong>iii</strong>&nbsp;&nbsp;Strange music created by human movement</div><div class="mh-heading-card" draggable="true" data-code="iv" data-label="A potential threat to industry and communications"><strong>iv</strong>&nbsp;&nbsp;A potential threat to industry and communications</div><div class="mh-heading-card" draggable="true" data-code="v" data-label="Dunes coming together and re-forming"><strong>v</strong>&nbsp;&nbsp;Dunes coming together and re-forming</div><div class="mh-heading-card" draggable="true" data-code="vi" data-label="Needing a specific combination of conditions"><strong>vi</strong>&nbsp;&nbsp;Needing a specific combination of conditions</div><div class="mh-heading-card" draggable="true" data-code="vii" data-label="A continuous cycle"><strong>vii</strong>&nbsp;&nbsp;A continuous cycle</div><div class="mh-heading-card" draggable="true" data-code="viii" data-label="The commonest type of dune"><strong>viii</strong>&nbsp;&nbsp;The commonest type of dune</div><div class="mh-heading-card" draggable="true" data-code="ix" data-label="Old superstitions demystified"><strong>ix</strong>&nbsp;&nbsp;Old superstitions demystified</div></div><p class="qnum-head"><em>Questions 34–36</em></p><p class="qinst">Choose the correct answer.</p><div class="qitem"><p class="qprompt"><strong>34.</strong>&nbsp; What are we told about linear dunes?</p><div class="rgroup" id="rg34"><label class="rlabel"><input type="radio" name="q34" value="A" onchange="upd()"> <strong>A</strong>&nbsp; They are formed by strong winds blowing from one direction.</label><label class="rlabel"><input type="radio" name="q34" value="B" onchange="upd()"> <strong>B</strong>&nbsp; They can move up to 100 metres in a twelve-month period.</label><label class="rlabel"><input type="radio" name="q34" value="C" onchange="upd()"> <strong>C</strong>&nbsp; They develop in a recognisable shape.</label><label class="rlabel"><input type="radio" name="q34" value="D" onchange="upd()"> <strong>D</strong>&nbsp; They make up about 20% of the world's deserts.</label></div></div><div class="qitem"><p class="qprompt"><strong>35.</strong>&nbsp; Bagnold discovered that movement in barchans was caused by</p><div class="rgroup" id="rg35"><label class="rlabel"><input type="radio" name="q35" value="A" onchange="upd()"> <strong>A</strong>&nbsp; the long straight shape of the dunes.</label><label class="rlabel"><input type="radio" name="q35" value="B" onchange="upd()"> <strong>B</strong>&nbsp; the particular composition of the dunes.</label><label class="rlabel"><input type="radio" name="q35" value="C" onchange="upd()"> <strong>C</strong>&nbsp; the exceptionally heavy nature of the sand grains.</label><label class="rlabel"><input type="radio" name="q35" value="D" onchange="upd()"> <strong>D</strong>&nbsp; the unusual strength of the wind in certain seasons.</label></div></div><div class="qitem"><p class="qprompt"><strong>36.</strong>&nbsp; Why does Dr Douady compare a barchan dune to a living organism?</p><div class="rgroup" id="rg36"><label class="rlabel"><input type="radio" name="q36" value="A" onchange="upd()"> <strong>A</strong>&nbsp; It starts small and then increases in size.</label><label class="rlabel"><input type="radio" name="q36" value="B" onchange="upd()"> <strong>B</strong>&nbsp; It has an effect on its immediate surroundings.</label><label class="rlabel"><input type="radio" name="q36" value="C" onchange="upd()"> <strong>C</strong>&nbsp; Its relations with desert organisms are quite developed.</label><label class="rlabel"><input type="radio" name="q36" value="D" onchange="upd()"> <strong>D</strong>&nbsp; Its outline stays the same even after a period of movement.</label></div></div><p class="qnum-head"><em>Questions 37–40</em></p><p class="qinst">Complete the summary below. Write <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p><div class="qtitle">Singing dunes</div><div class="sbox"><p>Singing dunes, which belong to the type of dunes known as <strong>37.</strong>&nbsp;<input type="text" class="ai sm" id="q37" oninput="upd()">, produce a very loud sound which is transmitted at a low frequency. Researchers have worked out that sand grains fall down the dune and start vibrating against other grains, forming a sound wave. Research proves that the individual grains have a similar <strong>38.</strong>&nbsp;<input type="text" class="ai sm" id="q38" oninput="upd()">, but the differences in dimensions alter the <strong>39.</strong>&nbsp;<input type="text" class="ai sm" id="q39" oninput="upd()"> of the 'song'. Each grain is covered with a mixture of different <strong>40.</strong>&nbsp;<input type="text" class="ai sm" id="q40" oninput="upd()"> and this is vital to the sound production.</p></div></div>
+  </div><!-- /right-pane -->
+</div><!-- /main -->
+
+<!-- BOTTOM NAV -->
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<!-- Highlight button is created dynamically in JS (#hlBtn) -->
+
+<!-- RESULTS MODAL -->
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ANSWERS ──
+const CA = {
+  '1': 'FALSE',
+  '2': 'NOT GIVEN',
+  '3': 'NOT GIVEN',
+  '4': 'TRUE',
+  '5': 'NOT GIVEN',
+  '6': 'FALSE',
+  '7': ['waterproof cloth'],
+  '8': ['waste strips'],
+  '9': ['rigid'],
+  '10': ['stabilise','stabilize'],
+  '11': ['steam engines'],
+  '12': ['pneumatic tyre','pneumatic tire'],
+  '13': ['mass production'],
+  '14': 'vii',
+  '15': 'v',
+  '16': 'i',
+  '17': 'vi',
+  '18': 'iii',
+  '19': 'C',
+  '20': 'E',
+  '21': 'B',
+  '22': 'B',
+  '23': 'D',
+  '24': ['sunset'],
+  '25': ['dreams'],
+  '26': ['thieves'],
+  '27': 'iv',
+  '28': 'viii',
+  '29': 'vi',
+  '30': 'vii',
+  '31': 'v',
+  '32': 'ix',
+  '33': 'ii',
+  '34': 'C',
+  '35': 'B',
+  '36': 'D',
+  '37': ['barchans','barchan dunes'],
+  '38': ['shape'],
+  '39': ['tone'],
+  '40': ['minerals']
+};
+const CAL = {
+  '1': 'FALSE',
+  '2': 'NOT GIVEN',
+  '3': 'NOT GIVEN',
+  '4': 'TRUE',
+  '5': 'NOT GIVEN',
+  '6': 'FALSE',
+  '7': ['waterproof cloth'],
+  '8': ['waste strips'],
+  '9': ['rigid'],
+  '10': ['stabilise','stabilize'],
+  '11': ['steam engines'],
+  '12': ['pneumatic tyre','pneumatic tire'],
+  '13': ['mass production'],
+  '14': 'vii',
+  '15': 'v',
+  '16': 'i',
+  '17': 'vi',
+  '18': 'iii',
+  '19': 'C',
+  '20': 'E',
+  '21': 'B',
+  '22': 'B',
+  '23': 'D',
+  '24': ['sunset'],
+  '25': ['dreams'],
+  '26': ['thieves'],
+  '27': 'iv',
+  '28': 'viii',
+  '29': 'vi',
+  '30': 'vii',
+  '31': 'v',
+  '32': 'ix',
+  '33': 'ii',
+  '34': 'C',
+  '35': 'B',
+  '36': 'D',
+  '37': ['barchans','barchan dunes'],
+  '38': ['shape'],
+  '39': ['tone'],
+  '40': ['minerals']
+};
+
+// ── STATE ──
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+// ── INIT ──
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,7,14,.88);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(56,189,248,.25);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(56,189,248,.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(250,204,21,.06);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="width:76px;height:76px;margin:0 auto 10px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,.28) 0%,rgba(56,189,248,.05) 70%);box-shadow:0 0 26px 6px rgba(56,189,248,.22);display:flex;align-items:center;justify-content:center;font-size:38px;">📖</div>
+            <div style="display:inline-block;background:rgba(250,204,21,.15);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(250,204,21,.35);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;color:#cbd5e1;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
+            <p style="margin:14px 0 6px;font-size:14px;color:#cbd5e1;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;color:#94a3b8;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(56,189,248,.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;color:#cbd5e1;">🎯 <strong style="color:#fbbf24;">Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong style="color:#fbbf24;">Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:#DC2626;color:#fff;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.95);color:#0f172a;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+// ── PART / PASSAGE ──
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.ptab').forEach((t,i)=>t.classList.toggle('on',i===n-1));
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+// ── Q ROW ──
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+// ── NAVIGATION ──
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+// ── USER ANSWER ──
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+// ── UPDATE INDICATORS ──
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+// ── TIMER ──
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='\uD83E\uDDD8 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0f172a;color:#fbbf24;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='\uD83C\uDFAF Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+// ── FULLSCREEN ──
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+// ── THEME (light → dark → night) ──
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+// ── TEXT SIZE ──
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+// ── DRAG DIVIDER ──
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+// ── DRAG & DROP (multi-bank: each .wbank scopes its own chips+zones) ──
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">\u00d7</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+// ── CHOOSE-TWO CHECKBOX GROUPS ──
+const PICK={};
+
+// ── MATCHING HEADINGS (drag heading card into passage drop-slot) ──
+const MHLABELS={'i':'historical reasons why interrupted sleep became uncommon','ii':'Brain structures involved in sleep patterns','iii':'Potential health issues related to sleep','iv':'Famous cases in literature of sleep','v':'An analysis of old documents to discover sleep patterns','vi':'Biological and environmental factors preventing people from falling asleep again','vii':'Scientific evidence that divided sleep is a natural phenomenon','i':'Moving rapidly across the desert','ii':'Recreating the process in a laboratory','iii':'Strange music created by human movement','iv':'A potential threat to industry and communications','v':'Dunes coming together and re-forming','vi':'Needing a specific combination of conditions','vii':'A continuous cycle','viii':'The commonest type of dune','ix':'Old superstitions demystified'};
+let armedHeading=null;
+function setupMatchingHeadings(){
+  const cards=[...document.querySelectorAll('.mh-heading-card')];
+  const slots=[...document.querySelectorAll('.mh-drop-slot')];
+  if(!cards.length||!slots.length)return;
+  cards.forEach(card=>{
+    card.addEventListener('dragstart',e=>{if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);e.dataTransfer.effectAllowed='move';});
+    card.addEventListener('click',()=>{if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(c=>c.classList.remove('armed'));armedHeading=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+  });
+  slots.forEach(slot=>{
+    slot.addEventListener('dragstart',e=>{if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+    slot.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('dragover'));
+    slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)assignHeading(slot,code);});
+    slot.addEventListener('click',()=>{if(checked)return;if(armedHeading){assignHeading(slot,armedHeading);armedHeading=null;document.querySelectorAll('.mh-heading-card').forEach(c=>c.classList.remove('armed'));}else if(slot.dataset.val){clearHeadingSlot(slot);}});
+  });
+  let ghost=null,tCard=null;
+  cards.forEach(card=>{
+    card.addEventListener('touchstart',e=>{if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+    card.addEventListener('touchmove',e=>{if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.toggle('dragover',ss===s));},{passive:false});
+    card.addEventListener('touchend',e=>{if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.remove('dragover'));ghost.remove();ghost=null;if(s&&tCard)assignHeading(s,tCard.dataset.code);tCard=null;});
+  });
+}
+function assignHeading(slot,code){
+  if(checked)return;
+  document.querySelectorAll('.mh-drop-slot').forEach(s=>{if(s!==slot&&s.dataset.val===code)clearHeadingSlot(s);});
+  if(slot.dataset.val)clearHeadingSlot(slot);
+  slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+MHLABELS[code];slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+  const card=document.querySelector('.mh-heading-card[data-code="'+code+'"]');if(card)card.classList.add('used');
+  upd();
+}
+function clearHeadingSlot(slot){
+  const old=slot.dataset.val;if(old){const card=document.querySelector('.mh-heading-card[data-code="'+old+'"]');if(card)card.classList.remove('used');}
+  slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');
+  upd();
+}
+
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+// ── NORMALIZE ──
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+// ── CHECK ──
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  // disable inputs
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='\u2794 '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  // radio
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+// ── BAND ──
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+// ── RESULT ROWS ──
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+// ── SHOW RESULTS ──
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+// ── PASSAGE HIGHLIGHTS ──
+const P1H=[
+  {q:1,t:'are spread right across the globe, and grow in many different habitats'},
+  {q:2,t:'rubber was extracted in mexico'},
+  {q:4,t:'no real interest in rubber was shown by any european until charles de la condamine'},
+  {q:6,t:'in 1830 britain had imported just 211 kg of crude rubber. this had risen to 10,000kg in 1857'},
+  {q:7,t:'first used rubber to make waterproof cloth'},
+  {q:8,t:'chewed up waste strips for re-use'},
+  {q:9,t:'became pliant when warm and rigid when cold'},
+  {q:10,t:'it was possible to stabilise rubber by mixing it with sulphur'},
+  {q:11,t:'being employed in the steam engines found in factories'},
+  {q:12,t:'produced the first pneumatic tyre'},
+  {q:13,t:'with the mass production of cars just over the horizon'},
+];
+const P2H=[
+  {q:14,t:'wehr kept a group of people in a darkened room for 14 hours a day for a month'},
+  {q:15,t:'ekirch\'s research found more than 500 references to a segmented sleeping pattern'},
+  {q:16,t:'streets of cities and towns at night were often populated by thieves'},
+  {q:17,t:'paris became the first city in the world to light its streets'},
+  {q:18,t:'sleep maintenance insomnia, where people wake during the night and have trouble getting back to sleep'},
+  {q:19,t:'streets of cities and towns at night were often populated by thieves or worse'},
+  {q:20,t:'sleep has been ignored in medical training'},
+  {q:21,t:'people used the time that they were awake between periods of sleep to think about'},
+  {q:22,t:'ekirch attributes the initial shift to improvements in street and home lighting'},
+  {q:23,t:'the idea that we must sleep for an extended period of time could be changing'},
+  {q:24,t:'first sleep which began not long following sunset'},
+  {q:25,t:'attempt to analyse their dreams'},
+  {q:26,t:'populated by thieves or worse'},
+];
+const P3H=[
+  {q:27,t:'serious consequences if there is an oil installation or a railway line in their path'},
+  {q:28,t:'over half of that is classified as \'linear\' sand dunes'},
+  {q:29,t:'barchan dunes only tend to form where you have one-directional winds'},
+  {q:30,t:'eventually, it reappears at the back of the dune, ready to repeat the process'},
+  {q:31,t:'even when two dunes collide, they quickly take on their distinctive shapes again'},
+  {q:32,t:'local legends attributed the sounds to dangerous spirits'},
+  {q:33,t:'they were able to take samples of the singing sand back to france and replicate the sound'},
+  {q:34,t:'these form in a long curving wave'},
+  {q:35,t:'dunes aren\'t solid, but granular'},
+  {q:36,t:'even when two dunes collide, they quickly take on their distinctive shapes again. it\'s like a living organism'},
+  {q:37,t:'they are known as \'barchans\''},
+  {q:38,t:'the grains are a uniform shape'},
+  {q:39,t:'variations in size affect the tone'},
+  {q:40,t:'grains are coated with a special veneer'},
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+// ── HIGHLIGHT SYSTEM (shohrukhposts style) ──
+// Select text in a pane → "🖊 Highlight" button pops above the selection.
+// Click it → yellow highlight. Click any highlight once → it's removed.
+// Works on desktop (mouseup) and mobile (touchend).
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault()); // keep the text selection alive
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  // Click an existing highlight to remove it (ignore the auto-answer highlights).
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+// ── CHOOSE-TWO multiple choice (q20/q21) ──
+function mc2upd(box){
+  var base=Number(box.dataset.base);
+  var boxes=[].slice.call(document.querySelectorAll('.mc2box[data-base="'+base+'"]'));
+  if(boxes.filter(function(b){return b.checked;}).length>2){ box.checked=false; return; }
+  var vals=boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;});
+  document.getElementById('q'+base).value=vals[0]||'';
+  document.getElementById('q'+(base+1)).value=vals[1]||'';
+  upd();
+}
+function mc2review(){
+  document.querySelectorAll('.mc2box').forEach(function(b){
+    var base=Number(b.dataset.base);
+    var correct=[].concat(CA[base]).concat(CA[base+1]);
+    var lb=b.closest('label'); if(!lb)return;
+    if(correct.indexOf(b.value)>=0) lb.classList.add('ok');
+    else if(b.checked) lb.classList.add('bad');
+  });
+}
+(function(){ if(typeof doCheck==='function'){ var _d=doCheck; doCheck=function(){ _d.apply(this,arguments); try{mc2review();}catch(e){} }; } })();
+
+/* per-bank matching-headings override */
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+<script src="/js/report-progress.js"></script>
+</body>
+</html>

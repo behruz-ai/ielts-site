@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth-gate.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 10 (Volume 3) | bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* ── THEME ── */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+/* ── FONT SIZE CONTROL ── */
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ── HEADER ── */
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+/* ── BANNER ── */
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+/* ── MAIN SPLIT ── */
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+/* ── PASSAGE TABS ── */
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+/* ── QUESTIONS ── */
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+/* notes / inline block */
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+/* TF / MC options */
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+/* selects / text inputs */
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+/* feature / word list boxes */
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+/* ── SUMMARY DRAG & DROP (word bank → gaps) ── */
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+/* ── BOTTOM NAV ── */
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+/* ── HIGHLIGHT (shohrukhposts style: select → button → yellow mark) ── */
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+/* ── MODALS ── */
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+/* results */
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+/* ── FLASHY RESULTS ── */
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+/* ── REAL-EXAM MATCHING MATRIX ── */
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<!-- BANNER -->
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1–13.</span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <!-- LEFT -->
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">A Brief History of Humans and Food</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p>During the journey from our hunter-gatherer ancestors to the present day there have been three seismic changes that have had an impact on the food we eat: the discovery of cooking, the emergence of agriculture and the invention of methods of preserving food.</p>
+      <p>The 19th-century scientist Charles Darwin thought that cooking, after language, was the greatest discovery made by man. All of us eat some raw food, for instance fruit and vegetables, but the great majority of food we eat is cooked. Cooking can turn plants that are inedible into edible food by destroying toxic chemicals that plants often manufacture to protect themselves against attack by insects or other herbivorous animals. These toxic chemicals are referred to as 'plant secondary compounds', because they are not directly involved in the plant's normal growth, development and reproduction, and are produced purely as chemical defences. They give many of the plants we consume, such as coffee or brussels sprouts, their bitter taste.</p>
+      <p>Cooked food is often more digestible, because heat breaks down tough cellulose cell walls in plants or tough connective tissue in animals. Chewing raw turnip, a plate of uncooked rice, or a raw leg of lamb is much harder work than eating the cooked equivalent. The energy expended in chewing to break down the tough material is replaced by energy from the fuel that is used in cooking the food, so the ratio of energy gained to energy expended by the body is greater when food is cooked.</p>
+      <p>Until the development of agriculture, hunter-gatherers spent up to seven hours a day gathering food. This all began to change around 10,500 years ago with the advent of farming, which led to some dramatic changes in human societies. People began to create a variety of new tools to help with survival, and in turn populations increased in size. These changes led to the possibility of specialisation of different tasks within society. It was around this time that writing became more sophisticated and allowed people to maintain records of the harvest and taxes. Eventually, formalised structures of government were established as people settled in one area.</p>
+      <p>The arrival of agriculture meant that, for the first time, our ancestors had more food than they could eat immediately. This, combined with the seasonality of production, led them to discover methods of preserving food: smoking, drying, adding acid by fermentation or salting. These four methods all share one feature in common: they make the food a more hostile environment in which the microorganisms that cause decay cannot easily survive. They also tend to slow down any natural chemical reactions in the food that would cause decay.</p>
+      <p>Although foods today are still preserved in the ancient ways, two more recent methods of preserving food have become more common: canning and freezing. Canning was invented by a Frenchman, Nicholas Appert, in the early-19th century. He sealed food in bottles fabricated from glass and then heated them in boiling water to cook the contents. Appert's method had great advantages over other methods of food preservation: it could be applied to a wide range of foods, and the flavour of the food as well as the texture were similar to the freshly cooked product. His idea was soon copied by an Englishman, Peter Durand. Until this point containers had weighed too much to be widely used, but he produced the first ones which were light and resistant to damage. Two years later, in 1812, two Englishmen, Bryan Donkin and John Hall, started the commercial canning of food, although the real take-off in popularity of canning had to wait until the can opener was invented in 1855. Up to this time, cans were opened with a chisel which was used to break open the top when hit with a hammer. One can, which contained meat dating from 1824 was opened in 1939 and the contents were still in good condition.</p>
+      <p>In the 21st century, the dominance of canning as a method of food preservation has been overtaken by another technology: freezing. Chilling food to keep it fresh is an old idea. The earliest mentions of icehouses, thick-walled buildings half underground, date back to 1,700BC in northwest Iran. In early 16th-century Italy, water was mixed with chemicals to lower its freezing point to -18 degrees Celsius, and several centuries later frozen fish and other goods were transported by ship from Australia to England. But the modern frozen food industry was started in the 1920s by an American, Clarence Birdseye. While Birdseye was on a fishing trip with the Inuit in the Canadian Arctic, he observed that very rapid freezing creates smaller ice crystals and therefore causes less damage to food. This was something he had not expected. Nevertheless, the big growth in demand for frozen food came about with the arrival of freezers in the homes of ordinary people. The advantages of frozen over canned food include the fact that the flavour and consistency are often identical to the equivalent fresh product, and that freezing can be used to preserve a huge variety of foods.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">Why do we need the arts?</h2>
+      <p class="psub">Sometimes people question why we need 'the arts': what functions do art, music, dance and literature serve?</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p><span class="pl">A</span> Imagine a world in which people spend hours working in offices or factories, and then go home in the evening to sit down to dinner, after which they sleep until it's time to get up and work again. In this world, people do not read or watch TV, listen to music, play computer games or have pictures to decorate their homes. In fact, there are no pictures in this world - not even advertisements are illustrated, but all are words, and very plain ones at that, with no playfulness left in them. The buildings are completely functional without a single decorative feature anywhere, and there is no music to dance to and enjoy. Such a world is a world without the arts in any form.</p>
+      <p><span class="pl">B</span> To ask what the arts are good for is not exactly the same as asking what their purpose is. The arts do not have to have a purpose - they do not exist in order to teach, to make a moral point, to entertain, to distract, to amuse, to support a revolution, to disgust, to challenge, to stimulate or to cheer; they exist chiefly for their own sake. It is artists, not the arts as such, that may have an aim in mind, and their aim may be to do any of the things just listed. But equally, artists may just make a work of art because they feel compelled to. Because the work is its own justification, no aim or goal is necessarily required to explain or, still less, to justify its existence.</p>
+      <p><span class="pl">C</span> But to say that the arts are good for something beyond themselves, even though they may sometimes do so, is not to say that they are good for nothing. On the contrary, as such an important part of human experience, they are good for many things. The distinction here lies between things that are instrumental and things that are ends in themselves. An instrument exists for something beyond itself - namely, for what it can be used to do. We know that pictures are used as instruments in advertising, and the objective is always to persuade us to buy something. Similarly, music can be written chiefly to accompany dancing, or as a soundtrack to a movie. A play can be written to point out to the theatre audience a social injustice or other problems that should be dealt with. But even though the arts can sometimes be instrumental, that fact is not essential to their nature. What the arts are 'good for' arises from their being an end in themselves, or more accurately, representing many different things that are valuable for their own sakes - such as, for instance, the creation of beauty.</p>
+      <p><span class="pl">D</span> The phrase 'the arts' includes painting, sculpture, music, literature, dance and theatre performance, and whatever else (to quote the famous US artist Andy Warhol) anyone can get away with in calling their creation a contribution to 'the arts'. But the generalisation that the arts, whatever else they are, are always an end in themselves, applies to them all. The arts are one major form of response to the world. They are often an attempt to capture an aspect of the world, to draw attention to something about it, to comment on it, to present a surprising or fresh angle on it, to represent it for the sake of exploring something about it, or enjoying or celebrating it. They can help people to focus on, for example, the colour or shape of an object, its eccentricity or typicality, and the interest or perhaps disgust it provokes in them.</p>
+      <p><span class="pl">E</span> For a loose comparison, think of laughing at a joke. We do not laugh so that we can achieve a further goal - in order to be healthy or relaxed, say, even if we thereby succeed in being healthier or more relaxed - but simply because the joke has elicited that reaction. But although it is merely a reaction, laughing is, in fact, good for something nevertheless; it does make people feel better. The arts are a reaction in the same way. French artist Cezanne painted Mont Sainte-Victoire repeatedly because he was fascinated by it, not because he thought that painting it would say something about politics or society or human hopes. Being fascinated by something, attracted to it, repelled by it, keen to reveal an unusual aspect of it, are all responses to that thing; the making of the arts is one outstanding way of expressing such responses.</p>
+      <p><span class="pl">F</span> But the arts are a response not only to things in the world but also to experience of the world, which lies inside the artist himself. And they are also often an expression of what presses from within the artist without being elicited by externals. Music is a prime example. A symphony, unless it is devised to represent bird song, rain, the sea and the like, is an abstract expression of a composer's conception. We may be able to describe what the Russian composer Tchaikovsky is doing in his ballet music, but how can we describe what he is expressing in his piano concertos? Composers may experiment with melody and rhythm in very abstract, sometimes mathematical, ways.</p>
+      <p><span class="pl">G</span> When artists get to work responding to and expressing ideas, whether or not they also want to make a point, entertain, distract, support a revolution and the rest, they are producing something that someone else will react to in some way. They seek to connect with their audience and express an idea or emotion which has the capacity to enrich our experience of life itself.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">The significant role of mother tongue language in education</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p>One consequence of population mobility is an increasing diversity within schools. To illustrate, in the city of Toronto in Canada, 58% of kindergarten pupils come from homes where English is not the language of communication. Schools in Europe and North America have experienced this diversity for years, but educational policies and practices vary widely between countries and even within countries. Some political parties and groups search for ways to 'solve the problem' of diverse communities and their integration in schools and society. They see few positive consequences for the host society and worry that diversity threatens the identity of the host society. Consequently, they promote unfortunate educational policies that will make the 'problem' disappear. If students retain their culture and language, they are viewed as less capable of identifying with the mainstream culture and learning the mainstream language of the society.</p>
+      <p>The challenge for educators and policy-makers is to shape the evolution of national identity in such a way that the rights of all citizens (including school children) are respected, and the cultural, linguistic and economic resources of the nation are maximized. To waste the resources of the nation by discouraging children from developing their mother tongues is quite simply unintelligent from the point of view of national self-interest. A first step in providing an appropriate education for culturally and linguistically diverse children is to examine what the existing research says about the role of children's mother tongues in their educational development.</p>
+      <p>In fact, the research is very clear. When children continue to develop their abilities in two or more languages throughout primary school, they gain a deeper understanding of language and how to use it effectively. They have more practice in processing language, especially when they develop literacy in both. More than 150 research studies conducted during the past 35 years strongly support what Goethe, the famous eighteenth-century German philosopher, once said: that the person who knows only one language does not truly know that language. Research suggests that bilingual children may also develop more flexibility in their thinking as a result of processing information through two different languages.</p>
+      <p>Children who come to school with a solid foundation in their mother tongue develop stronger literacy abilities in the school language. When parents and other caregivers (e.g. grandparents) are able to spend time with their children and tell stories or discuss issues with them in a way that develops their mother tongue, children come to school well-prepared to learn the school language and succeed educationally. Children's knowledge and skills transfer across languages from the mother tongue to the school language. Transfer across languages can be two-way: both languages nurture each other when the educational environment permits children access to both languages.</p>
+      <p>Some educators and parents are suspicious of mother tongue-based teaching programs because they worry that they take time away from the majority language. For example, in a bilingual program where 50% of the time is spent teaching through children's home language and 50% through the majority language, surely children won't progress as far in the latter? One of the most strongly established findings of educational research, however, is that well-implemented bilingual programs can promote literacy and subject-matter knowledge in a minority language without any negative effects on children's development in the majority language. Within Europe, the Foyer program in Belgium, which develops children's speaking and literacy abilities in three languages (their mother tongue, Dutch and French), most clearly illustrates the benefits of bilingual and trilingual education (see Cummins, 2000).</p>
+      <p>It is easy to understand how this happens. When children are learning through a minority language, they are learning concepts and intellectual skills too. Pupils who know how to tell the time in their mother tongue understand the concept of telling time. In order to tell time in the majority language they do not need to re-learn the concept. Similarly, at more advanced stages, there is transfer across languages in other skills, such as knowing how to distinguish the main idea from the supporting details of a written passage or story, and distinguishing fact from opinion. Studies of secondary school pupils are providing interesting findings in this area, and it would be worth extending this research.</p>
+      <p>Many people marvel at how quickly bilingual children seem to 'pick up' conversational skills in the majority language at school (although it takes much longer for them to catch up with native speakers in academic language skills). However, educators are often much less aware of how quickly children can lose their ability to use their mother tongue, even in the home context. The extent and rapidity of language loss will vary according to the concentration of families from a particular linguistic group in the neighborhood. Where the mother tongue is used extensively in the community, then language loss among young children will be less. However, where language communities are not concentrated in particular neighborhoods, children can lose their ability to communicate in their mother tongue within two to three years of starting school. They may retain receptive skills in the language but they will use the majority language in speaking with their peers and siblings and in responding to their parents. By the time children become adolescents, the linguistic division between parents and children has become an emotional chasm. Pupils frequently become alienated from the cultures of both home and school, with predictable results.</p>
+    </div>
+  </div>
+
+  <div id="drag"></div>
+
+  <!-- RIGHT -->
+  <div id="right-pane">
+    <div class="qsec on" id="qs1">
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 1&ndash;5</em></p>
+        <p class="qinst">Do the following statements agree with the information given in Reading Passage 1?<br>Write <strong>TRUE</strong> / <strong>FALSE</strong> / <strong>NOT GIVEN</strong></p>
+        <div class="qitem"><p class="qprompt"><strong>1.</strong>&nbsp; According to Darwin, cooking was the most significant development in human history.</p>
+          <div class="rgroup" id="rg1">
+            <label class="rlabel"><input type="radio" name="q1" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q1" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q1" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>2.</strong>&nbsp; The process of cooking gets rid of some plant poisons.</p>
+          <div class="rgroup" id="rg2">
+            <label class="rlabel"><input type="radio" name="q2" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q2" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q2" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>3.</strong>&nbsp; Eating cooked food is more energy efficient than eating raw food.</p>
+          <div class="rgroup" id="rg3">
+            <label class="rlabel"><input type="radio" name="q3" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q3" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q3" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>4.</strong>&nbsp; Clarence Birdseye had previously worked in the Australian food industry.</p>
+          <div class="rgroup" id="rg4">
+            <label class="rlabel"><input type="radio" name="q4" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q4" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q4" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>5.</strong>&nbsp; Birdseye's trip with the Inuit confirmed what he already believed about rapid freezing.</p>
+          <div class="rgroup" id="rg5">
+            <label class="rlabel"><input type="radio" name="q5" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q5" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q5" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+      </div>
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 6&ndash;13</em></p>
+        <p class="qinst">Complete the notes below.<br>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+        <div class="qtitle">The development of agriculture and food preservation</div>
+        <div class="notesbox">
+          <span class="nbsec">The changes agriculture brought about were:</span>
+          <ul class="nbul">
+            <li>the development of equipment and larger <strong>6</strong>&nbsp; <input type="text" class="ai sm" id="q6" oninput="upd()"></li>
+            <li>the ability to keep <strong>7</strong>&nbsp; <input type="text" class="ai sm" id="q7" oninput="upd()"> as writing developed</li>
+            <li>the setting up of organised government</li>
+          </ul>
+          <span class="nbsec">Food preservation</span>
+          <ul class="nbul">
+            <li>early methods of food preservation included smoking, drying and combining food with acid by <strong>8</strong>&nbsp; <input type="text" class="ai sm" id="q8" oninput="upd()"></li>
+            <li>Appert's method resulted in preserved food that had a similar taste and <strong>9</strong>&nbsp; <input type="text" class="ai sm" id="q9" oninput="upd()"> to fresh food</li>
+            <li>Peter Durand introduced cans which were lightweight and <strong>10</strong>&nbsp; <input type="text" class="ai sm" id="q10" oninput="upd()"> to damage</li>
+            <li>in 1855, the metal can opener replaced the <strong>11</strong>&nbsp; <input type="text" class="ai sm" id="q11" oninput="upd()"> which had been used with a hammer to open cans</li>
+            <li>some food was still found to be edible after more than a hundred years, e.g. an old can of <strong>12</strong>&nbsp; <input type="text" class="ai sm" id="q12" oninput="upd()"></li>
+            <li>freezing causes less <strong>13</strong>&nbsp; <input type="text" class="ai sm" id="q13" oninput="upd()"> to food</li>
+          </ul>
+        </div>
+      </div>
+    </div><!-- /qs1 -->
+    <div class="qsec" id="qs2">
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 14&ndash;18</em></p>
+        <p class="qinst">Reading Passage 2 has seven paragraphs, <strong>A&ndash;G</strong>.<br>Which paragraph contains the following information?</p>
+        <div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">14</span> a claim that artists may have no clear objective when creating a piece of art</td><td><label class="mx-cell"><input type="radio" name="q14" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="G" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">15</span> a description of how artists hope to benefit other people</td><td><label class="mx-cell"><input type="radio" name="q15" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="G" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">16</span> a comparison between the arts and things made to perform a particular function</td><td><label class="mx-cell"><input type="radio" name="q16" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="G" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">17</span> a claim that it's possible to convince the world that anything you have made is a work of art</td><td><label class="mx-cell"><input type="radio" name="q17" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="G" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">18</span> an example of something that has an unintentional benefit for us</td><td><label class="mx-cell"><input type="radio" name="q18" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="G" onchange="upd()"></label></td></tr></tbody></table></div>
+      </div>
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 19&ndash;22</em></p>
+        <p class="qinst">Complete the summary below.<br>Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
+        <div class="qtitle">The arts and human experience</div>
+        <div class="sbox">
+          <p>Some people may claim that the arts serve no useful purpose, that they achieve nothing measurable and help nobody. But there are many clear examples of their usefulness, such as the inter-dependent relationship between music and <strong>19</strong>&nbsp; <input type="text" class="ai sm" id="q19" oninput="upd()">, or between the visual arts and the <strong>20</strong>&nbsp; <input type="text" class="ai sm" id="q20" oninput="upd()"> business. A dramatist may use a <strong>21</strong>&nbsp; <input type="text" class="ai sm" id="q21" oninput="upd()"> to draw our attention to various issues in society, for example some kind of injustice which needs correcting. Apart from these obvious practical benefits, there are other benefits that we gain from things, such as the <strong>22</strong>&nbsp; <input type="text" class="ai sm" id="q22" oninput="upd()"> we find in an artist's work.</p>
+        </div>
+      </div>
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 23 and 24</em></p>
+        <p class="qinst">Choose <strong>TWO</strong> letters, <strong>A&ndash;E</strong>.<br>In paragraph <strong>D</strong>, which <strong>TWO</strong> of the following effects does the writer say the arts can have?</p>
+        <div class="rgroup" id="grpg1">
+          <label class="rlabel"><input type="checkbox" name="pg_g1" value="A" onchange="pickCap('g1',2,this)"> <strong>A</strong>&nbsp; They can interest people from all over the world.</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g1" value="B" onchange="pickCap('g1',2,this)"> <strong>B</strong>&nbsp; They can make us see things from a different perspective.</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g1" value="C" onchange="pickCap('g1',2,this)"> <strong>C</strong>&nbsp; They can inspire us to take up an artistic activity ourselves.</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g1" value="D" onchange="pickCap('g1',2,this)"> <strong>D</strong>&nbsp; They can encourage us to think about our reactions to things around us.</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g1" value="E" onchange="pickCap('g1',2,this)"> <strong>E</strong>&nbsp; They can draw our attention to serious global issues.</label>
+        </div>
+      </div>
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 25 and 26</em></p>
+        <p class="qinst">Choose <strong>TWO</strong> letters, <strong>A&ndash;E</strong>.<br>Which <strong>TWO</strong> of the following statements about composers and music does the writer make?</p>
+        <div class="rgroup" id="grpg2">
+          <label class="rlabel"><input type="checkbox" name="pg_g2" value="A" onchange="pickCap('g2',2,this)"> <strong>A</strong>&nbsp; Music tends to spring from the composer's individual experiences.</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g2" value="B" onchange="pickCap('g2',2,this)"> <strong>B</strong>&nbsp; Composers need to structure music very carefully.</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g2" value="C" onchange="pickCap('g2',2,this)"> <strong>C</strong>&nbsp; Music can be quite unrelated to the natural world.</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g2" value="D" onchange="pickCap('g2',2,this)"> <strong>D</strong>&nbsp; Music finds its best expression in a symphony.</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g2" value="E" onchange="pickCap('g2',2,this)"> <strong>E</strong>&nbsp; Composers are good at depicting the world around us.</label>
+        </div>
+      </div>
+    </div><!-- /qs2 -->
+    <div class="qsec" id="qs3">
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 27&ndash;30</em></p>
+        <p class="qinst">Choose the correct letter, <strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>.</p>
+        <div class="qitem"><p class="qprompt"><strong>27.</strong>&nbsp; What point is the writer making in the second paragraph?</p>
+          <div class="rgroup" id="rg27">
+            <label class="rlabel"><input type="radio" name="q27" value="A" onchange="upd()"> <strong>A</strong>&nbsp; Some present studies on children's mother tongues are misleading.</label>
+            <label class="rlabel"><input type="radio" name="q27" value="B" onchange="upd()"> <strong>B</strong>&nbsp; A culturally rich education programme benefits some children more than others.</label>
+            <label class="rlabel"><input type="radio" name="q27" value="C" onchange="upd()"> <strong>C</strong>&nbsp; Bilingual children can make a valuable contribution to the wealth of a country.</label>
+            <label class="rlabel"><input type="radio" name="q27" value="D" onchange="upd()"> <strong>D</strong>&nbsp; The law on mother tongue use at school should be strengthened.</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>28.</strong>&nbsp; Why does the writer refer to something that Goethe said?</p>
+          <div class="rgroup" id="rg28">
+            <label class="rlabel"><input type="radio" name="q28" value="A" onchange="upd()"> <strong>A</strong>&nbsp; to lend weight to his argument</label>
+            <label class="rlabel"><input type="radio" name="q28" value="B" onchange="upd()"> <strong>B</strong>&nbsp; to contradict some research</label>
+            <label class="rlabel"><input type="radio" name="q28" value="C" onchange="upd()"> <strong>C</strong>&nbsp; to introduce a new concept</label>
+            <label class="rlabel"><input type="radio" name="q28" value="D" onchange="upd()"> <strong>D</strong>&nbsp; to update current thinking</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>29.</strong>&nbsp; The writer believes that when young children have a firm grasp of their mother tongue</p>
+          <div class="rgroup" id="rg29">
+            <label class="rlabel"><input type="radio" name="q29" value="A" onchange="upd()"> <strong>A</strong>&nbsp; they can teach older family members what they learn at school.</label>
+            <label class="rlabel"><input type="radio" name="q29" value="B" onchange="upd()"> <strong>B</strong>&nbsp; they go on to do much better throughout their time at school.</label>
+            <label class="rlabel"><input type="radio" name="q29" value="C" onchange="upd()"> <strong>C</strong>&nbsp; they can read stories about their cultural background.</label>
+            <label class="rlabel"><input type="radio" name="q29" value="D" onchange="upd()"> <strong>D</strong>&nbsp; they develop stronger relationships with their family than with their peers.</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>30.</strong>&nbsp; Why are some people suspicious about mother tongue-based teaching programmes?</p>
+          <div class="rgroup" id="rg30">
+            <label class="rlabel"><input type="radio" name="q30" value="A" onchange="upd()"> <strong>A</strong>&nbsp; They worry that children will be slow to learn to read in either language.</label>
+            <label class="rlabel"><input type="radio" name="q30" value="B" onchange="upd()"> <strong>B</strong>&nbsp; They think that children will confuse words in the two languages.</label>
+            <label class="rlabel"><input type="radio" name="q30" value="C" onchange="upd()"> <strong>C</strong>&nbsp; They believe that the programmes will make children less interested in their lessons.</label>
+            <label class="rlabel"><input type="radio" name="q30" value="D" onchange="upd()"> <strong>D</strong>&nbsp; They fear that the programmes will use up valuable time in the school day.</label></div></div>
+      </div>
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 31&ndash;35</em></p>
+        <p class="qinst">Complete the summary below using the list of words, <strong>A&ndash;J</strong>, below.</p>
+<p class="dnd-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9l-3 3 3 3"/><path d="M9 5l3-3 3 3"/><path d="M15 19l-3 3-3-3"/><path d="M19 9l3 3-3 3"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/></svg>Drag a word into each gap (or tap a word, then tap a gap). Tap &times; to clear.</p>
+        <div class="qtitle">Bilingual children</div>
+        <div class="sbox">
+          <p>It has often been noted that bilingual children acquire the <strong>31</strong>&nbsp; <span class="dzone" id="q31" data-q="31" data-bank="b2"></span> to converse in the majority language remarkably quickly. The fact that the mother tongue can disappear at a similar <strong>32</strong>&nbsp; <span class="dzone" id="q32" data-q="32" data-bank="b2"></span> is less well understood. This phenomenon depends to a certain extent on the proportion of people with the same linguistic background that have settled in a particular <strong>33</strong>&nbsp; <span class="dzone" id="q33" data-q="33" data-bank="b2"></span>. If this is limited, children are likely to lose the active use of their mother tongue, and thus no longer employ it even with <strong>34</strong>&nbsp; <span class="dzone" id="q34" data-q="34" data-bank="b2"></span>, although they may still understand it. It follows that teenage children in these circumstances experience a sense of <strong>35</strong>&nbsp; <span class="dzone" id="q35" data-q="35" data-bank="b2"></span> in relation to all aspects of their lives.</p>
+        </div>
+        <div class="se-bank-label">List of words</div>
+        <div class="wbank" id="wbank31" data-show="word" data-bank="b2">
+          <div class="dchip" draggable="true" data-letter="A" data-word="teachers"><span class="wk">A</span> teachers</div>
+          <div class="dchip" draggable="true" data-letter="B" data-word="school"><span class="wk">B</span> school</div>
+          <div class="dchip" draggable="true" data-letter="C" data-word="dislocation"><span class="wk">C</span> dislocation</div>
+          <div class="dchip" draggable="true" data-letter="D" data-word="rate"><span class="wk">D</span> rate</div>
+          <div class="dchip" draggable="true" data-letter="E" data-word="time"><span class="wk">E</span> time</div>
+          <div class="dchip" draggable="true" data-letter="F" data-word="family"><span class="wk">F</span> family</div>
+          <div class="dchip" draggable="true" data-letter="G" data-word="communication"><span class="wk">G</span> communication</div>
+          <div class="dchip" draggable="true" data-letter="H" data-word="type"><span class="wk">H</span> type</div>
+          <div class="dchip" draggable="true" data-letter="I" data-word="ability"><span class="wk">I</span> ability</div>
+          <div class="dchip" draggable="true" data-letter="J" data-word="area"><span class="wk">J</span> area</div>
+        </div>
+      </div>
+      <div class="qblock">
+        <p class="qnum-head"><em>Questions 36&ndash;40</em></p>
+        <p class="qinst">Do the following statements agree with the views of the writer in Reading Passage 3?<br>Write <strong>YES</strong> / <strong>NO</strong> / <strong>NOT GIVEN</strong></p>
+        <div class="qitem"><p class="qprompt"><strong>36.</strong>&nbsp; Less than half the children who attend kindergarten in Toronto have English as their mother tongue.</p>
+          <div class="rgroup" id="rg36">
+            <label class="rlabel"><input type="radio" name="q36" value="YES" onchange="upd()"> YES</label>
+            <label class="rlabel"><input type="radio" name="q36" value="NO" onchange="upd()"> NO</label>
+            <label class="rlabel"><input type="radio" name="q36" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>37.</strong>&nbsp; Research proves that learning the host country language at school can have an adverse effect on a child's mother tongue.</p>
+          <div class="rgroup" id="rg37">
+            <label class="rlabel"><input type="radio" name="q37" value="YES" onchange="upd()"> YES</label>
+            <label class="rlabel"><input type="radio" name="q37" value="NO" onchange="upd()"> NO</label>
+            <label class="rlabel"><input type="radio" name="q37" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>38.</strong>&nbsp; The Foyer programme is to be adopted by the French education system.</p>
+          <div class="rgroup" id="rg38">
+            <label class="rlabel"><input type="radio" name="q38" value="YES" onchange="upd()"> YES</label>
+            <label class="rlabel"><input type="radio" name="q38" value="NO" onchange="upd()"> NO</label>
+            <label class="rlabel"><input type="radio" name="q38" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>39.</strong>&nbsp; Bilingual children are taught to tell the time earlier than monolingual children.</p>
+          <div class="rgroup" id="rg39">
+            <label class="rlabel"><input type="radio" name="q39" value="YES" onchange="upd()"> YES</label>
+            <label class="rlabel"><input type="radio" name="q39" value="NO" onchange="upd()"> NO</label>
+            <label class="rlabel"><input type="radio" name="q39" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+        <div class="qitem"><p class="qprompt"><strong>40.</strong>&nbsp; Bilingual children can eventually apply reading comprehension strategies acquired in one language when reading in the other.</p>
+          <div class="rgroup" id="rg40">
+            <label class="rlabel"><input type="radio" name="q40" value="YES" onchange="upd()"> YES</label>
+            <label class="rlabel"><input type="radio" name="q40" value="NO" onchange="upd()"> NO</label>
+            <label class="rlabel"><input type="radio" name="q40" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+      </div>
+    </div><!-- /qs3 -->
+  </div><!-- /right-pane -->
+</div><!-- /main -->
+
+<!-- BOTTOM NAV -->
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<!-- Highlight button is created dynamically in JS (#hlBtn) -->
+
+<!-- RESULTS MODAL -->
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ANSWERS ──
+const CA = {
+  1:'FALSE', 2:'TRUE', 3:'TRUE', 4:'NOT GIVEN', 5:'FALSE',
+  6:['populations'], 7:['records'], 8:['fermentation'], 9:['texture'], 10:['resistant'], 11:['chisel'], 12:['meat'], 13:['damage'],
+  14:'B', 15:'G', 16:'C', 17:'D', 18:'E',
+  19:['movie'], 20:['advertising'], 21:['play'], 22:['beauty'],
+  23:['B','D'], 24:['B','D'], 25:['A','C'], 26:['A','C'],
+  27:'C', 28:'A', 29:'B', 30:'D',
+  31:'I', 32:'D', 33:'J', 34:'F', 35:'C',
+  36:'YES', 37:'NOT GIVEN', 38:'NOT GIVEN', 39:'NOT GIVEN', 40:'YES'
+};
+const CAL = {
+  1:'FALSE', 2:'TRUE', 3:'TRUE', 4:'NOT GIVEN', 5:'FALSE',
+  6:'populations', 7:'records', 8:'fermentation', 9:'texture', 10:'resistant', 11:'chisel', 12:'meat', 13:'damage',
+  14:'B', 15:'G', 16:'C', 17:'D', 18:'E',
+  19:'movie', 20:'advertising', 21:'play', 22:'beauty',
+  23:'B / D', 24:'B / D', 25:'A / C', 26:'A / C',
+  27:'C', 28:'A', 29:'B', 30:'D',
+  31:'I (ability)', 32:'D (rate)', 33:'J (area)', 34:'F (family)', 35:'C (dislocation)',
+  36:'YES', 37:'NOT GIVEN', 38:'NOT GIVEN', 39:'NOT GIVEN', 40:'YES'
+};
+
+// ── STATE ──
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+// ── INIT ──
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,8,16,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(56,189,248,0.07);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="position:relative;width:70px;height:70px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+                <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);border-radius:50%;box-shadow:0 0 26px 6px rgba(56,189,248,0.22);"></div>
+                <div style="position:relative;font-size:42px;">📖</div>
+            </div>
+            <div style="display:inline-block;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(251,191,36,0.35);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">🎯 <strong>Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong>Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:linear-gradient(90deg,#38bdf8,#0ea5e9);color:#052033;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(56,189,248,0.4);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+// ── PART / PASSAGE ──
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.ptab').forEach((t,i)=>t.classList.toggle('on',i===n-1));
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+// ── Q ROW ──
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+// ── NAVIGATION ──
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+// ── USER ANSWER ──
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+// ── UPDATE INDICATORS ──
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+// ── TIMER ──
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='\uD83E\uDDD8 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0f172a;color:#fbbf24;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='\uD83C\uDFAF Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+// ── FULLSCREEN ──
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+// ── THEME (light → dark → night) ──
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+// ── TEXT SIZE ──
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+// ── DRAG DIVIDER ──
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+// ── DRAG & DROP (multi-bank: each .wbank scopes its own chips+zones) ──
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">\u00d7</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+// ── CHOOSE-TWO CHECKBOX GROUPS ──
+const PICK={
+  23:{g:'g1',qs:[23,24],set:['B','D']}, 24:{g:'g1',qs:[23,24],set:['B','D']},
+  25:{g:'g2',qs:[25,26],set:['A','C']}, 26:{g:'g2',qs:[25,26],set:['A','C']}
+};
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+// ── NORMALIZE ──
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+// ── CHECK ──
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  // disable inputs
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  // radio
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+// ── BAND ──
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+// ── RESULT ROWS ──
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+// ── SHOW RESULTS ──
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+// ── PASSAGE HIGHLIGHTS ──
+const P1H=[
+  {q:1,t:"thought that cooking, after language, was the greatest discovery made by man"},
+  {q:2,t:"edible food by destroying toxic chemicals"},
+  {q:3,t:"the ratio of energy gained to energy expended by the body is greater when food is cooked"},
+  {q:5,t:"this was something he had not expected"},
+  {q:6,t:"populations increased in size"},
+  {q:7,t:"allowed people to maintain records of the harvest and taxes"},
+  {q:8,t:"adding acid by fermentation"},
+  {q:9,t:"the flavour of the food as well as the texture were similar to the freshly cooked product"},
+  {q:10,t:"the first ones which were light and resistant to damage"},
+  {q:11,t:"cans were opened with a chisel which was used to break open the top"},
+  {q:12,t:"one can, which contained meat dating from 1824"},
+  {q:13,t:"very rapid freezing creates smaller ice crystals and therefore causes less damage to food"}
+];
+const P2H=[
+  {q:14,t:"artists may just make a work of art because they feel compelled to"},
+  {q:15,t:"they seek to connect with their audience and express an idea or emotion which has the capacity to enrich"},
+  {q:16,t:"the distinction here lies between things that are instrumental and things that are ends in themselves"},
+  {q:17,t:"anyone can get away with in calling their creation a contribution to"},
+  {q:18,t:"laughing is, in fact, good for something nevertheless; it does make people feel better"},
+  {q:19,t:"a soundtrack to a movie"},
+  {q:20,t:"pictures are used as instruments in advertising"},
+  {q:21,t:"a play can be written to point out to the theatre audience a social injustice"},
+  {q:22,t:"such as, for instance, the creation of beauty"},
+  {q:23,t:"to present a surprising or fresh angle on it"},
+  {q:24,t:"the interest or perhaps disgust it provokes in them"},
+  {q:25,t:"experience of the world, which lies inside the artist himself"},
+  {q:26,t:"a symphony, unless it is devised to represent bird song, rain, the sea"}
+];
+const P3H=[
+  {q:27,t:"the cultural, linguistic and economic resources of the nation are maximized"},
+  {q:28,t:"the person who knows only one language does not truly know that language"},
+  {q:29,t:"develop stronger literacy abilities in the school language"},
+  {q:30,t:"they worry that they take time away from the majority language"},
+  {q:31,t:"conversational skills in the majority language at school"},
+  {q:32,t:"how quickly children can lose their ability to use their mother tongue"},
+  {q:33,t:"the concentration of families from a particular linguistic group in the neighborhood"},
+  {q:34,t:"in speaking with their peers and siblings and in responding to their parents"},
+  {q:35,t:"pupils frequently become alienated from the cultures of both home and school"},
+  {q:36,t:"58% of kindergarten pupils come from homes where english is not the language"},
+  {q:40,t:"knowing how to distinguish the main idea from the supporting details of a written passage"}
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+// ── HIGHLIGHT SYSTEM (shohrukhposts style) ──
+// Select text in a pane → "🖊 Highlight" button pops above the selection.
+// Click it → yellow highlight. Click any highlight once → it's removed.
+// Works on desktop (mouseup) and mobile (touchend).
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault()); // keep the text selection alive
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  // Click an existing highlight to remove it (ignore the auto-answer highlights).
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+// ── CHOOSE-TWO multiple choice (q20/q21) ──
+function mc2upd(box){
+  var base=Number(box.dataset.base);
+  var boxes=[].slice.call(document.querySelectorAll('.mc2box[data-base="'+base+'"]'));
+  if(boxes.filter(function(b){return b.checked;}).length>2){ box.checked=false; return; }
+  var vals=boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;});
+  document.getElementById('q'+base).value=vals[0]||'';
+  document.getElementById('q'+(base+1)).value=vals[1]||'';
+  upd();
+}
+function mc2review(){
+  document.querySelectorAll('.mc2box').forEach(function(b){
+    var base=Number(b.dataset.base);
+    var correct=[].concat(CA[base]).concat(CA[base+1]);
+    var lb=b.closest('label'); if(!lb)return;
+    if(correct.indexOf(b.value)>=0) lb.classList.add('ok');
+    else if(b.checked) lb.classList.add('bad');
+  });
+}
+(function(){ if(typeof doCheck==='function'){ var _d=doCheck; doCheck=function(){ _d.apply(this,arguments); try{mc2review();}catch(e){} }; } })();
+</script>
+<script src="/js/report-progress.js"></script>
+</body>
+</html>

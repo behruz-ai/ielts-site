@@ -402,7 +402,7 @@
         .dnd-options-col { flex: 0 0 260px; width: 260px; }
         .dnd-options-col .options-label { font-weight: 700; font-size: 12.5px; margin-bottom: 8px; color: #333; }
         .drag-item:hover { background: #e8f6f7; border-color: #0d7a8a; }
-        .drag-item.used { opacity: .5; pointer-events: none; text-decoration: line-through; filter: grayscale(1); }
+        .drag-item.used { opacity: .3; pointer-events: none; }
         .drag-item strong { color: #0d7a8a; margin-right: 3px; }
         .drop-zone.filled { border-style: solid; border-color: #0d7a8a; background: #e8f6f7; color: #095d6e; font-weight: 700; cursor: grab; }
         @media (max-width: 640px) { .dnd-two-col { flex-direction: column; } .dnd-options-col { width: 100%; flex: 1 1 100%; } .drop-zone { flex: 0 0 160px; width: 160px; min-width: 160px; max-width: 160px; } }
@@ -820,17 +820,7 @@ let currentPart = 1;
         }, 180);
     }
 
-    function refreshUsedStates() {
-        document.querySelectorAll('.dnd-two-col').forEach(wrap => {
-            const placed = new Set();
-            wrap.querySelectorAll('.drop-zone').forEach(z => { const v = z.getAttribute('data-answer'); if (v) placed.add(v); });
-            wrap.querySelectorAll('.drag-item').forEach(it => {
-                it.classList.toggle('used', placed.has(it.getAttribute('data-value')));
-            });
-        });
-    }
     function updateNavigation() {
-        refreshUsedStates();
         const partNumbers = document.getElementById('partNumbers');
         partNumbers.innerHTML = '';
         const qRanges = { 1:'1–10', 2:'11–20', 3:'21–30', 4:'31–40' };
@@ -859,11 +849,9 @@ let currentPart = 1;
         const txt = document.querySelector(`input[type="text"][data-question="${n}"]`);
         const dz = document.querySelector(`.drop-zone[data-question="${n}"]`);
         const radio = document.querySelector(`input[type="radio"][data-question="${n}"]:checked`);
-        const sel = document.querySelector(`select[data-question="${n}"]`);
         if (txt) return txt.value.trim() !== '';
         if (dz) return !!dz.getAttribute('data-answer');
         if (radio) return true;
-        if (sel) return sel.value.trim() !== '';
         for (const pg of pickGroups) {
             if (pg.qNums.includes(n)) {
                 return document.querySelectorAll(`input[name="${pg.name}"]:checked`).length > 0;
@@ -1920,7 +1908,6 @@ function toggleFullscreen() {
     });
 
 </script>
-
 <script src="/js/report-progress.js"></script>
 </body>
 </html>

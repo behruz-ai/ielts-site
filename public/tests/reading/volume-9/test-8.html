@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth-gate.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 8 (Volume 9) | bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* ── THEME ── */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+/* ── FONT SIZE CONTROL ── */
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ── HEADER ── */
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+/* ── BANNER ── */
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+/* ── MAIN SPLIT ── */
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+/* ── PASSAGE TABS ── */
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+/* ── QUESTIONS ── */
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+/* notes / inline block */
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+/* TF / MC options */
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+/* selects / text inputs */
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+/* feature / word list boxes */
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+/* ── SUMMARY DRAG & DROP (word bank → gaps) ── */
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+/* ── BOTTOM NAV ── */
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+/* ── HIGHLIGHT (shohrukhposts style: select → button → yellow mark) ── */
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+/* ── MODALS ── */
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+/* results */
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+/* ── FLASHY RESULTS ── */
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+/* ── REAL-EXAM MATCHING MATRIX ── */
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+/* ── MATCHING HEADINGS (drag into passage) ── */
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+/* ── lifted completion blocks ── */
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<!-- BANNER -->
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1–13.</span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <!-- LEFT -->
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">Australia's Airborne Dentists</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p>Australians living or traveling in rural and remote areas can face particular difficulties when they need medical care. Hundreds of kilometres from major cities and many hours by road from the closest hospital or clinic, some rural Australians do not have easy access to doctors, nurses and dentists.</p>
+        <p>Organisations such as the Royal Flying Doctor Service (RFDS) have been established to bring health services to outback Australian communities. The RFDS provides free medical care to people who live, work or travel in remote and regional parts of Australia. This non-profit organisation is the oldest and largest airborne health service of its kind in the world, and since 1928 it has used small planes to reach Australia's most far-away communities.</p>
+        <p>In recent years, the RFDS has also started to fly dentists to regional Australia. As well as offering mobile dental clinics, the RFDS offers a range of preventative and educational services. Looking after the teeth of people in remote areas presents special challenges. These include providing care to disparate communities with no established dental facilities, and dealing with higher incidences of other diseases which are linked to, or caused by poor dental health.</p>
+        <p>People in remote areas have very infrequent visits by health staff. RFDS dentists might only visit a community once every few months, or sometimes once per year. Because of infrequent dentist visits, patients in these areas often need to put up with their dental problems before they can get treatment; consequently, people in remote areas are more likely to have tooth decay (the blackening and deterioration of teeth) and develop gum and other mouth diseases.</p>
+        <p>In some locations that the RFDS visits, there are no suitable dental facilities, so dentists have to bring everything with them. This includes drills, dentists' chairs, portable X-ray machines, and computers for keeping track of patients' treatments. Equipment can weigh up to 100 kilograms, and since the small planes that transport dentists have limited space, dentists cannot always bring everything that they need.</p>
+        <p>While dentists in town or city centres can specialise in certain types of treatment, RFDS dentists need to be 'all-rounders'. They need to be able to do all kinds of dental procedures, as they don't have the ability to refer patients to more specialised dentists. Even with their broad experience, there are some services that are particularly challenging for RFDS dentists. For example, dentures (artificial teeth) can be very difficult to provide, as they need to be the right shape and size for the patient, and this requires many visits over a long period of time. As a result, it is not practical to make dentures available.</p>
+        <p>Some chronic illnesses are more common in remote communities than in the rest of Australia. These illnesses can in turn lead to a lowered resistance to infection, including gum and other oral infections. As a result, people in outback Australian communities are more likely to experience oral health problems than city folk, and this poses extra challenges for both the dentists and the doctors of the RFDS.</p>
+        <p>Because there aren't a lot of dental services in remote areas, people living in these areas also receive less education about good dental hygiene than their city counterparts do. Australians in very remote communities might not be aware of things that people in cities take for granted, such as the importance of daily tooth brushing. Also, basic dental hygiene items such as toothpaste and toothbrushes can be more expensive in outback areas. Many people are on low incomes, meaning they have extra difficulty affording these products. If this is the case, the RFDS supplies these.</p>
+        <p>As well as treating patients, RFDS dentists try to focus on preventative oral health and educate their patients on good oral hygiene, such as tooth brushing and flossing. The RFDS also provides mouthguards for young sports players. Playing contact sports, such as rugby league or Australian rules football, can damage young people's teeth, so mouthguards provide protection which prevents accidental injuries.</p>
+        <p>Adding fluoride to water supplies has been proven to reduce the incidence of tooth decay in many parts of the world. City dwellers in Australia use water supplies that have been fluoridated, and their rates of tooth decay are lower because of this. In remote areas, it is not practical to fluoridate drinking water supplies, and so people living in these areas are more subject to tooth decay. As a result, it is particularly important that people living in areas without fluoridated water pay special attention to regular brushing of their teeth with fluoridated toothpaste.</p>
+        <p>Despite many challenges, the RFDS continues to offer much-needed dental and medical support. Its presence in isolated communities greatly improves the quality of dental health, and supports important oral hygiene and health initiatives.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">Public art programs: research update</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q14" data-q="14" data-bank="p2" draggable="false">14</span></p>
+        <p><span class="pl">A</span>Researcher Howard Spector suggests that active art experiences benefit all age groups by providing individuals with the means to freely and creatively express themselves. Self-expression, in turn, promotes individuality, bolsters self-confidence and improves motivation and attitudes towards academic performance. Both active and passive art experiences can provide the benefits of discovery, stimulation and relaxation (Oliphant 2000). Furthermore, people's participation in art enhances their development and expands their thoughts about culture. In short, art can make individuals more socially conscious.</p>
+        <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q15" data-q="15" data-bank="p2" draggable="false">15</span></p>
+        <p><span class="pl">B</span>Communities committed to providing opportunities for experiencing art are considered more livable because they are attractive to businesses and industry and they offer a higher quality of life for residents (Riley 2002). Tourism is strongly linked to art; art is believed to stimulate tourism in a community, and vice versa. Art-related tourism generates tourists and revenue, attracts high-income consumers, extends the tourist season and is a 'green' form of the industry (Hughes 2000). Revitalization efforts have increased in many cities because of the strong presence of art opportunities. Art programs can be highly effective in reducing community problems related to delinquent behavior and truancy in youth (Spector 2000). The Philadelphia Department of Recreation Mural Arts Program (MAP) is one such program. It began in the early 1980s when the city undertook to remove graffiti in the city while creating a positive, productive and creative outlet for adjudicated graffiti artists, as they used their talents to beautify public spaces through the creation of murals, instilling a sense of pride, excellence, diligence and civic responsibility.</p>
+        <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q16" data-q="16" data-bank="p2" draggable="false">16</span></p>
+        <p><span class="pl">C</span>In recognition of these and other benefits, communities are finding many ways to ensure that the public is provided with opportunities to experience art. Public art programs are one way. These programs are typically administered by government, which commissions or mandates works of art for display in public spaces. Public art works can include street furniture, decorations, paving and landmarks, and may take on many forms, including sculpture, decorative ironwork, mosaic flooring and murals. The primary purpose of public art is to bring art into everyday life, to energize public spaces and to arouse society's thinking and imagination.</p>
+        <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q17" data-q="17" data-bank="p2" draggable="false">17</span></p>
+        <p><span class="pl">D</span>Despite the significant benefits that art participation can offer to individuals and communities, only 35 percent of the American adult population visit museums or galleries at least once during the year, and only about 25 percent attend a live performance (Bradshaw 1998). Even fewer (14 percent) participate directly in photography, painting, drawing, sculpting, dance (other than ballet), creative writing or classical music. If art experiences are so beneficial, why aren't more people participating? To help researchers shed light on this question, the RAND Corporation, a nonprofit institution that helps improve policy and decision-making through objective research and analysis, developed 'A Behavior Model of the Participant Decision', which can be used to investigate people's inclinations about participating in an art activity (Yoshitomi 2000). According to Yoshitomi, each person has a disposition related to his or her interest in engaging in an art activity; a person's disposition is based on sociodemographic characteristics, social or cultural identity, personality and previous experience. The RAND model clusters participants into three groups according to their disposition toward art participation: those disinclined to participate; those inclined to participate; and those currently participating.</p>
+        <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q18" data-q="18" data-bank="p2" draggable="false">18</span></p>
+        <p><span class="pl">E</span>The RAND findings reveal that the disinclined perceive themselves as being uncomfortable or unfamiliar with art. This disposition might occur among people who do not value art and who have not received art education, or who perceive themselves as unsophisticated or lacking skill to participate. The inclined are interested in participating, but may be constrained by particular barriers such as cost, time, and proper attire. Current participants are those who are involved, and influence or encourage others to participate. Researchers suggest that a strong relationship exists between childhood and adult art participation rates. Individuals with a greater number of childhood art experiences are more likely to have higher rates of participation as adults. Although 90 percent of Americans believe art instruction is important for children and should be offered in schools, almost 40 percent of schools either offer no art instruction or have art instructors with no formal art training.</p>
+        <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q19" data-q="19" data-bank="p2" draggable="false">19</span></p>
+        <p><span class="pl">F</span>One recreation organization working to make sure children get exposed to art is the Boys and Girls Clubs of America, which offer two innovative programs: The National Photography Program and the National Fine Arts Exhibit. Both are designed to get children excited about art. The photography program promotes new art that is technologically produced, including video and computer graphics, but primarily focuses on photography. The program provides club members with the opportunity to achieve personal growth and receive artistic recognition through instruction in photography. Participants also display their work at local, regional and national photography contests. The second program is the Fine Arts Exhibit. This encourages artistic expression, creativity, cultural appreciation and the development of artistic skills through classes, special events, exhibits and competitions. It allows participants to explore a variety of mediums, including drawing, painting, print making, collage and sculpture. Because art experiences provide so many important benefits to individuals and communities, it is important for community programs to facilitate opportunities and provide encouragement to increase participation in a variety of programs.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">200 Years of Australian Landscapes at the Royal Academy in London</h2>
+      <p class="psub">This exhibition promises to chart the evolution of a nation through its art, but not everyone agrees with the reasons behind the choice of artwork</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p><span class="pl">A</span>For the casual viewer, the exhibition of landscapes, Australia, selected by the Royal Academy of Art will be a spectacular guide through Australian art history. Included in the exhibition are a range of artists and styles, dating from the earliest days of colonial art and progressing through expressionism and modernism to the artists of the 20th century, culminating with the current generation of Australian artists. It is hardly surprising, then, that this results in a flexible, wide-ranging notion of landscape.</p>
+        <p><span class="pl">B</span>But this landmark exhibition gives rise to some questions, and perhaps problems, regarding Britain's relationship with its former colony. By choosing a style of painting at which British artists excel, the Academy could be seen as inviting criticism that hints at a telling attitude towards art by comparison. But it is the very theme of landscape painting that makes this a controversial selection. To consider if condescending is perhaps too strong, but for Joanna Mendelssohn, Australian critic and Associate Professor at the University of NSW's College of Fine Arts (COFA), there is a suggestion that British artistic values have directed this exhibition, rather than allowing Australia the freedom to demonstrate its maturity.</p>
+        <p><span class="pl">C</span>What Mendelssohn found surprising about the exhibition was the underlying rules for the selection of works seemed to have been so conservative. Since the landscape is a very strong British artistic theme, it appeared to her that when the British looked to the art of a former colony, there was a tendency for them to think that those colonies would continue to be like the British themselves. In reviewing Australian art, the British insisted on looking at the genre of landscape painting.</p>
+        <p><span class="pl">D</span>Because of colonial ties, it was inevitable during Australian art's formative years that it would reflect Britain's devotion to the beloved landscape before its own character and idiosyncrasies took shape. And while Mendelssohn's concern over the exhibition's conventional selection is valid, the Academy is nevertheless embracing the peculiarities of Australian art from the mid-19th century onward, albeit within the boundaries of landscape.</p>
+        <p><span class="pl">E</span>Australia is curated by Kathleen Soriano, director of exhibitions at the Royal Academy. 'Certainly the influence of English, French or German art is much more evident in the early periods, in the early 1800s to mid-1800s,' she says. 'What I wanted to show was how Australian art develops a real distinctiveness, associated with the landscape and the light.'</p>
+        <p><span class="pl">F</span>The fusion of 'tradition' of the European kind with something more specifically Australian, and often personal, is crucial to the exhibition and extends particularly to some of the more contemporary artists involved. Sydney-born video artist Shaun Gladwell is a good example of this. Gladwell's most famous piece, which is featured in the exhibition, is Storm Sequence (2000), a video of Gladwell skateboarding on the Bondi seafront as one of Sydney's signature brutal storms lingers offshore. It is his acknowledgment of landscape (or seascape) tradition, coloured by Gladwell's own individualism. 'To exhibit my work in this show might make some sense because I was interested in Turner and the idea of atmosphere affecting vision, something I was really interested in around the time of Storm Sequence. I was thinking about this tradition of Romantic landscape, but I wanted to make it personal,' says Gladwell. But he didn't want to just embark on borrowing imagery from elsewhere. He wanted to bring it to his experience and his world through skateboarding and beach culture.</p>
+        <p><span class="pl">G</span>So while it may seem narrow for Britain to reduce Australian art to the genre of landscape, there can be little denying that British landscape painting is still relevant to a current generation of Australian practitioners, however indirectly.</p>
+        <p><span class="pl">H</span>Visitors to the exhibition encounter Australian Aboriginal art first, the idea being that these works warrant a prominent position because they were 'first'. Over the last couple of decades, London has hosted many successful exhibitions of Aboriginal art in smaller spaces, but for Soriano, Australia represents an opportunity to place such art within the context of new relationships to the art of the settlers and white Australia. 'One of the reasons landscape was seen as being the right theme was because Australian art started in and on the landscape,' she says. '[The exhibition] is a beautiful meshing of the two different kinds of art that allowed me to bring them together comfortably and honestly with this theme. It was important for me to present Indigenous art to audiences, and I felt it was most accurate to be seen as part of Australian art history, rather than a separate exhibition of its own.'</p>
+        <p><span class="pl">I</span>Meanwhile, Australian critic Mendelssohn also points out that London is increasingly less important to today's generation of artists, and this somewhat weakens the ceremony surrounding the exhibition in London. 'China is the most important art market in the world,' she says. 'If you've made it in Shanghai, you've made it. The world has changed. My students in Australia, who come from all over the world, really want to see Venice Biennale and Art Basel, but they're less interested in going to London. When I was growing up, London was the destination, and then when I was at university all the smart young things wanted to go to New York,' she added. 'Now they want to go everywhere. There's no such thing as the centre and the periphery like there used to be. It's much more complicated.'</p>
+    </div>
+  </div>
+
+  <div id="drag"></div>
+
+  <!-- RIGHT -->
+  <div id="right-pane">
+    <div class="qsec on" id="qs1"><p class="qnum-head"><em>Questions 1–7</em></p><p class="qinst">Do the following statements agree with the information given in Reading Passage 1? Write <b>TRUE</b> if the statement agrees with the information, <b>FALSE</b> if the statement contradicts the information, <b>NOT GIVEN</b> if there is no information on this.</p><div class="qitem"><p class="qprompt"><strong>1.</strong>&nbsp; Many of the RFDS doctors work as volunteers.</p><div class="rgroup" id="rg1"><label class="rlabel"><input type="radio" name="q1" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q1" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q1" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>2.</strong>&nbsp; RFDS dentists make trips to outback communities each month.</p><div class="rgroup" id="rg2"><label class="rlabel"><input type="radio" name="q2" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q2" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q2" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>3.</strong>&nbsp; RFDS dentists are accompanied on their journeys to remote areas by a dental nurse.</p><div class="rgroup" id="rg3"><label class="rlabel"><input type="radio" name="q3" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q3" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q3" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>4.</strong>&nbsp; RFDS dentists must provide a wide range of dental services.</p><div class="rgroup" id="rg4"><label class="rlabel"><input type="radio" name="q4" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q4" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q4" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>5.</strong>&nbsp; Rural dental patients are more informed about oral hygiene than urban patients.</p><div class="rgroup" id="rg5"><label class="rlabel"><input type="radio" name="q5" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q5" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q5" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>6.</strong>&nbsp; RFDS dentists educate patients about good eating habits.</p><div class="rgroup" id="rg6"><label class="rlabel"><input type="radio" name="q6" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q6" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q6" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>7.</strong>&nbsp; Urban Australians generally have better teeth because their water is treated.</p><div class="rgroup" id="rg7"><label class="rlabel"><input type="radio" name="q7" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q7" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q7" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><p class="qnum-head"><em>Questions 8–13</em></p><p class="qinst">Complete the notes below. Choose <b>ONE WORD ONLY</b> from the passage for each answer.</p><div class="sbox"><p><h4>Challenges and Support</h4>
+        <div class="notes-sub">Challenges faced by RFDS dentists</div>
+        <ul>
+          <li>need to bring equipment including <input type="text" class="ai sm" id="q8" oninput="upd()"> for records</li>
+          <li>aircraft used to carry equipment have restricted <input type="text" class="ai sm" id="q9" oninput="upd()"></li>
+          <li>problems offering some services, e.g., fitting <input type="text" class="ai sm" id="q10" oninput="upd()"></li>
+          <li>people in remote areas are more likely to have infection in their mouth</li>
+        </ul>
+        <div class="notes-sub">Products supplied by RFDS dentists</div>
+        <div style="margin-left:4px">if necessary RFDS provides:</div>
+        <ul>
+          <li><input type="text" class="ai sm" id="q11" oninput="upd()"> and <input type="text" class="ai sm" id="q12" oninput="upd()"> for regular use</li>
+          <li><input type="text" class="ai sm" id="q13" oninput="upd()"> to limit dental accidents on the sports field</li>
+        </ul></p></div></div>
+    <div class="qsec" id="qs2"><p class="qnum-head"><em>Questions 14–19</em></p><p class="qinst">Reading Passage 2 has six paragraphs, A–F. Choose the correct heading for each paragraph from the list of headings below. Drag a heading into the slot above each paragraph in the passage. (On touch: tap a heading, then tap the slot.)</p><div class="headings-box" id="mhHeadings-p2" data-bank="p2"><div class="mh-heading-card" draggable="true" data-code="i" data-label="Interpreting the research behind who is participating in art activities"><strong>i</strong>&nbsp;&nbsp;Interpreting the research behind who is participating in art activities</div><div class="mh-heading-card" draggable="true" data-code="ii" data-label="How sales of artwork have increased in many countries"><strong>ii</strong>&nbsp;&nbsp;How sales of artwork have increased in many countries</div><div class="mh-heading-card" draggable="true" data-code="iii" data-label="Two opportunities for getting kids involved in art activities"><strong>iii</strong>&nbsp;&nbsp;Two opportunities for getting kids involved in art activities</div><div class="mh-heading-card" draggable="true" data-code="iv" data-label="How art can be made accessible to the public"><strong>iv</strong>&nbsp;&nbsp;How art can be made accessible to the public</div><div class="mh-heading-card" draggable="true" data-code="v" data-label="Developing a model to explain the lack of participation in art"><strong>v</strong>&nbsp;&nbsp;Developing a model to explain the lack of participation in art</div><div class="mh-heading-card" draggable="true" data-code="vi" data-label="The connection between art and media"><strong>vi</strong>&nbsp;&nbsp;The connection between art and media</div><div class="mh-heading-card" draggable="true" data-code="vii" data-label="How involvement with art affects well-being and attitudes"><strong>vii</strong>&nbsp;&nbsp;How involvement with art affects well-being and attitudes</div><div class="mh-heading-card" draggable="true" data-code="viii" data-label="How art makes communities safer and more vital"><strong>viii</strong>&nbsp;&nbsp;How art makes communities safer and more vital</div></div><p class="qnum-head"><em>Questions 20–23</em></p><p class="qinst">Look at the following statements and the list of researchers below. Match each statement with the correct researcher, A–F.</p><div class="fbox"><strong>List of Researchers</strong><div class="frow"><span class="fkey">A</span> Spector</div><div class="frow"><span class="fkey">B</span> Oliphant</div><div class="frow"><span class="fkey">C</span> Riley</div><div class="frow"><span class="fkey">D</span> Hughes</div><div class="frow"><span class="fkey">E</span> Bradshaw</div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">20</span> Art activities can contribute to lowering negative incidents associated with juvenile crime.</td><td><label class="mx-cell"><input type="radio" name="q20" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">21</span> Art can bring money and visitors into a community.</td><td><label class="mx-cell"><input type="radio" name="q21" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">22</span> Commercial interests are drawn to areas that emphasize public art.</td><td><label class="mx-cell"><input type="radio" name="q22" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">23</span> Art activities can both energize and calm people.</td><td><label class="mx-cell"><input type="radio" name="q23" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="F" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 24–26</em></p><p class="qinst">Complete the sentences below. Choose <b>ONE WORD ONLY</b> from the passage for each answer.</p><div class="qitem"><p class="qprompt"><strong>24.</strong>&nbsp; Sometimes people want to get involved in art activities but can't afford it, can't fit it into their schedule, or don't have the suitable <input type="text" class="ai sm" id="q24" oninput="upd()"></p></div><div class="qitem"><p class="qprompt"><strong>25.</strong>&nbsp; A noticeable correlation exists between art involvement in childhood and those in adulthood <input type="text" class="ai sm" id="q25" oninput="upd()"></p></div><div class="qitem"><p class="qprompt"><strong>26.</strong>&nbsp; The National Photography Program allows members to grow personally and also gain <input type="text" class="ai sm" id="q26" oninput="upd()"></p></div></div>
+    <div class="qsec" id="qs3"><p class="qnum-head"><em>Questions 27–31</em></p><p class="qinst">Do the following statements agree with the views of the writer in Reading Passage 3? Write <b>YES</b> if the statement agrees with the views of the writer, <b>NO</b> if the statement contradicts the views of the writer, <b>NOT GIVEN</b> if it is impossible to say what the writer thinks about this.</p><div class="qitem"><p class="qprompt"><strong>27.</strong>&nbsp; As expected, the artworks chosen for the exhibition reflect a narrow interpretation of landscape.</p><div class="rgroup" id="rg27"><label class="rlabel"><input type="radio" name="q27" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q27" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q27" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>28.</strong>&nbsp; The Academy rejected Australian suggestions for the subject of the exhibition.</p><div class="rgroup" id="rg28"><label class="rlabel"><input type="radio" name="q28" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q28" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q28" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>29.</strong>&nbsp; The colonial relationship meant that early Australian landscape painting followed the traditions of English landscape painting.</p><div class="rgroup" id="rg29"><label class="rlabel"><input type="radio" name="q29" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q29" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q29" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>30.</strong>&nbsp; The exhibition reflects the fact that Australian art developed its own particular qualities.</p><div class="rgroup" id="rg30"><label class="rlabel"><input type="radio" name="q30" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q30" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q30" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>31.</strong>&nbsp; Contemporary Australian artists have generally rejected British landscape traditions.</p><div class="rgroup" id="rg31"><label class="rlabel"><input type="radio" name="q31" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q31" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q31" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><p class="qnum-head"><em>Questions 32–36</em></p><p class="qinst">Choose the correct letter, A, B, C or D.</p><div class="qitem"><p class="qprompt"><strong>32.</strong>&nbsp; What is the writer's main point in the second paragraph?</p><div class="rgroup" id="rg32"><label class="rlabel"><input type="radio" name="q32" value="A" onchange="upd()"> <strong>A</strong>&nbsp; Australian landscape painting derives from the British tradition.</label><label class="rlabel"><input type="radio" name="q32" value="B" onchange="upd()"> <strong>B</strong>&nbsp; Australian landscape painting is more highly regarded than British.</label><label class="rlabel"><input type="radio" name="q32" value="C" onchange="upd()"> <strong>C</strong>&nbsp; Britain is still imposing its principles on Australian art.</label><label class="rlabel"><input type="radio" name="q32" value="D" onchange="upd()"> <strong>D</strong>&nbsp; British art cannot be compared to Australian art.</label></div></div><div class="qitem"><p class="qprompt"><strong>33.</strong>&nbsp; What does Joanna Mendelssohn find surprising?</p><div class="rgroup" id="rg33"><label class="rlabel"><input type="radio" name="q33" value="A" onchange="upd()"> <strong>A</strong>&nbsp; Modern Australian landscape painting has great variety.</label><label class="rlabel"><input type="radio" name="q33" value="B" onchange="upd()"> <strong>B</strong>&nbsp; The guidelines for the choice of work were very traditional.</label><label class="rlabel"><input type="radio" name="q33" value="C" onchange="upd()"> <strong>C</strong>&nbsp; Landscape painting remains a popular subject for British artists.</label><label class="rlabel"><input type="radio" name="q33" value="D" onchange="upd()"> <strong>D</strong>&nbsp; The British find the Australian landscape unsuitable as a subject.</label></div></div><div class="qitem"><p class="qprompt"><strong>34.</strong>&nbsp; Shaun Gladwell's work is included in the exhibition because</p><div class="rgroup" id="rg34"><label class="rlabel"><input type="radio" name="q34" value="A" onchange="upd()"> <strong>A</strong>&nbsp; it adopts a subjective approach to depicting the landscape.</label><label class="rlabel"><input type="radio" name="q34" value="B" onchange="upd()"> <strong>B</strong>&nbsp; skateboarding is an inspiration to many Australian artists.</label><label class="rlabel"><input type="radio" name="q34" value="C" onchange="upd()"> <strong>C</strong>&nbsp; storms are a significant feature in the Australian landscape.</label><label class="rlabel"><input type="radio" name="q34" value="D" onchange="upd()"> <strong>D</strong>&nbsp; Bondi is an iconic Australian location.</label></div></div><div class="qitem"><p class="qprompt"><strong>35.</strong>&nbsp; What was the reason for Soriano including Aboriginal art in the exhibition?</p><div class="rgroup" id="rg35"><label class="rlabel"><input type="radio" name="q35" value="A" onchange="upd()"> <strong>A</strong>&nbsp; It is not well known in London art circles.</label><label class="rlabel"><input type="radio" name="q35" value="B" onchange="upd()"> <strong>B</strong>&nbsp; Aboriginal landscape painting influenced Australian settlers.</label><label class="rlabel"><input type="radio" name="q35" value="C" onchange="upd()"> <strong>C</strong>&nbsp; It is part of the Australian art tradition and not independent of it.</label><label class="rlabel"><input type="radio" name="q35" value="D" onchange="upd()"> <strong>D</strong>&nbsp; Modern Aboriginal painting deals with changes to the landscape.</label></div></div><div class="qitem"><p class="qprompt"><strong>36.</strong>&nbsp; By referring to China, Mendelssohn is making the point that</p><div class="rgroup" id="rg36"><label class="rlabel"><input type="radio" name="q36" value="A" onchange="upd()"> <strong>A</strong>&nbsp; having an exhibition in London is not as important as it used to be.</label><label class="rlabel"><input type="radio" name="q36" value="B" onchange="upd()"> <strong>B</strong>&nbsp; young artists in Britain are not interested in Australian art.</label><label class="rlabel"><input type="radio" name="q36" value="C" onchange="upd()"> <strong>C</strong>&nbsp; art from Shanghai is more important than Australian art.</label><label class="rlabel"><input type="radio" name="q36" value="D" onchange="upd()"> <strong>D</strong>&nbsp; New York is still a preferred destination for young artists.</label></div></div><p class="qnum-head"><em>Questions 37–40</em></p><p class="qinst">Complete each sentence with the correct ending, A–F, below.</p><div class="fbox"><strong>Endings</strong><div class="frow"><span class="fkey">A</span> reflects the mood created by the natural environment.</div><div class="frow"><span class="fkey">B</span> demonstrates that the dominant art form in Australia is landscape painting.</div><div class="frow"><span class="fkey">C</span> demonstrates an understanding of the historical importance of the land.</div><div class="frow"><span class="fkey">D</span> showcases a very small number of artists.</div><div class="frow"><span class="fkey">E</span> demonstrates a strong European flavour.</div><div class="frow"><span class="fkey">F</span> shows an acceptance of the unique qualities of Australian art.</div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">37</span> In spite of its conservatism, the Royal Academy exhibition</td><td><label class="mx-cell"><input type="radio" name="q37" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">38</span> Australian art of the early to mid-1800s</td><td><label class="mx-cell"><input type="radio" name="q38" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">39</span> The modern work by Gladwell chosen for the exhibition</td><td><label class="mx-cell"><input type="radio" name="q39" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">40</span> Including Aboriginal art in the exhibition</td><td><label class="mx-cell"><input type="radio" name="q40" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="F" onchange="upd()"></label></td></tr></tbody></table></div></div>
+  </div><!-- /right-pane -->
+</div><!-- /main -->
+
+<!-- BOTTOM NAV -->
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<!-- Highlight button is created dynamically in JS (#hlBtn) -->
+
+<!-- RESULTS MODAL -->
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ANSWERS ──
+const CA = {
+ '1':'NOT GIVEN','2':'FALSE','3':'NOT GIVEN','4':'TRUE','5':'FALSE','6':'NOT GIVEN','7':'TRUE',
+ '8':'computers','9':'space','10':'dentures',
+ '11':['toothpaste','toothbrushes'],'12':['toothpaste','toothbrushes'],'13':'mouthguards',
+ '14':'vii','15':'viii','16':'iv','17':'v','18':'i','19':'iii',
+ '20':'A','21':'D','22':'C','23':'B',
+ '24':'attire','25':'rates','26':'recognition',
+ '27':'NO','28':'NOT GIVEN','29':'YES','30':'YES','31':'NO',
+ '32':'C','33':'B','34':'A','35':'C','36':'A',
+ '37':'F','38':'E','39':'A','40':'C'
+};
+const CAL = {
+ '1':'NOT GIVEN','2':'FALSE','3':'NOT GIVEN','4':'TRUE','5':'FALSE','6':'NOT GIVEN','7':'TRUE',
+ '8':'computers','9':'space','10':'dentures',
+ '11':['toothpaste','toothbrushes'],'12':['toothpaste','toothbrushes'],'13':'mouthguards',
+ '14':'vii','15':'viii','16':'iv','17':'v','18':'i','19':'iii',
+ '20':'A','21':'D','22':'C','23':'B',
+ '24':'attire','25':'rates','26':'recognition',
+ '27':'NO','28':'NOT GIVEN','29':'YES','30':'YES','31':'NO',
+ '32':'C','33':'B','34':'A','35':'C','36':'A',
+ '37':'F','38':'E','39':'A','40':'C'
+};
+
+// ── STATE ──
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+// ── INIT ──
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,8,16,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(56,189,248,0.07);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="position:relative;width:70px;height:70px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+                <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);border-radius:50%;box-shadow:0 0 26px 6px rgba(56,189,248,0.22);"></div>
+                <div style="position:relative;font-size:42px;">📖</div>
+            </div>
+            <div style="display:inline-block;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(251,191,36,0.35);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">🎯 <strong>Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong>Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:linear-gradient(90deg,#38bdf8,#0ea5e9);color:#052033;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(56,189,248,0.4);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+// ── PART / PASSAGE ──
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.ptab').forEach((t,i)=>t.classList.toggle('on',i===n-1));
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+// ── Q ROW ──
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+// ── NAVIGATION ──
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+// ── USER ANSWER ──
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+// ── UPDATE INDICATORS ──
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+// ── TIMER ──
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='\uD83E\uDDD8 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0f172a;color:#fbbf24;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='\uD83C\uDFAF Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+// ── FULLSCREEN ──
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+// ── THEME (light → dark → night) ──
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+// ── TEXT SIZE ──
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+// ── DRAG DIVIDER ──
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+// ── DRAG & DROP (multi-bank: each .wbank scopes its own chips+zones) ──
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">\u00d7</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+// ── CHOOSE-TWO CHECKBOX GROUPS ──
+const PICK={};
+
+// ── MATCHING HEADINGS (drag heading card into passage drop-slot) ──
+const MHLABELS={'i':'Interpreting the research behind who is participating in art activities','ii':'How sales of artwork have increased in many countries','iii':'Two opportunities for getting kids involved in art activities','iv':'How art can be made accessible to the public','v':'Developing a model to explain the lack of participation in art','vi':'The connection between art and media','vii':'How involvement with art affects well-being and attitudes','viii':'How art makes communities safer and more vital'};
+let armedHeading=null;
+function setupMatchingHeadings(){
+  const cards=[...document.querySelectorAll('.mh-heading-card')];
+  const slots=[...document.querySelectorAll('.mh-drop-slot')];
+  if(!cards.length||!slots.length)return;
+  cards.forEach(card=>{
+    card.addEventListener('dragstart',e=>{if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);e.dataTransfer.effectAllowed='move';});
+    card.addEventListener('click',()=>{if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(c=>c.classList.remove('armed'));armedHeading=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+  });
+  slots.forEach(slot=>{
+    slot.addEventListener('dragstart',e=>{if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+    slot.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('dragover'));
+    slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)assignHeading(slot,code);});
+    slot.addEventListener('click',()=>{if(checked)return;if(armedHeading){assignHeading(slot,armedHeading);armedHeading=null;document.querySelectorAll('.mh-heading-card').forEach(c=>c.classList.remove('armed'));}else if(slot.dataset.val){clearHeadingSlot(slot);}});
+  });
+  let ghost=null,tCard=null;
+  cards.forEach(card=>{
+    card.addEventListener('touchstart',e=>{if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+    card.addEventListener('touchmove',e=>{if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.toggle('dragover',ss===s));},{passive:false});
+    card.addEventListener('touchend',e=>{if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.remove('dragover'));ghost.remove();ghost=null;if(s&&tCard)assignHeading(s,tCard.dataset.code);tCard=null;});
+  });
+}
+function assignHeading(slot,code){
+  if(checked)return;
+  document.querySelectorAll('.mh-drop-slot').forEach(s=>{if(s!==slot&&s.dataset.val===code)clearHeadingSlot(s);});
+  if(slot.dataset.val)clearHeadingSlot(slot);
+  slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+MHLABELS[code];slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+  const card=document.querySelector('.mh-heading-card[data-code="'+code+'"]');if(card)card.classList.add('used');
+  upd();
+}
+function clearHeadingSlot(slot){
+  const old=slot.dataset.val;if(old){const card=document.querySelector('.mh-heading-card[data-code="'+old+'"]');if(card)card.classList.remove('used');}
+  slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');
+  upd();
+}
+
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+// ── NORMALIZE ──
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+// ── CHECK ──
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  // disable inputs
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='\u2794 '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  // radio
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+// ── BAND ──
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+// ── RESULT ROWS ──
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+// ── SHOW RESULTS ──
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+// ── PASSAGE HIGHLIGHTS ──
+const P1H=[
+ {q:2,t:"rfds dentists might only visit a community once every few months"},
+ {q:4,t:"they need to be able to do all kinds of dental procedures"},
+ {q:5,t:"receive less education about good dental hygiene than their city counterparts"},
+ {q:7,t:"their rates of tooth decay are lower because of this"},
+ {q:8,t:"computers for keeping track of patients"},
+ {q:9,t:"the small planes that transport dentists have limited space"},
+ {q:10,t:"dentures (artificial teeth) can be very difficult to provide"},
+ {q:11,t:"basic dental hygiene items such as toothpaste and toothbrushes"},
+ {q:13,t:"the rfds also provides mouthguards for young sports players"}
+];
+const P2H=[
+ {q:20,t:"reducing community problems related to delinquent behavior and truancy"},
+ {q:21,t:"art-related tourism generates tourists and revenue"},
+ {q:22,t:"they are attractive to businesses and industry"},
+ {q:23,t:"the benefits of discovery, stimulation and relaxation"},
+ {q:24,t:"such as cost, time, and proper attire"},
+ {q:25,t:"childhood and adult art participation rates"},
+ {q:26,t:"receive artistic recognition through instruction in photography"}
+];
+const P3H=[
+ {q:27,t:"this results in a flexible, wide-ranging notion of landscape"},
+ {q:29,t:"devotion to the beloved landscape"},
+ {q:30,t:"how australian art develops a real distinctiveness"},
+ {q:31,t:"british landscape painting is still relevant to a current generation"},
+ {q:32,t:"british artistic values have directed this exhibition"},
+ {q:33,t:"the underlying rules for the selection of works seemed to have been so conservative"},
+ {q:34,t:"i wanted to make it personal"},
+ {q:35,t:"rather than a separate exhibition of its own"},
+ {q:36,t:"london is increasingly less important to today"},
+ {q:37,t:"embracing the peculiarities of australian art"},
+ {q:38,t:"the influence of english, french or german art is much more evident in the early periods"},
+ {q:39,t:"the idea of atmosphere affecting vision"},
+ {q:40,t:"australian art started in and on the landscape"}
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+// ── HIGHLIGHT SYSTEM (shohrukhposts style) ──
+// Select text in a pane → "🖊 Highlight" button pops above the selection.
+// Click it → yellow highlight. Click any highlight once → it's removed.
+// Works on desktop (mouseup) and mobile (touchend).
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault()); // keep the text selection alive
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  // Click an existing highlight to remove it (ignore the auto-answer highlights).
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+// ── CHOOSE-TWO multiple choice (q20/q21) ──
+function mc2upd(box){
+  var base=Number(box.dataset.base);
+  var boxes=[].slice.call(document.querySelectorAll('.mc2box[data-base="'+base+'"]'));
+  if(boxes.filter(function(b){return b.checked;}).length>2){ box.checked=false; return; }
+  var vals=boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;});
+  document.getElementById('q'+base).value=vals[0]||'';
+  document.getElementById('q'+(base+1)).value=vals[1]||'';
+  upd();
+}
+function mc2review(){
+  document.querySelectorAll('.mc2box').forEach(function(b){
+    var base=Number(b.dataset.base);
+    var correct=[].concat(CA[base]).concat(CA[base+1]);
+    var lb=b.closest('label'); if(!lb)return;
+    if(correct.indexOf(b.value)>=0) lb.classList.add('ok');
+    else if(b.checked) lb.classList.add('bad');
+  });
+}
+(function(){ if(typeof doCheck==='function'){ var _d=doCheck; doCheck=function(){ _d.apply(this,arguments); try{mc2review();}catch(e){} }; } })();
+
+/* per-bank matching-headings override */
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+<script src="/js/report-progress.js"></script>
+</body>
+</html>

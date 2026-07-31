@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth-gate.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 1 (Volume 8) | bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* ── THEME ── */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+/* ── FONT SIZE CONTROL ── */
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ── HEADER ── */
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+/* ── BANNER ── */
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+/* ── MAIN SPLIT ── */
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+/* ── PASSAGE TABS ── */
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+/* ── QUESTIONS ── */
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+/* notes / inline block */
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+/* TF / MC options */
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+/* selects / text inputs */
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+/* feature / word list boxes */
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+/* ── SUMMARY DRAG & DROP (word bank → gaps) ── */
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+/* ── BOTTOM NAV ── */
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+/* ── HIGHLIGHT (shohrukhposts style: select → button → yellow mark) ── */
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+/* ── MODALS ── */
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+/* results */
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+/* ── FLASHY RESULTS ── */
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+/* ── REAL-EXAM MATCHING MATRIX ── */
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+/* ── MATCHING HEADINGS (drag into passage) ── */
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+/* ── lifted completion blocks ── */
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<!-- BANNER -->
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1–13.</span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <!-- LEFT -->
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">Steam across the water</h2>
+          <p class="psub">A look at the early history of boats powered by steam</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p>During the 1600s, very early in the development of steam engines, inventive spirits like the Frenchman Denis Papin dreamed of – and experimented with – boats driven by steam, rather than by the wind or human effort, but many decades passed before those visions became reality.</p>
+          <p>Englishman Jonathan Hulls took out patents on a steamboat in 1736, but it was to be driven by a Newcomen engine, which was heavy and therefore inefficient, and would never be a success. In 1763, William Henry, an American, put a Watt steam engine in a boat, but it sank. Nearly 20 years later, in the 1780s, a steam-powered paddle-wheeler managed to last fifteen minutes against the current on the River Saone in France, but lacked the endurance for longer trips. Developments elsewhere included a boat driven by a steam-powered water-jet and able to do six kilometres per hour. However, all these steamboats were either too slow or too expensive to run.</p>
+          <p>For example, American John Fitch successfully trialled his first steamboat in 1787, but although he tried a number of designs and solved many technical challenges – one of his boats could even travel at 13 km/h – he could never convince sceptics that steamboats would pay.</p>
+          <p>The 19th century came before real success could be claimed. In Scotland in 1802, Lord Dundas launched the steamboat Charlotte Dundas, which was driven by a paddle wheel and had an improved engine designed by William Symington. Barges, some weighing as much as 70 tonnes, were towed by this steamboat 30 kilometres along the Forth and Clyde Canal to Glasgow, Scotland's second city.</p>
+          <p>Soon after, success came to American Robert Fulton, whose countrymen called him 'the father of the steamboat'. Inspired by news of the Charlotte Dundas, Fulton ran steamboat trials on the River Seine, in an attempt to attract French support for his submarine Nautilus. He later imported a Boulton-Watt steam engine and built a boat to use it in. In 1807, the Clermont began a scheduled passenger steamboat service between New York and Albany, 250 kilometres up the Hudson River, taking 30 hours for the trip. Within a few years, steamers were running on the St Lawrence River in Canada and soon appeared on other rivers and lakes, including the Mississippi River.</p>
+          <p>Back in Scotland, Fulton's ideas inspired Henry Bell, who launched his <em>Comet</em> in 1812 on the Clyde between Glasgow and Greenock. Within a decade, dozens of steamboats were operating on the rivers, lochs and canals of Scotland, carrying cargo and occasionally passengers. The age of steamboats had arrived.</p>
+          <p>Once steamboats were carrying passengers and industrial goods along inland waterways and sheltered coastlines, the challenge became to send them across the open ocean. Engines needed to use less coal so ships could remain at sea for several weeks. Paddle wheels also had to be replaced by power sources less affected by rolling seas.</p>
+          <p>Despite this, the first Atlantic crossings using both steam and sail began in 1819 with the American ship Savannah. A regular service followed two decades later with the establishment of the Cunard Line in 1840, offering guaranteed sailing dates. Cunard's early ships used both sail and steam, but the era of steam-only passenger liners soon followed.</p>
+          <p>British engineer Isambard Kingdom Brunel led ship design innovation. His Great Western, launched in 1838, crossed the Atlantic in fifteen days. His Great Britain (1853) was the first iron ocean-going steamship and the first to use a screw propeller instead of paddle wheels. The largest paddle steamer ever built was Brunel's Great Eastern, later used to lay the first submarine telegraph cable.</p>
+          <p>Modern ships now use steam turbines, diesel engines or fuel oil. Atlantic crossings can be completed in four days, but today's vessels are still descendants of the early visions of Papin and Fulton.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">IQ Scores</h2>
+          <p class="psub">How they are changing and what the changes mean</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p><span class="pl">A</span>Studies from numerous countries suggest that IQ scores have been rising fast since at least the 1950s – enough to mean that someone with an IQ classed as average at that time could be labelled as having low intelligence today. However, psychologists disagree about what the upward trend in scores really means. Some researchers argue that people are not getting more intelligent overall, but just getting better at a particular sort of problem solving. Others say they have found echoes of rising IQ scores in 'real world' measures of intelligence. To confuse things still more, there are hints that the trend may be about to grind to a halt.</p>
+          <p><span class="pl">B</span>James Flynn, a professor of political science, first showed that IQ scores were rising in the mid-1980s, and became famous after others dubbed the pattern he had observed the 'Flynn effect'. In a landmark paper he made detailed comparisons across fourteen countries of trends in the results of tests that measure reasoning power. Overall, these showed a real growth in scores of up to 25 points in a generation. To find out more, Flynn went on to look at scores for each type of reasoning that IQ tests set out to measure, such as verbal, numerical and visuo-spatial. This last test category usually includes 'Raven's matrices' – sequential patterns with one piece missing. The candidate has to choose, from a set of alternatives, which shape to put in the empty space. When Flynn took a closer look at the scores, the pattern was clear. The strongest gains in almost every case were on Raven's matrices and similar tests, while verbal and arithmetical scores showed more modest rises. Since presenting his original paper, Flynn has looked at data from further countries and found the same upward trend, with the same skills responsible for most of the increase.</p>
+          <p><span class="pl">C</span>Flynn feels that his eponymous effect is meaningful, but does not interpret it as evidence that people are becoming cleverer. Our grandparents were not retarded and we are not geniuses, he says. More likely we have simply developed the skills and habits of mind that make us better at solving abstract problems, and – just as importantly – we take such problems seriously. Flynn believes that demands of visuo-spatial abilities have grown because of TV, computers and cars, and also that in societies where intelligence has become something people focus on excessively, abstract problem-solving skills develop faster than other skills.</p>
+          <p><span class="pl">D</span>Others have different views about what might account for the increase in IQ scores. John Rust of the University of London suggests that it is not just an increase in visuo-spatial activities that is pushing up IQ scores. He believes that there are several factors, including the fact that, in more complex societies, people have to think harder to find solutions to problems they face. He also points out that if just one mind grasps a new concept, such as Einstein and the theory of relativity, it may then be easier for society in general to think in a more complex way. Others, such as experimental psychologist Robert Howard, argue that overall intelligence really has risen, helped by better nutrition, smaller families, wider access to education and other environmental changes.</p>
+          <p><span class="pl">E</span>Howard's latest research has sent him on a different line of enquiry. Controversially, he now believes that the rise in IQ scores might have peaked in industrialised countries. To support this view, he cites data from Denmark. The Danish military still summons virtually all young men before a draft board to identify who is suitable to do military service. Since 1957, all 17-year-olds there have taken exactly the same qualifying IQ tests – including ones similar to Raven's matrices. Candidates must also be able to answer verbal questions such as 'Sun is to day as Moon is to ?', and number-series questions such as '2, 3, 5, 8, ?'. Results in these tests have been carefully analysed by Thomas Teasdale, a neuropsychologist. He found that during the 1960s and '70s, scores showed gains on a scale similar to those of other countries, but by the 1990s the rate of improvement had slowed right down to about one IQ point over the decade. Furthermore, the scores were improving only on the visuo-spatial questions; verbal and numerical performance was flattening out. Most intriguingly, however, scores from 1999 onwards show an overall downturn. One explanation might be that there is some absolute ceiling to people's abilities to perform these tasks, no matter how much the prevailing culture encourages them. However, as Teasdale points out, if such a ceiling had been reached, the test results should show scores pushing against it rather than actually falling.</p>
+          <p><span class="pl">F</span>Flynn is keeping a close eye on the findings, but is not jumping to conclusions until data from other countries is available. However, he does wonder whether the conditions leading to dramatic improvements in mental ability disappear as societies become more prosperous. He points out that in human history, prosperity often led to decadence, and argues that the case of ancient Rome can be viewed as an illustration of this.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">Practical Learning in the Classroom</h2>
+          <p class="psub">A teacher describes a case study involving middle school students and traditional earthen architecture</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p><span class="pl">A</span>The way we think about architecture in schools has come a long way. Once, studying architecture in the art class meant learning to appreciate great buildings art-history style, through slide presentations. In recent years, though, the American Institute of Architects has fostered the idea that the process of architectural design, not just the appreciation of architecture, is a beneficial aspect of the art curriculum.</p>
+          <p><span class="pl">B</span>The value of architectural design is that it is the concrete training ground for a broadly applicable creative process. Architectural training can help people design structures to meet needs. It can help farmers design crop rotations to meet needs. Furthermore, it provides hands-on experiences that reinforce learning in various other subjects, from math to social studies.</p>
+          <p><span class="pl">C</span>In the ongoing dialogue about architecture in the middle school art curriculum, many believe students should actually build the structures they design in their courses. Although the technology and expertise required of modern architecture can prohibit students from actually realizing their designs, traditional architectural materials and methods remain quite accessible to the art classroom. Traditional architectural materials, such as earth, clay and straw, are cheap, easy to work with and readily available. Further, when students participate in the construction or preservation of a traditional earthen structure in their local community, they engage in a form of experiential learning and they are motivated to invest in the project. This is evident in a case study of an adobe conservation project with middle school students in the town of Zuni, New Mexico, in the Southwestern United States.</p>
+          <p><span class="pl">D</span>Traditional architecture reaches back to preindustrial America, when local resources and cultures produced structures in styles unique to each region. In New Mexico, examples of hand-built earthen structures still abound. The region has seen some decline in traditional architecture as industrialization has brought new building codes and materials; however, the traditional, non-industrial home, either preserved from earlier generations or newly built, remains in use. Traditional building materials and the land that supplies them are so accessible that handcrafting a house still remains feasible.</p>
+          <p><span class="pl">E</span>Thus, with no technical expertise and little cost, middle school students can participate in the construction or preservation of a traditional earthen structure. During the project, a student will get to know the materials, understand the chemistry, solve problems, work with classmates, and exercise muscles. The student can apply knowledge of design principles and the creative process while participating in a cooperative effort. But most significantly, this type of project-based activity motivates students to invest intellectually and emotionally in the outcome.</p>
+          <p><span class="pl">F</span>The town of Zuni, where I taught art, was surrounded by adobe construction, new and old. Behind our main high school building there was a one-room adobe structure which was once used for teaching. Now it served as a place where old furniture could be kept. I sent my class home with the oral history assignment to ask their family, friends and neighbors questions to find out about that building. From their research we compiled a sketchy history: it began as a kindergarten classroom; it later became an art classroom; now it was full of broken desks.</p>
+          <p><span class="pl">G</span>The building's design kept it relatively warm in the winter, even without heating, due to its broad south face, and it stayed cool in the summer due to its spacious, ventilated attic and massive earthen walls. Because of this, my students agreed it was worth preserving and were enthusiastic about helping. Preservationist Shalie Gasper arrived in the fall to help with an assessment of the building's needs. She recommended replacing the stucco that encased the original adobe walls with a traditional mud plaster. She showed us where to find local supplies of sand and clay soil for the plaster mix. We began work on the stucco removal in late fall. The next spring the students were ready to replaster. To teach the traditional skills, Gasper and other local specialists joined us. They gave my class three full mornings of intensive workshops on history and preservation as well as mud-plastering technique, and the building got a new coat of traditional mud plaster.</p>
+          <p><span class="pl">H</span>Small design-and-build projects such as this can be seen through to the finish when working with earth in the art curriculum. A simple landscape feature such as a wall, entryway, or arch can draw students into important aspects of design that involve the structure's interaction with people, the surrounding landscape, and natural elements. The same project may provide an opportunity to focus on the chemistry of soil or the structural dynamics of construction. Design goals might guide students to involve traditional forms, consider formal aspects, or integrate math skills of measuring and estimating.</p>
+          <p><span class="pl">I</span>During our traditional architecture unit, the students realized that something old and almost forgotten is valuable and worth preserving. Many others in the community and around the country share this renewal of interest in traditional earthen technologies. It is the connection to a cultural heritage that interests some; the quality of living within massive, natural walls that attracts others; or for others, the sustainability of the process and the minimal energy spent in construction. The value of adobe in general is becoming more and more known, but little has been said about its value in the art curriculum until now. This experiment in adobe conservation with middle school students convinced me that traditional architecture deserves a place in the regular curriculum.</p>
+    </div>
+  </div>
+
+  <div id="drag"></div>
+
+  <!-- RIGHT -->
+  <div id="right-pane">
+    <div class="qsec on" id="qs1"><p class="qnum-head"><em>Questions 1&ndash;6</em></p><p class="qinst">Complete the table below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="qtitle">The development of steamboats</div><table class="completion-table">
+            <thead><tr><th>Date</th><th>Event</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>1600s</td>
+                <td>Early inventors like Papin started to develop boats that relied on steam instead of manpower or wind.</td>
+              </tr>
+              <tr>
+                <td>1730s</td>
+                <td>The engine of Jonathan Hulls' steamboat was <input type="text" class="ai sm" id="q1" oninput="upd()"> due to its weight.</td>
+              </tr>
+              <tr>
+                <td>1780s</td>
+                <td>A French paddle steamer did not have the <input type="text" class="ai sm" id="q2" oninput="upd()"> to keep going for more than a quarter of an hour.<br><br>John Fitch overcame a number of <input type="text" class="ai sm" id="q3" oninput="upd()"> problems with his steamboat designs.</td>
+              </tr>
+              <tr>
+                <td>Early 1800s</td>
+                <td>The Charlotte Dundas pulled barges to Glasgow.<br><br>In France, Fulton used a steamboat to try to raise interest in a <input type="text" class="ai sm" id="q4" oninput="upd()"><br><br>Passengers in the US began to be carried regularly by a steamboat called the <input type="text" class="ai sm" id="q5" oninput="upd()"></td>
+              </tr>
+              <tr>
+                <td>1812 onwards</td>
+                <td>In Scotland, steamboats transported some passengers, but mostly <input type="text" class="ai sm" id="q6" oninput="upd()"></td>
+              </tr>
+            </tbody>
+          </table><p class="qnum-head"><em>Questions 7&ndash;13</em></p><p class="qinst">Do the following statements agree with the information given in Reading Passage 1?<br>Write <strong>TRUE</strong> / <strong>FALSE</strong> / <strong>NOT GIVEN</strong></p><div class="qitem"><p class="qprompt"><strong>7.</strong>&nbsp; For steamboats to cross the Atlantic Ocean, engines which used fuel economically were needed.</p><div class="rgroup" id="rg7"><label class="rlabel"><input type="radio" name="q7" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q7" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q7" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>8.</strong>&nbsp; Using paddle wheels guaranteed reliability on ocean crossings.</p><div class="rgroup" id="rg8"><label class="rlabel"><input type="radio" name="q8" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q8" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q8" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>9.</strong>&nbsp; The Savannah was much faster than a regular paddle steamer.</p><div class="rgroup" id="rg9"><label class="rlabel"><input type="radio" name="q9" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q9" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q9" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>10.</strong>&nbsp; Brunel preferred designing railways to steamships.</p><div class="rgroup" id="rg10"><label class="rlabel"><input type="radio" name="q10" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q10" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q10" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>11.</strong>&nbsp; The Great Britain had more than one innovative feature.</p><div class="rgroup" id="rg11"><label class="rlabel"><input type="radio" name="q11" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q11" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q11" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>12.</strong>&nbsp; The design of the riverboat Archimedes was widely admired.</p><div class="rgroup" id="rg12"><label class="rlabel"><input type="radio" name="q12" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q12" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q12" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>13.</strong>&nbsp; Modern ships that cross the Atlantic use the same energy source as the early steamships.</p><div class="rgroup" id="rg13"><label class="rlabel"><input type="radio" name="q13" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q13" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q13" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div></div>
+    <div class="qsec" id="qs2"><p class="qnum-head"><em>Questions 14&ndash;18</em></p><p class="qinst">Look at the following statements and the list of people below.<br>Match each statement with the correct person, <strong>A&ndash;D</strong>.</p><div class="fbox"><strong>List of People</strong><div class="frow"><span class="fkey">A</span> James Flynn</div><div class="frow"><span class="fkey">B</span> John Rust</div><div class="frow"><span class="fkey">C</span> Robert Howard</div><div class="frow"><span class="fkey">D</span> Thomas Teasdale</div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">14</span> Modern technology has influenced some aspects of intelligence.</td><td><label class="mx-cell"><input type="radio" name="q14" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">15</span> IQ scores may not yet have reached a natural limit.</td><td><label class="mx-cell"><input type="radio" name="q15" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">16</span> Improved diet has a positive effect on mental powers.</td><td><label class="mx-cell"><input type="radio" name="q16" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">17</span> Exceptional individuals can have an impact on collective intelligence.</td><td><label class="mx-cell"><input type="radio" name="q17" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">18</span> As societies become more sophisticated the need for problem-solving skills increases.</td><td><label class="mx-cell"><input type="radio" name="q18" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="D" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 19&ndash;22</em></p><p class="qinst">Reading Passage 2 has six paragraphs, <strong>A&ndash;F</strong>.<br>Which paragraph contains the following information?</p><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">19</span> An account of a selection procedure involving a particular group of people.</td><td><label class="mx-cell"><input type="radio" name="q19" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">20</span> A description of one component of a visuo-spatial test.</td><td><label class="mx-cell"><input type="radio" name="q20" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">21</span> An overview of the different interpretations of IQ score trends.</td><td><label class="mx-cell"><input type="radio" name="q21" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">22</span> An example of the negative effect affluence may have on IQ trends.</td><td><label class="mx-cell"><input type="radio" name="q22" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="F" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 23&ndash;26</em></p><p class="qinst">Complete the summary below.<br>Choose <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> from the passage for each answer.</p><div class="qtitle">James Flynn</div><div class="sbox"><p>During the <input type="text" class="ai sm" id="q23" oninput="upd()">, James Flynn conducted research showing that IQ scores were increasing. Flynn then analyzed specific kinds of reasoning ability separately. He found that tests called <input type="text" class="ai sm" id="q24" oninput="upd()">, which measured visuo-spatial skills, accounted for the biggest score increases, whereas scores in numerical and <input type="text" class="ai sm" id="q25" oninput="upd()"> components rose less steeply. Results from research in other <input type="text" class="ai sm" id="q26" oninput="upd()">, which Flynn has examined more recently, are consistent with his earlier findings.</p></div></div>
+    <div class="qsec" id="qs3"><p class="qnum-head"><em>Questions 27&ndash;31</em></p><p class="qinst">Choose the correct letter, <strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>.</p><div class="qitem"><p class="qprompt"><strong>27.</strong>&nbsp; What education initiative does the American Institute of Architects currently promote?</p><div class="rgroup" id="rg27"><label class="rlabel"><input type="radio" name="q27" value="A" onchange="upd()"> <strong>A</strong>&nbsp; multimedia presentation of information in classrooms</label><label class="rlabel"><input type="radio" name="q27" value="B" onchange="upd()"> <strong>B</strong>&nbsp; the study of monumental buildings throughout history</label><label class="rlabel"><input type="radio" name="q27" value="C" onchange="upd()"> <strong>C</strong>&nbsp; the practice of designing architectural structures</label><label class="rlabel"><input type="radio" name="q27" value="D" onchange="upd()"> <strong>D</strong>&nbsp; processes to add more art classes in schools</label></div></div><div class="qitem"><p class="qprompt"><strong>28.</strong>&nbsp; In the third paragraph, what problem with teaching architecture on art courses does the writer note?</p><div class="rgroup" id="rg28"><label class="rlabel"><input type="radio" name="q28" value="A" onchange="upd()"> <strong>A</strong>&nbsp; Technology-based courses are unavailable.</label><label class="rlabel"><input type="radio" name="q28" value="B" onchange="upd()"> <strong>B</strong>&nbsp; Students cannot always construct their designs.</label><label class="rlabel"><input type="radio" name="q28" value="C" onchange="upd()"> <strong>C</strong>&nbsp; The curriculum is too traditional.</label><label class="rlabel"><input type="radio" name="q28" value="D" onchange="upd()"> <strong>D</strong>&nbsp; Students lack motivation.</label></div></div><div class="qitem"><p class="qprompt"><strong>29.</strong>&nbsp; What is the greatest benefit for students that the writer sees in a traditional architecture project?</p><div class="rgroup" id="rg29"><label class="rlabel"><input type="radio" name="q29" value="A" onchange="upd()"> <strong>A</strong>&nbsp; personal connection to the end result</label><label class="rlabel"><input type="radio" name="q29" value="B" onchange="upd()"> <strong>B</strong>&nbsp; participation in a cooperative project</label><label class="rlabel"><input type="radio" name="q29" value="C" onchange="upd()"> <strong>C</strong>&nbsp; building of problem-solving skills</label><label class="rlabel"><input type="radio" name="q29" value="D" onchange="upd()"> <strong>D</strong>&nbsp; conservation of a traditional building</label></div></div><div class="qitem"><p class="qprompt"><strong>30.</strong>&nbsp; What is the purpose of the eighth paragraph?</p><div class="rgroup" id="rg30"><label class="rlabel"><input type="radio" name="q30" value="A" onchange="upd()"> <strong>A</strong>&nbsp; to explain why it is important that projects be small</label><label class="rlabel"><input type="radio" name="q30" value="B" onchange="upd()"> <strong>B</strong>&nbsp; to outline the multiple skills involved in one project</label><label class="rlabel"><input type="radio" name="q30" value="C" onchange="upd()"> <strong>C</strong>&nbsp; to discuss strategies for connecting content areas</label><label class="rlabel"><input type="radio" name="q30" value="D" onchange="upd()"> <strong>D</strong>&nbsp; to propose suggestions for traditional earth projects</label></div></div><div class="qitem"><p class="qprompt"><strong>31.</strong>&nbsp; What does the writer say about traditional building and the general population?</p><div class="rgroup" id="rg31"><label class="rlabel"><input type="radio" name="q31" value="A" onchange="upd()"> <strong>A</strong>&nbsp; Earthen architecture is becoming a profitable business.</label><label class="rlabel"><input type="radio" name="q31" value="B" onchange="upd()"> <strong>B</strong>&nbsp; Earthen architecture is less feasible in some areas of the country.</label><label class="rlabel"><input type="radio" name="q31" value="C" onchange="upd()"> <strong>C</strong>&nbsp; Interest in earthen architecture varies from region to region.</label><label class="rlabel"><input type="radio" name="q31" value="D" onchange="upd()"> <strong>D</strong>&nbsp; People are attracted to earthen architecture for different reasons.</label></div></div><p class="qnum-head"><em>Questions 32&ndash;36</em></p><p class="qinst">Complete the summary using the list of words, <strong>A&ndash;H</strong>, below.</p><div class="fbox"><strong>List of Words</strong><div class="frow"><span class="fkey">A</span> Experts</div><div class="frow"><span class="fkey">B</span> location</div><div class="frow"><span class="fkey">C</span> design</div><div class="frow"><span class="fkey">D</span> storage</div><div class="frow"><span class="fkey">E</span> students</div><div class="frow"><span class="fkey">F</span> resources</div><div class="frow"><span class="fkey">G</span> training</div><div class="frow"><span class="fkey">H</span> businesses</div></div><div class="sbox"><p>The students in Zuni chose to renovate an old building which was being used for
+            <select class="ai" id="q32" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>.
+            They came to an agreement that the building was worthy of rehabilitation based on its functional
+            <select class="ai" id="q33" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>.
+            At the beginning of the project, students were given the task of discovering the history of the building through interviews with local residents. During the course of the project, they learned where to locate
+            <select class="ai" id="q34" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>
+            for the project. They also worked closely with a number of
+            <select class="ai" id="q35" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>
+            on each step of the project. During the project, students were also given
+            <select class="ai" id="q36" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option></select>
+            to build useful skills.</p></div><p class="qnum-head"><em>Questions 37&ndash;40</em></p><p class="qinst">Do the following statements agree with the claims of the writer in Reading Passage 3?<br>Write <strong>YES</strong> / <strong>NO</strong> / <strong>NOT GIVEN</strong></p><div class="qitem"><p class="qprompt"><strong>37.</strong>&nbsp; The price of materials is one drawback to using traditional architecture.</p><div class="rgroup" id="rg37"><label class="rlabel"><input type="radio" name="q37" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q37" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q37" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>38.</strong>&nbsp; Earthen structures can easily be built in all regions of the U.S.</p><div class="rgroup" id="rg38"><label class="rlabel"><input type="radio" name="q38" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q38" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q38" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>39.</strong>&nbsp; Working with a traditional earthen structure can have physical benefits.</p><div class="rgroup" id="rg39"><label class="rlabel"><input type="radio" name="q39" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q39" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q39" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>40.</strong>&nbsp; A traditional architecture curriculum is best suited to middle school level students.</p><div class="rgroup" id="rg40"><label class="rlabel"><input type="radio" name="q40" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q40" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q40" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div></div>
+  </div><!-- /right-pane -->
+</div><!-- /main -->
+
+<!-- BOTTOM NAV -->
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<!-- Highlight button is created dynamically in JS (#hlBtn) -->
+
+<!-- RESULTS MODAL -->
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ANSWERS ──
+const CA = {
+  '1':  'inefficient',
+  '2':  'endurance',
+  '3':  'technical',
+  '4':  'submarine',
+  '5':  'Clermont',
+  '6':  'cargo',
+  '7':  'TRUE',
+  '8':  'FALSE',
+  '9':  'NOT GIVEN',
+  '10': 'NOT GIVEN',
+  '11': 'TRUE',
+  '12': 'NOT GIVEN',
+  '13': 'FALSE',
+  '14': 'A',
+  '15': 'D',
+  '16': 'C',
+  '17': 'B',
+  '18': 'B',
+  '19': 'E',
+  '20': 'B',
+  '21': 'A',
+  '22': 'F',
+  '23': ['mid-1980s','mid 1980s'],
+  '24': ["Raven's matrices","Ravens matrices"],
+  '25': 'verbal',
+  '26': 'countries',
+  '27': 'C',
+  '28': 'B',
+  '29': 'A',
+  '30': 'B',
+  '31': 'D',
+  '32': 'D',
+  '33': 'C',
+  '34': 'F',
+  '35': 'A',
+  '36': 'G',
+  '37': 'NO',
+  '38': 'NOT GIVEN',
+  '39': 'YES',
+  '40': 'NOT GIVEN'
+};
+const CAL = {
+  '1':'inefficient','2':'endurance','3':'technical','4':'submarine','5':'Clermont','6':'cargo',
+  '7':'TRUE','8':'FALSE','9':'NOT GIVEN','10':'NOT GIVEN','11':'TRUE','12':'NOT GIVEN','13':'FALSE',
+  '14':'A (James Flynn)','15':'D (Thomas Teasdale)','16':'C (Robert Howard)','17':'B (John Rust)','18':'B (John Rust)',
+  '19':'E','20':'B','21':'A','22':'F',
+  '23':'mid-1980s','24':"Raven's matrices",'25':'verbal','26':'countries',
+  '27':'C','28':'B','29':'A','30':'B','31':'D',
+  '32':'D','33':'C','34':'F','35':'A','36':'G',
+  '37':'NO','38':'NOT GIVEN','39':'YES','40':'NOT GIVEN'
+};
+
+// ── STATE ──
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+// ── INIT ──
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,8,16,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(56,189,248,0.07);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="position:relative;width:70px;height:70px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+                <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);border-radius:50%;box-shadow:0 0 26px 6px rgba(56,189,248,0.22);"></div>
+                <div style="position:relative;font-size:42px;">📖</div>
+            </div>
+            <div style="display:inline-block;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(251,191,36,0.35);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">🎯 <strong>Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong>Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:linear-gradient(90deg,#38bdf8,#0ea5e9);color:#052033;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(56,189,248,0.4);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+// ── PART / PASSAGE ──
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.ptab').forEach((t,i)=>t.classList.toggle('on',i===n-1));
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+// ── Q ROW ──
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+// ── NAVIGATION ──
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+// ── USER ANSWER ──
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+// ── UPDATE INDICATORS ──
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+// ── TIMER ──
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='\uD83E\uDDD8 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0f172a;color:#fbbf24;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='\uD83C\uDFAF Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+// ── FULLSCREEN ──
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+// ── THEME (light → dark → night) ──
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+// ── TEXT SIZE ──
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+// ── DRAG DIVIDER ──
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+// ── DRAG & DROP (multi-bank: each .wbank scopes its own chips+zones) ──
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">\u00d7</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+// ── CHOOSE-TWO CHECKBOX GROUPS ──
+const PICK={};
+
+// ── MATCHING HEADINGS (drag heading card into passage drop-slot) ──
+const MHLABELS={'i':'Training coin makers','ii':'A form of regional promotion','iii':'More gold than silver in Greece','iv':'Calculating what a coin was worth','v':'A simpler, more efficient way of trading','vi':'Putting a face to famous historical names','vii':'An uncertain future','viii':'Careless workmanship caused breakages','ix':'Unchanging coins signalled trustworthiness','x':'Reading the writing on coins','xi':'Significant records of past societies'};
+let armedHeading=null;
+function setupMatchingHeadings(){
+  const cards=[...document.querySelectorAll('.mh-heading-card')];
+  const slots=[...document.querySelectorAll('.mh-drop-slot')];
+  if(!cards.length||!slots.length)return;
+  cards.forEach(card=>{
+    card.addEventListener('dragstart',e=>{if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);e.dataTransfer.effectAllowed='move';});
+    card.addEventListener('click',()=>{if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(c=>c.classList.remove('armed'));armedHeading=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+  });
+  slots.forEach(slot=>{
+    slot.addEventListener('dragstart',e=>{if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+    slot.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('dragover'));
+    slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)assignHeading(slot,code);});
+    slot.addEventListener('click',()=>{if(checked)return;if(armedHeading){assignHeading(slot,armedHeading);armedHeading=null;document.querySelectorAll('.mh-heading-card').forEach(c=>c.classList.remove('armed'));}else if(slot.dataset.val){clearHeadingSlot(slot);}});
+  });
+  let ghost=null,tCard=null;
+  cards.forEach(card=>{
+    card.addEventListener('touchstart',e=>{if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+    card.addEventListener('touchmove',e=>{if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.toggle('dragover',ss===s));},{passive:false});
+    card.addEventListener('touchend',e=>{if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.remove('dragover'));ghost.remove();ghost=null;if(s&&tCard)assignHeading(s,tCard.dataset.code);tCard=null;});
+  });
+}
+function assignHeading(slot,code){
+  if(checked)return;
+  document.querySelectorAll('.mh-drop-slot').forEach(s=>{if(s!==slot&&s.dataset.val===code)clearHeadingSlot(s);});
+  if(slot.dataset.val)clearHeadingSlot(slot);
+  slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+MHLABELS[code];slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+  const card=document.querySelector('.mh-heading-card[data-code="'+code+'"]');if(card)card.classList.add('used');
+  upd();
+}
+function clearHeadingSlot(slot){
+  const old=slot.dataset.val;if(old){const card=document.querySelector('.mh-heading-card[data-code="'+old+'"]');if(card)card.classList.remove('used');}
+  slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');
+  upd();
+}
+
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+// ── NORMALIZE ──
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+// ── CHECK ──
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  // disable inputs
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='\u2794 '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  // radio
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+// ── BAND ──
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+// ── RESULT ROWS ──
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+// ── SHOW RESULTS ──
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+// ── PASSAGE HIGHLIGHTS ──
+const P1H=[
+  {q:1, t:'which was heavy and therefore inefficient'},
+  {q:2, t:'but lacked the endurance for longer trips'},
+  {q:3, t:'solved many technical challenges'},
+  {q:4, t:'attract french support for his submarine'},
+  {q:5, t:'the clermont began a scheduled passenger steamboat service'},
+  {q:6, t:'carrying cargo and occasionally passengers'},
+  {q:7, t:'engines needed to use less coal so ships could remain at sea'},
+  {q:8, t:'paddle wheels also had to be replaced by power sources less affected by rolling seas'},
+  {q:11, t:'was the first iron ocean-going steamship and the first to use a screw propeller'},
+  {q:13, t:'modern ships now use steam turbines, diesel engines or fuel oil'},
+];
+const P2H=[
+  {q:14, t:'demands of visuo-spatial abilities have grown because of tv, computers and cars'},
+  {q:15, t:'if such a ceiling had been reached, the test results should show scores pushing against it rather than actually falling'},
+  {q:16, t:'helped by better nutrition'},
+  {q:17, t:'if just one mind grasps a new concept, such as einstein'},
+  {q:18, t:'in more complex societies, people have to think harder to find solutions'},
+  {q:19, t:'the danish military still summons virtually all young men before a draft board'},
+  {q:20, t:"raven's matrices – sequential patterns with one piece missing"},
+  {q:21, t:'psychologists disagree about what the upward trend in scores really means'},
+  {q:22, t:'in human history, prosperity often led to decadence'},
+  {q:23, t:'first showed that iq scores were rising in the mid-1980s'},
+  {q:24, t:"raven's matrices and similar tests"},
+  {q:25, t:'while verbal and arithmetical scores showed more modest rises'},
+  {q:26, t:'flynn has looked at data from further countries'},
+];
+const P3H=[
+  {q:27, t:'the process of architectural design, not just the appreciation of architecture, is a beneficial aspect'},
+  {q:28, t:'can prohibit students from actually realizing their designs'},
+  {q:29, t:'motivates students to invest intellectually and emotionally in the outcome'},
+  {q:30, t:'a simple landscape feature such as a wall, entryway, or arch can draw students into important aspects of design'},
+  {q:31, t:'it is the connection to a cultural heritage that interests some; the quality of living within massive, natural walls that attracts others'},
+  {q:37, t:'traditional architectural materials, such as earth, clay and straw, are cheap'},
+  {q:39, t:'a student will get to know the materials, understand the chemistry, solve problems, work with classmates, and exercise muscles'},
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+// ── HIGHLIGHT SYSTEM (shohrukhposts style) ──
+// Select text in a pane → "🖊 Highlight" button pops above the selection.
+// Click it → yellow highlight. Click any highlight once → it's removed.
+// Works on desktop (mouseup) and mobile (touchend).
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault()); // keep the text selection alive
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  // Click an existing highlight to remove it (ignore the auto-answer highlights).
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+// ── CHOOSE-TWO multiple choice (q20/q21) ──
+function mc2upd(box){
+  var base=Number(box.dataset.base);
+  var boxes=[].slice.call(document.querySelectorAll('.mc2box[data-base="'+base+'"]'));
+  if(boxes.filter(function(b){return b.checked;}).length>2){ box.checked=false; return; }
+  var vals=boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;});
+  document.getElementById('q'+base).value=vals[0]||'';
+  document.getElementById('q'+(base+1)).value=vals[1]||'';
+  upd();
+}
+function mc2review(){
+  document.querySelectorAll('.mc2box').forEach(function(b){
+    var base=Number(b.dataset.base);
+    var correct=[].concat(CA[base]).concat(CA[base+1]);
+    var lb=b.closest('label'); if(!lb)return;
+    if(correct.indexOf(b.value)>=0) lb.classList.add('ok');
+    else if(b.checked) lb.classList.add('bad');
+  });
+}
+(function(){ if(typeof doCheck==='function'){ var _d=doCheck; doCheck=function(){ _d.apply(this,arguments); try{mc2review();}catch(e){} }; } })();
+
+/* per-bank matching-headings override */
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+<script src="/js/report-progress.js"></script>
+</body>
+</html>

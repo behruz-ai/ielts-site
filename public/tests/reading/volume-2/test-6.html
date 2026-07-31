@@ -13,9 +13,9 @@
 html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
 
 /* ── THEME ── */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
 [data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
 [data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
-:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
 body{background:var(--bg);color:var(--text)}
 [data-theme=night] body{background:var(--bg)}
 [data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
@@ -153,6 +153,43 @@ select.ai{height:32px;cursor:pointer}
 [data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
 [data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
 
+/* ── MATCHING MATRIX ── */
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+
+/* ── MATCHING HEADINGS ── */
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
 /* ── BOTTOM NAV ── */
 #nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
 .arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
@@ -266,6 +303,7 @@ mark.uhl:hover{background:#FDE047}
       <span id="fsz-lbl">100%</span>
       <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
     </div>
+    <span id="mode-badge" style="display:none;"></span>
     <div id="timer">60:00</div>
     <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
       <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
@@ -305,12 +343,19 @@ mark.uhl:hover{background:#FDE047}
       <h2 class="ptitle">Violins and Very Cold Weather</h2>
       <p class="psub">Lloyd Burckle and Henri D Grissino-Mayer suggest a link between the great Italian violin-makers and a mini ice-age 300 years ago</p>
       <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q14" data-q="14" draggable="false">14</span></p>
       <p><span class="pl">A</span> There is considerable controversy surrounding reasons why instruments made by the artisans of Cremona in Italy in the late 17th and early 18th centuries sound superior compared to modern instruments. The famous violin-making families of Amati, Stradivari, and Guarneri certainly included many highly accomplished craftsmen, and the popular belief is that the skills of these Cremonese artisans, combined with either a secret ingredient or undocumented process, gave their instruments the rich sound so highly admired by professional musicians. The nature of that secret ingredient has been the subject of conjecture for many years and is still fuelling discussion. Theories have included the development and use of a specially formulated varnish applied to the wood to protect it, drying the wood in ovens, the re-use of old wood taken from castles, and soaking the wood in water to get rid of supposedly harmful chemicals before seasoning.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q15" data-q="15" draggable="false">15</span></p>
       <p><span class="pl">B</span> However, no basis has been found for these possible explanations. There is no documented evidence of wood being artificially dried by violin-makers, and this process was most likely unknown to these artisans. Nor can seasoning the practice of leaving wood for the moisture to evaporate naturally be invoked as a possible explanation, as considerable variability exists in the lengths of seasoning periods, even among individual makers. Instruments made by the most renowned of all violin-makers, Antonio Stradivari (1644-1737), have seasoning periods as short as seven years and as long as 31 years, for example. A secret varnish has yet to be demonstrated, despite considerable scientific analyses that include ultraviolet photography, electron microscopy, ion backscattering and x-ray investigations. Finally, some have suggested that Stradivari used wood taken from castles. This theory has been discounted because analyses on numerous instruments attributed to Stradivari demonstrated ages for the wood that were contemporary with his lifetime.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q16" data-q="16" draggable="false">16</span></p>
       <p><span class="pl">C</span> Violin-makers have always known that the secret of a quality instrument lies in the selection of the wood. Maple wood (Acer spp.) is preferred for the back, ribs, and neck of the instrument while spruce (Picea spp.) is often used for the top. These woods have superior acoustical and mechanical properties, having the least loss of energy through internal friction compared to other woods. For example, spruce cells are light, physiologically simple, hollow, and rigid-ideal properties for enhanced acoustic quality. Only trees that have grown in thin, poor soils at higher elevations on north-facing slopes have the dense wood grain that helps instill a superior tone in violins. Long winters and cool summers produce wood that has the slow, even growth ideal for producing quality sounding boards.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q17" data-q="17" draggable="false">17</span></p>
       <p><span class="pl">D</span> Stradivari and other eminent Italian violin-makers of the 17th and early 18th centuries had neighbouring workshops in Cremona and would most probably have used the nearby high forest slopes of the southern Italian Alps for their supplies of spruce wood. A probable location is the famous "Forest of the Violins" in the Parco Naturale Paneveggio in the eastern part of Trentino, long familiar to violin-makers for its 'fir trees of resonance'.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q18" data-q="18" draggable="false">18</span></p>
       <p><span class="pl">E</span> Wood with high density can, however, be found in trees growing in a variety of habitats and environmental settings in numerous higher-elevation locations throughout the world. Hence, an account of the Cremonese craftsmen's superior sound quality based solely on wood properties is insufficient. Instead, could the superior sound quality be explained by a combination of wood properties, environmental characteristics, and macroclimatic conditions? Could the wood used by the Cremonese makers have had particular physical characteristics that were perhaps time-specific? These were questions that required more thorough research.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q19" data-q="19" draggable="false">19</span></p>
       <p><span class="pl">F</span> The well-documented Maunder Minimum (1645-1715) was a period characterized by a scarcity of sunspots and a reduction in overall solar activity. It coincided with a sharp dip in temperatures and a period of extremely cold weather in western Europe. Analyses of high-elevation forest areas of the European Alps reveal a long period of reduced growth rates between approximately 1625 and 1720, identified by the narrow rings visible in the cross-sections of tree samples from that era.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q20" data-q="20" draggable="false">20</span></p>
       <p><span class="pl">G</span> It seems likely that the narrow tree rings that identify the Maunder Minimum in Europe played a significant role in the enhanced sound quality of instruments produced by the Cremonese craftsmen. Narrow rings would not only strengthen the violin, but lend the wood a high degree of density-the property so important for acoustic resonance. It is surely significant that Stradivari's working lifetime coincides exactly with this climatic period, and that to fashion the most prized and valued instruments of his 'Golden Period (1700-1720), he would have used the only wood available to him, i.e. from trees that grew during the Maunder Minimum. The onset of the Maunder Minimum at a time when the skills of the Cremonese violin-makers reached their peak perhaps made that crucial difference in the violin's tone and brilliance. Furthermore, the conjunction of elevation, topography, soil properties and a deterioration in climate was temporally unique-climate conditions with temperatures such as those that occurred during the Maunder Minimum simply cannot and do not occur today in areas where the Cremonese makers obtained their wood.</p>
     </div>
 
@@ -346,10 +391,12 @@ mark.uhl:hover{background:#FDE047}
           <div class="frow"><span class="fkey">E</span> It shows that there are alternative explanations of events.</div>
           <div class="frow"><span class="fkey">F</span> It helps to improve our ability to make decisions.</div>
         </div>
-        <div class="qitem"><p class="qprompt"><strong>1.</strong>&nbsp; Arnold Toynbee &nbsp;<select class="ai" id="q1" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>2.</strong>&nbsp; Diane Ravich &nbsp;<select class="ai" id="q2" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>3.</strong>&nbsp; John Dewey &nbsp;<select class="ai" id="q3" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>4.</strong>&nbsp; Friedrich Nietzsche &nbsp;<select class="ai" id="q4" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option></select></p></div>
+        <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead><tbody>
+        <tr><td class="mx-stmt"><span class="mx-num">1</span> Arnold Toynbee</td><td><label class="mx-cell"><input type="radio" name="q1" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="F" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">2</span> Diane Ravich</td><td><label class="mx-cell"><input type="radio" name="q2" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="F" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">3</span> John Dewey</td><td><label class="mx-cell"><input type="radio" name="q3" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="F" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">4</span> Friedrich Nietzsche</td><td><label class="mx-cell"><input type="radio" name="q4" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="F" onchange="upd()"></label></td></tr>
+        </tbody></table></div>
       </div>
       <div class="qblock">
         <p class="qnum-head"><em>Questions 5–9</em></p>
@@ -388,24 +435,17 @@ mark.uhl:hover{background:#FDE047}
       <div class="qblock">
         <p class="qnum-head"><em>Questions 14–20</em></p>
         <p class="qinst">Reading Passage 2 has seven paragraphs, <strong>A–G</strong>.<br>Choose the correct heading for each paragraph from the list of headings below.</p>
-        <div class="fbox"><strong>List of Headings</strong>
-          <div class="frow"><span class="fkey">i</span> Propositions that needed further investigation</div>
-          <div class="frow"><span class="fkey">ii</span> The most valuable instrument ever made</div>
-          <div class="frow"><span class="fkey">iii</span> An unrepeated mix of professional and environmental circumstances</div>
-          <div class="frow"><span class="fkey">iv</span> A remarkable woodworking technique</div>
-          <div class="frow"><span class="fkey">v</span> An ongoing debate</div>
-          <div class="frow"><span class="fkey">vi</span> Choosing the materials for different parts of a violin</div>
-          <div class="frow"><span class="fkey">vii</span> Disproving some hypotheses</div>
-          <div class="frow"><span class="fkey">viii</span> A well-known source of suitable wood</div>
-          <div class="frow"><span class="fkey">ix</span> Evidence of some exceptional environmental conditions</div>
+        <div class="headings-box" id="mhHeadings">
+          <div class="mh-heading-card" draggable="true" data-code="i" data-label="Propositions that needed further investigation"><strong>i</strong>&nbsp;&nbsp;Propositions that needed further investigation</div>
+          <div class="mh-heading-card" draggable="true" data-code="ii" data-label="The most valuable instrument ever made"><strong>ii</strong>&nbsp;&nbsp;The most valuable instrument ever made</div>
+          <div class="mh-heading-card" draggable="true" data-code="iii" data-label="An unrepeated mix of professional and environmental circumstances"><strong>iii</strong>&nbsp;&nbsp;An unrepeated mix of professional and environmental circumstances</div>
+          <div class="mh-heading-card" draggable="true" data-code="iv" data-label="A remarkable woodworking technique"><strong>iv</strong>&nbsp;&nbsp;A remarkable woodworking technique</div>
+          <div class="mh-heading-card" draggable="true" data-code="v" data-label="An ongoing debate"><strong>v</strong>&nbsp;&nbsp;An ongoing debate</div>
+          <div class="mh-heading-card" draggable="true" data-code="vi" data-label="Choosing the materials for different parts of a violin"><strong>vi</strong>&nbsp;&nbsp;Choosing the materials for different parts of a violin</div>
+          <div class="mh-heading-card" draggable="true" data-code="vii" data-label="Disproving some hypotheses"><strong>vii</strong>&nbsp;&nbsp;Disproving some hypotheses</div>
+          <div class="mh-heading-card" draggable="true" data-code="viii" data-label="A well-known source of suitable wood"><strong>viii</strong>&nbsp;&nbsp;A well-known source of suitable wood</div>
+          <div class="mh-heading-card" draggable="true" data-code="ix" data-label="Evidence of some exceptional environmental conditions"><strong>ix</strong>&nbsp;&nbsp;Evidence of some exceptional environmental conditions</div>
         </div>
-        <div class="qitem"><p class="qprompt"><strong>14.</strong>&nbsp; Paragraph A &nbsp;<select class="ai" id="q14" onchange="upd()"><option value="">— select —</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>15.</strong>&nbsp; Paragraph B &nbsp;<select class="ai" id="q15" onchange="upd()"><option value="">— select —</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>16.</strong>&nbsp; Paragraph C &nbsp;<select class="ai" id="q16" onchange="upd()"><option value="">— select —</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>17.</strong>&nbsp; Paragraph D &nbsp;<select class="ai" id="q17" onchange="upd()"><option value="">— select —</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>18.</strong>&nbsp; Paragraph E &nbsp;<select class="ai" id="q18" onchange="upd()"><option value="">— select —</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>19.</strong>&nbsp; Paragraph F &nbsp;<select class="ai" id="q19" onchange="upd()"><option value="">— select —</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>20.</strong>&nbsp; Paragraph G &nbsp;<select class="ai" id="q20" onchange="upd()"><option value="">— select —</option><option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option><option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option><option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option></select></p></div>
       </div>
       <div class="qblock">
         <p class="qnum-head"><em>Questions 21–24</em></p>
@@ -419,15 +459,13 @@ mark.uhl:hover{background:#FDE047}
       <div class="qblock">
         <p class="qnum-head"><em>Questions 25 and 26</em></p>
         <p class="qinst">Choose <strong>TWO</strong> letters, <strong>A–E</strong>.<br>Which TWO of these factors are mentioned in the passage as possibly having a significant effect on the eventual quality of a violin?</p>
-        <div class="fbox"><strong>Factors</strong>
-          <div class="frow"><span class="fkey">A</span> the altitude at which a tree is grown</div>
-          <div class="frow"><span class="fkey">B</span> the stage of a tree's growth at which it is cut down</div>
-          <div class="frow"><span class="fkey">C</span> the steepness of the mountains where a tree is grown</div>
-          <div class="frow"><span class="fkey">D</span> the lack of rain during a tree's growing period</div>
-          <div class="frow"><span class="fkey">E</span> the nutritional composition of the earth in which a tree is grown</div>
+        <div class="rgroup" id="grpg2526">
+          <label class="rlabel"><input type="checkbox" name="pg_g2526" value="A" onchange="pickCap('g2526',2,this)"> <strong>A</strong>&nbsp; the altitude at which a tree is grown</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g2526" value="B" onchange="pickCap('g2526',2,this)"> <strong>B</strong>&nbsp; the stage of a tree's growth at which it is cut down</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g2526" value="C" onchange="pickCap('g2526',2,this)"> <strong>C</strong>&nbsp; the steepness of the mountains where a tree is grown</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g2526" value="D" onchange="pickCap('g2526',2,this)"> <strong>D</strong>&nbsp; the lack of rain during a tree's growing period</label>
+          <label class="rlabel"><input type="checkbox" name="pg_g2526" value="E" onchange="pickCap('g2526',2,this)"> <strong>E</strong>&nbsp; the nutritional composition of the earth in which a tree is grown</label>
         </div>
-        <div class="qitem"><p class="qprompt"><strong>25.</strong>&nbsp; <select class="ai" id="q25" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>26.</strong>&nbsp; <select class="ai" id="q26" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select></p></div>
       </div>
     </div><!-- /qs2 -->
     <div class="qsec" id="qs3">
@@ -486,12 +524,14 @@ mark.uhl:hover{background:#FDE047}
       <div class="qblock">
         <p class="qnum-head"><em>Questions 35–40</em></p>
         <p class="qinst">Reading Passage 3 has ten paragraphs, <strong>A–J</strong>.<br>Which paragraph contains the following information?</p>
-        <div class="qitem"><p class="qprompt"><strong>35.</strong>&nbsp; examples of qualities required when co-operating with other companies &nbsp;<select class="ai" id="q35" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>36.</strong>&nbsp; examples of business activities where all staff should follow the same practices &nbsp;<select class="ai" id="q36" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>37.</strong>&nbsp; examples of alternative employment patterns within a company &nbsp;<select class="ai" id="q37" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>38.</strong>&nbsp; a basis for deciding whether a company should carry out an activity itself or ask an outside company to do it &nbsp;<select class="ai" id="q38" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>39.</strong>&nbsp; an example of how information can be shared by a company and its customers &nbsp;<select class="ai" id="q39" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select></p></div>
-        <div class="qitem"><p class="qprompt"><strong>40.</strong>&nbsp; a reason why customers might continue to buy from the same companies &nbsp;<select class="ai" id="q40" onchange="upd()"><option value="">— select —</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select></p></div>
+        <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th><th>J</th></tr></thead><tbody>
+        <tr><td class="mx-stmt"><span class="mx-num">35</span> examples of qualities required when co-operating with other companies</td><td><label class="mx-cell"><input type="radio" name="q35" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="I" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="J" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">36</span> examples of business activities where all staff should follow the same practices</td><td><label class="mx-cell"><input type="radio" name="q36" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="I" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="J" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">37</span> examples of alternative employment patterns within a company</td><td><label class="mx-cell"><input type="radio" name="q37" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="I" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="J" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">38</span> a basis for deciding whether a company should carry out an activity itself or ask an outside company to do it</td><td><label class="mx-cell"><input type="radio" name="q38" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="I" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="J" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">39</span> an example of how information can be shared by a company and its customers</td><td><label class="mx-cell"><input type="radio" name="q39" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="I" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="J" onchange="upd()"></label></td></tr>
+        <tr><td class="mx-stmt"><span class="mx-num">40</span> a reason why customers might continue to buy from the same companies</td><td><label class="mx-cell"><input type="radio" name="q40" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="I" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="J" onchange="upd()"></label></td></tr>
+        </tbody></table></div>
       </div>
     </div><!-- /qs3 -->
   </div><!-- /right-pane -->
@@ -535,7 +575,7 @@ const CA = {
   10:'conflict', 11:'individuals', 12:'amnesia', 13:'evidence',
   14:'v', 15:'vii', 16:'vi', 17:'viii', 18:'i', 19:'ix', 20:'iii',
   21:['skills','skill'], 22:['castles','castle'], 23:['ovens','oven'], 24:['chemicals','chemical'],
-  25:['A','E'], 26:['A','E'],
+  25:'A', 26:'E',
   27:'NOT GIVEN', 28:'YES', 29:'YES', 30:'NO', 31:'NOT GIVEN', 32:'NO', 33:'YES', 34:'NO',
   35:'F', 36:'H', 37:'E', 38:'F', 39:'I', 40:'D'
 };
@@ -545,13 +585,14 @@ const CAL = {
   10:'conflict', 11:'individuals', 12:'amnesia', 13:'evidence',
   14:'v', 15:'vii', 16:'vi', 17:'viii', 18:'i', 19:'ix', 20:'iii',
   21:'skills', 22:'castles', 23:'ovens', 24:'chemicals',
-  25:'A / E', 26:'A / E',
+  25:'A', 26:'E',
   27:'NOT GIVEN', 28:'YES', 29:'YES', 30:'NO', 31:'NOT GIVEN', 32:'NO', 33:'YES', 34:'NO',
   35:'F', 36:'H', 37:'E', 38:'F', 39:'I', 40:'D'
 };
 
 // ── STATE ──
 let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
 let checked=false, timeExpired=false;
 let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
 // ── INIT ──
@@ -561,6 +602,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   upd();
   setupDrag();
   setupSummaryDnD();
+  setupMatchingHeadings();
   setupHLToolbar();
   showWelcomePopup();
   document.getElementById('fsz-dn').disabled=fszIdx===0;
@@ -569,35 +611,38 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 function showWelcomePopup() {
     const overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,8,16,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
     const box = document.createElement('div');
-    box.style.cssText = 'background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 55%,#063847 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(0,200,180,0.3);position:relative;overflow:hidden;';
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
     box.innerHTML = `
-        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(0,200,180,0.12);border-radius:50%;"></div>
-        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(0,200,180,0.08);border-radius:50%;"></div>
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(56,189,248,0.07);border-radius:50%;"></div>
         <div style="position:relative;z-index:2;">
-            <div style="font-size:50px;margin-bottom:10px;">📖</div>
-            <div style="display:inline-block;background:rgba(0,200,180,0.2);color:#7ffcec;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(0,200,180,0.3);">Authentic Full Test</div>
+            <div style="position:relative;width:70px;height:70px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+                <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);border-radius:50%;box-shadow:0 0 26px 6px rgba(56,189,248,0.22);"></div>
+                <div style="position:relative;font-size:42px;">📖</div>
+            </div>
+            <div style="display:inline-block;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(251,191,36,0.35);">Authentic Full Test</div>
             <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
             <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
-            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong>I. Bekhruz</strong></p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
             <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
-            <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
-                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">⚠️ <strong>This simulates real exam conditions.</strong> Once started, the 60-minute timer cannot be paused or reset, just like the real IELTS test. Find a quiet space, stay focused, and treat it like exam day.</p>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">⚠️ <strong>Choose how you want to practise.</strong> <strong>Exam mode</strong> runs a 60-minute countdown that auto-submits at 0, just like the real IELTS test. <strong>Casual mode</strong> uses a count-up stopwatch, so you can finish whenever you like and still see how long you took.</p>
             </div>
-            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0d7a8a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
-                    <svg style="width:17px;height:17px;fill:#0d7a8a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            <div style="display:flex;flex-direction:column;gap:10px;align-items:stretch;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
                     Join @bekhruzposts
                 </a>
-                <button id="welcomeStartBtn" style="background:rgba(0,200,180,0.18);color:#fff;border:1.5px solid rgba(0,200,180,0.5);font-weight:800;font-size:15px;padding:13px 26px;border-radius:12px;cursor:pointer;">
-                    Start Test &#9654;
-                </button>
+                <button id="examBtn" style="background:linear-gradient(90deg,#38bdf8,#0ea5e9);color:#052033;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.2;box-shadow:0 6px 18px rgba(0,0,0,0.25);">🎯 Exam mode<span style="font-weight:600;font-size:11px;opacity:.8;">60-minute timer &middot; auto-submit at 0</span></button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(56,189,248,0.4);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;line-height:1.2;">🧘 Casual mode<span style="font-weight:600;font-size:11px;opacity:.8;">stopwatch &middot; finish whenever you like</span></button>
             </div>
         </div>`;
     overlay.appendChild(box);
     document.body.appendChild(overlay);
-    document.getElementById('welcomeStartBtn').addEventListener('click', () => {
+    function go(m){
+        startMode(m);
         overlay.style.transition = 'opacity 0.3s';
         overlay.style.opacity = '0';
         setTimeout(() => {
@@ -605,8 +650,9 @@ function showWelcomePopup() {
             toggleTimer();
             toggleFullscreen();
         }, 300);
-    });
-    overlay.addEventListener('click', e => { if (e.target === overlay) document.getElementById('welcomeStartBtn').click(); });
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
 }
 window.addEventListener('resize', adjustMainTop);
 
@@ -664,14 +710,20 @@ function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
 function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
 
 function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
   return document.getElementById('q'+n)||
     document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
 }
 
 // ── USER ANSWER ──
 function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
   const el=document.getElementById('q'+n);
   if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   if(el&&el.tagName==='SELECT') return el.value;
   const r=document.querySelector('input[name="q'+n+'"]:checked');
@@ -691,17 +743,38 @@ function upd(){
   document.getElementById('cnt').textContent=tot+' of 40 answered';
 }
 
-// ── TIMER ──
+// ── TIMER / STOPWATCH ──
+function fmt(s){const m=Math.floor(s/60),sec=s%60;return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const badge=document.getElementById('mode-badge');
+  const d=document.getElementById('timer');
+  if(m==='exam'){
+    timerS=3600; elapsed=0;
+    d.textContent=fmt(timerS); d.title='Time remaining';
+    badge.textContent='⏳ Exam';
+    badge.style.cssText='display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:4px 10px;border-radius:9999px;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;';
+  } else {
+    timerS=3600; elapsed=0;
+    d.textContent=fmt(0); d.title='Time elapsed (stopwatch)'; d.classList.remove('warn');
+    badge.textContent='🧘 Casual';
+    badge.style.cssText='display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:4px 10px;border-radius:9999px;background:#0f172a;color:#fbbf24;border:1px solid #1e293b;';
+  }
+}
 function toggleTimer(){
   if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
 }
 function tick(){
-  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
-  timerS--;
-  const m=Math.floor(timerS/60),s=timerS%60;
+  elapsed++;
   const d=document.getElementById('timer');
-  d.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-  d.classList.toggle('warn',timerS<=300&&timerS>0);
+  if(mode==='exam'){
+    timerS--; if(timerS<0)timerS=0;
+    d.textContent=fmt(timerS);
+    d.classList.toggle('warn',timerS<=300&&timerS>0);
+    if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  } else {
+    d.textContent=fmt(elapsed);
+  }
 }
 // ── FULLSCREEN ──
 function toggleFullscreen(){
@@ -837,6 +910,46 @@ function setupSummaryDnD(){
   });
 }
 
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
 // ── NORMALIZE ──
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
@@ -855,6 +968,7 @@ function doCheck(){
   // disable inputs
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
   document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   let sc=0,p1=0,p2=0,p3=0;
   for(let i=1;i<=40;i++){
@@ -875,13 +989,37 @@ function doCheck(){
   highlightPassages();
 }
 
+const PICK={25:{g:'g2526',qs:[25,26],set:["A","E"]},26:{g:'g2526',qs:[25,26],set:["A","E"]}};
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
 function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
   const el=document.getElementById('q'+n);
   if(el&&el.classList&&el.classList.contains('dzone')){
     el.classList.add(ok?'ok':'bad');
     if(!ok){
       const sp=document.createElement('span');
       sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];
       el.insertAdjacentElement('afterend',sp);
     }
     return;
@@ -911,7 +1049,7 @@ function markQ(n,ok){
 // ── BAND ──
 function band(n){
   if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
-  if(n>=32)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
   if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
   if(n>=13)return'4.5';return'4.0';
 }
@@ -945,7 +1083,10 @@ function showResults(){
       </div>
       <div class="res-hero-info">
         <div class="res-title">${titleTxt}</div>
-        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+          <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+        </div>
       </div>
     </div>
     <div class="res-parts">
@@ -1112,7 +1253,6 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight')nextQ();
 });
 </script>
-
 <script src="/js/report-progress.js"></script>
 </body>
 </html>

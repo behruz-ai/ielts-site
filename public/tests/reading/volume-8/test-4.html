@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth-gate.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 4 (Volume 8) | bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* ── THEME ── */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+/* ── FONT SIZE CONTROL ── */
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ── HEADER ── */
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+/* ── BANNER ── */
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+/* ── MAIN SPLIT ── */
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+/* ── PASSAGE TABS ── */
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+/* ── QUESTIONS ── */
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+/* notes / inline block */
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+/* TF / MC options */
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+/* selects / text inputs */
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+/* feature / word list boxes */
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+/* ── SUMMARY DRAG & DROP (word bank → gaps) ── */
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+/* ── BOTTOM NAV ── */
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+/* ── HIGHLIGHT (shohrukhposts style: select → button → yellow mark) ── */
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+/* ── MODALS ── */
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+/* results */
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+/* ── FLASHY RESULTS ── */
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+/* ── REAL-EXAM MATCHING MATRIX ── */
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+/* ── MATCHING HEADINGS (drag into passage) ── */
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+/* ── lifted completion blocks ── */
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<!-- BANNER -->
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1–13.</span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <!-- LEFT -->
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">The Pixar Story</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p>The animation studio Pixar has experienced a number of challenges in its short history</p>
+          <p><span class="pl">A</span>Between 2000 and 2005, under former Chief Executive Officer (CEO) Michael D. Eisner, the Walt Disney Company set its shareholder meetings in a series of cold-weather cities during cold-weather months. Many suspected that this had been done to discourage attendance by the company's increasingly restless shareholders. In 2006, however, there was no need for such measures. In October 2005, Chief Operating Officer Robert Iger had replaced Eisner as CEO. On taking charge, Iger quickly carried out a bold move, negotiating a buyout of Pixar Animation Studios. Although the price was high, the acquisition proved to be overwhelmingly popular.</p>
+          <p><span class="pl">B</span>Pixar had started life twenty years earlier as Pixar Inc., a computer hardware company, one of hundreds dotting the landscape of the San Francisco Bay Area in California. Within the company, a tiny animation group made short promotional films that brought in practically no revenue; the group came close more than once to being shut down. When the Pixar Image Computer proved unprofitable, the company turned to selling animation software and making animated commercials, but it continued to lose money year after year.</p>
+          <p><span class="pl">C</span>In 1991, when Disney agreed to finance the production of Pixar's first feature film for cinema release, Disney largely dictated the terms of the contract. In late 1993, Disney considered ordering Pixar to shut down production of the John Lasseter-directed film Toy Story because of problems with the script. At the time, Hollywood commentators doubted whether audiences would even sit through a full-length film made using the new medium of computer animation. It was unclear whether computer animation would prove to be a novelty that would quickly wear thin.</p>
+          <p><span class="pl">D</span>Before long, however, circumstances changed dramatically. A succession of critically acclaimed and commercially successful animated feature films, beginning with the release of Toy Story in 1995 and followed by A Bug's Life and Finding Nemo, made Pixar the world's leading animation studio. Disney eamed enormous profits from distributing the films. When Pixar's majority owner and CEO, Steve Jobs, cut off contract talks with Disney in early 2004, the business press focused on how Disney would cope. By that time, Pixar films accounted for approximately 45 per cent of the operating income from Disney's film operations. Internal market research also showed that mothers of young children trusted the Pixar brand more than Disney's.</p>
+          <p><span class="pl">E</span>As a result of the 2005 acquisition, John Lasseter soon assumed the roles of Chief Creative Officer for both Disney and Pixar Animation, as well as Principal Creative Adviser for Disney's theme parks and resorts worldwide. Having helped to create a new genre of film at Pixar, Lasseter returned to Disney on his own terms, despite having briefly worked there earlier in his career.</p>
+          <p><span class="pl">F</span>When Iger invited Lasseter to speak at the 2006 shareholders' meeting, he was greeted with enthusiastic applause accompanied by a few bars of the Toy Story theme music. Lasseter spoke about his childhood love of Bugs Bunny cartoons and described working as a ride operator on Disneyland's Jungle Cruise, where telling jokes helped him gain confidence in public speaking. He also recalled studying at the California Institute of the Arts and the frustration he felt when Disney initially rejected computer animation technology. He concluded by explaining how he followed his dream to work with Ed Catmull.</p>
+          <p><span class="pl">G</span>Dr Edwin Catmull, then sixty-one years old and president of Pixar, was seated among the shareholders. Originally a computer graphics researcher, Catmull had moved unexpectedly into business leadership. He was widely regarded as brilliant, yet known for listening rather than dominating conversations, and when he spoke his manner was consistently friendly and courteous.</p>
+          <p><span class="pl">H</span>Although Catmull built on the work of others, the revolution in three-dimensional animation was largely his achievement. He maintained a long-term vision of fully computer-animated films and, while leading computer graphics laboratories at the New York Institute of Technology and at George Lucas's Lucasfilm, assembled the technical and creative teams that would later form the core of Pixar Animation Studios.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">A Mechanical Friend for Children</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p><span class="pl">A</span>The development of robots that interact socially with people and assist them in everyday life has been an elusive goal of modem science. Despite impressive advances in the mechanical aspects of this problem, producing robots that bond and socialize with people for sustained periods of time has proven difficult. The most successful robots so far have been storytellers, but they have only been able to maintain human interest for a limited time and typically rely on the robot telling stories that change over time. In practice, commercially available robots seldom cross the 10-hour barrier (i.e. individual users tend to spend less than a combined total of 10 hours with the robots before losing interest). This observation is in sharp contrast to the long-term interactions and bonding that commonly develop between humans and their pets.</p>
+          <p><span class="pl">B</span>In a recent study, researchers from the Institute for Neural Computation in California introduced a state-of-the-art social robot into a classroom of 18- to 24-month-olds for five months as a way of studying human/robot interactions. The researchers, including Fumihide Tanaka and Javier R Movellan, introduced a toddler-sized humanoid robot into a classroom at a childhood education center. One of the QRIO series of robots, the 58cm machine, was originally developed by Sony. Children of toddler age were chosen because they have no preconceived notions of robots, according to Tanaka. One of the goals of the study was to establish whether it was possible for social robots to maintain the interest of children beyond the 10-hour barrier.</p>
+          <p><span class="pl">C</span>The researchers sent instructions to the robot about every two minutes to do things like giggle, dance, sit down, fall down or walk in a certain direction. The 45 sessions were videotaped, and interactions between toddlers and the robot were later analyzed. The results showed that the quality of those interactions improved steadily over 27 sessions. The interactions deteriorated quickly over the next 15 sessions, when the robot was ordered to behave in a more limited, predictable manner. Finally, the human/robot relations improved in the last three sessions, after the robot had been instructed to display its full range of behaviors.</p>
+          <p><span class="pl">D</span>'Initially the children treated the robot very differently from the way they treated each other, Tanaka said. 'Early in the study some children cried when QRIO fell. But a month into the study, the toddlers helped QRIO stand up by pushing its back or pulling its hands.' The most important aspect of interaction was touch, Tanaka said. At first the toddlers would touch the robot on its face, but later on they would touch it only on its hands and arms, like they would with other humans. Another robot-like toy named Robby, which resembled QRIO but did not move, was used as a control in the study. While hugging of QRIO increased, hugging of Robby decreased throughout the study. Furthermore, when QRIO laid down on the floor as its batteries ran down, a toddler would put a blanket over his silver-colored 'friend' and say 'night-night'. Care-taking behaviors were frequently observed toward QRIO but seldom toward Robby.</p>
+          <p><span class="pl">E</span>The study concluded that after 45 days of immersion in a childcare center over a period of five months, long-term bonding and socialization occurred between toddlers and a state-of-the-art social robot. Overall, the interaction between children and the robot improved over time and the children progressively treated it more as a peer than a plaything. 'To my knowledge, this is the first long-term study of this sort,' said Ronald Arkin, a roboticist at the Georgia Institute of Technology in the US.</p>
+          <p><span class="pl">F</span>Tanaka and Movellan are now developing autonomous robots for the toddler classroom. 'It could have great potential in educational settings assisting teachers and enriching the classroom environment,' Tanaka said. The researchers hope that more advanced versions of robots like QRIO could become personalized tutors to assist teachers in classrooms. A robotic tutor could react on the spot to social cues and approximate social skills like facial expression and eye gaze, they said. 'It is becoming clear that, to achieve this goal, we are going to [need to] endow machines with something similar to emotion, not just traditional forms of intelligence,' said Movellan.</p>
+          <p><span class="pl">G</span>Associate professor David Powers, an expert in artificial intelligence and cognitive science at Flinders University in South Australia, commented, 'In this study it is clearly demonstrated that limited range of robot behaviors, however impressive, is nowhere near as important to human/robot interaction as being able to make appropriate responses from a broad repertoire of behaviors'. Ronald Arkin was not surprised by the affection demonstrated by the toddlers toward the robot. 'Humans have a tremendous propensity to bond with artifacts, whether it be a car, a doll, or a robot,' he said. But he also cautioned that researchers do not yet understand the consequences of increased human/robot interaction. 'Studying how robots and humans work together can give us insight into whether this is a good thing or a bad thing for society,' Arkin said. 'We need to find out what the consequences are of introducing a robot into a cadre of children. How will that enhance, or potentially interfere with, their social development? Do we really understand the long-term impact of having a robot as a childhood friend?'</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">The Peopling of Patagonia</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p><span class="pl">A</span>The human settlement of the southern extremity of the Americas has always fascinated pre-historians. Viewed from a global perspective, this was the last major continental land mass to be reached by human beings. The earliest occupation of Patagonia carries obvious implications for understanding when the North and South American continents were peopled, because it gives a baseline that all calculations regrading the rate of dispersion of humans throughout both continents must take into account.</p>
+          <p><span class="pl">B</span>For many years the human settlement of North and South America has been conceived of as beginning in the far north and travelling progressively southwards to Patagonia. However, fundamental disagreements developed concerning the length of time involved. Some scholars accepted a human presence in the Americas as early as 20,000 years ago, while others proposed that it could date no earlier than 8,000 years ago, and the debate is still with us today.</p>
+          <p><span class="pl">C</span>The idea of a relatively 'late' settlement of the Americas (around 8,000 years ago) implies that a rapid process of migration took place. Herein lies a second debate which revolves around the question of how migration is to be understood. The 'late' model demands a hypothetical migration conceived of as a single continually advancing wave of settlement. This has always been difficult to take seriously and many scholars now support the idea of an 'early' model that sees the migration as a less ordered migration, and this is surely the most realistic scenario as migrants slowly adapted to the diverse natural habitats they would have met while travelling through the continent.</p>
+          <p><span class="pl">D</span>Those who argue for an earlier settlement, however, must contend with the lack of unequivocal evidence for archaeological sites older than around 14,000 years. Nevertheless, evidence for human occupation of the centre of South America is now securely dated to around 12,500 years ago at the Monte Verde site, which casts doubt on the 'late' model. The lack of archaeological evidence further south for this time period may be explained by the obstacle to humans on foot posed by the huge glacial streams that were present at that time.</p>
+          <p><span class="pl">E</span>We can speculate then that the retreat of the Patagonian glaciers around 14,000 years ago allowed the initial human intrusion into a pristine environment, which was similar to that of early post-glacial Europe. Human settlement of the vast horizontal expanse of treeless high country must have been tenuous at best, and the evidence for this occupation remains relatively scant, most of it coming from rock shelters in Argentina and Chile. There is, however, reliable evidence from these sites to confirm the presence of humans by around 11,000 years ago in different habitats and some hints of an even older occupation. However, some other sites where evidence for even earlier human occupation was initially posited, have recently come under fresh scrutiny. This is because anthropologists have come to recognise that bones or other evidence may be deposited in caves by natural agency, in other words by other forces such as floods or predators, and not necessarily by humans.</p>
+          <p><span class="pl">F</span>We shall turn now to a more detailed discussion of the archaeological evidence found in various parts of Patagonia. At the site located beside Chinchihuapi Creek, excavations have produced convincing evidence of human occupation, including hut foundations and wooden artefacts. They were buried in layers of peat, which has the property of preserving wood remarkably well, and as a result radiocarbon dating* tests have shown these artefacts to date from around 12,500 years ago. One of the most famous Patagonian sites is a cave known as Los Toldos. However, the evidence from this site has recently been called into question, because dispersed flecks of carbon used in the test process were taken unsystematically from many different places in the site. As a result, the association of this material with the artefacts is not at all clear. About 150 kilometres south is the site called El Ceibo, where a similar collection of artefacts to that found at Los Toldos has been discovered from the lowest levels of the dig, but as yet no radiocarbon dates are available and this sort of analysis of the existing evidence is required before the site's value can be confirmed.</p>
+          <p><span class="pl">G</span>The Arroyo Feo site is located very close to the high plateau. The artefacts from the earliest occupations were found at the same depth and have the same origins as those from Los Toldos, and have been securely dated to around 9,000 years ago. Another site that is mentioned in the debate is at Las Buitreras, where a number of stone flakes associated with bone remains of various animals have been discovered. However, anthropologists now believe that presumed cut marks on the bones are somewhat dubious, and despite detailed testing there is no way of securely relating any of these remains with human occupation. Finally some 50 kilometres to the south is the site at Cueva Fell, which was the first Patagonian site to be systematically studied by modern archaeological methods. However, it is now recognised that the utility of this site must be restricted to its direct vicinity, given changes to the nearby area caused by flooding, and findings cannot be freely extrapolated further afield.</p>
+          <p><span class="pl">H</span>In conclusion, based on the evidence from a number of reliable sites, it seems probable that human populations reached Patagonia around 11,000 years ago.</p>
+    </div>
+  </div>
+
+  <div id="drag"></div>
+
+  <!-- RIGHT -->
+  <div id="right-pane">
+    <div class="qsec on" id="qs1"><p class="qnum-head"><em>Questions 1&ndash;6</em></p><p class="qinst">Do the following statements agree with the information given in Reading Passage 1?</p><p class="qinst"><strong>TRUE</strong> if the statement agrees with the information<br>
+          <strong>FALSE</strong> if the statement contradicts the information<br>
+          <strong>NOT GIVEN</strong> if there is no information on this</p><div class="qitem"><p class="qprompt"><strong>1.</strong>&nbsp; Robert Iger had a low opinion of Michael D. Eisner.</p><div class="rgroup" id="rg1"><label class="rlabel"><input type="radio" name="q1" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q1" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q1" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>2.</strong>&nbsp; Pixar Inc. had extremely limited financial success in its early years.</p><div class="rgroup" id="rg2"><label class="rlabel"><input type="radio" name="q2" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q2" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q2" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>3.</strong>&nbsp; There were difficulties during the production of the film Toy Story.</p><div class="rgroup" id="rg3"><label class="rlabel"><input type="radio" name="q3" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q3" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q3" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>4.</strong>&nbsp; In the early 1990s, Hollywood commentators were convinced animated films had a promising future.</p><div class="rgroup" id="rg4"><label class="rlabel"><input type="radio" name="q4" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q4" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q4" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>5.</strong>&nbsp; Finding Nemo was more popular than Toy Story.</p><div class="rgroup" id="rg5"><label class="rlabel"><input type="radio" name="q5" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q5" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q5" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>6.</strong>&nbsp; In 2004, Pixar contributed little to Disney's income from its film operations.</p><div class="rgroup" id="rg6"><label class="rlabel"><input type="radio" name="q6" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q6" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q6" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><p class="qnum-head"><em>Questions 7&ndash;13</em></p><p class="qinst">Complete the notes below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="sbox"><p><strong>Lasseter and Catmull - a professional success story</strong><br><br>
+            <strong>John Lasseter</strong><br>
+            • was keen on watching Bugs Bunny cartoons when he was a schoolboy<br>
+            • worked as a ride <strong>7</strong> <input type="text" class="ai sm" id="q7" oninput="upd()"> at Disneyland which increased his <strong>8</strong> <input type="text" class="ai sm" id="q8" oninput="upd()"><br>
+            • attended California Institute of the Arts<br>
+            • suffered <strong>9</strong> <input type="text" class="ai sm" id="q9" oninput="upd()"> over rejection of new technology by Disney studio<br><br>
+            <strong>Ed Catmull</strong><br>
+            • was Pixar's <strong>10</strong> <input type="text" class="ai sm" id="q10" oninput="upd()"> at time of shareholder meeting in 2006<br>
+            • preferred <strong>11</strong> <input type="text" class="ai sm" id="q11" oninput="upd()"> to taking control of conversations<br>
+            • did not let go of his <strong>12</strong> <input type="text" class="ai sm" id="q12" oninput="upd()"> for computer animated films<br>
+            • ran various computer graphics laboratories<br>
+            • brought together the various teams on which the <strong>13</strong> <input type="text" class="ai sm" id="q13" oninput="upd()"> of Pixar would be founded</p></div></div>
+    <div class="qsec" id="qs2"><p class="qnum-head"><em>Questions 14&ndash;18</em></p><p class="qinst">Which paragraph contains the following information? Write the correct letter <strong>A–G</strong>.</p><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">14</span> a comparison of children's reactions towards different robots</td><td><label class="mx-cell"><input type="radio" name="q14" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="G" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">15</span> a speculation about ways robots may be able to communicate</td><td><label class="mx-cell"><input type="radio" name="q15" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="G" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">16</span> a description of changes in the way the children physically handled a robot</td><td><label class="mx-cell"><input type="radio" name="q16" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="G" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">17</span> a comparison between people's connections with animals and their connections with robots</td><td><label class="mx-cell"><input type="radio" name="q17" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="G" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">18</span> an account of the way one robot was programmed</td><td><label class="mx-cell"><input type="radio" name="q18" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="G" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 19&ndash;23</em></p><p class="qinst">Match each statement with the correct person, A-D.</p><div class="fbox"><strong>List of People</strong><div class="frow"><span class="fkey">A</span> Fumihide Tanaka</div><div class="frow"><span class="fkey">B</span> Javier R. Movellan</div><div class="frow"><span class="fkey">C</span> Ronald Arkin</div><div class="frow"><span class="fkey">D</span> David Powers</div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">19</span> In future, robots will not only have to think, but also to show feelings.</td><td><label class="mx-cell"><input type="radio" name="q19" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">20</span> It is uncertain whether more contact between people and robots will be beneficial.</td><td><label class="mx-cell"><input type="radio" name="q20" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q20" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">21</span> Very young children have not yet developed ideas about robots.</td><td><label class="mx-cell"><input type="radio" name="q21" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q21" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">22</span> Robots need to perform a wide variety of actions for people to relate to them.</td><td><label class="mx-cell"><input type="radio" name="q22" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">23</span> Using robots as an aid in schools may have many benefits.</td><td><label class="mx-cell"><input type="radio" name="q23" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="D" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 24&ndash;26</em></p><p class="qinst">Complete the sentences below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="qitem"><p class="qprompt"><strong>24.</strong>&nbsp; Until recently, robots that were best at holding people's attention were those that acted as <input type="text" class="answer-input inline-input" id="q24" oninput="updateAllIndicators()">.</p></div><div class="qitem"><p class="qprompt"><strong>25.</strong>&nbsp; The children responded to the QRIO robot as a friend or <input type="text" class="answer-input inline-input" id="q25" oninput="updateAllIndicators()"> rather than as a toy.</p></div><div class="qitem"><p class="qprompt"><strong>26.</strong>&nbsp; Arkin expected that the children would show <input type="text" class="answer-input inline-input" id="q26" oninput="updateAllIndicators()"> towards the QRIO robot.</p></div></div>
+    <div class="qsec" id="qs3"><p class="qnum-head"><em>Questions 27&ndash;31</em></p><p class="qinst">Choose the correct letter, A–D.</p><div class="qitem"><p class="qprompt"><strong>27.</strong>&nbsp; In the first paragraph, what is the writer's main point about migration to Patagonia?</p><div class="rgroup" id="rg27"><label class="rlabel"><input type="radio" name="q27" value="A" onchange="upd()"> <strong>A</strong>&nbsp; It started earlier than previously thought.</label><label class="rlabel"><input type="radio" name="q27" value="B" onchange="upd()"> <strong>B</strong>&nbsp; Historians have overlooked its importance.</label><label class="rlabel"><input type="radio" name="q27" value="C" onchange="upd()"> <strong>C</strong>&nbsp; It impacts on research into the wider region.</label><label class="rlabel"><input type="radio" name="q27" value="D" onchange="upd()"> <strong>D</strong>&nbsp; Researchers have calculated its effects on the environment.</label></div></div><div class="qitem"><p class="qprompt"><strong>28.</strong>&nbsp; In the second paragraph, what is the writer's purpose?</p><div class="rgroup" id="rg28"><label class="rlabel"><input type="radio" name="q28" value="A" onchange="upd()"> <strong>A</strong>&nbsp; to challenge previous research</label><label class="rlabel"><input type="radio" name="q28" value="B" onchange="upd()"> <strong>B</strong>&nbsp; to propose new areas to investigate</label><label class="rlabel"><input type="radio" name="q28" value="C" onchange="upd()"> <strong>C</strong>&nbsp; to summarise a scholarly debate</label><label class="rlabel"><input type="radio" name="q28" value="D" onchange="upd()"> <strong>D</strong>&nbsp; to suggest reasons for human migration</label></div></div><div class="qitem"><p class="qprompt"><strong>29.</strong>&nbsp; The writer refers to the 'late' model in order to</p><div class="rgroup" id="rg29"><label class="rlabel"><input type="radio" name="q29" value="A" onchange="upd()"> <strong>A</strong>&nbsp; compare it with another theory of migration.</label><label class="rlabel"><input type="radio" name="q29" value="B" onchange="upd()"> <strong>B</strong>&nbsp; evaluate the success of American migration.</label><label class="rlabel"><input type="radio" name="q29" value="C" onchange="upd()"> <strong>C</strong>&nbsp; criticise the speed of research into migration.</label><label class="rlabel"><input type="radio" name="q29" value="D" onchange="upd()"> <strong>D</strong>&nbsp; compare migration in different parts of the world.</label></div></div><div class="qitem"><p class="qprompt"><strong>30.</strong>&nbsp; What is the writer's main point about the 'early' model?</p><div class="rgroup" id="rg30"><label class="rlabel"><input type="radio" name="q30" value="A" onchange="upd()"> <strong>A</strong>&nbsp; Scholars support the idea of fast migrations.</label><label class="rlabel"><input type="radio" name="q30" value="B" onchange="upd()"> <strong>B</strong>&nbsp; It is too random to be convincing theory.</label><label class="rlabel"><input type="radio" name="q30" value="C" onchange="upd()"> <strong>C</strong>&nbsp; South America was more habitable at an earlier time.</label><label class="rlabel"><input type="radio" name="q30" value="D" onchange="upd()"> <strong>D</strong>&nbsp; It is more consistent with the physical conditions of the land.</label></div></div><div class="qitem"><p class="qprompt"><strong>31.</strong>&nbsp; What does the writer suggest about the Monte Verde site?</p><div class="rgroup" id="rg31"><label class="rlabel"><input type="radio" name="q31" value="A" onchange="upd()"> <strong>A</strong>&nbsp; It is much younger than researchers once estimated.</label><label class="rlabel"><input type="radio" name="q31" value="B" onchange="upd()"> <strong>B</strong>&nbsp; It provides supporting evidence for relatively early settlement</label><label class="rlabel"><input type="radio" name="q31" value="C" onchange="upd()"> <strong>C</strong>&nbsp; Archaeologists believe the site is of questionable value.</label><label class="rlabel"><input type="radio" name="q31" value="D" onchange="upd()"> <strong>D</strong>&nbsp; Streams exposed the site, making new research possible.</label></div></div><p class="qnum-head"><em>Questions 32&ndash;35</em></p><p class="qinst">Do the following statements agree with the claims of the writer?</p><p class="qinst"><strong>YES</strong> if the statement agrees<br>
+          <strong>NO</strong> if the statement contradicts the writer<br>
+          <strong>NOT GIVEN</strong> if it is impossible to say</p><div class="qitem"><p class="qprompt"><strong>32.</strong>&nbsp; The first settlers encountered conditions found nowhere else in the world.</p><div class="rgroup" id="rg32"><label class="rlabel"><input type="radio" name="q32" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q32" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q32" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>33.</strong>&nbsp; Early settlers in highland areas relied mainly on hunting.</p><div class="rgroup" id="rg33"><label class="rlabel"><input type="radio" name="q33" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q33" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q33" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>34.</strong>&nbsp; Archaeologists have drawn no conclusions from rock-shelter evidence.</p><div class="rgroup" id="rg34"><label class="rlabel"><input type="radio" name="q34" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q34" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q34" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>35.</strong>&nbsp; Archaeological material can be relocated by natural processes.</p><div class="rgroup" id="rg35"><label class="rlabel"><input type="radio" name="q35" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q35" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q35" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><p class="qnum-head"><em>Questions 36&ndash;40</em></p><p class="qinst">Complete the summary below. Choose the correct letter <strong>A-J</strong>.</p><div class="fbox"><strong>List of Words</strong><div class="frow"><span class="fkey">A</span> Fixed Date</div><div class="frow"><span class="fkey">B</span> random collection</div><div class="frow"><span class="fkey">C</span> similar properties</div><div class="frow"><span class="fkey">D</span> good condition</div><div class="frow"><span class="fkey">E</span> scientific evaluation</div><div class="frow"><span class="fkey">F</span> huge quantities</div><div class="frow"><span class="fkey">G</span> new samples</div><div class="frow"><span class="fkey">H</span> reliable connection</div><div class="frow"><span class="fkey">I</span> skilled preservation</div><div class="frow"><span class="fkey">J</span> immediate surroundings</div></div><div class="sbox"><p><strong>The archaeological evidence from Patagonia</strong><br><br>
+            Building remains and other evidence have been found in <strong>36</strong> 
+            <select class="ai" id="q36" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select> 
+            at the Chinchihuapi Creek site, and because of this it has been possible to date them at around 12,500 years ago. However, the <strong>37</strong> 
+            <select class="ai" id="q37" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select> 
+            of the sample taken from Los Toldos, the means that this site is of doubtful value. El Ceibo is a more promising dig, where the examination of artefacts would be beneficial in order to confirm the usefulness of discoveries there. The remains found at the Arroyo Feo site show <strong>38</strong> 
+            <select class="ai" id="q38" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select> 
+            and date from around 9,000 years ago. Unfortunately, no <strong>39</strong> 
+            <select class="ai" id="q39" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select> 
+            connection can be made between the samples taken from Las Buitreras and human presence. The findings of the work carried out at Cueva Fell cannot provide useful information beyond the <strong>40</strong> 
+            <select class="ai" id="q40" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option></select> 
+            immediate area. In conclusion, though the evidence is mixed, it is believed that human population of Patagonia began about 11,000 years ago.</p></div></div>
+  </div><!-- /right-pane -->
+</div><!-- /main -->
+
+<!-- BOTTOM NAV -->
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<!-- Highlight button is created dynamically in JS (#hlBtn) -->
+
+<!-- RESULTS MODAL -->
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ANSWERS ──
+const CA = {
+  '1':  'NOT GIVEN',
+  '2':  'TRUE',
+  '3':  'TRUE',
+  '4':  'FALSE',
+  '5':  'NOT GIVEN',
+  '6':  'FALSE',
+  '7':  'operator',
+  '8':  'confidence',
+  '9':  'frustration',
+  '10': 'president',
+  '11': 'listening',
+  '12': 'vision',
+  '13': 'core',
+  '14': 'D',
+  '15': 'F',
+  '16': 'D',
+  '17': 'A',
+  '18': 'C',
+  '19': 'B',
+  '20': 'C',
+  '21': 'A',
+  '22': 'D',
+  '23': 'A',
+  '24': 'storytellers',
+  '25': 'peer',
+  '26': 'affection',
+  '27': 'C',
+  '28': 'C',
+  '29': 'A',
+  '30': 'D',
+  '31': 'B',
+  '32': 'NO',
+  '33': 'NOT GIVEN',
+  '34': 'NO',
+  '35': 'YES',
+  '36': 'D',
+  '37': 'B',
+  '38': 'C',
+  '39': 'H',
+  '40': 'J'
+};
+const CAL = {
+  '1':'NOT GIVEN','2':'TRUE','3':'TRUE','4':'FALSE','5':'NOT GIVEN','6':'FALSE',
+  '7':'operator','8':'confidence','9':'frustration','10':'president','11':'listening','12':'vision','13':'core',
+  '14':'D','15':'F','16':'D','17':'A','18':'C','19':'B','20':'C','21':'A','22':'D','23':'A',
+  '24':'storytellers','25':'peer','26':'affection',
+  '27':'C','28':'C','29':'A','30':'D','31':'B','32':'NO','33':'NOT GIVEN','34':'NO','35':'YES',
+  '36':'D (good condition)','37':'B (random collection)','38':'C (similar properties)','39':'H (reliable connection)','40':'J (immediate surroundings)'
+};
+
+// ── STATE ──
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+// ── INIT ──
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,8,16,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(56,189,248,0.07);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="position:relative;width:70px;height:70px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+                <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);border-radius:50%;box-shadow:0 0 26px 6px rgba(56,189,248,0.22);"></div>
+                <div style="position:relative;font-size:42px;">📖</div>
+            </div>
+            <div style="display:inline-block;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(251,191,36,0.35);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">🎯 <strong>Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong>Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:linear-gradient(90deg,#38bdf8,#0ea5e9);color:#052033;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(56,189,248,0.4);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+// ── PART / PASSAGE ──
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.ptab').forEach((t,i)=>t.classList.toggle('on',i===n-1));
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+// ── Q ROW ──
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+// ── NAVIGATION ──
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+// ── USER ANSWER ──
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+// ── UPDATE INDICATORS ──
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+// ── TIMER ──
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='\uD83E\uDDD8 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0f172a;color:#fbbf24;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='\uD83C\uDFAF Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+// ── FULLSCREEN ──
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+// ── THEME (light → dark → night) ──
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+// ── TEXT SIZE ──
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+// ── DRAG DIVIDER ──
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+// ── DRAG & DROP (multi-bank: each .wbank scopes its own chips+zones) ──
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">\u00d7</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+// ── CHOOSE-TWO CHECKBOX GROUPS ──
+const PICK={};
+
+// ── MATCHING HEADINGS (drag heading card into passage drop-slot) ──
+const MHLABELS={'i':'Training coin makers','ii':'A form of regional promotion','iii':'More gold than silver in Greece','iv':'Calculating what a coin was worth','v':'A simpler, more efficient way of trading','vi':'Putting a face to famous historical names','vii':'An uncertain future','viii':'Careless workmanship caused breakages','ix':'Unchanging coins signalled trustworthiness','x':'Reading the writing on coins','xi':'Significant records of past societies'};
+let armedHeading=null;
+function setupMatchingHeadings(){
+  const cards=[...document.querySelectorAll('.mh-heading-card')];
+  const slots=[...document.querySelectorAll('.mh-drop-slot')];
+  if(!cards.length||!slots.length)return;
+  cards.forEach(card=>{
+    card.addEventListener('dragstart',e=>{if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);e.dataTransfer.effectAllowed='move';});
+    card.addEventListener('click',()=>{if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(c=>c.classList.remove('armed'));armedHeading=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+  });
+  slots.forEach(slot=>{
+    slot.addEventListener('dragstart',e=>{if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+    slot.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('dragover'));
+    slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)assignHeading(slot,code);});
+    slot.addEventListener('click',()=>{if(checked)return;if(armedHeading){assignHeading(slot,armedHeading);armedHeading=null;document.querySelectorAll('.mh-heading-card').forEach(c=>c.classList.remove('armed'));}else if(slot.dataset.val){clearHeadingSlot(slot);}});
+  });
+  let ghost=null,tCard=null;
+  cards.forEach(card=>{
+    card.addEventListener('touchstart',e=>{if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+    card.addEventListener('touchmove',e=>{if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.toggle('dragover',ss===s));},{passive:false});
+    card.addEventListener('touchend',e=>{if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.remove('dragover'));ghost.remove();ghost=null;if(s&&tCard)assignHeading(s,tCard.dataset.code);tCard=null;});
+  });
+}
+function assignHeading(slot,code){
+  if(checked)return;
+  document.querySelectorAll('.mh-drop-slot').forEach(s=>{if(s!==slot&&s.dataset.val===code)clearHeadingSlot(s);});
+  if(slot.dataset.val)clearHeadingSlot(slot);
+  slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+MHLABELS[code];slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+  const card=document.querySelector('.mh-heading-card[data-code="'+code+'"]');if(card)card.classList.add('used');
+  upd();
+}
+function clearHeadingSlot(slot){
+  const old=slot.dataset.val;if(old){const card=document.querySelector('.mh-heading-card[data-code="'+old+'"]');if(card)card.classList.remove('used');}
+  slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');
+  upd();
+}
+
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+// ── NORMALIZE ──
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+// ── CHECK ──
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  // disable inputs
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='\u2794 '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  // radio
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+// ── BAND ──
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+// ── RESULT ROWS ──
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+// ── SHOW RESULTS ──
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+// ── PASSAGE HIGHLIGHTS ──
+const P1H=[
+  {q:2,  t:'brought in practically no revenue'},
+  {q:3,  t:'Disney considered ordering Pixar to shut down production... because of problems with the script'},
+  {q:4,  t:'Hollywood commentators doubted whether audiences would even sit through a full-length film made using the new medium'},
+  {q:6,  t:'Pixar films accounted for approximately 45 per cent of the operating income'},
+  {q:7,  t:'working as a ride operator on Disneyland\'s Jungle Cruise'},
+  {q:8,  t:'helped him gain confidence in public speaking'},
+  {q:9,  t:'the frustration he felt when Disney initially rejected computer animation technology'},
+  {q:10, t:'Dr Edwin Catmull, then sixty-one years old and president of Pixar'},
+  {q:11, t:'known for listening rather than dominating conversations'},
+  {q:12, t:'maintained a long-term vision of fully computer-animated films'},
+  {q:13, t:'assembled the technical and creative teams that would later form the core of Pixar'}
+];
+const P2H=[
+  {q:14, t:'While hugging of QRIO increased, hugging of Robby decreased'},
+  {q:15, t:'A robotic tutor could react on the spot to social cues and approximate social skills like facial expression and eye gaze'},
+  {q:16, t:'At first the toddlers would touch the robot on its face, but later on they would touch it only on its hands and arms'},
+  {q:17, t:'This observation is in sharp contrast to the long-term interactions and bonding that commonly develop between humans and their pets.'},
+  {q:18, t:'researchers sent instructions to the robot about every two minutes to do things like giggle, dance, sit down'},
+  {q:19, t:'endow machines with something similar to emotion'},
+  {q:20, t:'gives us insight into whether this is a good thing or a bad thing for society'},
+  {q:21, t:'Children of toddler age were chosen because they have no preconceived notions of robots'},
+  {q:22, t:'nowhere near as important to human/robot interaction as being able to make appropriate responses from a broad repertoire of behaviors'},
+  {q:23, t:'great potential in educational settings assisting teachers and enriching the classroom environment'},
+  {q:24, t:'The most successful robots so far have been storytellers'},
+  {q:25, t:'treated it more as a peer than a plaything'},
+  {q:26, t:'not surprised by the affection demonstrated by the toddlers toward the robot'}
+];
+const P3H=[
+  {q:27, t:'gives a baseline that all calculations regrading the rate of dispersion of humans throughout both continents must take into account'},
+  {q:28, t:'fundamental disagreements developed concerning the length of time involved'},
+  {q:29, t:'The \'late\' model demands a hypothetical migration conceived of as a single continually advancing wave... many scholars now support the idea of an \'early\' model'},
+  {q:30, t:'the most realistic scenario as migrants slowly adapted to the diverse natural habitats'},
+  {q:31, t:'securely dated to around 12,500 years ago at the Monte Verde site, which casts doubt on the \'late\' model'},
+  {q:32, t:'pristine environment, which was similar to that of early post-glacial Europe'},
+  {q:34, t:'There is, however, reliable evidence from these sites to confirm the presence of humans'},
+  {q:35, t:'bones or other evidence may be deposited in caves by natural agency'},
+  {q:36, t:'preserving wood remarkably well'},
+  {q:37, t:'taken unsystematically from many different places'},
+  {q:38, t:'have the same origins as those from Los Toldos'},
+  {q:39, t:'no way of securely relating any of these remains with human occupation'},
+  {q:40, t:'utility of this site must be restricted to its direct vicinity'}
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+// ── HIGHLIGHT SYSTEM (shohrukhposts style) ──
+// Select text in a pane → "🖊 Highlight" button pops above the selection.
+// Click it → yellow highlight. Click any highlight once → it's removed.
+// Works on desktop (mouseup) and mobile (touchend).
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault()); // keep the text selection alive
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  // Click an existing highlight to remove it (ignore the auto-answer highlights).
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+// ── CHOOSE-TWO multiple choice (q20/q21) ──
+function mc2upd(box){
+  var base=Number(box.dataset.base);
+  var boxes=[].slice.call(document.querySelectorAll('.mc2box[data-base="'+base+'"]'));
+  if(boxes.filter(function(b){return b.checked;}).length>2){ box.checked=false; return; }
+  var vals=boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;});
+  document.getElementById('q'+base).value=vals[0]||'';
+  document.getElementById('q'+(base+1)).value=vals[1]||'';
+  upd();
+}
+function mc2review(){
+  document.querySelectorAll('.mc2box').forEach(function(b){
+    var base=Number(b.dataset.base);
+    var correct=[].concat(CA[base]).concat(CA[base+1]);
+    var lb=b.closest('label'); if(!lb)return;
+    if(correct.indexOf(b.value)>=0) lb.classList.add('ok');
+    else if(b.checked) lb.classList.add('bad');
+  });
+}
+(function(){ if(typeof doCheck==='function'){ var _d=doCheck; doCheck=function(){ _d.apply(this,arguments); try{mc2review();}catch(e){} }; } })();
+
+/* per-bank matching-headings override */
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+<script src="/js/report-progress.js"></script>
+</body>
+</html>

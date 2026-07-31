@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth-gate.js"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 3 (Volume 8) | bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* ── THEME ── */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+/* ── FONT SIZE CONTROL ── */
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ── HEADER ── */
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+/* ── BANNER ── */
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+/* ── MAIN SPLIT ── */
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+/* ── PASSAGE TABS ── */
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+/* ── QUESTIONS ── */
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+/* notes / inline block */
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+/* TF / MC options */
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+/* selects / text inputs */
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+/* feature / word list boxes */
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+/* ── SUMMARY DRAG & DROP (word bank → gaps) ── */
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+/* ── BOTTOM NAV ── */
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+/* ── HIGHLIGHT (shohrukhposts style: select → button → yellow mark) ── */
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+/* ── MODALS ── */
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+/* results */
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+/* ── FLASHY RESULTS ── */
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+/* ── REAL-EXAM MATCHING MATRIX ── */
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+/* ── MATCHING HEADINGS (drag into passage) ── */
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+/* ── lifted completion blocks ── */
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<!-- BANNER -->
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1–13.</span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <!-- LEFT -->
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">The History of the Chicken</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p>The story begins 10,000 years ago in a jungle in Asia and ends today in kitchens all over the world.</p>
+          <p>Chicken is the universal food of our era, crossing cultural boundaries with ease. With its mild taste and uniform texture, chicken presents a blank canvas for the national flavours of almost any cuisine. However, until the introduction of large-scale industrial production in the 20th century, the economic and nutritional contribution of chickens was small. Chickens were considered domestic birds that were useful to humanity, but unlike other animals such as the horse or the ox, they did little to change the course of history. Nonetheless, the chicken has inspired contributions to culture, art, cuisine, science and religion over the millennia. Chickens were, and still are, a sacred animal in some cultures. The hen is a worldwide symbol of nurturing and fertility. The rooster is a universal sign of masculinity.</p>
+          <p>The domesticated chicken has a complicated family tree stretching back 10,000 years. Recent DNA testing has shown that the chicken's wild ancestor is the red junglefowl. The bird's resemblance to modern chickens is seen in the red feathers on top of its head, the red flesh around its mouth, and its distinctive call in the morning. The females of this breed protect their eggs in the same way modern-day chickens do, and they make the same clucking sounds. In its habitat, which stretches from north-eastern India to the Philippines, the red junglefowl looks on the forest floor for insects, seeds and fruit, and flies up to nest in the trees at night. That is about as much flying as it can manage, a trait that made it relatively easy for humans to capture and domesticate it. However, the red junglefowl is not the sole ancestor of the modern chicken. Scientists have identified three closely related species that might have bred with the red junglefowl. Precisely how much genetic material these other birds contributed to the DNA of domesticated chickens is unknown. Recent research suggests that modern chickens inherited at least one trait their yellow skin-from the grey junglefowl of southern India.</p>
+          <p>Once chickens were domesticated, cultural contact, trade, migration and territorial conquest resulted in their introduction to different regions of the world over several thousand years. Chickens arrived in Egypt around 1750 BC as fighting birds and additions to zoos. Drawings of the birds decorated royal tombs containing treasures intended for the afterlife. However, it took another 100 years before chickens became popular among ordinary Egyptians.</p>
+          <p>During this period, Egyptians mastered the technique of artificial incubation, freeing hens to lay more eggs. Eggs hatch in three weeks only if the temperature remains around 38 degrees Celsius. They must be turned several times a day, and humidity must remain stable. Egyptians constructed large oven-like complexes with corridors and vents to control heat. These methods were kept secret for centuries.</p>
+          <p>Around the Mediterranean, archaeologists have uncovered chicken bones dating from about 800 BC. Chickens were considered a delicacy among the Romans, who developed culinary practices such as omelettes and stuffing birds. European farmers later adopted methods to fatten chickens, including feeding them bread soaked in wine. However, the chicken's status declined after the fall of the Roman Empire, and chicken farms disappeared. Birds returned to their former size.</p>
+          <p>Well into the 20th century, chickens played a minor role in diet and the economy. Production remained small-scale until antibiotics and vitamins were added to chicken feed, allowing birds to be raised indoors. This marked the rise of factory farming. Factory farming increased both supply and demand. Modern chickens convert grain into protein with great efficiency. Less than one kilogram of feed produces 400 grams of chicken, compared to three kilograms for the same amount of beef. A chick can now reach two kilograms in six weeks.</p>
+          <p>Chickens are also popular as pets. In the USA, exotic and heritage breeds are increasingly kept in backyards and sold for significant sums of money. Overall, the chicken's global success story spans evolution, agriculture and cuisine, with chickens now outnumbering humans nearly three to one.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">A Study of Introvert and Extrovert Characters</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q14" data-q="14" draggable="false">14</span></p>
+          <p><span class="pl">A</span>We are often labelled as introverts or extroverts, and humans do seem to have biological propensities to behave in certain ways; some of us are naturally more talkative and sociable while others prefer more time alone. But, according to Canadian-bom research psychologist Professor Brian Little, our traits are by no means fixed. In his book Me, Myself and Us: The Science of Personality and the Art of Well/-Being, Little suggests that we are often able to override our biological make-up through the adoption of what he calls "free-traits', which allow us to behave in a manner which contrasts with our natural selves. According to Little, we adopt these free-traits only when we need them, in order to meet the demands of different situations and reach targets and goals that are important to us - our 'persona projects' These projects might be big (such as career ambitions) or small (like cleaning the car) and pursuing them shapes our day-to-day behavior and our relationships with friends, family and workmates.</p>
+          <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q15" data-q="15" draggable="false">15</span></p>
+          <p><span class="pl">B</span>Little recommends that we might usefully think of ourselves as amateur scientists. We are continually exploring and testing the world around us to discover what works and what doesn't. We do things, say things, and then we observe the reactions and unconsciously store the results. We apply the knowledge gained from our 'experiments' to the advancement of our personal projects. Sometimes our personal project pursuit requires us to engage in free traits; at other times, we can just be ourselves. Little proposes that the successful pursuit of personal projects which are meaningful, manageable, supported by others and generate positive feelings can greatly impact our happiness and the quality of our lives.</p>
+          <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q16" data-q="16" draggable="false">16</span></p>
+          <p><span class="pl">C</span>Professor Little and one of his graduate students, Sanna Balsari-Palsule, have looked into the experiences of employees in a range of organisations. The reason for basing the research on this environment, as Balsari-Palsule explains, is that 'in an ideal world, one's job would fit one's traits perfectly, but that's very rarely the case. As so much can hinge on how we behave with others while at work, I wanted to discover what happens when people push the limits of their ability to act out of character. Do employees experience detriments in their well-being or work performance and does this increase their chances of burnout?'</p>
+          <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q17" data-q="17" draggable="false">17</span></p>
+          <p><span class="pl">D</span>Their findings suggest that extroverts initially experience advantages over introverts at work, in terms of getting noticed and promoted more rapidly. However, when introvert employees higher up in the organisation act out of character and take on extrovert traits, they have equal performance ratings to those extroverts, and do not report any negative effects of this use of free traits. Balsari Palsule offers an explanation: introvert employees make frequent use of 'restorative resources 'These are spaces designed to allow employees to read quietly or simply relax in order to recover their equilibrium after a strenuous session of acting out of character that would otherwise leave them feeling drained. However, if the same employees were expected to act out of character for more prolonged periods, without the chance to recover, the benefits could quickly turn into costs.</p>
+          <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q18" data-q="18" draggable="false">18</span></p>
+          <p><span class="pl">E</span>In the same study, however, extroverts report strikingly different, and much less rewarding, experiences of acting out of character. It appears that more outwardly confident personality types find it extremely hard-and stressful-to rein back their personalities and act as if they were introverted. We found this difference was most common among younger employees. It may be that introverts are generally so used to acting extrovertly in situations outside of the workplace that it becomes a relatively easy force of habit, particularly in Western cultures where extroversion is often highly valued. On the other hand, extrovert employees at the beginning of their careers are much less used to being isolated in an office for long periods of time, so may feel like caged animals, needing to feed off the energy of others in order to thrive, 'says Balsari-Palsule.</p>
+          <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q19" data-q="19" draggable="false">19</span></p>
+          <p><span class="pl">F</span>In the second stage of research, Balsari-Palsule is looking into the idiosyncrasies of people's work projects and how the work environment plays a vital role in supporting or, in some cases, constraining them. For example, highly competitive environments, which place demands on employees to conform to certain types of behaviour, may leave little time for employees to pursue projects which are important to them on a personal level. This could eventually be detrimental to their well-being. She expects that a closer look at the influences of different factors in the work environment, in conjunction with how people behave, will shed more light on what acting out of character may lead to.</p>
+          <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q20" data-q="20" draggable="false">20</span></p>
+          <p><span class="pl">G</span>The implications of Little and Balsari Palsule's research are numerous and need to be taken into account by businesses. Balsari-Palsule suggests that it would serve companies well not to dismiss the costs of free-trait acting. She points out that compromised psychological and physical well-being can quickly result in more frequent occurrences of absenteeism. She also believes that management should rely less on handing out personality surveys that pigeonhole employees into introvert and extrovert categories. instead, organisations should adopt policies and build work environments that are supportive of free-trait expression, and also provide the spaces for people to be themselves. Furthermore, making these changes is also likely to lead to increases in productivity in the long run.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">When the senses mix together</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+          <p><span class="pl">A</span>What is the colour of five? What is the sound of blue? To most of us such questions are either meaningless or suitable only for poetry. But for some people these are questions to which very precise answers can be given. Five, for example, for some people is green, while others say the sound of a guitar is like someone blowing on their ankles. People who 'see' colour in numbers or letters of the alphabet and 'feel' sensation in sound have synesthesia - meaning literally 'joined sensation' - an extraordinary condition that causes certain senses to leak' into one another.</p>
+          <p><span class="pl">B</span>People whose senses behave in this way are called 'synesthetes'. Some synesthetes take pleasure in it. To me it's like other people see the world in black and white, says one, who sees every letter, number, sound and pain in colour. Others leam to keep it a secret for fear of people laughing at them. But to neurologists investigating the brain it is of great interest. 'When scientists study normal perception,' says Daniel Smilek of the University of Waterloo in Ontario, Canada, there are lots of things we don't question because most of us perceive in the same way. Synesthesia, because it's abnormal, can give us new insights into normal perception.</p>
+          <p><span class="pl">C</span>Seventeenth-century English philosopher John Locke was the first westerner to describe synesthesia. He wrote about a man who experienced bright red as the sound of the trumpet. Later, the condition excited the imagination of nineteenth-century European painters, such as the non-synesthete Wassily Kandinsky, who believed synesthetes were like good, much-played violins, which vibrate in all their parts and fibres. But it proved impossible to research and people lost interest. Recently, however, advances in brain imaging have sparked renewed interest.</p>
+          <p><span class="pl">D</span>Early claims that the multi-sensory experiences of synesthesia were linked with the hallucinations of mental illness have long been disproved. Until 1993, many researchers dismissed it as another name for a vivid imagination, but then an experiment by Simon Baron-Cohen of Cambridge University in the UK showed that synesthetes who, when tested, had linked particular colours or shapes to letters, gave the same answers in 92 per cent of instances when tested again a week later. Non-synesthetes, given similar examples to imagine, returned the same answers in only 37 per cent of instances.</p>
+          <p><span class="pl">E</span>Although there is some overlap between synesthetes as to what colour is linked to what - 56 per cent see the letter 'o' as white - most of the responses are individual. There are 30 possible sensory combinations, but links between sounds and colours are the most common. Women are between two and eight times more likely than men to have the condition.</p>
+          <p><span class="pl">F</span>As yet there is no explanation for any of this, but small pieces of the jigsaw are emerging. A brain scanning experiment by Baron-Cohen in 1995 found that when synesthetes were listening to words, areas of the brain lit up that are normally only active in response to vision and colour. From this comes the notion that we may all have synesthesia at birth, when many parts of the brain are linked, but, as we develop, connections are pruned, so our senses become separated and the synesthetic mechanism is no longer intact. Somehow, synesthetes have kept their synaptic connections intact. It's an idea that has been challenged, however, on the grounds that if you give people certain drugs they will have synesthetic experiences, which suggests the mechanism is intact in adults but repressed.</p>
+          <p><span class="pl">G</span>There are many more unanswered questions about synesthesia. For example, is the synesthete's colour response to a number five triggered by actually seeing the number five written on a page, or does the synesthete 'see' the colour just by thinking of the number five? The neurologist Vilyanur Ramachandran came up with a test for synesthesia which seemed to suggest it was the sight of the number that was important. He asked people to look at a page made up of specially drawn twos and fives that were a mirror image of each other. The fives were placed at random on the page but the twos were placed to form shapes such as circles or triangles. To most people the numbers just looked like a jumble without order, but to synesthetes the patterns made by the twos were very obvious as a different colour from the fives. 'This shows they were really sensing colour in the numbers they saw,' says Ramachandran 'Ideas don't form these kinds of patterns.'</p>
+          <p><span class="pl">H</span>However, Smilek subsequently came up with evidence that what really matters is the idea of a number rather than the sight of it on a page. He asked a synesthete to do some simple mental arithmetic while looking at different coloured papers. The subject did not write her answers, but only thought of them and said them aloud. Smilek found that when the colour of the paper clashed with the colour of the answer, the subject's response was slower than when the colours were the same. An actual colour (the colour of the paper) could interfere with the colour of a number that existed only in her head (the answer to the mental arithmetic question). 'My research suggests that colour experiences coincide with the processing of meaning,' says Smilek. 'It's the concept of a number that's coloured.'</p>
+          <p><span class="pl">I</span>So which is it? At present, we don't know, but in the future neurologists may be able to explain what's going on in the brains of people like the novelist Nabokov, who perceived the English 'a' as dark brown and the French 'e' as black.</p>
+    </div>
+  </div>
+
+  <div id="drag"></div>
+
+  <!-- RIGHT -->
+  <div id="right-pane">
+    <div class="qsec on" id="qs1"><p class="qnum-head"><em>Questions 1&ndash;7</em></p><p class="qinst">Do the following statements agree with the information given in Reading Passage 1?</p><p class="qinst"><strong>TRUE</strong> if the statement agrees with the information<br>
+          <strong>FALSE</strong> if the statement contradicts the information<br>
+          <strong>NOT GIVEN</strong> if there is no information on this</p><div class="qitem"><p class="qprompt"><strong>1.</strong>&nbsp; Chicken is globally popular because it can be used for different styles of cooking.</p><div class="rgroup" id="rg1"><label class="rlabel"><input type="radio" name="q1" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q1" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q1" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>2.</strong>&nbsp; Chickens have poor capacity for flight compared to Junglefowl.</p><div class="rgroup" id="rg2"><label class="rlabel"><input type="radio" name="q2" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q2" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q2" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>3.</strong>&nbsp; Scientists believe that the domestic chicken has more than one ancestor.</p><div class="rgroup" id="rg3"><label class="rlabel"><input type="radio" name="q3" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q3" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q3" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>4.</strong>&nbsp; A modem chicken has the same skin colour as the grey junglefowl.</p><div class="rgroup" id="rg4"><label class="rlabel"><input type="radio" name="q4" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q4" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q4" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>5.</strong>&nbsp; After the Roman Empire ended, chicken consumption in Europe declined.</p><div class="rgroup" id="rg5"><label class="rlabel"><input type="radio" name="q5" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q5" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q5" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>6.</strong>&nbsp; Some people criticise the methods involved in factory farming chickens.</p><div class="rgroup" id="rg6"><label class="rlabel"><input type="radio" name="q6" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q6" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q6" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>7.</strong>&nbsp; In the USA, fewer people are keeping expensive breeds of chicken at home.</p><div class="rgroup" id="rg7"><label class="rlabel"><input type="radio" name="q7" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q7" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q7" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><p class="qnum-head"><em>Questions 8&ndash;13</em></p><p class="qinst">Complete the notes below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="sbox"><p><strong>The domestication and farming of chickens</strong><br><br>
+            <strong>Egypt</strong><br>
+            • In 1750 BC the first chickens were seen in Egyptian <strong>8</strong> <span id="q8-wrap"><input type="text" class="ai sm" id="q8" oninput="upd()"></span> and used in fights.<br>
+            • Pictures of chickens were used on the <strong>9</strong> <span id="q9-wrap"><input type="text" class="ai sm" id="q9" oninput="upd()"></span> of kings and queens.<br>
+            • Egyptians developed a method of egg <strong>10</strong> <span id="q10-wrap"><input type="text" class="ai sm" id="q10" oninput="upd()"></span> that didn't involve hens.<br>
+            • For eggs to hatch, heat and <strong>11</strong> <span id="q11-wrap"><input type="text" class="ai sm" id="q11" oninput="upd()"></span> levels had to stay the same.<br>
+            • The eggs were hatched in large <strong>12</strong> <span id="q12-wrap"><input type="text" class="ai sm" id="q12" oninput="upd()"></span>.<br><br>
+            <strong>Romans</strong><br>
+            • Farmers gave chickens a mixture of bread and wine to make them bigger.<br><br>
+            <strong>20th-century farming</strong><br>
+            • Farmers started adding antibiotics and vitamins to chicken feed.<br>
+            • Chickens were kept inside, and this became possible because of added antibiotics and <strong>13</strong> <span id="q13-wrap"><input type="text" class="ai sm" id="q13" oninput="upd()"></span>.</p></div></div>
+    <div class="qsec" id="qs2"><p class="qnum-head"><em>Questions 14&ndash;20</em></p><p class="qinst">Reading Passage 2 has seven paragraphs. Choose the correct heading for each paragraph from the list of headings below.</p><div class="headings-box" id="mhHeadings"><div class="mh-heading-card" draggable="true" data-code="i"><strong>i</strong>&nbsp;&nbsp;How company culture can have a negative impact</div><div class="mh-heading-card" draggable="true" data-code="ii"><strong>ii</strong>&nbsp;&nbsp;Recommendations for employers</div><div class="mh-heading-card" draggable="true" data-code="iii"><strong>iii</strong>&nbsp;&nbsp;The pressure of restraining an outgoing nature</div><div class="mh-heading-card" draggable="true" data-code="iv"><strong>iv</strong>&nbsp;&nbsp;Why researchers decided to focus on the workplace</div><div class="mh-heading-card" draggable="true" data-code="v"><strong>v</strong>&nbsp;&nbsp;How does personality influence your choice of career?</div><div class="mh-heading-card" draggable="true" data-code="vi"><strong>vi</strong>&nbsp;&nbsp;Examples of various contexts in which we might need to act out of character</div><div class="mh-heading-card" draggable="true" data-code="vii"><strong>vii</strong>&nbsp;&nbsp;How workplace facilities aid the success of one personality type</div><div class="mh-heading-card" draggable="true" data-code="viii"><strong>viii</strong>&nbsp;&nbsp;Learning by trial and error</div></div><p class="qnum-head"><em>Questions 21&ndash;22</em></p><p class="qinst">Which <strong>TWO</strong> statements are made by Professor Brian Little in the first paragraph?</p><div class="fbox"><strong>Options</strong><div class="frow"><span class="fkey">A</span> They can affect the degree to which people are content with what they have.</div><div class="frow"><span class="fkey">B</span> They are not used by people all the time.</div><div class="frow"><span class="fkey">C</span> They influence people's choice of profession.</div><div class="frow"><span class="fkey">D</span> They are useful in the pursuit of objectives assigned by others.</div><div class="frow"><span class="fkey">E</span> They enable people to act in ways which are not typical for them.</div></div><div class="qitem"><p class="qprompt"><strong>21.</strong></p><select class="ai" id="q21" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select></div><div class="qitem"><p class="qprompt"><strong>22.</strong></p><select class="ai" id="q22" onchange="upd()"><option value="">&mdash;</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select></div><p class="qnum-head"><em>Questions 23&ndash;26</em></p><p class="qinst">Complete the sentences below. Write <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="qitem"><p class="qprompt"><strong>23.</strong>&nbsp; In the second stage of her research, Balsari-Palsule will explore her theory that very competitive workplaces prevent employees from completing projects of personal <input type="text" class="answer-input inline-input" id="q23" oninput="updateAllIndicators()">.</p></div><div class="qitem"><p class="qprompt"><strong>24.</strong>&nbsp; The research done by Little and Balsari-Palsule has many <input type="text" class="answer-input inline-input" id="q24" oninput="updateAllIndicators()"> for businesses.</p></div><div class="qitem"><p class="qprompt"><strong>25.</strong>&nbsp; Balsari-Palsule thinks that managers depend too much on <input type="text" class="answer-input inline-input" id="q25" oninput="updateAllIndicators()"> aimed at determining personality types.</p></div><div class="qitem"><p class="qprompt"><strong>26.</strong>&nbsp; Balsari-Palsule thinks that relieving the stress caused by free-trait acting could boost a company's <input type="text" class="answer-input inline-input" id="q26" oninput="updateAllIndicators()"> over time.</p></div></div>
+    <div class="qsec" id="qs3"><p class="qnum-head"><em>Questions 27&ndash;30</em></p><p class="qinst">Match each statement with the correct person.</p><p class="qinst"><strong>NB</strong> You may use any letter more than once.</p><div class="fbox"><strong>List of People</strong><div class="frow"><span class="fkey">A</span> Daniel Smilek</div><div class="frow"><span class="fkey">B</span> John Locke</div><div class="frow"><span class="fkey">C</span> Simon Baron-Cohen</div><div class="frow"><span class="fkey">D</span> Vilyanur Ramachandran</div></div><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">27</span> For synesthetes, hearing the names of things affects the brain in the same way that looking at things does.</td><td><label class="mx-cell"><input type="radio" name="q27" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q27" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q27" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q27" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">28</span> Synesthetes are consistent in their association of a certain colour with a certain written symbol.</td><td><label class="mx-cell"><input type="radio" name="q28" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q28" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q28" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q28" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">29</span> One synesthete heard a particular musical instrument when he saw a certain colour.</td><td><label class="mx-cell"><input type="radio" name="q29" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q29" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q29" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q29" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">30</span> Because synesthetes experience things differently to other people, studying synesthesia can give fresh perspectives on how the senses usually work.</td><td><label class="mx-cell"><input type="radio" name="q30" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q30" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q30" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q30" value="D" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 31&ndash;35</em></p><p class="qinst">Which paragraph (A-I) contains the following information?</p><div style="overflow-x:auto;-webkit-overflow-scrolling:touch"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">31</span> an investigation into synesthesia using modem medical technology</td><td><label class="mx-cell"><input type="radio" name="q31" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q31" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q31" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q31" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q31" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q31" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q31" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q31" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q31" value="I" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">32</span> a mention of a writer who was a synesthete</td><td><label class="mx-cell"><input type="radio" name="q32" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q32" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q32" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q32" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q32" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q32" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q32" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q32" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q32" value="I" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">33</span> a definition of synesthesia</td><td><label class="mx-cell"><input type="radio" name="q33" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q33" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q33" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q33" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q33" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q33" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q33" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q33" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q33" value="I" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">34</span> two different explanations of why synesthesia is uncommon in adults</td><td><label class="mx-cell"><input type="radio" name="q34" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q34" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q34" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q34" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q34" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q34" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q34" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q34" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q34" value="I" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">35</span> a reason why some synesthetes do not tell people about their experience</td><td><label class="mx-cell"><input type="radio" name="q35" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="I" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 36&ndash;40</em></p><p class="qinst">Do the following statements agree with the information given in Reading Passage 3?</p><p class="qinst"><strong>TRUE</strong> if the statement agrees with the information<br>
+          <strong>FALSE</strong> if the statement contradicts the information<br>
+          <strong>NOT GIVEN</strong> if there is no information on this</p><div class="qitem"><p class="qprompt"><strong>36.</strong>&nbsp; The painter Kandinsky admired synesthetes.</p><div class="rgroup" id="rg36"><label class="rlabel"><input type="radio" name="q36" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q36" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q36" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>37.</strong>&nbsp; It is no longer believed that synesthesia is associated with mental illness.</p><div class="rgroup" id="rg37"><label class="rlabel"><input type="radio" name="q37" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q37" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q37" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>38.</strong>&nbsp; Equal numbers of men and women have synesthesia.</p><div class="rgroup" id="rg38"><label class="rlabel"><input type="radio" name="q38" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q38" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q38" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>39.</strong>&nbsp; Synesthetes have greater powers of logic than people with normal perception.</p><div class="rgroup" id="rg39"><label class="rlabel"><input type="radio" name="q39" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q39" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q39" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>40.</strong>&nbsp; It is possible that we are all born with synesthesia.</p><div class="rgroup" id="rg40"><label class="rlabel"><input type="radio" name="q40" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q40" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q40" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div></div>
+  </div><!-- /right-pane -->
+</div><!-- /main -->
+
+<!-- BOTTOM NAV -->
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<!-- Highlight button is created dynamically in JS (#hlBtn) -->
+
+<!-- RESULTS MODAL -->
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ANSWERS ──
+const CA = {
+  '1':  'TRUE',
+  '2':  'NOT GIVEN',
+  '3':  'TRUE',
+  '4':  'TRUE',
+  '5':  'TRUE',
+  '6':  'NOT GIVEN',
+  '7':  'FALSE',
+  '8':  'zoos',
+  '9':  'tombs',
+  '10': 'incubation',
+  '11': 'humidity',
+  '12': 'complexes',
+  '13': 'vitamins',
+  '14': 'vi',
+  '15': 'viii',
+  '16': 'iv',
+  '17': 'vii',
+  '18': 'iii',
+  '19': 'i',
+  '20': 'ii',
+  '21': ['B', 'E'],
+  '22': ['B', 'E'],
+  '23': ['level', 'importance'],
+  '24': 'implications',
+  '25': 'surveys',
+  '26': 'productivity',
+  '27': 'C',
+  '28': 'C',
+  '29': 'B',
+  '30': 'A',
+  '31': 'F',
+  '32': 'I',
+  '33': 'A',
+  '34': 'F',
+  '35': 'B',
+  '36': 'TRUE',
+  '37': 'TRUE',
+  '38': 'FALSE',
+  '39': 'NOT GIVEN',
+  '40': 'TRUE'
+};
+const CAL = {
+  '1':'TRUE','2':'NOT GIVEN','3':'TRUE','4':'TRUE','5':'TRUE','6':'NOT GIVEN','7':'FALSE',
+  '8':'zoos','9':'tombs','10':'incubation','11':'humidity','12':'complexes',
+  '13':'vitamins',
+  '14':'vi','15':'viii','16':'iv','17':'vii','18':'iii','19':'i','20':'ii',
+  '21':'B','22':'E','23':'level','24':'implications','25':'surveys','26':'productivity',
+  '27':'C','28':'C','29':'B','30':'A','31':'F','32':'I','33':'A','34':'F','35':'B',
+  '36':'TRUE','37':'TRUE','38':'FALSE','39':'NOT GIVEN','40':'TRUE'
+};
+
+// ── STATE ──
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+// ── INIT ──
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,8,16,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(56,189,248,0.07);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="position:relative;width:70px;height:70px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;">
+                <div style="position:absolute;inset:0;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);border-radius:50%;box-shadow:0 0 26px 6px rgba(56,189,248,0.22);"></div>
+                <div style="position:relative;font-size:42px;">📖</div>
+            </div>
+            <div style="display:inline-block;background:rgba(251,191,36,0.15);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(251,191,36,0.35);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">🎯 <strong>Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong>Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:linear-gradient(90deg,#38bdf8,#0ea5e9);color:#052033;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.08);color:#fff;border:1.5px solid rgba(56,189,248,0.4);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+// ── PART / PASSAGE ──
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.ptab').forEach((t,i)=>t.classList.toggle('on',i===n-1));
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+// ── Q ROW ──
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+// ── NAVIGATION ──
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+// ── USER ANSWER ──
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+// ── UPDATE INDICATORS ──
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+// ── TIMER ──
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='\uD83E\uDDD8 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0f172a;color:#fbbf24;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='\uD83C\uDFAF Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+// ── FULLSCREEN ──
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+// ── THEME (light → dark → night) ──
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+// ── TEXT SIZE ──
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+// ── DRAG DIVIDER ──
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+// ── DRAG & DROP (multi-bank: each .wbank scopes its own chips+zones) ──
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">\u00d7</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+// ── CHOOSE-TWO CHECKBOX GROUPS ──
+const PICK={};
+
+// ── MATCHING HEADINGS (drag heading card into passage drop-slot) ──
+const MHLABELS={'i':'How company culture can have a negative impact','ii':'Recommendations for employers','iii':'The pressure of restraining an outgoing nature','iv':'Why researchers decided to focus on the workplace','v':'How does personality influence your choice of career?','vi':'Examples of various contexts in which we might need to act out of character','vii':'How workplace facilities aid the success of one personality type','viii':'Learning by trial and error'};
+let armedHeading=null;
+function setupMatchingHeadings(){
+  const cards=[...document.querySelectorAll('.mh-heading-card')];
+  const slots=[...document.querySelectorAll('.mh-drop-slot')];
+  if(!cards.length||!slots.length)return;
+  cards.forEach(card=>{
+    card.addEventListener('dragstart',e=>{if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);e.dataTransfer.effectAllowed='move';});
+    card.addEventListener('click',()=>{if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(c=>c.classList.remove('armed'));armedHeading=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+  });
+  slots.forEach(slot=>{
+    slot.addEventListener('dragstart',e=>{if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+    slot.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+    slot.addEventListener('dragleave',()=>slot.classList.remove('dragover'));
+    slot.addEventListener('drop',e=>{e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)assignHeading(slot,code);});
+    slot.addEventListener('click',()=>{if(checked)return;if(armedHeading){assignHeading(slot,armedHeading);armedHeading=null;document.querySelectorAll('.mh-heading-card').forEach(c=>c.classList.remove('armed'));}else if(slot.dataset.val){clearHeadingSlot(slot);}});
+  });
+  let ghost=null,tCard=null;
+  cards.forEach(card=>{
+    card.addEventListener('touchstart',e=>{if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+    card.addEventListener('touchmove',e=>{if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.toggle('dragover',ss===s));},{passive:false});
+    card.addEventListener('touchend',e=>{if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(ss=>ss.classList.remove('dragover'));ghost.remove();ghost=null;if(s&&tCard)assignHeading(s,tCard.dataset.code);tCard=null;});
+  });
+}
+function assignHeading(slot,code){
+  if(checked)return;
+  document.querySelectorAll('.mh-drop-slot').forEach(s=>{if(s!==slot&&s.dataset.val===code)clearHeadingSlot(s);});
+  if(slot.dataset.val)clearHeadingSlot(slot);
+  slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+MHLABELS[code];slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+  const card=document.querySelector('.mh-heading-card[data-code="'+code+'"]');if(card)card.classList.add('used');
+  upd();
+}
+function clearHeadingSlot(slot){
+  const old=slot.dataset.val;if(old){const card=document.querySelector('.mh-heading-card[data-code="'+old+'"]');if(card)card.classList.remove('used');}
+  slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');
+  upd();
+}
+
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+// ── NORMALIZE ──
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+// ── CHECK ──
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  // disable inputs
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='\u2794 '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  // radio
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+// ── BAND ──
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+// ── RESULT ROWS ──
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+// ── SHOW RESULTS ──
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+// ── PASSAGE HIGHLIGHTS ──
+const P1H=[
+  {q:1,  t:'presents a blank canvas for the national flavours of almost any cuisine'},
+  {q:3,  t:'identified three closely related species that might have bred with the red junglefowl'},
+  {q:4,  t:'inherited at least one trait their yellow skin-from the grey junglefowl'},
+  {q:5,  t:'chicken\'s status declined after the fall of the Roman Empire'},
+  {q:7,  t:'exotic and heritage breeds are increasingly kept in backyards'},
+  {q:8,  t:'arrived in Egypt around 1750 BC as fighting birds and additions to zoos'},
+  {q:9,  t:'Drawings of the birds decorated royal tombs'},
+  {q:10, t:'mastered the technique of artificial incubation'},
+  {q:11, t:'humidity must remain stable'},
+  {q:12, t:'constructed large oven-like complexes'},
+  {q:13, t:'antibiotics and vitamins were added to chicken feed, allowing birds to be raised indoors'}
+];
+const P2H=[
+  {q:14, t:'meet the demands of different situations and reach targets'},
+  {q:15, t:'We are continually exploring and testing the world around us to discover what works'},
+  {q:16, t:'The reason for basing the research on this environment'},
+  {q:17, t:'introvert employees make frequent use of \'restorative resources\''},
+  {q:18, t:'find it extremely hard-and stressful-to rein back their personalities and act as if they were introverted'},
+  {q:19, t:'highly competitive environments, which place demands on employees to conform to certain types of behaviour, may leave little time'},
+  {q:20, t:'serve companies well not to dismiss the costs'},
+  {q:21, t:'adopt these free-traits only when we need them'},
+  {q:22, t:'behave in a manner which contrasts with our natural selves'},
+  {q:23, t:'pursue projects which are important to them on a personal level'},
+  {q:24, t:'implications of Little and Balsari Palsule\'s research are numerous and need to be taken into account by businesses'},
+  {q:25, t:'rely less on handing out personality surveys that pigeonhole employees'},
+  {q:26, t:'making these changes is also likely to lead to increases in productivity'}
+];
+const P3H=[
+  {q:27, t:'when synesthetes were listening to words, areas of the brain lit up that are normally only active in response to vision'},
+  {q:28, t:'gave the same answers in 92 per cent of instances when tested again a week later'},
+  {q:29, t:'He wrote about a man who experienced bright red as the sound of the trumpet'},
+  {q:30, t:'Synesthesia, because it\'s abnormal, can give us new insights into normal perception'},
+  {q:31, t:'brain scanning experiment by Baron-Cohen in 1995'},
+  {q:32, t:'people like the novelist Nabokov'},
+  {q:33, t:'meaning literally \'joined sensation\' - an extraordinary condition that causes certain senses to leak\' into one another'},
+  {q:34, t:'as we develop, connections are pruned... suggests the mechanism is intact in adults but repressed'},
+  {q:35, t:'keep it a secret for fear of people laughing at them'},
+  {q:36, t:'Kandinsky, who believed synesthetes were like good, much-played violins'},
+  {q:37, t:'Early claims that the multi-sensory experiences of synesthesia were linked with the hallucinations of mental illness have long been disproved'},
+  {q:38, t:'Women are between two and eight times more likely than men to have the condition'},
+  {q:40, t:'From this comes the notion that we may all have synesthesia at birth'}
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+// ── HIGHLIGHT SYSTEM (shohrukhposts style) ──
+// Select text in a pane → "🖊 Highlight" button pops above the selection.
+// Click it → yellow highlight. Click any highlight once → it's removed.
+// Works on desktop (mouseup) and mobile (touchend).
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault()); // keep the text selection alive
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  // Click an existing highlight to remove it (ignore the auto-answer highlights).
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+// ── CHOOSE-TWO multiple choice (q20/q21) ──
+function mc2upd(box){
+  var base=Number(box.dataset.base);
+  var boxes=[].slice.call(document.querySelectorAll('.mc2box[data-base="'+base+'"]'));
+  if(boxes.filter(function(b){return b.checked;}).length>2){ box.checked=false; return; }
+  var vals=boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;});
+  document.getElementById('q'+base).value=vals[0]||'';
+  document.getElementById('q'+(base+1)).value=vals[1]||'';
+  upd();
+}
+function mc2review(){
+  document.querySelectorAll('.mc2box').forEach(function(b){
+    var base=Number(b.dataset.base);
+    var correct=[].concat(CA[base]).concat(CA[base+1]);
+    var lb=b.closest('label'); if(!lb)return;
+    if(correct.indexOf(b.value)>=0) lb.classList.add('ok');
+    else if(b.checked) lb.classList.add('bad');
+  });
+}
+(function(){ if(typeof doCheck==='function'){ var _d=doCheck; doCheck=function(){ _d.apply(this,arguments); try{mc2review();}catch(e){} }; } })();
+
+/* per-bank matching-headings override */
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+<script src="/js/report-progress.js"></script>
+</body>
+</html>
