@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>My Progress — Bekhruz IELTS</title>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-hdr">
+  <div class="hdr-inner">
+    <a class="brand" href="/"><span class="brand-mark">Bekhruz</span> IELTS</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/reading.html">Reading</a>
+      <a href="/listening.html">Listening</a>
+    </nav>
+    <div class="hdr-actions">
+      <a class="tg-follow" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">📣 @bekhruzposts</a>
+      <span id="auth-slot"><a class="btn-login" href="/login.html">Log in</a></span>
+    </div>
+  </div>
+</header>
+
+<div id="content">
+  <div class="gate-note" id="loading-note"><p>Loading…</p></div>
+</div>
+
+<footer class="site-ftr">
+  &copy; 2026 Bekhruz IELTS · Prepared by I. Bekhruz · <a href="https://t.me/bekhruzposts" target="_blank" rel="noopener">Follow on Telegram</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth-nav.js"></script>
+<script>
+  const content = document.getElementById('content');
+
+  function scoreClass(score, total) {
+    const pct = total ? score / total : 0;
+    if (pct >= 0.75) return 'good';
+    if (pct >= 0.5) return 'mid';
+    return 'low';
+  }
+  function escapeHtml(s) {
+    return String(s || '').replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
+    }[c]));
+  }
+  function fmtDate(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) +
+      ' ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+  }
+
+  async function render() {
+    const { data: sessionData } = await supabaseClient.auth.getSession();
+    if (!sessionData.session) {
+      content.innerHTML =
+        '<div class="gate-note"><h2>Log in to see your progress</h2>' +
+        '<p>Every test you complete while logged in gets saved here automatically.</p>' +
+        '<a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="/login.html">Log in / Sign up</a></div>';
+      return;
+    }
+
+    const { data: attempts, error } = await supabaseClient
+      .from('test_attempts')
+      .select('*')
+      .order('completed_at', { ascending: false });
+
+    if (error) {
+      content.innerHTML = '<div class="gate-note"><h2>Couldn\'t load your progress</h2><p>' + escapeHtml(error.message) + '</p></div>';
+      return;
+    }
+
+    const total = attempts.length;
+    const avgPct = total
+      ? Math.round(attempts.reduce((s, a) => s + (a.total ? a.score / a.total : 0), 0) / total * 100)
+      : 0;
+
+    let html = '<div class="page-wrap"><h1>My Progress</h1><p class="page-sub">Every test you\'ve completed while logged in.</p>';
+    html += '<div class="summary-row">' +
+      '<div class="stat-box"><div class="num">' + total + '</div><div class="lbl">Tests completed</div></div>' +
+      '<div class="stat-box"><div class="num">' + avgPct + '%</div><div class="lbl">Average score</div></div>' +
+      '</div>';
+
+    if (!total) {
+      html += '<div class="gate-note"><h2>No attempts yet</h2><p>Complete a test while logged in and it\'ll show up here.</p></div>';
+    } else {
+      html += '<table class="data-table"><thead><tr><th>Test</th><th>Section</th><th>Score</th><th>Date</th></tr></thead><tbody>';
+      attempts.forEach((a) => {
+        html += '<tr><td>' + escapeHtml(a.test_title || a.test_path) + '</td>' +
+          '<td>' + escapeHtml(a.section || '') + '</td>' +
+          '<td><span class="score-pill ' + scoreClass(a.score, a.total) + '">' + a.score + ' / ' + a.total + '</span></td>' +
+          '<td>' + fmtDate(a.completed_at) + '</td></tr>';
+      });
+      html += '</tbody></table>';
+    }
+    html += '</div>';
+    content.innerHTML = html;
+  }
+
+  render();
+</script>
+</body>
+</html>

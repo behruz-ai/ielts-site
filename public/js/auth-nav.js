@@ -1,4 +1,5 @@
-// Updates the header's auth slot based on current Supabase session.
+// Updates the header's auth slot based on current Supabase session, and
+// shows "My Progress" / "Admin" links once we know the user's role.
 // Include this (after supabase-config.js) on every page that has
 // <span id="auth-slot">...</span> in its header.
 (function () {
@@ -9,9 +10,12 @@
     slot.innerHTML = '<a class="btn-login" href="/login.html">Log in</a>';
   }
 
-  function renderLoggedIn(email) {
+  function renderLoggedIn(email, role) {
     const short = email.length > 20 ? email.slice(0, 18) + '…' : email;
+    const adminLink = role === 'admin' ? '<a class="nav-link-sm" href="/admin.html">Admin</a>' : '';
     slot.innerHTML =
+      adminLink +
+      '<a class="nav-link-sm" href="/progress.html">My Progress</a>' +
       '<span class="user-chip" title="' + escapeHtml(email) + '">👤 ' + escapeHtml(short) + '</span>' +
       '<button class="btn-logout" id="logout-btn" type="button">Log out</button>';
     document.getElementById('logout-btn').addEventListener('click', async () => {
@@ -26,13 +30,16 @@
     }[c]));
   }
 
-  supabaseClient.auth.getSession().then(({ data }) => {
-    if (data.session && data.session.user) renderLoggedIn(data.session.user.email);
-    else renderLoggedOut();
-  });
+  async function refresh(session) {
+    if (!session || !session.user) { renderLoggedOut(); return; }
+    const { data: profile } = await supabaseClient
+      .from('profiles')
+      .select('role')
+      .eq('id', session.user.id)
+      .maybeSingle();
+    renderLoggedIn(session.user.email, profile ? profile.role : 'user');
+  }
 
-  supabaseClient.auth.onAuthStateChange((_event, session) => {
-    if (session && session.user) renderLoggedIn(session.user.email);
-    else renderLoggedOut();
-  });
+  supabaseClient.auth.getSession().then(({ data }) => refresh(data.session));
+  supabaseClient.auth.onAuthStateChange((_event, session) => refresh(session));
 })();
