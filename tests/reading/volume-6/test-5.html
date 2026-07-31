@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 5 (Volume 6) @bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* THEME */
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.psec-h{font-weight:800;font-size:calc(15px * var(--txtscale,1));margin:18px 0 8px;color:var(--text)}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+.notesbox{line-height:2.6;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A&minus;</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1&ndash;13.</span>
+</div>
+
+<div id="main">
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">Studies in the History of Art and Visual Culture</h2><p class="psub">Read the text and answer questions 1&ndash;13</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p class="psec-h">General Information</p>
+<p>The Department of the History of Art, which operates within the Faculty of History, offers a one-year postgraduate course in the History of Art and Visual Culture. We welcome applicants from a broad range of backgrounds and do not require students to have a first degree in art history. In addition to a compulsory course on Theory and Methods, students take two one-term optional courses, and write a 15,000-word dissertation on a topic of their choice. The course aims to redefine art history and includes a broader range of objects and visual media than other art history courses. Images and objects produced in many contexts &ndash; ranging from the scientific to the popular &ndash; have been brought together to show how visual styles at different periods and in different places can be understood in relation to the aesthetic, intellectual and social facets of various cultures.</p>
+<p class="psec-h">Theory and Methods</p>
+<p>This core course provides an advanced introduction to the major methodological issues and traditions of art history. The course is organised around a series of issues that relate to the production of art and people's responses to it. Students will discuss these issues and assigned readings in small weekly classes. In lectures, the tutors will consider works of art from a variety of cultures in order to demonstrate that context and artistic method are important aspects of art history.</p>
+<p class="psec-h">Choosing Courses</p>
+<p>The optional courses listed below are not available every year and prospective students are advised to check on the availability of specific courses. Students should also note there may be some restrictions on combining particular courses within their degree programme. Students wishing to take a course that does not appear in the list but is offered by the Faculty of History will need to get permission from the relevant Course Tutor. An application should then be made by the candidate's supervisor.</p>
+<p class="psec-h">Authenticity and Replication</p>
+<p>The course is designed to give students exposure to a central issue of the visual arts in an explicitly inter-disciplinary and cross-cultural framework. It will use a series of case studies to explore the idea of 'the real' or 'the authentic' in both images and objects. The historical and geographical contexts to be addressed will range widely, from ancient Greece and Rome, to early modern China and to contemporary art, including works seen as genuine as well as works regarded as fraudulent. The course will make particularly extensive use of trips to museums to view actual objects and images.</p>
+<p class="psec-h">French Painting 1880&ndash;1912</p>
+<p>The course examines the development of Post-Impressionist painting between 1880 and 1912, at which point Cubism began to have a major impact on the thinking of French artists. Rather than tracing a history of styles or individuals, we consider how artistic practices were closely linked to contemporary developments. The rise of new forms of image distribution, including cinema, will be addressed, as well as the changing role of painting in the public sphere. The writings of artists and their contemporaries will be examined alongside recent art-historical work.</p>
+<p class="psec-h">Medieval European Art</p>
+<p>This course addresses two problems central to the history of art: the roots of artistic invention, and suitable methods for instructing on technique. During this period, young, would-be artists acted as assistants to a master painter in his workshop. With this type of training, what was the scope for originality, and how was stylistic change encouraged? These issues are brought into sharp focus by the changing visual culture of late-medieval Europe, between the twelfth and the fifteenth centuries. The available literature on these themes is rich, yet inconsistent: the course therefore addresses questions that are very much open.</p>
+<p class="psec-h">Reception of Classical European Art</p>
+<p>From the fourteenth century the discovery of classical antiquities inspired contemporary artists, some copied closely, some restored the ancient in a contemporary style, while others reinterpreted freely. The course focuses on sculpture, painting and architecture in Britain, with a selection of other European works. Sculpture is examined in life-size marble statues, and in miniature with porcelain figurines. Painting is studied through the designs painted on vases, particularly Athenian and South Italian. Architecture is examined through the ancient Greek temples that were excavated in the nineteenth century and also replicated in miniature for sale to travelers.</p>
+<p class="psec-h">Women, Art and Culture in Early Modern Europe</p>
+<p>This course will explore the various roles played by women in the production and reception of art and architecture in fifteenth- to seventeenth-century Europe. After many decades of relative neglect, the significance of the way women contributed to the art and culture of Early Modern Europe has come to light. By drawing on this wealth of new research, the course will examine the careers of professional women artists working in Northern and Southern Europe. We also consider how famous women patrons, such as Isabella d'Este and Catherine de Medici, influenced the careers of artists and wider perceptions about art. Another topic that will be addressed is the representation of women in the visual arts, for example as sitters for state portraits and marriage paintings.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">Sleep &ndash; Who Needs It?</h2><p class="psub">It appears that some animals can survive on remarkably little sleep &ndash; could this also be the case for humans? &middot; Read the text and answer questions 14&ndash;26</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p>As any new parent knows, the first months of an infant's life mean little sleep for the family. But humans have it easy compared to orcas, also known as killer whales. University of California, Los Angeles, neuroscientist Jerome Siegel and post-doctorate fellow Oleg Lyamin have found that for the first month after giving birth, killer whale mothers and their calves do not experience normal sleep at all, and neither stops moving for more than a few minutes at a time. 'These sleep patterns contrast with those of most other mammals, which need extra sleep during infancy and gradually sleep less as they age, while orcas are never as active as in the first months of life,' Siegel says. The young orcas' movement and wakefulness help them keep their body temperature constant until mass and blubber insulation develop and allow for frequent respiration. Meanwhile the mothers of newborn orcas must constantly look out for sharks, while teaching the calves to breathe.</p>
+<p>According to Siegel, the results of his orca study fundamentally change our view of sleep. 'It has often been said that sleep is necessary for an animal's primary development, particularly that of the brain,' Siegel says. 'But here we have a creature which grows one of the largest brains in the animal kingdom, and yet it is doing this without sleep.' All mammals and birds appear to need sleep, but scientists are unsure if reptiles and fish do. 'When you come downstairs at three in the morning, the goldfish isn't lying on the bottom of the bowl, it's swimming around,' Siegel says. But other scientists believe fish do enter a restful dormant state that is at least similar to sleep.</p>
+<p>Some animals die without proper sleep, and experiments have shown that sleep deprivation can cause death more quickly than food deprivation. Two weeks without sleep can kill laboratory rats. Sleep is clearly important, but what determines how much we sleep, and when? Siegel thinks that the sleep an animal needs is dictated less by biological functions than by the animal's environmental niche. Availability of food is a major factor. The long rest typical of bats, for example, helps the animals to economize on energy. 'If a bat eats insects for only three hours in the evening, then maybe the best thing is to go hang in a cave upside down for the rest of the day,' Siegel says.</p>
+<p>Sleep is not the same for all creatures. In dolphins, half the brain may rest while the other half stays vigilantly awake, and the animal carries on everyday activities. Dolphins sleep literally with one eye closed &ndash; the eye on the opposite side of the body to the dozing brain hemisphere, since the right brain hemisphere works the left eye and vice versa. However, for unknown reasons, closed eyes seem to be a virtually universal prerequisite for sleep.</p>
+<p>Neuroscientist Clifford Saper of the Harvard Medical School has located a small area at the base of the brain called the ventrolateral preoptic nucleus that sends chemical signals to other parts of the brain during sleep to slow those brain parts down and determines the best sleep budget for the animal. It is flexible, able to reverse the normal nocturnal habits of a rodent to make it sleep at night, if day is the only time the rodent can find what it needs to eat. According to Saper, evidence suggests that for restoring tired muscles or any other body system, sleep is no more effective than a comparable period of wakeful resting &ndash; except for one critical organ, the brain. The human brain apparently cannot do without sleep. Studies show that prolonged wakefulness leads to degradation of memory, alertness, coordination and judgment.</p>
+<p>Nevertheless, studies of species exhibiting 'natural models of sleep deprivation,' as psychologist Verner Bingman of Ohio's Bowling Green State University calls them, may allow researchers to provide us with new methods for adapting to limited sleep without losing effectiveness. 'We could live 20-hour lives instead of 12- or 14-hour lives,' says Bingman, who is studying the behavior of the migratory birds Swainson's thrushes, which for migration purposes, go from a normal night's sleep of 10 to 12 hours down to about 2.5 hours so they can fly at night. To handle the energy output of the long journey they must nearly double the amount of fat in their bodies. They have to switch from a diet of seeds to one of fruits and insects, which they must search for during the day, so further limiting their sleep time.</p>
+<p>Bingman and doctoral student Thomas Fuchs have discovered that during morning and midday hours the thrushes enter phases of drowsiness, during which they take as many as 50 micro naps per hour, most of them lasting about 10 seconds. When brain waves are measured, these napping behaviors look very much like normal sleep. Says Bingman, 'The trick would be to develop techniques or drugs that could recreate a similar brain pattern in humans.' Saper, however, disagrees. 'The effect of 20 hours of wakefulness on driving is the equivalent of two shots of whiskey,' he warns. 'Sleep deprivation is unfortunately a major cause of death in the US in young adults, who have a very high crash rate between 3 and 6 am.' He thinks we are dreaming if we think we're ever going to get by on as little sleep as newborn orcas or migrating thrushes.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">Looking at Daily Life in Ancient Rome</h2><p class="psub">In this preface to a history, the writer explains the factors affecting the scope of his study &middot; Read the text and answer questions 27&ndash;40</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p>If our ideas on Roman life are not to become lost in confusion, we must study it within a strictly defined time. Nothing changes more rapidly than human customs. Looking at our own more familiar world, apart from the great scientific discoveries of recent centuries which have turned it upside down &ndash; steam, electricity, railways, motor cars, and aeroplanes, for example &ndash; it is clear that the elementary forms of everyday life have been subject to increasing change.</p>
+<p>Potatoes, for example, were not introduced into Europe until the sixteenth century, coffee was first drunk there in the late sixteenth or early seventeenth, and the banana was used in desserts in Europe at the beginning of the twentieth. The law of change was not less operative in antiquity. It was a commonplace of Roman rhetoric to contrast the crude simplicity of the Republic (509 BC&ndash;27 BC) with the luxury and refinement of the imperial times which followed. There is no common measure, whether of home, or house, or furniture, between ages which are so different.</p>
+<p>Since a choice of time must necessarily be made, this history will confine itself to studying the generation which was born about the middle of the first century AD, toward the end of the reign of Claudius (41&ndash;54 AD) or the beginning of the reign of Nero (54&ndash;68 AD), and which lived on into the reign of Trajan (98&ndash;117 AD) and of Hadrian (117&ndash;138 AD). This generation saw the Roman Empire at its most powerful and prosperous. It was witness to the last conquests of the Caesars: the conquest of Dacia, in modern-day Eastern Europe, which brought vast mineral wealth into the Empire, and the conquest of Arabia, which helped to bring the riches of India and East Asia flooding into Rome. In the material domain, this generation attained the pinnacle of ancient civilization.</p>
+<p>By a fortunate coincidence &ndash; all the more fortunate in that Latin literature was soon to run nearly dry &ndash; this generation is the one whose records combine to offer us the most complete picture of Roman life that we possess. We have a profusion of vivid and picturesque descriptions, precise and colourful, in such works as the Epigrams of Martial, the Satires of Juvenal, and the Letters of Pliny.</p>
+<p>In addition, the Forum of Trajan in Rome itself and the ruins of Herculaneum and Pompeii, the two prosperous resorts buried by the eruption of Mount Vesuvius in 79 AD, supply an immense fund of archaeological evidence. Later excavations have also restored to us the ruins of the city of Ostia, which date in the main from the time when the Emperor Hadrian created this great commercial city as a realization of his town planning ideas. Fortune has favoured the historian of this time.</p>
+<p>It is not enough to focus our study of Roman life only on a fixed time. It would lack foundation and consistency if we did not also focus it in space &ndash; in the country or in the town. Even today, when the facilities for communication bring something of the city into the smallest and most isolated country cottage, there remains a significant difference between rural existence and the excitement of city life: a much greater gulf separated the peasant from the townsman of antiquity.</p>
+<p>So large was the inequality between them that, according to the historian Rostovtzeff, it pitted one against the other in a fierce and silent struggle which pierced the wall protecting the Roman privileged classes from the barbarian flood from the north. When the barbarian forces began to invade Roman territory, the peasants decided to fight alongside them.</p>
+<p>The townsman, in fact, enjoyed all the goods and resources of the earth. The peasant knew nothing but unending labour without profit and was unable to enjoy the activities available in even the poorest of cities: the liveliness of the sports field, the warmth of the public baths, and the magnificence of public spectacles.</p>
+<p>In a work on the history of everyday life, we must give up any attempt to blend two such dissimilar pictures into one and must choose between them. The time which we have chosen to describe day by day is that of those Roman subjects who spent their time exclusively in the town, or rather in The City, Rome, which they regarded as the hub and centre of the universe, proud and wealthy ruler of a world which seemed at that time to have been pacified forever.</p>
+<p>To perform our task well, we must first try to form an adequate picture of the surroundings in which our subjects lived and by which their lives were coloured, freeing ourselves from any misconceptions concerning it. We must seek to reconstruct the physical nature of the great city and the social milieu of the various classes of the hierarchy by which it was governed. We must also investigate the moral background of thought and sentiment which can help explain both its strength and its weaknesses.</p>
+<p>The way in which the Romans of Rome employed their time can only be studied satisfactorily after we have plotted out the main lines of the framework within which they lived and outside of which the routine of their daily life would be more or less unintelligible.</p>
+    </div>
+
+  </div>
+
+  <div id="drag"></div>
+
+  <div id="right-pane">
+<div class="qsec on" id="qs1"><p class="qnum-head"><em>Questions 1&ndash;6</em></p><p class="qinst">Do the following statements agree with the information given in Reading Passage 1? In boxes 1&ndash;6, write</p><p class="qinst"><strong>TRUE</strong>&nbsp; if the statement agrees with the information<br><strong>FALSE</strong>&nbsp; if the statement contradicts the information<br><strong>NOT GIVEN</strong>&nbsp; if there is no information on this</p>
+<div class="qitem"><p class="qprompt"><strong>1.</strong>&nbsp; Applicants to the department must have previously studied art history.</p><div class="rgroup" id="rg1"><label class="rlabel"><input type="radio" name="q1" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q1" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q1" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>2.</strong>&nbsp; Students can choose two optional courses instead of the Theory and Methods course.</p><div class="rgroup" id="rg2"><label class="rlabel"><input type="radio" name="q2" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q2" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q2" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>3.</strong>&nbsp; The course organisers had more problems collecting art objects from some historical periods than others.</p><div class="rgroup" id="rg3"><label class="rlabel"><input type="radio" name="q3" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q3" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q3" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>4.</strong>&nbsp; The Theory and Methods course focuses on the way art is made and perceived.</p><div class="rgroup" id="rg4"><label class="rlabel"><input type="radio" name="q4" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q4" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q4" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>5.</strong>&nbsp; Students will be able to do any of the optional courses that are listed.</p><div class="rgroup" id="rg5"><label class="rlabel"><input type="radio" name="q5" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q5" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q5" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>6.</strong>&nbsp; Students may be able to take an unlisted course if they get the appropriate approval.</p><div class="rgroup" id="rg6"><label class="rlabel"><input type="radio" name="q6" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q6" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q6" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<p class="qnum-head"><em>Questions 7&ndash;13</em></p><p class="qinst">Complete the notes below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="qtitle">Optional courses</div><div class="notesbox">
+<span class="nbsec">Authenticity and Replication</span>
+<ul class="nbul">
+<li>genuine art is studied in addition to that considered <span class="inline-qno">7</span><input class="answer-input" id="q7" type="text"></li>
+<li>art objects are studied in <span class="inline-qno">8</span><input class="answer-input" id="q8" type="text"></li>
+</ul>
+<span class="nbsec">French Painting 1880&ndash;1912</span>
+<ul class="nbul">
+<li>the course covers the period up to when <span class="inline-qno">9</span><input class="answer-input" id="q9" type="text"> started to be prominent</li>
+<li>the course looks at the connections between art and new developments such as <span class="inline-qno">10</span><input class="answer-input" id="q10" type="text"></li>
+</ul>
+<span class="nbsec">Medieval European Art</span>
+<ul class="nbul">
+<li>the course looks at two issues: artistic creativity and processes for teaching technique</li>
+<li>the course considers how artists could be original when taught by an expert in a <span class="inline-qno">11</span><input class="answer-input" id="q11" type="text"></li>
+</ul>
+<span class="nbsec">Reception of Classical European Art</span>
+<ul class="nbul">
+<li>life-sized and miniature sculpture is examined</li>
+<li>painting is examined by looking at the decoration of <span class="inline-qno">12</span><input class="answer-input" id="q12" type="text"></li>
+<li>architecture is assessed by studying 19th century models bought by <span class="inline-qno">13</span><input class="answer-input" id="q13" type="text"></li>
+</ul>
+</div>
+  </div>
+  <div class="qsec" id="qs2"><p class="qnum-head"><em>Questions 14&ndash;17</em></p><p class="qinst">Look at the following findings (Questions 14&ndash;17) and the list of researchers below. Match each finding with the correct researcher, <strong>A, B or C</strong>.</p><div class="fbox"><strong>List of Researchers</strong>A &nbsp; Jerome Siegel<br>B &nbsp; Clifford Saper<br>C &nbsp; Verner Bingman</div><div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th></tr></thead><tbody>
+<tr><td class="mx-stmt"><span class="mx-num">14</span> Discovered a specific area of the brain that sends signals to help regulate an animal's sleep.</td><td><label class="mx-cell"><input type="radio" name="q14" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="C" onchange="upd()"></label></td></tr>
+<tr><td class="mx-stmt"><span class="mx-num">15</span> Found that newborn animals of a certain species do not sleep normally for weeks after birth.</td><td><label class="mx-cell"><input type="radio" name="q15" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="C" onchange="upd()"></label></td></tr>
+<tr><td class="mx-stmt"><span class="mx-num">16</span> Questioned the belief that sleep is essential for developing a large brain.</td><td><label class="mx-cell"><input type="radio" name="q16" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="C" onchange="upd()"></label></td></tr>
+<tr><td class="mx-stmt"><span class="mx-num">17</span> Studied a species of bird that drastically reduces its sleep time for a particular purpose.</td><td><label class="mx-cell"><input type="radio" name="q17" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="C" onchange="upd()"></label></td></tr>
+</tbody></table></div>
+<p class="qnum-head" style="margin-top:14px"><em>Questions 18&ndash;23</em></p><p class="qinst">Complete the summary below. Choose <strong>ONE OR TWO WORDS</strong> from the passage for each answer.</p><div class="sbox"><p>Newborn orcas move almost constantly in their first weeks of life, which helps them regulate their <span class="inline-qno">18</span><input class="answer-input" id="q18" type="text"> before they develop enough blubber for insulation. During this period, orca mothers must remain alert to the danger of <span class="inline-qno">19</span><input class="answer-input" id="q19" type="text">. Sleep deprivation can be fatal: in laboratory studies, <span class="inline-qno">20</span><input class="answer-input" id="q20" type="text"> have died after being kept awake for two weeks. Despite the many differences between species, having <span class="inline-qno">21</span><input class="answer-input" id="q21" type="text"> appears to be a near-universal requirement for sleep. According to Saper, sleep may be essential only for the <span class="inline-qno">22</span><input class="answer-input" id="q22" type="text">, rather than for restoring other parts of the body. Migratory birds such as Swainson's thrushes drastically cut their sleep time in order to complete their <span class="inline-qno">23</span><input class="answer-input" id="q23" type="text">.</p></div>
+<p class="qnum-head" style="margin-top:14px"><em>Questions 24&ndash;26</em></p><p class="qinst">Do the following statements agree with the information given in Reading Passage 2? In boxes 24&ndash;26, write</p><p class="qinst"><strong>TRUE</strong>&nbsp; if the statement agrees with the information<br><strong>FALSE</strong>&nbsp; if the statement contradicts the information<br><strong>NOT GIVEN</strong>&nbsp; if there is no information on this</p>
+<div class="qitem"><p class="qprompt"><strong>24.</strong>&nbsp; According to Siegel, young orcas sleep less than most other newborn mammals.</p><div class="rgroup" id="rg24"><label class="rlabel"><input type="radio" name="q24" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q24" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q24" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>25.</strong>&nbsp; Scientists are certain that fish experience genuine sleep.</p><div class="rgroup" id="rg25"><label class="rlabel"><input type="radio" name="q25" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q25" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q25" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>26.</strong>&nbsp; Saper's research suggests that sleep is essential for restoring muscle tissue.</p><div class="rgroup" id="rg26"><label class="rlabel"><input type="radio" name="q26" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q26" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q26" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+  </div>
+  <div class="qsec" id="qs3"><p class="qnum-head"><em>Questions 27&ndash;30</em></p><p class="qinst">Choose the correct letter, <strong>A, B, C or D</strong>.</p>
+<div class="qitem"><p class="qprompt"><strong>27.</strong>&nbsp; What does the writer say about the period mentioned in the second paragraph?</p><div class="rgroup" id="rg27"><label class="rlabel"><input type="radio" name="q27" value="A" onchange="upd()"> A&nbsp; There was a high level of immigration into Rome.</label><label class="rlabel"><input type="radio" name="q27" value="B" onchange="upd()"> B&nbsp; The export of minerals made Rome rich.</label><label class="rlabel"><input type="radio" name="q27" value="C" onchange="upd()"> C&nbsp; Rome sent armies to control trade with India and East Asia.</label><label class="rlabel"><input type="radio" name="q27" value="D" onchange="upd()"> D&nbsp; The Roman standard of living reached its highest level.</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>28.</strong>&nbsp; Ostia is mentioned as:</p><div class="rgroup" id="rg28"><label class="rlabel"><input type="radio" name="q28" value="A" onchange="upd()"> A&nbsp; a city which often features in literature.</label><label class="rlabel"><input type="radio" name="q28" value="B" onchange="upd()"> B&nbsp; an important area for archaeological research.</label><label class="rlabel"><input type="radio" name="q28" value="C" onchange="upd()"> C&nbsp; the birthplace of a Roman Emperor.</label><label class="rlabel"><input type="radio" name="q28" value="D" onchange="upd()"> D&nbsp; a city whose layout was similar to that of Rome.</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>29.</strong>&nbsp; The statement that 'Fortune has favoured the historian of this time' refers to the fact that:</p><div class="rgroup" id="rg29"><label class="rlabel"><input type="radio" name="q29" value="A" onchange="upd()"> A&nbsp; historians of this period have become wealthy as a result of their discoveries.</label><label class="rlabel"><input type="radio" name="q29" value="B" onchange="upd()"> B&nbsp; works on this period are popular among the reading public.</label><label class="rlabel"><input type="radio" name="q29" value="C" onchange="upd()"> C&nbsp; a wide range of sources is available for this period.</label><label class="rlabel"><input type="radio" name="q29" value="D" onchange="upd()"> D&nbsp; this period has been less studied than many others.</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>30.</strong>&nbsp; In comparing urban and rural life in the Roman Empire, the writer states that:</p><div class="rgroup" id="rg30"><label class="rlabel"><input type="radio" name="q30" value="A" onchange="upd()"> A&nbsp; rural Romans were largely illiterate.</label><label class="rlabel"><input type="radio" name="q30" value="B" onchange="upd()"> B&nbsp; rural life and urban life had little in common.</label><label class="rlabel"><input type="radio" name="q30" value="C" onchange="upd()"> C&nbsp; little information is available concerning rural life.</label><label class="rlabel"><input type="radio" name="q30" value="D" onchange="upd()"> D&nbsp; most readers of history are more interested in city life.</label></div></div>
+<p class="qnum-head" style="margin-top:14px"><em>Questions 31&ndash;36</em></p><p class="qinst">Do the following statements agree with the claims of the writer in Reading Passage 3? In boxes 31&ndash;36, write</p><p class="qinst"><strong>YES</strong>&nbsp; if the statement agrees with the claims of the writer<br><strong>NO</strong>&nbsp; if the statement contradicts the claims of the writer<br><strong>NOT GIVEN</strong>&nbsp; if it is impossible to say what the writer thinks about this</p>
+<div class="qitem"><p class="qprompt"><strong>31.</strong>&nbsp; Rome's conquest of Arabia resulted in large-scale immigration from the east into Rome.</p><div class="rgroup" id="rg31"><label class="rlabel"><input type="radio" name="q31" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q31" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q31" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>32.</strong>&nbsp; More can be learned about Roman life from the literature of the period studied in this book than from later Latin literature.</p><div class="rgroup" id="rg32"><label class="rlabel"><input type="radio" name="q32" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q32" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q32" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>33.</strong>&nbsp; Discoveries at Herculaneum and Pompeii showed that certain beliefs about Roman life were wrong.</p><div class="rgroup" id="rg33"><label class="rlabel"><input type="radio" name="q33" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q33" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q33" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>34.</strong>&nbsp; Roman peasants provided assistance to the Empire when it was attacked.</p><div class="rgroup" id="rg34"><label class="rlabel"><input type="radio" name="q34" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q34" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q34" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>35.</strong>&nbsp; Rural inhabitants of the Roman Empire had a difficult life.</p><div class="rgroup" id="rg35"><label class="rlabel"><input type="radio" name="q35" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q35" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q35" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>36.</strong>&nbsp; Entertainment facilities were limited to the city of Rome itself.</p><div class="rgroup" id="rg36"><label class="rlabel"><input type="radio" name="q36" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q36" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q36" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<p class="qnum-head" style="margin-top:14px"><em>Questions 37&ndash;40</em></p><p class="qinst">Complete the summary using the list of words, <strong>A&ndash;I</strong>, below.</p><div class="sbox"><p><strong>The scope of the writer's study</strong></p><p>It was important for the writer to limit several aspects of his <span class="dzone dz-sm" id="q37" data-q="37" data-bank="wb1"></span>. He decided to focus on a limited <span class="dzone dz-sm" id="q38" data-q="38" data-bank="wb1"></span> in Roman history and to concentrate on the section of the population who were <span class="dzone dz-sm" id="q39" data-q="39" data-bank="wb1"></span>. The writer was interested in the physical environment, the people that ruled the country, and the <span class="dzone dz-sm" id="q40" data-q="40" data-bank="wb1"></span> that contributed both to Rome's strength and to its weaknesses.</p></div>
+<div class="wbank" data-bank="wb1"><div class="dchip" draggable="true" data-letter="A" data-word="emperors"><span class="wk">A</span>&nbsp;emperors</div><div class="dchip" draggable="true" data-letter="B" data-word="setting"><span class="wk">B</span>&nbsp;setting</div><div class="dchip" draggable="true" data-letter="C" data-word="values"><span class="wk">C</span>&nbsp;values</div><div class="dchip" draggable="true" data-letter="D" data-word="peasants"><span class="wk">D</span>&nbsp;peasants</div><div class="dchip" draggable="true" data-letter="E" data-word="city-dwellers"><span class="wk">E</span>&nbsp;city-dwellers</div><div class="dchip" draggable="true" data-letter="F" data-word="social classes"><span class="wk">F</span>&nbsp;social classes</div><div class="dchip" draggable="true" data-letter="G" data-word="myths"><span class="wk">G</span>&nbsp;myths</div><div class="dchip" draggable="true" data-letter="H" data-word="period"><span class="wk">H</span>&nbsp;period</div><div class="dchip" draggable="true" data-letter="I" data-word="investigation"><span class="wk">I</span>&nbsp;investigation</div></div>
+  </div>
+  </div>
+</div>
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const CA = {1:"FALSE",2:"FALSE",3:"NOT GIVEN",4:"TRUE",5:"FALSE",6:"TRUE",7:"fraudulent",8:"museums",9:"Cubism",10:"cinema",11:"workshop",12:"vases",13:"travelers",14:"B",15:"A",16:"A",17:"C",18:"body temperature",19:"sharks",20:"rats",21:"closed eyes",22:"brain",23:"migration",24:"TRUE",25:"FALSE",26:"FALSE",27:"D",28:"B",29:"C",30:"B",31:"NO",32:"YES",33:"NOT GIVEN",34:"NO",35:"YES",36:"NO",37:"I",38:"H",39:"E",40:"F"};
+const CAL = {1:"FALSE",2:"FALSE",3:"NOT GIVEN",4:"TRUE",5:"FALSE",6:"TRUE",7:"fraudulent",8:"museums",9:"Cubism",10:"cinema",11:"workshop",12:"vases",13:"travelers",14:"B",15:"A",16:"A",17:"C",18:"body temperature",19:"sharks",20:"rats",21:"closed eyes",22:"brain",23:"migration",24:"TRUE",25:"FALSE",26:"FALSE",27:"D",28:"B",29:"C",30:"B",31:"NO",32:"YES",33:"NOT GIVEN",34:"NO",35:"YES",36:"NO",37:"investigation",38:"period",39:"city-dwellers",40:"social classes"};
+
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,7,14,0.88);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.6);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-60px;left:-30px;width:130px;height:130px;background:rgba(250,204,21,0.06);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="width:76px;height:76px;margin:0 auto 14px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);box-shadow:0 0 26px 6px rgba(56,189,248,0.22);display:flex;align-items:center;justify-content:center;font-size:38px;">📖</div>
+            <div style="display:inline-block;background:rgba(250,204,21,0.14);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(250,204,21,0.35);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;color:#cbd5e1;">3 passages &bull; 40 questions &bull; <span style="color:#fbbf24;font-weight:700;">answer key &amp; band score</span></p>
+            <p style="margin:14px 0 6px;font-size:14px;color:#e2e8f0;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;color:#94a3b8;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(250,204,21,0.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;color:#cbd5e1;">🎯 <strong style="color:#fbbf24;">Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong style="color:#fbbf24;">Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:#DC2626;color:#fff;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.95);color:#0f172a;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='🧘 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0f172a;color:#fbbf24;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='🎯 Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+// CHOOSE-N CHECKBOX GROUPS
+const PICK={};
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+const P1H=[
+  {q:1,t:"do not require students to have a first degree in art history"},
+  {q:2,t:"in addition to a compulsory course on theory and methods"},
+  {q:4,t:"relate to the production of art and people's responses to it"},
+  {q:5,t:"the optional courses listed below are not available every year"},
+  {q:6,t:"will need to get permission from the relevant course tutor"},
+  {q:7,t:"including works seen as genuine as well as works regarded as fraudulent"},
+  {q:8,t:"extensive use of trips to museums"},
+  {q:9,t:"at which point cubism began to have a major impact"},
+  {q:10,t:"the rise of new forms of image distribution, including cinema"},
+  {q:11,t:"acted as assistants to a master painter in his workshop"},
+  {q:12,t:"painting is studied through the designs painted on vases"},
+  {q:13,t:"replicated in miniature for sale to travelers"}
+];
+const P2H=[
+  {q:14,t:"clifford saper of the harvard medical school has located a small area at the base of the brain"},
+  {q:15,t:"killer whale mothers and their calves do not experience normal sleep at all"},
+  {q:16,t:"here we have a creature which grows one of the largest brains in the animal kingdom"},
+  {q:17,t:"studying the behavior of the migratory birds swainson's thrushes"},
+  {q:18,t:"help them keep their body temperature constant"},
+  {q:19,t:"must constantly look out for sharks"},
+  {q:20,t:"two weeks without sleep can kill laboratory rats"},
+  {q:21,t:"closed eyes seem to be a virtually universal prerequisite for sleep"},
+  {q:22,t:"except for one critical organ, the brain"},
+  {q:23,t:"drastically limiting their sleep time"},
+  {q:24,t:"while orcas are never as active as in the first months of life"},
+  {q:25,t:"scientists are unsure if reptiles and fish do"},
+  {q:26,t:"sleep is no more effective than a comparable period of wakeful resting"}
+];
+const P3H=[
+  {q:27,t:"this generation attained the pinnacle of ancient civilization"},
+  {q:28,t:"later excavations have also restored to us the ruins of the city of ostia"},
+  {q:29,t:"this generation is the one whose records combine to offer us the most complete picture of roman life"},
+  {q:30,t:"a much greater gulf separated the peasant from the townsman of antiquity"},
+  {q:31,t:"the conquest of arabia, which helped to bring the riches of india and east asia flooding into rome"},
+  {q:32,t:"all the more fortunate in that latin literature was soon to run nearly dry"},
+  {q:34,t:"the peasants decided to fight alongside them"},
+  {q:35,t:"the peasant knew nothing but unending labour without profit"},
+  {q:36,t:"was unable to enjoy the activities available in even the poorest of cities"},
+  {q:37,t:"if our ideas on roman life are not to become lost in confusion"},
+  {q:38,t:"this history will confine itself to studying the generation"},
+  {q:39,t:"those roman subjects who spent their time exclusively in the town"},
+  {q:40,t:"the moral background of thought and sentiment which can help explain both its strength and its weaknesses"}
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault());
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+</body>
+</html>

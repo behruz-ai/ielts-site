@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 5 (Volume 5) @bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* THEME */
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1–13.</span>
+</div>
+
+<div id="main">
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">New perspectives on food production</h2><p class="psub">Read the text and answer questions 1&ndash;13</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p style="font-style:italic;text-align:center;margin-bottom:14px">Solving the food problem requires scientific progress, but also an understanding of social context and cultures</p>
+<p><strong>Is new technology needed for global food production?</strong></p>
+<p>The Food and Agriculture Organization of the United Nations notes that domestic prices of staple food are continuing to increase, leading to a rise in the number of people worldwide who are chronically underfed. According to Erik Millstone, a food and agriculture researcher funded by the Economic and Social Research Council (ESRC), the natural science community tends to view world hunger as if it were a problem that could be solved simply by increasing total production. But, he says, 'Most people who are chronically hungry are so not because of the scarcity of food but because they are unable to afford what is available. In addition, the food trade is so globalised that food is often exported from areas where people are hungry and sent to countries where people already have sufficient.'</p>
+<p>Millstone believes the problem can only be solved by changing the conditions for poor subsistence farmers and providing the support they need to grow more food. And that is not enough on its own - they also have to have facilities for storing it so that their food can be kept safe and in good condition until it is needed. But, he adds, increasing productivity through technology is not the answer. An example is the new genetically-engineered varieties of high-performance maize. The problem with these new varieties is that if you save seed and plant it again next year, its vigour has diminished. Most North American and European farmers can afford to get new seed every year; poor farmers cannot, so they need traditional varieties whose seed can be saved and replanted. Giving farmers access to credit also doesn't help; it adds risk. 'Poor farmers should not be thought of as entrepreneurs looking to invest their money. They are looking to diminish their risk.' Ultimately, he concludes, 'Instead of devoting resources to research for intensifying commercial farming, we should devote them to enhancing the techniques available to subsistence farmers, and to developing appropriate tools for them to use, because their need is the greatest. Increasing their productivity will do more to enhance food security for those who are hungry than anything else we can do.'</p>
+<p><strong>Looking for local solutions in the UK</strong></p>
+<p>In contrast to Millstone, Gareth Edwards-Jones, a professor of agriculture and land use at the University of Bangor in Wales, focuses on food production in the UK. In recent years 'local food' has become fashionable in the UK without any real understanding of the issues involved. First and foremost, it is necessary to define more precisely what is meant by 'local'. Is bread bought in England from an English bakery 'local' if the wheat it is made from was grown in Canada? Funded through the Rural Economy and Land Use Programme, Edwards-Jones is studying people's perceptions of 'localness' and seeking to establish whether there is any science behind the popular belief that 'local is better'.</p>
+<p>His work involves studying the carbon footprint* of foods grown in different areas of the UK, as well as such common sources of supply as Spain, Kenya and Uganda. He has made some surprising discoveries. Which has the lower carbon footprint: sugar made from sugar cane grown in Africa, or from sugar beet flown in from Europe? The answer is sugar from sugar cane in Africa. Similarly, trucking vegetables in from Spain may have a smaller carbon footprint than growing them locally in the UK - because growing them locally requires adding all the emissions of running a heated greenhouse.</p>
+<p>And, he asks, how far down the life cycle should you go? He discovered early in his research that the methods used to prepare foods to be eaten can have a huge impact; boiling potatoes accounts for fully half their carbon footprint. Ultimately, it's a mistake to look at just one part of the food chain. You could have a policy where you're going to really pressurise farmers to try to get emissions down, but decarbonising fuel and electricity is a much more effective method of protecting the environment; he says.</p>
+<p>Another of Edwards-Jones's research projects involved visiting farm workers in each of the above countries to assess their health and well-being. 'We found that farm workers in Kenya had better physical and mental health than the average Kenyan,' he says, attributing the difference to both better income and to the benefits - housing, schools, medical care - provided by their large corporate employers. He finds it ironic that after years of 'trade not aid' all of a sudden people are starting to say the UK shouldn't be importing food from Africa.</p>
+<p>The other problem with insisting on locally grown food, he says, is that the UK is not suited to growing most fruits and vegetables - the key elements in a healthy diet. These crops need our best land - which means demoting other crops that do grow well in the UK to lower quality land. 'There's a domino effect so that increasing self sufficiency may, from an environmental perspective, be quite bad,' he says.</p>
+<p style="font-size:12px;color:var(--subtext)">*carbon footprint: a calculation of the amount of greenhouse gases produced as a result of human activities.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">Egypt's ancient boat-builders</h2><p class="psub">Read the text and answer questions 14&ndash;26</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p style="font-style:italic;text-align:center;margin-bottom:14px">Archaeological discoveries on Egypt's Red Sea coast indicate that the region's ancient inhabitants were a skilled seafaring people</p>
+<p><strong>A</strong>&nbsp; The scenes carved into a wall of an Egyptian temple dating from the 15th century BC, tell of a remarkable sea voyage from a mysterious land known as Punt, or 'Land of God'. They show a fleet of ships bearing exotic cargo, navigating through high-crested waves on a journey. The exact meaning of these detailed carvings has divided Egyptologists ever since they were discovered in the mid-19th century. Some people have argued that Punt was not on the sea, or a fictitious place altogether,' says Oxford University Egyptologist John Baines. However, a series of remarkable discoveries on a desolate stretch of Egypt's Red Sea coast has settled the debate. 'These finds remove all doubt that you reach Punt by sea.' Baines says. 'The Egyptians must have had considerable seagoing experience.'</p>
+<p><strong>B</strong>&nbsp; The archaeologists behind these discoveries are Kathryn Bard of Boston University, USA, and Rodolfo Fattovich of Orientale University, Italy. From 2002 they spent several weeks each year examining a dried-up lagoon known in Egypt as Mersa Gawasis, and the coastal cliffs nearby. They were searching for signs of a harbour that might have sheltered merchant ships like those depicted in the wall carvings. Finally, in December 2004, Bard was clearing what she thought was the back wall of a rock shelter when she put her hand through the sand into an open space, and uncovered a hemispherical cave about 5 metres across and 2 metres high. The cave's entrance was carved into an exact rectangle and was clearly not a natural formation. Inside, the archaeologists found shattered storage jars, broken boxes made from cedar planks, and five grinding stones. A pottery fragment inscribed with the name of Amenemhat III, a pharaoh who ruled Egypt around 1800 BC, helped the team pinpoint the cave's age.</p>
+<p><strong>C</strong>&nbsp; Not long afterwards, Bard and Fattovich came across a larger cave, reinforced with old wooden timbers and stone anchors, the first conclusive evidence of large-scale Egyptian seafaring ever discovered. Over the next few years, they uncovered the hidden remnants of an ancient boat-building and seafaring community. Many of the artefacts found were full of holes - the work of tiny marine animals known as shipworms. In addition to eight caves, Bard and Fattovich found remains of five mud-brick ramps that might have been used to ease ships into the water. One cave contained hundreds of metres of rope, expertly coiled and stacked.</p>
+<p><strong>D</strong>&nbsp; Material connecting Mersa Gawasis to Punt accumulated both inside and outside the caves. A few hundred metres from the cliffs lie piles of crumbled stone and conch shells - most probably the remains of altars. Among these are stones carved with inscriptions that specifically mention missions to Punt. As if that weren't enough, among the remnants found outside one cave were two planks marked with directions for assembling a ship. One of them bore an inscription still partly legible after 3,800 years: 'Year 8 under his majesty the king of Upper and Lower Egypt......given life forever....of wonderful things of Punt.'</p>
+<p><strong>E</strong>&nbsp; While the Mersa Gawasis artefacts have answered some questions, they have raised others. For instance, how did the expeditions to Punt actually work, and how did the Egyptians construct vessels that could make a round-trip voyage of over 3,000 kilometres? Cheryl Ward, a maritime archaeologist at Coastal Carolina University in South Carolina, USA, has gone some way to answering these questions. She spent three years building a full-scale reconstruction of a ship that would have docked in the lagoon of Mersa Gawasis. Ward has determined that unlike modern vessels, the Egyptian ship was essentially one giant hull. The Egyptian ships were also unique in that they were held together with fittings that needed no metal fasteners, and could be taken apart and put back together again. 'From the very beginning, the Egyptians were building boats that could be disassembled, and that makes them different from anyone else,' Ward says.</p>
+<p><strong>F</strong>&nbsp; For all the skill and craftsmanship evident in the Mersa Gawasis caves, ancient Egypt's ocean voyages were most likely an exception to the usual modes of trade, born out of a necessity to obtain precious materials, such as incense and aromatic resins. For most of Egypt's history these goods had moved along established routes across the eastern desert and through modern-day Sudan. But around the time Mersa Gawasis came into use, it seems a hostile new kingdom to the south cut Egypt off from its supply of exotic materials. 'If they could have gone overland, it would have been much easier than bringing timbers from Lebanon, building ships on the upper Nile, taking them apart and carrying them across the desert,' Bard says. 'They weren't stupid - no one wants to do things the hard way. But geopolitically, they had no other choice.' Fattovich suggests that there were probably only 15 to 20 expeditions over some 400 years, about one every two decades. After that Mersa Gawasis fell out of use, probably because either there was no longer enough water in the lagoon to float ships, or overland links improved, or alternative sites were found. The last sailors to use the lagoon sealed up their equipment and shelters behind mud bricks and sand to await expeditions that never came.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">The communication of science</h2><p class="psub">Read the text and answer questions 27&ndash;40</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p style="font-style:italic;text-align:center;margin-bottom:14px">The communication of science</p>
+<p>Science plays an increasingly significant role in people's lives, making the communication by journalists in the popular media of scientific developments more important than ever. Yet such communication is fraught with challenges that can easily distort discussions and lead to unnecessary confusion.</p>
+<p>Some problems stem from the esoteric nature of current research and are the associated difficulty of coming up with sufficiently faithful terminology. Abstraction and complexity are not signs that a given scientific direction is wrong, but are instead a tribute to the success of human ingenuity in meeting the challenges that nature presents. They can, however, make communication more difficult.</p>
+<p>But many of the biggest challenges for scientific reporting arise because in areas of evolving research, scientists tend to be specialists, and often only partly realise the significance of any particular advance or development. Since that partial understanding applies to most of the scientific developments that directly affect people's lives, such as cancer research and diet studies, learning how to overcome it is critical to stimulating a more informed scientific debate among the broader public.</p>
+<p>Ambiguous word choices are the source of some misunderstandings. Scientists often employ common terminology, to which they then assign a specific meaning that is impossible to fathom without a precise definition. Take Einstein's famous theory of relativity. The term 'relativity' here is intrinsically misleading. Many interpret the theory to mean that everything is relative and there are no absolutes. Yet although the measurements any observer makes depend on his coordinates and reference frame, according to Einstein's theory, the physical phenomena he measures, in fact, have an invariant description that transcends that observer's particular coordinates. The physical phenomena are not relative. Even Einstein admitted that the term relativity was probably misleading.</p>
+<p>But not all communication problems stem solely from poor word choices. Some are inherent in the intrinsically complex nature of much of modern science. Science sometimes transcends this limitation: remarkably, chemists were able to detail the precise chemical processes involved in the destruction of the ozone layer, making the evidence that chlorofluorocarbon gases (Freon, for example) were destroying the ozone layer successfully conveyed to the public.</p>
+<p>How journalists report scientific developments on vital issues of the day that are less well understood, or in which the connection is less direct, is a more complicated question. Global warming patterns are a case in point. Even if we understand some effects of carbon dioxide in the atmosphere, it is difficult to predict the precise chain of events that a marked increase in carbon dioxide will cause. The distillation of results presented to the public in such cases should reflect at least some of the subtleties of the most current developments. Balanced reporting, of course, usually helps public understanding. Journalists should seek to offer balance by providing opposing or competitive views on any controversial issue. But almost all newly discovered results will have some supporters and some opponents, and only time and more evidence will sort out the true story. However, a real problem in the global warming debate was that the story was reported in the press in a way that suggested some scientists believed it was a legitimate issue and some didn't, even long after the bulk of the scientific community had recognized the seriousness of the problem.</p>
+<p>A better understanding by the general public of the mathematical significance of results would help to clarify many scientific discussions. Statistical analysis can show whether particular results are significant or could occur simply by chance. A few years ago, the Harvard University faculty was tortured by empty debates over the relative intrinsic differences in the scientific abilities of men and women. One of the more amusing aspects of the discussion was that those who believed in the differences and those who didn't used the same evidence in their opposing arguments about gender-specific scientific ability. How could that be? The answer is that the data did show gender differences, but no statistically significant differences in inherent scientific ability based on gender.</p>
+<p>There are steps we can take to improve public understanding of scientific developments. The first would be to inculcate greater understanding and acceptance of indirect scientific evidence not directly observable by human scientists. The information from an unmanned space mission is no less legitimate than the information from one in which people are on board. Second we might need different standards for evaluating science with urgent policy implications as opposed to research with a purely theoretical value. Third, it would be better if scientists were more prepared to discuss the mathematical significance of their results, and if the public didn't treat maths as quite so scary: statistics, which tell us the uncertainty in a measurement, give us the tools to evaluate new developments fully.</p>
+<p>But fourth, and most important, people have to recognise that science can be complex. If we accept only straightforward stories, the description will necessarily be distorted. When advances are subtle or complicated, scientists should be willing to go the extra distance to give proper explanations, and the public should be more patient about the truth. Even so, some difficulties are unavoidable. Most developments reflect work in progress, so the story is complex because no one yet knows the big picture. Although the more involved story might not have the same immediate appeal, the truth in the end will always be far more interesting.</p>
+    </div>
+  </div>
+
+  <div id="drag"></div>
+
+  <div id="right-pane">
+<div class="qsec on" id="qs1">
+<p class="qnum-head"><em>Questions 1&ndash;8</em></p><p class="qinst">Complete the notes below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="qtitle">The problem of world hunger</div><div class="notesbox"><span class="nbsec">Cause</span><ul class="nbul"><li>Some scientists see world hunger as due to a general <span class="inline-qno">1</span><input class="answer-input" id="q1" type="text"> of food.</li><li>But it may be because:<ul class="nbul"><li>hungry people cannot <span class="inline-qno">2</span><input class="answer-input" id="q2" type="text"></li><li>food is not available because it has been <span class="inline-qno">3</span><input class="answer-input" id="q3" type="text"></li></ul></li></ul><span class="nbsec">Solution</span><ul class="nbul"><li>provide support for subsistence farmers in growing and <span class="inline-qno">4</span><input class="answer-input" id="q4" type="text"> their food</li></ul><span class="nbsec">Additional recommendations</span><ul class="nbul"><li>don't use <span class="inline-qno">5</span><input class="answer-input" id="q5" type="text"> to increase food production, e.g. <span class="inline-qno">6</span><input class="answer-input" id="q6" type="text"> varieties of maize are better for poor farmers as the seed can be replanted</li><li>don't provide opportunities for farmers to have <span class="inline-qno">7</span><input class="answer-input" id="q7" type="text"> - too risky</li><li>don't do research into intensifying commercial farming</li><li>do improve techniques and <span class="inline-qno">8</span><input class="answer-input" id="q8" type="text"> available to subsistence farmers</li></ul></div>
+<p class="qnum-head"><em>Questions 9&ndash;13</em></p><p class="qinst">Do the following statements agree with the information given in Reading Passage 1? In boxes 9-13, write</p><p class="qinst"><strong>TRUE</strong>&nbsp; if the statement agrees with the information<br><strong>FALSE</strong>&nbsp; if the statement contradicts the information<br><strong>NOT GIVEN</strong>&nbsp; if there is no information on this</p><div class="qitem"><p class="qprompt"><strong>9.</strong>&nbsp; Importing sugar to the UK from other parts of Europe is less environmentally harmful than importing sugar from Africa.</p><div class="rgroup" id="rg9"><label class="rlabel"><input type="radio" name="q9" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q9" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q9" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>10.</strong>&nbsp; The way in which some foods are cooked may affect their impact on the environment.</p><div class="rgroup" id="rg10"><label class="rlabel"><input type="radio" name="q10" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q10" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q10" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>11.</strong>&nbsp; The best way to reduce harm to the environment is to oblige farmers to use more environmentally friendly farming methods.</p><div class="rgroup" id="rg11"><label class="rlabel"><input type="radio" name="q11" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q11" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q11" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>12.</strong>&nbsp; Imports of food to the UK from African countries such as Kenya have fallen recently.</p><div class="rgroup" id="rg12"><label class="rlabel"><input type="radio" name="q12" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q12" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q12" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>13.</strong>&nbsp; Growing fruit and vegetables is better for the environment than raising animals for food.</p><div class="rgroup" id="rg13"><label class="rlabel"><input type="radio" name="q13" value="TRUE" onchange="upd()"> TRUE</label><label class="rlabel"><input type="radio" name="q13" value="FALSE" onchange="upd()"> FALSE</label><label class="rlabel"><input type="radio" name="q13" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+</div>
+<div class="qsec" id="qs2">
+<p class="qnum-head"><em>Questions 14&ndash;17</em></p><p class="qinst">Reading Passage 2 has six paragraphs, <strong>A-F</strong>. Which paragraph contains the following information? Write the correct letter, A-F, in boxes 14-17 on your answer sheet. <em>NB You may use any letter more than once.</em></p><div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">14</span> possible reasons why the site of Mersa Gawasis was abandoned</td><td><label class="mx-cell"><input type="radio" name="q14" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q14" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">15</span> mention of a lack of agreement about an archaeological discovery</td><td><label class="mx-cell"><input type="radio" name="q15" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q15" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">16</span> reference to a study which involved copying ancient Egyptian boat-building techniques</td><td><label class="mx-cell"><input type="radio" name="q16" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q16" value="F" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">17</span> a reason why the ancient Egyptians needed to import goods by sea</td><td><label class="mx-cell"><input type="radio" name="q17" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q17" value="F" onchange="upd()"></label></td></tr></tbody></table></div>
+<p class="qnum-head"><em>Questions 18&ndash;21</em></p><p class="qinst">Complete the sentences below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p><div class="notesbox"><ul class="nbul"><li>Illustration of merchant ships sailing from Punt were found on wall carvings in an ancient <span class="inline-qno">18</span><input class="answer-input" id="q18" type="text"> in Egypt.</li><li>Bard and Fattovich hoped to find evidence of a <span class="inline-qno">19</span><input class="answer-input" id="q19" type="text"> in the area of Mersa Gawasis.</li><li>When Bard first discovered a cave at Mersa Gawasis, the shape of its <span class="inline-qno">20</span><input class="answer-input" id="q20" type="text"> indicated that it was man-made.</li><li>Bard and Fattovich discovered a considerable number of objects that had <span class="inline-qno">21</span><input class="answer-input" id="q21" type="text"> made by small sea creatures.</li></ul></div>
+<p class="qnum-head"><em>Questions 22&ndash;26</em></p><p class="qinst">Look at the following statements (Questions 22-26) and the list of archaeologists below. Match each statement with the correct archaeologist, <strong>A, B, C</strong> or <strong>D</strong>. Write the correct letter, A, B, C or D, in boxes 22-26 on your answer sheet. <em>NB You may use any letter more than once.</em></p><div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">22</span> Ancient Egyptian sea voyages were probably relatively infrequent.</td><td><label class="mx-cell"><input type="radio" name="q22" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">23</span> It is now certain that the ancient Egyptians sailed to Punt.</td><td><label class="mx-cell"><input type="radio" name="q23" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">24</span> During a certain period, Egyptians were forced to use sea rather than overland trade routes.</td><td><label class="mx-cell"><input type="radio" name="q24" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">25</span> It has been suggested that Punt never existed.</td><td><label class="mx-cell"><input type="radio" name="q25" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="D" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">26</span> The construction of ancient Egyptian ships was unlike any other.</td><td><label class="mx-cell"><input type="radio" name="q26" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="D" onchange="upd()"></label></td></tr></tbody></table></div>
+<div class="fbox"><strong>List of Archaeologists</strong>A &nbsp; John Baines<br>B &nbsp; Kathryn Bard<br>C &nbsp; Rodolfo Fattovich<br>D &nbsp; Cheryl Ward</div>
+</div>
+<div class="qsec" id="qs3">
+<p class="qnum-head"><em>Questions 27&ndash;30</em></p><p class="qinst">Choose the correct letter, <strong>A, B, C</strong> or <strong>D</strong>. Write the correct letter in boxes 27-30 on your answer sheet.</p><div class="qitem"><p class="qprompt"><strong>27.</strong>&nbsp; Why does the writer say we particularly need to pay attention to the communication of science?</p><div class="rgroup" id="rg27"><label class="rlabel"><input type="radio" name="q27" value="A" onchange="upd()"> <strong>A</strong>&nbsp; Scientific developments are affecting everyone more and more.</label><label class="rlabel"><input type="radio" name="q27" value="B" onchange="upd()"> <strong>B</strong>&nbsp; There is too little discussion of scientific research nowadays.</label><label class="rlabel"><input type="radio" name="q27" value="C" onchange="upd()"> <strong>C</strong>&nbsp; There are now so many scientific research projects.</label><label class="rlabel"><input type="radio" name="q27" value="D" onchange="upd()"> <strong>D</strong>&nbsp; Scientists need wider public support.</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>28.</strong>&nbsp; In the second paragraph, the writer says it may be difficult to choose the appropriate terminology to describe scientific developments because</p><div class="rgroup" id="rg28"><label class="rlabel"><input type="radio" name="q28" value="A" onchange="upd()"> <strong>A</strong>&nbsp; research findings can be interpreted very differently.</label><label class="rlabel"><input type="radio" name="q28" value="B" onchange="upd()"> <strong>B</strong>&nbsp; the nature of modern science is inherently complicated.</label><label class="rlabel"><input type="radio" name="q28" value="C" onchange="upd()"> <strong>C</strong>&nbsp; scientists are the only people who can understand their research.</label><label class="rlabel"><input type="radio" name="q28" value="D" onchange="upd()"> <strong>D</strong>&nbsp; the public is so critical of the findings of scientists.</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>29.</strong>&nbsp; The writer refers to the term relativity as an example of</p><div class="rgroup" id="rg29"><label class="rlabel"><input type="radio" name="q29" value="A" onchange="upd()"> <strong>A</strong>&nbsp; Einstein's deliberate deception of the public.</label><label class="rlabel"><input type="radio" name="q29" value="B" onchange="upd()"> <strong>B</strong>&nbsp; a scientific word used to describe a physical phenomenon.</label><label class="rlabel"><input type="radio" name="q29" value="C" onchange="upd()"> <strong>C</strong>&nbsp; the use of a generally used word to describe a scientific concept.</label><label class="rlabel"><input type="radio" name="q29" value="D" onchange="upd()"> <strong>D</strong>&nbsp; the absolute nature of scientific theories.</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>30.</strong>&nbsp; What example does the writer cite as a successful scientific explanation of a complicated issue?</p><div class="rgroup" id="rg30"><label class="rlabel"><input type="radio" name="q30" value="A" onchange="upd()"> <strong>A</strong>&nbsp; the results of diet studies</label><label class="rlabel"><input type="radio" name="q30" value="B" onchange="upd()"> <strong>B</strong>&nbsp; the developments in cancer research</label><label class="rlabel"><input type="radio" name="q30" value="C" onchange="upd()"> <strong>C</strong>&nbsp; the explanation of the theory of relativity</label><label class="rlabel"><input type="radio" name="q30" value="D" onchange="upd()"> <strong>D</strong>&nbsp; the destruction of the ozone layer</label></div></div>
+<p class="qnum-head"><em>Questions 31&ndash;34</em></p><p class="qinst">Do the following statements agree with the views of the writer in Reading Passage 3? In boxes 31-34, write</p><p class="qinst"><strong>YES</strong>&nbsp; if the statement agrees with the views of the writer<br><strong>NO</strong>&nbsp; if the statement contradicts the views of the writer<br><strong>NOT GIVEN</strong>&nbsp; if it is impossible to say what the writer thinks about this</p><div class="qitem"><p class="qprompt"><strong>31.</strong>&nbsp; Reporting of different viewpoints on global warming tends to lead to a fuller appreciation of the issues.</p><div class="rgroup" id="rg31"><label class="rlabel"><input type="radio" name="q31" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q31" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q31" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>32.</strong>&nbsp; The media's attempt to present both sides of the global warming issue went on for too long.</p><div class="rgroup" id="rg32"><label class="rlabel"><input type="radio" name="q32" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q32" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q32" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>33.</strong>&nbsp; Explaining the mathematical significance of experimental results would confuse the public.</p><div class="rgroup" id="rg33"><label class="rlabel"><input type="radio" name="q33" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q33" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q33" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<div class="qitem"><p class="qprompt"><strong>34.</strong>&nbsp; In the Harvard debate, it would have been better to pay more attention to the discoveries made by male and female scientists.</p><div class="rgroup" id="rg34"><label class="rlabel"><input type="radio" name="q34" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q34" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q34" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+<p class="qnum-head"><em>Questions 35&ndash;40</em></p><p class="qinst">Complete the summary using the list of words, <strong>A-J</strong>, below.</p><div class="notesbox"><p>Several possible changes could reduce <span class="dzone dz-sm" id="q35" data-q="35" data-bank="words"></span> in the reporting of science. The public needs to recognise that scientific evidence does not need to be <span class="dzone dz-sm" id="q36" data-q="36" data-bank="words"></span> by people to be valid. The way theoretical research is judged may be different from the way research with practical <span class="dzone dz-sm" id="q37" data-q="37" data-bank="words"></span> is. Scientists should be more <span class="dzone dz-sm" id="q38" data-q="38" data-bank="words"></span> about the mathematical significance of their findings and the public should learn to be more comfortable with numerical <span class="dzone dz-sm" id="q39" data-q="39" data-bank="words"></span>. Most importantly, scientists, journalists and the public must accept that science and science reporting is necessarily <span class="dzone dz-sm" id="q40" data-q="40" data-bank="words"></span>.</p></div>
+<div class="wbank se-bank" data-bank="words" data-show="letter"><div class="dchip" draggable="true" data-letter="A" data-word="complicated"><span class="wk">A</span> complicated</div><div class="dchip" draggable="true" data-letter="B" data-word="observable"><span class="wk">B</span> observable</div><div class="dchip" draggable="true" data-letter="C" data-word="data"><span class="wk">C</span> data</div><div class="dchip" draggable="true" data-letter="D" data-word="proposals"><span class="wk">D</span> proposals</div><div class="dchip" draggable="true" data-letter="E" data-word="immediate"><span class="wk">E</span> immediate</div><div class="dchip" draggable="true" data-letter="F" data-word="misunderstandings"><span class="wk">F</span> misunderstandings</div><div class="dchip" draggable="true" data-letter="G" data-word="open"><span class="wk">G</span> open</div><div class="dchip" draggable="true" data-letter="H" data-word="distorted"><span class="wk">H</span> distorted</div><div class="dchip" draggable="true" data-letter="I" data-word="implications"><span class="wk">I</span> implications</div><div class="dchip" draggable="true" data-letter="J" data-word="miscalculations"><span class="wk">J</span> miscalculations</div></div>
+</div>
+  </div>
+</div>
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const CA = {1:"scarcity",2:"afford",3:"exported",4:"storing",5:"technology",6:"genetically-engineered",7:"credit",8:"tools",9:"FALSE",10:"TRUE",11:"FALSE",12:"NOT GIVEN",13:"NOT GIVEN",14:"F",15:"A",16:"E",17:"F",18:"temple",19:"harbour",20:"entrance",21:"holes",22:"C",23:"A",24:"B",25:"A",26:"D",27:"A",28:"B",29:"C",30:"D",31:"NO",32:"YES",33:"NO",34:"NOT GIVEN",35:"F",36:"B",37:"I",38:"G",39:"C",40:"A"};
+const CAL = {1:"scarcity",2:"afford",3:"exported",4:"storing",5:"technology",6:"genetically-engineered",7:"credit",8:"tools",9:"FALSE",10:"TRUE",11:"FALSE",12:"NOT GIVEN",13:"NOT GIVEN",14:"F",15:"A",16:"E",17:"F",18:"temple",19:"harbour",20:"entrance",21:"holes",22:"C",23:"A",24:"B",25:"A",26:"D",27:"A",28:"B",29:"C",30:"D",31:"NO",32:"YES",33:"NO",34:"NOT GIVEN",35:"F",36:"B",37:"I",38:"G",39:"C",40:"A"};
+
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 55%,#063847 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(0,200,180,0.3);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(0,200,180,0.12);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(0,200,180,0.08);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="font-size:50px;margin-bottom:10px;">📖</div>
+            <div style="display:inline-block;background:rgba(0,200,180,0.2);color:#7ffcec;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(0,200,180,0.3);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong>I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">🎯 <strong>Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong>Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0d7a8a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0d7a8a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:#DC2626;color:#fff;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.95);color:#0a5566;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='🧘 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0d7a8a;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='🎯 Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+// CHOOSE-THREE CHECKBOX GROUPS
+const PICK={};
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=32)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+const P1H=[
+  {q:1,t:"most people who are chronically hungry are so not because of the scarcity of food"},
+  {q:2,t:"because they are unable to afford what is available"},
+  {q:3,t:"food is often exported from areas where people are hungry"},
+  {q:4,t:"they also have to have facilities for storing it so that their food can be kept safe"},
+  {q:5,t:"increasing productivity through technology is not the answer"},
+  {q:6,t:"an example is the new genetically-engineered varieties of high-performance maize"},
+  {q:7,t:"it adds risk"},
+  {q:8,t:"developing appropriate tools for them to use"},
+  {q:9,t:"the answer is sugar from sugar cane in africa"},
+  {q:10,t:"boiling potatoes accounts for fully half their carbon footprint"},
+  {q:11,t:"decarbonising fuel and electricity is a much more effective method of protecting the environment"},
+  {q:12,t:"all of a sudden people are starting to say the uk"},
+  {q:13,t:"the uk is not suited to growing most fruits and vegetables"}
+];
+const P2H=[
+  {q:14,t:"probably because either there was no longer enough water in the lagoon to float ships"},
+  {q:15,t:"some people have argued that punt was not on the sea"},
+  {q:16,t:"she spent three years building a full-scale reconstruction of a ship"},
+  {q:17,t:"born out of a necessity to obtain precious materials, such as incense and aromatic resins"},
+  {q:18,t:"the scenes carved into a wall of an egyptian temple dating from the 15th century bc"},
+  {q:19,t:"they were searching for signs of a harbour that might have sheltered merchant ships"},
+  {q:20,t:"was carved into an exact rectangle and was clearly not a natural formation"},
+  {q:21,t:"many of the artefacts found were full of holes"},
+  {q:22,t:"there were probably only 15 to 20 expeditions over some 400 years"},
+  {q:23,t:"these finds remove all doubt that you reach punt by sea"},
+  {q:24,t:"but geopolitically, they had no other choice"},
+  {q:25,t:"or a fictitious place altogether"},
+  {q:26,t:"could be taken apart and put back together again"}
+];
+const P3H=[
+  {q:27,t:"making the communication by journalists in the popular media of scientific developments more important than ever"},
+  {q:28,t:"some problems stem from the esoteric nature of current research"},
+  {q:29,t:"scientists often employ common terminology, to which they then assign a specific meaning"},
+  {q:30,t:"chlorofluorocarbon gases (freon, for example) were destroying the ozone layer"},
+  {q:31,t:"suggested some scientists believed it was a legitimate issue and some"},
+  {q:32,t:"even long after the bulk of the scientific community had recognized the seriousness of the problem"},
+  {q:33,t:"would help to clarify many scientific discussions"},
+  {q:34,t:"no statistically significant differences in inherent scientific ability based on gender"},
+  {q:35,t:"there are steps we can take to improve public understanding of scientific developments"},
+  {q:36,t:"acceptance of indirect scientific evidence not directly observable by human scientists"},
+  {q:37,t:"different standards for evaluating science with urgent policy implications"},
+  {q:38,t:"it would be better if scientists were more prepared to discuss the mathematical significance"},
+  {q:39,t:"give us the tools to evaluate new developments fully"},
+  {q:40,t:"people have to recognise that science can be complex"}
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault());
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+</body>
+</html>

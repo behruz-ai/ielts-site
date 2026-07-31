@@ -1,0 +1,1909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>IELTS Listening Vol 8 Test 3 | bekhruzposts</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a2a4a 0%, #0d3b5e 50%, #1a4a6b 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            border-bottom: 2px solid rgba(0, 200, 180, 0.4);
+        }
+
+        .header-left { display: flex; align-items: center; gap: 20px; }
+
+        .ielts-logo {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #00c8b4;
+            text-shadow: 0 0 20px rgba(0,200,180,0.4);
+        }
+
+        .test-info { font-size: 14px; }
+
+        .audio-controls { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+
+        .header-right { display: flex; align-items: center; gap: 15px; }
+
+        .header-btn {
+            background: rgba(0,200,180,0.15) !important;
+            border: 1px solid rgba(0,200,180,0.4) !important;
+            color: white !important;
+            padding: 6px 12px !important;
+            border-radius: 20px !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            white-space: nowrap !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.8px !important;
+        }
+        .header-btn:hover {
+            background: rgba(0,200,180,0.3) !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 12px rgba(0,200,180,0.25) !important;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 80px auto 120px;
+            background: white;
+            min-height: calc(100vh - 200px);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .content-area { flex: 1; padding: 30px 40px; }
+
+        .part-header { margin-bottom: 20px; }
+        .part-title { font-size: 18px; font-weight: bold; color: #1a2a4a; margin-bottom: 5px; }
+        .part-instruction { font-size: 14px; color: #666; }
+
+        .questions-section { margin-bottom: 30px; }
+        .questions-title { font-size: 16px; font-weight: bold; margin-bottom: 10px; }
+
+        .question-instruction {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 20px;
+            background: #e8f6f7;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0d7a8a;
+        }
+
+        .question-content {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .answer-input {
+            border: 2px solid #0d7a8a;
+            background: white !important;
+            padding: 5px 8px;
+            min-width: 80px;
+            max-width: 160px;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            vertical-align: middle;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: #00c8b4;
+            box-shadow: 0 0 0 3px rgba(0,200,180,0.15);
+            background: white !important;
+        }
+        .answer-input::placeholder { color: #aaa; font-size: 13px; }
+
+        /* Multiple choice */
+        .choice-option {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: white;
+            margin: 4px 0;
+            transition: background 0.2s;
+        }
+        .choice-option:hover { background: #e8f6f7; }
+        .choice-option input[type="radio"],
+        .choice-option input[type="checkbox"] { margin: 0; cursor: pointer; accent-color: #0d7a8a; }
+        .choice-option.selected { background: #e8f6f7; border: 1px solid #0d7a8a; }
+
+        /* Note-completion table box */
+        .note-box {
+            border: 2px solid #333;
+            border-radius: 4px;
+            padding: 20px 25px;
+            margin: 10px 0;
+            background: white;
+        }
+        .note-box-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #1a2a4a;
+        }
+        .note-section-title { font-weight: bold; margin: 14px 0 6px; color: #333; }
+        .note-item { margin: 8px 0; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+        .note-item li { list-style: disc; margin-left: 20px; margin-bottom: 8px; }
+
+        /* Map section */
+        .map-section { display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap; }
+        .map-container { flex: 1; min-width: 300px; }
+        .map-svg-wrap { border: 2px solid #333; border-radius: 6px; overflow: hidden; background: #f5f0e8; padding: 15px; }
+
+        /* Part navigation footer */
+        .footer {
+            background: linear-gradient(135deg, #1a2a4a 0%, #0d3b5e 100%);
+            padding: 10px 40px;
+            border-top: 2px solid rgba(0,200,180,0.3);
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            z-index: 100;
+            height: 70px;
+        }
+        .part-navigation {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .part-numbers { display: flex; gap: 2px; align-items: center; }
+        .part-number {
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: normal;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
+            font-size: 14px;
+            padding: 0 12px;
+            color: white;
+        }
+        .part-number.active {
+            background: #0d7a8a;
+            color: white;
+            border-color: #0d7a8a;
+            min-width: 200px;
+        }
+        .part-number.inactive {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            min-width: 80px;
+            border-color: rgba(255,255,255,0.2);
+        }
+        .part-number:hover { border-color: rgba(0,200,180,0.7); }
+
+        .navigation-arrows { display: flex; gap: 10px; }
+        .nav-arrow {
+            position: relative;
+            width: 50px; height: 45px;
+            background: linear-gradient(135deg, rgba(13,122,138,0.6) 0%, rgba(10,95,110,0.5) 100%);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid rgba(0,200,180,0.7);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 20px; font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 20px rgba(0,150,170,0.3);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+        .nav-arrow:hover {
+            background: linear-gradient(135deg, rgba(13,122,138,0.8) 0%, rgba(10,95,110,0.7) 100%);
+            transform: translateY(-1px);
+        }
+        .nav-arrow:disabled {
+            background: rgba(200,200,200,0.1);
+            color: rgba(255,255,255,0.4);
+            cursor: not-allowed;
+            border-color: rgba(200,200,200,0.2);
+        }
+
+        .part-info { display: flex; gap: 30px; font-size: 14px; color: rgba(255,255,255,0.8); }
+
+        /* Part content transitions */
+        .part-content { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Highlight */
+        .highlight { background-color: rgb(254,240,138); cursor: pointer; }
+        .text-highlight { background-color: rgba(255,255,0,0.4); border-radius: 2px; display: inline; }
+
+        /* highlight tip */
+        .highlight-tip {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: #555; font-size: 13px;
+            background: #e8f6f7; padding: 8px 15px; border-radius: 20px;
+        }
+
+        /* Select for map questions */
+        select.map-answer {
+            border: 2px solid #0d7a8a;
+            border-radius: 5px; padding: 5px 10px;
+            font-size: 14px; background: white;
+            cursor: pointer; outline: none;
+            transition: all 0.2s; color: #333;
+        }
+        select.map-answer:focus { border-color: #00c8b4; box-shadow: 0 0 0 3px rgba(0,200,180,0.15); }
+
+        /* Checkbox TWO selection */
+        .two-choice-options { display: flex; flex-direction: column; gap: 5px; margin: 10px 0; }
+
+        /* Result feedback */
+        .correct { background: #d4edda !important; border-color: #28a745 !important; color: #155724; }
+        .incorrect { background: #f8d7da !important; border-color: #dc3545 !important; color: #721c24; }
+
+        @media (max-width: 768px) {
+            .header { padding: 8px 10px; flex-direction: column; gap: 8px; }
+            .header-right { flex-wrap: wrap; justify-content: center; gap: 5px !important; }
+            .ielts-logo { font-size: 20px !important; }
+            .content-area { padding: 15px 10px; }
+            .footer { padding: 10px; }
+            .part-navigation { flex-direction: column; gap: 8px; }
+            .part-numbers { flex-wrap: wrap; justify-content: center; }
+        }
+    
+        /* ── MCQ BOLD STYLES ── */
+        .mc-q-stem { font-weight: 700; font-size: 14.5px; margin-bottom: 8px; color: #111; }
+        .choice-letter { font-weight: 800; color: #0d7a8a; min-width: 18px; flex-shrink: 0; }
+        .note-box-title { font-weight: 800; }
+        p strong { font-weight: 800; }
+
+        /* ═══ RICH RESULTS MODAL (adapted from shohrukhposts Mock 2) ═══ */
+        .results-overlay { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(15, 23, 42, 0.55); backdrop-filter: blur(8px); animation: resultsOverlayIn 0.35s ease; }
+        .results-overlay.closing { animation: resultsOverlayOut 0.28s ease forwards; }
+        @keyframes resultsOverlayIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes resultsOverlayOut { from { opacity: 1; } to { opacity: 0; } }
+        @keyframes resultsCardIn { from { opacity: 0; transform: translateY(24px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes resultsStatPop { 0% { opacity: 0; transform: translateY(12px) scale(0.92); } 70% { transform: translateY(-2px) scale(1.02); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes resultsBarGrow { from { width: 0; } }
+        .results-card { background: #fff; border-radius: 16px; box-shadow: 0 24px 64px rgba(0,0,0,0.22); width: min(920px, 100%); max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; animation: resultsCardIn 0.45s cubic-bezier(0.22,1,0.36,1); border: 1px solid #e5e7eb; }
+        .results-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: linear-gradient(180deg,#f8fafc 0%,#fff 100%); }
+        .results-header h2 { margin: 0; font-size: 20px; font-weight: 700; color: #111827; }
+        .results-header p { margin: 4px 0 0; font-size: 13px; color: #6b7280; }
+        .results-close-btn { width: 36px; height: 36px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; color: #6b7280; font-size: 22px; line-height: 1; cursor: pointer; transition: background .2s,color .2s,transform .2s; }
+        .results-close-btn:hover { background: #f3f4f6; color: #111827; transform: scale(1.05); }
+        .results-body { padding: 22px 24px 10px; overflow-y: auto; flex: 1; }
+        .results-hero { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: center; margin-bottom: 24px; }
+        .results-ring-wrap { position: relative; width: 180px; height: 180px; margin: 0 auto; }
+        .results-ring-svg { width: 180px; height: 180px; transform: rotate(-90deg); }
+        .results-ring-bg { fill: none; stroke: #e5e7eb; stroke-width: 10; }
+        .results-ring-progress { fill: none; stroke: url(#resultsRingGradient); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1); }
+        .results-ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .results-band { font-size: 42px; font-weight: 800; color: #0d7a8a; line-height: 1; }
+        .results-band-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: #6b7280; margin-top: 4px; }
+        .results-score-fraction { font-size: 13px; color: #374151; margin-top: 6px; font-weight: 600; }
+        .results-stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+        .results-stat { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; animation: resultsStatPop .5s ease backwards; }
+        .results-stat:nth-child(1) { animation-delay: .1s; } .results-stat:nth-child(2) { animation-delay: .18s; } .results-stat:nth-child(3) { animation-delay: .26s; }
+        .results-stat-value { font-size: 28px; font-weight: 800; color: #111827; line-height: 1.1; }
+        .results-stat-label { font-size: 12px; color: #6b7280; margin-top: 4px; font-weight: 600; }
+        .results-section-title { font-size: 14px; font-weight: 700; color: #111827; margin: 0 0 12px; }
+        .results-parts { margin-bottom: 22px; }
+        .results-part-row { display: grid; grid-template-columns: 72px 1fr 48px; align-items: center; gap: 12px; margin-bottom: 10px; cursor: pointer; padding: 6px 8px; border-radius: 10px; transition: background .2s; }
+        .results-part-row:hover, .results-part-row.active { background: #eff6ff; }
+        .results-part-label { font-size: 13px; font-weight: 700; color: #374151; }
+        .results-part-bar-track { height: 10px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
+        .results-part-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg,#14b8c4,#0d7a8a); animation: resultsBarGrow 1s cubic-bezier(0.4,0,0.2,1) backwards; }
+        .results-part-bar-fill.weak { background: linear-gradient(90deg,#f59e0b,#ef4444); }
+        .results-part-score { font-size: 13px; font-weight: 700; color: #0d7a8a; text-align: right; }
+        .results-grid-wrap { margin-bottom: 20px; }
+        .results-q-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+        .results-q-pill { width: 36px; height: 36px; border: 1px solid #e0e0e0; border-radius: 4px; background: #fff; font-size: 13px; font-weight: 600; color: #333; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform .15s,box-shadow .15s,border-color .15s; }
+        .results-q-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(13,122,138,.2); }
+        .results-q-pill.correct { background: #22c55e; border-color: #22c55e; color: #fff; }
+        .results-q-pill.incorrect { background: #ef4444; border-color: #ef4444; color: #fff; }
+        .results-q-pill.unanswered { background: #fef9c3; border-color: #facc15; color: #854d0e; }
+        .results-q-pill.highlighted { outline: 3px solid #0d7a8a; outline-offset: 2px; }
+        .results-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+        .results-tab { padding: 8px 14px; border: 1px solid #e5e7eb; border-radius: 999px; background: #fff; font-size: 13px; font-weight: 600; color: #4b5563; cursor: pointer; transition: all .2s; }
+        .results-tab:hover { border-color: #8fd4dc; color: #0d7a8a; }
+        .results-tab.active { background: #0d7a8a; border-color: #0d7a8a; color: #fff; }
+        .results-feedback { background: linear-gradient(135deg,#eff6ff 0%,#f0fdf4 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; animation: resultsStatPop .55s ease .3s backwards; }
+        .results-feedback h3 { margin: 0 0 10px; font-size: 15px; color: #0d7a8a; }
+        .results-feedback p { margin: 0 0 10px; font-size: 14px; line-height: 1.55; color: #374151; }
+        .results-detail-list { max-height: 280px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 12px; background: #fafafa; padding: 8px; }
+        .results-detail-item { display: grid; grid-template-columns: 36px 1fr; gap: 10px; align-items: start; padding: 10px 12px; margin-bottom: 6px; border-radius: 10px; background: #fff; border: 1px solid #f3f4f6; animation: resultsStatPop .4s ease backwards; transition: box-shadow .2s,border-color .2s; }
+        .results-detail-item:hover { box-shadow: 0 4px 14px rgba(0,0,0,.06); border-color: #dbeafe; }
+        .results-detail-item.hidden { display: none; }
+        .results-detail-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
+        .results-detail-badge.ok { background: #dcfce7; color: #16a34a; }
+        .results-detail-badge.bad { background: #fee2e2; color: #dc2626; }
+        .results-detail-q { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+        .results-detail-answers { font-size: 12px; line-height: 1.5; color: #6b7280; }
+        .results-detail-answers strong { color: #374151; }
+        .results-detail-go { margin-top: 6px; background: none; border: none; color: #0d7a8a; font-size: 12px; font-weight: 700; cursor: pointer; padding: 0; }
+        .results-detail-go:hover { text-decoration: underline; }
+        .results-footer { display: flex; gap: 10px; justify-content: flex-end; padding: 16px 24px 20px; border-top: 1px solid #e5e7eb; background: #f9fafb; }
+        .results-footer.split { justify-content: space-between; }
+        .results-btn { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: transform .15s,box-shadow .15s; }
+        .results-btn:hover { transform: translateY(-1px); }
+        .results-btn-primary { background: #0d7a8a; color: #fff; box-shadow: 0 4px 12px rgba(13,122,138,.35); }
+        .results-btn-secondary { background: #fff; color: #374151; border: 1px solid #d1d5db; }
+        .results-confetti-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 10001; }
+        .results-confirm-card { width: min(480px, 100%); max-height: none; }
+        .results-confirm-body { padding: 28px 28px 8px; text-align: center; }
+        .results-confirm-icon { width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; background: linear-gradient(135deg,#e8f6f7,#d4eef0); border: 1px solid #bfdbfe; display: flex; align-items: center; justify-content: center; font-size: 30px; animation: resultsStatPop .45s ease backwards; }
+        .results-confirm-title { margin: 0 0 10px; font-size: 22px; font-weight: 800; color: #111827; }
+        .results-confirm-text { margin: 0; font-size: 14px; line-height: 1.55; color: #6b7280; }
+        .results-confirm-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0 8px; }
+        .results-confirm-stat { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 12px; animation: resultsStatPop .5s ease backwards; }
+        .results-confirm-stat:nth-child(1) { animation-delay: .08s; } .results-confirm-stat:nth-child(2) { animation-delay: .14s; }
+        .results-confirm-stat-value { font-size: 26px; font-weight: 800; color: #0d7a8a; line-height: 1; }
+        .results-confirm-stat-value.warn { color: #d97706; }
+        .results-confirm-stat-label { font-size: 12px; color: #6b7280; margin-top: 6px; font-weight: 600; }
+        .results-confirm-note { margin: 16px 0 0; padding: 12px 14px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; font-size: 13px; line-height: 1.45; color: #92400e; text-align: left; }
+        @media (max-width: 768px) { .results-hero { grid-template-columns: 1fr; } .results-stats-grid { grid-template-columns: 1fr; } }
+
+        /* ═══ DRAG & DROP MATCHING (adapted from shohrukhposts Mock 2) ═══ */
+        .draggable-options { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; background: none; border: none; }
+        .draggable-options.drag-over { border-color: #0d7a8a; background: #e8f6f7; }
+        .drag-item { background: #fff; border: 1.5px solid #ccc; padding: 7px 10px; border-radius: 4px; cursor: grab; user-select: none; font-size: 12.5px; color: #222; line-height: 1.4; width: 100%; box-sizing: border-box; text-align: left; transition: background .15s, border-color .15s, opacity .15s; }
+        .drag-item:hover { background: #d4eef0; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+        .drag-item.dragging { opacity: .5; cursor: grabbing; }
+        .drag-item.used { opacity: 1; background: #f5f5f5; border-color: #ddd; color: #bbb; pointer-events: none; }
+        .drag-item.used strong { color: #ccc; }
+        .drop-zone { display: inline-flex; align-items: center; justify-content: flex-start; height: 34px; min-height: 34px; max-height: 34px; flex: 0 0 220px; width: 220px; min-width: 220px; max-width: 220px; border: 2px dashed #b8c4c8; border-radius: 4px; text-align: left; background: #fafafa; position: relative; padding: 5px 8px; font-size: 12px; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; box-sizing: border-box; transition: background .15s,border-color .15s; margin-left: auto; }
+        .drop-zone.drag-over { border-color: #0d7a8a; background: #e8f6f7; }
+        .drop-zone.filled { border: 2px solid #0d7a8a; background: #e8f6f7; color: #095d6e; font-weight: 700; cursor: grab; }
+        .drop-zone .remove-btn { position: absolute; top: -10px; right: -10px; width: 22px; height: 22px; background: #dc3545; color: #fff; border: 2px solid #fff; border-radius: 50%; font-size: 13px; font-weight: 700; cursor: pointer; display: none; line-height: 1; box-shadow: 0 2px 5px rgba(0,0,0,.25); z-index: 5; }
+        .drop-zone.filled .remove-btn { display: block; }
+        .drop-zone.answer-correct { border-color: #28a745 !important; background: #d4edda !important; color: #155724 !important; }
+        .drop-zone.answer-incorrect { border-color: #dc3545 !important; background: #f8d7da !important; color: #721c24 !important; }
+        .drop-zone.answer-unanswered { border-color: #ffc107 !important; background: #fff3cd !important; }
+        .dnd-matching-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid #ccc; background: #fff; margin-bottom: 5px; min-height: 36px; }
+        .dnd-matching-row .matching-num { font-weight: 800; flex: 0 0 26px; font-size: 14px; color: #0d7a8a; }
+        .dnd-matching-row .matching-label { flex: 1; font-size: 13px; line-height: 1.4; min-width: 0; }
+        .dnd-hint { font-size: 12px; color: #888; margin-bottom: 10px; font-style: italic; }
+        /* ── TWO-COLUMN MATCHING LAYOUT ── */
+        .dnd-two-col { display: flex; gap: 20px; align-items: flex-start; }
+        .dnd-questions-col { flex: 1 1 0; min-width: 0; }
+        .dnd-options-col { flex: 0 0 260px; width: 260px; }
+        .dnd-options-col .options-label { font-weight: 700; font-size: 12.5px; margin-bottom: 8px; color: #333; }
+        .drag-item:hover { background: #e8f6f7; border-color: #0d7a8a; }
+        .drag-item.used { opacity: .5; pointer-events: none; text-decoration: line-through; filter: grayscale(1); }
+        .drag-item strong { color: #0d7a8a; margin-right: 3px; }
+        .drop-zone.filled { border-style: solid; border-color: #0d7a8a; background: #e8f6f7; color: #095d6e; font-weight: 700; cursor: grab; }
+        @media (max-width: 640px) { .dnd-two-col { flex-direction: column; } .dnd-options-col { width: 100%; flex: 1 1 100%; } .drop-zone { flex: 0 0 160px; width: 160px; min-width: 160px; max-width: 160px; } }
+
+        /* Answer highlight classes shared by all input types via highlightQuestionOnPage() */
+        input.answer-input.answer-correct, select.answer-input.answer-correct { border-color: #28a745 !important; background: #d4edda !important; }
+        input.answer-input.answer-incorrect, select.answer-input.answer-incorrect { border-color: #dc3545 !important; background: #f8d7da !important; }
+        input.answer-input.answer-unanswered, select.answer-input.answer-unanswered { border-color: #ffc107 !important; background: #fff3cd !important; }
+        .choice-option.answer-correct { background: #d4edda !important; border-color: #28a745 !important; }
+        .choice-option.answer-incorrect { background: #f8d7da !important; border-color: #dc3545 !important; }
+
+        /* ── TRANSCRIPT / "WHERE THE ANSWER COMES FROM" PANEL (review mode only) ── */
+        .ts-overlay { position:fixed; inset:0; background:rgba(8,18,28,0.82); backdrop-filter:blur(6px); z-index:99997; display:flex; align-items:center; justify-content:center; padding:18px; opacity:0; transition:opacity .25s; }
+        .ts-overlay.show { opacity:1; }
+        .ts-card { background:#fff; border-radius:18px; max-width:780px; width:100%; max-height:92vh; display:flex; flex-direction:column; box-shadow:0 24px 70px rgba(0,0,0,.5); overflow:hidden; }
+        .ts-header { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; padding:18px 22px 14px; background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 60%,#063847 100%); color:#fff; }
+        .ts-header h2 { margin:0; font-size:18px; font-weight:800; line-height:1.25; }
+        .ts-header p { margin:5px 0 0; font-size:12.5px; opacity:.9; line-height:1.45; }
+        .ts-close { background:rgba(255,255,255,.18); color:#fff; border:none; width:32px; height:32px; min-width:32px; border-radius:9px; font-size:21px; line-height:1; cursor:pointer; }
+        .ts-legend { display:flex; flex-wrap:wrap; gap:8px 16px; padding:9px 22px; font-size:12px; color:#555; border-bottom:1px solid #eee; background:#fafafa; }
+        .ts-legend span { display:inline-flex; align-items:center; gap:6px; }
+        .ts-legend .swatch { width:18px; height:13px; border-radius:3px; background:#fde68a; border:1px solid #eab308; }
+        .ts-body { padding:4px 22px 22px; overflow-y:auto; }
+        .ts-part { margin-top:18px; }
+        .ts-part-head { display:flex; align-items:center; justify-content:space-between; gap:10px; position:sticky; top:0; background:#fff; padding:11px 0 8px; border-bottom:2px solid #0d7a8a; z-index:2; }
+        .ts-part-title { font-size:15px; font-weight:800; color:#0d7a8a; }
+        .ts-play-part { display:inline-flex; align-items:center; gap:5px; background:#0d7a8a; color:#fff; border:none; border-radius:20px; padding:6px 14px; font-size:12.5px; font-weight:700; cursor:pointer; white-space:nowrap; }
+        .ts-play-part:hover { background:#0a5e6c; }
+        .ts-script { font-size:13.5px; line-height:1.85; color:#222; margin-top:10px; }
+        .ts-script p { margin:0 0 9px; }
+        .ts-spk { font-weight:700; color:#0d7a8a; margin-right:4px; }
+        mark.ts-ans { background:#fde68a; border-radius:4px; padding:0 3px; cursor:pointer; scroll-margin-top:74px; font-weight:600; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+        mark.ts-ans:hover { background:#fcd34d; }
+        mark.ts-ans.flash { animation:tsFlash 1.7s ease; }
+        @keyframes tsFlash { 0%,45% { background:#5eead4; box-shadow:0 0 0 3px rgba(13,122,138,.45); } 100% { background:#fde68a; box-shadow:none; } }
+        sup.ts-qn { font-size:9.5px; font-weight:800; color:#fff; background:#0d7a8a; border-radius:8px; padding:1px 5px; margin-left:3px; }
+        .results-detail-ts { margin-left:10px; background:none; border:none; color:#0d7a8a; font-weight:700; font-size:12px; cursor:pointer; padding:0; }
+        .results-detail-ts:hover { text-decoration:underline; }
+        .results-btn-transcript { background:#e8f6f7 !important; color:#095d6e !important; border:1.5px solid #0d7a8a !important; }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-left">
+        <div class="ielts-logo">IELTS</div>
+        <div class="test-info">
+            Authentic Listening
+            <div style="font-size:10px;color:rgba(255,255,255,0.7);margin-top:2px;">done by I.Bekhruz</div>
+            <div class="audio-controls" id="audioStatus">🔊 Audio is paused</div>
+        </div>
+        <a href="https://t.me/bekhruzposts" target="_blank" style="text-decoration:none;">
+            <div style="font-size:13px;font-weight:700;color:#00c8b4;letter-spacing:0.5px;text-shadow:0 0 12px rgba(0,200,180,0.5);white-space:nowrap;">@bekhruzposts</div>
+        </a>
+    </div>
+    <div class="header-right" style="display:flex;align-items:center;gap:10px;">
+        <!-- Audio Controls -->
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(0,200,180,0.1);border-radius:20px;padding:6px 12px;border:1px solid rgba(0,200,180,0.2);">
+            <audio id="audioPlayer" autoplay src="https://archive.org/download/vol-8-test-3-listening_202607/VOL%208%20TEST%203%20LISTENING.mp3" preload="auto"></audio>
+            </div>
+        <button id="headerCheckBtn" onclick="checkAnswers()" class="header-btn">CHECK ANSWERS</button>
+        <a href="https://t.me/bekhruzposts" target="_blank" class="header-btn" style="text-decoration:none;display:flex;align-items:center;gap:6px;">
+            <svg style="width:12px;height:12px;fill:currentColor;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            Support
+        </a>
+        <button id="fsToggleBtn" onclick="toggleFullscreen()" class="header-btn" title="Toggle fullscreen" style="display:flex;align-items:center;justify-content:center;padding:8px;width:32px;height:32px;">
+            <svg id="fsIconEnter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            <svg id="fsIconExit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+        </button>
+    </div>
+</div>
+
+<div class="main-container">
+
+    <div class="content-area" style="position:relative;">
+
+        <div class="part-header">
+            <div class="part-title" id="partTitle">Part 1</div>
+            <div class="part-instruction" id="partInstruction">Listen and answer questions 1–10.</div>
+        </div>
+
+        <div style="text-align:right;margin-bottom:15px;">
+            <span class="highlight-tip">
+                <svg style="width:16px;height:16px;stroke:#555;fill:none;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round"/></svg>
+                Select text to highlight, tap to clear 😉
+            </span>
+        </div>
+        <div class="questions-section">
+            <div class="questions-title" id="questionsTitle">Questions 1–10</div>
+            <div class="question-instruction" id="questionInstruction"></div>
+
+        <!-- PART 1 -->
+        <div id="part1" class="part-content">
+          <div class="question-content">
+            <p style="font-weight:700;margin-bottom:8px;">Questions 1–10</p>
+            <p style="font-style:italic;margin-bottom:16px;">Complete the notes below. Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
+            <div class="note-box">
+              <div class="note-box-title">Beach Heads Travel — Customer Request Sheet</div>
+              <ul style="list-style:none;padding-left:0;line-height:2.8;">
+                <li><span style="display:inline-block;min-width:150px;">Name:</span> Duncan White</li>
+                <li><span style="display:inline-block;min-width:150px;">Group details:</span> three adults and two children</li>
+                <li><span style="display:inline-block;min-width:150px;">Date of arrival:</span> <input type="text" class="answer-input" data-question="1" placeholder="1"> <em>(staying for 2 weeks)</em></li>
+              </ul>
+              <p style="font-weight:700;margin:10px 0 4px;">Week One</p>
+              <p style="margin:0 0 2px;"><strong>Accommodation:</strong></p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>book a <input type="text" class="answer-input" data-question="2" placeholder="2"> on the beach</li>
+                <li>budget is around $<input type="text" class="answer-input" data-question="3" placeholder="3"> a night</li>
+              </ul>
+              <p style="margin:8px 0 2px;"><strong>Activities:</strong></p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>the children want to go <input type="text" class="answer-input" data-question="4" placeholder="4"></li>
+                <li>arrange for them to have a <input type="text" class="answer-input" data-question="5" placeholder="5"></li>
+                <li>book a time for Susan and Jenny to play <input type="text" class="answer-input" data-question="6" placeholder="6"></li>
+                <li>Duncan wants to go <input type="text" class="answer-input" data-question="7" placeholder="7"></li>
+              </ul>
+              <p style="font-weight:700;margin:10px 0 4px;">Week Two</p>
+              <p style="margin:0 0 2px;"><strong>Accommodation:</strong></p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>National Park — book a <input type="text" class="answer-input" data-question="8" placeholder="8"> ($100 per night)</li>
+              </ul>
+              <p style="margin:8px 0 2px;"><strong>Activities:</strong></p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>arrange a <input type="text" class="answer-input" data-question="9" placeholder="9"> for Jenny</li>
+                <li>send Duncan a <input type="text" class="answer-input" data-question="10" placeholder="10"> for Marco's</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PART 2 -->
+        <div id="part2" class="part-content" style="display:none;">
+          <div class="question-content">
+            <p style="font-weight:700;margin-bottom:8px;">Questions 11–15</p>
+            <p style="font-style:italic;margin-bottom:6px;">Complete the flow-chart below. Choose the correct letter, <strong>A–I</strong>, for each answer.</p>
+            <div class="note-box" style="margin-bottom:16px;">
+              <p style="font-weight:700;text-align:center;margin:0 0 8px;">Answer options</p>
+              <div style="columns:3;font-size:14px;line-height:2;">
+                <div><strong>A</strong> button</div>
+                <div><strong>B</strong> website</div>
+                <div><strong>C</strong> helmet</div>
+                <div><strong>D</strong> light</div>
+                <div><strong>E</strong> locker</div>
+                <div><strong>F</strong> password</div>
+                <div><strong>G</strong> rack</div>
+                <div><strong>H</strong> screen</div>
+                <div><strong>I</strong> sound</div>
+              </div>
+            </div>
+            <p style="font-weight:700;text-align:center;margin:0 0 10px;">How to use City Cycle</p>
+            <div class="note-box" style="text-align:center;line-height:1.7;">
+              <p style="margin:0;">Subscribe to the service online to receive a card</p>
+              <p style="margin:2px 0;color:#0d7a8a;">↓</p>
+              <p style="margin:0;">At the station, log on at the computer terminal</p>
+              <p style="margin:2px 0;color:#0d7a8a;">↓</p>
+              <p style="margin:0;">Select a bike by using the <strong>11</strong> <select class="answer-input" data-question="11" style="padding:3px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select></p>
+              <p style="margin:2px 0;color:#0d7a8a;">↓</p>
+              <p style="margin:0;">Release the bike by using the <strong>12</strong> <select class="answer-input" data-question="12" style="padding:3px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select> of your chosen bike</p>
+              <p style="margin:2px 0;color:#0d7a8a;">↓</p>
+              <p style="margin:0;">Remove the bike from the <strong>13</strong> <select class="answer-input" data-question="13" style="padding:3px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select> (you have ten seconds)</p>
+              <p style="margin:2px 0;color:#0d7a8a;">↓</p>
+              <p style="margin:0;">Make sure you have a <strong>14</strong> <select class="answer-input" data-question="14" style="padding:3px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select> before setting off</p>
+              <p style="margin:2px 0;color:#0d7a8a;">↓</p>
+              <p style="margin:0;">At the end of your journey, return the bike to a station and secure it in place<br>(a <strong>15</strong> <select class="answer-input" data-question="15" style="padding:3px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option></select> will tell you the bike is locked correctly)</p>
+            </div>
+            <p style="font-weight:700;margin:22px 0 6px;">Questions 16–20</p>
+            <p style="font-style:italic;margin-bottom:6px;">Label the plan below. Choose the correct letter, <strong>A–H</strong>, for each feature.</p>
+            <div style="text-align:center;margin:14px 0;">
+              <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAGYAdMDASIAAhEBAxEB/8QAHQABAAEFAQEBAAAAAAAAAAAAAAYBAgMFBwQICf/EAGkQAAEDAwEEAwQRDQoJCwQDAAEAAgMEBREGBxIhMRNBURciYZUUFRYmMlJTZnF2gZGSo7PR0iMzNTY3QkZWlKGywtMIJVVicnN1g7G0JDRldIKFosHhJ0NERVRXY2SElqQYKEfxk+Lw/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAEDBAIFBv/EAC0RAAICAQQABAYDAAMBAAAAAAABAhEDBBIhMRMUQVIiMjNRodEFI0IVYXGx/9oADAMBAAIRAxEAPwD7LREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQBERAEREAREQHPdTbVaCz6vuGmaXTGpL1V2ymZU1z7fTMdHAxw3hkve3Jxx4Z7OYON5p3Wls1C2yT2iCqnorxRTVkVUQ1rY2xuY0teC7e3svxwBHA8Vy7aTs7vt12p3i/yaObqa21tBBT0wiv77a6EsBDw/d+uZJz2AY4HivLQbIdZGzaet9bW0nTUul7japZ2SkCmfNnoWjHF4AO6445A46igOz0+rdK1NLVVdPqayzU9I8MqZY66JzIXE7oDyHYaSSBg9ZXqrL7ZKIVprLxbqcUDWOrDLUsZ5HD/QmTJ7wHqzjK4vbNMMi2d3ig1/ofTOkLbT2JltmuvkqN8tRI0tDJMsaMN3w1wDiXb+7jK1Nn2c6kuey6yarltlPddUVV3pb5crfUvETa2CJjmRQEuG6CGEO74YBc7KA7HPr2wjVGmrFRTsuJ1EypfSVVJK2SECBge4lwPHIOBjK3tvvNnuNVUUlvutDWVFK7dqIoKhkj4jyw4A5afZXIY9CamumoNLXcaXtOlIIDdzVUdDUtcKc1NMI45HboAdIXDiW8AMeFa/8Ac77L7zpK/QVuobPX09bQUktKyrFwp3U0rXyF26yONu+4HO9vSHIPDHDgB0HV21Cz6fvdZZobLqG+1tvgbUV7LTRCYUjHAuaZHOc0AkAkAZOFurRrTTVxslou3ltS0UN4ibJRR1krYZZc9Qa45J444ZUQp7LqzSe1jUt9tFiZfLVqZlNI9zaxkMlHNDGWYcH+iY4HOW5I7FAdo+y7WWpteRX29WY3GmuNphpK2ntNxhhbBKx4cW707S4R8A7LBvZyOviB32rv1jo6xtHV3m3U9S+QRNhlqmNeXkAhoaTnJBBA58Qtfbta6Xr6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" alt="City Cycle station plan" style="max-width:100%;width:560px;border:1px solid #cdd6da;border-radius:8px;background:#fff;">
+              <div style="font-size:11px;color:#888;margin-top:4px;">City Cycle Station Plan</div>
+            </div>
+            <ul style="list-style:none;padding-left:0;line-height:2.9;">
+              <li><strong>16</strong> &nbsp;Coffee cart &nbsp; <select class="answer-input" data-question="16" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+              <li><strong>17</strong> &nbsp;Workshop &nbsp; <select class="answer-input" data-question="17" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+              <li><strong>18</strong> &nbsp;Lockers &nbsp; <select class="answer-input" data-question="18" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+              <li><strong>19</strong> &nbsp;Showers &nbsp; <select class="answer-input" data-question="19" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+              <li><strong>20</strong> &nbsp;Towel &nbsp; <select class="answer-input" data-question="20" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PART 3 -->
+        <div id="part3" class="part-content" style="display:none;">
+          <div class="question-content">
+            <p style="font-weight:700;margin-bottom:8px;">Questions 21–23</p>
+            <p style="font-style:italic;margin-bottom:16px;">Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+            <div class="note-box">
+              <div class="note-box-title">Products using renewable energy sources</div>
+              <p style="margin:6px 0 2px;"><strong>a) Kites produced by German company</strong></p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>are attached to ships by long cables</li>
+                <li>can use wind power in any <input type="text" class="answer-input" data-question="21" placeholder="21"></li>
+                <li>could reduce toxic emissions by 50%</li>
+              </ul>
+              <p style="margin:8px 0 2px;"><strong>b) Sports car produced by US company</strong></p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>uses <input type="text" class="answer-input" data-question="22" placeholder="22"> as a power source</li>
+                <li>will have zero emissions</li>
+              </ul>
+              <p style="margin:8px 0 2px;"><strong>c) Ethanol stoves produced in South Africa</strong></p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>are safer than paraffin stoves</li>
+                <li>less likely to <input type="text" class="answer-input" data-question="23" placeholder="23"></li>
+              </ul>
+            </div>
+            <p style="font-weight:700;margin:22px 0 8px;">Questions 24 and 25</p>
+            <p style="font-style:italic;margin-bottom:8px;">Choose <strong>TWO</strong> letters, <strong>A–E</strong>.</p>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>24 &amp; 25</strong> &nbsp;Who will Sylvia and Greg ask to take part in the survey?</p>
+              <div style="background:#e8f6f7;padding:8px 14px;border-radius:6px;margin-bottom:10px;font-size:13px;">Select exactly 2 options</div>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="checkbox" name="q24_25" value="A"> <span class="choice-letter">A</span> companies</label>
+                <label class="choice-option"><input type="checkbox" name="q24_25" value="B"> <span class="choice-letter">B</span> lecturers</label>
+                <label class="choice-option"><input type="checkbox" name="q24_25" value="C"> <span class="choice-letter">C</span> local residents</label>
+                <label class="choice-option"><input type="checkbox" name="q24_25" value="D"> <span class="choice-letter">D</span> schoolchildren</label>
+                <label class="choice-option"><input type="checkbox" name="q24_25" value="E"> <span class="choice-letter">E</span> university students</label>
+              </div>
+            </div>
+            <p style="font-weight:700;margin:24px 0 6px;">Questions 26–30</p>
+            <p style="font-style:italic;margin-bottom:16px;">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>26</strong> &nbsp;What does Sylvia say about people's knowledge of renewable energy?</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q26" data-question="26" value="A"> <span class="choice-letter">A</span> Many people know little about it.</label>
+                <label class="choice-option"><input type="radio" name="q26" data-question="26" value="B"> <span class="choice-letter">B</span> People understand it because it has been in the news recently.</label>
+                <label class="choice-option"><input type="radio" name="q26" data-question="26" value="C"> <span class="choice-letter">C</span> People are eager to find out more about it.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>27</strong> &nbsp;What do Sylvia and Greg decide to ask about traditional energy consumption?</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q27" data-question="27" value="A"> <span class="choice-letter">A</span> the best way of preventing pollution</label>
+                <label class="choice-option"><input type="radio" name="q27" data-question="27" value="B"> <span class="choice-letter">B</span> possible future developments</label>
+                <label class="choice-option"><input type="radio" name="q27" data-question="27" value="C"> <span class="choice-letter">C</span> how expensive people find it</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>28</strong> &nbsp;What does Greg say about nuclear power?</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q28" data-question="28" value="A"> <span class="choice-letter">A</span> It is not important for their survey.</label>
+                <label class="choice-option"><input type="radio" name="q28" data-question="28" value="B"> <span class="choice-letter">B</span> People today have a positive attitude towards it.</label>
+                <label class="choice-option"><input type="radio" name="q28" data-question="28" value="C"> <span class="choice-letter">C</span> Some people think it is unsafe.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>29</strong> &nbsp;What do Sylvia and Greg agree about the cost of renewable energy?</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q29" data-question="29" value="A"> <span class="choice-letter">A</span> Prices will drop in the future.</label>
+                <label class="choice-option"><input type="radio" name="q29" data-question="29" value="B"> <span class="choice-letter">B</span> People won't pay the high price.</label>
+                <label class="choice-option"><input type="radio" name="q29" data-question="29" value="C"> <span class="choice-letter">C</span> The benefits outweigh the high cost.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>30</strong> &nbsp;Sylvia and Greg agree that modern windmills</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q30" data-question="30" value="A"> <span class="choice-letter">A</span> are the most efficient way of harnessing energy.</label>
+                <label class="choice-option"><input type="radio" name="q30" data-question="30" value="B"> <span class="choice-letter">B</span> should be put in carefully selected locations.</label>
+                <label class="choice-option"><input type="radio" name="q30" data-question="30" value="C"> <span class="choice-letter">C</span> make the landscape look unattractive.</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PART 4 -->
+        <div id="part4" class="part-content" style="display:none;">
+          <div class="question-content">
+            <p style="font-weight:700;margin-bottom:8px;">Questions 31–40</p>
+            <p style="font-style:italic;margin-bottom:16px;">Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+            <div class="note-box">
+              <div class="note-box-title">Absence from work</div>
+              <p style="text-align:center;margin:0 0 8px;">Absence may be frequent or occasional.</p>
+              <p style="font-weight:700;margin:10px 0 4px;">Main factors involved</p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>the <input type="text" class="answer-input" data-question="31" placeholder="31"> of employees (e.g. females are likely to have responsibility for children)</li>
+                <li>employees' <input type="text" class="answer-input" data-question="32" placeholder="32"> (but the evidence is inconclusive)</li>
+                <li>the <input type="text" class="answer-input" data-question="33" placeholder="33"> of the organization (absenteeism may be acceptable)</li>
+                <li>the type of work (higher absence among employees in <input type="text" class="answer-input" data-question="34" placeholder="34">)</li>
+                <li>the <input type="text" class="answer-input" data-question="35" placeholder="35"> of an employee's work group</li>
+              </ul>
+              <p style="font-weight:700;margin:14px 0 4px;">Public sector versus private sector</p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>public sector has higher absence levels</li>
+                <li>possible explanation — the public sector is less <input type="text" class="answer-input" data-question="36" placeholder="36"></li>
+                <li>systems may be more bureaucratic because of <input type="text" class="answer-input" data-question="37" placeholder="37"> factors (e.g. state controls)</li>
+                <li>more recent literature suggests public sector organisations usually:
+                  <ul style="list-style:none;padding-left:20px;margin-top:8px;">
+                    <li>— have a <input type="text" class="answer-input" data-question="38" placeholder="38"> workforce</li>
+                    <li>— have more female and more older employees</li>
+                    <li>— provide <input type="text" class="answer-input" data-question="39" placeholder="39"> for longer, with fewer restrictions</li>
+                    <li>— are less likely to <input type="text" class="answer-input" data-question="40" placeholder="40"> employees</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+</div><!-- /questions-section -->
+    </div><!-- /content-area -->
+</div><!-- /main-container -->
+
+<!-- Footer navigation -->
+<div class="footer">
+    <div class="part-navigation">
+        <div class="navigation-arrows">
+            <button class="nav-arrow" id="prevBtn" onclick="switchPart(currentPart - 1)" disabled>&#8249;</button>
+        </div>
+        <div class="part-numbers" id="partNumbers"></div>
+        <div class="navigation-arrows">
+            <button class="nav-arrow" id="nextBtn" onclick="switchPart(currentPart + 1)">&#8250;</button>
+        </div>
+    </div>
+</div>
+
+<!-- Highlight button -->
+<!-- highlight button is created dynamically by _hlShowButton() so its click->_hlApply listener is always attached -->
+
+
+
+
+
+<script>
+    // ═══ CORE SCORING HELPERS ═══
+    function normalizeAnswer(str) {
+        return String(str).toLowerCase().trim().replace(/\s+/g, ' ');
+    }
+    function isAnswerCorrect(user, correct) {
+        if (!correct && correct !== 0) return false;
+        const u = normalizeAnswer(user);
+        if (Array.isArray(correct)) return correct.some(c => normalizeAnswer(c) === u);
+        return normalizeAnswer(correct) === u;
+    }
+    function fmtCorrect(correct) {
+        if (Array.isArray(correct)) return correct.join(' / ');
+        return correct;
+    }
+    function calculateBand(n) {
+        if (n >= 39) return 9.0; if (n >= 37) return 8.5; if (n >= 35) return 8.0;
+        if (n >= 33) return 7.5; if (n >= 30) return 7.0; if (n >= 26) return 6.5;
+        if (n >= 23) return 6.0; if (n >= 18) return 5.5; if (n >= 16) return 5.0;
+        if (n >= 13) return 4.5; if (n >= 11) return 4.0; if (n >= 8) return 3.5;
+        if (n >= 6) return 3.0; if (n >= 4) return 2.5; if (n >= 3) return 2.0;
+        if (n >= 2) return 1.5; if (n >= 1) return 1.0; return 0.5;
+    }
+
+
+    const correctAnswers = {
+        1: ['october 15','15 october','15th october','october 15th','15th','15'],
+        2: ['hotel'],
+        3: ['175'],
+        4: ['sailing'],
+        5: ['class','a class'],
+        6: ['golf'],
+        7: ['fishing'],
+        8: ['caravan'],
+        9: ['massage','a massage'],
+        10: ['menu','a menu'],
+        11: 'H', 12: 'A', 13: 'G', 14: 'C', 15: 'D',
+        16: 'E', 17: 'F', 18: 'A', 19: 'H', 20: 'B',
+        21: ['weather'],
+        22: ['electricity'],
+        23: ['explode'],
+        24: 'A', 25: 'E',
+        26: 'A', 27: 'B', 28: 'C', 29: 'A', 30: 'B',
+        31: ['gender'],
+        32: ['attitude','attitudes'],
+        33: ['culture'],
+        34: ['industry'],
+        35: ['size'],
+        36: ['efficient'],
+        37: ['external'],
+        38: ['larger'],
+        39: ['benefits','benefit'],
+        40: ['dismiss']
+    };
+
+    const pickGroups = [
+        { name: 'q24_25', qNums: [24, 25], target: ['A', 'E'] }
+    ];
+
+let currentPart = 1;
+    const totalParts = 4;
+    const partConfig = {
+        1: { title:'Part 1', instruction:'Listen and answer questions 1–10.', questionRange:'Questions 1–10', questionInstruction:'' },
+        2: { title:'Part 2', instruction:'Listen and answer questions 11–20.', questionRange:'Questions 11–20', questionInstruction:'' },
+        3: { title:'Part 3', instruction:'Listen and answer questions 21–30.', questionRange:'Questions 21–30', questionInstruction:'' },
+        4: { title:'Part 4', instruction:'Listen and answer questions 31–40.', questionRange:'Questions 31–40', questionInstruction:'' }
+    };
+
+    function switchPart(partNumber) {
+        if (partNumber < 1 || partNumber > totalParts) return;
+        const oldPart = document.getElementById('part' + currentPart);
+        const newPart = document.getElementById('part' + partNumber);
+        if (!newPart) return;
+        oldPart.classList.add('fade-out-anim');
+        setTimeout(() => {
+            oldPart.style.display = 'none';
+            oldPart.classList.remove('fade-out-anim');
+            currentPart = partNumber;
+            newPart.style.display = 'block';
+            const config = partConfig[currentPart];
+            document.getElementById('partTitle').textContent = config.title;
+            document.getElementById('partInstruction').textContent = config.instruction;
+            document.getElementById('questionsTitle').textContent = config.questionRange;
+            document.getElementById('questionInstruction').innerHTML = config.questionInstruction;
+            document.getElementById('prevBtn').disabled = (currentPart === 1);
+            document.getElementById('nextBtn').disabled = (currentPart === totalParts);
+            updateNavigation();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 180);
+    }
+
+    function refreshUsedStates() {
+        document.querySelectorAll('.dnd-two-col').forEach(wrap => {
+            const placed = new Set();
+            wrap.querySelectorAll('.drop-zone').forEach(z => { const v = z.getAttribute('data-answer'); if (v) placed.add(v); });
+            wrap.querySelectorAll('.drag-item').forEach(it => {
+                it.classList.toggle('used', placed.has(it.getAttribute('data-value')));
+            });
+        });
+    }
+    function updateNavigation() {
+        refreshUsedStates();
+        const partNumbers = document.getElementById('partNumbers');
+        partNumbers.innerHTML = '';
+        const qRanges = { 1:'1–10', 2:'11–20', 3:'21–30', 4:'31–40' };
+        for (let p = 1; p <= totalParts; p++) {
+            const div = document.createElement('div');
+            div.className = 'part-number ' + (p === currentPart ? 'active' : 'inactive');
+            div.onclick = () => switchPart(p);
+            if (p === currentPart) {
+                const [start, end] = qRanges[p].split('–').map(Number);
+                for (let i = start; i <= end; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = i;
+                    span.style.cssText = 'margin:0 2px;cursor:pointer;padding:2px 4px;border-radius:2px;';
+                    if (isAnswered(i)) span.style.background = '#b2e8f0';
+                    span.onclick = (e) => { e.stopPropagation(); focusQuestion(i); };
+                    div.appendChild(span);
+                }
+            } else {
+                div.textContent = 'Part ' + p + ' ' + qRanges[p];
+            }
+            partNumbers.appendChild(div);
+        }
+    }
+
+    function isAnswered(n) {
+        const txt = document.querySelector(`input[type="text"][data-question="${n}"]`);
+        const dz = document.querySelector(`.drop-zone[data-question="${n}"]`);
+        const radio = document.querySelector(`input[type="radio"][data-question="${n}"]:checked`);
+        const sel = document.querySelector(`select[data-question="${n}"]`);
+        if (txt) return txt.value.trim() !== '';
+        if (dz) return !!dz.getAttribute('data-answer');
+        if (radio) return true;
+        if (sel) return sel.value.trim() !== '';
+        for (const pg of pickGroups) {
+            if (pg.qNums.includes(n)) {
+                return document.querySelectorAll(`input[name="${pg.name}"]:checked`).length > 0;
+            }
+        }
+        return false;
+    }
+
+    function focusQuestion(n) {
+        const el = document.querySelector(`input[type="text"][data-question="${n}"]`) ||
+                   document.querySelector(`.drop-zone[data-question="${n}"]`) ||
+                   document.querySelector(`select[data-question="${n}"]`);
+        if (el) {
+            el.scrollIntoView({ behavior:'smooth', block:'center' });
+            if (typeof el.focus === 'function') el.focus();
+            el.style.boxShadow = '0 0 10px #0d7a8a';
+            setTimeout(() => el.style.boxShadow = '', 1000);
+        }
+    }
+
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioStatus = document.getElementById('audioStatus');
+    // Exam-style: disallow pausing/seeking once playback starts
+    let examLocked = true;
+    let testMode = 'exam';        // 'exam' = locked (real conditions) | 'casual' = pausable + skip
+    let answersChecked = false;   // gates the transcript panel (review only)
+    audioPlayer.addEventListener('pause', () => {
+        if (examLocked && !audioPlayer.ended) audioPlayer.play();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (examLocked && e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'SELECT') {
+            e.preventDefault();
+        }
+    });
+
+    function enableCasualControls() {
+        examLocked = false;
+        audioPlayer.setAttribute('controls', 'controls');
+        if (!document.getElementById('reviewSkipBack')) {
+            const skipBack = document.createElement('button');
+            skipBack.id = 'reviewSkipBack';
+            skipBack.textContent = '« 10s';
+            skipBack.className = 'header-btn';
+            skipBack.style.cssText = 'margin-left:8px;';
+            skipBack.onclick = () => { audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10); };
+            const skipFwd = document.createElement('button');
+            skipFwd.id = 'reviewSkipFwd';
+            skipFwd.textContent = '10s »';
+            skipFwd.className = 'header-btn';
+            skipFwd.style.cssText = 'margin-left:8px;';
+            skipFwd.onclick = () => { audioPlayer.currentTime = Math.min(audioPlayer.duration || 0, audioPlayer.currentTime + 10); };
+            audioPlayer.insertAdjacentElement('afterend', skipFwd);
+            audioPlayer.insertAdjacentElement('afterend', skipBack);
+        }
+        const st = document.getElementById('audioStatus');
+        if (st) st.innerHTML = '🎧 Casual mode: pause, rewind &amp; fast-forward (10s) enabled';
+    }
+
+    function unlockAudioControls() {
+        examLocked = false;
+        answersChecked = true;
+        audioPlayer.setAttribute('controls', 'controls');
+        if (!document.getElementById('reviewSkipBack')) {
+            const skipBack = document.createElement('button');
+            skipBack.id = 'reviewSkipBack';
+            skipBack.textContent = '« 10s';
+            skipBack.className = 'header-btn';
+            skipBack.style.cssText = 'margin-left:8px;';
+            skipBack.onclick = () => { audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10); };
+            const skipFwd = document.createElement('button');
+            skipFwd.id = 'reviewSkipFwd';
+            skipFwd.textContent = '10s »';
+            skipFwd.className = 'header-btn';
+            skipFwd.style.cssText = 'margin-left:8px;';
+            skipFwd.onclick = () => { audioPlayer.currentTime = Math.min(audioPlayer.duration || 0, audioPlayer.currentTime + 10); };
+            audioPlayer.insertAdjacentElement('afterend', skipFwd);
+            audioPlayer.insertAdjacentElement('afterend', skipBack);
+        }
+        if (!document.getElementById('reviewTranscriptBtn')) {
+            const tb = document.createElement('button');
+            tb.id = 'reviewTranscriptBtn';
+            tb.type = 'button';
+            tb.className = 'header-btn';
+            tb.textContent = '📄 Transcript';
+            tb.title = 'See where every answer comes from in the audio';
+            tb.onclick = () => openTranscript();
+            const checkBtn = document.getElementById('headerCheckBtn');
+            if (checkBtn) checkBtn.insertAdjacentElement('afterend', tb);
+            else audioPlayer.insertAdjacentElement('afterend', tb);
+        }
+        const status = document.getElementById('audioStatus');
+        if (status) status.innerHTML = '🔓 Review mode: pause, rewind &amp; replay enabled · 📄 Transcript available';
+    }
+    audioPlayer.addEventListener('play',  () => audioStatus.innerHTML = '▶ Audio is playing');
+    audioPlayer.addEventListener('pause', () => audioStatus.innerHTML = '🔊 Audio is paused');
+    audioPlayer.addEventListener('ended', () => {
+        audioStatus.innerHTML = '⏹ Audio ended';
+        showAudioEndedPrompt();
+    });
+
+    function showAudioEndedPrompt() {
+        const existing = document.getElementById('audio-ended-overlay');
+        if (existing) return;
+        const overlay = document.createElement('div');
+        overlay.id = 'audio-ended-overlay';
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.82);backdrop-filter:blur(6px);z-index:99998;display:flex;align-items:center;justify-content:center;padding:20px;';
+        const box = document.createElement('div');
+        box.style.cssText = 'background:#fff;padding:34px 30px 28px;border-radius:18px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.4);';
+        box.innerHTML = `
+            <div style="font-size:42px;margin-bottom:10px;">⏹️</div>
+            <h2 style="color:#1a2a4a;margin:0 0 8px;font-size:21px;font-weight:800;">Audio Finished</h2>
+            <p style="color:#666;font-size:14px;margin:0 0 24px;line-height:1.5;">The listening audio has ended. You can check your answers now, or restart the test to try again.</p>
+            <div style="display:flex;gap:10px;flex-direction:column;">
+                <button id="aepCheckBtn" style="background:#0d7a8a;color:#fff;border:none;padding:13px 20px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;">✓ Check Answers</button>
+                <button id="aepRestartBtn" style="background:#f3f4f6;color:#374151;border:1px solid #d1d5db;padding:13px 20px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;">🔄 Restart Test</button>
+                <button id="aepDismissBtn" style="background:none;color:#9ca3af;border:none;padding:6px;font-size:13px;cursor:pointer;">Keep reviewing without checking</button>
+            </div>`;
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+
+        document.getElementById('aepCheckBtn').addEventListener('click', () => {
+            overlay.remove();
+            checkAnswers();
+        });
+        document.getElementById('aepRestartBtn').addEventListener('click', () => {
+            overlay.remove();
+            location.reload();
+        });
+        document.getElementById('aepDismissBtn').addEventListener('click', () => {
+            overlay.remove();
+        });
+        overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+    }
+
+    
+    // ═══ RICH DRAG & DROP ENGINE (adapted from shohrukhposts Mock 2) ═══
+    let draggedElement = null;
+
+    function getDropZonePlaceholder(zone) {
+        return zone?.getAttribute('data-placeholder') || 'Drop here';
+    }
+    function resetDropZonePlaceholder(zone) {
+        if (!zone) return;
+        const placeholder = getDropZonePlaceholder(zone);
+        const removeBtn = zone.querySelector('.remove-btn');
+        zone.textContent = placeholder;
+        zone.classList.remove('answer-correct', 'answer-incorrect', 'answer-unanswered');
+        if (removeBtn) { zone.appendChild(removeBtn); removeBtn.style.display = 'none'; }
+    }
+    function getDragItemInStation(value, contextEl) {
+        const layout = contextEl?.closest?.('.dnd-wrap, .flow-chart-layout');
+        const station = layout?.querySelector('.draggable-options');
+        if (station) {
+            const item = station.querySelector(`.drag-item[data-value="${value}"]`);
+            if (item) return item;
+        }
+        return document.querySelector(`.drag-item[data-value="${value}"]`);
+    }
+    function syncHiddenSelect(zone) {
+        const q = zone.getAttribute('data-question');
+        const sel = document.querySelector(`select.answer-input[data-question="${q}"]`);
+        if (sel) {
+            sel.value = zone.getAttribute('data-answer') || '';
+            sel.dispatchEvent(new Event('change'));
+        }
+    }
+
+    function initializeDragAndDrop() {
+        const dragItems = document.querySelectorAll('.drag-item');
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', function (e) {
+                draggedElement = this;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', this.dataset.value || '');
+            });
+            item.addEventListener('dragend', function () {
+                this.classList.remove('dragging');
+                draggedElement = null;
+            });
+            // Tap-to-select for touch devices (fires on tapdown, not tap-release)
+            function selectChip(e) {
+                if (this.classList.contains('used')) return;
+                document.querySelectorAll('.drag-item.selected').forEach(p => p.classList.remove('selected'));
+                this.classList.add('selected');
+                e.stopPropagation();
+            }
+            item.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                selectChip.call(this, e);
+            }, { passive: false });
+            item.addEventListener('click', selectChip);
+        });
+
+        const dropZones = document.querySelectorAll('.drop-zone');
+        dropZones.forEach(zone => {
+            function makeDropZoneDraggable(dz) {
+                if (dz.classList.contains('filled')) {
+                    dz.draggable = true;
+                    dz.addEventListener('dragstart', function (e) {
+                        draggedElement = { isFromDropZone: true, value: this.getAttribute('data-answer'), originalZone: this };
+                        this.classList.add('dragging');
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/plain', this.getAttribute('data-answer') || '');
+                    });
+                    dz.addEventListener('dragend', function () {
+                        this.classList.remove('dragging');
+                        if (draggedElement && draggedElement.isFromDropZone) draggedElement = null;
+                    });
+                } else {
+                    dz.draggable = false;
+                }
+            }
+
+            zone.addEventListener('dragover', function (e) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; this.classList.add('drag-over'); });
+            zone.addEventListener('dragleave', function () { this.classList.remove('drag-over'); });
+            zone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                if (!draggedElement) return;
+
+                let newValue, newText, oldValue;
+                if (draggedElement.isFromDropZone) {
+                    newValue = draggedElement.value;
+                    newText = draggedElement.originalZone.textContent;
+                    oldValue = this.getAttribute('data-answer');
+                    const originalZone = draggedElement.originalZone;
+                    resetDropZonePlaceholder(originalZone);
+                    originalZone.classList.remove('filled');
+                    originalZone.removeAttribute('data-answer');
+                    originalZone.draggable = false;
+                    syncHiddenSelect(originalZone);
+                    if (oldValue) {
+                        const oldItem = getDragItemInStation(oldValue, this);
+                        const oldText = oldItem ? oldItem.dataset.text : oldValue;
+                        originalZone.textContent = oldText || oldValue;
+                        originalZone.classList.add('filled');
+                        originalZone.setAttribute('data-answer', oldValue);
+                        makeDropZoneDraggable(originalZone);
+                        syncHiddenSelect(originalZone);
+                    }
+                } else {
+                    newValue = draggedElement.dataset.value;
+                    newText = draggedElement.dataset.text;
+                    oldValue = this.getAttribute('data-answer');
+                    draggedElement.classList.remove('selected');
+                }
+
+                this.textContent = newText || newValue;
+                this.setAttribute('data-answer', newValue);
+                this.classList.add('filled');
+                this.classList.remove('answer-correct', 'answer-incorrect', 'answer-unanswered');
+                makeDropZoneDraggable(this);
+                const removeBtn = this.querySelector('.remove-btn');
+                if (removeBtn) removeBtn.style.display = 'block';
+                syncHiddenSelect(this);
+                updateNavigation();
+            });
+
+            // Tap-to-place for touch devices (fires on tapdown, not tap-release)
+            function placeOnZone() {
+                const item = document.querySelector('.drag-item.selected');
+                if (!item) {
+                    // No chip selected: tapping a filled box clears it
+                    if (this.classList.contains('filled')) {
+                        const value = this.getAttribute('data-answer');
+                        if (value) {
+                            const station = this.closest('.dnd-wrap, .flow-chart-layout')?.querySelector('.draggable-options');
+                            const chip = station?.querySelector(`.drag-item[data-value="${value}"]`) || document.querySelector(`.drag-item[data-value="${value}"]`);
+                            if (chip) chip.classList.remove('used');
+                        }
+                        resetDropZonePlaceholder(this);
+                        this.classList.remove('filled');
+                        this.removeAttribute('data-answer');
+                        this.draggable = false;
+                        syncHiddenSelect(this);
+                        updateNavigation();
+                    }
+                    return;
+                }
+                draggedElement = item;
+                this.dispatchEvent(new Event('drop', { bubbles: false }));
+                item.classList.remove('selected');
+            }
+            zone.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                placeOnZone.call(this);
+            }, { passive: false });
+            zone.addEventListener('click', placeOnZone);
+
+            const removeBtn = zone.querySelector('.remove-btn');
+            if (removeBtn) {
+                removeBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const dz = this.parentElement;
+                    resetDropZonePlaceholder(dz);
+                    dz.classList.remove('filled');
+                    dz.removeAttribute('data-answer');
+                    dz.draggable = false;
+                    syncHiddenSelect(dz);
+                    updateNavigation();
+                });
+            }
+        });
+    }
+
+    // ═══ BAND FEEDBACK ═══
+    function getBandFeedback(band) {
+        const map = {
+            9.0: { title:'Band 9 — Expert User', feedback:'Outstanding. Near-native listening comprehension.', improvement:'Keep engaging with authentic academic and professional materials.' },
+            8.5: { title:'Band 8.5 — Very Good User', feedback:'Excellent comprehension. Rare mistakes are usually careless slips.', improvement:'Fine-tune precision — check spelling and exact word form carefully.' },
+            8.0: { title:'Band 8 — Very Good User', feedback:'Excellent comprehension with only occasional misunderstandings.', improvement:'Focus on absolute precision in spelling and word form.' },
+            7.5: { title:'Band 7.5 — Good User', feedback:'Solid comprehension; you follow arguments and details well.', improvement:'Do timed full tests, expand academic vocabulary, and target weak question types.' },
+            7.0: { title:'Band 7 — Good User', feedback:'Good understanding; minor lapses when vocabulary or speed increases.', improvement:'Expand idiomatic vocabulary and practise timed tests consistently.' },
+            6.5: { title:'Band 6.5 — Competent User', feedback:'You grasp main ideas but sometimes miss nuanced or implied information.', improvement:'Analyse distractors, practise predicting answers, and work on paraphrase recognition.' },
+            6.0: { title:'Band 6 — Competent User', feedback:'You understand main ideas but lose focus in longer or complex sections.', improvement:'Review wrong answers carefully and work on recognising paraphrased expressions.' },
+            5.5: { title:'Band 5.5 — Modest User', feedback:'You get the main idea but miss many specific details and inferences.', improvement:'Train on synonyms and paraphrases, improve spelling, and build listening stamina.' },
+            5.0: { title:'Band 5 — Modest User', feedback:'You understand the gist but frequently miss details or fall for distractors.', improvement:'Focus on accuracy; practise identifying specific information in longer recordings.' },
+            4.5: { title:'Band 4.5 — Limited User', feedback:'You catch some main points but miss a lot of detail.', improvement:'Start with shorter recordings, build vocabulary, and practise note-taking.' },
+            4.0: { title:'Band 4 — Limited User', feedback:'Basic comprehension only; most specific details are missed.', improvement:'Focus on fundamentals: practise listening daily and expand core vocabulary.' },
+            3.5: { title:'Band 3.5 — Extremely Limited', feedback:'Very limited understanding; only isolated words or phrases are caught.', improvement:'Begin with slow, clear recordings and build listening confidence step by step.' },
+            3.0: { title:'Band 3 — Extremely Limited', feedback:'Comprehension is very fragmentary.', improvement:'Focus on basic English listening and vocabulary building.' }
+        };
+        return map[band] || { title:'Keep Practising', feedback:'Every listening session builds your skills.', improvement:'Practise daily with a variety of accents and topics.' };
+    }
+
+    // ═══ UTILITIES ═══
+    function escapeHtml(str) {
+        return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function getQuestionPart(q) {
+        q = parseInt(q, 10);
+        if (q <= 10) return 1; if (q <= 20) return 2; if (q <= 30) return 3; return 4;
+    }
+    function animateResultsNumber(el, target, suffix = '', duration = 900) {
+        const start = performance.now();
+        function tick(now) {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(target * eased) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }
+    function launchResultsConfetti() {
+        const canvas = document.createElement('canvas');
+        canvas.className = 'results-confetti-canvas';
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const colors = ['#0d7a8a','#22c55e','#f59e0b','#ec4899','#8b5cf6'];
+        const pieces = Array.from({ length: 90 }, () => ({
+            x: Math.random()*canvas.width, y: Math.random()*canvas.height - canvas.height,
+            r: 4+Math.random()*6, c: colors[Math.floor(Math.random()*colors.length)],
+            vx: -2+Math.random()*4, vy: 2+Math.random()*4, spin: Math.random()*Math.PI
+        }));
+        let frame = 0;
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            pieces.forEach(p => {
+                p.x+=p.vx; p.y+=p.vy; p.spin+=0.08;
+                ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.spin);
+                ctx.fillStyle = p.c; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6);
+                ctx.restore();
+            });
+            frame++;
+            if (frame < 120) requestAnimationFrame(draw); else canvas.remove();
+        }
+        draw();
+    }
+    function closeModalOverlay(overlay, callback) {
+        if (!overlay || overlay.classList.contains('closing')) return;
+        overlay.classList.add('closing');
+        setTimeout(() => { overlay.remove(); if (callback) callback(); }, 280);
+    }
+    function closeResultsModal(overlay) { closeModalOverlay(overlay); }
+
+    function jumpToQuestionFromResults(questionNum) {
+        const overlay = document.getElementById('results-modal-overlay');
+        if (overlay) closeResultsModal(overlay);
+        setTimeout(() => focusQuestion(parseInt(questionNum, 10)), 280);
+    }
+
+    function clearAnswerHighlights() {
+        document.querySelectorAll('.answer-input, .drop-zone, .choice-option').forEach(el => {
+            el.style.borderColor = ''; el.style.backgroundColor = '';
+            el.classList.remove('answer-correct', 'answer-incorrect', 'answer-unanswered');
+        });
+        updateNavigation();
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // TRANSCRIPT / "WHERE THE ANSWER COMES FROM"  (unlocks only in review mode)
+    // Approx. audio start time (seconds) of each part. Embedded recording ≈ 27:57.
+    // Fine-tune these four numbers if a "Play Part" lands slightly off.
+    // ═══════════════════════════════════════════════════════════════════════
+    const partAudioStart = { 1: 0, 2: 420, 3: 850, 4: 1270 };
+    function tsPartOf(q) { return Math.ceil(q / 10); }
+
+    function playTranscriptPart(p) {
+        const ap = document.getElementById('audioPlayer');
+        if (!ap || examLocked) return;
+        const t = partAudioStart[p] || 0;
+        try { ap.currentTime = Math.min(t, ap.duration || t); } catch (e) {}
+        ap.play().catch(() => {});
+    }
+
+    function transcriptBodyHTML() {
+        return `
+        <div style="background:#fff6e5;border:1px solid #f0c675;border-radius:10px;padding:11px 14px;margin-bottom:16px;font-size:12.5px;color:#7a5b12;line-height:1.6;">
+          ⚠️ <strong>Reconstructed script.</strong> No official audioscript was available, so the passages below were <strong>rebuilt from the questions and answer key</strong> to show where each answer fits. Wording is approximate — it will not match the audio word-for-word, but every answer is highlighted in context.
+        </div>
+        <div class="ts-part" data-part="1">
+          <div class="ts-part-head"><span class="ts-part-title">Section 1 · Questions 1–10 — Beach Heads Travel</span><button type="button" class="ts-play-part" data-part="1">▶ Play Section 1</button></div>
+          <div class="ts-script">
+            <p>We'd like to arrive on <mark class="ts-ans" data-q="1">October 15<sup class="ts-qn">1</sup></mark>, staying for two weeks.</p>
+            <p>For the first week, please book a <mark class="ts-ans" data-q="2">hotel<sup class="ts-qn">2</sup></mark> right on the beach.</p>
+            <p>Our budget is around $<mark class="ts-ans" data-q="3">175<sup class="ts-qn">3</sup></mark> a night.</p>
+            <p>The children want to go <mark class="ts-ans" data-q="4">sailing<sup class="ts-qn">4</sup></mark>.</p>
+            <p>Could you arrange for them to have a <mark class="ts-ans" data-q="5">class<sup class="ts-qn">5</sup></mark>?</p>
+            <p>Please book a time for Susan and Jenny to play <mark class="ts-ans" data-q="6">golf<sup class="ts-qn">6</sup></mark>.</p>
+            <p>Duncan wants to go <mark class="ts-ans" data-q="7">fishing<sup class="ts-qn">7</sup></mark>.</p>
+            <p>For the National Park, book a <mark class="ts-ans" data-q="8">caravan<sup class="ts-qn">8</sup></mark> at $100 per night.</p>
+            <p>Please arrange a <mark class="ts-ans" data-q="9">massage<sup class="ts-qn">9</sup></mark> for Jenny.</p>
+            <p>And send Duncan a <mark class="ts-ans" data-q="10">menu<sup class="ts-qn">10</sup></mark> for Marco's.</p>
+          </div>
+        </div>
+
+        <div class="ts-part" data-part="2">
+          <div class="ts-part-head"><span class="ts-part-title">Section 2 · Questions 11–20 — City Cycle</span><button type="button" class="ts-play-part" data-part="2">▶ Play Section 2</button></div>
+          <div class="ts-script">
+            <p><strong>11</strong> Select a bike by using the <mark class="ts-ans" data-q="11" title="Q11 → H · screen">touch screen at the terminal<sup class="ts-qn">11</sup></mark>.</p>
+            <p><strong>12</strong> Release the bike by using the <mark class="ts-ans" data-q="12" title="Q12 → A · button">button next to your chosen bike<sup class="ts-qn">12</sup></mark>.</p>
+            <p><strong>13</strong> Remove the bike from the <mark class="ts-ans" data-q="13" title="Q13 → G · rack">rack within ten seconds<sup class="ts-qn">13</sup></mark>.</p>
+            <p><strong>14</strong> Make sure you have a <mark class="ts-ans" data-q="14" title="Q14 → C · helmet">helmet<sup class="ts-qn">14</sup></mark> before setting off.</p>
+            <p><strong>15</strong> A <mark class="ts-ans" data-q="15" title="Q15 → D · light">light will flash to tell you it's locked correctly<sup class="ts-qn">15</sup></mark>.</p>
+            <p><strong>16</strong> The <mark class="ts-ans" data-q="16" title="Q16 → E · Coffee cart">Coffee cart is at E on the plan<sup class="ts-qn">16</sup></mark>.</p>
+            <p><strong>17</strong> The <mark class="ts-ans" data-q="17" title="Q17 → F · Workshop">Workshop is at F<sup class="ts-qn">17</sup></mark>.</p>
+            <p><strong>18</strong> The <mark class="ts-ans" data-q="18" title="Q18 → A · Lockers">Lockers are at A<sup class="ts-qn">18</sup></mark>.</p>
+            <p><strong>19</strong> The <mark class="ts-ans" data-q="19" title="Q19 → H · Showers">Showers are at H<sup class="ts-qn">19</sup></mark>.</p>
+            <p><strong>20</strong> A <mark class="ts-ans" data-q="20" title="Q20 → B · Towel">Towel dispenser is at B<sup class="ts-qn">20</sup></mark>.</p>
+          </div>
+        </div>
+
+        <div class="ts-part" data-part="3">
+          <div class="ts-part-head"><span class="ts-part-title">Section 3 · Questions 21–30 — Renewable energy products</span><button type="button" class="ts-play-part" data-part="3">▶ Play Section 3</button></div>
+          <div class="ts-script">
+            <p>The German kites can use wind power in any <mark class="ts-ans" data-q="21">weather<sup class="ts-qn">21</sup></mark>.</p>
+            <p>The US sports car uses <mark class="ts-ans" data-q="22">electricity<sup class="ts-qn">22</sup></mark> as its power source.</p>
+            <p>The ethanol stoves are less likely to <mark class="ts-ans" data-q="23">explode<sup class="ts-qn">23</sup></mark>.</p>
+            <p><strong>24 &amp; 25</strong> Sylvia and Greg will ask <mark class="ts-ans" data-q="24" title="Q24/25 → A · companies">local companies<sup class="ts-qn">24</sup></mark> and <mark class="ts-ans" data-q="25" title="Q24/25 → E · university students">university students<sup class="ts-qn">25</sup></mark> to take part in the survey.</p>
+            <p><strong>26</strong> Sylvia: <mark class="ts-ans" data-q="26" title="Q26 → A · little knowledge">most people actually know very little about renewable energy<sup class="ts-qn">26</sup></mark>.</p>
+            <p><strong>27</strong> They decide to ask about <mark class="ts-ans" data-q="27" title="Q27 → B · possible future developments">possible future developments in traditional energy<sup class="ts-qn">27</sup></mark>.</p>
+            <p><strong>28</strong> Greg on nuclear power: <mark class="ts-ans" data-q="28" title="Q28 → C · unsafe">some people still think it's unsafe<sup class="ts-qn">28</sup></mark>.</p>
+            <p><strong>29</strong> They agree that <mark class="ts-ans" data-q="29" title="Q29 → A · prices will drop">prices for renewable energy will drop in the future<sup class="ts-qn">29</sup></mark>.</p>
+            <p><strong>30</strong> They agree that modern windmills <mark class="ts-ans" data-q="30" title="Q30 → B · carefully selected locations">should be placed in carefully selected locations<sup class="ts-qn">30</sup></mark>.</p>
+          </div>
+        </div>
+
+        <div class="ts-part" data-part="4">
+          <div class="ts-part-head"><span class="ts-part-title">Section 4 · Questions 31–40 — Absence from work</span><button type="button" class="ts-play-part" data-part="4">▶ Play Section 4</button></div>
+          <div class="ts-script">
+            <p>One main factor is the <mark class="ts-ans" data-q="31">gender<sup class="ts-qn">31</sup></mark> of employees.</p>
+            <p>Another is employees' <mark class="ts-ans" data-q="32">attitude<sup class="ts-qn">32</sup></mark>, though the evidence is inconclusive.</p>
+            <p>Also the <mark class="ts-ans" data-q="33">culture<sup class="ts-qn">33</sup></mark> of the organization, where absenteeism may be seen as acceptable.</p>
+            <p>Higher absence is seen among employees in <mark class="ts-ans" data-q="34">industry<sup class="ts-qn">34</sup></mark>.</p>
+            <p>And the <mark class="ts-ans" data-q="35">size<sup class="ts-qn">35</sup></mark> of an employee's work group.</p>
+            <p>A possible explanation is that the public sector is less <mark class="ts-ans" data-q="36">efficient<sup class="ts-qn">36</sup></mark>.</p>
+            <p>Systems may be more bureaucratic because of <mark class="ts-ans" data-q="37">external<sup class="ts-qn">37</sup></mark> factors, such as state controls.</p>
+            <p>Public sector organisations usually have a <mark class="ts-ans" data-q="38">larger<sup class="ts-qn">38</sup></mark> workforce.</p>
+            <p>They provide <mark class="ts-ans" data-q="39">benefits<sup class="ts-qn">39</sup></mark> for longer, with fewer restrictions.</p>
+            <p>And they're less likely to <mark class="ts-ans" data-q="40">dismiss<sup class="ts-qn">40</sup></mark> employees.</p>
+          </div>
+        </div>`;
+    }
+
+    function openTranscript(targetQ) {
+        if (!answersChecked) return; // safety: transcript is review-mode only
+        const old = document.getElementById('ts-overlay');
+        if (old) old.remove();
+        const overlay = document.createElement('div');
+        overlay.id = 'ts-overlay';
+        overlay.className = 'ts-overlay';
+        overlay.innerHTML = `
+            <div class="ts-card" role="dialog" aria-label="Audioscript and answer locations">
+              <div class="ts-header">
+                <div>
+                  <h2>📄 Audioscript — where every answer comes from</h2>
+                  <p>Each <strong>highlighted</strong> phrase is exactly where that answer is spoken. Tap “▶ Play Part” (or a highlight) to jump the audio there.</p>
+                </div>
+                <button type="button" class="ts-close" aria-label="Close">&times;</button>
+              </div>
+              <div class="ts-legend">
+                <span><span class="swatch"></span> answer location</span>
+                <span><sup class="ts-qn" style="position:static;">n</sup> question number</span>
+                <span>▶ Play Part — jumps audio to that section (approx.)</span>
+              </div>
+              <div class="ts-body">${transcriptBodyHTML()}</div>
+            </div>`;
+        document.body.appendChild(overlay);
+        requestAnimationFrame(() => overlay.classList.add('show'));
+
+        const close = () => { overlay.classList.remove('show'); setTimeout(() => overlay.remove(), 250); };
+        overlay.querySelector('.ts-close').addEventListener('click', close);
+        overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+        document.addEventListener('keydown', function esc(e) {
+            if (e.key === 'Escape' && document.getElementById('ts-overlay')) { close(); document.removeEventListener('keydown', esc); }
+        });
+        overlay.querySelectorAll('.ts-play-part').forEach(btn =>
+            btn.addEventListener('click', () => playTranscriptPart(parseInt(btn.dataset.part, 10))));
+        overlay.querySelectorAll('mark.ts-ans').forEach(m =>
+            m.addEventListener('click', () => playTranscriptPart(tsPartOf(parseInt(m.dataset.q, 10)))));
+
+        if (targetQ) {
+            const el = overlay.querySelector(`mark.ts-ans[data-q="${targetQ}"]`);
+            if (el) setTimeout(() => {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.classList.add('flash');
+                setTimeout(() => el.classList.remove('flash'), 1700);
+            }, 320);
+        }
+    }
+
+    // ═══ CONFIRMATION MODAL ═══
+    function showCheckAnswersConfirmation() {
+        const existing = document.getElementById('results-modal-overlay');
+        if (existing) existing.remove();
+
+        let answered = 0;
+        for (let q = 1; q <= 40; q++) if (isAnswered(q)) answered++;
+        const unanswered = 40 - answered;
+
+        const overlay = document.createElement('div');
+        overlay.id = 'results-modal-overlay';
+        overlay.className = 'results-overlay';
+        overlay.innerHTML = `
+            <div class="results-card results-confirm-card" role="dialog" aria-labelledby="confirm-check-title">
+                <div class="results-header">
+                    <div><h2 id="confirm-check-title">Check your answers?</h2><p>Review before you submit</p></div>
+                    <button type="button" class="results-close-btn confirm-cancel" aria-label="Close">&times;</button>
+                </div>
+                <div class="results-confirm-body">
+                    <div class="results-confirm-icon" aria-hidden="true">✓</div>
+                    <h3 class="results-confirm-title">Ready to see your score?</h3>
+                    <p class="results-confirm-text">This will mark your answers and show your band score with a full breakdown. You can still review each question afterwards.</p>
+                    <div class="results-confirm-stats">
+                        <div class="results-confirm-stat"><div class="results-confirm-stat-value">${answered}</div><div class="results-confirm-stat-label">Answered</div></div>
+                        <div class="results-confirm-stat"><div class="results-confirm-stat-value ${unanswered > 0 ? 'warn' : ''}">${unanswered}</div><div class="results-confirm-stat-label">Unanswered</div></div>
+                    </div>
+                    ${unanswered > 0 ? `<p class="results-confirm-note">You still have <strong>${unanswered}</strong> unanswered question${unanswered === 1 ? '' : 's'}. You can go back and complete them, or check now to see what you have so far.</p>`
+                        : `<p class="results-confirm-note" style="background:#ecfdf5;border-color:#bbf7d0;color:#166534;">All 40 questions answered — you're good to check!</p>`}
+                </div>
+                <div class="results-footer split">
+                    <button type="button" class="results-btn results-btn-secondary confirm-cancel">Not yet</button>
+                    <button type="button" class="results-btn results-btn-primary confirm-submit">Yes, check answers</button>
+                </div>
+            </div>`;
+        document.body.appendChild(overlay);
+        overlay.querySelectorAll('.confirm-cancel').forEach(btn => btn.addEventListener('click', () => closeModalOverlay(overlay)));
+        overlay.querySelector('.confirm-submit').addEventListener('click', () => closeModalOverlay(overlay, () => runCheckAnswers()));
+        overlay.addEventListener('click', e => { if (e.target === overlay) closeModalOverlay(overlay); });
+    }
+
+    // ═══ ANSWER CHECKING (generalized for our correctAnswers / pickGroups pattern) ═══
+    function checkAnswers() { showCheckAnswersConfirmation(); }
+
+    function runCheckAnswers() {
+        let correctCount = 0;
+        let totalAnswered = 0;
+        const results = [];
+
+        // Text inputs
+        document.querySelectorAll('input[type="text"].answer-input').forEach(input => {
+            const q = parseInt(input.getAttribute('data-question'));
+            const user = input.value.trim();
+            const correct = correctAnswers[q];
+            if (user) {
+                totalAnswered++;
+                const ok = isAnswerCorrect(user, correct);
+                if (ok) correctCount++;
+                input.classList.remove('answer-correct','answer-incorrect','answer-unanswered');
+                input.classList.add(ok ? 'answer-correct' : 'answer-incorrect');
+                results.push({ question: q, userAnswer: user, correctAnswer: fmtCorrect(correct) || 'N/A', isCorrect: ok });
+            } else {
+                input.classList.remove('answer-correct','answer-incorrect');
+                input.classList.add('answer-unanswered');
+            }
+        });
+
+        // Drag-and-drop matching questions (scored directly from the drop-zone, not a hidden select)
+        document.querySelectorAll('.drop-zone[data-question]').forEach(dndSlot => {
+            const q = parseInt(dndSlot.getAttribute('data-question'));
+            const user = dndSlot.getAttribute('data-answer') || '';
+            const correct = correctAnswers[q];
+            const sel = document.querySelector(`select.answer-input[data-question="${q}"]`);
+            if (user) {
+                totalAnswered++;
+                const ok = isAnswerCorrect(user, correct);
+                if (ok) correctCount++;
+                dndSlot.classList.remove('answer-correct','answer-incorrect','answer-unanswered');
+                dndSlot.classList.add(ok ? 'answer-correct' : 'answer-incorrect');
+                if (sel) { sel.value = user; }
+                results.push({ question: q, userAnswer: user, correctAnswer: fmtCorrect(correct), isCorrect: ok });
+            } else {
+                dndSlot.classList.remove('answer-correct','answer-incorrect');
+                dndSlot.classList.add('answer-unanswered');
+            }
+        });
+
+        // Select dropdowns (any that aren't drag-and-drop backers, e.g. plain question-type selects)
+        document.querySelectorAll('select.answer-input[data-question]').forEach(sel => {
+            const q = parseInt(sel.getAttribute('data-question'));
+            if (document.querySelector(`.drop-zone[data-question="${q}"]`)) return; // already scored above
+            const user = sel.value;
+            const correct = correctAnswers[q];
+            if (user) {
+                totalAnswered++;
+                const ok = isAnswerCorrect(user, correct);
+                if (ok) correctCount++;
+                sel.classList.remove('answer-correct','answer-incorrect','answer-unanswered');
+                sel.classList.add(ok ? 'answer-correct' : 'answer-incorrect');
+                results.push({ question: q, userAnswer: user, correctAnswer: fmtCorrect(correct), isCorrect: ok });
+            } else {
+                sel.classList.remove('answer-correct','answer-incorrect');
+                sel.classList.add('answer-unanswered');
+            }
+        });
+
+        // Radio groups
+        const radioQs = new Set();
+        document.querySelectorAll('input[type="radio"]').forEach(r => radioQs.add(r.getAttribute('data-question')));
+        radioQs.forEach(qStr => {
+            const q = parseInt(qStr);
+            const checked = document.querySelector(`input[type="radio"][data-question="${q}"]:checked`);
+            const correct = correctAnswers[q];
+            if (checked) {
+                totalAnswered++;
+                const ok = isAnswerCorrect(checked.value, correct);
+                if (ok) correctCount++;
+                document.querySelectorAll(`input[type="radio"][data-question="${q}"]`).forEach(r => {
+                    const label = r.closest('.choice-option');
+                    if (!label) return;
+                    label.classList.remove('answer-correct','answer-incorrect');
+                    if (r.checked) label.classList.add(ok ? 'answer-correct' : 'answer-incorrect');
+                });
+                results.push({ question: q, userAnswer: checked.value, correctAnswer: fmtCorrect(correct), isCorrect: ok });
+            }
+        });
+
+        // Pick groups (generalized pairs/triples with partial credit, like the reference's 17-18/19-20 handling)
+        pickGroups.forEach(pg => {
+            const checked = Array.from(document.querySelectorAll(`input[name="${pg.name}"]:checked`)).map(c => c.value).sort();
+            if (checked.length > 0) totalAnswered += pg.qNums.length;
+            pg.qNums.forEach((qNum, i) => {
+                const ans = pg.target[i];
+                const ok = checked.includes(ans);
+                if (ok) correctCount++;
+                results.push({ question: qNum, userAnswer: checked.join(', ') || '-', correctAnswer: ans, isCorrect: ok });
+            });
+            document.querySelectorAll(`input[name="${pg.name}"]`).forEach(cb => {
+                const label = cb.closest('.choice-option');
+                if (!label) return;
+                label.classList.remove('answer-correct','answer-incorrect');
+                if (cb.checked) label.classList.add(pg.target.includes(cb.value) ? 'answer-correct' : 'answer-incorrect');
+            });
+        });
+
+        results.sort((a, b) => a.question - b.question);
+        buildFullResultsMap(results);
+        unlockAudioControls();
+        showResults(correctCount, totalAnswered, results);
+        updateNavigation();
+    }
+
+    let lastResultsMap = {};
+    function buildFullResultsMap(results) {
+        lastResultsMap = {};
+        results.forEach(r => { lastResultsMap[String(r.question)] = r; });
+        for (let q = 1; q <= 40; q++) {
+            if (!lastResultsMap[String(q)]) lastResultsMap[String(q)] = { question: String(q), isCorrect: false };
+        }
+    }
+
+    // ═══ RICH RESULTS DASHBOARD ═══
+    function showResults(correct, answered, detailedResults) {
+        const existing = document.getElementById('results-modal-overlay');
+        if (existing) existing.remove();
+
+        const bandScore = calculateBand(correct);
+        const feedback = getBandFeedback(bandScore);
+        const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+        const ringRadius = 54;
+        const ringCircumference = 2 * Math.PI * ringRadius;
+        const ringOffset = ringCircumference * (1 - correct / 40);
+
+        const resultMap = {};
+        detailedResults.forEach(r => { resultMap[String(r.question)] = r; });
+
+        const partStats = [1, 2, 3, 4].map(part => {
+            const start = (part - 1) * 10 + 1;
+            let partCorrect = 0, partAnswered = 0;
+            for (let q = start; q <= start + 9; q++) {
+                const r = resultMap[String(q)];
+                if (r) { partAnswered++; if (r.isCorrect) partCorrect++; }
+            }
+            return { part, correct: partCorrect, answered: partAnswered };
+        });
+
+        let pillsHTML = '', detailsHTML = '';
+        for (let q = 1; q <= 40; q++) {
+            const r = resultMap[String(q)];
+            let status = 'unanswered';
+            if (r) status = r.isCorrect ? 'correct' : 'incorrect';
+            pillsHTML += `<button type="button" class="results-q-pill ${status}" data-question="${q}" data-status="${status}" title="Question ${q}">${q}</button>`;
+            if (r) {
+                detailsHTML += `<div class="results-detail-item" data-question="${q}" data-status="${status}" style="animation-delay:${Math.min(q*0.02,0.8)}s">
+                    <div class="results-detail-badge ${r.isCorrect ? 'ok' : 'bad'}">${r.isCorrect ? '✓' : '✗'}</div>
+                    <div><div class="results-detail-q">Question ${q}</div>
+                    <div class="results-detail-answers"><strong>Yours:</strong> ${escapeHtml(r.userAnswer || '—')}<br><strong>Correct:</strong> ${escapeHtml(r.correctAnswer || '—')}</div>
+                    <button type="button" class="results-detail-go" data-jump="${q}">View in test →</button><button type="button" class="results-detail-ts" data-tsjump="${q}">📄 In transcript</button></div></div>`;
+            } else {
+                const correct = correctAnswers[q];
+                const correctText = correct !== undefined ? fmtCorrect(correct) : '—';
+                detailsHTML += `<div class="results-detail-item" data-question="${q}" data-status="unanswered" style="animation-delay:${Math.min(q*0.02,0.8)}s">
+                    <div class="results-detail-badge bad">?</div>
+                    <div><div class="results-detail-q">Question ${q}</div>
+                    <div class="results-detail-answers"><strong>Yours:</strong> Not answered<br><strong>Correct:</strong> ${escapeHtml(correctText)}</div>
+                    <button type="button" class="results-detail-go" data-jump="${q}">View in test →</button><button type="button" class="results-detail-ts" data-tsjump="${q}">📄 In transcript</button></div></div>`;
+            }
+        }
+
+        const partsHTML = partStats.map((ps, i) => {
+            const pct = Math.round((ps.correct / 10) * 100);
+            const weak = pct < 60;
+            return `<div class="results-part-row" data-part="${ps.part}" title="Click to filter Part ${ps.part}">
+                <span class="results-part-label">Part ${ps.part}</span>
+                <div class="results-part-bar-track"><div class="results-part-bar-fill ${weak ? 'weak' : ''}" style="width:${pct}%;animation-delay:${0.2+i*0.1}s"></div></div>
+                <span class="results-part-score">${ps.correct}/10</span></div>`;
+        }).join('');
+
+        const feedbackHTML = feedback ? `<div class="results-feedback">
+            <h3>${escapeHtml(feedback.title)}</h3>
+            <p><strong>🗣 Feedback</strong><br>${feedback.feedback}</p>
+            <p><strong>💡 ${bandScore >= 9 ? 'How to maintain' : 'How to improve'}</strong><br>${feedback.improvement}</p>
+        </div>` : '';
+
+        const overlay = document.createElement('div');
+        overlay.id = 'results-modal-overlay';
+        overlay.className = 'results-overlay';
+        overlay.innerHTML = `
+            <div class="results-card" role="dialog" aria-labelledby="results-title">
+                <div class="results-header">
+                    <div><h2 id="results-title">Your Listening Results</h2><p>Filter by part or status · double-click a number to jump to it in the test</p></div>
+                    <button type="button" class="results-close-btn" aria-label="Close">&times;</button>
+                </div>
+                <div class="results-body">
+                    <div class="results-hero">
+                        <div class="results-ring-wrap">
+                            <svg class="results-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <defs><linearGradient id="resultsRingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#14b8c4"/><stop offset="100%" stop-color="#0d7a8a"/>
+                                </linearGradient></defs>
+                                <circle class="results-ring-bg" cx="60" cy="60" r="${ringRadius}"/>
+                                <circle class="results-ring-progress" cx="60" cy="60" r="${ringRadius}" stroke-dasharray="${ringCircumference}" stroke-dashoffset="${ringCircumference}"/>
+                            </svg>
+                            <div class="results-ring-center">
+                                <div class="results-band" data-target="${bandScore}">0</div>
+                                <div class="results-band-label">BAND SCORE</div>
+                                <div class="results-score-fraction"><span data-target="${correct}" data-suffix="">0</span>/40 correct</div>
+                            </div>
+                        </div>
+                        <div class="results-stats-grid">
+                            <div class="results-stat"><div class="results-stat-value" data-target="${correct}" data-suffix="">0</div><div class="results-stat-label">Correct answers</div></div>
+                            <div class="results-stat"><div class="results-stat-value" data-target="${answered}" data-suffix="">0</div><div class="results-stat-label">Answered</div></div>
+                            <div class="results-stat"><div class="results-stat-value" data-target="${accuracy}" data-suffix="%">0</div><div class="results-stat-label">Accuracy</div></div>
+                        </div>
+                    </div>
+                    <div class="results-parts"><h3 class="results-section-title">Performance by part</h3>${partsHTML}</div>
+                    <div class="results-grid-wrap"><h3 class="results-section-title">All 40 questions</h3><div class="results-q-grid">${pillsHTML}</div></div>
+                    ${feedbackHTML}
+                    <h3 class="results-section-title">Answer review</h3>
+                    <div class="results-tabs">
+                        <button type="button" class="results-tab active" data-filter="all">All</button>
+                        <button type="button" class="results-tab" data-filter="correct">Correct</button>
+                        <button type="button" class="results-tab" data-filter="incorrect">Incorrect</button>
+                        <button type="button" class="results-tab" data-filter="unanswered">Unanswered</button>
+                    </div>
+                    <div class="results-detail-list">${detailsHTML}</div>
+                </div>
+                <div class="results-footer">
+                    <button type="button" class="results-btn results-btn-secondary results-btn-clear">Clear highlighting</button>
+                    <button type="button" class="results-btn results-btn-transcript results-btn-open-transcript">📄 Transcript &amp; answer locations</button>
+                    <button type="button" class="results-btn results-btn-primary results-btn-close">Done</button>
+                </div>
+            </div>`;
+        document.body.appendChild(overlay);
+
+        requestAnimationFrame(() => {
+            const ring = overlay.querySelector('.results-ring-progress');
+            if (ring) ring.style.strokeDashoffset = String(ringOffset);
+        });
+        overlay.querySelectorAll('.results-stat-value, .results-score-fraction [data-target]').forEach(el => {
+            animateResultsNumber(el, parseFloat(el.dataset.target), el.dataset.suffix || '');
+        });
+        const bandEl = overlay.querySelector('.results-band');
+        if (bandEl) {
+            const target = parseFloat(bandEl.dataset.target);
+            const start = performance.now();
+            function tickBand(now) {
+                const t = Math.min((now - start) / 900, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                bandEl.textContent = (target * eased).toFixed(1);
+                if (t < 1) requestAnimationFrame(tickBand);
+            }
+            requestAnimationFrame(tickBand);
+        }
+
+        initResultsModalInteractions(overlay, detailedResults);
+        if (bandScore >= 7 || correct >= 32) launchResultsConfetti();
+    }
+
+    function initResultsModalInteractions(overlay, detailedResults) {
+        const pills = overlay.querySelectorAll('.results-q-pill');
+        const detailItems = overlay.querySelectorAll('.results-detail-item');
+        const tabs = overlay.querySelectorAll('.results-tab');
+        const partRows = overlay.querySelectorAll('.results-part-row');
+        let activePart = 'all', activeTab = 'all';
+
+        function applyFilters() {
+            pills.forEach(pill => {
+                const part = getQuestionPart(pill.dataset.question);
+                const partMatch = activePart === 'all' || String(part) === activePart;
+                const tabMatch = activeTab === 'all' || activeTab === pill.dataset.status;
+                pill.style.display = partMatch && tabMatch ? 'flex' : 'none';
+            });
+            detailItems.forEach(item => {
+                const part = getQuestionPart(item.dataset.question);
+                const partMatch = activePart === 'all' || String(part) === activePart;
+                const tabMatch = activeTab === 'all' || activeTab === item.dataset.status;
+                item.classList.toggle('hidden', !(partMatch && tabMatch));
+            });
+        }
+        tabs.forEach(tab => tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            activeTab = tab.dataset.filter;
+            applyFilters();
+        }));
+        partRows.forEach(row => row.addEventListener('click', () => {
+            const part = row.dataset.part;
+            if (activePart === part) { activePart = 'all'; partRows.forEach(r => r.classList.remove('active')); }
+            else { activePart = part; partRows.forEach(r => r.classList.toggle('active', r.dataset.part === part)); }
+            applyFilters();
+        }));
+        function focusResultQuestion(q) {
+            pills.forEach(p => p.classList.toggle('highlighted', p.dataset.question === String(q)));
+            const item = overlay.querySelector(`.results-detail-item[data-question="${q}"]`);
+            if (item) {
+                item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                item.style.borderColor = '#8fd4dc';
+                setTimeout(() => { item.style.borderColor = ''; }, 1200);
+            }
+        }
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => focusResultQuestion(pill.dataset.question));
+            pill.addEventListener('dblclick', () => jumpToQuestionFromResults(pill.dataset.question));
+        });
+        overlay.querySelectorAll('.results-detail-go').forEach(btn => btn.addEventListener('click', e => {
+            e.stopPropagation();
+            jumpToQuestionFromResults(btn.dataset.jump);
+        }));
+        overlay.querySelector('.results-close-btn').addEventListener('click', () => closeResultsModal(overlay));
+        overlay.querySelector('.results-btn-close').addEventListener('click', () => closeResultsModal(overlay));
+        overlay.querySelector('.results-btn-clear').addEventListener('click', () => { clearAnswerHighlights(); closeResultsModal(overlay); });
+        overlay.querySelectorAll('.results-detail-ts').forEach(btn => btn.addEventListener('click', e => {
+            e.stopPropagation();
+            const q = parseInt(btn.dataset.tsjump, 10);
+            closeResultsModal(overlay);
+            setTimeout(() => openTranscript(q), 300);
+        }));
+        const openTsBtn = overlay.querySelector('.results-btn-open-transcript');
+        if (openTsBtn) openTsBtn.addEventListener('click', () => { closeResultsModal(overlay); setTimeout(() => openTranscript(), 300); });
+        overlay.addEventListener('click', e => { if (e.target === overlay) closeResultsModal(overlay); });
+    }
+function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen?.().catch(() => {});
+        } else {
+            document.exitFullscreen?.().catch(() => {});
+        }
+    }
+    document.addEventListener('fullscreenchange', () => {
+        const isFs = !!document.fullscreenElement;
+        const enterIcon = document.getElementById('fsIconEnter');
+        const exitIcon = document.getElementById('fsIconExit');
+        if (enterIcon) enterIcon.style.display = isFs ? 'none' : '';
+        if (exitIcon) exitIcon.style.display = isFs ? '' : 'none';
+    });
+
+    function showWelcomePopup() {
+        if (sessionStorage.getItem('ielts_welcomed_v8t3')) return;
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+        const box = document.createElement('div');
+        box.style.cssText = 'background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 55%,#063847 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(0,200,180,0.3);position:relative;overflow:hidden;';
+        box.innerHTML = `
+            <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(0,200,180,0.12);border-radius:50%;"></div>
+            <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(0,200,180,0.08);border-radius:50%;"></div>
+            <div style="position:relative;z-index:2;">
+                <div style="font-size:50px;margin-bottom:10px;">🎧</div>
+                <div style="display:inline-block;background:rgba(0,200,180,0.2);color:#7ffcec;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(0,200,180,0.3);">Authentic Full Test</div>
+                <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Listening &mdash; Full Test</h2>
+                <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">4 parts &bull; 40 questions &bull; answer key &amp; band score</p>
+                <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong>I. Bekhruz</strong></p>
+                <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+                <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                    <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">⚠️ <strong>Choose your mode below.</strong> <strong>Exam mode</strong> plays the audio once and it cannot be paused — just like the real IELTS test. <strong>Casual mode</strong> lets you pause, rewind and fast-forward (10s) while you practise.</p>
+                </div>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                    <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0d7a8a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                        <svg style="width:17px;height:17px;fill:#0d7a8a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        Join @bekhruzposts
+                    </a>
+                    <button id="startExamBtn" style="background:#fff;color:#0d7a8a;border:none;font-weight:800;font-size:15px;padding:13px 20px;border-radius:12px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.3);">📝 Exam mode &#9654;</button>
+                    <button id="startCasualBtn" style="background:rgba(255,255,255,0.18);color:#fff;border:1.5px solid rgba(255,255,255,0.4);font-weight:800;font-size:15px;padding:13px 20px;border-radius:12px;cursor:pointer;">🎧 Casual mode &#9654;</button>
+                </div>
+            </div>`;
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+        const _startTest = (mode) => {
+            testMode = mode;
+            overlay.style.transition = 'opacity 0.3s';
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.remove();
+                sessionStorage.setItem('ielts_welcomed_v8t3', '1');
+                const ap = document.getElementById('audioPlayer');
+                if (mode === 'casual') enableCasualControls();
+                if (ap) ap.play();
+                toggleFullscreen();
+            }, 300);
+        };
+        document.getElementById('startExamBtn').addEventListener('click', () => _startTest('exam'));
+        document.getElementById('startCasualBtn').addEventListener('click', () => _startTest('casual'));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        pickGroups.forEach(pg => {
+            const cbs = document.querySelectorAll(`input[name="${pg.name}"]`);
+            const limit = pg.qNums.length;
+            cbs.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const checkedCount = document.querySelectorAll(`input[name="${pg.name}"]:checked`).length;
+                    cbs.forEach(b => { if (!b.checked) b.disabled = checkedCount >= limit; });
+                    updateNavigation();
+                });
+            });
+        });
+        document.querySelectorAll('.answer-input, input[type="radio"]').forEach(el => {
+            el.addEventListener('change', updateNavigation);
+            el.addEventListener('input', updateNavigation);
+        });
+        switchPart(1);
+        updateNavigation();
+        showWelcomePopup();
+        initializeDragAndDrop();
+    });
+
+    // Text highlight on select
+    // ── HIGHLIGHT SYSTEM (shohrukhposts style) ──
+    let _hlCurrentRange = null;
+
+    function _hlShowButton(x, y) {
+        let btn = document.getElementById('highlightButton');
+        if (!btn) {
+            btn = document.createElement('button');
+            btn.id = 'highlightButton';
+            btn.textContent = '🖊 Highlight';
+            btn.style.cssText = 'position:absolute;display:none;background:#0d7a8a;color:#fff;border:none;border-radius:6px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.25);';
+            btn.addEventListener('mouseover', () => btn.style.background = '#095566');
+            btn.addEventListener('mouseout', () => btn.style.background = '#0d7a8a');
+            btn.addEventListener('click', _hlApply);
+            document.body.appendChild(btn);
+        }
+        btn.style.display = 'block';
+        btn.style.left = Math.max(8, x) + 'px';
+        btn.style.top = Math.max(8, y) + 'px';
+    }
+
+    function _hlHideButton() {
+        const btn = document.getElementById('highlightButton');
+        if (btn) btn.style.display = 'none';
+    }
+
+    function _hlApply() {
+        const sel = window.getSelection();
+        if (!sel || sel.rangeCount === 0) { _hlHideButton(); return; }
+        const range = sel.getRangeAt(0);
+        const text = range.toString().trim();
+        if (!text) { sel.removeAllRanges(); _hlHideButton(); return; }
+        if (range.startContainer.nodeType === Node.TEXT_NODE &&
+            range.startContainer === range.endContainer) {
+            try {
+                const mark = document.createElement('mark');
+                mark.className = 'text-highlight';
+                mark.style.cssText = 'background:#fef08a;border-radius:2px;cursor:pointer;padding:1px 0;';
+                mark.title = 'Click to remove highlight';
+                mark.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const p = this.parentNode;
+                    if (p) { p.replaceChild(document.createTextNode(this.textContent), this); p.normalize(); }
+                });
+                range.surroundContents(mark);
+            } catch(e) {}
+        }
+        sel.removeAllRanges();
+        _hlHideButton();
+    }
+
+    document.addEventListener('mouseup', function(e) {
+        if (e.target.id === 'highlightButton') return;
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' ||
+            e.target.classList.contains('drag-item') || e.target.classList.contains('drop-zone')) {
+            _hlHideButton(); return;
+        }
+        const sel = window.getSelection();
+        if (sel && sel.toString().trim().length > 0) {
+            const range = sel.getRangeAt(0);
+            const rect = range.getBoundingClientRect();
+            _hlShowButton(rect.left + window.scrollX, rect.top + window.scrollY - 44);
+        } else {
+            _hlHideButton();
+        }
+    });
+    document.addEventListener('mousedown', function(e) {
+        if (e.target.id !== 'highlightButton') _hlHideButton();
+    });
+    document.addEventListener('touchend', function(e) {
+        if (e.target.id === 'highlightButton') return;
+        if (e.target.closest('.drag-item, .drop-zone, button, input, select')) return;
+        setTimeout(() => {
+            const sel = window.getSelection();
+            if (sel && sel.toString().trim().length > 0) {
+                const t = e.changedTouches[0];
+                _hlShowButton(t.clientX, t.clientY - 50);
+            }
+        }, 100);
+    });
+
+</script>
+</body>
+</html>

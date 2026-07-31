@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>IELTS Listening Vol 8 Test 1 | bekhruzposts</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #2d3748;
+            line-height: 1.5;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a2a4a 0%, #0d3b5e 50%, #1a4a6b 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 200;
+            border-bottom: 2px solid rgba(0, 200, 180, 0.4);
+        }
+
+        .header-left { display: flex; align-items: center; gap: 20px; }
+
+        .ielts-logo {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #00c8b4;
+            text-shadow: 0 0 20px rgba(0,200,180,0.4);
+        }
+
+        .test-info { font-size: 14px; }
+
+        .audio-controls { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+
+        .header-right { display: flex; align-items: center; gap: 15px; }
+
+        .header-btn {
+            background: rgba(0,200,180,0.15) !important;
+            border: 1px solid rgba(0,200,180,0.4) !important;
+            color: white !important;
+            padding: 6px 12px !important;
+            border-radius: 20px !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            white-space: nowrap !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.8px !important;
+        }
+        .header-btn:hover {
+            background: rgba(0,200,180,0.3) !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 12px rgba(0,200,180,0.25) !important;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 80px auto 120px;
+            background: white;
+            min-height: calc(100vh - 200px);
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .content-area { flex: 1; padding: 30px 40px; }
+
+        .part-header { margin-bottom: 20px; }
+        .part-title { font-size: 18px; font-weight: bold; color: #1a2a4a; margin-bottom: 5px; }
+        .part-instruction { font-size: 14px; color: #666; }
+
+        .questions-section { margin-bottom: 30px; }
+        .questions-title { font-size: 16px; font-weight: bold; margin-bottom: 10px; }
+
+        .question-instruction {
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 20px;
+            background: #e8f6f7;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0d7a8a;
+        }
+
+        .question-content {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .answer-input {
+            border: 2px solid #0d7a8a;
+            background: white !important;
+            padding: 5px 8px;
+            min-width: 80px;
+            max-width: 160px;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            vertical-align: middle;
+        }
+        .answer-input:focus {
+            outline: none;
+            border-color: #00c8b4;
+            box-shadow: 0 0 0 3px rgba(0,200,180,0.15);
+            background: white !important;
+        }
+        .answer-input::placeholder { color: #aaa; font-size: 13px; }
+
+        /* Multiple choice */
+        .choice-option {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            background: white;
+            margin: 4px 0;
+            transition: background 0.2s;
+        }
+        .choice-option:hover { background: #e8f6f7; }
+        .choice-option input[type="radio"],
+        .choice-option input[type="checkbox"] { margin: 0; cursor: pointer; accent-color: #0d7a8a; }
+        .choice-option.selected { background: #e8f6f7; border: 1px solid #0d7a8a; }
+
+        /* Note-completion table box */
+        .note-box {
+            border: 2px solid #333;
+            border-radius: 4px;
+            padding: 20px 25px;
+            margin: 10px 0;
+            background: white;
+        }
+        .note-box-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #1a2a4a;
+        }
+        .note-section-title { font-weight: bold; margin: 14px 0 6px; color: #333; }
+        .note-item { margin: 8px 0; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+        .note-item li { list-style: disc; margin-left: 20px; margin-bottom: 8px; }
+
+        /* Map section */
+        .map-section { display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap; }
+        .map-container { flex: 1; min-width: 300px; }
+        .map-svg-wrap { border: 2px solid #333; border-radius: 6px; overflow: hidden; background: #f5f0e8; padding: 15px; }
+
+        /* Part navigation footer */
+        .footer {
+            background: linear-gradient(135deg, #1a2a4a 0%, #0d3b5e 100%);
+            padding: 10px 40px;
+            border-top: 2px solid rgba(0,200,180,0.3);
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            z-index: 100;
+            height: 70px;
+        }
+        .part-navigation {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .part-numbers { display: flex; gap: 2px; align-items: center; }
+        .part-number {
+            height: 40px;
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: normal;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255,255,255,0.05);
+            font-size: 14px;
+            padding: 0 12px;
+            color: white;
+        }
+        .part-number.active {
+            background: #0d7a8a;
+            color: white;
+            border-color: #0d7a8a;
+            min-width: 200px;
+        }
+        .part-number.inactive {
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            min-width: 80px;
+            border-color: rgba(255,255,255,0.2);
+        }
+        .part-number:hover { border-color: rgba(0,200,180,0.7); }
+
+        .navigation-arrows { display: flex; gap: 10px; }
+        .nav-arrow {
+            position: relative;
+            width: 50px; height: 45px;
+            background: linear-gradient(135deg, rgba(13,122,138,0.6) 0%, rgba(10,95,110,0.5) 100%);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 2px solid rgba(0,200,180,0.7);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 20px; font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 4px 20px rgba(0,150,170,0.3);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+        .nav-arrow:hover {
+            background: linear-gradient(135deg, rgba(13,122,138,0.8) 0%, rgba(10,95,110,0.7) 100%);
+            transform: translateY(-1px);
+        }
+        .nav-arrow:disabled {
+            background: rgba(200,200,200,0.1);
+            color: rgba(255,255,255,0.4);
+            cursor: not-allowed;
+            border-color: rgba(200,200,200,0.2);
+        }
+
+        .part-info { display: flex; gap: 30px; font-size: 14px; color: rgba(255,255,255,0.8); }
+
+        /* Part content transitions */
+        .part-content { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Highlight */
+        .highlight { background-color: rgb(254,240,138); cursor: pointer; }
+        .text-highlight { background-color: rgba(255,255,0,0.4); border-radius: 2px; display: inline; }
+
+        /* highlight tip */
+        .highlight-tip {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: #555; font-size: 13px;
+            background: #e8f6f7; padding: 8px 15px; border-radius: 20px;
+        }
+
+        /* Select for map questions */
+        select.map-answer {
+            border: 2px solid #0d7a8a;
+            border-radius: 5px; padding: 5px 10px;
+            font-size: 14px; background: white;
+            cursor: pointer; outline: none;
+            transition: all 0.2s; color: #333;
+        }
+        select.map-answer:focus { border-color: #00c8b4; box-shadow: 0 0 0 3px rgba(0,200,180,0.15); }
+
+        /* Checkbox TWO selection */
+        .two-choice-options { display: flex; flex-direction: column; gap: 5px; margin: 10px 0; }
+
+        /* Result feedback */
+        .correct { background: #d4edda !important; border-color: #28a745 !important; color: #155724; }
+        .incorrect { background: #f8d7da !important; border-color: #dc3545 !important; color: #721c24; }
+
+        @media (max-width: 768px) {
+            .header { padding: 8px 10px; flex-direction: column; gap: 8px; }
+            .header-right { flex-wrap: wrap; justify-content: center; gap: 5px !important; }
+            .ielts-logo { font-size: 20px !important; }
+            .content-area { padding: 15px 10px; }
+            .footer { padding: 10px; }
+            .part-navigation { flex-direction: column; gap: 8px; }
+            .part-numbers { flex-wrap: wrap; justify-content: center; }
+        }
+    
+        /* ── MCQ BOLD STYLES ── */
+        .mc-q-stem { font-weight: 700; font-size: 14.5px; margin-bottom: 8px; color: #111; }
+        .choice-letter { font-weight: 800; color: #0d7a8a; min-width: 18px; flex-shrink: 0; }
+        .note-box-title { font-weight: 800; }
+        p strong { font-weight: 800; }
+
+        /* ═══ RICH RESULTS MODAL (adapted from shohrukhposts Mock 2) ═══ */
+        .results-overlay { position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(15, 23, 42, 0.55); backdrop-filter: blur(8px); animation: resultsOverlayIn 0.35s ease; }
+        .results-overlay.closing { animation: resultsOverlayOut 0.28s ease forwards; }
+        @keyframes resultsOverlayIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes resultsOverlayOut { from { opacity: 1; } to { opacity: 0; } }
+        @keyframes resultsCardIn { from { opacity: 0; transform: translateY(24px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes resultsStatPop { 0% { opacity: 0; transform: translateY(12px) scale(0.92); } 70% { transform: translateY(-2px) scale(1.02); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes resultsBarGrow { from { width: 0; } }
+        .results-card { background: #fff; border-radius: 16px; box-shadow: 0 24px 64px rgba(0,0,0,0.22); width: min(920px, 100%); max-height: 92vh; display: flex; flex-direction: column; overflow: hidden; animation: resultsCardIn 0.45s cubic-bezier(0.22,1,0.36,1); border: 1px solid #e5e7eb; }
+        .results-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid #e5e7eb; background: linear-gradient(180deg,#f8fafc 0%,#fff 100%); }
+        .results-header h2 { margin: 0; font-size: 20px; font-weight: 700; color: #111827; }
+        .results-header p { margin: 4px 0 0; font-size: 13px; color: #6b7280; }
+        .results-close-btn { width: 36px; height: 36px; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; color: #6b7280; font-size: 22px; line-height: 1; cursor: pointer; transition: background .2s,color .2s,transform .2s; }
+        .results-close-btn:hover { background: #f3f4f6; color: #111827; transform: scale(1.05); }
+        .results-body { padding: 22px 24px 10px; overflow-y: auto; flex: 1; }
+        .results-hero { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: center; margin-bottom: 24px; }
+        .results-ring-wrap { position: relative; width: 180px; height: 180px; margin: 0 auto; }
+        .results-ring-svg { width: 180px; height: 180px; transform: rotate(-90deg); }
+        .results-ring-bg { fill: none; stroke: #e5e7eb; stroke-width: 10; }
+        .results-ring-progress { fill: none; stroke: url(#resultsRingGradient); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1); }
+        .results-ring-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .results-band { font-size: 42px; font-weight: 800; color: #0d7a8a; line-height: 1; }
+        .results-band-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: #6b7280; margin-top: 4px; }
+        .results-score-fraction { font-size: 13px; color: #374151; margin-top: 6px; font-weight: 600; }
+        .results-stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+        .results-stat { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; animation: resultsStatPop .5s ease backwards; }
+        .results-stat:nth-child(1) { animation-delay: .1s; } .results-stat:nth-child(2) { animation-delay: .18s; } .results-stat:nth-child(3) { animation-delay: .26s; }
+        .results-stat-value { font-size: 28px; font-weight: 800; color: #111827; line-height: 1.1; }
+        .results-stat-label { font-size: 12px; color: #6b7280; margin-top: 4px; font-weight: 600; }
+        .results-section-title { font-size: 14px; font-weight: 700; color: #111827; margin: 0 0 12px; }
+        .results-parts { margin-bottom: 22px; }
+        .results-part-row { display: grid; grid-template-columns: 72px 1fr 48px; align-items: center; gap: 12px; margin-bottom: 10px; cursor: pointer; padding: 6px 8px; border-radius: 10px; transition: background .2s; }
+        .results-part-row:hover, .results-part-row.active { background: #eff6ff; }
+        .results-part-label { font-size: 13px; font-weight: 700; color: #374151; }
+        .results-part-bar-track { height: 10px; background: #e5e7eb; border-radius: 999px; overflow: hidden; }
+        .results-part-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg,#14b8c4,#0d7a8a); animation: resultsBarGrow 1s cubic-bezier(0.4,0,0.2,1) backwards; }
+        .results-part-bar-fill.weak { background: linear-gradient(90deg,#f59e0b,#ef4444); }
+        .results-part-score { font-size: 13px; font-weight: 700; color: #0d7a8a; text-align: right; }
+        .results-grid-wrap { margin-bottom: 20px; }
+        .results-q-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+        .results-q-pill { width: 36px; height: 36px; border: 1px solid #e0e0e0; border-radius: 4px; background: #fff; font-size: 13px; font-weight: 600; color: #333; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform .15s,box-shadow .15s,border-color .15s; }
+        .results-q-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(13,122,138,.2); }
+        .results-q-pill.correct { background: #22c55e; border-color: #22c55e; color: #fff; }
+        .results-q-pill.incorrect { background: #ef4444; border-color: #ef4444; color: #fff; }
+        .results-q-pill.unanswered { background: #fef9c3; border-color: #facc15; color: #854d0e; }
+        .results-q-pill.highlighted { outline: 3px solid #0d7a8a; outline-offset: 2px; }
+        .results-tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+        .results-tab { padding: 8px 14px; border: 1px solid #e5e7eb; border-radius: 999px; background: #fff; font-size: 13px; font-weight: 600; color: #4b5563; cursor: pointer; transition: all .2s; }
+        .results-tab:hover { border-color: #8fd4dc; color: #0d7a8a; }
+        .results-tab.active { background: #0d7a8a; border-color: #0d7a8a; color: #fff; }
+        .results-feedback { background: linear-gradient(135deg,#eff6ff 0%,#f0fdf4 100%); border: 1px solid #bfdbfe; border-radius: 12px; padding: 18px 20px; margin-bottom: 20px; animation: resultsStatPop .55s ease .3s backwards; }
+        .results-feedback h3 { margin: 0 0 10px; font-size: 15px; color: #0d7a8a; }
+        .results-feedback p { margin: 0 0 10px; font-size: 14px; line-height: 1.55; color: #374151; }
+        .results-detail-list { max-height: 280px; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 12px; background: #fafafa; padding: 8px; }
+        .results-detail-item { display: grid; grid-template-columns: 36px 1fr; gap: 10px; align-items: start; padding: 10px 12px; margin-bottom: 6px; border-radius: 10px; background: #fff; border: 1px solid #f3f4f6; animation: resultsStatPop .4s ease backwards; transition: box-shadow .2s,border-color .2s; }
+        .results-detail-item:hover { box-shadow: 0 4px 14px rgba(0,0,0,.06); border-color: #dbeafe; }
+        .results-detail-item.hidden { display: none; }
+        .results-detail-badge { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
+        .results-detail-badge.ok { background: #dcfce7; color: #16a34a; }
+        .results-detail-badge.bad { background: #fee2e2; color: #dc2626; }
+        .results-detail-q { font-size: 13px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+        .results-detail-answers { font-size: 12px; line-height: 1.5; color: #6b7280; }
+        .results-detail-answers strong { color: #374151; }
+        .results-detail-go { margin-top: 6px; background: none; border: none; color: #0d7a8a; font-size: 12px; font-weight: 700; cursor: pointer; padding: 0; }
+        .results-detail-go:hover { text-decoration: underline; }
+        .results-footer { display: flex; gap: 10px; justify-content: flex-end; padding: 16px 24px 20px; border-top: 1px solid #e5e7eb; background: #f9fafb; }
+        .results-footer.split { justify-content: space-between; }
+        .results-btn { padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: transform .15s,box-shadow .15s; }
+        .results-btn:hover { transform: translateY(-1px); }
+        .results-btn-primary { background: #0d7a8a; color: #fff; box-shadow: 0 4px 12px rgba(13,122,138,.35); }
+        .results-btn-secondary { background: #fff; color: #374151; border: 1px solid #d1d5db; }
+        .results-confetti-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 10001; }
+        .results-confirm-card { width: min(480px, 100%); max-height: none; }
+        .results-confirm-body { padding: 28px 28px 8px; text-align: center; }
+        .results-confirm-icon { width: 64px; height: 64px; margin: 0 auto 18px; border-radius: 50%; background: linear-gradient(135deg,#e8f6f7,#d4eef0); border: 1px solid #bfdbfe; display: flex; align-items: center; justify-content: center; font-size: 30px; animation: resultsStatPop .45s ease backwards; }
+        .results-confirm-title { margin: 0 0 10px; font-size: 22px; font-weight: 800; color: #111827; }
+        .results-confirm-text { margin: 0; font-size: 14px; line-height: 1.55; color: #6b7280; }
+        .results-confirm-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0 8px; }
+        .results-confirm-stat { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 12px; animation: resultsStatPop .5s ease backwards; }
+        .results-confirm-stat:nth-child(1) { animation-delay: .08s; } .results-confirm-stat:nth-child(2) { animation-delay: .14s; }
+        .results-confirm-stat-value { font-size: 26px; font-weight: 800; color: #0d7a8a; line-height: 1; }
+        .results-confirm-stat-value.warn { color: #d97706; }
+        .results-confirm-stat-label { font-size: 12px; color: #6b7280; margin-top: 6px; font-weight: 600; }
+        .results-confirm-note { margin: 16px 0 0; padding: 12px 14px; background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; font-size: 13px; line-height: 1.45; color: #92400e; text-align: left; }
+        @media (max-width: 768px) { .results-hero { grid-template-columns: 1fr; } .results-stats-grid { grid-template-columns: 1fr; } }
+
+        /* ═══ DRAG & DROP MATCHING (adapted from shohrukhposts Mock 2) ═══ */
+        .draggable-options { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; background: none; border: none; }
+        .draggable-options.drag-over { border-color: #0d7a8a; background: #e8f6f7; }
+        .drag-item { background: #fff; border: 1.5px solid #ccc; padding: 7px 10px; border-radius: 4px; cursor: grab; user-select: none; font-size: 12.5px; color: #222; line-height: 1.4; width: 100%; box-sizing: border-box; text-align: left; transition: background .15s, border-color .15s, opacity .15s; }
+        .drag-item:hover { background: #d4eef0; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+        .drag-item.dragging { opacity: .5; cursor: grabbing; }
+        .drag-item.used { opacity: 1; background: #f5f5f5; border-color: #ddd; color: #bbb; pointer-events: none; }
+        .drag-item.used strong { color: #ccc; }
+        .drop-zone { display: inline-flex; align-items: center; justify-content: flex-start; height: 34px; min-height: 34px; max-height: 34px; flex: 0 0 220px; width: 220px; min-width: 220px; max-width: 220px; border: 2px dashed #b8c4c8; border-radius: 4px; text-align: left; background: #fafafa; position: relative; padding: 5px 8px; font-size: 12px; color: #888; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; box-sizing: border-box; transition: background .15s,border-color .15s; margin-left: auto; }
+        .drop-zone.drag-over { border-color: #0d7a8a; background: #e8f6f7; }
+        .drop-zone.filled { border: 2px solid #0d7a8a; background: #e8f6f7; color: #095d6e; font-weight: 700; cursor: grab; }
+        .drop-zone .remove-btn { position: absolute; top: -10px; right: -10px; width: 22px; height: 22px; background: #dc3545; color: #fff; border: 2px solid #fff; border-radius: 50%; font-size: 13px; font-weight: 700; cursor: pointer; display: none; line-height: 1; box-shadow: 0 2px 5px rgba(0,0,0,.25); z-index: 5; }
+        .drop-zone.filled .remove-btn { display: block; }
+        .drop-zone.answer-correct { border-color: #28a745 !important; background: #d4edda !important; color: #155724 !important; }
+        .drop-zone.answer-incorrect { border-color: #dc3545 !important; background: #f8d7da !important; color: #721c24 !important; }
+        .drop-zone.answer-unanswered { border-color: #ffc107 !important; background: #fff3cd !important; }
+        .dnd-matching-row { display: flex; align-items: center; gap: 8px; padding: 7px 10px; border: 1px solid #ccc; background: #fff; margin-bottom: 5px; min-height: 36px; }
+        .dnd-matching-row .matching-num { font-weight: 800; flex: 0 0 26px; font-size: 14px; color: #0d7a8a; }
+        .dnd-matching-row .matching-label { flex: 1; font-size: 13px; line-height: 1.4; min-width: 0; }
+        .dnd-hint { font-size: 12px; color: #888; margin-bottom: 10px; font-style: italic; }
+        /* ── TWO-COLUMN MATCHING LAYOUT ── */
+        .dnd-two-col { display: flex; gap: 20px; align-items: flex-start; }
+        .dnd-questions-col { flex: 1 1 0; min-width: 0; }
+        .dnd-options-col { flex: 0 0 260px; width: 260px; }
+        .dnd-options-col .options-label { font-weight: 700; font-size: 12.5px; margin-bottom: 8px; color: #333; }
+        .drag-item:hover { background: #e8f6f7; border-color: #0d7a8a; }
+        .drag-item.used { opacity: .5; pointer-events: none; text-decoration: line-through; filter: grayscale(1); }
+        .drag-item strong { color: #0d7a8a; margin-right: 3px; }
+        .drop-zone.filled { border-style: solid; border-color: #0d7a8a; background: #e8f6f7; color: #095d6e; font-weight: 700; cursor: grab; }
+        @media (max-width: 640px) { .dnd-two-col { flex-direction: column; } .dnd-options-col { width: 100%; flex: 1 1 100%; } .drop-zone { flex: 0 0 160px; width: 160px; min-width: 160px; max-width: 160px; } }
+
+        /* Answer highlight classes shared by all input types via highlightQuestionOnPage() */
+        input.answer-input.answer-correct, select.answer-input.answer-correct { border-color: #28a745 !important; background: #d4edda !important; }
+        input.answer-input.answer-incorrect, select.answer-input.answer-incorrect { border-color: #dc3545 !important; background: #f8d7da !important; }
+        input.answer-input.answer-unanswered, select.answer-input.answer-unanswered { border-color: #ffc107 !important; background: #fff3cd !important; }
+        .choice-option.answer-correct { background: #d4edda !important; border-color: #28a745 !important; }
+        .choice-option.answer-incorrect { background: #f8d7da !important; border-color: #dc3545 !important; }
+
+        /* ── TRANSCRIPT / "WHERE THE ANSWER COMES FROM" PANEL (review mode only) ── */
+        .ts-overlay { position:fixed; inset:0; background:rgba(8,18,28,0.82); backdrop-filter:blur(6px); z-index:99997; display:flex; align-items:center; justify-content:center; padding:18px; opacity:0; transition:opacity .25s; }
+        .ts-overlay.show { opacity:1; }
+        .ts-card { background:#fff; border-radius:18px; max-width:780px; width:100%; max-height:92vh; display:flex; flex-direction:column; box-shadow:0 24px 70px rgba(0,0,0,.5); overflow:hidden; }
+        .ts-header { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; padding:18px 22px 14px; background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 60%,#063847 100%); color:#fff; }
+        .ts-header h2 { margin:0; font-size:18px; font-weight:800; line-height:1.25; }
+        .ts-header p { margin:5px 0 0; font-size:12.5px; opacity:.9; line-height:1.45; }
+        .ts-close { background:rgba(255,255,255,.18); color:#fff; border:none; width:32px; height:32px; min-width:32px; border-radius:9px; font-size:21px; line-height:1; cursor:pointer; }
+        .ts-legend { display:flex; flex-wrap:wrap; gap:8px 16px; padding:9px 22px; font-size:12px; color:#555; border-bottom:1px solid #eee; background:#fafafa; }
+        .ts-legend span { display:inline-flex; align-items:center; gap:6px; }
+        .ts-legend .swatch { width:18px; height:13px; border-radius:3px; background:#fde68a; border:1px solid #eab308; }
+        .ts-body { padding:4px 22px 22px; overflow-y:auto; }
+        .ts-part { margin-top:18px; }
+        .ts-part-head { display:flex; align-items:center; justify-content:space-between; gap:10px; position:sticky; top:0; background:#fff; padding:11px 0 8px; border-bottom:2px solid #0d7a8a; z-index:2; }
+        .ts-part-title { font-size:15px; font-weight:800; color:#0d7a8a; }
+        .ts-play-part { display:inline-flex; align-items:center; gap:5px; background:#0d7a8a; color:#fff; border:none; border-radius:20px; padding:6px 14px; font-size:12.5px; font-weight:700; cursor:pointer; white-space:nowrap; }
+        .ts-play-part:hover { background:#0a5e6c; }
+        .ts-script { font-size:13.5px; line-height:1.85; color:#222; margin-top:10px; }
+        .ts-script p { margin:0 0 9px; }
+        .ts-spk { font-weight:700; color:#0d7a8a; margin-right:4px; }
+        mark.ts-ans { background:#fde68a; border-radius:4px; padding:0 3px; cursor:pointer; scroll-margin-top:74px; font-weight:600; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+        mark.ts-ans:hover { background:#fcd34d; }
+        mark.ts-ans.flash { animation:tsFlash 1.7s ease; }
+        @keyframes tsFlash { 0%,45% { background:#5eead4; box-shadow:0 0 0 3px rgba(13,122,138,.45); } 100% { background:#fde68a; box-shadow:none; } }
+        sup.ts-qn { font-size:9.5px; font-weight:800; color:#fff; background:#0d7a8a; border-radius:8px; padding:1px 5px; margin-left:3px; }
+        .results-detail-ts { margin-left:10px; background:none; border:none; color:#0d7a8a; font-weight:700; font-size:12px; cursor:pointer; padding:0; }
+        .results-detail-ts:hover { text-decoration:underline; }
+        .results-btn-transcript { background:#e8f6f7 !important; color:#095d6e !important; border:1.5px solid #0d7a8a !important; }
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-left">
+        <div class="ielts-logo">IELTS</div>
+        <div class="test-info">
+            Authentic Listening
+            <div style="font-size:10px;color:rgba(255,255,255,0.7);margin-top:2px;">done by I.Bekhruz</div>
+            <div class="audio-controls" id="audioStatus">🔊 Audio is paused</div>
+        </div>
+        <a href="https://t.me/bekhruzposts" target="_blank" style="text-decoration:none;">
+            <div style="font-size:13px;font-weight:700;color:#00c8b4;letter-spacing:0.5px;text-shadow:0 0 12px rgba(0,200,180,0.5);white-space:nowrap;">@bekhruzposts</div>
+        </a>
+    </div>
+    <div class="header-right" style="display:flex;align-items:center;gap:10px;">
+        <!-- Audio Controls -->
+        <div style="display:flex;align-items:center;gap:8px;background:rgba(0,200,180,0.1);border-radius:20px;padding:6px 12px;border:1px solid rgba(0,200,180,0.2);">
+            <audio id="audioPlayer" autoplay src="https://archive.org/download/vol-8-test-1-listening/VOL%208%20TEST%201%20LISTENING.mp3" preload="auto"></audio>
+            </div>
+        <button id="headerCheckBtn" onclick="checkAnswers()" class="header-btn">CHECK ANSWERS</button>
+        <a href="https://t.me/bekhruzposts" target="_blank" class="header-btn" style="text-decoration:none;display:flex;align-items:center;gap:6px;">
+            <svg style="width:12px;height:12px;fill:currentColor;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            Support
+        </a>
+        <button id="fsToggleBtn" onclick="toggleFullscreen()" class="header-btn" title="Toggle fullscreen" style="display:flex;align-items:center;justify-content:center;padding:8px;width:32px;height:32px;">
+            <svg id="fsIconEnter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            <svg id="fsIconExit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+        </button>
+    </div>
+</div>
+
+<div class="main-container">
+
+    <div class="content-area" style="position:relative;">
+
+        <div class="part-header">
+            <div class="part-title" id="partTitle">Part 1</div>
+            <div class="part-instruction" id="partInstruction">Listen and answer questions 1–10.</div>
+        </div>
+
+        <div style="text-align:right;margin-bottom:15px;">
+            <span class="highlight-tip">
+                <svg style="width:16px;height:16px;stroke:#555;fill:none;" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M12 16v-4M12 8h.01" stroke-width="2" stroke-linecap="round"/></svg>
+                Select text to highlight, tap to clear 😉
+            </span>
+        </div>
+        <div class="questions-section">
+            <div class="questions-title" id="questionsTitle">Questions 1–10</div>
+            <div class="question-instruction" id="questionInstruction"></div>
+
+        <!-- PART 1 -->
+        <div id="part1" class="part-content">
+          <div class="question-content">
+            <p style="font-weight:700;margin-bottom:8px;">Questions 1–10</p>
+            <p style="font-style:italic;margin-bottom:16px;">Complete the form below. Write <strong>NO MORE THAN TWO WORDS AND/OR A NUMBER</strong> for each answer.</p>
+            <div class="note-box">
+              <div class="note-box-title">International Student Travel Agency Enquiry Form</div>
+              <ul style="list-style:none;padding-left:0;line-height:2.8;">
+                <li><span style="display:inline-block;min-width:150px;">Name:</span> Sarah Brown</li>
+                <li><span style="display:inline-block;min-width:150px;">Date of birth:</span> <input type="text" class="answer-input" data-question="1" placeholder="1"></li>
+                <li><span style="display:inline-block;min-width:150px;">Address:</span> 21 Waverley Road, Radstone, RD4 6W</li>
+                <li><span style="display:inline-block;min-width:150px;">Contact tel. no.:</span> <input type="text" class="answer-input" data-question="2" placeholder="2"></li>
+              </ul>
+              <p style="font-weight:700;margin:10px 0 4px;">Notes</p>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>wants to travel in <input type="text" class="answer-input" data-question="3" placeholder="3"> Europe</li>
+                <li>hopes to travel by <input type="text" class="answer-input" data-question="4" placeholder="4"></li>
+                <li>interested in working in a <input type="text" class="answer-input" data-question="5" placeholder="5"></li>
+                <li>recommended to consider an alternative, e.g. <input type="text" class="answer-input" data-question="6" placeholder="6"> work</li>
+                <li>advised to buy a European <input type="text" class="answer-input" data-question="7" placeholder="7"> for travelling</li>
+                <li>given a <input type="text" class="answer-input" data-question="8" placeholder="8"> with accommodation details</li>
+                <li>agreed to take out <input type="text" class="answer-input" data-question="9" placeholder="9"> from the Agency</li>
+                <li>told to use an <input type="text" class="answer-input" data-question="10" placeholder="10"> for contacting people</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PART 2 -->
+        <div id="part2" class="part-content" style="display:none;">
+          <div class="question-content">
+            <p style="font-weight:700;margin-bottom:8px;">Questions 11–15</p>
+            <p style="font-style:italic;margin-bottom:6px;">Label the map below. Choose the correct letter, <strong>A–H</strong>, for each feature.</p>
+            <div style="text-align:center;margin:14px 0;">
+              <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAHwApIDASIAAhEBAxEB/8QAHQABAAEFAQEBAAAAAAAAAAAAAAECAwQGBwUICf/EAGQQAAEDAwIDBAYEBgsKCAsJAAEAAgMEBREGIQcSMRMiQVEIFDJhcYEVQlKRFhcjYpWhMzdXcoKTsbTS0+IkQ1NVZnSSlKKzGDZUWHOywdElJzQ1OER1doXC4SZFRkdjg4TD8f/EABoBAQADAQEBAAAAAAAAAAAAAAABAgMEBQb/xAArEQEBAAIBBAEDAwUBAQEAAAAAAQIRAwQSITFBBRNhIjJRFBVScaEjM4H/2gAMAwEAAhEDEQA/APstERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEKIUEJlEQMplEQMplEQMplEQMplEQMplEQMplEQMplEQMplEQMplEQMplFpPGfiFRcMdDVOrLhb6ivp4J4oTDA4NeS92M5O2yDdsplcCrPSQqLXaY73fuEWt7ZZnNY91e6BjomsdghxIPQgjddDumtLtWWTTV70PZqK/2+8yxukmnr20vY07wD2gDvbcMnuDfZBvWUyuaWzigarjvfeGs1riggtNtZXG4OqPaDgwkFpGABz9c+C2jXOp4tPcPr1qykZDcWW2hlq2sZKOWXkaXcvMM4zjqg2PKZXMrBxC1NqHh7o3Vdi0rRVBvrmOrYJrm2EUcRJBe0uH5QjHsgZXRKqtpKSPtKuqgpmE4DpZAwH5lBk5TKtwysmjbJE9j2OGWua4EH4EKxT3K31FU6mgrqWWZntRxzNc8fEA5QZeUytSk4gadZxLboAVXNdzQevv3HZxx83KGl2fbJ35fJbJUV9DTTMgqK2mhlk9hkkrWud8ATugycplUSyMiaXyPaxjRlznHAA96xH3OlfbqitoqmnqmwxuceykDgSATjIz5IM7KZXN+AfE08TtATaqqrbDZ2xV0tKYjUc7QGcveLiBjOV0WGWOaJssMjJI3DLXMdkH4FBXlMoiBlMoiBlMoiBlMoiBlMoiBlMoiBlMoiBlMoiBlMoiBlMoiBlAiDqglERAREQEREBERAREQEREBERAREQEREBERAREQEREBCiFBCIiAiIgIiICIiAiIgIiICIiAiIgIiICIoQSuC+nj/AOjtcs/8upf94u9LUuKeg7LxG0nPpjULqoW6aaOVxppAx4LDkbkHxQfPWutD8aK7gO6W5cSbNV6djtENTPbRQilfLTsja7sjNvvgAZ8SvC4kX60aj4UcCrhYrVJaLeNQRU8dH2hd2XZlrCA/YuBIJ5vHK6070Y+HskTKa4XrWFyo2AAUlTeXuhIHQYAGy3DVXCfRmobZpi1yUs9vodMVTam209C8RtY5uMB2Qcjb4lBxmp01Y9W+nFqqz6haKi3uskMj6Bzy1lWWxR4DsEZDc82OmQPJa1pGBmnB6RGhbPUSu07bbdNJSQGQvZC4scC0Z6Y6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" alt="Bibliostack Ground Floor map" style="max-width:100%;width:560px;border:1px solid #cdd6da;border-radius:8px;background:#fff;">
+              <div style="font-size:11px;color:#888;margin-top:4px;">📍 Bibliostack — Ground Floor Map</div>
+            </div>
+            <ul style="list-style:none;padding-left:0;line-height:2.9;">
+              <li><strong>11</strong> &nbsp;seating area &nbsp; <select class="answer-input" data-question="11" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+              <li><strong>12</strong> &nbsp;cushions &nbsp; <select class="answer-input" data-question="12" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+              <li><strong>13</strong> &nbsp;computer bench &nbsp; <select class="answer-input" data-question="13" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+              <li><strong>14</strong> &nbsp;café bar &nbsp; <select class="answer-input" data-question="14" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+              <li><strong>15</strong> &nbsp;newspapers &nbsp; <select class="answer-input" data-question="15" style="padding:4px 6px;font-size:14px;"><option value="">—</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option></select></li>
+            </ul>
+            <p style="font-weight:700;margin:22px 0 6px;">Questions 16–20</p>
+            <p style="font-style:italic;margin-bottom:16px;">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>16</strong> &nbsp;The bookshop aims to</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q16" data-question="16" value="A"> <span class="choice-letter">A</span> sell as many books as possible.</label>
+                <label class="choice-option"><input type="radio" name="q16" data-question="16" value="B"> <span class="choice-letter">B</span> create an energetic environment.</label>
+                <label class="choice-option"><input type="radio" name="q16" data-question="16" value="C"> <span class="choice-letter">C</span> attract people to remain in the shop.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>17</strong> &nbsp;Children's books are located</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q17" data-question="17" value="A"> <span class="choice-letter">A</span> on the ground floor.</label>
+                <label class="choice-option"><input type="radio" name="q17" data-question="17" value="B"> <span class="choice-letter">B</span> at the highest level.</label>
+                <label class="choice-option"><input type="radio" name="q17" data-question="17" value="C"> <span class="choice-letter">C</span> midway up.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>18</strong> &nbsp;For parents to relax, the shop</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q18" data-question="18" value="A"> <span class="choice-letter">A</span> trains floor-staff to take care of children.</label>
+                <label class="choice-option"><input type="radio" name="q18" data-question="18" value="B"> <span class="choice-letter">B</span> offers a free nursery.</label>
+                <label class="choice-option"><input type="radio" name="q18" data-question="18" value="C"> <span class="choice-letter">C</span> provides professional child care.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>19</strong> &nbsp;Regular book readings are held</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q19" data-question="19" value="A"> <span class="choice-letter">A</span> to sell more books.</label>
+                <label class="choice-option"><input type="radio" name="q19" data-question="19" value="B"> <span class="choice-letter">B</span> as an author gathering.</label>
+                <label class="choice-option"><input type="radio" name="q19" data-question="19" value="C"> <span class="choice-letter">C</span> to bring more money by charging.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>20</strong> &nbsp;The poetry workshop aims to</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q20" data-question="20" value="A"> <span class="choice-letter">A</span> encourage their work to be published.</label>
+                <label class="choice-option"><input type="radio" name="q20" data-question="20" value="B"> <span class="choice-letter">B</span> help attendees become professional poets.</label>
+                <label class="choice-option"><input type="radio" name="q20" data-question="20" value="C"> <span class="choice-letter">C</span> help attendees become professional writers.</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PART 3 -->
+        <div id="part3" class="part-content" style="display:none;">
+          <div class="question-content">
+            <p style="font-weight:700;margin-bottom:8px;">Questions 21–24</p>
+            <p style="font-style:italic;margin-bottom:6px;">Choose the correct letter, <strong>A</strong>, <strong>B</strong> or <strong>C</strong>.</p>
+            <p style="font-weight:700;text-align:center;margin:6px 0 16px;">The Just-in-Time Supply System (JIT)</p>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>21</strong> &nbsp;Ron suggests that in his presentation he should have</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q21" data-question="21" value="A"> <span class="choice-letter">A</span> given credit to the originators of the JIT idea.</label>
+                <label class="choice-option"><input type="radio" name="q21" data-question="21" value="B"> <span class="choice-letter">B</span> discussed why the Japanese adopted the JIT idea.</label>
+                <label class="choice-option"><input type="radio" name="q21" data-question="21" value="C"> <span class="choice-letter">C</span> explained how supermarkets used the JIT idea.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>22</strong> &nbsp;The tutor says that in his presentation Ron omitted</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q22" data-question="22" value="A"> <span class="choice-letter">A</span> a description of classic business theory.</label>
+                <label class="choice-option"><input type="radio" name="q22" data-question="22" value="B"> <span class="choice-letter">B</span> an introductory definition of JIT.</label>
+                <label class="choice-option"><input type="radio" name="q22" data-question="22" value="C"> <span class="choice-letter">C</span> a statement of the aims of JIT.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>23</strong> &nbsp;Ron says that he found his information on standardising parts from</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q23" data-question="23" value="A"> <span class="choice-letter">A</span> a website.</label>
+                <label class="choice-option"><input type="radio" name="q23" data-question="23" value="B"> <span class="choice-letter">B</span> journal articles.</label>
+                <label class="choice-option"><input type="radio" name="q23" data-question="23" value="C"> <span class="choice-letter">C</span> a textbook.</label>
+              </div>
+            </div>
+            <div class="mc-question" style="margin-bottom:18px;">
+              <p class="mc-q-stem"><strong>24</strong> &nbsp;The tutor suggests that in the service sector, JIT is</p>
+              <div class="two-choice-options">
+                <label class="choice-option"><input type="radio" name="q24" data-question="24" value="A"> <span class="choice-letter">A</span> difficult to apply because of the absence of countable things.</label>
+                <label class="choice-option"><input type="radio" name="q24" data-question="24" value="B"> <span class="choice-letter">B</span> regarded by most members of staff as unfashionable.</label>
+                <label class="choice-option"><input type="radio" name="q24" data-question="24" value="C"> <span class="choice-letter">C</span> unlikely to be accepted by important clients.</label>
+              </div>
+            </div>
+            <p style="font-weight:700;margin:24px 0 6px;">Questions 25–30</p>
+            <p style="font-style:italic;margin-bottom:6px;">What criticism is made of each of the following technical aspects of Ron's presentation?</p>
+            <p style="font-style:italic;margin-bottom:6px;">Choose <strong>SIX</strong> answers from the box and match them with Questions 25–30.</p>
+            <p class="dnd-hint">Drag a tile onto the matching aspect (or tap a tile then tap the box). Each criticism is used once. Tap a filled box to clear it.</p>
+            <div class="dnd-two-col">
+              <div class="dnd-questions-col">
+                <div class="dnd-matching-row"><span class="matching-num">25</span><span class="matching-label">speed of delivery</span><div class="drop-zone" data-question="25" data-placeholder="Drop here" title="Tap to clear"><button class="remove-btn">&times;</button></div></div>
+                <div class="dnd-matching-row"><span class="matching-num">26</span><span class="matching-label">purpose</span><div class="drop-zone" data-question="26" data-placeholder="Drop here" title="Tap to clear"><button class="remove-btn">&times;</button></div></div>
+                <div class="dnd-matching-row"><span class="matching-num">27</span><span class="matching-label">transitions</span><div class="drop-zone" data-question="27" data-placeholder="Drop here" title="Tap to clear"><button class="remove-btn">&times;</button></div></div>
+                <div class="dnd-matching-row"><span class="matching-num">28</span><span class="matching-label">visuals</span><div class="drop-zone" data-question="28" data-placeholder="Drop here" title="Tap to clear"><button class="remove-btn">&times;</button></div></div>
+                <div class="dnd-matching-row"><span class="matching-num">29</span><span class="matching-label">vocabulary</span><div class="drop-zone" data-question="29" data-placeholder="Drop here" title="Tap to clear"><button class="remove-btn">&times;</button></div></div>
+                <div class="dnd-matching-row"><span class="matching-num">30</span><span class="matching-label">body language</span><div class="drop-zone" data-question="30" data-placeholder="Drop here" title="Tap to clear"><button class="remove-btn">&times;</button></div></div>
+              </div>
+              <div class="dnd-options-col">
+                <p class="options-label">Criticisms</p>
+                <div class="draggable-options">
+                  <div class="drag-item" draggable="true" data-value="A" data-text="A — too informal"><strong>A</strong> too informal</div>
+                  <div class="drag-item" draggable="true" data-value="B" data-text="B — too irregular"><strong>B</strong> too irregular</div>
+                  <div class="drag-item" draggable="true" data-value="C" data-text="C — too predictable"><strong>C</strong> too predictable</div>
+                  <div class="drag-item" draggable="true" data-value="D" data-text="D — too sudden"><strong>D</strong> too sudden</div>
+                  <div class="drag-item" draggable="true" data-value="E" data-text="E — too technical"><strong>E</strong> too technical</div>
+                  <div class="drag-item" draggable="true" data-value="F" data-text="F — too unenthusiastic"><strong>F</strong> too unenthusiastic</div>
+                  <div class="drag-item" draggable="true" data-value="G" data-text="G — too loosely related"><strong>G</strong> too loosely related</div>
+                  <div class="drag-item" draggable="true" data-value="H" data-text="H — too vague"><strong>H</strong> too vague</div>
+                </div>
+              </div>
+            </div>
+            <select class="answer-input" data-question="25" style="display:none;"></select>
+            <select class="answer-input" data-question="26" style="display:none;"></select>
+            <select class="answer-input" data-question="27" style="display:none;"></select>
+            <select class="answer-input" data-question="28" style="display:none;"></select>
+            <select class="answer-input" data-question="29" style="display:none;"></select>
+            <select class="answer-input" data-question="30" style="display:none;"></select>
+          </div>
+        </div>
+
+        <!-- PART 4 -->
+        <div id="part4" class="part-content" style="display:none;">
+          <div class="question-content">
+            <p style="font-weight:700;margin-bottom:8px;">Questions 31–40</p>
+            <p style="font-style:italic;margin-bottom:16px;">Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+            <div class="note-box">
+              <div class="note-box-title">Dyscalculia</div>
+              <ul style="list-style:disc;padding-left:20px;line-height:2.6;">
+                <li>teaching applied in class <input type="text" class="answer-input" data-question="31" placeholder="31"> method of teaching</li>
+                <li>children have difficulty learning the concept of <input type="text" class="answer-input" data-question="32" placeholder="32"> and sequence</li>
+                <li>in class, they are taught everyday practice / problems, e.g. dealing with <input type="text" class="answer-input" data-question="33" placeholder="33"></li>
+                <li>for children with mathematics disorder, more calculation practice helps develop more <input type="text" class="answer-input" data-question="34" placeholder="34"></li>
+                <li>solution: teachers encourage them to solve the problem by <input type="text" class="answer-input" data-question="35" placeholder="35"></li>
+                <li>they do exercises e.g. breathing, relaxation and <input type="text" class="answer-input" data-question="36" placeholder="36"></li>
+                <li>researchers like to find a <input type="text" class="answer-input" data-question="37" placeholder="37"> with language barrier / language learning difficulty</li>
+                <li>children are likely to have some problems with <input type="text" class="answer-input" data-question="38" placeholder="38"></li>
+                <li>with this approach, children no longer need <input type="text" class="answer-input" data-question="39" placeholder="39"> training again</li>
+                <li>mathematics disorder is a popular topic with <input type="text" class="answer-input" data-question="40" placeholder="40"> and families of children</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+</div><!-- /questions-section -->
+    </div><!-- /content-area -->
+</div><!-- /main-container -->
+
+<!-- Footer navigation -->
+<div class="footer">
+    <div class="part-navigation">
+        <div class="navigation-arrows">
+            <button class="nav-arrow" id="prevBtn" onclick="switchPart(currentPart - 1)" disabled>&#8249;</button>
+        </div>
+        <div class="part-numbers" id="partNumbers"></div>
+        <div class="navigation-arrows">
+            <button class="nav-arrow" id="nextBtn" onclick="switchPart(currentPart + 1)">&#8250;</button>
+        </div>
+    </div>
+</div>
+
+<!-- Highlight button -->
+<!-- highlight button is created dynamically by _hlShowButton() so its click->_hlApply listener is always attached -->
+
+
+
+
+
+<script>
+    // ═══ CORE SCORING HELPERS ═══
+    function normalizeAnswer(str) {
+        return String(str).toLowerCase().trim().replace(/\s+/g, ' ');
+    }
+    function isAnswerCorrect(user, correct) {
+        if (!correct && correct !== 0) return false;
+        const u = normalizeAnswer(user);
+        if (Array.isArray(correct)) return correct.some(c => normalizeAnswer(c) === u);
+        return normalizeAnswer(correct) === u;
+    }
+    function fmtCorrect(correct) {
+        if (Array.isArray(correct)) return correct.join(' / ');
+        return correct;
+    }
+    function calculateBand(n) {
+        if (n >= 39) return 9.0; if (n >= 37) return 8.5; if (n >= 35) return 8.0;
+        if (n >= 33) return 7.5; if (n >= 30) return 7.0; if (n >= 26) return 6.5;
+        if (n >= 23) return 6.0; if (n >= 18) return 5.5; if (n >= 16) return 5.0;
+        if (n >= 13) return 4.5; if (n >= 11) return 4.0; if (n >= 8) return 3.5;
+        if (n >= 6) return 3.0; if (n >= 4) return 2.5; if (n >= 3) return 2.0;
+        if (n >= 2) return 1.5; if (n >= 1) return 1.0; return 0.5;
+    }
+
+
+    const correctAnswers = {
+        1: ['30 march','30 march 1988'],
+        2: ['0903775115'],
+        3: ['northern'],
+        4: ['train'],
+        5: ['hotel'],
+        6: ['farm'],
+        7: ['pass'],
+        8: ['booklet'],
+        9: ['insurance'],
+        10: ['internet cafe','internet café'],
+        11: 'C', 12: 'F', 13: 'D', 14: 'A', 15: 'H',
+        16: 'C', 17: 'B', 18: 'C', 19: 'A', 20: 'C',
+        21: 'A', 22: 'B', 23: 'C', 24: 'A',
+        25: 'B', 26: 'H', 27: 'D', 28: 'G', 29: 'E', 30: 'F',
+        31: ['traditional'],
+        32: ['time'],
+        33: ['money'],
+        34: ['confidence'],
+        35: ['guesses','guess','guessing'],
+        36: ['walking','walk'],
+        37: ['link','a link'],
+        38: ['concentration'],
+        39: ['additional'],
+        40: ['teacher','teachers']
+    };
+
+    const pickGroups = [];
+
+let currentPart = 1;
+    const totalParts = 4;
+    const partConfig = {
+        1: { title:'Part 1', instruction:'Listen and answer questions 1–10.', questionRange:'Questions 1–10', questionInstruction:'' },
+        2: { title:'Part 2', instruction:'Listen and answer questions 11–20.', questionRange:'Questions 11–20', questionInstruction:'' },
+        3: { title:'Part 3', instruction:'Listen and answer questions 21–30.', questionRange:'Questions 21–30', questionInstruction:'' },
+        4: { title:'Part 4', instruction:'Listen and answer questions 31–40.', questionRange:'Questions 31–40', questionInstruction:'' }
+    };
+
+    function switchPart(partNumber) {
+        if (partNumber < 1 || partNumber > totalParts) return;
+        const oldPart = document.getElementById('part' + currentPart);
+        const newPart = document.getElementById('part' + partNumber);
+        if (!newPart) return;
+        oldPart.classList.add('fade-out-anim');
+        setTimeout(() => {
+            oldPart.style.display = 'none';
+            oldPart.classList.remove('fade-out-anim');
+            currentPart = partNumber;
+            newPart.style.display = 'block';
+            const config = partConfig[currentPart];
+            document.getElementById('partTitle').textContent = config.title;
+            document.getElementById('partInstruction').textContent = config.instruction;
+            document.getElementById('questionsTitle').textContent = config.questionRange;
+            document.getElementById('questionInstruction').innerHTML = config.questionInstruction;
+            document.getElementById('prevBtn').disabled = (currentPart === 1);
+            document.getElementById('nextBtn').disabled = (currentPart === totalParts);
+            updateNavigation();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 180);
+    }
+
+    function refreshUsedStates() {
+        document.querySelectorAll('.dnd-two-col').forEach(wrap => {
+            const placed = new Set();
+            wrap.querySelectorAll('.drop-zone').forEach(z => { const v = z.getAttribute('data-answer'); if (v) placed.add(v); });
+            wrap.querySelectorAll('.drag-item').forEach(it => {
+                it.classList.toggle('used', placed.has(it.getAttribute('data-value')));
+            });
+        });
+    }
+    function updateNavigation() {
+        refreshUsedStates();
+        const partNumbers = document.getElementById('partNumbers');
+        partNumbers.innerHTML = '';
+        const qRanges = { 1:'1–10', 2:'11–20', 3:'21–30', 4:'31–40' };
+        for (let p = 1; p <= totalParts; p++) {
+            const div = document.createElement('div');
+            div.className = 'part-number ' + (p === currentPart ? 'active' : 'inactive');
+            div.onclick = () => switchPart(p);
+            if (p === currentPart) {
+                const [start, end] = qRanges[p].split('–').map(Number);
+                for (let i = start; i <= end; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = i;
+                    span.style.cssText = 'margin:0 2px;cursor:pointer;padding:2px 4px;border-radius:2px;';
+                    if (isAnswered(i)) span.style.background = '#b2e8f0';
+                    span.onclick = (e) => { e.stopPropagation(); focusQuestion(i); };
+                    div.appendChild(span);
+                }
+            } else {
+                div.textContent = 'Part ' + p + ' ' + qRanges[p];
+            }
+            partNumbers.appendChild(div);
+        }
+    }
+
+    function isAnswered(n) {
+        const txt = document.querySelector(`input[type="text"][data-question="${n}"]`);
+        const dz = document.querySelector(`.drop-zone[data-question="${n}"]`);
+        const radio = document.querySelector(`input[type="radio"][data-question="${n}"]:checked`);
+        const sel = document.querySelector(`select[data-question="${n}"]`);
+        if (txt) return txt.value.trim() !== '';
+        if (dz) return !!dz.getAttribute('data-answer');
+        if (radio) return true;
+        if (sel) return sel.value.trim() !== '';
+        for (const pg of pickGroups) {
+            if (pg.qNums.includes(n)) {
+                return document.querySelectorAll(`input[name="${pg.name}"]:checked`).length > 0;
+            }
+        }
+        return false;
+    }
+
+    function focusQuestion(n) {
+        const el = document.querySelector(`input[type="text"][data-question="${n}"]`) ||
+                   document.querySelector(`.drop-zone[data-question="${n}"]`) ||
+                   document.querySelector(`select[data-question="${n}"]`);
+        if (el) {
+            el.scrollIntoView({ behavior:'smooth', block:'center' });
+            if (typeof el.focus === 'function') el.focus();
+            el.style.boxShadow = '0 0 10px #0d7a8a';
+            setTimeout(() => el.style.boxShadow = '', 1000);
+        }
+    }
+
+    const audioPlayer = document.getElementById('audioPlayer');
+    const audioStatus = document.getElementById('audioStatus');
+    // Exam-style: disallow pausing/seeking once playback starts
+    let examLocked = true;
+    let testMode = 'exam';        // 'exam' = locked (real conditions) | 'casual' = pausable + skip
+    let answersChecked = false;   // gates the transcript panel (review only)
+    audioPlayer.addEventListener('pause', () => {
+        if (examLocked && !audioPlayer.ended) audioPlayer.play();
+    });
+    document.addEventListener('keydown', (e) => {
+        if (examLocked && e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'SELECT') {
+            e.preventDefault();
+        }
+    });
+
+    function enableCasualControls() {
+        examLocked = false;
+        audioPlayer.setAttribute('controls', 'controls');
+        if (!document.getElementById('reviewSkipBack')) {
+            const skipBack = document.createElement('button');
+            skipBack.id = 'reviewSkipBack';
+            skipBack.textContent = '« 10s';
+            skipBack.className = 'header-btn';
+            skipBack.style.cssText = 'margin-left:8px;';
+            skipBack.onclick = () => { audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10); };
+            const skipFwd = document.createElement('button');
+            skipFwd.id = 'reviewSkipFwd';
+            skipFwd.textContent = '10s »';
+            skipFwd.className = 'header-btn';
+            skipFwd.style.cssText = 'margin-left:8px;';
+            skipFwd.onclick = () => { audioPlayer.currentTime = Math.min(audioPlayer.duration || 0, audioPlayer.currentTime + 10); };
+            audioPlayer.insertAdjacentElement('afterend', skipFwd);
+            audioPlayer.insertAdjacentElement('afterend', skipBack);
+        }
+        const st = document.getElementById('audioStatus');
+        if (st) st.innerHTML = '🎧 Casual mode: pause, rewind &amp; fast-forward (10s) enabled';
+    }
+
+    function unlockAudioControls() {
+        examLocked = false;
+        answersChecked = true;
+        audioPlayer.setAttribute('controls', 'controls');
+        if (!document.getElementById('reviewSkipBack')) {
+            const skipBack = document.createElement('button');
+            skipBack.id = 'reviewSkipBack';
+            skipBack.textContent = '« 10s';
+            skipBack.className = 'header-btn';
+            skipBack.style.cssText = 'margin-left:8px;';
+            skipBack.onclick = () => { audioPlayer.currentTime = Math.max(0, audioPlayer.currentTime - 10); };
+            const skipFwd = document.createElement('button');
+            skipFwd.id = 'reviewSkipFwd';
+            skipFwd.textContent = '10s »';
+            skipFwd.className = 'header-btn';
+            skipFwd.style.cssText = 'margin-left:8px;';
+            skipFwd.onclick = () => { audioPlayer.currentTime = Math.min(audioPlayer.duration || 0, audioPlayer.currentTime + 10); };
+            audioPlayer.insertAdjacentElement('afterend', skipFwd);
+            audioPlayer.insertAdjacentElement('afterend', skipBack);
+        }
+        if (!document.getElementById('reviewTranscriptBtn')) {
+            const tb = document.createElement('button');
+            tb.id = 'reviewTranscriptBtn';
+            tb.type = 'button';
+            tb.className = 'header-btn';
+            tb.textContent = '📄 Transcript';
+            tb.title = 'See where every answer comes from in the audio';
+            tb.onclick = () => openTranscript();
+            const checkBtn = document.getElementById('headerCheckBtn');
+            if (checkBtn) checkBtn.insertAdjacentElement('afterend', tb);
+            else audioPlayer.insertAdjacentElement('afterend', tb);
+        }
+        const status = document.getElementById('audioStatus');
+        if (status) status.innerHTML = '🔓 Review mode: pause, rewind &amp; replay enabled · 📄 Transcript available';
+    }
+    audioPlayer.addEventListener('play',  () => audioStatus.innerHTML = '▶ Audio is playing');
+    audioPlayer.addEventListener('pause', () => audioStatus.innerHTML = '🔊 Audio is paused');
+    audioPlayer.addEventListener('ended', () => {
+        audioStatus.innerHTML = '⏹ Audio ended';
+        showAudioEndedPrompt();
+    });
+
+    function showAudioEndedPrompt() {
+        const existing = document.getElementById('audio-ended-overlay');
+        if (existing) return;
+        const overlay = document.createElement('div');
+        overlay.id = 'audio-ended-overlay';
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.82);backdrop-filter:blur(6px);z-index:99998;display:flex;align-items:center;justify-content:center;padding:20px;';
+        const box = document.createElement('div');
+        box.style.cssText = 'background:#fff;padding:34px 30px 28px;border-radius:18px;max-width:420px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.4);';
+        box.innerHTML = `
+            <div style="font-size:42px;margin-bottom:10px;">⏹️</div>
+            <h2 style="color:#1a2a4a;margin:0 0 8px;font-size:21px;font-weight:800;">Audio Finished</h2>
+            <p style="color:#666;font-size:14px;margin:0 0 24px;line-height:1.5;">The listening audio has ended. You can check your answers now, or restart the test to try again.</p>
+            <div style="display:flex;gap:10px;flex-direction:column;">
+                <button id="aepCheckBtn" style="background:#0d7a8a;color:#fff;border:none;padding:13px 20px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;">✓ Check Answers</button>
+                <button id="aepRestartBtn" style="background:#f3f4f6;color:#374151;border:1px solid #d1d5db;padding:13px 20px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;">🔄 Restart Test</button>
+                <button id="aepDismissBtn" style="background:none;color:#9ca3af;border:none;padding:6px;font-size:13px;cursor:pointer;">Keep reviewing without checking</button>
+            </div>`;
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+
+        document.getElementById('aepCheckBtn').addEventListener('click', () => {
+            overlay.remove();
+            checkAnswers();
+        });
+        document.getElementById('aepRestartBtn').addEventListener('click', () => {
+            overlay.remove();
+            location.reload();
+        });
+        document.getElementById('aepDismissBtn').addEventListener('click', () => {
+            overlay.remove();
+        });
+        overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+    }
+
+    
+    // ═══ RICH DRAG & DROP ENGINE (adapted from shohrukhposts Mock 2) ═══
+    let draggedElement = null;
+
+    function getDropZonePlaceholder(zone) {
+        return zone?.getAttribute('data-placeholder') || 'Drop here';
+    }
+    function resetDropZonePlaceholder(zone) {
+        if (!zone) return;
+        const placeholder = getDropZonePlaceholder(zone);
+        const removeBtn = zone.querySelector('.remove-btn');
+        zone.textContent = placeholder;
+        zone.classList.remove('answer-correct', 'answer-incorrect', 'answer-unanswered');
+        if (removeBtn) { zone.appendChild(removeBtn); removeBtn.style.display = 'none'; }
+    }
+    function getDragItemInStation(value, contextEl) {
+        const layout = contextEl?.closest?.('.dnd-wrap, .flow-chart-layout');
+        const station = layout?.querySelector('.draggable-options');
+        if (station) {
+            const item = station.querySelector(`.drag-item[data-value="${value}"]`);
+            if (item) return item;
+        }
+        return document.querySelector(`.drag-item[data-value="${value}"]`);
+    }
+    function syncHiddenSelect(zone) {
+        const q = zone.getAttribute('data-question');
+        const sel = document.querySelector(`select.answer-input[data-question="${q}"]`);
+        if (sel) {
+            sel.value = zone.getAttribute('data-answer') || '';
+            sel.dispatchEvent(new Event('change'));
+        }
+    }
+
+    function initializeDragAndDrop() {
+        const dragItems = document.querySelectorAll('.drag-item');
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', function (e) {
+                draggedElement = this;
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', this.dataset.value || '');
+            });
+            item.addEventListener('dragend', function () {
+                this.classList.remove('dragging');
+                draggedElement = null;
+            });
+            // Tap-to-select for touch devices (fires on tapdown, not tap-release)
+            function selectChip(e) {
+                if (this.classList.contains('used')) return;
+                document.querySelectorAll('.drag-item.selected').forEach(p => p.classList.remove('selected'));
+                this.classList.add('selected');
+                e.stopPropagation();
+            }
+            item.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                selectChip.call(this, e);
+            }, { passive: false });
+            item.addEventListener('click', selectChip);
+        });
+
+        const dropZones = document.querySelectorAll('.drop-zone');
+        dropZones.forEach(zone => {
+            function makeDropZoneDraggable(dz) {
+                if (dz.classList.contains('filled')) {
+                    dz.draggable = true;
+                    dz.addEventListener('dragstart', function (e) {
+                        draggedElement = { isFromDropZone: true, value: this.getAttribute('data-answer'), originalZone: this };
+                        this.classList.add('dragging');
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/plain', this.getAttribute('data-answer') || '');
+                    });
+                    dz.addEventListener('dragend', function () {
+                        this.classList.remove('dragging');
+                        if (draggedElement && draggedElement.isFromDropZone) draggedElement = null;
+                    });
+                } else {
+                    dz.draggable = false;
+                }
+            }
+
+            zone.addEventListener('dragover', function (e) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; this.classList.add('drag-over'); });
+            zone.addEventListener('dragleave', function () { this.classList.remove('drag-over'); });
+            zone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                if (!draggedElement) return;
+
+                let newValue, newText, oldValue;
+                if (draggedElement.isFromDropZone) {
+                    newValue = draggedElement.value;
+                    newText = draggedElement.originalZone.textContent;
+                    oldValue = this.getAttribute('data-answer');
+                    const originalZone = draggedElement.originalZone;
+                    resetDropZonePlaceholder(originalZone);
+                    originalZone.classList.remove('filled');
+                    originalZone.removeAttribute('data-answer');
+                    originalZone.draggable = false;
+                    syncHiddenSelect(originalZone);
+                    if (oldValue) {
+                        const oldItem = getDragItemInStation(oldValue, this);
+                        const oldText = oldItem ? oldItem.dataset.text : oldValue;
+                        originalZone.textContent = oldText || oldValue;
+                        originalZone.classList.add('filled');
+                        originalZone.setAttribute('data-answer', oldValue);
+                        makeDropZoneDraggable(originalZone);
+                        syncHiddenSelect(originalZone);
+                    }
+                } else {
+                    newValue = draggedElement.dataset.value;
+                    newText = draggedElement.dataset.text;
+                    oldValue = this.getAttribute('data-answer');
+                    draggedElement.classList.remove('selected');
+                }
+
+                this.textContent = newText || newValue;
+                this.setAttribute('data-answer', newValue);
+                this.classList.add('filled');
+                this.classList.remove('answer-correct', 'answer-incorrect', 'answer-unanswered');
+                makeDropZoneDraggable(this);
+                const removeBtn = this.querySelector('.remove-btn');
+                if (removeBtn) removeBtn.style.display = 'block';
+                syncHiddenSelect(this);
+                updateNavigation();
+            });
+
+            // Tap-to-place for touch devices (fires on tapdown, not tap-release)
+            function placeOnZone() {
+                const item = document.querySelector('.drag-item.selected');
+                if (!item) {
+                    // No chip selected: tapping a filled box clears it
+                    if (this.classList.contains('filled')) {
+                        const value = this.getAttribute('data-answer');
+                        if (value) {
+                            const station = this.closest('.dnd-wrap, .flow-chart-layout')?.querySelector('.draggable-options');
+                            const chip = station?.querySelector(`.drag-item[data-value="${value}"]`) || document.querySelector(`.drag-item[data-value="${value}"]`);
+                            if (chip) chip.classList.remove('used');
+                        }
+                        resetDropZonePlaceholder(this);
+                        this.classList.remove('filled');
+                        this.removeAttribute('data-answer');
+                        this.draggable = false;
+                        syncHiddenSelect(this);
+                        updateNavigation();
+                    }
+                    return;
+                }
+                draggedElement = item;
+                this.dispatchEvent(new Event('drop', { bubbles: false }));
+                item.classList.remove('selected');
+            }
+            zone.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                placeOnZone.call(this);
+            }, { passive: false });
+            zone.addEventListener('click', placeOnZone);
+
+            const removeBtn = zone.querySelector('.remove-btn');
+            if (removeBtn) {
+                removeBtn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    const dz = this.parentElement;
+                    resetDropZonePlaceholder(dz);
+                    dz.classList.remove('filled');
+                    dz.removeAttribute('data-answer');
+                    dz.draggable = false;
+                    syncHiddenSelect(dz);
+                    updateNavigation();
+                });
+            }
+        });
+    }
+
+    // ═══ BAND FEEDBACK ═══
+    function getBandFeedback(band) {
+        const map = {
+            9.0: { title:'Band 9 — Expert User', feedback:'Outstanding. Near-native listening comprehension.', improvement:'Keep engaging with authentic academic and professional materials.' },
+            8.5: { title:'Band 8.5 — Very Good User', feedback:'Excellent comprehension. Rare mistakes are usually careless slips.', improvement:'Fine-tune precision — check spelling and exact word form carefully.' },
+            8.0: { title:'Band 8 — Very Good User', feedback:'Excellent comprehension with only occasional misunderstandings.', improvement:'Focus on absolute precision in spelling and word form.' },
+            7.5: { title:'Band 7.5 — Good User', feedback:'Solid comprehension; you follow arguments and details well.', improvement:'Do timed full tests, expand academic vocabulary, and target weak question types.' },
+            7.0: { title:'Band 7 — Good User', feedback:'Good understanding; minor lapses when vocabulary or speed increases.', improvement:'Expand idiomatic vocabulary and practise timed tests consistently.' },
+            6.5: { title:'Band 6.5 — Competent User', feedback:'You grasp main ideas but sometimes miss nuanced or implied information.', improvement:'Analyse distractors, practise predicting answers, and work on paraphrase recognition.' },
+            6.0: { title:'Band 6 — Competent User', feedback:'You understand main ideas but lose focus in longer or complex sections.', improvement:'Review wrong answers carefully and work on recognising paraphrased expressions.' },
+            5.5: { title:'Band 5.5 — Modest User', feedback:'You get the main idea but miss many specific details and inferences.', improvement:'Train on synonyms and paraphrases, improve spelling, and build listening stamina.' },
+            5.0: { title:'Band 5 — Modest User', feedback:'You understand the gist but frequently miss details or fall for distractors.', improvement:'Focus on accuracy; practise identifying specific information in longer recordings.' },
+            4.5: { title:'Band 4.5 — Limited User', feedback:'You catch some main points but miss a lot of detail.', improvement:'Start with shorter recordings, build vocabulary, and practise note-taking.' },
+            4.0: { title:'Band 4 — Limited User', feedback:'Basic comprehension only; most specific details are missed.', improvement:'Focus on fundamentals: practise listening daily and expand core vocabulary.' },
+            3.5: { title:'Band 3.5 — Extremely Limited', feedback:'Very limited understanding; only isolated words or phrases are caught.', improvement:'Begin with slow, clear recordings and build listening confidence step by step.' },
+            3.0: { title:'Band 3 — Extremely Limited', feedback:'Comprehension is very fragmentary.', improvement:'Focus on basic English listening and vocabulary building.' }
+        };
+        return map[band] || { title:'Keep Practising', feedback:'Every listening session builds your skills.', improvement:'Practise daily with a variety of accents and topics.' };
+    }
+
+    // ═══ UTILITIES ═══
+    function escapeHtml(str) {
+        return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function getQuestionPart(q) {
+        q = parseInt(q, 10);
+        if (q <= 10) return 1; if (q <= 20) return 2; if (q <= 30) return 3; return 4;
+    }
+    function animateResultsNumber(el, target, suffix = '', duration = 900) {
+        const start = performance.now();
+        function tick(now) {
+            const t = Math.min((now - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = Math.round(target * eased) + suffix;
+            if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }
+    function launchResultsConfetti() {
+        const canvas = document.createElement('canvas');
+        canvas.className = 'results-confetti-canvas';
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        const colors = ['#0d7a8a','#22c55e','#f59e0b','#ec4899','#8b5cf6'];
+        const pieces = Array.from({ length: 90 }, () => ({
+            x: Math.random()*canvas.width, y: Math.random()*canvas.height - canvas.height,
+            r: 4+Math.random()*6, c: colors[Math.floor(Math.random()*colors.length)],
+            vx: -2+Math.random()*4, vy: 2+Math.random()*4, spin: Math.random()*Math.PI
+        }));
+        let frame = 0;
+        function draw() {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            pieces.forEach(p => {
+                p.x+=p.vx; p.y+=p.vy; p.spin+=0.08;
+                ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.spin);
+                ctx.fillStyle = p.c; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r*0.6);
+                ctx.restore();
+            });
+            frame++;
+            if (frame < 120) requestAnimationFrame(draw); else canvas.remove();
+        }
+        draw();
+    }
+    function closeModalOverlay(overlay, callback) {
+        if (!overlay || overlay.classList.contains('closing')) return;
+        overlay.classList.add('closing');
+        setTimeout(() => { overlay.remove(); if (callback) callback(); }, 280);
+    }
+    function closeResultsModal(overlay) { closeModalOverlay(overlay); }
+
+    function jumpToQuestionFromResults(questionNum) {
+        const overlay = document.getElementById('results-modal-overlay');
+        if (overlay) closeResultsModal(overlay);
+        setTimeout(() => focusQuestion(parseInt(questionNum, 10)), 280);
+    }
+
+    function clearAnswerHighlights() {
+        document.querySelectorAll('.answer-input, .drop-zone, .choice-option').forEach(el => {
+            el.style.borderColor = ''; el.style.backgroundColor = '';
+            el.classList.remove('answer-correct', 'answer-incorrect', 'answer-unanswered');
+        });
+        updateNavigation();
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // TRANSCRIPT / "WHERE THE ANSWER COMES FROM"  (unlocks only in review mode)
+    // Approx. audio start time (seconds) of each part. Embedded recording ≈ 27:57.
+    // Fine-tune these four numbers if a "Play Part" lands slightly off.
+    // ═══════════════════════════════════════════════════════════════════════
+    const partAudioStart = { 1: 0, 2: 370, 3: 750, 4: 1130 };
+    function tsPartOf(q) { return Math.ceil(q / 10); }
+
+    function playTranscriptPart(p) {
+        const ap = document.getElementById('audioPlayer');
+        if (!ap || examLocked) return;
+        const t = partAudioStart[p] || 0;
+        try { ap.currentTime = Math.min(t, ap.duration || t); } catch (e) {}
+        ap.play().catch(() => {});
+    }
+
+    function transcriptBodyHTML() {
+        return `
+        <div style="background:#fff6e5;border:1px solid #f0c675;border-radius:10px;padding:11px 14px;margin-bottom:16px;font-size:12.5px;color:#7a5b12;line-height:1.6;">
+          ⚠️ <strong>Reconstructed script.</strong> No official audioscript was available, so the passages below were <strong>rebuilt from the questions and answer key</strong> to show where each answer fits. Wording is approximate — it will not match the audio word-for-word, but every answer is highlighted in context.
+        </div>
+        <div class="ts-part" data-part="1">
+          <div class="ts-part-head"><span class="ts-part-title">Section 1 · Questions 1–10 — Student travel agency enquiry</span><button type="button" class="ts-play-part" data-part="1">▶ Play Section 1</button></div>
+          <div class="ts-script">
+            <p>Sarah's date of birth is <mark class="ts-ans" data-q="1">30 March<sup class="ts-qn">1</sup></mark> 1988.</p>
+            <p>Her contact number is <mark class="ts-ans" data-q="2">0903775115<sup class="ts-qn">2</sup></mark>.</p>
+            <p>She wants to travel in <mark class="ts-ans" data-q="3">Northern<sup class="ts-qn">3</sup></mark> Europe.</p>
+            <p>She hopes to travel by <mark class="ts-ans" data-q="4">train<sup class="ts-qn">4</sup></mark>.</p>
+            <p>She's interested in working in a <mark class="ts-ans" data-q="5">hotel<sup class="ts-qn">5</sup></mark>.</p>
+            <p>She was recommended to consider an alternative, e.g. <mark class="ts-ans" data-q="6">farm<sup class="ts-qn">6</sup></mark> work.</p>
+            <p>She was advised to buy a European rail <mark class="ts-ans" data-q="7">pass<sup class="ts-qn">7</sup></mark> for travelling.</p>
+            <p>She was given a <mark class="ts-ans" data-q="8">booklet<sup class="ts-qn">8</sup></mark> with accommodation details.</p>
+            <p>She agreed to take out <mark class="ts-ans" data-q="9">insurance<sup class="ts-qn">9</sup></mark> from the Agency.</p>
+            <p>She was told to use an <mark class="ts-ans" data-q="10">internet cafe<sup class="ts-qn">10</sup></mark> for contacting people.</p>
+          </div>
+        </div>
+
+        <div class="ts-part" data-part="2">
+          <div class="ts-part-head"><span class="ts-part-title">Section 2 · Questions 11–20 — Bibliostack library</span><button type="button" class="ts-play-part" data-part="2">▶ Play Section 2</button></div>
+          <div class="ts-script">
+            <p><strong>11</strong> The <mark class="ts-ans" data-q="11" title="Q11 → C · seating area">seating area is at C on the map<sup class="ts-qn">11</sup></mark>.</p>
+            <p><strong>12</strong> The <mark class="ts-ans" data-q="12" title="Q12 → F · cushions">cushions are near F<sup class="ts-qn">12</sup></mark>.</p>
+            <p><strong>13</strong> The <mark class="ts-ans" data-q="13" title="Q13 → D · computer bench">computer bench is at D<sup class="ts-qn">13</sup></mark>.</p>
+            <p><strong>14</strong> The <mark class="ts-ans" data-q="14" title="Q14 → A · café bar">café bar is at A<sup class="ts-qn">14</sup></mark>.</p>
+            <p><strong>15</strong> The <mark class="ts-ans" data-q="15" title="Q15 → H · newspapers">newspapers are kept at H<sup class="ts-qn">15</sup></mark>.</p>
+            <p><strong>16</strong> The bookshop aims to <mark class="ts-ans" data-q="16" title="Q16 → C · attract people to remain">create reasons for people to want to stay in the shop longer<sup class="ts-qn">16</sup></mark>.</p>
+            <p><strong>17</strong> Children's books are located <mark class="ts-ans" data-q="17" title="Q17 → B · highest level">on the highest level of the shop<sup class="ts-qn">17</sup></mark>.</p>
+            <p><strong>18</strong> For parents to relax, the shop <mark class="ts-ans" data-q="18" title="Q18 → C · professional child care">provides professional child care while parents shop<sup class="ts-qn">18</sup></mark>.</p>
+            <p><strong>19</strong> Regular book readings are held mainly <mark class="ts-ans" data-q="19" title="Q19 → A · to sell more books">to encourage people to buy more books<sup class="ts-qn">19</sup></mark>.</p>
+            <p><strong>20</strong> The poetry workshop aims to <mark class="ts-ans" data-q="20" title="Q20 → C · become professional poet">help attendees develop into professional poets<sup class="ts-qn">20</sup></mark>.</p>
+          </div>
+        </div>
+
+        <div class="ts-part" data-part="3">
+          <div class="ts-part-head"><span class="ts-part-title">Section 3 · Questions 21–30 — The Just-in-Time Supply System</span><button type="button" class="ts-play-part" data-part="3">▶ Play Section 3</button></div>
+          <div class="ts-script">
+            <p><strong>21</strong> Ron: I should have <mark class="ts-ans" data-q="21" title="Q21 → A · gave credit to the originators">given proper credit to the originators of the JIT idea<sup class="ts-qn">21</sup></mark>.</p>
+            <p><strong>22</strong> Tutor: you left out <mark class="ts-ans" data-q="22" title="Q22 → B · introductory definition">a basic definition of what JIT actually is<sup class="ts-qn">22</sup></mark> at the start.</p>
+            <p><strong>23</strong> Ron: I found the material on standardising parts in <mark class="ts-ans" data-q="23" title="Q23 → C · a textbook">a textbook<sup class="ts-qn">23</sup></mark>.</p>
+            <p><strong>24</strong> Tutor: in the service sector, JIT is <mark class="ts-ans" data-q="24" title="Q24 → A · difficult, no countable things">hard to apply because there's nothing countable, like parts on a shelf<sup class="ts-qn">24</sup></mark>.</p>
+            <p><strong>25</strong> Speed of delivery — <mark class="ts-ans" data-q="25" title="Q25 → B · too irregular">it was too irregular, speeding up and slowing down<sup class="ts-qn">25</sup></mark>.</p>
+            <p><strong>26</strong> Purpose — <mark class="ts-ans" data-q="26" title="Q26 → H · too vague">it was too vague; the audience didn't know what you were aiming for<sup class="ts-qn">26</sup></mark>.</p>
+            <p><strong>27</strong> Transitions — <mark class="ts-ans" data-q="27" title="Q27 → D · too sudden">they were too sudden between sections<sup class="ts-qn">27</sup></mark>.</p>
+            <p><strong>28</strong> Visuals — <mark class="ts-ans" data-q="28" title="Q28 → G · too loosely related">too loosely related to what you were actually saying<sup class="ts-qn">28</sup></mark>.</p>
+            <p><strong>29</strong> Vocabulary — <mark class="ts-ans" data-q="29" title="Q29 → E · too technical">too technical for a general audience<sup class="ts-qn">29</sup></mark>.</p>
+            <p><strong>30</strong> Body language — <mark class="ts-ans" data-q="30" title="Q30 → F · too unenthusiastic">too unenthusiastic, you barely moved<sup class="ts-qn">30</sup></mark>.</p>
+          </div>
+        </div>
+
+        <div class="ts-part" data-part="4">
+          <div class="ts-part-head"><span class="ts-part-title">Section 4 · Questions 31–40 — Dyscalculia</span><button type="button" class="ts-play-part" data-part="4">▶ Play Section 4</button></div>
+          <div class="ts-script">
+            <p>In class, teachers apply a <mark class="ts-ans" data-q="31">traditional<sup class="ts-qn">31</sup></mark> method of teaching.</p>
+            <p>Children have difficulty learning the concept of <mark class="ts-ans" data-q="32">time<sup class="ts-qn">32</sup></mark> and sequence.</p>
+            <p>In class they're taught everyday problems, e.g. dealing with <mark class="ts-ans" data-q="33">money<sup class="ts-qn">33</sup></mark>.</p>
+            <p>More calculation practice helps develop more <mark class="ts-ans" data-q="34">confidence<sup class="ts-qn">34</sup></mark>.</p>
+            <p>Teachers encourage children to solve problems by making <mark class="ts-ans" data-q="35">guesses<sup class="ts-qn">35</sup></mark>.</p>
+            <p>They also do exercises such as breathing, relaxation and <mark class="ts-ans" data-q="36">walking<sup class="ts-qn">36</sup></mark>.</p>
+            <p>Researchers like to find a <mark class="ts-ans" data-q="37">link<sup class="ts-qn">37</sup></mark> with language barriers or language learning difficulty.</p>
+            <p>Children are likely to have problems with <mark class="ts-ans" data-q="38">concentration<sup class="ts-qn">38</sup></mark>.</p>
+            <p>With this approach, children no longer need <mark class="ts-ans" data-q="39">additional<sup class="ts-qn">39</sup></mark> training.</p>
+            <p>The topic is popular with <mark class="ts-ans" data-q="40">teacher<sup class="ts-qn">40</sup></mark>s and families of children.</p>
+          </div>
+        </div>`;
+    }
+
+    function openTranscript(targetQ) {
+        if (!answersChecked) return; // safety: transcript is review-mode only
+        const old = document.getElementById('ts-overlay');
+        if (old) old.remove();
+        const overlay = document.createElement('div');
+        overlay.id = 'ts-overlay';
+        overlay.className = 'ts-overlay';
+        overlay.innerHTML = `
+            <div class="ts-card" role="dialog" aria-label="Audioscript and answer locations">
+              <div class="ts-header">
+                <div>
+                  <h2>📄 Audioscript — where every answer comes from</h2>
+                  <p>Each <strong>highlighted</strong> phrase is exactly where that answer is spoken. Tap “▶ Play Part” (or a highlight) to jump the audio there.</p>
+                </div>
+                <button type="button" class="ts-close" aria-label="Close">&times;</button>
+              </div>
+              <div class="ts-legend">
+                <span><span class="swatch"></span> answer location</span>
+                <span><sup class="ts-qn" style="position:static;">n</sup> question number</span>
+                <span>▶ Play Part — jumps audio to that section (approx.)</span>
+              </div>
+              <div class="ts-body">${transcriptBodyHTML()}</div>
+            </div>`;
+        document.body.appendChild(overlay);
+        requestAnimationFrame(() => overlay.classList.add('show'));
+
+        const close = () => { overlay.classList.remove('show'); setTimeout(() => overlay.remove(), 250); };
+        overlay.querySelector('.ts-close').addEventListener('click', close);
+        overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+        document.addEventListener('keydown', function esc(e) {
+            if (e.key === 'Escape' && document.getElementById('ts-overlay')) { close(); document.removeEventListener('keydown', esc); }
+        });
+        overlay.querySelectorAll('.ts-play-part').forEach(btn =>
+            btn.addEventListener('click', () => playTranscriptPart(parseInt(btn.dataset.part, 10))));
+        overlay.querySelectorAll('mark.ts-ans').forEach(m =>
+            m.addEventListener('click', () => playTranscriptPart(tsPartOf(parseInt(m.dataset.q, 10)))));
+
+        if (targetQ) {
+            const el = overlay.querySelector(`mark.ts-ans[data-q="${targetQ}"]`);
+            if (el) setTimeout(() => {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                el.classList.add('flash');
+                setTimeout(() => el.classList.remove('flash'), 1700);
+            }, 320);
+        }
+    }
+
+    // ═══ CONFIRMATION MODAL ═══
+    function showCheckAnswersConfirmation() {
+        const existing = document.getElementById('results-modal-overlay');
+        if (existing) existing.remove();
+
+        let answered = 0;
+        for (let q = 1; q <= 40; q++) if (isAnswered(q)) answered++;
+        const unanswered = 40 - answered;
+
+        const overlay = document.createElement('div');
+        overlay.id = 'results-modal-overlay';
+        overlay.className = 'results-overlay';
+        overlay.innerHTML = `
+            <div class="results-card results-confirm-card" role="dialog" aria-labelledby="confirm-check-title">
+                <div class="results-header">
+                    <div><h2 id="confirm-check-title">Check your answers?</h2><p>Review before you submit</p></div>
+                    <button type="button" class="results-close-btn confirm-cancel" aria-label="Close">&times;</button>
+                </div>
+                <div class="results-confirm-body">
+                    <div class="results-confirm-icon" aria-hidden="true">✓</div>
+                    <h3 class="results-confirm-title">Ready to see your score?</h3>
+                    <p class="results-confirm-text">This will mark your answers and show your band score with a full breakdown. You can still review each question afterwards.</p>
+                    <div class="results-confirm-stats">
+                        <div class="results-confirm-stat"><div class="results-confirm-stat-value">${answered}</div><div class="results-confirm-stat-label">Answered</div></div>
+                        <div class="results-confirm-stat"><div class="results-confirm-stat-value ${unanswered > 0 ? 'warn' : ''}">${unanswered}</div><div class="results-confirm-stat-label">Unanswered</div></div>
+                    </div>
+                    ${unanswered > 0 ? `<p class="results-confirm-note">You still have <strong>${unanswered}</strong> unanswered question${unanswered === 1 ? '' : 's'}. You can go back and complete them, or check now to see what you have so far.</p>`
+                        : `<p class="results-confirm-note" style="background:#ecfdf5;border-color:#bbf7d0;color:#166534;">All 40 questions answered — you're good to check!</p>`}
+                </div>
+                <div class="results-footer split">
+                    <button type="button" class="results-btn results-btn-secondary confirm-cancel">Not yet</button>
+                    <button type="button" class="results-btn results-btn-primary confirm-submit">Yes, check answers</button>
+                </div>
+            </div>`;
+        document.body.appendChild(overlay);
+        overlay.querySelectorAll('.confirm-cancel').forEach(btn => btn.addEventListener('click', () => closeModalOverlay(overlay)));
+        overlay.querySelector('.confirm-submit').addEventListener('click', () => closeModalOverlay(overlay, () => runCheckAnswers()));
+        overlay.addEventListener('click', e => { if (e.target === overlay) closeModalOverlay(overlay); });
+    }
+
+    // ═══ ANSWER CHECKING (generalized for our correctAnswers / pickGroups pattern) ═══
+    function checkAnswers() { showCheckAnswersConfirmation(); }
+
+    function runCheckAnswers() {
+        let correctCount = 0;
+        let totalAnswered = 0;
+        const results = [];
+
+        // Text inputs
+        document.querySelectorAll('input[type="text"].answer-input').forEach(input => {
+            const q = parseInt(input.getAttribute('data-question'));
+            const user = input.value.trim();
+            const correct = correctAnswers[q];
+            if (user) {
+                totalAnswered++;
+                const ok = isAnswerCorrect(user, correct);
+                if (ok) correctCount++;
+                input.classList.remove('answer-correct','answer-incorrect','answer-unanswered');
+                input.classList.add(ok ? 'answer-correct' : 'answer-incorrect');
+                results.push({ question: q, userAnswer: user, correctAnswer: fmtCorrect(correct) || 'N/A', isCorrect: ok });
+            } else {
+                input.classList.remove('answer-correct','answer-incorrect');
+                input.classList.add('answer-unanswered');
+            }
+        });
+
+        // Drag-and-drop matching questions (scored directly from the drop-zone, not a hidden select)
+        document.querySelectorAll('.drop-zone[data-question]').forEach(dndSlot => {
+            const q = parseInt(dndSlot.getAttribute('data-question'));
+            const user = dndSlot.getAttribute('data-answer') || '';
+            const correct = correctAnswers[q];
+            const sel = document.querySelector(`select.answer-input[data-question="${q}"]`);
+            if (user) {
+                totalAnswered++;
+                const ok = isAnswerCorrect(user, correct);
+                if (ok) correctCount++;
+                dndSlot.classList.remove('answer-correct','answer-incorrect','answer-unanswered');
+                dndSlot.classList.add(ok ? 'answer-correct' : 'answer-incorrect');
+                if (sel) { sel.value = user; }
+                results.push({ question: q, userAnswer: user, correctAnswer: fmtCorrect(correct), isCorrect: ok });
+            } else {
+                dndSlot.classList.remove('answer-correct','answer-incorrect');
+                dndSlot.classList.add('answer-unanswered');
+            }
+        });
+
+        // Select dropdowns (any that aren't drag-and-drop backers, e.g. plain question-type selects)
+        document.querySelectorAll('select.answer-input[data-question]').forEach(sel => {
+            const q = parseInt(sel.getAttribute('data-question'));
+            if (document.querySelector(`.drop-zone[data-question="${q}"]`)) return; // already scored above
+            const user = sel.value;
+            const correct = correctAnswers[q];
+            if (user) {
+                totalAnswered++;
+                const ok = isAnswerCorrect(user, correct);
+                if (ok) correctCount++;
+                sel.classList.remove('answer-correct','answer-incorrect','answer-unanswered');
+                sel.classList.add(ok ? 'answer-correct' : 'answer-incorrect');
+                results.push({ question: q, userAnswer: user, correctAnswer: fmtCorrect(correct), isCorrect: ok });
+            } else {
+                sel.classList.remove('answer-correct','answer-incorrect');
+                sel.classList.add('answer-unanswered');
+            }
+        });
+
+        // Radio groups
+        const radioQs = new Set();
+        document.querySelectorAll('input[type="radio"]').forEach(r => radioQs.add(r.getAttribute('data-question')));
+        radioQs.forEach(qStr => {
+            const q = parseInt(qStr);
+            const checked = document.querySelector(`input[type="radio"][data-question="${q}"]:checked`);
+            const correct = correctAnswers[q];
+            if (checked) {
+                totalAnswered++;
+                const ok = isAnswerCorrect(checked.value, correct);
+                if (ok) correctCount++;
+                document.querySelectorAll(`input[type="radio"][data-question="${q}"]`).forEach(r => {
+                    const label = r.closest('.choice-option');
+                    if (!label) return;
+                    label.classList.remove('answer-correct','answer-incorrect');
+                    if (r.checked) label.classList.add(ok ? 'answer-correct' : 'answer-incorrect');
+                });
+                results.push({ question: q, userAnswer: checked.value, correctAnswer: fmtCorrect(correct), isCorrect: ok });
+            }
+        });
+
+        // Pick groups (generalized pairs/triples with partial credit, like the reference's 17-18/19-20 handling)
+        pickGroups.forEach(pg => {
+            const checked = Array.from(document.querySelectorAll(`input[name="${pg.name}"]:checked`)).map(c => c.value).sort();
+            if (checked.length > 0) totalAnswered += pg.qNums.length;
+            pg.qNums.forEach((qNum, i) => {
+                const ans = pg.target[i];
+                const ok = checked.includes(ans);
+                if (ok) correctCount++;
+                results.push({ question: qNum, userAnswer: checked.join(', ') || '-', correctAnswer: ans, isCorrect: ok });
+            });
+            document.querySelectorAll(`input[name="${pg.name}"]`).forEach(cb => {
+                const label = cb.closest('.choice-option');
+                if (!label) return;
+                label.classList.remove('answer-correct','answer-incorrect');
+                if (cb.checked) label.classList.add(pg.target.includes(cb.value) ? 'answer-correct' : 'answer-incorrect');
+            });
+        });
+
+        results.sort((a, b) => a.question - b.question);
+        buildFullResultsMap(results);
+        unlockAudioControls();
+        showResults(correctCount, totalAnswered, results);
+        updateNavigation();
+    }
+
+    let lastResultsMap = {};
+    function buildFullResultsMap(results) {
+        lastResultsMap = {};
+        results.forEach(r => { lastResultsMap[String(r.question)] = r; });
+        for (let q = 1; q <= 40; q++) {
+            if (!lastResultsMap[String(q)]) lastResultsMap[String(q)] = { question: String(q), isCorrect: false };
+        }
+    }
+
+    // ═══ RICH RESULTS DASHBOARD ═══
+    function showResults(correct, answered, detailedResults) {
+        const existing = document.getElementById('results-modal-overlay');
+        if (existing) existing.remove();
+
+        const bandScore = calculateBand(correct);
+        const feedback = getBandFeedback(bandScore);
+        const accuracy = answered > 0 ? Math.round((correct / answered) * 100) : 0;
+        const ringRadius = 54;
+        const ringCircumference = 2 * Math.PI * ringRadius;
+        const ringOffset = ringCircumference * (1 - correct / 40);
+
+        const resultMap = {};
+        detailedResults.forEach(r => { resultMap[String(r.question)] = r; });
+
+        const partStats = [1, 2, 3, 4].map(part => {
+            const start = (part - 1) * 10 + 1;
+            let partCorrect = 0, partAnswered = 0;
+            for (let q = start; q <= start + 9; q++) {
+                const r = resultMap[String(q)];
+                if (r) { partAnswered++; if (r.isCorrect) partCorrect++; }
+            }
+            return { part, correct: partCorrect, answered: partAnswered };
+        });
+
+        let pillsHTML = '', detailsHTML = '';
+        for (let q = 1; q <= 40; q++) {
+            const r = resultMap[String(q)];
+            let status = 'unanswered';
+            if (r) status = r.isCorrect ? 'correct' : 'incorrect';
+            pillsHTML += `<button type="button" class="results-q-pill ${status}" data-question="${q}" data-status="${status}" title="Question ${q}">${q}</button>`;
+            if (r) {
+                detailsHTML += `<div class="results-detail-item" data-question="${q}" data-status="${status}" style="animation-delay:${Math.min(q*0.02,0.8)}s">
+                    <div class="results-detail-badge ${r.isCorrect ? 'ok' : 'bad'}">${r.isCorrect ? '✓' : '✗'}</div>
+                    <div><div class="results-detail-q">Question ${q}</div>
+                    <div class="results-detail-answers"><strong>Yours:</strong> ${escapeHtml(r.userAnswer || '—')}<br><strong>Correct:</strong> ${escapeHtml(r.correctAnswer || '—')}</div>
+                    <button type="button" class="results-detail-go" data-jump="${q}">View in test →</button><button type="button" class="results-detail-ts" data-tsjump="${q}">📄 In transcript</button></div></div>`;
+            } else {
+                const correct = correctAnswers[q];
+                const correctText = correct !== undefined ? fmtCorrect(correct) : '—';
+                detailsHTML += `<div class="results-detail-item" data-question="${q}" data-status="unanswered" style="animation-delay:${Math.min(q*0.02,0.8)}s">
+                    <div class="results-detail-badge bad">?</div>
+                    <div><div class="results-detail-q">Question ${q}</div>
+                    <div class="results-detail-answers"><strong>Yours:</strong> Not answered<br><strong>Correct:</strong> ${escapeHtml(correctText)}</div>
+                    <button type="button" class="results-detail-go" data-jump="${q}">View in test →</button><button type="button" class="results-detail-ts" data-tsjump="${q}">📄 In transcript</button></div></div>`;
+            }
+        }
+
+        const partsHTML = partStats.map((ps, i) => {
+            const pct = Math.round((ps.correct / 10) * 100);
+            const weak = pct < 60;
+            return `<div class="results-part-row" data-part="${ps.part}" title="Click to filter Part ${ps.part}">
+                <span class="results-part-label">Part ${ps.part}</span>
+                <div class="results-part-bar-track"><div class="results-part-bar-fill ${weak ? 'weak' : ''}" style="width:${pct}%;animation-delay:${0.2+i*0.1}s"></div></div>
+                <span class="results-part-score">${ps.correct}/10</span></div>`;
+        }).join('');
+
+        const feedbackHTML = feedback ? `<div class="results-feedback">
+            <h3>${escapeHtml(feedback.title)}</h3>
+            <p><strong>🗣 Feedback</strong><br>${feedback.feedback}</p>
+            <p><strong>💡 ${bandScore >= 9 ? 'How to maintain' : 'How to improve'}</strong><br>${feedback.improvement}</p>
+        </div>` : '';
+
+        const overlay = document.createElement('div');
+        overlay.id = 'results-modal-overlay';
+        overlay.className = 'results-overlay';
+        overlay.innerHTML = `
+            <div class="results-card" role="dialog" aria-labelledby="results-title">
+                <div class="results-header">
+                    <div><h2 id="results-title">Your Listening Results</h2><p>Filter by part or status · double-click a number to jump to it in the test</p></div>
+                    <button type="button" class="results-close-btn" aria-label="Close">&times;</button>
+                </div>
+                <div class="results-body">
+                    <div class="results-hero">
+                        <div class="results-ring-wrap">
+                            <svg class="results-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <defs><linearGradient id="resultsRingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#14b8c4"/><stop offset="100%" stop-color="#0d7a8a"/>
+                                </linearGradient></defs>
+                                <circle class="results-ring-bg" cx="60" cy="60" r="${ringRadius}"/>
+                                <circle class="results-ring-progress" cx="60" cy="60" r="${ringRadius}" stroke-dasharray="${ringCircumference}" stroke-dashoffset="${ringCircumference}"/>
+                            </svg>
+                            <div class="results-ring-center">
+                                <div class="results-band" data-target="${bandScore}">0</div>
+                                <div class="results-band-label">BAND SCORE</div>
+                                <div class="results-score-fraction"><span data-target="${correct}" data-suffix="">0</span>/40 correct</div>
+                            </div>
+                        </div>
+                        <div class="results-stats-grid">
+                            <div class="results-stat"><div class="results-stat-value" data-target="${correct}" data-suffix="">0</div><div class="results-stat-label">Correct answers</div></div>
+                            <div class="results-stat"><div class="results-stat-value" data-target="${answered}" data-suffix="">0</div><div class="results-stat-label">Answered</div></div>
+                            <div class="results-stat"><div class="results-stat-value" data-target="${accuracy}" data-suffix="%">0</div><div class="results-stat-label">Accuracy</div></div>
+                        </div>
+                    </div>
+                    <div class="results-parts"><h3 class="results-section-title">Performance by part</h3>${partsHTML}</div>
+                    <div class="results-grid-wrap"><h3 class="results-section-title">All 40 questions</h3><div class="results-q-grid">${pillsHTML}</div></div>
+                    ${feedbackHTML}
+                    <h3 class="results-section-title">Answer review</h3>
+                    <div class="results-tabs">
+                        <button type="button" class="results-tab active" data-filter="all">All</button>
+                        <button type="button" class="results-tab" data-filter="correct">Correct</button>
+                        <button type="button" class="results-tab" data-filter="incorrect">Incorrect</button>
+                        <button type="button" class="results-tab" data-filter="unanswered">Unanswered</button>
+                    </div>
+                    <div class="results-detail-list">${detailsHTML}</div>
+                </div>
+                <div class="results-footer">
+                    <button type="button" class="results-btn results-btn-secondary results-btn-clear">Clear highlighting</button>
+                    <button type="button" class="results-btn results-btn-transcript results-btn-open-transcript">📄 Transcript &amp; answer locations</button>
+                    <button type="button" class="results-btn results-btn-primary results-btn-close">Done</button>
+                </div>
+            </div>`;
+        document.body.appendChild(overlay);
+
+        requestAnimationFrame(() => {
+            const ring = overlay.querySelector('.results-ring-progress');
+            if (ring) ring.style.strokeDashoffset = String(ringOffset);
+        });
+        overlay.querySelectorAll('.results-stat-value, .results-score-fraction [data-target]').forEach(el => {
+            animateResultsNumber(el, parseFloat(el.dataset.target), el.dataset.suffix || '');
+        });
+        const bandEl = overlay.querySelector('.results-band');
+        if (bandEl) {
+            const target = parseFloat(bandEl.dataset.target);
+            const start = performance.now();
+            function tickBand(now) {
+                const t = Math.min((now - start) / 900, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                bandEl.textContent = (target * eased).toFixed(1);
+                if (t < 1) requestAnimationFrame(tickBand);
+            }
+            requestAnimationFrame(tickBand);
+        }
+
+        initResultsModalInteractions(overlay, detailedResults);
+        if (bandScore >= 7 || correct >= 32) launchResultsConfetti();
+    }
+
+    function initResultsModalInteractions(overlay, detailedResults) {
+        const pills = overlay.querySelectorAll('.results-q-pill');
+        const detailItems = overlay.querySelectorAll('.results-detail-item');
+        const tabs = overlay.querySelectorAll('.results-tab');
+        const partRows = overlay.querySelectorAll('.results-part-row');
+        let activePart = 'all', activeTab = 'all';
+
+        function applyFilters() {
+            pills.forEach(pill => {
+                const part = getQuestionPart(pill.dataset.question);
+                const partMatch = activePart === 'all' || String(part) === activePart;
+                const tabMatch = activeTab === 'all' || activeTab === pill.dataset.status;
+                pill.style.display = partMatch && tabMatch ? 'flex' : 'none';
+            });
+            detailItems.forEach(item => {
+                const part = getQuestionPart(item.dataset.question);
+                const partMatch = activePart === 'all' || String(part) === activePart;
+                const tabMatch = activeTab === 'all' || activeTab === item.dataset.status;
+                item.classList.toggle('hidden', !(partMatch && tabMatch));
+            });
+        }
+        tabs.forEach(tab => tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            activeTab = tab.dataset.filter;
+            applyFilters();
+        }));
+        partRows.forEach(row => row.addEventListener('click', () => {
+            const part = row.dataset.part;
+            if (activePart === part) { activePart = 'all'; partRows.forEach(r => r.classList.remove('active')); }
+            else { activePart = part; partRows.forEach(r => r.classList.toggle('active', r.dataset.part === part)); }
+            applyFilters();
+        }));
+        function focusResultQuestion(q) {
+            pills.forEach(p => p.classList.toggle('highlighted', p.dataset.question === String(q)));
+            const item = overlay.querySelector(`.results-detail-item[data-question="${q}"]`);
+            if (item) {
+                item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                item.style.borderColor = '#8fd4dc';
+                setTimeout(() => { item.style.borderColor = ''; }, 1200);
+            }
+        }
+        pills.forEach(pill => {
+            pill.addEventListener('click', () => focusResultQuestion(pill.dataset.question));
+            pill.addEventListener('dblclick', () => jumpToQuestionFromResults(pill.dataset.question));
+        });
+        overlay.querySelectorAll('.results-detail-go').forEach(btn => btn.addEventListener('click', e => {
+            e.stopPropagation();
+            jumpToQuestionFromResults(btn.dataset.jump);
+        }));
+        overlay.querySelector('.results-close-btn').addEventListener('click', () => closeResultsModal(overlay));
+        overlay.querySelector('.results-btn-close').addEventListener('click', () => closeResultsModal(overlay));
+        overlay.querySelector('.results-btn-clear').addEventListener('click', () => { clearAnswerHighlights(); closeResultsModal(overlay); });
+        overlay.querySelectorAll('.results-detail-ts').forEach(btn => btn.addEventListener('click', e => {
+            e.stopPropagation();
+            const q = parseInt(btn.dataset.tsjump, 10);
+            closeResultsModal(overlay);
+            setTimeout(() => openTranscript(q), 300);
+        }));
+        const openTsBtn = overlay.querySelector('.results-btn-open-transcript');
+        if (openTsBtn) openTsBtn.addEventListener('click', () => { closeResultsModal(overlay); setTimeout(() => openTranscript(), 300); });
+        overlay.addEventListener('click', e => { if (e.target === overlay) closeResultsModal(overlay); });
+    }
+function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen?.().catch(() => {});
+        } else {
+            document.exitFullscreen?.().catch(() => {});
+        }
+    }
+    document.addEventListener('fullscreenchange', () => {
+        const isFs = !!document.fullscreenElement;
+        const enterIcon = document.getElementById('fsIconEnter');
+        const exitIcon = document.getElementById('fsIconExit');
+        if (enterIcon) enterIcon.style.display = isFs ? 'none' : '';
+        if (exitIcon) exitIcon.style.display = isFs ? '' : 'none';
+    });
+
+    function showWelcomePopup() {
+        if (sessionStorage.getItem('ielts_welcomed_v8t1')) return;
+        const overlay = document.createElement('div');
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+        const box = document.createElement('div');
+        box.style.cssText = 'background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 55%,#063847 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(0,200,180,0.3);position:relative;overflow:hidden;';
+        box.innerHTML = `
+            <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(0,200,180,0.12);border-radius:50%;"></div>
+            <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(0,200,180,0.08);border-radius:50%;"></div>
+            <div style="position:relative;z-index:2;">
+                <div style="font-size:50px;margin-bottom:10px;">🎧</div>
+                <div style="display:inline-block;background:rgba(0,200,180,0.2);color:#7ffcec;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(0,200,180,0.3);">Authentic Full Test</div>
+                <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Listening &mdash; Full Test</h2>
+                <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">4 parts &bull; 40 questions &bull; answer key &amp; band score</p>
+                <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong>I. Bekhruz</strong></p>
+                <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+                <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                    <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">⚠️ <strong>Choose your mode below.</strong> <strong>Exam mode</strong> plays the audio once and it cannot be paused — just like the real IELTS test. <strong>Casual mode</strong> lets you pause, rewind and fast-forward (10s) while you practise.</p>
+                </div>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                    <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0d7a8a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                        <svg style="width:17px;height:17px;fill:#0d7a8a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        Join @bekhruzposts
+                    </a>
+                    <button id="startExamBtn" style="background:#fff;color:#0d7a8a;border:none;font-weight:800;font-size:15px;padding:13px 20px;border-radius:12px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,0.3);">📝 Exam mode &#9654;</button>
+                    <button id="startCasualBtn" style="background:rgba(255,255,255,0.18);color:#fff;border:1.5px solid rgba(255,255,255,0.4);font-weight:800;font-size:15px;padding:13px 20px;border-radius:12px;cursor:pointer;">🎧 Casual mode &#9654;</button>
+                </div>
+            </div>`;
+        overlay.appendChild(box);
+        document.body.appendChild(overlay);
+        const _startTest = (mode) => {
+            testMode = mode;
+            overlay.style.transition = 'opacity 0.3s';
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.remove();
+                sessionStorage.setItem('ielts_welcomed_v8t1', '1');
+                const ap = document.getElementById('audioPlayer');
+                if (mode === 'casual') enableCasualControls();
+                if (ap) ap.play();
+                toggleFullscreen();
+            }, 300);
+        };
+        document.getElementById('startExamBtn').addEventListener('click', () => _startTest('exam'));
+        document.getElementById('startCasualBtn').addEventListener('click', () => _startTest('casual'));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        pickGroups.forEach(pg => {
+            const cbs = document.querySelectorAll(`input[name="${pg.name}"]`);
+            const limit = pg.qNums.length;
+            cbs.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const checkedCount = document.querySelectorAll(`input[name="${pg.name}"]:checked`).length;
+                    cbs.forEach(b => { if (!b.checked) b.disabled = checkedCount >= limit; });
+                    updateNavigation();
+                });
+            });
+        });
+        document.querySelectorAll('.answer-input, input[type="radio"]').forEach(el => {
+            el.addEventListener('change', updateNavigation);
+            el.addEventListener('input', updateNavigation);
+        });
+        switchPart(1);
+        updateNavigation();
+        showWelcomePopup();
+        initializeDragAndDrop();
+    });
+
+    // Text highlight on select
+    // ── HIGHLIGHT SYSTEM (shohrukhposts style) ──
+    let _hlCurrentRange = null;
+
+    function _hlShowButton(x, y) {
+        let btn = document.getElementById('highlightButton');
+        if (!btn) {
+            btn = document.createElement('button');
+            btn.id = 'highlightButton';
+            btn.textContent = '🖊 Highlight';
+            btn.style.cssText = 'position:absolute;display:none;background:#0d7a8a;color:#fff;border:none;border-radius:6px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.25);';
+            btn.addEventListener('mouseover', () => btn.style.background = '#095566');
+            btn.addEventListener('mouseout', () => btn.style.background = '#0d7a8a');
+            btn.addEventListener('click', _hlApply);
+            document.body.appendChild(btn);
+        }
+        btn.style.display = 'block';
+        btn.style.left = Math.max(8, x) + 'px';
+        btn.style.top = Math.max(8, y) + 'px';
+    }
+
+    function _hlHideButton() {
+        const btn = document.getElementById('highlightButton');
+        if (btn) btn.style.display = 'none';
+    }
+
+    function _hlApply() {
+        const sel = window.getSelection();
+        if (!sel || sel.rangeCount === 0) { _hlHideButton(); return; }
+        const range = sel.getRangeAt(0);
+        const text = range.toString().trim();
+        if (!text) { sel.removeAllRanges(); _hlHideButton(); return; }
+        if (range.startContainer.nodeType === Node.TEXT_NODE &&
+            range.startContainer === range.endContainer) {
+            try {
+                const mark = document.createElement('mark');
+                mark.className = 'text-highlight';
+                mark.style.cssText = 'background:#fef08a;border-radius:2px;cursor:pointer;padding:1px 0;';
+                mark.title = 'Click to remove highlight';
+                mark.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const p = this.parentNode;
+                    if (p) { p.replaceChild(document.createTextNode(this.textContent), this); p.normalize(); }
+                });
+                range.surroundContents(mark);
+            } catch(e) {}
+        }
+        sel.removeAllRanges();
+        _hlHideButton();
+    }
+
+    document.addEventListener('mouseup', function(e) {
+        if (e.target.id === 'highlightButton') return;
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'INPUT' ||
+            e.target.classList.contains('drag-item') || e.target.classList.contains('drop-zone')) {
+            _hlHideButton(); return;
+        }
+        const sel = window.getSelection();
+        if (sel && sel.toString().trim().length > 0) {
+            const range = sel.getRangeAt(0);
+            const rect = range.getBoundingClientRect();
+            _hlShowButton(rect.left + window.scrollX, rect.top + window.scrollY - 44);
+        } else {
+            _hlHideButton();
+        }
+    });
+    document.addEventListener('mousedown', function(e) {
+        if (e.target.id !== 'highlightButton') _hlHideButton();
+    });
+    document.addEventListener('touchend', function(e) {
+        if (e.target.id === 'highlightButton') return;
+        if (e.target.closest('.drag-item, .drop-zone, button, input, select')) return;
+        setTimeout(() => {
+            const sel = window.getSelection();
+            if (sel && sel.toString().trim().length > 0) {
+                const t = e.changedTouches[0];
+                _hlShowButton(t.clientX, t.clientY - 50);
+            }
+        }, 100);
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>IELTS Reading – William Gilbert and Magnetism | @ieltswithkhmdv</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; }
+        body { background:#f5f5f5; color:#333; line-height:1.6; overflow:hidden; }
+        .loading-screen { min-height:100vh; display:flex; align-items:center; justify-content:center; background:#f9fafb; position:fixed; top:0; left:0; width:100%; z-index:9999; flex-direction:column; }
+        .spinner { border:5px solid #f3f3f3; border-top:5px solid #2563eb; border-radius:50%; width:50px; height:50px; animation:spin 1s linear infinite; margin-bottom:20px; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .hidden { display:none!important; }
+
+        .container { display:flex; flex-direction:column; height:100vh; width:100vw; background:white; }
+        header { background:white; padding:12px 24px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 12px rgba(0,0,0,.1); z-index:100; border-bottom:1px solid #e2e8f0; }
+        .logo-area { background:#2563eb; color:white; padding:10px 22px; border-radius:9999px; text-decoration:none; font-weight:bold; display:flex; align-items:center; gap:10px; box-shadow:0 4px 12px rgba(37,99,235,.3); }
+        .logo-area:hover { background:#1d4ed8; transform:translateY(-2px); }
+        .passage-info { font-weight:600; color:#1e293b; font-size:1.1rem; }
+        .timer { background:#fee2e2; color:#991b1b; padding:10px 18px; border-radius:8px; font-weight:bold; border:1px solid #fecaca; font-size:1.1rem; }
+
+        .progress-container { padding:12px 24px; background:#f8fafc; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+        .progress-items { display:flex; gap:8px; flex-wrap:wrap; }
+        .progress-item { width:42px; height:42px; border-radius:50%; background:#e2e8f0; display:flex; align-items:center; justify-content:center; font-weight:bold; cursor:pointer; transition:.3s; font-size:1.1rem; }
+        .progress-item.current { background:#3b82f6; color:white; transform:scale(1.18); }
+        .progress-item.answered { background:#86efac; color:#166534; }
+
+        .main-content { display:flex; flex:1; overflow:hidden; position:relative; }
+        .passage-container { flex:1; background:#fafafa; overflow-y:auto; padding:30px; transition:flex 0.3s; }
+        .questions-container { width:42%; background:white; border-left:1px solid #e2e8f0; overflow-y:auto; padding:30px; transition:width 0.3s; }
+        .resizer { width:12px; background:#cbd5e0; cursor:col-resize; position:relative; transition:.3s; z-index:10; }
+        .resizer:hover { background:#94a3b8; }
+        .resizer::after { content:''; position:absolute; top:0; left:50%; width:2px; height:100%; background:#2563eb; transform:translateX(-50%); }
+
+        .passage h2 { font-size:1.8rem; color:#1e293b; margin-bottom:24px; text-align:center; }
+        .passage-content p { margin:20px 0; text-align:justify; font-size:1.05rem; }
+
+        .question-group { background:#f8fafc; padding:24px; border-radius:12px; margin-bottom:28px; border:1px solid #e2e8f0; }
+        .section-title { font-size:1.4rem; font-weight:bold; color:#1e293b; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid #3b82f6; }
+
+        .match-select { padding:10px; border:1px solid #ccc; border-radius:6px; font-size:1.05rem; width:100%; margin:8px 0; }
+
+        .btn-submit { background:#16a34a; color:white; padding:16px 48px; border:none; border-radius:8px; font-size:1.2rem; cursor:pointer; margin:40px auto; display:block; font-weight:bold; }
+
+        .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center; }
+        .modal-content { background:white; padding:36px; border-radius:16px; max-width:680px; width:92%; max-height:92vh; overflow-y:auto; text-align:center; }
+        .score-display { font-size:3.5rem; font-weight:bold; color:#16a34a; margin:24px 0; }
+        .answer-item { padding:18px; margin:12px 0; background:#f8fafc; border-radius:10px; border-left:6px solid #e2e8f0; text-align:left; font-size:1.05rem; }
+        .answer-item.correct { border-left-color:#16a34a; background:#f0fdf4; }
+        .answer-item.incorrect { border-left-color:#dc2626; background:#fef2f2; }
+
+        .highlight { background-color:#fff176; cursor:pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="loading-screen" id="loadingScreen">
+        <div><div class="spinner"></div><h2>Loading Test...</h2></div>
+    </div>
+
+    <div class="container" id="testContainer">
+        <header>
+            <a href="https://t.me/ieltswithkhmdv" target="_blank" class="logo-area">
+                <i class="fab fa-telegram-plane"></i> @ieltswithkhmdv
+            </a>
+            <div class="passage-info">Passage 1</div>
+            <div class="timer" id="timer">20:00</div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-items">
+                <div class="progress-item" data-question="1">1</div>
+                <div class="progress-item" data-question="2">2</div>
+                <div class="progress-item" data-question="3">3</div>
+                <div class="progress-item" data-question="4">4</div>
+                <div class="progress-item" data-question="5">5</div>
+                <div class="progress-item" data-question="6">6</div>
+                <div class="progress-item" data-question="7">7</div>
+                <div class="progress-item" data-question="8">8</div>
+                <div class="progress-item" data-question="9">9</div>
+                <div class="progress-item" data-question="10">10</div>
+                <div class="progress-item" data-question="11">11</div>
+                <div class="progress-item" data-question="12">12</div>
+                <div class="progress-item current" data-question="13">13</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="passage-container" id="passage">
+                <div class="passage">
+                    <h2>William Gilbert and Magnetism</h2>
+                    <div class="passage-content" id="passageText">
+                        <p><strong>A</strong></p>
+                        <p>The 16th and 17th centuries saw two great pioneers of modern science: Galileo and Gilbert. The impact of their findings is eminent. Gilbert was the first modern scientist, also the accredited father of the science of electricity and magnetism, an Englishman of learning and a physician at the court of Elizabeth. Prior to him, all that was known of electricity and magnetism was what the ancients knew, nothing more than that the lodestone possessed magnetic properties and that amber and jet, when rubbed, would attract bits of paper or other substances of small specific gravity. However, he is less well known than he deserves.</p>
+
+                        <p><strong>B</strong></p>
+                        <p>Gilbert’s birth pre-dated Galileo. Born in an eminent local family in Colchester County in the UK, on May 24, 1544, he went to grammar school, and then studied medicine at St John’s College, Cambridge, graduating in 1573. Later he travelled in the continent and eventually settled down in London.</p>
+
+                        <p><strong>C</strong></p>
+                        <p>He was a very successful and eminent doctor. All this culminated in his election to the president of the Royal Science Society. He was also appointed personal physician to the Queen (Elizabeth I), and later knighted by the Queen. He faithfully served her until her death. However, he didn’t outlive the Queen for long and died on November 30, 1603, only a few months after his appointment as personal physician to King James.</p>
+
+                        <p><strong>D</strong></p>
+                        <p>Gilbert was first interested in chemistry but later changed his focus due to the large portion of mysticism of alchemy involved (such as the transmutation of metal). He gradually developed his interest in physics after the great minds of the ancient, particularly about the knowledge the ancient Greeks had about lodestones, strange minerals with the power to attract iron. In the meantime, Britain became a major seafaring nation in 1588 when the Spanish Armada was defeated, opening the way to British settlement of America. British ships depended on the magnetic compass, yet no one understood why it worked. Did the Pole Star attract it, as Columbus once speculated; or was there a magnetic mountain at the pole, as described in Odyssey, which ships would never approach, because the sailors thought its pull would yank out all their iron nails and fittings? For nearly 20 years, William Gilbert conducted ingenious experiments to understand magnetism. His works include On the Magnet, Magnetic Bodies, and the Great Magnet of the Earth.</p>
+
+                        <p><strong>E</strong></p>
+                        <p>Gilbert’s discovery was so important to modern physics. He investigated the nature of magnetism and electricity. He even coined the word “electric”. Though the early beliefs of magnetism were also largely entangled with superstitions such as that rubbing garlic on lodestone can neutralise its magnetism, one example being that sailors even believed the smell of garlic would even interfere with the action of compass, which is why helmsmen were forbidden to eat it near a ship’s compass. Gilbert also found that metals can be magnetised by rubbing materials such as fur, plastic or the like on them. He named the ends of a magnet “north pole” and “south pole”. The magnetic poles can attract or repel, depending on polarity. In addition, however, ordinary iron is always attracted to a magnet. Though he started to study the relationship between magnetism and electricity, sadly he didn’t complete it. His research of static electricity using amber and jet only demonstrated that objects with electrical charges can work like magnets attracting small pieces of paper and stuff. It is a French guy named du Fay that discovered that there are actually two electrical charges, positive and negative.</p>
+
+                        <p><strong>F</strong></p>
+                        <p>He also questioned the traditional astronomical beliefs. Though a Copernican, he didn’t express in his quintessential beliefs whether the earth is at the centre of the universe or in orbit around the sun. However, he believed that stars are not equidistant from the earth but have their own earth-like planets orbiting around them. The earth itself is like a giant magnet, which is also why compasses always point north. They spin on an axis that is aligned with the earth’s polarity. He even likened the polarity of the magnet to the polarity of the earth and built an entire magnetic philosophy on this analogy. In his explanation, magnetism is the soul of the earth. Thus a perfectly spherical lodestone, when aligned with the earth’s poles, would wobble all by itself in 24 hours. Further, he also believed that the sun and other stars wobble just like the earth does around a crystal core, and speculated that the moon might also be a magnet caused to orbit by its magnetic attraction to the earth. This was perhaps the first proposal that a force might cause a heavenly orbit.</p>
+
+                        <p><strong>G</strong></p>
+                        <p>His research method was revolutionary in that he used experiments rather than pure logic and reasoning like the ancient Greek philosophers did. It was a new attitude towards scientific investigation. Until then, scientific experiments were not in fashion. It was because of this scientific attitude, together with his contribution to our knowledge of magnetism, that a unit of magneto motive force, also known as magnetic potential, was named Gilbert in his honour. His approach of careful observation and experimentation rather than the authoritative opinion or deductive philosophy of others had laid the very foundation for modern science.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resizer" id="resizer"></div>
+
+            <div class="questions-container" id="questions">
+                <div class="question-group">
+                    <div class="section-title">Questions 1–7</div>
+                    <p>Reading Passage 1 has seven paragraphs, A–G.</p>
+                    <p>Choose the correct heading for each paragraph from the list of headings below.</p>
+                    <p>Write the correct number, i–x, in boxes 1–7 on your answer sheet.</p>
+
+                    <p><strong>List of Headings</strong></p>
+                    <ol>
+                        <li>Early years of Gilbert</li>
+                        <li>What was new about his scientific research method</li>
+                        <li>The development of chemistry</li>
+                        <li>Questioning traditional astronomy</li>
+                        <li>Pioneers of the early science</li>
+                        <li>Professional and social recognition</li>
+                        <li>Becoming the president of the Royal Science Society</li>
+                        <li>The great works of Gilbert</li>
+                        <li>His discovery about magnetism</li>
+                        <li>His change of focus</li>
+                    </ol>
+
+                    <div style="margin:16px 0;">
+                        <strong>1</strong> Section A<br>
+                        <select class="match-select" id="q1">
+                            <option value="">-- Select --</option>
+                            <option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option>
+                            <option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option>
+                            <option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option>
+                            <option value="x">x</option>
+                        </select>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <strong>2</strong> Section B<br>
+                        <select class="match-select" id="q2">
+                            <option value="">-- Select --</option>
+                            <option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option>
+                            <option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option>
+                            <option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option>
+                            <option value="x">x</option>
+                        </select>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <strong>3</strong> Section C<br>
+                        <select class="match-select" id="q3">
+                            <option value="">-- Select --</option>
+                            <option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option>
+                            <option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option>
+                            <option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option>
+                            <option value="x">x</option>
+                        </select>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <strong>4</strong> Section D<br>
+                        <select class="match-select" id="q4">
+                            <option value="">-- Select --</option>
+                            <option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option>
+                            <option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option>
+                            <option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option>
+                            <option value="x">x</option>
+                        </select>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <strong>5</strong> Section E<br>
+                        <select class="match-select" id="q5">
+                            <option value="">-- Select --</option>
+                            <option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option>
+                            <option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option>
+                            <option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option>
+                            <option value="x">x</option>
+                        </select>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <strong>6</strong> Section F<br>
+                        <select class="match-select" id="q6">
+                            <option value="">-- Select --</option>
+                            <option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option>
+                            <option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option>
+                            <option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option>
+                            <option value="x">x</option>
+                        </select>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <strong>7</strong> Section G<br>
+                        <select class="match-select" id="q7">
+                            <option value="">-- Select --</option>
+                            <option value="i">i</option><option value="ii">ii</option><option value="iii">iii</option>
+                            <option value="iv">iv</option><option value="v">v</option><option value="vi">vi</option>
+                            <option value="vii">vii</option><option value="viii">viii</option><option value="ix">ix</option>
+                            <option value="x">x</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <div class="section-title">Questions 8–10</div>
+                    <p>Do the following statements agree with the information given in the text?</p>
+                    <p>Choose <strong>TRUE</strong> if the statement agrees with the information,<br>
+                    <strong>FALSE</strong> if the statement contradicts the information,<br>
+                    or <strong>NOT GIVEN</strong> if there is no information on this.</p>
+
+                    <div style="margin:16px 0;">
+                        <strong>8</strong> He is less famous than he should be.<br>
+                        <select class="match-select" id="q8">
+                            <option value="">-- Select --</option>
+                            <option value="TRUE">TRUE</option>
+                            <option value="FALSE">FALSE</option>
+                            <option value="NOT GIVEN">NOT GIVEN</option>
+                        </select>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <strong>9</strong> He was famous as a doctor before he was employed by the Queen.<br>
+                        <select class="match-select" id="q9">
+                            <option value="">-- Select --</option>
+                            <option value="TRUE">TRUE</option>
+                            <option value="FALSE">FALSE</option>
+                            <option value="NOT GIVEN">NOT GIVEN</option>
+                        </select>
+                    </div>
+
+                    <div style="margin:16px 0;">
+                        <strong>10</strong> He lost faith in the medical theories of his time.<br>
+                        <select class="match-select" id="q10">
+                            <option value="">-- Select --</option>
+                            <option value="TRUE">TRUE</option>
+                            <option value="FALSE">FALSE</option>
+                            <option value="NOT GIVEN">NOT GIVEN</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <div class="section-title">Questions 11–13</div>
+                    <p>Which THREE of the following are parts of Gilbert’s discovery?</p>
+                    <p>Choose THREE correct answers, A–F.</p>
+
+                    <ul>
+                        <li>A Metal can be transformed into another.</li>
+                        <li>B Garlic can remove magnetism.</li>
+                        <li>C Metals can be magnetised.</li>
+                        <li>D Stars are at different distances from the earth.</li>
+                        <li>E The earth wobbles on its axis.</li>
+                        <li>F There are two charges of electricity.</li>
+                    </ul>
+
+                    <div style="margin:16px 0;">
+                        <strong>11</strong> <input type="text" class="gap-input" id="q11" placeholder="11">
+                    </div>
+                    <div style="margin:16px 0;">
+                        <strong>12</strong> <input type="text" class="gap-input" id="q12" placeholder="12">
+                    </div>
+                    <div style="margin:16px 0;">
+                        <strong>13</strong> <input type="text" class="gap-input" id="q13" placeholder="13">
+                    </div>
+                </div>
+
+                <button class="btn-submit" id="submit-btn">Submit Answers</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="resultsModal">
+        <div class="modal-content">
+            <h2>Test Complete!</h2>
+            <div class="score-display" id="scoreDisplay">0/13</div>
+            <div id="reviewAnswers"></div>
+            <button class="btn-submit" style="margin-top:24px;" onclick="document.getElementById('resultsModal').style.display='none'">Close</button>
+        </div>
+    </div>
+
+    <script>
+        let timeLeft = 1200; // 20 minutes
+        const timer = document.getElementById('timer');
+        const interval = setInterval(() => {
+            let m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+            let s = String(timeLeft % 60).padStart(2, '0');
+            timer.textContent = `${m}:${s}`;
+            if (--timeLeft < 0) { clearInterval(interval); submitAnswers(); }
+        }, 1000);
+
+        const correctAnswers = {
+            1: "v",
+            2: "i",
+            3: "vi",
+            4: "x",
+            5: "ix",
+            6: "iv",
+            7: "ii",
+            8: "TRUE",
+            9: "TRUE",
+            10: "NOT GIVEN",
+            11: ["C", "D", "E"],
+            12: ["C", "D", "E"],
+            13: ["C", "D", "E"]
+        };
+
+        // Progress circles turn green when answered
+        document.querySelectorAll('.gap-input, .match-select').forEach(el => {
+            el.addEventListener('input', () => markAnswered(el.id.slice(1)));
+            el.addEventListener('change', () => markAnswered(el.id.slice(1)));
+        });
+
+        function markAnswered(q) {
+            const item = document.querySelector(`.progress-item[data-question="${q}"]`);
+            if (item) {
+                const val = document.getElementById('q'+q)?.value.trim();
+                if (val !== '') {
+                    item.classList.add('answered');
+                }
+            }
+        }
+
+        function submitAnswers() {
+            clearInterval(interval);
+            let score = 0;
+            let review = '';
+
+            // Questions 1–7 (headings)
+            for (let i = 1; i <= 7; i++) {
+                let user = document.getElementById('q'+i)?.value.trim().toLowerCase() || '-';
+                let correct = correctAnswers[i];
+                let isCorrect = user === correct;
+                if (isCorrect) score++;
+                review += `<div class="answer-item ${isCorrect?'correct':'incorrect'}">
+                    <strong>Q${i}</strong>: Your answer <strong>${user}</strong> → Correct: <strong>${correct}</strong>
+                </div>`;
+            }
+
+            // Questions 8–10 (T/F/NG)
+            for (let i = 8; i <= 10; i++) {
+                let user = document.getElementById('q'+i)?.value.trim().toUpperCase() || '-';
+                let correct = correctAnswers[i];
+                let isCorrect = user === correct;
+                if (isCorrect) score++;
+                review += `<div class="answer-item ${isCorrect?'correct':'incorrect'}">
+                    <strong>Q${i}</strong>: Your answer <strong>${user}</strong> → Correct: <strong>${correct}</strong>
+                </div>`;
+            }
+
+            // Questions 11–13 (multiple choice – 3 correct)
+            let selected = [];
+            for (let i = 11; i <= 13; i++) {
+                let user = document.getElementById('q'+i)?.value.trim().toUpperCase() || '';
+                if (user) selected.push(user);
+            }
+            let correctSet = correctAnswers[11];
+            let isCorrectMulti = selected.length === 3 && selected.every(s => correctSet.includes(s)) && correctSet.every(c => selected.includes(c));
+            score += isCorrectMulti ? 3 : 0;
+            review += `<div class="answer-item ${isCorrectMulti?'correct':'incorrect'}">
+                <strong>11-13</strong>: Your answers <strong>${selected.join(', ') || '-'}</strong> → Correct: <strong>${correctSet.join(', ')}</strong>
+            </div>`;
+
+            document.getElementById('scoreDisplay').textContent = score + '/13';
+            document.getElementById('reviewAnswers').innerHTML = review;
+            document.getElementById('resultsModal').style.display = 'flex';
+        }
+
+        document.getElementById('submit-btn').addEventListener('click', submitAnswers);
+
+        setTimeout(() => {
+            document.getElementById('loadingScreen').classList.add('hidden');
+        }, 2000);
+
+        // Resizer
+        const resizer = document.getElementById('resizer');
+        const left = document.getElementById('passage');
+        const right = document.getElementById('questions');
+        let isResizing = false;
+
+        resizer.addEventListener('mousedown', () => { isResizing = true; });
+        document.addEventListener('mousemove', (e) => {
+            if (!isResizing) return;
+            const x = e.clientX;
+            const total = document.querySelector('.main-content').offsetWidth;
+            const leftWidth = ((x / total) * 100).toFixed(1) + '%';
+            left.style.flex = `0 0 ${leftWidth}`;
+            right.style.width = `${100 - parseFloat(leftWidth)}%`;
+        });
+        document.addEventListener('mouseup', () => { isResizing = false; });
+
+        // Text Highlight
+        function makeTextHighlightable(element) {
+            element.addEventListener('mouseup', function(e) {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'BUTTON' || e.target.tagName === 'SELECT') return;
+                const selection = window.getSelection();
+                const selectedText = selection.toString().trim();
+                if (selectedText.length > 0) {
+                    const range = selection.getRangeAt(0);
+                    const span = document.createElement('span');
+                    span.className = 'highlight';
+                    range.surroundContents(span);
+                    span.onclick = () => span.outerHTML = span.innerHTML;
+                    selection.removeAllRanges();
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            makeTextHighlightable(document.getElementById('passageText'));
+        });
+    </script>
+</body>
+</html>

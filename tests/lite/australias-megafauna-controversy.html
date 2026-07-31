@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IELTS Reading Test - Australia's Megafauna Controversy (Q27-40)</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      overflow: hidden;
+      color: #1e293b;
+    }
+    .test-wrapper { display:flex; flex-direction:column; height:100vh; }
+    .test-container { display:flex; flex:1; overflow:hidden; }
+
+    /* Header */
+    .header{
+      background:#ffffff;
+      border-bottom:1px solid #cbd5e1;
+      padding:1rem 2rem;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .header__logo { display:flex; align-items:center; gap: .75rem; }
+    .header__title { font-size:1.1rem; font-weight:600; color:#1e293b; flex:1; min-width:300px; }
+    .header__timer{
+      font-size:1.25rem;
+      font-weight:600;
+      color:#dc2305;
+      background:#fef3c7;
+      padding:.5rem 1.5rem;
+      border-radius:9999px;
+      border:1px solid #fcd34d;
+      transition:all .3s ease;
+      white-space: nowrap;
+    }
+    .header__icons{ display:flex; gap:1.25rem; align-items:center; }
+    .header__telegram{
+      display:flex;
+      align-items:center;
+      gap:0.5rem;
+      padding:0.5rem 1.2rem;
+      background:linear-gradient(90deg, #0369a1, #0284c7);
+      color:#fff;
+      border-radius:9999px;
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.9rem;
+      transition:all .3s ease;
+      border:1px solid #0c4a6e;
+    }
+    .header__telegram:hover{
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(2, 132, 199, 0.5);
+    }
+
+    /* Answer Indicators */
+    .answer-indicators{
+      display:flex;
+      gap:0.5rem;
+      flex-wrap:wrap;
+      padding:1rem 2rem;
+      background:#f1f5f9;
+      border-bottom:1px solid #cbd5e1;
+      align-items:center;
+      font-size: 0.8rem;
+    }
+    .indicator-label{
+      font-weight:600;
+      color:#475569;
+      margin-right:0.5rem;
+    }
+    .answer-circle{
+      width:2.2rem;
+      height:2.2rem;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:#fff;
+      cursor:default;
+      transition:all .3s ease;
+      border:2px solid #cbd5e1;
+      background:#cbd5e1;
+      color:#64748b;
+      font-size:0.7rem;
+    }
+    .answer-circle.answered{
+      background:#10b981;
+      border-color:#059669;
+      box-shadow:0 0 8px rgba(16, 185, 129, 0.4);
+    }
+    .answer-circle.unanswered{
+      background:#ef4444;
+      border-color:#dc2626;
+      box-shadow:0 0 8px rgba(239, 68, 68, 0.4);
+    }
+
+    /* Panels */
+    .passage-container{
+      width:45%;
+      height:100%;
+      overflow-y:auto;
+      padding:1.5rem;
+      box-sizing:border-box;
+      background:#fafafa;
+      border-right:1px solid #cbd5e1;
+      position:relative;
+      user-select:text;
+    }
+    .questions-container{
+      flex:1;
+      height:100%;
+      overflow-y:auto;
+      padding:1.5rem;
+      box-sizing:border-box;
+      background:#fafafa;
+      position:relative;
+      user-select:text;
+    }
+    .passage-container::-webkit-scrollbar,
+    .questions-container::-webkit-scrollbar{ width:8px; }
+    .passage-container::-webkit-scrollbar-track,
+    .questions-container::-webkit-scrollbar-track{ background:#f1f5f9; }
+    .passage-container::-webkit-scrollbar-thumb,
+    .questions-container::-webkit-scrollbar-thumb{ background:#cbd5e1; border-radius:4px; }
+
+    /* Divider */
+    .divider{ 
+      width:14px; 
+      background:#cbd5e1; 
+      cursor:col-resize; 
+      position:relative;
+      user-select:none;
+    }
+    .divider-handle{
+      width:6px;
+      height:60px;
+      background:#94a3b8;
+      border-radius:4px;
+      position:absolute;
+      top:50%;
+      left:4px;
+      transform:translateY(-50%);
+    }
+
+    /* Highlight */
+    .highlight{ border-radius:.25rem; padding:0 .15rem; }
+    .highlight.yellow{ background:rgba(234, 179, 8, 0.6); }
+    .highlight.green{ background:rgba(34, 197, 94, 0.6); }
+    .highlight.pink{ background:rgba(236, 72, 153, 0.6); }
+    .highlight.blue{ background:rgba(59, 130, 246, 0.6); }
+    .highlight.purple{ background:rgba(147, 51, 234, 0.6); }
+    .highlight.red{ background:rgba(239, 68, 68, 0.6); }
+
+    .highlight-toolbar{
+      position:fixed;
+      background:#ffffff;
+      border:1px solid #cbd5e1;
+      border-radius:.5rem;
+      box-shadow:0 8px 16px rgba(0,0,0,.15);
+      display:none;
+      z-index:2000;
+      padding:.5rem;
+      transform:translate(-50%,-100%);
+      margin-top:-.5rem;
+      gap:.35rem;
+      align-items:center;
+      flex-direction: row;
+    }
+    .highlight-toolbar button{
+      background:none;
+      border:none;
+      width:2rem;
+      height:2rem;
+      cursor:pointer;
+      border-radius:.25rem;
+      transition:all .2s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .highlight-toolbar button:hover{ background:#f1f5f9; transform:scale(1.08); }
+    .highlight-toolbar button.remove{ color:#ef4444; width:auto; padding:0 .5rem; gap:.35rem; }
+    .highlight-color{
+      width:1.5rem;
+      height:1.5rem;
+      border-radius:9999px;
+      border:2px solid #cbd5e1;
+    }
+    .highlight-color.yellow{ background:#eab308; }
+    .highlight-color.green{ background:#22c55e; }
+    .highlight-color.pink{ background:#ec4899; }
+    .highlight-color.blue{ background:#3b82f6; }
+    .highlight-color.purple{ background:#9333ea; }
+    .highlight-color.red{ background:#ef4444; }
+
+    /* Passage text */
+    #passageContent{ line-height:1.8; font-size:1.05rem; color:#1e293b; }
+    #passageContent p{ margin:0.8rem 0; text-align:justify; }
+
+    /* Rubric */
+    .sectionRubric{
+      margin:1.5rem;
+      padding:1.25rem;
+      background:#ffffff;
+      border:1px solid #cbd5e1;
+      border-radius:.75rem;
+      box-shadow:0 4px 12px rgba(0,0,0,.05);
+    }
+    .sectionRubric h2{ font-size:1.25rem; color:#d97706; margin-bottom:.5rem; }
+    .sectionRubric p{ margin:0.5rem 0; color:#475569; font-size:0.95rem; }
+
+    /* Question cards */
+    .question{
+      background:#ffffff;
+      padding:1.5rem;
+      margin-bottom:1.5rem;
+      border:1px solid #cbd5e1;
+      border-radius:.75rem;
+      box-shadow:0 2px 8px rgba(0,0,0,.04);
+      transition:all .3s ease;
+    }
+    .question:hover{ box-shadow:0 4px 12px rgba(0,0,0,.08); border-color:#94a3b8; }
+    .question.answered{ border-left:4px solid #10b981; }
+    .question.unanswered{ border-left:4px solid #ef4444; }
+
+    .question-title{
+      font-weight:700;
+      font-size:1rem;
+      color:#1e293b;
+      margin-bottom:0.75rem;
+    }
+
+    /* Options */
+    .options-group{
+      display:flex;
+      flex-direction:column;
+      gap:0.5rem;
+    }
+    .option{
+      display:flex;
+      align-items:center;
+      padding:0.75rem;
+      background:#f8fafc;
+      border:1px solid #cbd5e1;
+      border-radius:.5rem;
+      cursor:pointer;
+      transition:all .2s ease;
+    }
+    .option:hover{
+      background:#f1f5f9;
+      border-color:#94a3b8;
+    }
+    .option input{
+      margin-right:0.75rem;
+      cursor:pointer;
+      accent-color:#0284c7;
+    }
+
+    /* Text Input */
+    .text-input{
+      padding:0.75rem;
+      border:1px solid #cbd5e1;
+      border-radius:.5rem;
+      font-size:0.95rem;
+      width:100%;
+      box-sizing:border-box;
+      transition:all .2s ease;
+    }
+    .text-input:focus{
+      outline:none;
+      border-color:#0284c7;
+      box-shadow:0 0 0 3px rgba(2, 132, 199, 0.1);
+    }
+
+    /* Submit Button */
+    .submit-btn{
+      padding:0.75rem 2rem;
+      background:linear-gradient(135deg, #0284c7, #0369a1);
+      color:#fff;
+      border:none;
+      border-radius:.5rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:all .3s ease;
+      font-size:1rem;
+    }
+    .submit-btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(2, 132, 199, 0.4);
+    }
+
+    /* Modal */
+    #submissionModal{
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,.5);
+      align-items:center;
+      justify-content:center;
+      z-index:3000;
+    }
+    .modal-content{
+      background:#ffffff;
+      border-radius:1rem;
+      padding:2rem;
+      max-width:700px;
+      max-height:85vh;
+      overflow-y:auto;
+      box-shadow:0 25px 50px rgba(0,0,0,.15);
+    }
+    .modal-content h2{
+      font-size:1.5rem;
+      font-weight:700;
+      margin-bottom:1rem;
+      color:#1e293b;
+    }
+    .score-display{
+      font-size:2.5rem;
+      font-weight:700;
+      color:#0284c7;
+      text-align:center;
+      margin:1rem 0;
+    }
+    .feedback-message{
+      text-align:center;
+      font-size:1rem;
+      color:#475569;
+      margin:1rem 0;
+      line-height:1.6;
+    }
+    #detailedResults{
+      margin-top:1.5rem;
+    }
+    .result-item{
+      padding:1rem;
+      margin-bottom:1rem;
+      border-radius:.5rem;
+      border-left:4px solid;
+      background:#fafafa;
+    }
+    .result-item.correct{
+      background:#ecfdf5;
+      border-left-color:#10b981;
+    }
+    .result-item.incorrect{
+      background:#fef2f2;
+      border-left-color:#ef4444;
+    }
+    .result-item strong{
+      font-weight:700;
+      display:block;
+      margin-bottom:0.5rem;
+      font-size:0.95rem;
+    }
+    .result-detail{
+      font-size:0.9rem;
+      margin:0.5rem 0;
+      line-height:1.5;
+    }
+    .explanation{
+      margin-top:0.75rem;
+      padding:0.75rem;
+      background:#ffffff;
+      border-left:3px solid #0284c7;
+      border-radius:4px;
+      font-size:0.9rem;
+      color:#1e293b;
+      line-height:1.6;
+    }
+    .close-results-btn{
+      margin-top:1.5rem;
+      width:100%;
+      padding:0.75rem;
+      background:#cbd5e1;
+      border:none;
+      border-radius:.5rem;
+      cursor:pointer;
+      font-weight:600;
+      transition:all .2s ease;
+    }
+    .close-results-btn:hover{
+      background:#94a3b8;
+    }
+
+    .info-note{
+      background:#e0f2fe;
+      border:1px solid #0284c7;
+      padding:0.75rem;
+      border-radius:.5rem;
+      margin-bottom:1rem;
+      font-size:0.9rem;
+      color:#0c4a6e;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-wrapper">
+    <!-- Header -->
+    <div class="header">
+      <div class="header__logo">
+        <i class="fas fa-book" style="font-size:1.5rem; color:#0284c7;"></i>
+        <div class="header__title">IELTS Reading - Australia's Megafauna Controversy (Q27-40)</div>
+      </div>
+      <div class="header__timer">
+        <span id="timerDisplay">00:00</span>
+      </div>
+      <div class="header__icons">
+        <a href="https://t.me/ieltswithkhmdv" target="_blank" rel="noopener noreferrer" class="header__telegram">
+          <i class="fab fa-telegram"></i>
+          <span>@ieltswithkhmdv</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Answer Indicators -->
+    <div class="answer-indicators">
+      <span class="indicator-label">Question Status:</span>
+      <div id="answerIndicators" style="display:flex; gap:0.5rem; flex-wrap:wrap;"></div>
+    </div>
+
+    <!-- Test Container -->
+    <div class="test-container">
+      <!-- Passage Panel -->
+      <div class="passage-container">
+        <div class="sectionRubric">
+          <h2>Reading Passage 3</h2>
+          <p><strong>Australia's Megafauna Controversy</strong></p>
+          <p><em>Just how long did humans live side by side with megafauna in Australia?</em></p>
+        </div>
+        <div id="passageContent">
+          <p>Barry Brook, Richard Gillespie and Paul Martin dispute previous claims of a lengthy coexistence.</p>
+
+          <p>Over the past 50 millennia, Australia has witnessed the extinction of many species of large animals, including rhinoceros-sized wombat and goannas the size of crocodiles. Debate about the possible cause of these extinctions has continued for more than 150 years and one of the crucial questions raised is how long humans and megafauna coexisted in Australia. We need to know the overlap of time to make an informed choice between the two main theories regarding the causes of these extinctions. If humans and megafauna coexisted for a protracted period then climate change is the more likely cause. However, if the megafauna became extinct shortly after the arrival of humans, then humans are the likely culprits.</p>
+
+          <p>The archaeological site at Cuddie Springs in eastern Australia appears to be well preserved. This dusty claypan holds within its sediments a rich cache of flaked stone and seed-grinding tools, and side by side with these clear signals of human culture are the bones of a dozen or more species of megafauna. Drs Judith Field and Stephen Wroe of the University of Sydney, who excavated the site, claim that it provides unequivocal evidence of a long overlap of humans and megafauna, and conclude that aridity leading up to the last Ice Age brought about their eventual demise. In the longstanding explanation of this site, artefacts such as stone tools and extinct animal remains were deposited over many thousands of years in an ephemeral lake – a body of water existing for a relatively short time – and remained in place and undisturbed until the present day.</p>
+
+          <p>There is no disputing the close association of bones and stones at Cuddie Springs, as both are found 1 to 1.7 metres below the modern surface. The dating of these layers is accurate: ages for the sediments were obtained through radiocarbon dating of charcoal fragments and luminescence dating of sand grains from the same levels (revealing when a sample was last exposed to sunlight). Intriguingly, some of the stone tools show surface features indicating their use for processing plants, and a few even have well-preserved blood and hair residues suggesting they were used in butchering animals.</p>
+
+          <p>But is the case proposed by Field and Wroe clear-cut? We carried out a reanalysis of the scientific data from Cuddie Springs that brings into question their conclusions. The amount of anthropological evidence found at the site is remarkable: we estimate there are more than 3 tonnes of charcoal and more than 300 tonnes of stone buried there. Field and Wroe estimate that there are approximately 20 million artefacts. This plethora of tools is hard to reconcile with a site that was only available for occupation when the lake was dry. Furthermore, no cultural features such as oven pits have been discovered. If the sediment layers have remained undisturbed since being laid down, as Field and Wroe contend, then the ages of those sediments should increase with depth. However, our analysis revealed a number of inconsistencies.</p>
+
+          <p>First, the charcoal samples are all roughly 36,000 years old. Second, sand in the two upper levels is considerably younger than charcoal from the same levels. Third, Field and Wroe say that the tools and seed-grinding stones used for plant and animal processing are ancient, yet they are very similar to implements found elsewhere that were in use only a few thousand years ago. Also of interest is the fact that a deep drill core made a mere 60 metres from the site recovered no stone artefacts or fossil bones whatsoever. These points suggest strongly that the sediments have been moved about and some of the old charcoal has been re-deposited in younger layers. Indeed, one sample of cow bone found 1 metre below the surface came from sediments where charcoal dated at 6,000 and 23,000 years old is mixed with 17,000-year-old sand. The megafauna bones themselves have not yet been dated, although new technological developments make this a possibility in the near future.</p>
+
+          <p>We propose that the archaeologists have actually been sampling the debris carried by ancient flood channels beneath the site, including charcoal transported from bushfires that intermittently occurred within the catchment. Flood events more likely explain the accumulation of megafauna remains, and could have mixed old bones with fresh deposits. European graziers also disturbed the site in 1876 by constructing a well to provide water for their cattle. Given the expense of well-digging, we speculate that the graziers made sure it was protected from the damage caused by cattle hooves by lining the surface with small stones collected from further afield, including prehistoric quarries. This idea is consistent with the thin layer of stones spread over a large area, with cattle occasionally breaking through the gravel surface and forcing the stone and even cattle bones deeper into the waterlogged soil.</p>
+
+          <p>The lack of conclusive evidence that humans and megafauna coexisted for a lengthy period casts doubt on Field and Wroe's assertion that climate change was responsible for the extinction of Australia's megafauna. However, we do not suggest that newly arrived, well-armed hunters systematically slaughtered all the large beasts they encountered. Recent studies based on the biology of modern-day large mammals, combined with observations of people who still practise a traditional hunter-gatherer lifestyle, reveal an unexpected paradox and suggest a further possible explanation as to what happened. Using a mathematical model, it was found that a group of 10 people killing only one juvenile Diprotodon each year would be sufficient to bring about the extinction of that species within 1,000 years. This suggests that here, as in other parts of the world, the arrival of humans in lands previously inhabited only by animals created a volatile combination in which large animals fared badly.</p>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider" id="divider">
+        <div class="divider-handle"></div>
+      </div>
+
+      <!-- Questions Panel -->
+      <div class="questions-container">
+        <div id="questionsContent">
+          <!-- Section Rubric -->
+          <div class="sectionRubric">
+            <h2>Questions 27-40</h2>
+            <p>Answer all 14 questions based on the passage above.</p>
+          </div>
+
+          <!-- Q27-30: Yes/No/Not Given -->
+          <div style="margin-bottom:2rem;">
+            <div class="info-note">
+              <strong>Questions 27-30: YES, NO, or NOT GIVEN</strong><br>
+              Do the following statements agree with the claims of the writer in Reading Passage 3?
+            </div>
+
+            <div class="question">
+              <div class="question-title">27. Field and Wroe argue that findings at the Cuddie Springs site show that people lived in this area at the same time as megafauna.</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q27" value="YES"> YES
+                </label>
+                <label class="option">
+                  <input type="radio" name="q27" value="NO"> NO
+                </label>
+                <label class="option">
+                  <input type="radio" name="q27" value="NOT GIVEN"> NOT GIVEN
+                </label>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="question-title">28. Field and Wroe believe it is likely that smaller megafauna species survived the last Ice Age.</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q28" value="YES"> YES
+                </label>
+                <label class="option">
+                  <input type="radio" name="q28" value="NO"> NO
+                </label>
+                <label class="option">
+                  <input type="radio" name="q28" value="NOT GIVEN"> NOT GIVEN
+                </label>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="question-title">29. The writers believe that the dating of earth up to 1.7m below the present surface at Cuddie Springs is unreliable.</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q29" value="YES"> YES
+                </label>
+                <label class="option">
+                  <input type="radio" name="q29" value="NO"> NO
+                </label>
+                <label class="option">
+                  <input type="radio" name="q29" value="NOT GIVEN"> NOT GIVEN
+                </label>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="question-title">30. Some artefacts found at Cuddie Springs were preserved well enough to reveal their function.</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q30" value="YES"> YES
+                </label>
+                <label class="option">
+                  <input type="radio" name="q30" value="NO"> NO
+                </label>
+                <label class="option">
+                  <input type="radio" name="q30" value="NOT GIVEN"> NOT GIVEN
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Q31-35: Summary with word bank -->
+          <div style="margin-bottom:2rem;">
+            <div class="info-note">
+              <strong>Questions 31-35: Complete the Summary</strong><br>
+              Choose the correct letter A-I from the word bank below.
+            </div>
+
+            <div style="background:#f8fafc; padding:1rem; border-radius:.5rem; margin-bottom:1rem; font-size:0.9rem;">
+              <p style="margin:0; font-weight:600; margin-bottom:0.5rem;">Word Bank:</p>
+              <p style="margin:0.25rem 0;">A - seeds | B - stone | C - sand | D - cooking | E - deep drill core | F - water | G - fossil bones | H - sediment | I - storage</p>
+            </div>
+
+            <div class="question">
+              <div class="question-title">31. One objection to Field and Wroe's interpretation is the large quantity of charcoal, __________ and artefacts found at Cuddie Springs.</div>
+              <select name="q31" class="text-input" style="padding:0.75rem; cursor:pointer;">
+                <option value="">-- Select Answer --</option>
+                <option value="A">A - seeds</option>
+                <option value="B">B - stone</option>
+                <option value="C">C - sand</option>
+                <option value="D">D - cooking</option>
+                <option value="E">E - deep drill core</option>
+                <option value="F">F - water</option>
+                <option value="G">G - fossil bones</option>
+                <option value="H">H - sediment</option>
+                <option value="I">I - storage</option>
+              </select>
+            </div>
+
+            <div class="question">
+              <div class="question-title">32. Such large numbers of artefacts would be impossible if the area had been covered with __________ for a period.</div>
+              <select name="q32" class="text-input" style="padding:0.75rem; cursor:pointer;">
+                <option value="">-- Select Answer --</option>
+                <option value="A">A - seeds</option>
+                <option value="B">B - stone</option>
+                <option value="C">C - sand</option>
+                <option value="D">D - cooking</option>
+                <option value="E">E - deep drill core</option>
+                <option value="F">F - water</option>
+                <option value="G">G - fossil bones</option>
+                <option value="H">H - sediment</option>
+                <option value="I">I - storage</option>
+              </select>
+            </div>
+
+            <div class="question">
+              <div class="question-title">33. There is also a complete lack of man-made structures, for instance those used for __________.</div>
+              <select name="q33" class="text-input" style="padding:0.75rem; cursor:pointer;">
+                <option value="">-- Select Answer --</option>
+                <option value="A">A - seeds</option>
+                <option value="B">B - stone</option>
+                <option value="C">C - sand</option>
+                <option value="D">D - cooking</option>
+                <option value="E">E - deep drill core</option>
+                <option value="F">F - water</option>
+                <option value="G">G - fossil bones</option>
+                <option value="H">H - sediment</option>
+                <option value="I">I - storage</option>
+              </select>
+            </div>
+
+            <div class="question">
+              <div class="question-title">34. While some material in the highest levels of sediment is 36,000 years old, the __________ in the same level is much more recent.</div>
+              <select name="q34" class="text-input" style="padding:0.75rem; cursor:pointer;">
+                <option value="">-- Select Answer --</option>
+                <option value="A">A - seeds</option>
+                <option value="B">B - stone</option>
+                <option value="C">C - sand</option>
+                <option value="D">D - cooking</option>
+                <option value="E">E - deep drill core</option>
+                <option value="F">F - water</option>
+                <option value="G">G - fossil bones</option>
+                <option value="H">H - sediment</option>
+                <option value="I">I - storage</option>
+              </select>
+            </div>
+
+            <div class="question">
+              <div class="question-title">35. Further evidence against human occupation is the absence of tools and __________ a short distance away.</div>
+              <select name="q35" class="text-input" style="padding:0.75rem; cursor:pointer;">
+                <option value="">-- Select Answer --</option>
+                <option value="A">A - seeds</option>
+                <option value="B">B - stone</option>
+                <option value="C">C - sand</option>
+                <option value="D">D - cooking</option>
+                <option value="E">E - deep drill core</option>
+                <option value="F">F - water</option>
+                <option value="G">G - fossil bones</option>
+                <option value="H">H - sediment</option>
+                <option value="I">I - storage</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Q36-40: Multiple Choice -->
+          <div style="margin-bottom:2rem;">
+            <div class="info-note">
+              <strong>Questions 36-40: Multiple Choice (A, B, C, or D)</strong><br>
+              Choose the correct letter for each question.
+            </div>
+
+            <div class="question">
+              <div class="question-title">36. What conclusions did the writers reach about the inconsistencies in the data from Cuddie Springs?</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q36" value="A"> A - The different layers of sediment have been mixed over time.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q36" value="B"> B - The sand evidence is unhelpful and should be disregarded.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q36" value="C"> C - The area needs to be re-examined when technology improves.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q36" value="D"> D - The charcoal found in the area cannot be dated.
+                </label>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="question-title">37. According to the writers, what impact could a natural phenomenon have had on this site?</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q37" value="A"> A - Floods could have caused the death of the megafauna.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q37" value="B"> B - Floods could have disturbed the archaeological evidence.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q37" value="C"> C - Bushfires could have prevented humans from settling in the area for any length of time.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q37" value="D"> D - Bushfires could have destroyed much of the evidence left by megafauna and humans.
+                </label>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="question-title">38. What did the writers speculate about the people who lived at this site in 1876?</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q38" value="A"> A - They bred cattle whose bones could have been confused with megafauna.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q38" value="B"> B - They found that the soil was too waterlogged for farming.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q38" value="C"> C - They allowed cattle to move around freely at the site.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q38" value="D"> D - They brought stones there from another area.
+                </label>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="question-title">39. In the final paragraph, what suggestion do the writers make about Australia's megafauna?</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q39" value="A"> A - A rapid change in climate may have been responsible for the extinction of the megafauna.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q39" value="B"> B - Megafauna could have died out as a result of small numbers being killed year after year.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q39" value="C"> C - The population of humans at that time was probably insufficient to cause the extinction of the megafauna.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q39" value="D"> D - The extinction of ancient animals should not be compared to that of modern-day species.
+                </label>
+              </div>
+            </div>
+
+            <div class="question">
+              <div class="question-title">40. Which of the following best represents the writer's criticism of Field and Wroe?</div>
+              <div class="options-group">
+                <label class="option">
+                  <input type="radio" name="q40" value="A"> A - Their methods were not well thought out.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q40" value="B"> B - Their excavations did not go deep enough.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q40" value="C"> C - Their technology failed to obtain precise data.
+                </label>
+                <label class="option">
+                  <input type="radio" name="q40" value="D"> D - Their conclusions were based on inconsistent data.
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #cbd5e1;">
+              <button class="submit-btn" id="submitBtn">Submit Answers</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty Footer -->
+    <div style="background:#ffffff; border-top:1px solid #cbd5e1; height:0;"></div>
+  </div>
+
+  <!-- Submission Modal -->
+  <div id="submissionModal">
+    <div class="modal-content">
+      <h2>Results & Explanations</h2>
+      <div class="score-display" id="scoreDisplay">0 / 14</div>
+      <div class="feedback-message" id="feedbackMessage">Loading results...</div>
+      <div id="detailedResults"></div>
+      <button class="close-results-btn" id="closeResultsBtn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    /******************************************************************
+     * ANSWER KEY WITH EXPLANATIONS
+     ******************************************************************/
+    const ANSWER_KEY = {
+      27: { answer: 'YES', explanation: 'Field and Wroe claim that the site "provides unequivocal evidence of a long overlap of humans and megafauna."' },
+      28: { answer: 'NOT GIVEN', explanation: 'The passage does not discuss the survival of smaller megafauna species by Field and Wroe.' },
+      29: { answer: 'NO', explanation: 'The writers state: "The dating of these layers is accurate: ages for the sediments were obtained through radiocarbon dating and luminescence dating."' },
+      30: { answer: 'YES', explanation: 'The passage states: "some of the stone tools show surface features indicating their use for processing plants, and a few even have well-preserved blood and hair residues."' },
+      31: { answer: 'B', explanation: 'The passage mentions "more than 3 tonnes of charcoal and more than 300 tonnes of stone buried there" - B refers to stone.' },
+      32: { answer: 'F', explanation: 'The passage discusses the site being an "ephemeral lake – a body of water existing for a relatively short time" - F is water.' },
+      33: { answer: 'D', explanation: 'The passage states: "no cultural features such as oven pits have been discovered" - D refers to cooking.' },
+      34: { answer: 'C', explanation: 'The passage states: "sand in the two upper levels is considerably younger than charcoal from the same levels" - C is sand.' },
+      35: { answer: 'G', explanation: 'The passage mentions: "a deep drill core made a mere 60 metres from the site recovered no stone artefacts or fossil bones whatsoever" - G is fossil bones.' },
+      36: { answer: 'A', explanation: 'The writers conclude: "the sediments have been moved about and some of the old charcoal has been re-deposited in younger layers," indicating mixing of layers.' },
+      37: { answer: 'B', explanation: 'The writers propose: "Flood events more likely explain the accumulation of megafauna remains, and could have mixed old bones with fresh deposits."' },
+      38: { answer: 'D', explanation: 'The writers speculate: "the graziers made sure it was protected from the damage caused by cattle hooves by lining the surface with small stones collected from further afield."' },
+      39: { answer: 'B', explanation: 'The passage states: "a group of 10 people killing only one juvenile Diprotodon each year would be sufficient to bring about the extinction... within 1,000 years."' },
+      40: { answer: 'D', explanation: 'The writers identify "inconsistencies" in the data and their analysis reveals various contradictions in Field and Wroe\'s interpretations.' }
+    };
+
+    let timeElapsed = 0;
+    let testSubmitted = false;
+
+    /******************************************************************
+     * TIMER
+     ******************************************************************/
+    setInterval(() => {
+      if (!testSubmitted) {
+        timeElapsed++;
+        const minutes = String(Math.floor(timeElapsed / 60)).padStart(2, '0');
+        const seconds = String(timeElapsed % 60).padStart(2, '0');
+        document.getElementById('timerDisplay').textContent = `${minutes}:${seconds}`;
+      }
+    }, 1000);
+
+    /******************************************************************
+     * ANSWER INDICATORS
+     ******************************************************************/
+    function updateAnswerIndicators(){
+      const container = document.getElementById('answerIndicators');
+      container.innerHTML = '';
+      
+      for (let i = 27; i <= 40; i++) {
+        const answered = isQuestionAnswered(i);
+        const circle = document.createElement('div');
+        circle.className = `answer-circle ${answered ? 'answered' : 'unanswered'}`;
+        circle.textContent = i;
+        circle.title = answered ? 'Answered' : 'Not answered';
+        container.appendChild(circle);
+      }
+    }
+
+    function isQuestionAnswered(q){
+      if (q >= 31 && q <= 35) {
+        // Q31-35 are SELECT dropdowns
+        const select = document.querySelector(`select[name="q${q}"]`);
+        return select && select.value.trim().length > 0;
+      } else {
+        // Q27-30 and Q36-40 are RADIO buttons
+        const selected = document.querySelector(`input[name="q${q}"]:checked`);
+        return selected ? true : false;
+      }
+    }
+
+    updateAnswerIndicators();
+    document.querySelectorAll('input, select').forEach(elem => {
+      elem.addEventListener('change', updateAnswerIndicators);
+      elem.addEventListener('input', updateAnswerIndicators);
+    });
+
+    /******************************************************************
+     * GET ANSWERS
+     ******************************************************************/
+    function getAllAnswers(){
+      const answers = {};
+      for (let i = 27; i <= 40; i++){
+        if (i >= 31 && i <= 35) {
+          // Q31-35 are SELECT dropdowns
+          const select = document.querySelector(`select[name="q${i}"]`);
+          answers[i] = select ? select.value.trim().toLowerCase() : '';
+        } else {
+          // Q27-30 and Q36-40 are RADIO buttons
+          const selected = document.querySelector(`input[name="q${i}"]:checked`);
+          answers[i] = selected ? selected.value : '';
+        }
+      }
+      return answers;
+    }
+
+    /******************************************************************
+     * CHECK ANSWER
+     ******************************************************************/
+    function checkAnswer(questionNum, userAnswer){
+      const correctAnswer = ANSWER_KEY[questionNum].answer;
+      const userAnswerLower = userAnswer.toLowerCase().trim();
+      const correctAnswerLower = correctAnswer.toLowerCase().trim();
+      
+      // Exact match
+      if (userAnswerLower === correctAnswerLower) return true;
+      
+      return false;
+    }
+
+    /******************************************************************
+     * SUBMIT ANSWERS
+     ******************************************************************/
+    function submitAnswers(){
+      if (testSubmitted) return;
+      testSubmitted = true;
+
+      const answers = getAllAnswers();
+      let correct = 0;
+      const results = {};
+
+      for (let i = 27; i <= 40; i++){
+        const isCorrect = checkAnswer(i, answers[i]);
+        if (isCorrect) correct++;
+        results[i] = { answer: answers[i], isCorrect };
+      }
+
+      showResults(correct, results);
+    }
+
+    /******************************************************************
+     * SHOW RESULTS
+     ******************************************************************/
+    function showResults(correct, results){
+      const submissionModal = document.getElementById('submissionModal');
+      const scoreDisplay = document.getElementById('scoreDisplay');
+      const feedbackMessage = document.getElementById('feedbackMessage');
+      const detailedResults = document.getElementById('detailedResults');
+
+      const totalQuestions = 14;
+      scoreDisplay.textContent = `${correct} / ${totalQuestions}`;
+      const percentage = Math.round((correct / totalQuestions) * 100);
+      feedbackMessage.textContent = `You got ${percentage}% correct. Time: ${String(Math.floor(timeElapsed / 60)).padStart(2, '0')}:${String(timeElapsed % 60).padStart(2, '0')}`;
+
+      let resultsHTML = '';
+      for (let i = 27; i <= 40; i++){
+        const result = results[i];
+        const answerObj = ANSWER_KEY[i];
+        const correctAnswer = answerObj.answer;
+        const explanation = answerObj.explanation;
+        const isCorrect = result.isCorrect;
+        const icon = isCorrect ? '✓' : '✗';
+        const resultClass = isCorrect ? 'correct' : 'incorrect';
+        
+        resultsHTML += `<div class="result-item ${resultClass}">
+          <strong>Q${i}: ${icon} ${isCorrect ? 'Correct' : 'Incorrect'}</strong>
+          <div class="result-detail"><strong>Correct Answer:</strong> ${correctAnswer}</div>
+          <div class="result-detail"><strong>Your Answer:</strong> ${result.answer || '(empty)'}</div>
+          <div class="explanation"><strong>📚 Explanation:</strong> ${explanation}</div>
+        </div>`;
+      }
+      detailedResults.innerHTML = resultsHTML;
+      submissionModal.style.display = 'flex';
+    }
+
+    document.getElementById('submitBtn').addEventListener('click', submitAnswers);
+    document.getElementById('closeResultsBtn').addEventListener('click', () => {
+      document.getElementById('submissionModal').style.display = 'none';
+    });
+
+    /******************************************************************
+     * HIGHLIGHT FUNCTIONALITY
+     ******************************************************************/
+    const HIGHLIGHT_ROOTS = [document.getElementById('passageContent'), document.getElementById('questionsContent')];
+    const highlightToolbar = document.createElement('div');
+    highlightToolbar.className = 'highlight-toolbar';
+    const colors = ['yellow', 'green', 'pink', 'blue', 'purple', 'red'];
+    colors.forEach(color => {
+      const btn = document.createElement('button');
+      btn.innerHTML = `<div class="highlight-color ${color}"></div>`;
+      btn.addEventListener('click', () => { applyHighlight(color); highlightToolbar.style.display = 'none'; });
+      highlightToolbar.appendChild(btn);
+    });
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'remove';
+    removeBtn.innerHTML = '<i class="fas fa-trash"></i> Remove';
+    removeBtn.addEventListener('click', () => { removeHighlights(); highlightToolbar.style.display = 'none'; });
+    highlightToolbar.appendChild(removeBtn);
+    document.body.appendChild(highlightToolbar);
+
+    HIGHLIGHT_ROOTS.forEach(root => {
+      root.addEventListener('mouseup', () => {
+        const selection = window.getSelection();
+        if (selection.toString().length > 0){
+          const range = selection.getRangeAt(0);
+          const rect = range.getBoundingClientRect();
+          highlightToolbar.style.left = rect.left + rect.width / 2 + 'px';
+          highlightToolbar.style.top = rect.top + 'px';
+          highlightToolbar.style.display = 'flex';
+        } else {
+          highlightToolbar.style.display = 'none';
+        }
+      });
+    });
+
+    function applyHighlight(color){
+      const selection = window.getSelection();
+      if (!selection.rangeCount || selection.isCollapsed) return;
+      const range = selection.getRangeAt(0);
+      removeHighlightsInRange(range);
+      const root = HIGHLIGHT_ROOTS.find(r => r.contains(range.commonAncestorContainer)) || HIGHLIGHT_ROOTS[0];
+      const textNodes = getTextNodesIntersectingRange(root, range);
+      if (!textNodes.length) return;
+      textNodes.forEach(node => {
+        const { startOffset, endOffset } = getOffsetsForTextNode(node, range);
+        if (startOffset === endOffset) return;
+        const selectedNode = splitTextNode(node, startOffset, endOffset);
+        const span = document.createElement('span');
+        span.className = `highlight ${color}`;
+        selectedNode.parentNode.insertBefore(span, selectedNode);
+        span.appendChild(selectedNode);
+        mergeAdjacentHighlights(span);
+      });
+    }
+
+    function removeHighlights(){
+      const selection = window.getSelection();
+      if (!selection.rangeCount || selection.isCollapsed) return;
+      const range = selection.getRangeAt(0);
+      removeHighlightsInRange(range);
+    }
+
+    function removeHighlightsInRange(range){
+      HIGHLIGHT_ROOTS.forEach(root => {
+        const spans = Array.from(root.querySelectorAll('span.highlight'));
+        spans.forEach(sp => { if (rangeIntersectsNode(range, sp)) unwrapHighlightSpan(sp); });
+      });
+    }
+
+    function unwrapHighlightSpan(span){
+      const parent = span.parentNode;
+      while (span.firstChild) parent.insertBefore(span.firstChild, span);
+      parent.removeChild(span);
+      parent.normalize();
+    }
+
+    function mergeAdjacentHighlights(span){
+      const prev = span.previousSibling;
+      if (prev && prev.nodeType === 1 && prev.classList.contains('highlight') && prev.className === span.className){
+        while (span.firstChild) prev.appendChild(span.firstChild);
+        span.remove();
+        span = prev;
+      }
+      const next = span.nextSibling;
+      if (next && next.nodeType === 1 && next.classList.contains('highlight') && next.className === span.className){
+        while (next.firstChild) span.appendChild(next.firstChild);
+        next.remove();
+      }
+    }
+
+    function getTextNodesIntersectingRange(root, range){
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: (node) => {
+          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          return rangeIntersectsNode(range, node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      });
+      const nodes = [];
+      let n;
+      while (n = walker.nextNode()) nodes.push(n);
+      return nodes;
+    }
+
+    function rangeIntersectsNode(range, node){
+      const nodeRange = document.createRange();
+      try { nodeRange.selectNodeContents(node); } catch { return false; }
+      return range.compareBoundaryPoints(Range.END_TO_START, nodeRange) < 0 && range.compareBoundaryPoints(Range.START_TO_END, nodeRange) > 0;
+    }
+
+    function getOffsetsForTextNode(textNode, range){
+      let startOffset = 0, endOffset = textNode.nodeValue.length;
+      if (range.startContainer === textNode) startOffset = range.startOffset;
+      else { const r = document.createRange(); r.selectNodeContents(textNode); if (range.compareBoundaryPoints(Range.START_TO_END, r) >= 0) startOffset = endOffset; }
+      if (range.endContainer === textNode) endOffset = range.endOffset;
+      else { const r = document.createRange(); r.selectNodeContents(textNode); if (range.compareBoundaryPoints(Range.END_TO_START, r) <= 0) endOffset = startOffset; }
+      startOffset = Math.max(0, Math.min(startOffset, textNode.nodeValue.length));
+      endOffset = Math.max(0, Math.min(endOffset, textNode.nodeValue.length));
+      if (endOffset < startOffset) endOffset = startOffset;
+      return { startOffset, endOffset };
+    }
+
+    function splitTextNode(textNode, startOffset, endOffset){
+      let node = textNode;
+      if (endOffset < node.nodeValue.length) node.splitText(endOffset);
+      if (startOffset > 0) node = node.splitText(startOffset);
+      return node;
+    }
+
+    /******************************************************************
+     * RESIZABLE DIVIDER
+     ******************************************************************/
+    const divider = document.getElementById('divider');
+    const passagePanel = document.querySelector('.passage-container');
+    const testContainer = document.querySelector('.test-container');
+
+    let isResizing = false;
+
+    divider.addEventListener('mousedown', () => { isResizing = true; });
+    document.addEventListener('mouseup', () => { isResizing = false; });
+    document.addEventListener('mousemove', (e) => {
+      if (!isResizing) return;
+      const container = testContainer.getBoundingClientRect();
+      const newPassageWidth = e.clientX - container.left;
+      const minWidth = 250;
+      const maxWidth = container.width - 250;
+      if (newPassageWidth > minWidth && newPassageWidth < maxWidth){
+        passagePanel.style.width = newPassageWidth + 'px';
+      }
+    });
+  </script>
+</body>
+</html>

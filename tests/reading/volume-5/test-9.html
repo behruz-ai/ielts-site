@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 9 (Volume 5) @bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* THEME */
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1–13.</span>
+</div>
+
+<div id="main">
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">The Blockbuster Phenomenon: a new museum trend</h2><p class="psub">Read the text and answer questions 1&ndash;13</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p style="font-style:italic;text-align:center;margin-bottom:14px">Museums in Australia, like other pleasure-giving public organizations, are adapting their activities so that they more closely reflect the marketplace</p>
+<p><strong>A</strong>&nbsp; Since the 1980s, the term &lsquo;blockbuster&rsquo; has become the fashionable word for spectacular, high-profile museum exhibitions that have the ability to attract large crowds. A blockbuster is a &ldquo;large-scale loan exhibition that people who normally don&rsquo;t go to museums will stand in line for hours to see&rdquo; (Elsen 1984). Once the museum that created the exhibition has shown it to their local market, it can be offered to other organizations for a fee. This means that you can boost your own door takings and make money from boosting someone else&rsquo;s door takings.</p>
+<p><strong>B</strong>&nbsp; While partaking of the excitement of the blockbuster, visitors thus lured are likely to stay longer at the museum. Betty Churcher, when Director of the Australian National Gallery, summed up the new blockbuster creed as follows: the bonus of the blockbuster exhibitions is that people come to see the blockbuster and they stay to look at the permanent collection, so you are getting broader exposure for your collection.</p>
+<p><strong>C</strong>&nbsp; Museums across the UK, USA, Canada and Australia currently operate under a system of plural funding: revenue raised through contributions by federal, state and/or local governments, combined with revenue raised through admission charges and other activities. Maintaining and increasing visitor levels is thus paramount and involves not only creating or hiring blockbuster exhibitions, but providing regular exhibition changes and innovations. In addition, the visiting public have become known as customers rather than visitors, and the skills that are valued in museums to keep the new customers coming through the door have changed. Curators are now administrators and being a museum director no longer requires an Arts degree - but public relations skills are essential if the museum is going to compete with other museums to stage travelling exhibitions which draw huge crowds.</p>
+<p><strong>D</strong>&nbsp; The convergence of museums, the heritage industry, tourism, profit-making and pleasure-giving has resulted in the new &ldquo;museology&rdquo;. This has given rise to much debate about whether it is appropriate to see museums primarily as tourist attractions. In literature from both UK and USA, the words that are starting to appear in some descriptions of blockbusters are &ldquo;less scholarly&rdquo;, &ldquo;non-elitist&rdquo; and &ldquo;popularist&rdquo;, while others extol the virtues encouraging scholars to co-operate on projects, and to provide exhibitions that cater for a broad selection of community rather than an elite sector. Whatever commentators may think, managers of museums worldwide are looking for artful ways to blend culture and commerce, and blockbuster exhibitions are at the top of the list.</p>
+<p><strong>E</strong>&nbsp; But do blockbusters held in public institutions really create a surplus to fund other activities? If the bottom line is profit, then according to the records of many major museums blockbusters do make money. For museums in some countries, it may be the money that they require to replace parts of their collections or to fix buildings that are in need of attention. For some museums in Australia, it may be the opportunity to illustrate that they are attempting to pay their way by recovering part of their operating costs. Also, creating or hiring a blockbuster has many positive spin-offs: blockbusters mean crowds, and crowds are good for the local economy, provide increased trade for shops, hotels, restaurants, the transport industry and retailers. The argument that the arts provide sustained economic benefits has been well illustrated in impact studies in the USA and UK.</p>
+<p><strong>F</strong>&nbsp; However, blockbusters require large capital expenditure, and draw on resources across all branches of an organization, and the costs don&rsquo;t end there. There is a Human Resource Management cost in addition to a measurable &ldquo;real&rdquo; dollar cost. Receiving a touring exhibition draws resources from across functional management structures in project management style. Everyone, from general labourers to building services, front of house, technical, promotional, educational and administrative staff, is required to perform additional tasks. Furthermore, as an increasing number of institutions try their hand at increasing visitor numbers and memberships (and therefore revenue) by staging blockbuster exhibitions, it may be less likely that blockbusters will continue to provide a surplus to subsidize other activities due to the competitive nature of the market.</p>
+<p><strong>G</strong>&nbsp; It has been illustrated in both the UK and USA that the blockbuster ideology has resulted in the false expectation that the momentum required to stage blockbusters can be maintained continually. Creating, mounting or hiring blockbusters is exhausting, with the real costs throughout an institution difficult to calculate. Secondly, as some analysts have argued, the &ldquo;shop keeping&rdquo; mentality and cost benefit analysis and a pure concentration on the bottom line, can squeeze substance out of an exhibition. Taking out substance can be a recipe for blockbuster failure and therefore financial failure.</p>
+<p><strong>H</strong>&nbsp; Perhaps the best pathway to take is one that balances both blockbusters and regular exhibitions. However, this easy middle ground may only work if you have enough space, and have alternate sources of funding to continue to support the regular, less exciting fare. Perhaps the advice should be to make sure that you find out what your local community wants from you and make sure that your regular activities and exhibitions are more enduring.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">Saving the Bittern</h2><p class="psub">Read the text and answer questions 14&ndash;26</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p class="mh-slot-line"><span class="mh-drop-slot empty" id="q14" data-q="14" draggable="false">14</span></p>
+<p><strong>A</strong>&nbsp; The bittern, a British waterbird, does not have a good record as far as survival is concerned. By 1886, habitat destruction and other pressures had pushed it close to extinction. Fortunately, it recovered a few decades later, and in 1950 the numbers of native male bitterns rose to a peak of about 70. By the 1980s, however, it was clear that the bird was in trouble again. The bittern needs extensive wet reedbeds to survive, and long periods of drainage, pollution and lack of management had destroyed most of its habitat. By 1997, it again faced imminent extinction. To prevent this, the British government set up a plan for the bittern, aiming to establish a population of 50 males by 2010. However, this target was reached six years early, a rate of recovery faster than anyone had dared hope for. We at the Royal Society for the Protection of Birds (RSPB) now claim the bittern as one of Britain&rsquo;s greatest wildlife success stories, since figures reveal that the number of these rare birds has increased fivefold in just seven years.</p>
+<p class="mh-slot-line"><span class="mh-drop-slot empty" id="q15" data-q="15" draggable="false">15</span></p>
+<p><strong>B</strong>&nbsp; Bitterns have feathers that help them to conceal themselves and a shy nature; they usually remain hidden within the cover of reedbed vegetation. Our first challenge was to develop standard methods to monitor their numbers. The booming call of the male bittern is its most distinctive feature during the breeding season, and we developed a method to count them using the sound patterns unique to each individual. This not only allowed us to be much more certain of the number of booming males in the UK, but also enabled us to estimate local survival of males from one year to the next.</p>
+<p class="mh-slot-line"><span class="mh-drop-slot empty" id="q16" data-q="16" draggable="false">16</span></p>
+<p><strong>C</strong>&nbsp; Our first direct understanding of what breeding bitterns require in their ideal habitat came from comparisons of reedbed sites that had lost their male birds with those that retained them. This research showed that bitterns had been retained in reedbeds where the natural process of drying out had been slowed through management. Based on this work, broad recommendations on how to manage and rehabilitate reedbeds for bitterns were made, and funding was provided through a European Union (EU) wildlife fund to manage 13 sites within the core breeding range.</p>
+<p class="mh-slot-line"><span class="mh-drop-slot empty" id="q17" data-q="17" draggable="false">17</span></p>
+<p><strong>D</strong>&nbsp; To refine these recommendations and provide fine-scale, quantitative habitat prescriptions on the bitterns&rsquo; preferred feeding habitat, we started radio-tracking male bitterns on the RSPB&rsquo;s Minsmere and Leighton Moss reserves. This showed clear preferences for feeding in the wetter reedbed areas, particularly within reedbed next to larger open pools. The average home range sizes of the male bitterns we followed (about 20 hectares) provided a good indication of the area of reedbed necessary when managing or creating habitat for this species. Female bitterns undertake all the incubation and care of the young, so it was important to understand their requirements as well. Over the course of our research, we located 87 bittern nests and found that female bitterns preferred to nest in areas of continuous vegetation, well into the reedbed, but where water was still present during the driest part of the breeding season.</p>
+<p class="mh-slot-line"><span class="mh-drop-slot empty" id="q18" data-q="18" draggable="false">18</span></p>
+<p><strong>E</strong>&nbsp; The success of the habitat prescriptions developed from this research has been spectacular. For instance, at Minsmere, male bittern numbers gradually increased from one to ten following reedbed lowering, a management technique designed to halt the drying out process. After a low point of 11 mature males in 1997, bittern numbers in Britain responded to all the habitat management work and started to increase for the first time since 1950.</p>
+<p class="mh-slot-line"><span class="mh-drop-slot empty" id="q19" data-q="19" draggable="false">19</span></p>
+<p><strong>F</strong>&nbsp; The final phase of research involved understanding the diet, survival and dispersal of bittern chicks. To do this we fitted small radio tags to young bittern chicks in the nest, to determine their fate through to fledging, when they begin to fly, and beyond. Many chicks did not survive to this stage, and starvation was found to be the most likely reason for their demise. The fish prey fed to chicks was mainly those species penetrating into the reed edge. So, an important element of recent studies has been development of recommendations on habitat and water conditions to promote native fish populations. Once independent, radio-tagged young bitterns were found to seek out new sites during their first winter, a proportion of these would remain on new sites to breed if the conditions were suitable. A second EU-funded project aims to provide these suitable sites in new areas. A network of 19 sites developed through this partnership project will secure a more sustainable UK bittern population with successful breeding outside of the core area, less vulnerable to chance events and sea level rise.</p>
+<p class="mh-slot-line"><span class="mh-drop-slot empty" id="q20" data-q="20" draggable="false">20</span></p>
+<p><strong>G</strong>&nbsp; By 2004, the number of booming male bitterns in the UK had increased to 55. Almost all of the increase occurred on those sites undertaking management based on advice derived from our research. Whilst rescuing the bittern, the work has helped a range of other spectacular wetland species such as otters. Although science has been at the core of the bittern story, success has only been achieved through the trust, hard work and dedication of all the managers, owners and wardens of sites that have implemented, in some cases very drastic, management to secure the future of this wetland species in the UK.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">The Placebo Effect</h2><p class="psub">Read the text and answer questions 27&ndash;40</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+<p style="font-style:italic;text-align:center;margin-bottom:0" >With the right encouragement, your mind can convince the body to heal itself.</p>
+<p style="font-style:italic;text-align:center;margin-bottom:14px">What is the mysterious force that can do this?</p>
+<p>Want to devise a new form of alternative medical treatment? No problem. Here&rsquo;s the recipe. As a practitioner, be warm, sympathetic, reassuring and enthusiastic. Your treatment should involve physical contact, and each session with your patients should take at least half an hour. Encourage your patients to take an active part in their treatment and understand how their disorders relate to the rest of their lives. Tell them that their own bodies possess the true power to heal. Get them to pay you well. Describe your treatment in familiar words, but embroidered with a hint of mysticism: energy fields, energy flows, energy blocks, meridians, forces, auras, rhythms and the like. Refer to the knowledge of an early age: wisdom carelessly swept aside by the rise of blind mechanistic science. Oh, come off it, you&rsquo;re saying. Something like that couldn&rsquo;t possibly work, could it?</p>
+<p>Well yes, it could - and often well enough to earn you a living. And a very good living if you are sufficiently convincing or, better still, really believe in your therapy. Many illnesses get better on their own, so if you are lucky and administer your treatment at just the right time you&rsquo;ll get the credit. But that&rsquo;s only part of it. Some of the improvement really would be down to you. Not necessarily because you&rsquo;d recommended ginseng rather than chamomile tea or used this crystal as opposed to that pressure point. Nothing so specific. Your healing power would be the outcome of a paradoxical force that conventional medicine recognizes but remains oddly ambivalent about: the placebo effect.</p>
+<p>Placebos are treatments that have no direct effect on the body, yet still work because the patient has faith in their power to heal. Most often the term refers to a dummy pill, but it applies just as much to any device or procedure, from a sticking plaster to a crystal. The existence of the placebo effect implies that even a complete fraud could make a difference to someone&rsquo;s health, which is why some practitioners of alternative medicine are sensitive about any mention of the subject. In fact, the placebo is a powerful part of all medical care, orthodox or otherwise, though its role is often neglected and misunderstood.</p>
+<p>At one level, it should come as no surprise that our state of mind can influence our physiology: anger opens the superficial blood vessels of the face; sadness pumps the tear glands. But exactly how placebos work their medical magic is still largely unknown. Most of the scant research to date has focused on the control of pain, because it&rsquo;s one of the commonest complaints and lends itself to experimental study. Here, attention has turned to the endorphins, natural substances produced in the brain that are known to help control pain. Any of the neurochemicals involved in transmitting pain impulses or modulating them might also be involved in generating the placebo response, says Don Price, an oral surgeon at the University of Florida.</p>
+<p>That case has been strengthened by the recent work of Fabrizio Benedetti of the University of Turin, who showed that the placebo effect can be abolished by a drug, naloxone, which blocks the effects of endorphins. Benedetti induced pain using a pressure cuff on the forearm. He did this several times a day for several days, using morphine each time to control the pain. On the final day, without saying anything, he replaced the morphine with a saline solution. This still relieved the subjects&rsquo; pain: a placebo effect. But when he added naloxone to the saline, and blocked the endorphins, the pain relief disappeared. Here was direct proof that the relief of pain by a placebo is carried out, at least in part, by these natural opiates.</p>
+<p>Though scientists don&rsquo;t know exactly how placebos work, they have accumulated a fair bit of knowledge about how to trigger the effect. A London rheumatologist found, for example, that red dummy capsules made more effective painkillers than blue, green or yellow ones. Research on American students revealed that blue pills make better tranquillisers than pink, a colour more suitable for stimulants. Even branding can make a difference: if Aspro or Tylenol are what you like to take for a headache, their chemically identical generic equivalents may be less effective.</p>
+<p>It matters too how the treatment is delivered. Decades ago, when the major tranquilliser chlorpromazine was being introduced, a doctor in Kansas categorized his colleagues according to whether they were keen on it, openly skeptical of its benefits, or took a let&rsquo;s try and see attitude. His conclusion: the more enthusiastic the doctor, the better the drug performed. A recent survey by Ernst on doctors&rsquo; bedside manners turned up one consistent finding: physicians who adopt a warm, friendly, reassuring manner are more effective than those whose consultations are formal and do not offer reassurance.</p>
+<p>Warm, friendly and reassuring are precisely what alternative treatment is all about, of course. Many of the ingredients of that opening recipe - the physical contact, the generous swaths of time, the strong hints of supernormal healing power - are just the kind of thing likely to impress patients. It&rsquo;s hardly surprising then, that complementary practitioners are generally best at mobilizing the placebo effect, says Arthur Kleinman, professor of social anthropology at Harvard University.</p>
+    </div>
+
+  </div>
+
+  <div id="drag"></div>
+
+  <div id="right-pane">
+<div class="qsec on" id="qs1"><p class="qnum-head"><em>Questions 1&ndash;4</em></p><p class="qinst">Reading Passage 1 has eight paragraphs, <strong>A-H</strong>. Which paragraph contains the following information? Write the correct letter, <strong>A-H</strong>, in boxes 1-4 on your answer sheet.</p><p class="qinst"><strong>NB</strong>&nbsp; You may use any letter more than once.</p><div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead><tbody><tr><td class="mx-stmt"><span class="mx-num">1</span> the reason why museum directors need to constantly alter and update their exhibits</td><td><label class="mx-cell"><input type="radio" name="q1" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q1" value="H" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">2</span> mention of the length of time people will queue up to see a blockbuster</td><td><label class="mx-cell"><input type="radio" name="q2" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q2" value="H" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">3</span> terms that people have used when referring to blockbusters</td><td><label class="mx-cell"><input type="radio" name="q3" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q3" value="H" onchange="upd()"></label></td></tr><tr><td class="mx-stmt"><span class="mx-num">4</span> the various ways that institutions like museums get financial support</td><td><label class="mx-cell"><input type="radio" name="q4" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q4" value="H" onchange="upd()"></label></td></tr></tbody></table></div><p class="qnum-head"><em>Questions 5&ndash;8</em></p><p class="qinst">Complete the sentences below. Choose <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer.</p><div class="notesbox"><p><span class="inline-qno">5</span><input class="answer-input" id="q5" type="text">&nbsp; These days, museum visitors tend to be referred to as &hellip;</p><p><span class="inline-qno">6</span><input class="answer-input" id="q6" type="text">&nbsp; Museum curators now need &hellip; rather than academic qualifications.</p><p><span class="inline-qno">7</span><input class="answer-input" id="q7" type="text">&nbsp; The linking of a range of public institutions that entertain the public is known as &hellip;</p><p><span class="inline-qno">8</span><input class="answer-input" id="q8" type="text">&nbsp; There is discussion about whether museums can be regarded in the same way as other &hellip;</p></div><p class="qnum-head"><em>Questions 9 and 10</em></p><p class="qinst">Choose TWO letters, <strong>A-E</strong>. Which TWO of the following are mentioned by the writer as advantages of blockbusters?</p><div class="rgroup" id="grpg9"><label class="rlabel"><input type="checkbox" name="pg_g9" value="A" onchange="pickCap(&#39;g9&#39;,2,this)"> <strong>A</strong> Some of the money they raise can be used for structural repairs.</label><label class="rlabel"><input type="checkbox" name="pg_g9" value="B" onchange="pickCap(&#39;g9&#39;,2,this)"> <strong>B</strong> They can provide funds to help support amateur artists.</label><label class="rlabel"><input type="checkbox" name="pg_g9" value="C" onchange="pickCap(&#39;g9&#39;,2,this)"> <strong>C</strong> Local services benefit from the extra business they bring about.</label><label class="rlabel"><input type="checkbox" name="pg_g9" value="D" onchange="pickCap(&#39;g9&#39;,2,this)"> <strong>D</strong> They encourage overseas workers into the local area.</label><label class="rlabel"><input type="checkbox" name="pg_g9" value="E" onchange="pickCap(&#39;g9&#39;,2,this)"> <strong>E</strong> They raise employee performance levels.</label></div><p class="qnum-head"><em>Questions 11&ndash;13</em></p><p class="qinst">Choose THREE letters, <strong>A-G</strong>. Which THREE of the following are mentioned by the writer as disadvantages of blockbusters?</p><div class="rgroup" id="grpg11"><label class="rlabel"><input type="checkbox" name="pg_g11" value="A" onchange="pickCap(&#39;g11&#39;,3,this)"> <strong>A</strong> They do not suit museum management styles.</label><label class="rlabel"><input type="checkbox" name="pg_g11" value="B" onchange="pickCap(&#39;g11&#39;,3,this)"> <strong>B</strong> Specialist business advice has to be paid for.</label><label class="rlabel"><input type="checkbox" name="pg_g11" value="C" onchange="pickCap(&#39;g11&#39;,3,this)"> <strong>C</strong> They involve an increased workload for personnel.</label><label class="rlabel"><input type="checkbox" name="pg_g11" value="D" onchange="pickCap(&#39;g11&#39;,3,this)"> <strong>D</strong> They do not increase overall annual visitor numbers.</label><label class="rlabel"><input type="checkbox" name="pg_g11" value="E" onchange="pickCap(&#39;g11&#39;,3,this)"> <strong>E</strong> They are very tiring to put on.</label><label class="rlabel"><input type="checkbox" name="pg_g11" value="F" onchange="pickCap(&#39;g11&#39;,3,this)"> <strong>F</strong> What is popular in one country may not be popular in another.</label><label class="rlabel"><input type="checkbox" name="pg_g11" value="G" onchange="pickCap(&#39;g11&#39;,3,this)"> <strong>G</strong> The content can be weakened through financial pressure.</label></div></div><div class="qsec" id="qs2"><p class="qnum-head"><em>Questions 14&ndash;20</em></p><p class="qinst">Reading Passage 2 has seven paragraphs, <strong>A-G</strong>. Choose the correct heading for each paragraph from the list of headings below. Write the correct number, <strong>i-ix</strong>, in boxes 14-20 on your answer sheet.</p><div class="headings-box" id="mhHeadings"><div class="mh-heading-card" draggable="true" data-code="i" data-label="Fluctuations in bittern numbers over time"><strong>i</strong>&nbsp;&nbsp;Fluctuations in bittern numbers over time</div><div class="mh-heading-card" draggable="true" data-code="ii" data-label="Research findings on habitat needs of adult bitterns"><strong>ii</strong>&nbsp;&nbsp;Research findings on habitat needs of adult bitterns</div><div class="mh-heading-card" draggable="true" data-code="iii" data-label="Predators in the natural world"><strong>iii</strong>&nbsp;&nbsp;Predators in the natural world</div><div class="mh-heading-card" draggable="true" data-code="iv" data-label="The importance of fish stocks in the food chain"><strong>iv</strong>&nbsp;&nbsp;The importance of fish stocks in the food chain</div><div class="mh-heading-card" draggable="true" data-code="v" data-label="Initial habitat investigation and decisions"><strong>v</strong>&nbsp;&nbsp;Initial habitat investigation and decisions</div><div class="mh-heading-card" draggable="true" data-code="vi" data-label="The need for co-operation to ensure nature preservation"><strong>vi</strong>&nbsp;&nbsp;The need for co-operation to ensure nature preservation</div><div class="mh-heading-card" draggable="true" data-code="vii" data-label="Impressive results of initial intervention"><strong>vii</strong>&nbsp;&nbsp;Impressive results of initial intervention</div><div class="mh-heading-card" draggable="true" data-code="viii" data-label="Determining how many bitterns there are"><strong>viii</strong>&nbsp;&nbsp;Determining how many bitterns there are</div><div class="mh-heading-card" draggable="true" data-code="ix" data-label="Education as the key to preserving wildlife"><strong>ix</strong>&nbsp;&nbsp;Education as the key to preserving wildlife</div></div><p class="qnum-head"><em>Questions 21&ndash;25</em></p><p class="qinst">Answer the questions below. Choose <strong>ONE WORD AND/OR A NUMBER</strong> from the passage for each answer.</p><div class="qitem"><p class="qprompt"><strong>21.</strong>&nbsp; When was the bittern population largest? <span class="inline-qno">21</span><input class="answer-input" id="q21" type="text"></p></div><div class="qitem"><p class="qprompt"><strong>22.</strong>&nbsp; What word is used in the passage to describe the bittern&#39;s character? <span class="inline-qno">22</span><input class="answer-input" id="q22" type="text"></p></div><div class="qitem"><p class="qprompt"><strong>23.</strong>&nbsp; What is probably the main cause of death of bittern chicks? <span class="inline-qno">23</span><input class="answer-input" id="q23" type="text"></p></div><div class="qitem"><p class="qprompt"><strong>24.</strong>&nbsp; What food supply do bittern chicks depend on? <span class="inline-qno">24</span><input class="answer-input" id="q24" type="text"></p></div><div class="qitem"><p class="qprompt"><strong>25.</strong>&nbsp; What other creature mentioned in the passage has also benefited from improvements made to the bittern&#39;s habitat? <span class="inline-qno">25</span><input class="answer-input" id="q25" type="text"></p></div><p class="qnum-head"><em>Question 26</em></p><p class="qinst">Choose the correct letter, <strong>A, B, C or D</strong>.</p><div class="qitem"><p class="qprompt"><strong>26.</strong>&nbsp; What is the main theme of Reading Passage 2?</p><div class="rgroup" id="rg26"><label class="rlabel"><input type="radio" name="q26" value="A" onchange="upd()"> <strong>A</strong>&nbsp; how one species may be helped at the expense of another</label><label class="rlabel"><input type="radio" name="q26" value="B" onchange="upd()"> <strong>B</strong>&nbsp; disagreement among environmentalists on methods to protect species from extinction</label><label class="rlabel"><input type="radio" name="q26" value="C" onchange="upd()"> <strong>C</strong>&nbsp; fighting the destruction of wetland reedbeds</label><label class="rlabel"><input type="radio" name="q26" value="D" onchange="upd()"> <strong>D</strong>&nbsp; how research and good management can save an endangered species</label></div></div></div><div class="qsec" id="qs3"><p class="qnum-head"><em>Questions 27&ndash;31</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A-H</strong>, below.</p><div class="se-row"><span class="se-num">27</span><span class="se-stem">An appointment with an alternative practitioner</span><span class="dzone dz-sm" id="q27" data-q="27" data-bank="endings"></span></div><div class="se-row"><span class="se-num">28</span><span class="se-stem">An alternative practitioner&#39;s explanation of their treatment</span><span class="dzone dz-sm" id="q28" data-q="28" data-bank="endings"></span></div><div class="se-row"><span class="se-num">29</span><span class="se-stem">If alternative practitioners have faith in their treatment, they</span><span class="dzone dz-sm" id="q29" data-q="29" data-bank="endings"></span></div><div class="se-row"><span class="se-num">30</span><span class="se-stem">Quite often, a patient&#39;s illness</span><span class="dzone dz-sm" id="q30" data-q="30" data-bank="endings"></span></div><div class="se-row"><span class="se-num">31</span><span class="se-stem">Conventional doctors are aware of the placebo effect and they</span><span class="dzone dz-sm" id="q31" data-q="31" data-bank="endings"></span></div><div class="wbank se-bank" data-bank="endings" data-show="letter"><div class="dchip" draggable="true" data-letter="A" data-word="should be easy to understand"><span class="wk">A</span> should be easy to understand</div><div class="dchip" draggable="true" data-letter="B" data-word="can improve without treatment"><span class="wk">B</span> can improve without treatment</div><div class="dchip" draggable="true" data-letter="C" data-word="can cost the patient less"><span class="wk">C</span> can cost the patient less</div><div class="dchip" draggable="true" data-letter="D" data-word="ought to last a minimum length of time"><span class="wk">D</span> ought to last a minimum length of time</div><div class="dchip" draggable="true" data-letter="E" data-word="can require a range of different products"><span class="wk">E</span> can require a range of different products</div><div class="dchip" draggable="true" data-letter="F" data-word="can be described as serious"><span class="wk">F</span> can be described as serious</div><div class="dchip" draggable="true" data-letter="G" data-word="should give it greater recognition"><span class="wk">G</span> should give it greater recognition</div><div class="dchip" draggable="true" data-letter="H" data-word="should be able to get a high income"><span class="wk">H</span> should be able to get a high income</div></div><p class="qnum-head"><em>Questions 32&ndash;34</em></p><p class="qinst">Choose the correct letter, <strong>A, B, C or D</strong>.</p><div class="qitem"><p class="qprompt"><strong>32.</strong>&nbsp; In the third paragraph, the writer says that the placebo effect</p><div class="rgroup" id="rg32"><label class="rlabel"><input type="radio" name="q32" value="A" onchange="upd()"> <strong>A</strong>&nbsp; works best in tablet form.</label><label class="rlabel"><input type="radio" name="q32" value="B" onchange="upd()"> <strong>B</strong>&nbsp; is a new type of medical treatment.</label><label class="rlabel"><input type="radio" name="q32" value="C" onchange="upd()"> <strong>C</strong>&nbsp; is trusted more by some patients than others.</label><label class="rlabel"><input type="radio" name="q32" value="D" onchange="upd()"> <strong>D</strong>&nbsp; has a significant role in both alternative and conventional medicine.</label></div></div><div class="qitem"><p class="qprompt"><strong>33.</strong>&nbsp; A reference is made to anger and sadness in order to show that</p><div class="rgroup" id="rg33"><label class="rlabel"><input type="radio" name="q33" value="A" onchange="upd()"> <strong>A</strong>&nbsp; personal feelings can alter our physical condition.</label><label class="rlabel"><input type="radio" name="q33" value="B" onchange="upd()"> <strong>B</strong>&nbsp; some human behaviour has no clear explanation.</label><label class="rlabel"><input type="radio" name="q33" value="C" onchange="upd()"> <strong>C</strong>&nbsp; placebos, like emotions, are experienced by everyone.</label><label class="rlabel"><input type="radio" name="q33" value="D" onchange="upd()"> <strong>D</strong>&nbsp; people find some physical reactions hard to control.</label></div></div><div class="qitem"><p class="qprompt"><strong>34.</strong>&nbsp; The results of Benedetti&#39;s naloxone experiment demonstrate that placebo pain relief</p><div class="rgroup" id="rg34"><label class="rlabel"><input type="radio" name="q34" value="A" onchange="upd()"> <strong>A</strong>&nbsp; is entirely psychological in nature.</label><label class="rlabel"><input type="radio" name="q34" value="B" onchange="upd()"> <strong>B</strong>&nbsp; works only when patients are told about the treatment.</label><label class="rlabel"><input type="radio" name="q34" value="C" onchange="upd()"> <strong>C</strong>&nbsp; is partly caused by real biological processes in the body.</label><label class="rlabel"><input type="radio" name="q34" value="D" onchange="upd()"> <strong>D</strong>&nbsp; is more effective than morphine.</label></div></div><p class="qnum-head"><em>Questions 35&ndash;40</em></p><p class="qinst">Do the following statements agree with the claims of the writer in Reading Passage 3? In boxes 35-40, write</p><p class="qinst"><strong>YES</strong>&nbsp; if the statement agrees with the claims of the writer<br><strong>NO</strong>&nbsp; if the statement contradicts the claims of the writer<br><strong>NOT GIVEN</strong>&nbsp; if it is impossible to say what the writer thinks about this</p><div class="qitem"><p class="qprompt"><strong>35.</strong>&nbsp; Scientists now have enough information to understand how the placebo effect becomes active in people.</p><div class="rgroup" id="rg35"><label class="rlabel"><input type="radio" name="q35" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q35" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q35" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>36.</strong>&nbsp; As a result of experiments, some painkillers have been taken off the market.</p><div class="rgroup" id="rg36"><label class="rlabel"><input type="radio" name="q36" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q36" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q36" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>37.</strong>&nbsp; Individual preference can have an impact on the effectiveness of different brands of headache tablet.</p><div class="rgroup" id="rg37"><label class="rlabel"><input type="radio" name="q37" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q37" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q37" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>38.</strong>&nbsp; Doctors expressed a range of views on the drug chlorpromazine when it was first introduced.</p><div class="rgroup" id="rg38"><label class="rlabel"><input type="radio" name="q38" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q38" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q38" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>39.</strong>&nbsp; Ernst&#39;s study had a big influence on doctors&#39; behaviour with patients.</p><div class="rgroup" id="rg39"><label class="rlabel"><input type="radio" name="q39" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q39" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q39" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div><div class="qitem"><p class="qprompt"><strong>40.</strong>&nbsp; Alternative practitioners work in a way that is likely to trigger the placebo effect.</p><div class="rgroup" id="rg40"><label class="rlabel"><input type="radio" name="q40" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q40" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q40" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div></div>
+  </div>
+  </div>
+</div>
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const CA = {1:"C",2:"A",3:"D",4:"C",5:"customers",6:"public relations skills",7:"museology",8:"tourist attractions",9:["A","C"],10:["A","C"],11:["C","E","G"],12:["C","E","G"],13:["C","E","G"],14:"i",15:"viii",16:"v",17:"ii",18:"vii",19:"iv",20:"vi",21:"1950",22:"shy",23:"starvation",24:"fish",25:"otters",26:"D",27:"D",28:"A",29:"H",30:"B",31:"G",32:"D",33:"A",34:"C",35:"NO",36:"NOT GIVEN",37:"YES",38:"YES",39:"NOT GIVEN",40:"YES"};
+const CAL = {1:"C",2:"A",3:"D",4:"C",5:"customers",6:"public relations skills",7:"museology",8:"tourist attractions",9:["A","C"],10:["A","C"],11:["C","E","G"],12:["C","E","G"],13:["C","E","G"],14:"i",15:"viii",16:"v",17:"ii",18:"vii",19:"iv",20:"vi",21:"1950",22:"shy",23:"starvation",24:"fish",25:"otters",26:"D",27:"D",28:"A",29:"H",30:"B",31:"G",32:"D",33:"A",34:"C",35:"NO",36:"NOT GIVEN",37:"YES",38:"YES",39:"NOT GIVEN",40:"YES"};
+
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 55%,#063847 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(0,200,180,0.3);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(0,200,180,0.12);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(0,200,180,0.08);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="font-size:50px;margin-bottom:10px;">📖</div>
+            <div style="display:inline-block;background:rgba(0,200,180,0.2);color:#7ffcec;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(0,200,180,0.3);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;opacity:0.92;">3 passages &bull; 40 questions &bull; answer key &amp; band score</p>
+            <p style="margin:14px 0 6px;font-size:14px;opacity:0.96;">Prepared by <strong>I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;opacity:0.82;">Follow for more authentic tests, tips &amp; daily practice 👇</p>
+            <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">🎯 <strong>Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero — just like exam day. 🧘 <strong>Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0d7a8a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0d7a8a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:#DC2626;color:#fff;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.95);color:#0a5566;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='🧘 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0d7a8a;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='🎯 Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+// CHOOSE-THREE CHECKBOX GROUPS
+const PICK={9:{g:'g9',qs:[9,10],set:["A","C"]},10:{g:'g9',qs:[9,10],set:["A","C"]},11:{g:'g11',qs:[11,12,13],set:["C","E","G"]},12:{g:'g11',qs:[11,12,13],set:["C","E","G"]},13:{g:'g11',qs:[11,12,13],set:["C","E","G"]}};
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=32)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+const P1H=[
+  {q:1,t:"involves not only creating or hiring blockbuster exhibitions, but providing regular exhibition changes and innovations"},
+  {q:2,t:"will stand in line for hours to see"},
+  {q:3,t:"the words that are starting to appear in some descriptions of blockbusters are"},
+  {q:4,t:"revenue raised through contributions by federal, state and/or local governments"},
+  {q:5,t:"the visiting public have become known as customers rather than visitors"},
+  {q:6,t:"public relations skills are essential if the museum is going to compete"},
+  {q:7,t:"the convergence of museums, the heritage industry, tourism, profit-making and pleasure-giving has resulted in the new"},
+  {q:8,t:"much debate about whether it is appropriate to see museums primarily as tourist attractions"},
+  {q:9,t:"it may be the money that they require to replace parts of their collections or to fix buildings that are in need of attention"},
+  {q:10,t:"blockbusters mean crowds, and crowds are good for the local economy, provide increased trade for shops, hotels, restaurants"},
+  {q:11,t:"is required to perform additional tasks"},
+  {q:12,t:"creating, mounting or hiring blockbusters is exhausting"},
+  {q:13,t:"can squeeze substance out of an exhibition"}
+];
+const P2H=[
+  {q:14,t:"by 1886, habitat destruction and other pressures had pushed it close to extinction"},
+  {q:15,t:"our first challenge was to develop standard methods to monitor their numbers"},
+  {q:16,t:"our first direct understanding of what breeding bitterns require in their ideal habitat came from comparisons"},
+  {q:17,t:"this showed clear preferences for feeding in the wetter reedbed areas"},
+  {q:18,t:"the success of the habitat prescriptions developed from this research has been spectacular"},
+  {q:19,t:"the final phase of research involved understanding the diet, survival and dispersal of bittern chicks"},
+  {q:20,t:"by 2004, the number of booming male bitterns in the uk had increased to 55"},
+  {q:21,t:"the numbers of native male bitterns rose to a peak of about 70"},
+  {q:22,t:"bitterns have feathers that help them to conceal themselves and a shy nature"},
+  {q:23,t:"starvation was found to be the most likely reason for their demise"},
+  {q:24,t:"the fish prey fed to chicks was mainly those species penetrating into the reed edge"},
+  {q:25,t:"the work has helped a range of other spectacular wetland species such as otters"},
+  {q:26,t:"success has only been achieved through the trust, hard work and dedication of all the managers, owners and wardens"}
+];
+const P3H=[
+  {q:27,t:"your treatment should involve physical contact, and each session with your patients should take at least half an hour"},
+  {q:28,t:"describe your treatment in familiar words, but embroidered with a hint of mysticism"},
+  {q:29,t:"a very good living if you are sufficiently convincing"},
+  {q:30,t:"many illnesses get better on their own"},
+  {q:31,t:"though its role is often neglected and misunderstood"},
+  {q:32,t:"in fact, the placebo is a powerful part of all medical care, orthodox or otherwise"},
+  {q:33,t:"anger opens the superficial blood vessels of the face; sadness pumps the tear glands"},
+  {q:34,t:"here was direct proof that the relief of pain by a placebo is carried out, at least in part, by these natural opiates"},
+  {q:35,t:"they have accumulated a fair bit of knowledge about how to trigger the effect"},
+  {q:36,t:"that red dummy capsules made more effective painkillers than blue, green or yellow ones"},
+  {q:37,t:"their chemically identical generic equivalents may be less effective"},
+  {q:38,t:"a doctor in kansas categorized his colleagues according to whether they were keen on it, openly skeptical of its benefits"},
+  {q:39,t:"physicians who adopt a warm, friendly, reassuring manner are more effective than those whose consultations are formal"},
+  {q:40,t:"complementary practitioners are generally best at mobilizing the placebo effect"}
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault());
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+</body>
+</html>

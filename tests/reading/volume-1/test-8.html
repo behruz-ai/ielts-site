@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Reading Test 8 (Volume 1) @bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* THEME */
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.uhl{background:#5a4a1a;color:#f5e6c8}
+
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+.rgroup{display:flex;flex-direction:column;gap:2px;margin-top:9px}
+.rlabel{display:flex;align-items:center;gap:11px;padding:7px 8px;border-radius:6px;cursor:pointer;font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s}
+.rlabel:hover{background:var(--phdr)}
+.rlabel input{accent-color:#2563eb;width:16px;height:16px;cursor:pointer;flex-shrink:0;margin:0}
+.rlabel:has(input:checked){background:#eff6ff;font-weight:600}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a}
+[data-theme=night] .rlabel:has(input:checked){background:#3a3320}
+.rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
+.rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+[data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
+[data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
+.mc-key{font-weight:700;min-width:18px}
+
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+.sbox p{margin:0 0 6px}
+.sbox p:last-child{margin-bottom:0}
+.sbox select.ai{margin:0 2px;vertical-align:baseline}
+.dnd-tip{font-size:12px;color:var(--subtext);font-style:italic;margin:0 0 10px;display:flex;align-items:center;gap:6px}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+#hlBtn{position:absolute;display:none;z-index:9999;background:#DC2626;color:#fff;border:none;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.28);animation:tpop .13s cubic-bezier(.34,1.56,.64,1)}
+#hlBtn:hover{background:#b91c1c}
+#hlBtn:active{transform:scale(.96)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+mark.uhl{background:#FEF08A;color:#000;border-radius:2px;padding:1px 0;cursor:pointer;box-decoration-break:clone;-webkit-box-decoration-break:clone;transition:background .12s}
+mark.uhl:hover{background:#FDE047}
+[data-theme=dark] mark.uhl{background:#78450a;color:#fff}
+[data-theme=dark] mark.uhl:hover{background:#a16207}
+
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+.res-parts{display:flex;gap:8px;margin-top:14px;position:relative;z-index:2}
+.res-part{flex:1;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:7px 9px}
+.res-part-lbl{font-size:10px;opacity:.85;text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.res-part-val{font-size:15px;font-weight:800;margin-top:1px}
+.res-part-bar{height:5px;background:rgba(255,255,255,.22);border-radius:3px;margin-top:6px;overflow:hidden}
+.res-part-fill{height:100%;background:#fff;border-radius:3px;width:0%;transition:width 1s cubic-bezier(.4,0,.2,1) .3s}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+.matrix{width:100%;border-collapse:collapse;margin:8px 0 16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.matrix th,.matrix td{border:1px solid var(--border);text-align:center}
+.matrix thead th{background:var(--phdr);font-weight:800;width:40px;height:34px}
+.matrix th.mx-corner{background:transparent;border-top:none;border-left:none}
+.matrix td.mx-stmt{text-align:left;padding:9px 12px;line-height:1.5;min-width:200px}
+.mx-num{font-weight:800;color:#DC2626;margin-right:7px}
+.mx-cell{display:flex;align-items:center;justify-content:center;height:46px;margin:0;cursor:pointer}
+.mx-cell input{accent-color:#2563eb;width:17px;height:17px;cursor:pointer;margin:0}
+.mx-cell:hover{background:var(--phdr)}
+.mx-cell:has(input:checked){background:#dbeafe}
+[data-theme=dark] .mx-cell:has(input:checked){background:#1e3a5f}
+[data-theme=night] .mx-cell:has(input:checked){background:#3a3320}
+.mx-cell.ok{background:#dcfce7!important}
+.mx-cell.bad{background:#fee2e2!important}
+[data-theme=dark] .mx-cell.ok{background:#14532d!important}
+[data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.mc2hid{display:none}
+.mc2 .cad{display:none}
+.mc2 .rlabel input{width:17px;height:17px}
+
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+
+.completion-list,.note-box,.fill-line,.summary-card{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin:12px 0 16px;line-height:2.2;color:var(--text);font-size:calc(15px * var(--txtscale,1))}
+.completion-list h3,.note-box h3,.summary-card h3{margin:0 0 10px;text-align:center;font-size:16px}
+.completion-table{width:100%;border-collapse:collapse;margin:12px 0 16px;color:var(--text)}
+.completion-table th,.completion-table td{border:1px solid var(--border);padding:10px;vertical-align:middle;font-size:calc(14px * var(--txtscale,1));line-height:1.5}
+.completion-table th{background:var(--phdr);text-align:left}
+.qnum-badge,.inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:27px;margin:0 6px 0 2px;border-radius:6px;background:var(--phdr);border:1px solid var(--border);color:var(--text);font-weight:800;font-size:13px;vertical-align:middle}
+.answer-input{border:1px solid var(--inpb);border-radius:5px;background:var(--inp);color:var(--text);padding:3px 8px;font-size:calc(15px * var(--txtscale,1));font-weight:700;min-width:120px;height:30px;margin:0 3px}
+.answer-input:focus{border-color:#DC2626;outline:none}
+.answer-input.ok{border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.answer-input.bad{border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .answer-input.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .answer-input.bad{background:#5a1d1d!important;color:#fecaca!important}
+.checkbox-option{display:block}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A&minus;</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <div id="timer">60:00</div><div id="mode-badge" style="display:none"></div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">&#127769;</button>
+  </div>
+</header>
+
+<div id="banner">
+  <strong id="bn-part">Part 1</strong>
+  <span id="bn-desc">Read the passage and answer questions 1&ndash;13.</span>
+</div>
+
+<div id="main">
+  <div id="left-pane">
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">THE BRIEF HISTORY OF TEA</h2><p class="psub">Read the text and answer questions 1&ndash;13</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q1" data-q="1" draggable="false">1</span></p>
+      <p><span class="pl">A</span>The story of tea began in ancient China over 5,000 years ago. According to legend, the Emperor Shen Nung was a skilled ruler, creative scientist and patron of the arts. His far-sighted edicts required, among other things, that all drinking water be boiled as a hygienic precaution. One summer day while visiting a distant region of his realm, he and the court stopped to rest. In accordance with his ruling, the servants began to boil water for the court to drink. Dried leaves from a nearby bush fell into the boiling water, and as the leaves infused the water turned brown. As a scientist, the Emperor was intrigued by the new liquid, drank some, and found it very refreshing. And so, according to legend, tea was created.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q2" data-q="2" draggable="false">2</span></p>
+      <p><span class="pl">B</span>Tea consumption spread throughout Chinese culture, reaching into every aspect of the society: the first definitive book was written on tea, a book clearly reflecting Zen Buddhist philosophy, 1,200 years ago. The first tea seeds were brought to Japan by a returning Buddhist priest, who had seen the value of tea in enhancing meditation in China. As a result, he is known as the 'Father of Tea' in Japan. Because of this early association, tea in Japan has always been linked with Zen Buddhism. Tea received the Japanese Emperor's support almost instantly and spread rapidly from the royal court and monasteries to other sections of society.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q3" data-q="3" draggable="false">3</span></p>
+      <p><span class="pl">C</span>Tea was elevated to an art form in the Japanese tea ceremony, in which supreme importance is given to making tea in the most perfect, most polite, most graceful, most charming manner possible. Such a purity of expression prompted the creation of a particular form of architecture for tea house: duplicating the simplicity of a forest cottage. The cultural/artistic hostesses of Japan, the geishas, began to specialize in the presentation of the tea ceremony. However, as more and more people became involved in the excitement surrounding tea, the purity of the original concept was lost, and for a period the tea ceremony became corrupted, boisterous and highly embellished. Efforts were then made to return to the earlier simplicity, with the result that, in the 15th and 16th centuries, tea was viewed as the ultimate gift. Even warlords paused for tea before battles.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q4" data-q="4" draggable="false">4</span></p>
+      <p><span class="pl">D</span>While tea was at this high level of development in parts of Asia, information concerning the then unknown beverage began to filter back to Europe. Earlier traders had mentioned it, but were unclear as to whether tea should be eaten or drunk. The first European to personally encounter tea and write about it was Portuguese - Portugal, with her technologically advanced navy, had been successful in gaining the first right of trade with China.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q5" data-q="5" draggable="false">5</span></p>
+      <p><span class="pl">E</span>Tea finally arrived in Europe in the 16th century, brought to Holland by the country's navy, and becoming very fashionable in the Dutch capital, the Hague. This was due in part to tea being very expensive (over $100 per pound), which immediately made it the domain of the wealthy. Slowly, as the amount of tea imported increased, the price fell, and by 1675 it was available in common food shops throughout Holland.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q6" data-q="6" draggable="false">6</span></p>
+      <p><span class="pl">F</span>As the consumption of tea increased dramatically in Dutch society, doctors and university authorities in Holland argued as to its benefits or drawbacks. The public largely ignored the scholarly debate and continued to enjoy their new beverage, though the controversy lasted from 1635 to roughly 1657. Throughout this period, France and Holland led Europe in the use of tea.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q7" data-q="7" draggable="false">7</span></p>
+      <p><span class="pl">G</span>As the craze for all things oriental swept through Europe, tea became part of the way of life. Adding milk to the drink was first mentioned in 1680. Around that time, Dutch inns provided the first restaurant service of tea. Innkeepers would furnish guests with a portable tea set complete with a heating unit. The Dutchman would then prepare tea for himself and his friends outside in the inn garden. Tea remained popular in France for only about fifty years, being replaced by a preference for wine, chocolate, and exotic coffees. Tea was introduced into England in 1660 by King Charles II and his Portuguese queen, who were both confirmed tea drinkers. Tea mania swept across England as it had earlier spread throughout France and Holland. By 1708 tea importation had risen to thirteen times the 1699 level. Tea was drunk by all levels of society.</p>
+      <p class="mh-slot-line"><span class="mh-drop-slot empty" id="q8" data-q="8" draggable="false">8</span></p>
+      <p><span class="pl">H</span>The Russian interest in tea began as early as 1618, when the Chinese embassy in Moscow presented several chests of tea to the Emperor, Czar Alexis. Later in the century, a trade treaty between Russia and China allowed caravans to cross back and forth freely between the two countries. Still, the journey was not easy. The average caravan consisted of 200 to 300 camels, and the 18,000-kilometre trip took over 16 months to complete. Eventually, however, tea became - as it still is - one of the most popular drinks in the country.</p>
+    </div>
+
+    <div class="pcontent" id="pc2">
+      <h2 class="ptitle">New filter promises clean water for millions</h2><p class="psub">Read the text and answer questions 14&ndash;26</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p><span class="pl">A</span>An ingenious invention is set to bring clean water to the third world, and while the science may be cutting edge, the materials are extremely down to earth. A handful of clay, yesterday's coffee grounds and some cow manure are the ingredients that could bring clean, safe drinking water to much of the third world.</p>
+      <p><span class="pl">B</span>The simple new technology, developed by ANU materials scientist Mr. Tony Flynn, allows water filters to be made from commonly available materials and fired on the ground using cow manure as the source of heat, without the need for a kiln. The filters have been tested and shown to remove common pathogens (disease-producing organisms) including E-coli. Unlike other water filtering devices, the filters are simple and inexpensive to make. "They are very simple to explain and demonstrate and can be made by anyone, anywhere," says Mr. Flynn. "They don't require any western technology. All you need is terracotta clay, a compliant cow and a match."</p>
+      <p><span class="pl">C</span>The production of the filters is extremely simple. Take a handful of dry, crushed clay, mix it with a handful of organic material, such as used tea leaves, coffee grounds or rice hulls, add enough water to make a stiff biscuit-like mixture and form a cylindrical pot that has one end closed, then dry it in the sun. According to Mr. Flynn, used coffee grounds have given the best results to date. Next, surround the pots with straw; put them in a mound of cow manure, light the straw and then top up the burning manure as required. In less than 60 minutes the filters are finished. The walls of the finished pot should be about as thick as an adult's index finger. The properties of cow manure are vital as the fuel can reach a temperature of 700 degrees in half an hour and will be up to 950 degrees after another 20 to 30 minutes. The manure makes a good fuel because it is very high in organic material that burns readily and quickly; the manure has to be dry and is best used exactly as found in the field, there is no need to break it up or process it any further.</p>
+      <p><span class="pl">D</span>"A potter's kiln is an expensive item and could take up to four or five hours to get up to 800 degrees. It needs expensive or scarce fuel, such as gas or wood to heat it and experience to run it. With no technology, no insulation and nothing other than a pile of cow manure and a match, none of these restrictions apply," Mr. Flynn says.</p>
+      <p><span class="pl">E</span>It is also helpful that, like terracotta clay and organic material, cow dung is freely available across the developing world. "A cow is a natural fuel factory. My understanding is that cow dung as a fuel would be pretty much the same wherever you would find it." Just as using manure as a fuel for domestic uses is not a new idea, the porosity of clay is something that potters have known about for years, and something that as a former ceramics lecturer in the ANU School of Art, Mr. Flynn is well aware of. The difference is that rather than viewing the porous nature of the material as a problem, his filters capitalize on this property - after all, not many people want a pot that won't hold water.</p>
+      <p><span class="pl">F</span>Other commercial ceramic filters do exist, but, even if available, with prices starting at US$5 each, they are often outside the budgets of most people in the developing world. The filtration process is simple, but effective. The basic principle is that there are passages through the filter that are wide enough for water droplets to pass through, but too narrow for pathogens. Tests with the deadly E-coli bacterium have seen the filters remove 96.4 to 99.8 per cent of the pathogen - well within safe levels. Using only one filter it takes two hours to filter a litre of water. The use of organic material, which burns away after firing, helps produce the structure in which pathogens will become trapped. It overcomes the potential problems of finer clays that may not let water through and also means that cracks are soon halted. And like clay and cow dung, it is universally available.</p>
+      <p><span class="pl">G</span>The invention was born out of a World Vision project involving the Manatuto community in East Timor. The charity wanted to help set up a small industry manufacturing water filters, but initial research found the local clay to be too fine - a problem solved by the addition of organic material. While the problems of producing a working ceramic filter in East Timor were overcome, the solution was kiln-based and particular to that community's materials and couldn't be applied elsewhere. Manure firing, with no requirement for a kiln, has made this zero technology approach available anywhere it is needed. With all the components being widely available, Mr. Flynn says there is no reason the technology couldn't be applied throughout the developing world, and with no plans to patent his idea, there will be no legal obstacles to it being adopted in any community that needs it. "Everyone has a right to clean water, these filters have the potential to enable anyone in the world to drink water safely," says Mr. Flynn.</p>
+    </div>
+
+    <div class="pcontent" id="pc3">
+      <h2 class="ptitle">The Cause of Linguistic Change</h2><p class="psub">Read the text and answer questions 27&ndash;40</p>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <p><span class="pl">A</span>The changes that have caused the most disagreement are those in pronunciation. We have various sources of evidence for the pronunciations of earlier times, such as the spellings, the treatment of words borrowed from other languages or borrowed by them, the descriptions of contemporary grammarians and spelling-reformers, and the modern pronunciations in all the languages and dialects concerned. From the middle of the sixteenth century, there are in England writers who attempt to describe the position of the speech-organs for the production of English phonemes, and who invent what are in effect systems of phonetic symbols. These various kinds of evidence, combined with a knowledge of the mechanisms of speech-production, can often give us a very good idea of the pronunciation of an earlier age, though absolute certainty is never possible.</p>
+      <p><span class="pl">B</span>When we study the pronunciation of a language over any period of a few generations or more, we find there are always large-scale regularities in the changes: for example, over a certain period of time, just about all the long [a:] vowels in a language may change into long [e:] vowels, or all the [b] consonants in a certain position (for example at the end of a word) may change into [p] consonants. Such regular changes are often called sound laws. There are no universal sound laws (even though sound laws often reflect universal tendencies), but simply particular sound laws for one given language (or dialect) at one given period.</p>
+      <p><span class="pl">C</span>It is also possible that fashion plays a part in the process of change. It certainly plays a part in the spread of change: one person imitates another, and people with the most prestige are most likely to be imitated, so that a change that takes place in one social group may be imitated (more or less accurately) by speakers in another group. When a social group goes up or down in the world, its pronunciation of Russian, which had formerly been considered desirable, became, on the contrary, an undesirable kind of accent to have, so that people tried to disguise it. Some of the changes in accepted English pronunciation in the seventeenth and eighteenth centuries have been shown to consist in the replacement of one style of pronunciation by another style already existing, and it is likely that such substitutions were a result of the great social changes of the period: the increased power and wealth of the middle classes, and their steady infiltration upwards into the ranks of the landed gentry, probably carried elements of middle-class pronunciation into upper-class speech.</p>
+      <p><span class="pl">D</span>A less specific variant of the argument is that the imitation of children is imperfect: they copy their parents' speech, but never reproduce it exactly. This is true, but it is also true that such deviations from adult speech are usually corrected in later childhood. Perhaps it is more significant that even adults show a certain amount of random variation in their pronunciation of a given phoneme, even if the phonetic context is kept unchanged. This, however, cannot explain changes in pronunciation unless it can be shown that there is some systematic trend in the failures of imitation: if they are merely random deviations they will cancel one another out and there will be no net change in the language.</p>
+      <p><span class="pl">E</span>One such force which is often invoked is the principle of ease, or minimization of effort. The change from fussy to fuzzy would be an example of assimilation, which is a very common kind of change. Assimilation is the changing of a sound under the influence of a neighbouring one. For example, the word scant was once skamt, but the /m/ has been changed to /n/ under the influence of the following /t/. Greater efficiency has hereby been achieved, because /n/ and /t/ are articulated in the same place (with the tip of the tongue against the teeth-ridge), whereas /m/ is articulated elsewhere (with the two lips). So the place of articulation of the nasal consonant has been changed to conform with that of the following plosive. A more recent example of the same kind of thing is the common pronunciation of football as football.</p>
+      <p><span class="pl">F</span>Assimilation is not the only way in which we change our pronunciation in order to increase efficiency. It is very common for consonants to be lost at the end of a word: in Middle English, word-final [-n] was often lost in unstressed syllables, so that baken 'to bake' changed from ['ba:kan] to ['ba:k3], and later to [ba:k]. Consonant-clusters are often simplified. At one time there was a [t] in words like castle and Christmas, and an initial [k] in words like knight and know. Sometimes a whole syllable is dropped out when two successive syllables begin with the same consonant (haplology): a recent example is temporary, which in Britain is often pronounced as if it were tempory.</p>
+    </div>
+  </div>
+
+  <div id="drag"></div>
+
+  <div id="right-pane">
+<div class="qsec on" id="qs1">
+  <p class="qnum-head"><em>Questions 1&ndash;8</em></p>
+  <p class="qinst">Choose the correct heading for each paragraph from the list of headings below.</p>
+  <div class="headings-box" id="mhHeadings">
+    <div class="mh-heading-card" draggable="true" data-code="i" data-label="Not enough tea to meet demand"><strong>i</strong>&nbsp;&nbsp;Not enough tea to meet demand</div>
+    <div class="mh-heading-card" draggable="true" data-code="ii" data-label="Religious objections"><strong>ii</strong>&nbsp;&nbsp;Religious objections</div>
+    <div class="mh-heading-card" draggable="true" data-code="iii" data-label="In - and sometimes out of - fashion"><strong>iii</strong>&nbsp;&nbsp;In - and sometimes out of - fashion</div>
+    <div class="mh-heading-card" draggable="true" data-code="iv" data-label="A connection between tea and religion"><strong>iv</strong>&nbsp;&nbsp;A connection between tea and religion</div>
+    <div class="mh-heading-card" draggable="true" data-code="v" data-label="A luxury item"><strong>v</strong>&nbsp;&nbsp;A luxury item</div>
+    <div class="mh-heading-card" draggable="true" data-code="vi" data-label="News of tea reaches another continent"><strong>vi</strong>&nbsp;&nbsp;News of tea reaches another continent</div>
+    <div class="mh-heading-card" draggable="true" data-code="vii" data-label="Is tea a good or bad thing?"><strong>vii</strong>&nbsp;&nbsp;Is tea a good or bad thing?</div>
+    <div class="mh-heading-card" draggable="true" data-code="viii" data-label="A chance discovery"><strong>viii</strong>&nbsp;&nbsp;A chance discovery</div>
+    <div class="mh-heading-card" draggable="true" data-code="ix" data-label="Tea-making as a ritual"><strong>ix</strong>&nbsp;&nbsp;Tea-making as a ritual</div>
+    <div class="mh-heading-card" draggable="true" data-code="x" data-label="Difficulties in importing tea"><strong>x</strong>&nbsp;&nbsp;Difficulties in importing tea</div>
+  </div>
+  <p class="qnum-head" style="margin-top:14px"><em>Questions 9&ndash;13</em></p>
+  <p class="qinst">Look at the following statements (Questions 9-13) and the list of countries below. Match each statement with the correct country, A-G.</p>
+  <div class="fbox"><strong>List of Countries</strong>A &nbsp; China<br>B &nbsp; Japan<br>C &nbsp; Portugal<br>D &nbsp; Holland<br>E &nbsp; France<br>F &nbsp; England<br>G &nbsp; Russia</div>
+  <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr></thead><tbody>
+  <tr><td class="mx-stmt"><span class="mx-num">9</span> Claims that tea might be harmful failed to affect its popularity.</td><td><label class="mx-cell"><input type="radio" name="q9" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q9" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q9" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q9" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q9" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q9" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q9" value="G" onchange="upd()"></label></td></tr>
+  <tr><td class="mx-stmt"><span class="mx-num">10</span> Tea lost favour to other drinks.</td><td><label class="mx-cell"><input type="radio" name="q10" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="G" onchange="upd()"></label></td></tr>
+  <tr><td class="mx-stmt"><span class="mx-num">11</span> Special buildings were constructed in which to drink tea.</td><td><label class="mx-cell"><input type="radio" name="q11" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q11" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q11" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q11" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q11" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q11" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q11" value="G" onchange="upd()"></label></td></tr>
+  <tr><td class="mx-stmt"><span class="mx-num">12</span> Animals were involved in importing tea.</td><td><label class="mx-cell"><input type="radio" name="q12" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q12" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q12" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q12" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q12" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q12" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q12" value="G" onchange="upd()"></label></td></tr>
+  <tr><td class="mx-stmt"><span class="mx-num">13</span> A ruler's specialist knowledge led to an interest in tea.</td><td><label class="mx-cell"><input type="radio" name="q13" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q13" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q13" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q13" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q13" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q13" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q13" value="G" onchange="upd()"></label></td></tr>
+  </tbody></table></div>
+</div>
+
+<div class="qsec" id="qs2">
+  <p class="qnum-head"><em>Questions 14&ndash;19</em></p>
+  <p class="qinst">Complete the flow-chart below. Choose <strong>NO MORE THAN TWO WORDS AND A NUMBER</strong> from the passage for each answer.</p>
+  <div class="notesbox">
+    <span class="nbsec" style="text-align:center;display:block;">Step-by-step guide to making Flynn's water filters</span>
+    <p>&#9658; Making the mixture for the filter from organic material (e.g. tea, coffee, rice), <span class="inline-qno">14</span><input class="answer-input" id="q14" type="text"> and <span class="inline-qno">15</span><input class="answer-input" id="q15" type="text">.</p>
+    <p>&#9658; Shape into pots and place them in a fire made from <span class="inline-qno">16</span><input class="answer-input" id="q16" type="text"> and <span class="inline-qno">17</span><input class="answer-input" id="q17" type="text">.</p>
+    <p>&#9658; Fuel the fire to reach a maximum heat of <span class="inline-qno">18</span><input class="answer-input" id="q18" type="text">.</p>
+    <p>&#9658; Remove the filters from the fire.</p>
+    <p>&#9658; Bake the filters in the fire for a maximum period of <span class="inline-qno">19</span><input class="answer-input" id="q19" type="text">.</p>
+  </div>
+  <p class="qnum-head"><em>Questions 20&ndash;23</em></p>
+  <p class="qinst">Do the following statements agree with the information given in Reading Passage 2?<br>Write <strong>TRUE</strong> if the statement agrees, <strong>FALSE</strong> if it contradicts, <strong>NOT GIVEN</strong> if there is no information.</p>
+  <div class="qitem">
+    <p class="qprompt"><strong>20.</strong>&nbsp; The clay in the Manatuto project was initially unsuitable for the project's purpose.</p>
+    <div class="rgroup" id="rg20">
+      <label class="rlabel"><input type="radio" name="q20" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q20" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q20" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>21.</strong>&nbsp; Coffee grounds produce filters that are twice as efficient as those using other organic materials.</p>
+    <div class="rgroup" id="rg21">
+      <label class="rlabel"><input type="radio" name="q21" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q21" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q21" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>22.</strong>&nbsp; It takes half an hour for a cow-manure fire to reach 950 degree.</p>
+    <div class="rgroup" id="rg22">
+      <label class="rlabel"><input type="radio" name="q22" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q22" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q22" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>23.</strong>&nbsp; E-coli is the most difficult bacterium to remove from water by filtration.</p>
+    <div class="rgroup" id="rg23">
+      <label class="rlabel"><input type="radio" name="q23" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q23" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q23" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <p class="qnum-head"><em>Questions 24&ndash;26</em></p>
+  <p class="qinst">Choose the correct letter, A, B, C or D.</p>
+  <div class="qitem">
+    <p class="qprompt"><strong>24.</strong>&nbsp; The Manatuto project aimed to set up a</p>
+    <div class="rgroup" id="rg24">
+      <label class="rlabel"><input type="radio" name="q24" value="A" onchange="upd()"><span class="mc-key">A</span>&nbsp; charitable trust.</label>
+      <label class="rlabel"><input type="radio" name="q24" value="B" onchange="upd()"><span class="mc-key">B</span>&nbsp; filtration experiment.</label>
+      <label class="rlabel"><input type="radio" name="q24" value="C" onchange="upd()"><span class="mc-key">C</span>&nbsp; water filter factory.</label>
+      <label class="rlabel"><input type="radio" name="q24" value="D" onchange="upd()"><span class="mc-key">D</span>&nbsp; community kiln.</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>25.</strong>&nbsp; To be effective, the Flynn filters must</p>
+    <div class="rgroup" id="rg25">
+      <label class="rlabel"><input type="radio" name="q25" value="A" onchange="upd()"><span class="mc-key">A</span>&nbsp; remove all dangerous pathogens.</label>
+      <label class="rlabel"><input type="radio" name="q25" value="B" onchange="upd()"><span class="mc-key">B</span>&nbsp; be a particular thickness.</label>
+      <label class="rlabel"><input type="radio" name="q25" value="C" onchange="upd()"><span class="mc-key">C</span>&nbsp; filter water as quickly as possible.</label>
+      <label class="rlabel"><input type="radio" name="q25" value="D" onchange="upd()"><span class="mc-key">D</span>&nbsp; be made from 100 per cent clay.</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>26.</strong>&nbsp; Flynn does not intend to patent his filter because he</p>
+    <div class="rgroup" id="rg26">
+      <label class="rlabel"><input type="radio" name="q26" value="A" onchange="upd()"><span class="mc-key">A</span>&nbsp; wants it be freely available.</label>
+      <label class="rlabel"><input type="radio" name="q26" value="B" onchange="upd()"><span class="mc-key">B</span>&nbsp; has produced a very simple design.</label>
+      <label class="rlabel"><input type="radio" name="q26" value="C" onchange="upd()"><span class="mc-key">C</span>&nbsp; cannot make a profit in poor countries.</label>
+      <label class="rlabel"><input type="radio" name="q26" value="D" onchange="upd()"><span class="mc-key">D</span>&nbsp; has already given the idea to a charity.</label>
+    </div>
+  </div>
+</div>
+
+<div class="qsec" id="qs3">
+  <p class="qnum-head"><em>Questions 27&ndash;30</em></p>
+  <p class="qinst">Complete the summary below. Choose <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer.</p>
+  <div class="sbox">
+    The pronunciation of living language undergo changes throughout thousands of years. Large scale regular changes are usually called <span class="inline-qno">27</span><input class="answer-input" id="q27" type="text">. There are three reasons for these changes. Firstly, the influence of one language on another; when one person imitates another pronunciation (the most prestige's), the imitation always partly involving factor of <span class="inline-qno">28</span><input class="answer-input" id="q28" type="text">. Secondly, the imitation of children from adults language sometimes are <span class="inline-qno">29</span><input class="answer-input" id="q29" type="text"> and may also contribute to this change if there are insignificant deviations though later they may be corrected. Finally, for those random variations in pronunciation, the deeper evidence lies in the <span class="inline-qno">30</span><input class="answer-input" id="q30" type="text"> or minimization of effort.
+  </div>
+  <p class="qnum-head"><em>Questions 31&ndash;37</em></p>
+  <p class="qinst">Do the following statements agree with the information given in Reading Passage 3?<br>Write <strong>TRUE</strong> if the statement agrees, <strong>FALSE</strong> if it contradicts, <strong>NOT GIVEN</strong> if there is no information.</p>
+  <div class="qitem">
+    <p class="qprompt"><strong>31.</strong>&nbsp; It is impossible for modern people to find pronunciation of words in an earlier age</p>
+    <div class="rgroup" id="rg31">
+      <label class="rlabel"><input type="radio" name="q31" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q31" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q31" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>32.</strong>&nbsp; The great change of language in Russian history is related to the rising status and fortune of middle classes.</p>
+    <div class="rgroup" id="rg32">
+      <label class="rlabel"><input type="radio" name="q32" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q32" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q32" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>33.</strong>&nbsp; All the children learn speeches from adults while they assume that certain language is difficult to imitate exactly.</p>
+    <div class="rgroup" id="rg33">
+      <label class="rlabel"><input type="radio" name="q33" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q33" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q33" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>34.</strong>&nbsp; Pronunciation with causal inaccuracy will not exert big influence on language changes.</p>
+    <div class="rgroup" id="rg34">
+      <label class="rlabel"><input type="radio" name="q34" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q34" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q34" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>35.</strong>&nbsp; The word scant can be pronounced more easily than skamt</p>
+    <div class="rgroup" id="rg35">
+      <label class="rlabel"><input type="radio" name="q35" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q35" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q35" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>36.</strong>&nbsp; The [g] in gnat not being pronounced will not be spelt out in the future.</p>
+    <div class="rgroup" id="rg36">
+      <label class="rlabel"><input type="radio" name="q36" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q36" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q36" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <div class="qitem">
+    <p class="qprompt"><strong>37.</strong>&nbsp; The sound of 'temporary' cannot wholly present its spelling.</p>
+    <div class="rgroup" id="rg37">
+      <label class="rlabel"><input type="radio" name="q37" value="TRUE" onchange="upd()"> TRUE</label>
+      <label class="rlabel"><input type="radio" name="q37" value="FALSE" onchange="upd()"> FALSE</label>
+      <label class="rlabel"><input type="radio" name="q37" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+    </div>
+  </div>
+  <p class="qnum-head"><em>Questions 38&ndash;40</em></p>
+  <p class="qinst">Look at the following sentences and the list of statements below. Match each statement with the correct sentence, A-D.</p>
+  <div class="fbox">
+    <div class="frow"><span class="fkey">A</span> Since the speakers can pronounce it with less effort</div>
+    <div class="frow"><span class="fkey">B</span> Assimilation of a sound under the influence of a neighbouring one</div>
+    <div class="frow"><span class="fkey">C</span> It is a trend for changes in pronunciation in a large scale in a given period</div>
+    <div class="frow"><span class="fkey">D</span> Because the speaker can pronounce [n] and [t] both in the same time</div>
+  </div>
+  <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody>
+  <tr><td class="mx-stmt"><span class="mx-num">38</span> As a consequence, 'b' will be pronounced as</td><td><label class="mx-cell"><input type="radio" name="q38" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="D" onchange="upd()"></label></td></tr>
+  <tr><td class="mx-stmt"><span class="mx-num">39</span> The pronunciation of [mt] changed to [nt]</td><td><label class="mx-cell"><input type="radio" name="q39" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="D" onchange="upd()"></label></td></tr>
+  <tr><td class="mx-stmt"><span class="mx-num">40</span> The omit of 't' in the sound of Christmas</td><td><label class="mx-cell"><input type="radio" name="q40" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q40" value="D" onchange="upd()"></label></td></tr>
+  </tbody></table></div>
+</div>
+  </div>
+</div>
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1" onclick="switchPart(1)">Part 1</button>
+    <button class="ptab-nav" id="ptn2" onclick="switchPart(2)">Part 2</button>
+    <button class="ptab-nav" id="ptn3" onclick="switchPart(3)">Part 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">&#10003; Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">&times;</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>&#10003;/&#10007;</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">&#128260; Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">&#8617; Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const CA = {1:"viii",2:"iv",3:"ix",4:"vi",5:"v",6:"vii",7:"iii",8:"x",9:"D",10:"E",11:"B",12:"G",13:"A",14:["clay"],15:["water"],16:["straw"],17:["cow manure"],18:["950 degrees","950 degress","950"],19:["60 minutes","60 mins","60"],20:"TRUE",21:"TRUE",22:"FALSE",23:"NOT GIVEN",24:"C",25:"B",26:"A",27:["sound laws"],28:["fashion"],29:["imperfect"],30:["principle of ease","minimization of effort"],31:"FALSE",32:"FALSE",33:"NOT GIVEN",34:"TRUE",35:"TRUE",36:"NOT GIVEN",37:"TRUE",38:"C",39:"B",40:"A"};
+const CAL = {1:"viii",2:"iv",3:"ix",4:"vi",5:"v",6:"vii",7:"iii",8:"x",9:"D",10:"E",11:"B",12:"G",13:"A",14:["clay"],15:["water"],16:["straw"],17:["cow manure"],18:["950 degrees","950 degress","950"],19:["60 minutes","60 mins","60"],20:"TRUE",21:"TRUE",22:"FALSE",23:"NOT GIVEN",24:"C",25:"B",26:"A",27:["sound laws"],28:["fashion"],29:["imperfect"],30:["principle of ease","minimization of effort"],31:"FALSE",32:"FALSE",33:"NOT GIVEN",34:"TRUE",35:"TRUE",36:"NOT GIVEN",37:"TRUE",38:"C",39:"B",40:"A"};
+
+let curPart=1, curQ=1, timerS=3600, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let checked=false, timeExpired=false;
+let lastScore=0,lastP1=0,lastP2=0,lastP3=0;
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupMatchingHeadings();
+  setupHLToolbar();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(4,7,14,0.88);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(160deg,#141b2e 0%,#0d1424 55%,#060a14 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.6);border:1px solid rgba(56,189,248,0.25);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:150px;height:150px;background:rgba(56,189,248,0.10);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-60px;left:-30px;width:130px;height:130px;background:rgba(250,204,21,0.06);border-radius:50%;"></div>
+        <div style="position:relative;z-index:2;">
+            <div style="width:76px;height:76px;margin:0 auto 14px;border-radius:50%;background:radial-gradient(circle,rgba(56,189,248,0.28) 0%,rgba(56,189,248,0.05) 70%);box-shadow:0 0 26px 6px rgba(56,189,248,0.22);display:flex;align-items:center;justify-content:center;font-size:38px;">&#128214;</div>
+            <div style="display:inline-block;background:rgba(250,204,21,0.14);color:#fbbf24;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(250,204,21,0.35);">Authentic Full Test</div>
+            <h2 style="margin:0 0 8px;font-size:25px;font-weight:800;line-height:1.25;color:#fff;">IELTS Reading &mdash; Full Test</h2>
+            <p style="margin:0 0 4px;font-size:15px;color:#cbd5e1;">3 passages &bull; 40 questions &bull; <span style="color:#fbbf24;font-weight:700;">answer key &amp; band score</span></p>
+            <p style="margin:14px 0 6px;font-size:14px;color:#e2e8f0;">Prepared by <strong style="color:#fbbf24;">I. Bekhruz</strong></p>
+            <p style="margin:0 0 18px;font-size:13px;color:#94a3b8;">Follow for more authentic tests, tips &amp; daily practice &#128071;</p>
+            <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(250,204,21,0.18);border-radius:12px;padding:12px 14px;margin-bottom:22px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;color:#cbd5e1;">&#127919; <strong style="color:#fbbf24;">Exam Mode</strong> runs a 60-minute countdown that auto-submits at zero &mdash; just like exam day. &#129496; <strong style="color:#fbbf24;">Casual Mode</strong> counts your time up with no limit, so you can practise at your own pace.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;background:#fff;color:#0f172a;text-decoration:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.3);">
+                    <svg style="width:17px;height:17px;fill:#0f172a;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    Join @bekhruzposts
+                </a>
+                <button id="examBtn" style="background:#DC2626;color:#fff;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">&#127919; Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.95);color:#0f172a;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">&#129496; Casual Mode</button>
+            </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+    function go(m){
+        startMode(m);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => go('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => go('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+const partRange={1:[1,13],2:[14,26],3:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+function goQ(n){
+  let tp=n<=13?1:n<=26?2:3;
+  if(tp!==curPart) switchPart(tp);
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(1,curQ-1);goQ(n);}
+
+function getQEl(n){
+  if(typeof PICK!=='undefined' && PICK[n]) return document.getElementById('grp'+PICK[n].g);
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+function getAns(n){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    const sel=[...document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]:checked')].map(c=>c.value).sort();
+    return sel[PICK[n].qs.indexOf(n)]||'';
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+function upd(){
+  if(checked) return;
+  let tot=0;
+  for(let i=1;i<=40;i++){
+    const a=isAns(i);if(a)tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of 40 answered';
+}
+
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function fmt(s){const m=Math.floor(s/60);s=s%60;return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const d=document.getElementById('timer'), b=document.getElementById('mode-badge');
+  if(m==='casual'){ elapsed=0; d.textContent='00:00'; d.classList.remove('warn');
+    if(b){b.textContent='🧘 Casual'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#0f172a;color:#fbbf24;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+  else { d.textContent=fmt(timerS);
+    if(b){b.textContent='🎯 Exam'; b.style.cssText='display:inline-flex;align-items:center;gap:4px;margin-left:8px;background:#DC2626;color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:9999px;';} }
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='casual'){ d.textContent=fmt(elapsed); return; }
+  if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+  timerS--;
+  d.textContent=fmt(timerS);
+  d.classList.toggle('warn',timerS<=300&&timerS>0);
+}
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  clearInterval(tInt);tRun=false;
+
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  let sc=0,p1=0,p2=0,p3=0;
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i);
+    if(ok){sc++;if(i<=13)p1++;else if(i<=26)p2++;else p3++;}
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+  }
+  lastScore=sc;lastP1=p1;lastP2=p2;lastP3=p3;
+  document.getElementById('cnt').textContent=sc+' of 40 correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+}
+
+const PICK={};
+function pickCap(g,max,cb){
+  const ch=[...document.querySelectorAll('input[name="pg_'+g+'"]:checked')];
+  if(ch.length>max) cb.checked=false;
+  upd();
+}
+
+function markQ(n,ok){
+  if(typeof PICK!=='undefined' && PICK[n]){
+    document.querySelectorAll('input[name="pg_'+PICK[n].g+'"]').forEach(cb=>{
+      const lb=cb.closest('label'); if(!lb)return;
+      if(PICK[n].set.includes(cb.value)) lb.classList.add('ok');
+      else if(cb.checked) lb.classList.add('bad');
+    });
+    return;
+  }
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+function band(n){
+  if(n>=39)return'9.0';if(n>=37)return'8.5';if(n>=35)return'8.0';
+  if(n>=33)return'7.5';if(n>=30)return'7.0';if(n>=27)return'6.5';
+  if(n>=23)return'6.0';if(n>=19)return'5.5';if(n>=15)return'5.0';
+  if(n>=13)return'4.5';return'4.0';
+}
+
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(let i=1;i<=40;i++){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+function showResults(){
+  const pct=Math.round(lastScore/40*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Test complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num">${lastScore}</span><span class="res-ring-den">/ 40</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div class="res-band">Band ${band(lastScore)}<em>estimated</em></div>
+        <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+      </div>
+    </div>
+    <div class="res-parts">
+      <div class="res-part"><div class="res-part-lbl">Part 1</div><div class="res-part-val">${lastP1}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-1"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 2</div><div class="res-part-val">${lastP2}/13</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-2"></div></div></div>
+      <div class="res-part"><div class="res-part-lbl">Part 3</div><div class="res-part-val">${lastP3}/14</div><div class="res-part-bar"><div class="res-part-fill" id="res-bar-3"></div></div></div>
+    </div>`;
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    document.getElementById('res-bar-1').style.width=(lastP1/13*100)+'%';
+    document.getElementById('res-bar-2').style.width=(lastP2/13*100)+'%';
+    document.getElementById('res-bar-3').style.width=(lastP3/14*100)+'%';
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+const P1H=[
+  {q:1,t:"dried leaves from a nearby bush fell into the boiling water"},
+  {q:2,t:"first definitive book was written on tea, a book clearly reflecting zen buddhist philosophy"},
+  {q:3,t:"elevated to an art form in the japanese tea ceremony"},
+  {q:4,t:"first european to personally encounter tea and write about it was portuguese"},
+  {q:5,t:"immediately made it the domain of the wealthy"},
+  {q:6,t:"doctors and university authorities in holland argued as to its benefits or drawbacks"},
+  {q:7,t:"craze for all things oriental swept through europe"},
+  {q:8,t:"the journey was not easy"},
+  {q:9,t:"public largely ignored the scholarly debate and continued to enjoy their new beverage"},
+  {q:10,t:"tea remained popular in france for only about fifty years, being replaced"},
+  {q:11,t:"particular form of architecture for tea house"},
+  {q:12,t:"average caravan consisted of 200 to 300 camels"},
+  {q:13,t:"emperor shen nung was a skilled ruler, creative scientist"}
+];
+const P2H=[
+  {q:'14, 15',t:"mix it with a handful of organic material, such as used tea leaves, coffee grounds or rice hulls, add enough water"},
+  {q:'16, 17',t:"surround the pots with straw; put them in a mound of cow manure"},
+  {q:18,t:"up to 950 degrees after another 20 to 30 minutes"},
+  {q:19,t:"in less than 60 minutes the filters are finished"},
+  {q:20,t:"initial research found the local clay to be too fine"},
+  {q:21,t:"used coffee grounds have given the best results to date"},
+  {q:22,t:"the fuel can reach a temperature of 700 degrees in half an hour"},
+  {q:23,t:"remove common pathogens (disease-producing organisms) including e-coli"},
+  {q:24,t:"charity wanted to help set up a small industry manufacturing water filters"},
+  {q:25,t:"passages through the filter that are wide enough for water droplets to pass through, but too narrow for pathogens"},
+  {q:26,t:"no plans to patent his idea, there will be no legal obstacles"}
+];
+const P3H=[
+  {q:27,t:"such regular changes are often called sound laws"},
+  {q:28,t:"it is also possible that fashion plays a part"},
+  {q:29,t:"imitation of children is imperfect"},
+  {q:30,t:"one such force which is often invoked is the principle of ease"},
+  {q:31,t:"various sources of evidence for the pronunciations of earlier times"},
+  {q:32,t:"great social changes of the period: the increased power and wealth of the middle classes"},
+  {q:33,t:"it is also true that such deviations from adult speech are usually corrected"},
+  {q:34,t:"if they are merely random deviations they will cancel one another out and there will be no net change"},
+  {q:35,t:"greater efficiency has hereby been achieved, because /n/ and /t/ are articulated in the same place"},
+  {q:37,t:"temporary, which in britain is often pronounced as if it were tempory"},
+  {q:38,t:"all the [b] consonants in a certain position"},
+  {q:39,t:"word scant was once skamt, but the /m/ has been changed to /n/"},
+  {q:40,t:"at one time there was a [t] in words like castle and christmas"}
+];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+function setupHLToolbar(){
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+  const inPane=node=>!!(lp&&rp&&node&&(lp.contains(node)||rp.contains(node)));
+
+  function getBtn(){
+    let b=document.getElementById('hlBtn');
+    if(!b){
+      b=document.createElement('button');
+      b.id='hlBtn';b.type='button';b.textContent='🖊 Highlight';
+      b.addEventListener('mousedown',ev=>ev.preventDefault());
+      b.addEventListener('click',applyManualHL);
+      document.body.appendChild(b);
+    }
+    return b;
+  }
+  function showBtn(){
+    const sel=window.getSelection();
+    if(!sel||sel.toString().trim().length===0||sel.rangeCount===0){hideHLBtn();return;}
+    const range=sel.getRangeAt(0);
+    if(!inPane(range.commonAncestorContainer)){hideHLBtn();return;}
+    const r=range.getBoundingClientRect();
+    const b=getBtn();b.style.display='block';
+    let x=r.left+window.scrollX, y=r.top+window.scrollY-44;
+    x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-b.offsetWidth-8));
+    if(y<window.scrollY+4)y=r.bottom+window.scrollY+8;
+    b.style.left=x+'px';b.style.top=y+'px';
+  }
+
+  document.addEventListener('mouseup',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(['BUTTON','INPUT','SELECT','TEXTAREA','OPTION'].includes(e.target.tagName)){hideHLBtn();return;}
+    setTimeout(showBtn,10);
+  });
+  document.addEventListener('mousedown',e=>{ if(e.target.id!=='hlBtn')hideHLBtn(); });
+  document.addEventListener('touchend',e=>{
+    if(e.target.id==='hlBtn')return;
+    if(e.target.closest('#hlBtn,button,input,select,textarea,label'))return;
+    setTimeout(showBtn,80);
+  },{passive:true});
+
+  document.addEventListener('click',e=>{
+    const m=e.target.closest('mark.uhl');
+    if(!m)return;
+    e.stopPropagation();
+    const p=m.parentNode;if(!p)return;
+    while(m.firstChild)p.insertBefore(m.firstChild,m);
+    p.removeChild(m);p.normalize();
+    hideHLBtn();
+  });
+}
+
+function hideHLBtn(){const b=document.getElementById('hlBtn');if(b)b.style.display='none';}
+
+function applyManualHL(){
+  const sel=window.getSelection();
+  if(!sel||sel.rangeCount===0||!sel.toString().trim()){hideHLBtn();sel&&sel.removeAllRanges();return;}
+  const range=sel.getRangeAt(0);
+  const m=document.createElement('mark');m.className='uhl';m.title='Click to remove highlight';
+  try{range.surroundContents(m);}
+  catch{try{const f=range.extractContents();m.appendChild(f);range.insertNode(m);}catch(err){}}
+  sel.removeAllRanges();
+  hideHLBtn();
+}
+
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    var bank=box.dataset.bank||'';
+    var cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    var slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    var armed=null;
+    function place(slot,code){
+      if(checked)return;
+      var card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      var old=slot.dataset.val;if(old){var c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;var on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');var code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    var ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;var t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();var t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;var t=e.changedTouches[0];var el=document.elementFromPoint(t.clientX,t.clientY);var s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
+</script>
+</body>
+</html>
