@@ -6,11 +6,18 @@
 // The test library spans several template generations with different
 // scoring UIs (old doCheck()/#cnt text, an animated "results-score-fraction"
 // counter, a "Score: X/Y" modal) and no single JS hook works across all of
-// them. Instead of wrapping a specific function name, this watches the DOM
-// for whichever scoring output appears and reports the first one it finds —
-// works regardless of which template generation a given file uses.
+// them. Detection has two independent paths that both feed the same
+// checkNow(): a MutationObserver (catches the results DOM appearing no
+// matter what triggered it) and a delegated click listener on anything
+// that looks like a "check answers" button (catches it even if, on some
+// real-world page, the observer never gets a clean signal — e.g. a
+// continuously-ticking exam timer keeps the debounce from ever settling
+// during the long test-taking phase). Belt and suspenders, since a first
+// deploy of the observer-only version reportedly produced zero saved
+// Listening attempts in production despite passing every local test.
 (function () {
   if (typeof supabaseClient === 'undefined') return;
+  console.info('[report-progress] initialized on', location.pathname);
 
   let reported = false;
   let debounceTimer = null;
@@ -36,31 +43,58 @@
     return null;
   }
 
-  function checkNow() {
+  function checkNow(source) {
     if (reported) return;
-    let parsed = extractFromDataTarget();
-    if (!parsed) {
-      const cnt = document.getElementById('cnt');
-      if (cnt) parsed = extractFromText(cnt.textContent || '');
-    }
-    if (!parsed) parsed = extractFromText(document.body.innerText || '');
-    if (parsed) {
-      reported = true;
-      observer.disconnect();
-      reportProgress(parsed);
+    try {
+      let parsed = extractFromDataTarget();
+      if (!parsed) {
+        const cnt = document.getElementById('cnt');
+        if (cnt) parsed = extractFromText(cnt.textContent || '');
+      }
+      if (!parsed) parsed = extractFromText(document.body.innerText || '');
+      if (parsed) {
+        console.info('[report-progress] score detected via', source, '->', parsed);
+        reported = true;
+        observer.disconnect();
+        reportProgress(parsed);
+      }
+    } catch (err) {
+      console.error('[report-progress] checkNow threw:', err);
     }
   }
 
   function scheduleCheck() {
     if (reported) return;
     clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(checkNow, 300);
+    debounceTimer = setTimeout(() => checkNow('mutation'), 300);
   }
+
+  // Redundant path: clicking anything that looks like a "check/submit
+  // answers" control schedules several direct re-checks, independent of
+  // whatever the MutationObserver is or isn't seeing.
+  function looksLikeCheckTrigger(el) {
+    const text = (el.textContent || '').trim().toLowerCase();
+    const id = (el.id || '').toLowerCase();
+    const onclickAttr = (el.getAttribute('onclick') || '').toLowerCase();
+    return /check answer|submit|see (your )?score|see results|finish test/.test(text) ||
+      /check|submit/.test(id) ||
+      /checkanswers|runcheckanswers|docheck/.test(onclickAttr);
+  }
+
+  document.addEventListener('click', (e) => {
+    if (reported) return;
+    const el = e.target.closest('button, a, [role="button"]');
+    if (!el || !looksLikeCheckTrigger(el)) return;
+    console.info('[report-progress] check-like click detected on', el);
+    [200, 600, 1200, 2500, 5000].forEach((delay) => {
+      setTimeout(() => checkNow('click+' + delay + 'ms'), delay);
+    });
+  }, true);
 
   async function reportProgress(parsed) {
     try {
       const { data } = await supabaseClient.auth.getSession();
-      if (!data.session) return; // not logged in — nothing to report
+      if (!data.session) { console.warn('[report-progress] no session — not logged in, nothing saved'); return; }
 
       const section = location.pathname.includes('/listening/') ? 'listening' : 'reading';
       const { error } = await supabaseClient.from('test_attempts').insert({
@@ -75,12 +109,13 @@
       // silent RLS/permissions failure would otherwise go completely
       // unnoticed — score not saved, but no error surfaced anywhere.
       if (error) {
-        console.error('Saving test attempt failed:', error);
+        console.error('[report-progress] Saving test attempt failed:', error);
         return;
       }
+      console.info('[report-progress] attempt saved successfully');
       showFeedbackToast(parsed, data.session.user.id);
     } catch (err) {
-      console.warn('Progress reporting failed (test result itself is unaffected):', err);
+      console.error('[report-progress] reportProgress threw (attempt likely not saved):', err);
     }
   }
 
