@@ -2315,6 +2315,18 @@
     "file": null
   },
   {
+    "id": "listening-vol7-t1",
+    "section": "listening",
+    "tier": "full-volume",
+    "volume": 7,
+    "testNumber": 1,
+    "displayTitle": "Listening Test 1",
+    "status": "published",
+    "questionCount": 40,
+    "durationMinutes": 30,
+    "file": "listening/volume-7/test-1.html"
+  },
+  {
     "id": "listening-vol7-t2",
     "section": "listening",
     "tier": "full-volume",
@@ -2404,7 +2416,7 @@
     "tier": "full-volume",
     "volume": 7,
     "testNumber": null,
-    "displayTitle": "Volume 7 — More tests coming soon",
+    "displayTitle": "Volume 7 — Tests 9–10",
     "status": "coming-soon",
     "questionCount": 40,
     "durationMinutes": 30,
