@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Premium — Bekhruz IELTS</title>
+<meta name="description" content="Premium single-passage practice with full glossary, explanations, and mistake analytics.">
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-hdr">
+  <div class="hdr-inner">
+    <a class="brand" href="/"><span class="brand-mark">Bekhruz</span> IELTS</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/reading.html">Reading</a>
+      <a href="/listening.html">Listening</a>
+      <a href="/premium.html" class="active">✨ Premium</a>
+    </nav>
+    <div class="hdr-actions">
+      <a class="tg-follow" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">📣 @bekhruzposts</a>
+      <span id="auth-slot"><a class="btn-login" href="/login.html">Log in</a></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="eyebrow"><span class="dot" style="background:#a78bfa;box-shadow:0 0 8px #a78bfa"></span> Premium single-passage practice</div>
+    <h1>Go deeper on <span class="grad-text">every passage</span></h1>
+    <p>Full glossary, in-passage explanations, and (once you're in) a breakdown of exactly which question types trip you up.</p>
+  </div>
+</section>
+
+<div class="page-wrap" style="max-width:900px">
+  <div class="summary-row" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+    <div class="stat-box"><div class="num" style="font-size:20px">📖</div><div class="lbl">Full glossary + explanations on every passage</div></div>
+    <div class="stat-box"><div class="num" style="font-size:20px">🎯</div><div class="lbl">Mistake analytics — see your weak question types</div></div>
+    <div class="stat-box"><div class="num" style="font-size:20px">🔓</div><div class="lbl">3 passages free to try, no account needed</div></div>
+  </div>
+
+  <div class="gate-note" style="margin:40px auto" id="premium-note">
+    <h2>How to get Premium</h2>
+    <p>Premium access is granted manually for now — message <a href="https://t.me/bekhruzposts" target="_blank" rel="noopener" style="color:#7fb3ff">@bekhruzposts</a> on Telegram to arrange access. Once you're upgraded, log in on this site and every Premium passage unlocks automatically.</p>
+    <a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">Message on Telegram</a>
+  </div>
+
+  <div class="vol-group">
+    <h2>Try it free first</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <span class="badge-tier badge-premium">✨ Passage 1 · Free sample</span>
+        <div class="tc-title">Sydney Opera House</div>
+        <div class="tc-meta"><span>13 questions · 20 min</span></div>
+        <a class="tc-start" href="/tests/premium/sydney-opera-house.html">Start Test →</a>
+      </div>
+      <div class="test-card">
+        <span class="badge-tier badge-premium">✨ Passage 2 · Free sample</span>
+        <div class="tc-title">Walking and Shoes in Eighteenth-Century London</div>
+        <div class="tc-meta"><span>13 questions · 18 min</span></div>
+        <a class="tc-start" href="/tests/premium/walking-and-shoes.html">Start Test →</a>
+      </div>
+      <div class="test-card">
+        <span class="badge-tier badge-premium">✨ Passage 3 · Free sample</span>
+        <div class="tc-title">The New Zealand Writer Margaret Mahy</div>
+        <div class="tc-meta"><span>14 questions · 20 min</span></div>
+        <a class="tc-start" href="/tests/premium/margaret-mahy.html">Start Test →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-ftr">
+  &copy; 2026 Bekhruz IELTS · Prepared by I. Bekhruz · <a href="https://t.me/bekhruzposts" target="_blank" rel="noopener">Follow on Telegram</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/js/supabase-config.js"></script>
+<script src="/js/auth-nav.js"></script>
+<script>
+  supabaseClient.auth.getSession().then(async ({ data }) => {
+    if (!data.session) return;
+    const { data: profile } = await supabaseClient
+      .from('profiles').select('is_premium').eq('id', data.session.user.id).maybeSingle();
+    if (profile && profile.is_premium) {
+      document.getElementById('premium-note').innerHTML =
+        '<h2>You\'re a Premium member ✨</h2><p>All Premium passages are unlocked for your account. Head to <a href="/reading.html" style="color:#7fb3ff">Reading</a> and look for the passages marked Premium.</p>';
+    }
+  });
+</script>
+</body>
+</html>

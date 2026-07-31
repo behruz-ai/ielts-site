@@ -167,6 +167,8 @@ nav.main-nav a.active{background:var(--grad); color:#0a0a0f; font-weight:800}
   border-radius:9px; transition:transform .15s,box-shadow .15s; box-shadow:0 4px 14px rgba(239,68,68,.25);
 }
 .test-card .tc-start:hover{transform:translateY(-1px); box-shadow:0 6px 20px rgba(239,68,68,.4)}
+.test-card .tc-start.tc-locked{background:var(--premium-bg); color:var(--premium); box-shadow:none}
+.test-card .tc-start.tc-locked:hover{box-shadow:0 6px 20px rgba(167,139,250,.3)}
 .test-card.soon{opacity:.5}
 .test-card.soon .tc-start{
   background:var(--pill); color:var(--subtext); cursor:not-allowed; pointer-events:none; box-shadow:none;

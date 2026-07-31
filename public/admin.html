@@ -72,7 +72,7 @@
 
     const [{ data: attempts, error: attemptsErr }, { data: profiles, error: profilesErr }] = await Promise.all([
       supabaseClient.from('test_attempts').select('*').order('completed_at', { ascending: false }),
-      supabaseClient.from('profiles').select('id, email, role, created_at'),
+      supabaseClient.from('profiles').select('id, email, role, is_premium, created_at'),
     ]);
     if (attemptsErr || profilesErr) {
       content.innerHTML = '<div class="gate-note"><h2>Couldn\'t load data</h2><p>' +
@@ -97,9 +97,13 @@
       '</div>';
 
     html += '<h2 style="font-size:16px;margin:0 0 12px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Registered users</h2>';
-    html += '<table class="data-table" style="margin-bottom:34px"><thead><tr><th>Email</th><th>Role</th><th>Joined</th></tr></thead><tbody>';
+    html += '<table class="data-table" style="margin-bottom:34px"><thead><tr><th>Email</th><th>Role</th><th>Premium</th><th>Joined</th><th></th></tr></thead><tbody>';
     profiles.forEach((p) => {
-      html += '<tr><td>' + escapeHtml(p.email) + '</td><td>' + escapeHtml(p.role) + '</td><td>' + fmtDate(p.created_at) + '</td></tr>';
+      html += '<tr><td>' + escapeHtml(p.email) + '</td><td>' + escapeHtml(p.role) + '</td>' +
+        '<td><span class="score-pill ' + (p.is_premium ? 'good' : 'low') + '">' + (p.is_premium ? 'Yes' : 'No') + '</span></td>' +
+        '<td>' + fmtDate(p.created_at) + '</td>' +
+        '<td><button class="btn-logout premium-toggle" data-id="' + p.id + '" data-current="' + (p.is_premium ? '1' : '0') + '" type="button">' +
+        (p.is_premium ? 'Revoke Premium' : 'Grant Premium') + '</button></td></tr>';
     });
     html += '</tbody></table>';
 
@@ -119,6 +123,21 @@
     }
     html += '</div>';
     content.innerHTML = html;
+
+    content.querySelectorAll('.premium-toggle').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const id = btn.dataset.id;
+        const nextValue = btn.dataset.current !== '1';
+        btn.disabled = true; btn.textContent = 'Saving…';
+        const { error } = await supabaseClient.from('profiles').update({ is_premium: nextValue }).eq('id', id);
+        if (error) {
+          btn.disabled = false; btn.textContent = 'Failed — retry';
+          console.error(error);
+          return;
+        }
+        render();
+      });
+    });
   }
 
   render();

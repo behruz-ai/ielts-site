@@ -8,11 +8,22 @@
   if (!root) return;
   const section = root.dataset.section; // "reading" | "listening"
 
-  const state = { tier: 'all', volume: 'all' };
+  const state = { tier: 'all', volume: 'all', isPremiumUser: false };
 
-  fetch('/data/tests.json')
-    .then((r) => r.json())
-    .then((all) => {
+  const premiumStatus = (typeof supabaseClient === 'undefined')
+    ? Promise.resolve(false)
+    : supabaseClient.auth.getSession().then(({ data }) => {
+        if (!data.session) return false;
+        return supabaseClient.from('profiles').select('is_premium').eq('id', data.session.user.id)
+          .maybeSingle().then(({ data: profile }) => !!(profile && profile.is_premium));
+      }).catch(() => false);
+
+  Promise.all([
+    fetch('/data/tests.json').then((r) => r.json()),
+    premiumStatus,
+  ])
+    .then(([all, isPremiumUser]) => {
+      state.isPremiumUser = isPremiumUser;
       const items = all.filter((t) => t.section === section);
       init(items);
     })
@@ -33,7 +44,6 @@
     const tiers = uniq(items.map((t) => t.tier));
     const tierLabel = {
       'full-volume': 'Full Volume Tests',
-      'lite-passage': 'Single Passages',
       'premium-passage': 'Premium Passages',
     };
 
@@ -70,7 +80,6 @@
     }
 
     const fullVolume = filtered.filter((t) => t.tier === 'full-volume');
-    const litePassage = filtered.filter((t) => t.tier === 'lite-passage');
     const premiumPassage = filtered.filter((t) => t.tier === 'premium-passage');
 
     let html = '';
@@ -82,16 +91,6 @@
           .filter((t) => t.volume === v)
           .sort((a, b) => (a.testNumber || 999) - (b.testNumber || 999));
         html += `<div class="vol-group"><h2>Volume ${v}</h2><div class="test-grid">`;
-        html += tests.map(cardHtml).join('');
-        html += `</div></div>`;
-      });
-    }
-
-    if (litePassage.length) {
-      const types = uniq(litePassage.map((t) => t.passageType)).sort();
-      types.forEach((pt) => {
-        const tests = litePassage.filter((t) => t.passageType === pt);
-        html += `<div class="vol-group"><h2>${pt}</h2><div class="test-grid">`;
         html += tests.map(cardHtml).join('');
         html += `</div></div>`;
       });
@@ -112,16 +111,19 @@
 
   function cardHtml(t) {
     const soon = t.status === 'coming-soon';
+    const locked = t.tier === 'premium-passage' && t.access === 'premium' && !state.isPremiumUser;
     const badge = soon
       ? '<span class="badge-soon">Coming soon</span>'
-      : t.tier === 'lite-passage'
-      ? `<span class="badge-tier">${escapeHtml(t.passageType || '')}</span>`
       : t.tier === 'premium-passage'
-      ? `<span class="badge-tier badge-premium">✨ ${escapeHtml(t.passageType || '')} Premium</span>`
+      ? (t.access === 'free'
+          ? `<span class="badge-tier badge-premium">✨ ${escapeHtml(t.passageType || '')} · Free sample</span>`
+          : `<span class="badge-tier badge-premium">🔒 ${escapeHtml(t.passageType || '')} Premium</span>`)
       : '';
     const meta = `${t.questionCount} questions · ${t.durationMinutes} min`;
     const startBtn = soon
       ? '<span class="tc-start">Coming soon</span>'
+      : locked
+      ? '<a class="tc-start tc-locked" href="/premium.html">🔒 Get Premium →</a>'
       : `<a class="tc-start" href="/tests/${t.file}">Start Test →</a>`;
 
     return `<div class="test-card${soon ? ' soon' : ''}">
