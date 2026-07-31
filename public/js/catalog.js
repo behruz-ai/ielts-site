@@ -31,7 +31,11 @@
     if (!bar) return;
 
     const tiers = uniq(items.map((t) => t.tier));
-    const tierLabel = { 'full-volume': 'Full Volume Tests', 'lite-passage': 'Single Passages' };
+    const tierLabel = {
+      'full-volume': 'Full Volume Tests',
+      'lite-passage': 'Single Passages',
+      'premium-passage': 'Premium Passages',
+    };
 
     const chips = [];
     chips.push(chip('All', 'all', 'tier', true));
@@ -67,6 +71,7 @@
 
     const fullVolume = filtered.filter((t) => t.tier === 'full-volume');
     const litePassage = filtered.filter((t) => t.tier === 'lite-passage');
+    const premiumPassage = filtered.filter((t) => t.tier === 'premium-passage');
 
     let html = '';
 
@@ -92,6 +97,16 @@
       });
     }
 
+    if (premiumPassage.length) {
+      const types = uniq(premiumPassage.map((t) => t.passageType)).sort();
+      types.forEach((pt) => {
+        const tests = premiumPassage.filter((t) => t.passageType === pt);
+        html += `<div class="vol-group"><h2>${pt} — Premium</h2><div class="test-grid">`;
+        html += tests.map(cardHtml).join('');
+        html += `</div></div>`;
+      });
+    }
+
     root.innerHTML = html;
   }
 
@@ -101,6 +116,8 @@
       ? '<span class="badge-soon">Coming soon</span>'
       : t.tier === 'lite-passage'
       ? `<span class="badge-tier">${escapeHtml(t.passageType || '')}</span>`
+      : t.tier === 'premium-passage'
+      ? `<span class="badge-tier badge-premium">✨ ${escapeHtml(t.passageType || '')} Premium</span>`
       : '';
     const meta = `${t.questionCount} questions · ${t.durationMinutes} min`;
     const startBtn = soon

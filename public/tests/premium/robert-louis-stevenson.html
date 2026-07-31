@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>IELTS Reading – Robert Louis Stevenson | bekhruzposts</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;font-size:16px;line-height:1.6;background:#fff;color:#111827}
+
+/* ── THEME ── */
+[data-theme=dark]{--bg:#0f1115;--panel:#181a20;--border:#2a2d35;--text:#e5e7eb;--subtext:#9ca3af;--inp:#1f2128;--inpb:#3a3d46;--hdr:#181a20;--nav:#181a20;--tbg:#23252c;--phdr:#1e2027;--mdbg:#181a20}
+[data-theme=night]{--bg:#1a1410;--panel:#211a14;--border:#3a2f24;--text:#e3d2b8;--subtext:#a8927a;--inp:#241d16;--inpb:#4a3c2c;--hdr:#211a14;--nav:#211a14;--tbg:#2b2218;--phdr:#28201a;--mdbg:#211a14}
+:root{--bg:#fff;--panel:#fff;--border:#e5e7eb;--text:#111827;--subtext:#6b7280;--inp:#fff;--inpb:#d1d5db;--hdr:#fff;--nav:#fff;--tbg:#f9fafb;--phdr:#f3f4f6;--mdbg:#fff;--txtscale:1}
+body{background:var(--bg);color:var(--text)}
+[data-theme=night] body{background:var(--bg)}
+[data-theme=night] .pcontent p,[data-theme=night] .qprompt{color:#e3d2b8}
+[data-theme=night] mark.hy{background:#5a4a1a;color:#f5e6c8}
+[data-theme=night] mark.hg{background:#1f4a30;color:#d8f5e0}
+[data-theme=night] mark.hp{background:#4a1f3a;color:#f5d8ec}
+[data-theme=night] mark.hb{background:#1f3550;color:#d8e6f5}
+
+/* ── FONT SIZE CONTROL ── */
+#fsz{display:flex;align-items:center;gap:6px;background:var(--tbg);border:1px solid var(--border);border-radius:8px;padding:3px 4px;flex-shrink:0}
+.fsz-btn{width:26px;height:26px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);display:flex;align-items:center;justify-content:center;transition:background .15s}
+.fsz-btn:hover{background:var(--phdr)}
+.fsz-btn:disabled{opacity:.3;cursor:not-allowed}
+#fsz-lbl{font-size:11px;font-weight:700;color:var(--subtext);min-width:34px;text-align:center;font-variant-numeric:tabular-nums}
+
+/* ── HEADER ── */
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;background:var(--hdr);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 18px;gap:14px;z-index:200;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .3s}
+#hdr-left{flex:1;display:flex;align-items:center;gap:8px;min-width:0}
+#hdr-title{font-size:22px;font-weight:800;white-space:nowrap;color:#DC2626;letter-spacing:.3px}
+#hdr-center{flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+#hdr-right{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:10px}
+#timer{font-size:14px;font-weight:600;color:var(--text);background:var(--tbg);border-radius:8px;padding:5px 12px;min-width:60px;text-align:center;font-variant-numeric:tabular-nums;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;transition:background .3s}
+#timer.warn{color:#dc2626;animation:blink 1s steps(1) infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.circ{width:30px;height:30px;border-radius:8px;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.circ:hover{background:var(--phdr)}
+.circ svg{pointer-events:none}
+.tg-btn{display:inline-flex;align-items:center;gap:7px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:5px 14px;font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:background .15s,color .15s}
+.tg-btn:hover{background:#dbeafe;color:#1e40af}
+[data-theme=dark] .tg-btn{color:#93c5fd;border-color:#1e3a8a;background:#13203a}
+[data-theme=dark] .tg-btn:hover{background:#1c2c4f}
+.tg-ico{width:16px;height:16px;background:currentColor;display:inline-block;mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z'/%3E%3C/svg%3E");mask-size:contain;mask-repeat:no-repeat}
+
+/* ── BANNER ── */
+#banner{position:fixed;top:52px;left:0;right:0;background:var(--phdr);border-bottom:1px solid var(--border);padding:10px 20px;z-index:190;font-size:14px;transition:background .3s}
+#banner strong{display:block;font-size:15px;font-weight:700;margin-bottom:2px;color:var(--text)}
+#banner span{color:var(--subtext)}
+
+/* ── MAIN SPLIT ── */
+#main{position:fixed;left:0;right:0;bottom:56px;display:flex}
+#left-pane{width:50%;overflow-y:auto;background:var(--panel);border-right:1px solid var(--border);transition:background .3s}
+#drag{width:6px;background:var(--bg);cursor:col-resize;flex-shrink:0;position:relative;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+#drag:hover,#drag.on{background:var(--phdr)}
+#drag::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:3px;height:32px;background:var(--inpb);border-radius:2px}
+#right-pane{flex:1;overflow-y:auto;background:var(--panel);transition:background .3s}
+
+/* ── PASSAGE TABS ── */
+.ptabs{display:flex;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+.ptab{padding:11px 16px;font-size:13px;border:none;border-bottom:2px solid transparent;background:none;cursor:pointer;color:var(--subtext);font-weight:600;transition:all .15s}
+.ptab.on{font-weight:700;color:#DC2626;border-bottom-color:#DC2626}
+.ptab:hover:not(.on){background:var(--phdr);color:var(--text)}
+.pcontent{display:none;padding:24px}
+.pcontent.on{display:block}
+.ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
+.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
+.pl{font-weight:700;margin-right:5px}
+.ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
+.ahl > span{display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;border-radius:4px;padding:1px 5px;margin-right:3px;vertical-align:super;line-height:1.2;position:static;top:auto;right:auto;width:auto;height:auto;z-index:auto}
+.hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
+[data-theme=dark] .hl-tip{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+
+/* ── QUESTIONS ── */
+.qsec{display:none;padding:24px}
+.qsec.on{display:block}
+.qblock{margin-bottom:30px}
+.qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
+.qinst strong{font-style:normal}
+.qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
+.qtitle{font-weight:800;font-size:15px;text-align:center;margin-bottom:14px;color:var(--text)}
+.qitem{margin-bottom:18px}
+.qprompt{font-size:calc(15px * var(--txtscale,1));margin-bottom:7px;color:var(--text);line-height:1.6}
+.qprompt strong{border:1px solid var(--border);border-radius:6px;padding:2px 7px;background:var(--phdr);font-size:calc(13px * var(--txtscale,1));color:var(--text)}
+
+/* notes / inline block */
+.notesbox{line-height:3.2;font-size:calc(15px * var(--txtscale,1));color:var(--text)}
+.nbsec{font-weight:700;display:block;margin:14px 0 4px;color:var(--text);font-size:14px;text-transform:uppercase;letter-spacing:.3px}
+.nbsec:first-child{margin-top:0}
+.nbul{list-style:disc;padding-left:22px}
+.nbul li{margin-bottom:2px;line-height:3.2}
+
+/* TF / MC options */
+.rgroup{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.rlabel{display:flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:var(--inp);font-size:calc(14px * var(--txtscale,1));color:var(--text);transition:background .12s,border-color .12s}
+.rlabel:hover{background:var(--phdr);border-color:var(--inpb)}
+.rlabel input{accent-color:#2563eb;cursor:pointer;flex-shrink:0}
+.rlabel:has(input:checked){background:#eff6ff;border-color:#93c5fd}
+[data-theme=dark] .rlabel:has(input:checked){background:#13203a;border-color:#1e3a8a}
+.rlabel.ok{background:#f0fdf4!important;border-color:#22c55e!important}
+.rlabel.bad{background:#fef2f2!important;border-color:#ef4444!important}
+.mc-key{font-weight:700;min-width:18px}
+
+/* selects / text inputs */
+.ai{border:1px solid var(--inpb);border-radius:6px;background:var(--inp);padding:5px 9px;font-size:calc(14px * var(--txtscale,1));font-weight:600;color:var(--text);transition:border-color .15s,box-shadow .15s;vertical-align:middle}
+.ai:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12);outline:none}
+.ai.ok{border-color:#22c55e!important;background:#f0fdf4!important}
+.ai.bad{border-color:#ef4444!important;background:#fef2f2!important}
+input.ai{min-width:140px;height:30px;display:inline-block}
+input.ai.sm{min-width:100px}
+select.ai{height:32px;cursor:pointer}
+.cad{color:#16a34a;font-weight:600;font-size:13px;margin-left:6px;display:inline}
+.cad em{background:#f0fdf4;padding:1px 6px;border-radius:4px;font-style:normal}
+
+.gloss{color:inherit}
+body.post-check .gloss{border-bottom:1.5px dotted #0d9488;cursor:pointer}
+body.post-check .gloss:hover{background:rgba(13,148,136,.1)}
+#glossPop{position:absolute;display:none;z-index:9998;background:var(--mdbg);border:1px solid var(--border);border-radius:12px;padding:12px 15px;max-width:300px;box-shadow:0 10px 30px rgba(0,0,0,.2);font-size:13.5px;line-height:1.5}
+#glossPop.show{display:block}
+#glossPop .gp-word{font-weight:800;color:#0d9488;font-size:14.5px;margin-bottom:4px;text-transform:capitalize}
+#glossPop .gp-def{color:var(--text);margin-bottom:6px}
+#glossPop .gp-syn{color:var(--subtext);font-size:12.5px}
+#glossPop .gp-syn b{color:var(--text);font-weight:700}
+#glossPop .gp-uz{color:var(--subtext);font-size:12.5px;margin-top:6px;padding-top:6px;border-top:1px dashed var(--border)}
+#glossPop .gp-uz b{color:#0d9488;font-weight:700}
+
+.expl-btn{display:none;align-items:center;gap:4px;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:9999px;font-size:11.5px;font-weight:700;padding:3px 10px;margin-left:8px;cursor:pointer;white-space:nowrap;vertical-align:middle}
+body.post-check .expl-btn{display:inline-flex}
+.expl-btn:hover{background:#dbeafe}
+[data-theme=dark] .expl-btn,[data-theme=night] .expl-btn{background:#13203a;color:#93c5fd;border-color:#1e3a8a}
+.expl-box{display:none;background:var(--phdr);border:1px solid var(--border);border-left:3px solid #1d4ed8;border-radius:0 8px 8px 0;padding:10px 13px;margin-top:7px;font-size:calc(13px * var(--txtscale,1));line-height:1.6;color:var(--text)}
+.expl-box.show{display:block}
+.expl-box b{color:#1d4ed8}
+[data-theme=dark] .expl-box b,[data-theme=night] .expl-box b{color:#93c5fd}
+.expl-kw{background:#fef9c3;padding:0 4px;border-radius:3px;font-weight:600}
+[data-theme=dark] .expl-kw,[data-theme=night] .expl-kw{background:#3f3a10}
+.expl-uz{margin-top:7px;padding-top:7px;border-top:1px dashed var(--border);color:var(--subtext);font-size:calc(12.5px * var(--txtscale,1));line-height:1.6}
+.expl-uz b{color:var(--text)}
+.expl-uz .expl-kw-uz{background:#ede9fe;padding:0 4px;border-radius:3px;font-weight:600;color:#5b21b6}
+[data-theme=dark] .expl-uz .expl-kw-uz,[data-theme=night] .expl-uz .expl-kw-uz{background:#2e1a4d;color:#c4b5fd}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
+/* feature / word list boxes */
+.fbox,.wbox,.sbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:15px 17px;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));color:var(--text)}
+.fbox strong,.wbox strong{display:block;margin-bottom:9px;font-size:13px;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext)}
+.frow{display:flex;gap:7px;margin-bottom:4px}
+.fkey{font-weight:700;min-width:22px}
+.wgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:8px}
+.wi{display:flex;gap:4px;font-size:13px}
+.wk{font-weight:700}
+.sbox{line-height:3.0;font-size:calc(15px * var(--txtscale,1))}
+
+/* ── BOTTOM NAV ── */
+#nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
+.arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+.arr:hover{background:var(--phdr)}
+.ptabs-nav{display:flex;gap:2px;flex-shrink:0}
+.ptab-nav{padding:8px 13px;background:none;border:none;cursor:pointer;font-size:13px;color:var(--subtext);border-radius:6px;font-weight:600;transition:background .15s}
+.ptab-nav:hover{background:var(--phdr)}
+.ptab-nav.on{font-weight:700;color:#DC2626}
+#qrow{display:flex;gap:4px;overflow-x:auto;flex:1;align-items:center;padding:3px 0;scrollbar-width:thin}
+#qrow::-webkit-scrollbar{height:3px}
+#qrow::-webkit-scrollbar-thumb{background:var(--inpb);border-radius:2px}
+.sqbtn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--inp);color:var(--text);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .12s,background .1s}
+.sqbtn:hover:not(.cok):not(.cno){background:var(--phdr);transform:scale(1.08)}
+.sqbtn.ans{background:#dbeafe;border-color:#93c5fd;color:#1e40af}
+.sqbtn.cur{background:#fff!important;color:#111!important;border:2px solid #2563eb!important}
+.sqbtn.cok{background:#16a34a!important;color:#fff!important;border-color:#16a34a!important}
+.sqbtn.cno{background:#dc2626!important;color:#fff!important;border-color:#dc2626!important}
+[data-theme=dark] .sqbtn.ans{background:#13203a;border-color:#1e3a8a;color:#93c5fd}
+#cnt{font-size:12px;font-weight:600;white-space:nowrap;color:var(--subtext);flex-shrink:0}
+#chk-btn{background:#DC2626;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:700;padding:9px 18px;min-width:140px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s;box-shadow:0 1px 3px rgba(220,38,38,.3)}
+#chk-btn:hover:not(:disabled){background:#b91c1c}
+#chk-btn:disabled{opacity:.5;cursor:not-allowed}
+#chk-btn.done{background:#16a34a;box-shadow:0 1px 3px rgba(22,163,74,.3)}
+#chk-btn.done:hover{background:#15803d}
+
+/* ── HIGHLIGHT TOOLBAR ── */
+#hltb{position:fixed;z-index:9999;background:var(--mdbg);border:1px solid var(--border);border-radius:13px;padding:10px 12px;display:none;flex-direction:column;gap:7px;min-width:150px;box-shadow:0 10px 32px rgba(0,0,0,.16)}
+#hltb.show{display:flex;animation:tpop .14s cubic-bezier(.34,1.56,.64,1)}
+@keyframes tpop{from{opacity:0;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+.hls{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--subtext);padding:0 2px}
+.hcrow{display:flex;gap:6px}
+.hd{width:26px;height:26px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .14s}
+.hd:hover{transform:scale(1.2);box-shadow:0 2px 8px rgba(0,0,0,.16);border-color:var(--border)}
+.hdy{background:#FEF08A}.hdg{background:#BBF7D0}.hdp{background:#FBCFE8}.hdb{background:#BFDBFE}
+.hdiv{height:1px;background:var(--border);margin:0 -2px}
+.htb{display:flex;align-items:center;gap:6px;padding:6px 9px;border:none;border-radius:6px;background:none;color:var(--text);cursor:pointer;font-size:12px;font-weight:600;width:100%;text-align:left;transition:background .13s}
+.htb.nt:hover{color:#2563eb;background:#eff6ff}
+.htb.rm:hover{color:#d97706;background:#fffbeb}
+.htb.cl:hover{color:#dc2626;background:#fef2f2}
+mark.hy{background:#FEF08A;border-radius:2px;padding:1px 0;cursor:pointer;color:#000}
+mark.hg{background:#BBF7D0;border-radius:2px;padding:1px 0;cursor:pointer;color:#000}
+mark.hp{background:#FBCFE8;border-radius:2px;padding:1px 0;cursor:pointer;color:#000}
+mark.hb{background:#BFDBFE;border-radius:2px;padding:1px 0;cursor:pointer;color:#000}
+[data-theme=dark] mark.hy{background:#78450a;color:#fff}
+[data-theme=dark] mark.hg{background:#145230;color:#fff}
+[data-theme=dark] mark.hp{background:#7e1040;color:#fff}
+[data-theme=dark] mark.hb{background:#1a3260;color:#fff}
+
+/* ── MODALS ── */
+.ov{position:fixed;inset:0;background:rgba(10,10,20,.5);backdrop-filter:blur(3px);z-index:1000;display:none;align-items:center;justify-content:center}
+.ov.show{display:flex}
+.md{background:var(--mdbg);border-radius:16px;padding:24px;width:92%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;position:relative;border:1px solid var(--border);box-shadow:0 20px 50px rgba(0,0,0,.2);animation:sup .2s ease}
+@keyframes sup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.md-x{position:absolute;top:11px;right:15px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--subtext);line-height:1}
+.md-x:hover{color:var(--text)}
+.md h2{text-align:center;font-size:21px;font-weight:800;margin-bottom:16px;color:var(--text)}
+.md h3{font-size:15px;font-weight:700;margin-bottom:11px;color:var(--text)}
+
+/* results */
+.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;border-bottom:1px solid var(--border);padding-bottom:13px;margin-bottom:16px}
+.srow p{font-size:14px;color:var(--subtext)}
+.srow span{display:inline-block;padding:4px 12px;margin-left:5px;border-radius:9999px;background:var(--phdr);font-weight:700;color:var(--text);font-size:14px}
+.rth{display:grid;grid-template-columns:48px 1fr 1fr 44px;padding:8px 8px;background:var(--phdr);border-radius:8px 8px 0 0;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin-top:3px}
+.rtw{overflow-y:auto;flex:1}
+.rrow{display:grid;grid-template-columns:48px 1fr 1fr 44px;gap:10px;padding:9px 8px;border-bottom:1px solid var(--border);font-size:14px;align-items:center}
+.rrow.rok{background:#f0fdf4}
+.rrow.rno{background:#fef2f2}
+[data-theme=dark] .rrow.rok{background:#0f2e1a}
+[data-theme=dark] .rrow.rno{background:#2e0f0f}
+.rn{background:var(--inp);border:1px solid var(--border);border-radius:8px;width:38px;height:27px;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+.ru{background:var(--phdr);border:1px solid var(--border);padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+.rc{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:600;padding:3px 8px;border-radius:6px;font-size:13px;word-break:break-word}
+[data-theme=dark] .rc{background:#0f2e20;border-color:#1a5c3a;color:#6ee7b7}
+.rs{font-size:14px;font-weight:700;text-align:center}
+.rs.ok{color:#16a34a}.rs.no{color:#dc2626}
+.md-ftbtns{display:flex;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.md-ftbtns button{flex:1;background:var(--phdr);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:700;cursor:pointer}
+.md-ftbtns button:hover{background:var(--border)}
+
+/* ── FLASHY RESULTS ── */
+.md-flashy{padding:20px 20px 24px}
+.res-hero{background:linear-gradient(135deg,#ef4444 0%,#DC2626 45%,#7f1d1d 100%);border-radius:16px;padding:22px 20px;margin-bottom:18px;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 28px rgba(220,38,38,.35)}
+.res-hero::before{content:'';position:absolute;top:-44px;right:-30px;width:150px;height:150px;background:rgba(255,255,255,.10);border-radius:50%}
+.res-hero::after{content:'';position:absolute;bottom:-60px;left:-20px;width:130px;height:130px;background:rgba(255,255,255,.07);border-radius:50%}
+.res-top{display:flex;align-items:center;gap:18px;position:relative;z-index:2}
+.res-ring{position:relative;width:96px;height:96px;flex-shrink:0}
+.res-ring svg{transform:rotate(-90deg);width:96px;height:96px}
+.res-ring-bg{fill:none;stroke:rgba(255,255,255,.22);stroke-width:8}
+.res-ring-fg{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round;stroke-dasharray:251.2;stroke-dashoffset:251.2;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1) .15s}
+.res-ring-txt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.res-ring-num{font-size:23px;font-weight:800;line-height:1}
+.res-ring-den{font-size:10px;opacity:.85;margin-top:1px}
+.res-hero-info{flex:1;min-width:0}
+.res-title{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;opacity:.85;margin-bottom:6px}
+.res-band{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);border-radius:9999px;padding:5px 13px;font-weight:800;font-size:14px}
+.res-band em{font-style:normal;opacity:.85;font-weight:600;font-size:11px;margin-left:1px}
+@keyframes rowPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rrow{animation:rowPop .35s ease backwards}
+.rs-badge{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:12px;font-weight:800}
+.rs-badge.ok{background:#16a34a;color:#fff}
+.rs-badge.no{background:#dc2626;color:#fff}
+
+/* ── DRAG & DROP (word bank) ── */
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:150px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;margin-bottom:16px}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+
+/* practice-by-type: excerpt isolation + weak-spot report */
+.qgroup{transition:opacity .15s}
+.excerpt-note{display:none;background:linear-gradient(135deg,#fef9e7,#fff);border:1px solid #f5d78e;border-radius:8px;padding:9px 13px;margin-bottom:16px;font-size:13px;font-weight:700;color:#92640a}
+[data-theme=dark] .excerpt-note,[data-theme=night] .excerpt-note{background:linear-gradient(135deg,#2a2410,#181a20);border-color:#5c4a1a;color:#eab308}
+.res-weak{margin:14px 0;background:var(--phdr);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.wk-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--subtext);margin-bottom:9px}
+.wk-row{display:flex;flex-wrap:wrap;gap:8px}
+.wk-pill{display:flex;align-items:center;gap:8px;background:var(--inp);border:1.5px solid var(--border);border-radius:9999px;padding:6px 12px;font-size:13px}
+.wk-pill.wk-ok{border-color:#22c55e;background:#f0fdf4}
+.wk-pill.wk-weak{border-color:#ef4444;background:#fef2f2}
+[data-theme=dark] .wk-pill.wk-ok,[data-theme=night] .wk-pill.wk-ok{background:#14532d}
+[data-theme=dark] .wk-pill.wk-weak,[data-theme=night] .wk-pill.wk-weak{background:#5a1d1d}
+.wk-name{font-weight:700;color:var(--text)}
+.wk-score{font-weight:800;color:var(--subtext)}
+.wk-drill-btn{background:#0d9488;color:#fff;border:none;border-radius:9999px;padding:4px 10px;font-size:11.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+.wk-drill-btn:hover{background:#0f766e}
+.confetti-piece{position:fixed;top:-20px;width:8px;height:14px;z-index:99999;pointer-events:none;animation:confettiFall linear forwards;border-radius:2px}
+@keyframes confettiFall{to{transform:translateY(110vh) rotate(720deg);opacity:.35}}
+
+/* welcome-popup wizard + lightning effect (teal theme) */
+.popup-lightning-flash{position:absolute;inset:0;background:#99f6e4;opacity:0;pointer-events:none;z-index:8;border-radius:22px}
+.popup-lightning-flash.strike{animation:pFlash .5s ease-out}
+@keyframes pFlash{0%{opacity:0}10%{opacity:.5}18%{opacity:.06}28%{opacity:.35}40%{opacity:0}100%{opacity:0}}
+.popup-bolt{position:absolute;pointer-events:none;z-index:9;opacity:0;filter:drop-shadow(0 0 8px rgba(153,246,228,.9))}
+.popup-bolt.strike{animation:pBoltFlicker .5s ease-out}
+@keyframes pBoltFlicker{0%{opacity:0}10%{opacity:1}18%{opacity:.15}28%{opacity:.85}40%{opacity:0}100%{opacity:0}}
+.ptype-card{display:block;width:100%;background:rgba(255,255,255,0.06);border:1.5px solid rgba(0,200,180,.3);border-radius:12px;padding:12px 14px;cursor:pointer;text-align:left;transition:background .15s,border-color .15s,transform .1s;color:#ccfbf1;font-family:inherit}
+.ptype-card:hover{background:rgba(0,200,180,.16);border-color:#2dd4bf;transform:translateY(-1px)}
+.ptype-card b{display:block;font-size:14.5px;color:#fff;margin-bottom:2px;font-weight:800}
+.ptype-card .pc-sub{display:block;font-size:11.5px;color:#7ffcec}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div id="hdr-left">
+    <span id="hdr-title">IELTS</span>
+    <span style="font-size:13px;color:var(--subtext);font-weight:500;white-space:nowrap;">Academic Reading &middot; by I.Bekhruz</span>
+  </div>
+  <div id="hdr-center">
+    <a href="https://t.me/bekhruzposts" target="_blank" class="tg-btn"><span class="tg-ico"></span>@bekhruzposts</a>
+  </div>
+  <div id="hdr-right">
+    <div id="fsz" title="Text size">
+      <button class="fsz-btn" id="fsz-dn" onclick="changeFontSize(-1)" title="Smaller text">A−</button>
+      <span id="fsz-lbl">100%</span>
+      <button class="fsz-btn" id="fsz-up" onclick="changeFontSize(1)" title="Larger text">A+</button>
+    </div>
+    <span id="mode-badge" style="display:none"></span>
+    <div id="timer">20:00</div>
+    <button class="circ" id="fs-btn" onclick="toggleFullscreen()" title="Full screen">
+      <svg id="fs-ico-enter" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      <svg id="fs-ico-exit" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/></svg>
+    </button>
+    <button class="circ" onclick="cycleTheme()" id="dk-btn" title="Light / Dark / Night mode">🌙</button>
+  </div>
+</header>
+
+<!-- BANNER -->
+<div id="banner">
+  <strong id="bn-part">Reading Passage 3</strong>
+  <span id="bn-desc">You should spend about 20 minutes on Questions 27–40.</span>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <!-- LEFT -->
+  <div id="left-pane">
+    <!-- PASSAGE 1 -->
+    <div class="pcontent on" id="pc1">
+      <h2 class="ptitle">Robert Louis Stevenson</h2>
+      <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
+      <div class="excerpt-note" id="p1note"></div>
+      <p id="p1-1">A Scottish novelist, poet, essayist, and travel writer, Robert Louis Stevenson was born at 8 Howard Place, Edinburgh, Scotland, on 13 November 1850. It has been more than 100 years since his death. Stevenson was a writer who caused <span class="gloss" data-def="incompatible or at variance; contradictory" data-syn="contradictory, clashing, opposing" data-uz="qarama-qarshi, ziddiyatli">conflicting</span> opinions about his works. On one hand, he was often highly praised for his expert prose and style by many English-language critics. On the other hand, others criticised the religious themes in his works, often misunderstanding Stevenson's own religious beliefs. Since his death a century before, critics and biographers have disagreed on the <span class="gloss" data-def="something handed down from the past; a lasting impact" data-syn="inheritance, lasting impact" data-uz="meros">legacy</span> of Stevenson's writing. Two biographers, KF and CP, wrote a biography about Stevenson with a clear focus. They chose not to criticise aspects of Stevenson's personal life. Instead, they focused on his writing, and gave high praise to his writing style and skill.</p>
+      <p id="p1-2">The literary <span class="gloss" data-def="a recurring swing between opposite positions or opinions" data-syn="swing, oscillation" data-uz="tebranish, mayatnik">pendulum</span> has swung these days. Different critics have different opinions towards Robert Louis Stevenson's works. Though today, Stevenson is one of the most translated authors in the world, his works have <span class="gloss" data-def="kept going or maintained over a long period" data-syn="maintained, prolonged" data-uz="davom ettirilgan, chidagan">sustained</span> a wide variety of negative criticism throughout his life. It was like a complete reversal of <span class="gloss" data-def="the state of having two completely opposite tendencies" data-syn="opposition, contrast" data-uz="qarama-qarshilik">polarity</span> — from highly positive to slightly less positive to clearly negative; after being highly praised as a great writer, he became an example of an author with <span class="gloss" data-def="having or showing a willingness to act dishonestly; morally flawed" data-syn="morally flawed, dishonest" data-uz="buzuq, axloqsiz">corrupt</span> ethics and lack of moral. Many literary critics passed his works off as children's stories or horror stories, and thought to have little social value in an educational setting. Stevenson's works were often excluded from literature <span class="gloss" data-def="the subjects comprising a course of study" data-syn="syllabus, course of study" data-uz="o'quv dasturi">curriculum</span> because of its <span class="gloss" data-def="giving rise to public disagreement" data-syn="contentious, disputed" data-uz="bahsli, munozarali">controversial</span> nature. These debates remain, and many critics still assert that despite his skill, his literary works still lack moral value.</p>
+      <p id="p1-3">One of the main reasons why Stevenson's literary works attracted so much criticism was due to the genre of his writing. Stevenson mainly wrote adventure stories, which was part of a popular and entertaining writing <span class="gloss" data-def="an intense but short-lived fashion or enthusiasm" data-syn="trend, craze" data-uz="vaqtinchalik moda">fad</span> at the time. Many of us believe adventure stories are exciting, offers engaging characters, action, and mystery but ultimately can't teach moral principles. The plot points are <span class="gloss" data-def="lacking depth or complexity" data-syn="shallow, simplistic" data-uz="sayoz, bir tomonlama">one-dimensional</span> and rarely offer a deeper moral meaning, instead focusing on exciting and shocking plot twists and <span class="gloss" data-def="extremely exciting" data-syn="exciting, exhilarating" data-uz="hayajonli">thrilling</span> events. His works were even criticised by fellow authors. Though Stevenson's works have deeply influenced Oscar Wilde, Wilde often joked that Stevenson would have written better works if he wasn't born in Scotland. Other authors came to Stevenson's defence, including Galsworthy who claimed that Stevenson is a greater writer than Thomas Hardy.</p>
+      <p id="p1-4">Despite Wilde's criticism, Stevenson's Scottish identity was an <span class="gloss" data-def="necessary to make a whole complete; essential" data-syn="essential, fundamental" data-uz="ajralmas, muhim">integral</span> part of his written works. Although Stevenson's works were not popular in Scotland when he was alive, many modern Scottish literary critics claim that Sir Walter Scott and Robert Louis Stevenson are the most influential writers in the history of Scotland. While many critics <span class="gloss" data-def="praise highly; hold in high regard" data-syn="praise highly, revere" data-uz="yuksak baholamoq, ulug'lamoq">exalt</span> Sir Walter Scott as a literary genius because of his technical ability, others argue that Stevenson deserves the same recognition for his natural ability to capture stories and characters in words. Many of Scott's works were taken more seriously as literature for their depth due to their tragic themes, but fans of Stevenson praise his unique style of story-telling and capture of human nature. Stevenson's works, unlike other British authors, captured the unique day to day life of average Scottish people. Many literary critics point to this as a flaw of his works. According to the critics, truly important literature should <span class="gloss" data-def="go beyond the limits of; surpass" data-syn="surpass, go beyond" data-uz="chegaradan oshib o'tmoq">transcend</span> local culture and stories. However, many critics praise the local taste of his literature. To this day, Stevenson's works provide valuable insight to life in Scotland during the 19th century.</p>
+      <p id="p1-5">Despite much debate of Stevenson's writing topics, his writing was not the only source of attention for critics. Stevenson's personal life often attracted a lot of attention from his fans and critics alike. Some even argue that his personal life eventually outshone his writing. Stevenson had been <span class="gloss" data-def="caused continual trouble or suffering to" data-syn="afflicted, tormented" data-uz="azob bergan, qiynagan">plagued</span> with health problems his whole life, and often had to live in much warmer climates than the cold, <span class="gloss" data-def="dull, bleak, and depressing" data-syn="bleak, gloomy, dismal" data-uz="g'amgin, zerikarli">dreary</span> weather of Scotland in order to recover. So he took his family to a south pacific island Samoa, which was a controversial decision at that time. However, Stevenson did not regret the decision. The sea air and thrill of adventure complimented the themes of his writing, and for a time restored his health. From there, Stevenson gained a love of travelling, and for nearly three years he wandered the eastern and central Pacific. Much of his works reflected this love of travel and adventure that Stevenson experienced in the Pacific islands. It was as a result of this biographical attention that the feeling grew that interest in Stevenson's life had taken the place of interest in his works. Whether critics focus on his writing subjects, his religious beliefs, or his <span class="gloss" data-def="unconventional and slightly strange" data-syn="unconventional, quirky, odd" data-uz="g'alati, o'ziga xos">eccentric</span> lifestyle of travel and adventure, people from the past and present have different opinions about Stevenson as an author. Today, he remains a controversial yet widely popular figure in Western literature.</p>
+    </div>
+  </div>
+
+  <!-- DRAG -->
+  <div id="drag"></div>
+
+  <!-- RIGHT -->
+  <div id="right-pane">
+
+    <!-- PART 1 -->
+    <div class="qsec on" id="qs1">
+      <div class="qblock qgroup" data-group="g1" data-paras="p1-1,p1-2,p1-3,p1-4,p1-5">
+        <p class="qnum-head"><em>Questions 27–31</em></p>
+        <p class="qinst">Choose the correct letter, <strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>.</p>
+        <div class="qitem">
+          <p class="qprompt"><strong>27.</strong>&nbsp; Stevenson's biographers KF and CP <button class="expl-btn" onclick="toggleExpl(27)">💡 Why?</button></p>
+          <div class="rgroup" id="rg27">
+            <label class="rlabel"><input type="radio" name="q27" value="A" onchange="upd()"><span class="mc-key">A</span>&nbsp; underestimated the role of family played in Stevenson's life.</label>
+            <label class="rlabel"><input type="radio" name="q27" value="B" onchange="upd()"><span class="mc-key">B</span>&nbsp; overestimated the writer's works in the literature history.</label>
+            <label class="rlabel"><input type="radio" name="q27" value="C" onchange="upd()"><span class="mc-key">C</span>&nbsp; exaggerated Stevenson's religious belief in his works.</label>
+            <label class="rlabel"><input type="radio" name="q27" value="D" onchange="upd()"><span class="mc-key">D</span>&nbsp; elevated Stevenson's role as a writer.</label>
+          </div>
+          <div class="expl-box" id="expl-27">🔑 KF and CP <b>"chose not to criticise aspects of Stevenson's personal life. Instead, they focused on his writing, and gave high praise to his writing style and skill"</b> — this raises his role as a writer above the controversy. Answer: <b>D</b>.<div class="expl-uz">🇺🇿 Savoldagi D bandidagi <span class="expl-kw-uz">"Stivensonning yozuvchi sifatidagi mavqeyini yuksaltirdilar"</span> matndagi <span class="expl-kw-uz">"shaxsiy hayotini tanqid qilmay, faqat uslubi va mahoratini yuqori baholashdi"</span> degan fikr bilan mos kelgani uchun, javob: <b>D</b>.</div></div>
+        </div>
+        <div class="qitem">
+          <p class="qprompt"><strong>28.</strong>&nbsp; The main point of the second paragraph is <button class="expl-btn" onclick="toggleExpl(28)">💡 Why?</button></p>
+          <div class="rgroup" id="rg28">
+            <label class="rlabel"><input type="radio" name="q28" value="A" onchange="upd()"><span class="mc-key">A</span>&nbsp; the public give a more fair criticism to Stevenson's works.</label>
+            <label class="rlabel"><input type="radio" name="q28" value="B" onchange="upd()"><span class="mc-key">B</span>&nbsp; recent criticism has been justified.</label>
+            <label class="rlabel"><input type="radio" name="q28" value="C" onchange="upd()"><span class="mc-key">C</span>&nbsp; the style of Stevenson's works overweigh his faults in his life.</label>
+            <label class="rlabel"><input type="radio" name="q28" value="D" onchange="upd()"><span class="mc-key">D</span>&nbsp; Stevenson's works' drawback is lack of ethical nature.</label>
+          </div>
+          <div class="expl-box" id="expl-28">🔑 Para 2 ends by asserting that <b>"despite his skill, his literary works still lack moral value"</b> — the paragraph's throughline is that ethical/moral shortcoming is Stevenson's persistent flaw. Answer: <b>D</b>.<div class="expl-uz">🇺🇿 Savoldagi D bandidagi <span class="expl-kw-uz">"axloqiy tabiat yetishmasligi"</span> matndagi <span class="expl-kw-uz">"mahoratiga qaramay, uning adabiy asarlari hali ham axloqiy qadriyatga ega emas"</span> degan xulosa bilan mos kelgani uchun, javob: <b>D</b>.</div></div>
+        </div>
+        <div class="qitem">
+          <p class="qprompt"><strong>29.</strong>&nbsp; According to the author, adventure stories <button class="expl-btn" onclick="toggleExpl(29)">💡 Why?</button></p>
+          <div class="rgroup" id="rg29">
+            <label class="rlabel"><input type="radio" name="q29" value="A" onchange="upd()"><span class="mc-key">A</span>&nbsp; do not provide plot twists well.</label>
+            <label class="rlabel"><input type="radio" name="q29" value="B" onchange="upd()"><span class="mc-key">B</span>&nbsp; cannot be used by writers to show moral values.</label>
+            <label class="rlabel"><input type="radio" name="q29" value="C" onchange="upd()"><span class="mc-key">C</span>&nbsp; are more fashionable art form.</label>
+            <label class="rlabel"><input type="radio" name="q29" value="D" onchange="upd()"><span class="mc-key">D</span>&nbsp; can be found in other's works but not in Stevenson's.</label>
+          </div>
+          <div class="expl-box" id="expl-29">🔑 Para 3: adventure stories are exciting but <b>"ultimately can't teach moral principles"</b> — plot points are one-dimensional rather than morally meaningful. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 Savoldagi B bandidagi <span class="expl-kw-uz">"axloqiy qadriyatlarni ko'rsatish uchun ishlatib bo'lmaydi"</span> matndagi <span class="expl-kw-uz">"oxir-oqibat axloqiy tamoyillarni o'rgata olmaydi"</span> degan fikr bilan sinonim/paraphrase bo'lgani uchun, javob: <b>B</b>.</div></div>
+        </div>
+        <div class="qitem">
+          <p class="qprompt"><strong>30.</strong>&nbsp; What does the author say about Stevenson's works? <button class="expl-btn" onclick="toggleExpl(30)">💡 Why?</button></p>
+          <div class="rgroup" id="rg30">
+            <label class="rlabel"><input type="radio" name="q30" value="A" onchange="upd()"><span class="mc-key">A</span>&nbsp; They describe the life of people in Scotland.</label>
+            <label class="rlabel"><input type="radio" name="q30" value="B" onchange="upd()"><span class="mc-key">B</span>&nbsp; They are commonly regarded as real literature.</label>
+            <label class="rlabel"><input type="radio" name="q30" value="C" onchange="upd()"><span class="mc-key">C</span>&nbsp; They were popular during Stevenson's life.</label>
+            <label class="rlabel"><input type="radio" name="q30" value="D" onchange="upd()"><span class="mc-key">D</span>&nbsp; They transcend the local culture and stories.</label>
+          </div>
+          <div class="expl-box" id="expl-30">🔑 Para 4: unlike other British authors, Stevenson's works <b>"captured the unique day to day life of average Scottish people"</b>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Savoldagi A bandidagi <span class="expl-kw-uz">"Shotlandiyadagi odamlar hayotini tasvirlaydi"</span> matndagi <span class="expl-kw-uz">"oddiy shotland xalqining kundalik hayotini aks ettirgan"</span> degan ma'lumot bilan mos kelgani uchun, javob: <b>A</b>.</div></div>
+        </div>
+        <div class="qitem">
+          <p class="qprompt"><strong>31.</strong>&nbsp; The lifestyle of Stevenson <button class="expl-btn" onclick="toggleExpl(31)">💡 Why?</button></p>
+          <div class="rgroup" id="rg31">
+            <label class="rlabel"><input type="radio" name="q31" value="A" onchange="upd()"><span class="mc-key">A</span>&nbsp; made his family envy him so much.</label>
+            <label class="rlabel"><input type="radio" name="q31" value="B" onchange="upd()"><span class="mc-key">B</span>&nbsp; should be responsible for his death.</label>
+            <label class="rlabel"><input type="radio" name="q31" value="C" onchange="upd()"><span class="mc-key">C</span>&nbsp; gained more attention from the public than his works.</label>
+            <label class="rlabel"><input type="radio" name="q31" value="D" onchange="upd()"><span class="mc-key">D</span>&nbsp; didn't well prepare his life in Samoa.</label>
+          </div>
+          <div class="expl-box" id="expl-31">🔑 Para 5: <b>"interest in Stevenson's life had taken the place of interest in his works"</b> — his eccentric lifestyle overshadowed his writing in public attention. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 Savoldagi C bandidagi <span class="expl-kw-uz">"asarlariga qaraganda jamoatchilikning ko'proq e'tiborini tortdi"</span> matndagi <span class="expl-kw-uz">"uning hayotiga bo'lgan qiziqish asarlariga bo'lgan qiziqish o'rnini egalladi"</span> degan fikr bilan mos kelgani uchun, javob: <b>C</b>.</div></div>
+        </div>
+      </div>
+
+      <div class="qblock qgroup" data-group="g2" data-paras="p1-3,p1-5">
+        <p class="qnum-head"><em>Questions 32–35</em></p>
+        <p class="qinst">Do the following statements agree with the information given in Reading Passage 3?<br>Write <strong>TRUE</strong> / <strong>FALSE</strong> / <strong>NOT GIVEN</strong></p>
+        <div class="qitem">
+          <p class="qprompt"><strong>32.</strong>&nbsp; Although Oscar Wilde admired Robert Louis Stevenson very much, he believed Stevenson could have written greater works. <button class="expl-btn" onclick="toggleExpl(32)">💡 Why?</button></p>
+          <div class="rgroup" id="rg32">
+            <label class="rlabel"><input type="radio" name="q32" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q32" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q32" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+          </div>
+          <div class="expl-box" id="expl-32">🔑 Para 3: <b>"Stevenson's works have deeply influenced Oscar Wilde"</b> (admiration), yet <b>"Wilde often joked that Stevenson would have written better works if he wasn't born in Scotland"</b> (could have written greater works). Answer: <b>TRUE</b>.<div class="expl-uz">🇺🇿 Matnda <span class="expl-kw-uz">"Stivenson asarlari Oskar Uaylдga chuqur ta'sir ko'rsatgan"</span> (qadrlagan) va shu bilan birga <span class="expl-kw-uz">"Shotlandiyada tug'ilmaganida yanada yaxshiroq asarlar yozgan bo'lardi"</span> deb hazil qilgani aytiladi — bu savoldagi fikrga to'g'ri keladi. Javob: <b>TRUE</b>.</div></div>
+        </div>
+        <div class="qitem">
+          <p class="qprompt"><strong>33.</strong>&nbsp; Robert Louis Stevenson encouraged Oscar Wilde to start writing at first. <button class="expl-btn" onclick="toggleExpl(33)">💡 Why?</button></p>
+          <div class="rgroup" id="rg33">
+            <label class="rlabel"><input type="radio" name="q33" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q33" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q33" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+          </div>
+          <div class="expl-box" id="expl-33">🔑 <span class="expl-kw">encouraged... to start writing</span> — para 3 only says <b>"Stevenson's works have deeply influenced Oscar Wilde"</b>; influence on an existing writer is not the same as encouraging him to begin writing. Answer: <b>NOT GIVEN</b>.<div class="expl-uz">🇺🇿 Savoldagi <span class="expl-kw-uz">"yozishni boshlashga undagan"</span> haqida matnda hech qanday ma'lumot yo'q — faqat <span class="expl-kw-uz">"asarlari Oskar Uayldga chuqur ta'sir ko'rsatgan"</span> deyilgan, bu esa allaqachon yozuvchi bo'lgan kishiga ta'sir ko'rsatish bilan bir xil emas. Javob: <b>NOT GIVEN</b>.</div></div>
+        </div>
+        <div class="qitem">
+          <p class="qprompt"><strong>34.</strong>&nbsp; Galsworthy thought Hardy is a greater writer than Stevenson is. <button class="expl-btn" onclick="toggleExpl(34)">💡 Why?</button></p>
+          <div class="rgroup" id="rg34">
+            <label class="rlabel"><input type="radio" name="q34" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q34" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q34" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+          </div>
+          <div class="expl-box" id="expl-34">🔑 Reversed from para 3: <b>"Galsworthy who claimed that Stevenson is a greater writer than Thomas Hardy"</b> — the opposite ranking. Answer: <b>FALSE</b>.<div class="expl-uz">🇺🇿 Savoldagi <span class="expl-kw-uz">"Galsvorsi Hardi Stivensondan buyukroq deb hisoblagan"</span> matndagi <span class="expl-kw-uz">"Stivenson Tomas Hardidan buyukroq yozuvchi"</span> degan aksincha fikrga zid keladi. Javob: <b>FALSE</b>.</div></div>
+        </div>
+        <div class="qitem">
+          <p class="qprompt"><strong>35.</strong>&nbsp; Critics only paid attention to Robert Louis Stevenson's writing topics. <button class="expl-btn" onclick="toggleExpl(35)">💡 Why?</button></p>
+          <div class="rgroup" id="rg35">
+            <label class="rlabel"><input type="radio" name="q35" value="TRUE" onchange="upd()"> TRUE</label>
+            <label class="rlabel"><input type="radio" name="q35" value="FALSE" onchange="upd()"> FALSE</label>
+            <label class="rlabel"><input type="radio" name="q35" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label>
+          </div>
+          <div class="expl-box" id="expl-35">🔑 Contradicts para 5: <b>"his writing was not the only source of attention for critics. Stevenson's personal life often attracted a lot of attention"</b>. Answer: <b>FALSE</b>.<div class="expl-uz">🇺🇿 Savoldagi <span class="expl-kw-uz">"tanqidchilar faqat yozish mavzulariga e'tibor qaratishgan"</span> matndagi <span class="expl-kw-uz">"uning shaxsiy hayoti ham tanqidchilarning katta e'tiborini tortgan"</span> degan ma'lumotga zid keladi. Javob: <b>FALSE</b>.</div></div>
+        </div>
+      </div>
+
+      <div class="qblock qgroup" data-group="g3" data-paras="p1-4">
+        <p class="qnum-head"><em>Questions 36–40</em></p>
+        <p class="qinst">Complete the notes using the list of words, <strong>A&ndash;I</strong>, below. Drag a word into a box, or tap a word then tap a box.</p>
+        <div class="qtitle">Sir Walter Scott and Robert Louis Stevenson</div>
+        <div class="wbank" id="wbankS" data-show="letter">
+          <div class="dchip" draggable="true" data-letter="A" data-word="natural ability"><span class="wk">A</span>&nbsp; natural ability</div>
+          <div class="dchip" draggable="true" data-letter="B" data-word="romance"><span class="wk">B</span>&nbsp; romance</div>
+          <div class="dchip" draggable="true" data-letter="C" data-word="colorful language"><span class="wk">C</span>&nbsp; colorful language</div>
+          <div class="dchip" draggable="true" data-letter="D" data-word="critical acclaim"><span class="wk">D</span>&nbsp; critical acclaim</div>
+          <div class="dchip" draggable="true" data-letter="E" data-word="humor"><span class="wk">E</span>&nbsp; humor</div>
+          <div class="dchip" draggable="true" data-letter="F" data-word="technical control"><span class="wk">F</span>&nbsp; technical control</div>
+          <div class="dchip" draggable="true" data-letter="G" data-word="storytelling"><span class="wk">G</span>&nbsp; storytelling</div>
+          <div class="dchip" draggable="true" data-letter="H" data-word="depth"><span class="wk">H</span>&nbsp; depth</div>
+          <div class="dchip" draggable="true" data-letter="I" data-word="human nature"><span class="wk">I</span>&nbsp; human nature</div>
+        </div>
+        <div class="sbox">
+          A lot of people believe that Sir Walter Scott and Robert Louis Stevenson are the most influential writers in the history of Scotland, but Sir Walter Scott is more proficient in <strong>36</strong>&nbsp;<span class="dzone" id="q36" data-q="36"></span> while Stevenson has better <strong>37</strong>&nbsp;<span class="dzone" id="q37" data-q="37"></span>. Scott's books illustrate <strong>38</strong>&nbsp;<span class="dzone" id="q38" data-q="38"></span> especially in terms of tragedy, but a lot of readers prefer Stevenson's <strong>39</strong>&nbsp;<span class="dzone" id="q39" data-q="39"></span>. What's more, Stevenson's understanding of <strong>40</strong>&nbsp;<span class="dzone" id="q40" data-q="40"></span> made his works have the most unique expression of Scottish people.
+        </div>
+        <div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">36.</b><button class="expl-btn" onclick="toggleExpl(36)">💡 Why?</button><div class="expl-box" id="expl-36">🔑 <span class="expl-kw">Scott is more proficient in ___</span> ≈ para 4: critics <b>"exalt Sir Walter Scott as a literary genius because of his technical ability"</b>. Answer: <b>F &mdash; technical control</b>.<div class="expl-uz">🇺🇿 Savoldagi <span class="expl-kw-uz">"Skott ko'proq mohir bo'lgan sohasi"</span> matndagi <span class="expl-kw-uz">"texnik qobiliyati tufayli"</span> degan iboraga mos kelgani uchun, javob: <b>F — technical control</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">37.</b><button class="expl-btn" onclick="toggleExpl(37)">💡 Why?</button><div class="expl-box" id="expl-37">🔑 <span class="expl-kw">Stevenson has better ___</span> ≈ para 4: Stevenson deserves recognition for his <b>"natural ability to capture stories and characters in words"</b>. Answer: <b>A &mdash; natural ability</b>.<div class="expl-uz">🇺🇿 Savoldagi <span class="expl-kw-uz">"Stivensonning yaxshiroq ___ ga ega ekanligi"</span> matndagi <span class="expl-kw-uz">"tabiiy qobiliyati tufayli tan olinishga loyiq"</span> degan fikr bilan mos kelgani uchun, javob: <b>A — natural ability</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">38.</b><button class="expl-btn" onclick="toggleExpl(38)">💡 Why?</button><div class="expl-box" id="expl-38">🔑 <span class="expl-kw">Scott's books illustrate ___, especially...tragedy</span> ≈ para 4: Scott's works were <b>"taken more seriously as literature for their depth due to their tragic themes"</b>. Answer: <b>H &mdash; depth</b>.<div class="expl-uz">🇺🇿 Savoldagi <span class="expl-kw-uz">"Skott kitoblari ___ ni aks ettiradi, ayniqsa fojiaviylik jihatidan"</span> matndagi <span class="expl-kw-uz">"fojiaviy mavzulari tufayli chuqurligi uchun jiddiy adabiyot sifatida qabul qilingan"</span> degan fikr bilan mos kelgani uchun, javob: <b>H — depth</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">39.</b><button class="expl-btn" onclick="toggleExpl(39)">💡 Why?</button><div class="expl-box" id="expl-39">🔑 <span class="expl-kw">readers prefer Stevenson's ___</span> ≈ para 4: fans praise his <b>"unique style of story-telling"</b>. Answer: <b>G &mdash; storytelling</b>.<div class="expl-uz">🇺🇿 Savoldagi <span class="expl-kw-uz">"o'quvchilar Stivensonning ___ ni afzal ko'radilar"</span> matndagi <span class="expl-kw-uz">"o'ziga xos hikoya qilish uslubi"</span> degan iboraga mos kelgani uchun, javob: <b>G — storytelling</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">40.</b><button class="expl-btn" onclick="toggleExpl(40)">💡 Why?</button><div class="expl-box" id="expl-40">🔑 <span class="expl-kw">Stevenson's understanding of ___</span> ≈ para 4: praised for his <b>"capture of human nature"</b>. Answer: <b>I &mdash; human nature</b>.<div class="expl-uz">🇺🇿 Savoldagi <span class="expl-kw-uz">"Stivensonning ___ ni tushunishi"</span> matndagi <span class="expl-kw-uz">"inson tabiatini aks ettirishi"</span> degan iboraga mos kelgani uchun, javob: <b>I — human nature</b>.</div></div></div>
+</div>
+      </div>
+    </div><!-- /qs1 -->
+    </div><!-- /right-pane -->
+</div><!-- /main -->
+
+<!-- BOTTOM NAV -->
+<nav id="nav">
+  <button class="arr" id="prev-arr" onclick="prevQ()">&#9664;</button>
+  <div class="ptabs-nav">
+    <button class="ptab-nav on" id="ptn1">Reading Passage 3</button>
+  </div>
+  <div id="qrow"></div>
+  <span id="cnt">0 of 40 answered</span>
+  <button id="chk-btn" onclick="chkOrShow()">✓ Check Answers</button>
+  <button class="arr" id="next-arr" onclick="nextQ()">&#9654;</button>
+</nav>
+
+<!-- HIGHLIGHT TOOLBAR -->
+<div id="hltb">
+  <span class="hls">Highlight</span>
+  <div class="hcrow">
+    <div class="hd hdy" onclick="applyHL('y')" title="Yellow"></div>
+    <div class="hd hdg" onclick="applyHL('g')" title="Green"></div>
+    <div class="hd hdp" onclick="applyHL('p')" title="Pink"></div>
+    <div class="hd hdb" onclick="applyHL('b')" title="Blue"></div>
+  </div>
+  <div class="hdiv"></div>
+  <button class="htb rm" onclick="removeHL()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+    Remove
+  </button>
+  <button class="htb cl" onclick="clearAllHL()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    Clear all
+  </button>
+</div>
+
+<!-- RESULTS MODAL -->
+<div class="ov" id="res-ov" onclick="if(event.target===this)closeResults()">
+  <div class="md md-flashy">
+    <button class="md-x" onclick="closeResults()">×</button>
+    <div class="res-hero" id="res-hero"></div>
+    <div class="res-weak" id="res-weak"></div>
+    <div class="rth"><div>#</div><div>Your Answer</div><div>Correct Answer</div><div>✓/✗</div></div>
+    <div class="rtw" id="rtw"></div>
+    <div class="md-ftbtns">
+      <button onclick="location.reload()">🔄 Retake Test</button>
+      <button id="res-close-btn" onclick="closeResults()">↩ Return to Test</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── ANSWERS ──
+const CA = {
+  27:'D',28:'D',29:'B',30:'A',31:'C',
+  32:'TRUE',33:'NOT GIVEN',34:'FALSE',35:'FALSE',
+  36:'F',37:'A',38:'H',39:'G',40:'I'
+};
+const CAL = {
+  27:'D – elevated Stevenson\'s role as a writer',28:'D – lack of ethical nature',29:'B – cannot be used to show moral values',30:'A – describe life in Scotland',31:'C – gained more attention than his works',
+  32:'TRUE',33:'NOT GIVEN',34:'FALSE',35:'FALSE',
+  36:'F – technical control',37:'A – natural ability',38:'H – depth',39:'G – storytelling',40:'I – human nature'
+};
+
+// ── STATE ──
+const ALLQ=[27,28,29,30,31,32,33,34,35,36,37,38,39,40];
+let curPart=1, curQ=27, timerS=1200, tInt=null, tRun=false;
+let mode='exam', elapsed=0;
+let sRange=null, aHLMark=null, checked=false, timeExpired=false;
+let lastScore=0,lastTotal=14;
+const GROUPS={g1:{label:'Multiple Choice',qs:[27,28,29,30,31]},g2:{label:'True / False / Not Given',qs:[32,33,34,35]},g3:{label:'Summary Completion',qs:[36,37,38,39,40]}};
+let lastGroupScore={g1:0,g2:0,g3:0};
+let currentGroup='all';
+function activeQList(){ return currentGroup==='all' ? ALLQ.slice() : GROUPS[currentGroup].qs.slice(); }
+
+// ── INIT ──
+window.addEventListener('DOMContentLoaded',()=>{
+  adjustMainTop();
+  buildQRow();
+  upd();
+  setupDrag();
+  setupSummaryDnD();
+  setupHLToolbar();
+  setupGlossary();
+  showWelcomePopup();
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+});
+
+function showWelcomePopup() {
+    let selectedGroup='all';
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(8,18,28,0.85);backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:linear-gradient(150deg,#0d7a8a 0%,#0a5566 55%,#063847 100%);color:#fff;padding:38px 34px 30px;border-radius:22px;max-width:470px;width:100%;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,0.55);border:1px solid rgba(0,200,180,0.3);position:relative;overflow:hidden;';
+    box.innerHTML = `
+        <div style="position:absolute;top:-40px;right:-40px;width:140px;height:140px;background:rgba(0,200,180,0.12);border-radius:50%;"></div>
+        <div style="position:absolute;bottom:-50px;left:-30px;width:120px;height:120px;background:rgba(0,200,180,0.08);border-radius:50%;"></div>
+        <div class="popup-lightning-flash" id="pFlash"></div>
+        <svg class="popup-bolt" id="pBolt" width="90" height="200" viewBox="0 0 90 200" style="top:-14px;right:16px;"><path d="M50 0 L20 90 L45 90 L10 200 L75 80 L48 80 Z" fill="#99f6e4"/></svg>
+        <div style="position:relative;z-index:2;">
+          <div id="pStep1">
+            <div style="font-size:50px;margin-bottom:10px;">📖</div>
+            <div style="display:inline-block;background:rgba(0,200,180,0.2);color:#7ffcec;font-size:11px;font-weight:700;letter-spacing:1.5px;padding:5px 14px;border-radius:20px;margin-bottom:14px;text-transform:uppercase;border:1px solid rgba(0,200,180,0.3);">Academic Reading &bull; Passage 3</div>
+            <h2 style="margin:0 0 8px;font-size:23px;font-weight:800;line-height:1.25;color:#fff;">What do you want to practice?</h2>
+            <p style="margin:0 0 4px;font-size:14px;opacity:0.92;">Robert Louis Stevenson</p>
+            <p style="margin:0 0 18px;font-size:12.5px;opacity:0.8;">Prepared by <strong>I. Bekhruz</strong> &middot; choose one type to drill, or take the full passage</p>
+            <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:20px;">
+                <button class="ptype-card" data-group="all"><b>📖 Full Passage</b><span class="pc-sub">All 14 questions together</span></button>
+                <button class="ptype-card" data-group="g1"><b>🔤 Multiple Choice</b><span class="pc-sub">Questions 27&ndash;31 only</span></button>
+                <button class="ptype-card" data-group="g2"><b>✓ True / False / Not Given</b><span class="pc-sub">Questions 32&ndash;35 only</span></button>
+                <button class="ptype-card" data-group="g3"><b>📝 Summary Completion</b><span class="pc-sub">Questions 36&ndash;40 only</span></button>
+            </div>
+            <a href="https://t.me/bekhruzposts" target="_blank" style="display:inline-flex;align-items:center;gap:7px;color:#7ffcec;text-decoration:none;font-weight:600;font-size:12.5px;">
+                <svg style="width:14px;height:14px;fill:#7ffcec;" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                @bekhruzposts &mdash; follow for more
+            </a>
+          </div>
+          <div id="pStep2" style="display:none">
+            <div style="font-size:50px;margin-bottom:10px;">📖</div>
+            <h2 style="margin:0 0 8px;font-size:23px;font-weight:800;line-height:1.25;color:#fff;">Ready to begin</h2>
+            <p style="margin:0 0 14px;font-size:14px;color:#ccfbf1;" id="pChosenLabel"></p>
+            <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 14px;margin-bottom:14px;text-align:left;">
+                <p style="margin:0;font-size:12.5px;line-height:1.5;opacity:0.95;">🎯 <strong>Exam mode</strong> runs a 20-minute countdown that auto-submits at zero. 🧘 <strong>Casual mode</strong> counts your time up with no limit.</p>
+            </div>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;">
+                <button id="examBtn" style="background:linear-gradient(90deg,#16d0c0,#0d9488);color:#053b35;border:none;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🎯 Exam Mode</button>
+                <button id="casualBtn" style="background:rgba(255,255,255,0.1);color:#fff;border:1.5px solid rgba(0,200,180,0.5);font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;cursor:pointer;">🧘 Casual Mode</button>
+            </div>
+            <button id="pBackBtn" style="background:none;border:none;color:#7ffcec;font-size:12.5px;font-weight:600;cursor:pointer;text-decoration:underline;">&larr; Back to question type</button>
+          </div>
+        </div>`;
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    function strikeLightning(){
+      const flash=document.getElementById('pFlash'), bolt=document.getElementById('pBolt');
+      if(flash){flash.classList.remove('strike');void flash.offsetWidth;flash.classList.add('strike');}
+      if(bolt){bolt.classList.remove('strike');void bolt.offsetWidth;bolt.classList.add('strike');}
+    }
+
+    const GROUP_LABELS={all:'Full Passage selected',g1:'Multiple Choice (Q27–31) selected',g2:'True / False / Not Given (Q32–35) selected',g3:'Summary Completion (Q36–40) selected'};
+    box.querySelectorAll('.ptype-card').forEach(card=>{
+      card.addEventListener('click',()=>{
+        selectedGroup=card.dataset.group;
+        strikeLightning();
+        if(selectedGroup==='all'){
+          document.getElementById('pStep1').style.display='none';
+          document.getElementById('pStep2').style.display='block';
+          document.getElementById('pChosenLabel').textContent=GROUP_LABELS[selectedGroup]||'';
+        } else {
+          finishSetup('casual');
+        }
+      });
+    });
+    document.getElementById('pBackBtn').addEventListener('click',()=>{
+      document.getElementById('pStep2').style.display='none';
+      document.getElementById('pStep1').style.display='block';
+    });
+
+    function finishSetup(m){
+        startMode(m);
+        practiceMode(selectedGroup);
+        overlay.style.transition = 'opacity 0.3s';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.remove();
+            toggleTimer();
+            toggleFullscreen();
+        }, 300);
+    }
+    document.getElementById('examBtn').addEventListener('click', () => finishSetup('exam'));
+    document.getElementById('casualBtn').addEventListener('click', () => finishSetup('casual'));
+}
+window.addEventListener('resize', adjustMainTop);
+
+function adjustMainTop(){
+  const bh = document.getElementById('banner').offsetHeight;
+  document.getElementById('main').style.top = (56+bh)+'px';
+}
+
+// ── PART / PASSAGE ──
+function switchPart(n){
+  curPart=n;
+  [1,2,3].forEach(i=>{
+    document.getElementById('ptn'+i).classList.toggle('on',i===n);
+    document.getElementById('qs'+i).classList.toggle('on',i===n);
+  });
+  const descs={1:'1–13',2:'14–26',3:'27–40'};
+  document.getElementById('bn-part').textContent='Part '+n;
+  document.getElementById('bn-desc').textContent='Read the passage and answer questions '+descs[n]+'.';
+  switchPassage(n);
+  buildQRow();
+  curQ=({1:1,2:14,3:27})[n];
+  upd();
+  document.getElementById('right-pane').scrollTop=0;
+}
+
+function switchPassage(n){
+  document.querySelectorAll('.ptab').forEach((t,i)=>t.classList.toggle('on',i===0));
+  document.querySelectorAll('.pcontent').forEach((c,i)=>c.classList.toggle('on',i===n-1));
+}
+
+// ── Q ROW ──
+const partRange={1:[27,40]};
+function buildQRow(){
+  const row=document.getElementById('qrow');
+  row.innerHTML='';
+  const [s,e]=partRange[curPart];
+  for(let i=s;i<=e;i++){
+    const b=document.createElement('button');
+    b.className='sqbtn';b.id='sqb'+i;b.textContent=i;
+    b.onclick=()=>goQ(i);
+    row.appendChild(b);
+  }
+}
+
+const PTYPE_LABELS={g1:'Multiple Choice (Q27&ndash;31)',g2:'True / False / Not Given (Q32&ndash;35)',g3:'Summary Completion (Q36&ndash;40)'};
+function practiceMode(group){
+  currentGroup=group;
+  document.querySelectorAll('#qs1 .qgroup').forEach(g=>{
+    g.style.display=(group==='all'||g.dataset.group===group)?'':'none';
+  });
+  const allParas=[...document.querySelectorAll('#pc1 p[id^="p1-"]')];
+  const note=document.getElementById('p1note');
+  if(group==='all'){
+    allParas.forEach(p=>p.style.display='');
+    if(note)note.style.display='none';
+  } else {
+    const g=document.querySelector('#qs1 .qgroup[data-group="'+group+'"]');
+    const paraIds=(g&&g.dataset.paras||'').split(',').filter(Boolean);
+    allParas.forEach(p=>{p.style.display=paraIds.includes(p.id)?'':'none';});
+    if(note){
+      note.innerHTML='📄 Showing only the excerpt needed for <b>'+(PTYPE_LABELS[group]||'this question type')+'</b> &mdash; not the full passage.';
+      note.style.display='block';
+    }
+  }
+  document.getElementById('left-pane').scrollTop=0;
+  upd();
+}
+
+// ── NAVIGATION ──
+function goQ(n){
+  let tp=1;
+  curQ=n;
+  upd();
+  const el=getQEl(n);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function nextQ(){let n=Math.min(40,curQ+1);goQ(n);}
+function prevQ(){let n=Math.max(27,curQ-1);goQ(n);}
+
+function getQEl(n){
+  return document.getElementById('q'+n)||
+    document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
+}
+
+// ── USER ANSWER ──
+function getAns(n){
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
+  if(el&&el.type==='text') return el.value.trim();
+  if(el&&el.tagName==='SELECT') return el.value;
+  const r=document.querySelector('input[name="q'+n+'"]:checked');
+  return r?r.value:'';
+}
+function isAns(n){return getAns(n)!=='';}
+
+// ── UPDATE INDICATORS ──
+function upd(){
+  if(checked) return;
+  const list=activeQList();
+  let tot=0;
+  for(let i=27;i<=40;i++){
+    const a=isAns(i);
+    if(a&&list.includes(i))tot++;
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.toggle('ans',a);b.classList.toggle('cur',i===curQ);}
+  }
+  document.getElementById('cnt').textContent=tot+' of '+list.length+' answered';
+}
+
+// ── TIMER ──
+function fmt(s){const m=Math.floor(s/60),sec=s%60;return String(m).padStart(2,'0')+':'+String(sec).padStart(2,'0');}
+function startMode(m){
+  mode=m;
+  const badge=document.getElementById('mode-badge');
+  const d=document.getElementById('timer');
+  if(m==='exam'){
+    timerS=1200; elapsed=0;
+    d.textContent=fmt(timerS); d.title='Time remaining';
+    badge.style.cssText='display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:4px 10px;border-radius:9999px;background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;';
+    badge.textContent='⏳ Exam';
+  } else {
+    timerS=1200; elapsed=0;
+    d.textContent=fmt(0); d.title='Time elapsed (stopwatch)'; d.classList.remove('warn');
+    badge.style.cssText='display:inline-flex;align-items:center;font-size:11px;font-weight:700;padding:4px 10px;border-radius:9999px;background:#ccfbf1;color:#0f766e;border:1px solid #99f6e4;';
+    badge.textContent='🧘 Casual';
+  }
+}
+function toggleTimer(){
+  if(!tRun){tRun=true;tInt=setInterval(tick,1000);}
+}
+function tick(){
+  elapsed++;
+  const d=document.getElementById('timer');
+  if(mode==='exam'){
+    if(timerS<=0){clearInterval(tInt);tRun=false;if(!checked){timeExpired=true;doCheck();}return;}
+    timerS--;
+    d.textContent=fmt(timerS);
+    d.classList.toggle('warn',timerS<=300&&timerS>0);
+  } else {
+    d.textContent=fmt(elapsed);
+  }
+}
+// ── FULLSCREEN ──
+function toggleFullscreen(){
+  if(!document.fullscreenElement){
+    document.documentElement.requestFullscreen?.().catch(()=>{});
+  } else {
+    document.exitFullscreen?.().catch(()=>{});
+  }
+}
+document.addEventListener('fullscreenchange',()=>{
+  const isFs=!!document.fullscreenElement;
+  document.getElementById('fs-ico-enter').style.display=isFs?'none':'';
+  document.getElementById('fs-ico-exit').style.display=isFs?'':'none';
+});
+
+// ── THEME (light → dark → night) ──
+let themeIdx=0;
+const THEMES=['light','dark','night'];
+const THEME_ICON={light:'🌙',dark:'🌃',night:'☀️'};
+function cycleTheme(){
+  themeIdx=(themeIdx+1)%THEMES.length;
+  const t=THEMES[themeIdx];
+  if(t==='light')document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme',t);
+  document.getElementById('dk-btn').textContent=THEME_ICON[t];
+  document.getElementById('dk-btn').title=t==='light'?'Dark mode':t==='dark'?'Night mode (warm, low blue light)':'Light mode';
+}
+
+// ── TEXT SIZE ──
+let fszIdx=2;
+const FSZ_SCALES=[0.85,0.92,1,1.1,1.2,1.32];
+const FSZ_LABELS=['85%','92%','100%','110%','120%','132%'];
+function changeFontSize(dir){
+  fszIdx=Math.max(0,Math.min(FSZ_SCALES.length-1,fszIdx+dir));
+  document.documentElement.style.setProperty('--txtscale',FSZ_SCALES[fszIdx]);
+  document.getElementById('fsz-lbl').textContent=FSZ_LABELS[fszIdx];
+  document.getElementById('fsz-dn').disabled=fszIdx===0;
+  document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
+}
+
+// ── DRAG DIVIDER ──
+function setupDrag(){
+  const d=document.getElementById('drag'),lp=document.getElementById('left-pane');
+  let drag=false,sx=0,sw=0;
+  d.addEventListener('mousedown',e=>{drag=true;sx=e.clientX;sw=lp.offsetWidth;d.classList.add('on');document.body.style.cssText='cursor:col-resize;user-select:none';});
+  document.addEventListener('mousemove',e=>{if(!drag)return;const total=document.getElementById('main').offsetWidth-6;const nw=Math.max(180,Math.min(total-180,sw+e.clientX-sx));lp.style.width=nw+'px';lp.style.flexShrink='0';});
+  document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
+}
+
+// ── DRAG & DROP (bank → gaps) ──
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  // Mobile touch drag (ghost follows finger)
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
+// ── NORMALIZE ──
+function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
+function isCorrect(n){
+  const u=getAns(n),c=CA[n];
+  if(Array.isArray(c)) return c.some(x=>norm(x)===norm(u));
+  return norm(u)===norm(String(c));
+}
+
+// ── CHECK ──
+function chkOrShow(){if(checked)showResults();else doCheck();}
+function doCheck(){
+  if(checked)return;
+  checked=true;
+  document.body.classList.add('post-check');
+  clearInterval(tInt);tRun=false;
+
+  // disable inputs
+  document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
+
+  const list=activeQList();
+  let sc=0;
+  const groupScore={g1:0,g2:0,g3:0};
+  for(const i of list){
+    const ok=isCorrect(i);
+    if(ok)sc++;
+    markQ(i,ok);
+    const b=document.getElementById('sqb'+i);
+    if(b){b.classList.remove('ans','cur');b.classList.add(ok?'cok':'cno');}
+    for(const g in GROUPS){ if(ok&&GROUPS[g].qs.includes(i)) groupScore[g]++; }
+  }
+  lastScore=sc;lastTotal=list.length;lastGroupScore=groupScore;
+  document.getElementById('cnt').textContent=sc+' of '+lastTotal+' correct';
+
+  const btn=document.getElementById('chk-btn');
+  btn.textContent='📊 My Result';btn.classList.add('done');
+
+  buildResultRows();
+  showResults();
+  highlightPassages();
+  if(Math.round(sc/lastTotal*100)>=85) launchConfetti();
+}
+
+function markQ(n,ok){
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  if(el&&(el.type==='text'||el.tagName==='SELECT')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
+  // radio
+  const cv=Array.isArray(CA[n])?CA[n][0]:CA[n];
+  document.querySelectorAll('input[name="q'+n+'"]').forEach(r=>{
+    const lb=r.closest('label');if(!lb)return;
+    if(r.value===cv)lb.classList.add('ok');
+    else if(r.checked&&!ok)lb.classList.add('bad');
+  });
+  if(!ok){
+    const rg=document.getElementById('rg'+n);
+    if(rg){const sp=document.createElement('div');sp.className='cad';sp.style.marginTop='5px';sp.innerHTML='➜ <em>'+CAL[n]+'</em>';rg.appendChild(sp);}
+  }
+}
+
+// ── RESULT ROWS ──
+function buildResultRows(){
+  const t=document.getElementById('rtw');t.innerHTML='';
+  for(const i of activeQList()){
+    const ok=isCorrect(i),u=getAns(i)||'(none)',c=CAL[i];
+    const row=document.createElement('div');
+    row.className='rrow '+(ok?'rok':'rno');
+    row.style.animationDelay=(i*0.012)+'s';
+    row.innerHTML=`<div><span class="rn">${i}</span></div><div><span class="ru">${u}</span></div><div><span class="rc">${c}</span></div><div class="rs"><span class="rs-badge ${ok?'ok':'no'}">${ok?'✓':'✗'}</span></div>`;
+    t.appendChild(row);
+  }
+}
+
+// ── WEAK-SPOT REPORT ──
+function buildWeakSpots(){
+  const el=document.getElementById('res-weak');
+  if(!el)return;
+  let html='<div class="wk-label">🎯 Weak-spot report &mdash; practice by type</div><div class="wk-row">';
+  for(const g in GROUPS){
+    const grp=GROUPS[g];
+    const correct=lastGroupScore[g]||0, total=grp.qs.length;
+    const ok=correct===total;
+    html+='<div class="wk-pill '+(ok?'wk-ok':'wk-weak')+'"><span class="wk-name">'+grp.label+'</span><span class="wk-score">'+correct+'/'+total+'</span>'+(ok?'':'<button class="wk-drill-btn" onclick="drillGroup(\''+g+'\')">🎯 Review this type</button>')+'</div>';
+  }
+  html+='</div>';
+  el.innerHTML=html;
+}
+function drillGroup(g){
+  closeResults();
+  practiceMode(g);
+}
+
+function animateCountUp(target){
+  const el=document.getElementById('res-ring-num');
+  if(!el)return;
+  const dur=800,start=performance.now();
+  function step(now){
+    const p=Math.min(1,(now-start)/dur);
+    el.textContent=Math.round(target*p);
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=target;
+  }
+  requestAnimationFrame(step);
+}
+
+function launchConfetti(){
+  const colors=['#0d9488','#16d0c0','#fbbf24','#22c55e','#38bdf8'];
+  for(let i=0;i<60;i++){
+    const p=document.createElement('div');
+    p.className='confetti-piece';
+    p.style.left=(Math.random()*100)+'vw';
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=(2+Math.random()*1.5)+'s';
+    p.style.animationDelay=(Math.random()*0.4)+'s';
+    document.body.appendChild(p);
+    setTimeout(function(){p.remove();},4200);
+  }
+}
+
+function perfLabel(pct){
+  if(pct>=85)return'Excellent';
+  if(pct>=65)return'Good';
+  if(pct>=45)return'Fair';
+  return'Keep practicing';
+}
+// ── SHOW RESULTS ──
+function showResults(){
+  const pct=Math.round(lastScore/lastTotal*100);
+  const circ=251.2;
+  const titleTxt=timeExpired?"⏰ Time's up!":'🎉 Practice complete';
+  document.getElementById('res-hero').innerHTML=`
+    <div class="res-top">
+      <div class="res-ring">
+        <svg viewBox="0 0 96 96">
+          <circle class="res-ring-bg" cx="48" cy="48" r="40"></circle>
+          <circle class="res-ring-fg" id="res-ring-fg" cx="48" cy="48" r="40"></circle>
+        </svg>
+        <div class="res-ring-txt"><span class="res-ring-num" id="res-ring-num">0</span><span class="res-ring-den">/ ${lastTotal}</span></div>
+      </div>
+      <div class="res-hero-info">
+        <div class="res-title">${titleTxt}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <div class="res-band">${perfLabel(pct)}<em>${pct}%</em></div>
+          <div class="res-band">⏱ ${fmt(elapsed)}<em>${mode==='exam'?'time used':'your time'}</em></div>
+        </div>
+      </div>
+    </div>`;
+  const weakEl=document.getElementById('res-weak');
+  if(currentGroup==='all'){
+    if(weakEl)weakEl.style.display='';
+    buildWeakSpots();
+  } else if(weakEl){
+    weakEl.style.display='none';
+    weakEl.innerHTML='';
+  }
+  document.getElementById('res-close-btn').textContent=timeExpired?'↩ Return to Test for Review':'↩ Return to Test';
+  document.getElementById('res-ov').classList.add('show');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    document.getElementById('res-ring-fg').style.strokeDashoffset=String(circ-(circ*pct/100));
+    animateCountUp(lastScore);
+  }));
+}
+function closeResults(){document.getElementById('res-ov').classList.remove('show');}
+
+// ── PASSAGE HIGHLIGHTS ──
+const P1H=[
+  {q:27,t:'gave high praise to his writing style and skill'},
+  {q:28,t:'lack moral value'},
+  {q:29,t:"can't teach moral principles"},
+  {q:30,t:'captured the unique day to day life of average scottish people'},
+  {q:31,t:'interest in stevenson\'s life had taken the place of interest in his works'},
+  {q:32,t:'stevenson would have written better works if he wasn\'t born in scotland'},
+  {q:33,t:'stevenson\'s works have deeply influenced oscar wilde'},
+  {q:34,t:'galsworthy who claimed that stevenson is a greater writer than thomas hardy'},
+  {q:35,t:'his writing was not the only source of attention'},
+  {q:36,t:'sir walter scott as a literary genius because of his technical ability'},
+  {q:37,t:'natural ability to capture stories'},
+  {q:38,t:'taken more seriously as literature for their depth'},
+  {q:39,t:'unique style of story-telling'},
+  {q:40,t:'capture of human nature'}
+];
+const P2H=[];
+const P3H=[];
+
+function applyHL2(pEl, items){
+  if(!pEl)return;
+  pEl.querySelectorAll('.ahl').forEach(el=>{
+    el.replaceWith(document.createTextNode(el.textContent));
+    pEl.normalize();
+  });
+  items.forEach(({q,t})=>{
+    pEl.querySelectorAll('p').forEach(p=>{
+      const h=p.innerHTML;
+      if(!h.toLowerCase().includes(t))return;
+      const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+      p.innerHTML=h.replace(re,m=>`<span class="ahl">${m}<span style="display:inline-flex;align-items:center;justify-content:center;background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:1px 5px;border-radius:4px;margin-left:3px;vertical-align:super;line-height:1.2">${q}</span></span>`);
+    });
+  });
+}
+
+function highlightPassages(){
+  applyHL2(document.getElementById('pc1'),P1H);
+  applyHL2(document.getElementById('pc2'),P2H);
+  applyHL2(document.getElementById('pc3'),P3H);
+}
+
+// ── HIGHLIGHT TOOLBAR ──
+function setupHLToolbar(){
+  const tb=document.getElementById('hltb');
+  const lp=document.getElementById('left-pane');
+  const rp=document.getElementById('right-pane');
+
+  document.addEventListener('mouseup',e=>{
+    if(tb.contains(e.target))return;
+    setTimeout(()=>{
+      const sel=window.getSelection();
+      if(!sel||sel.toString().trim().length===0)return;
+      const range=sel.getRangeAt(0);
+      if(lp.contains(range.commonAncestorContainer)||rp.contains(range.commonAncestorContainer)){
+        sRange=range.cloneRange();aHLMark=null;
+        positionTB(e.clientX,e.clientY,tb);
+      }
+    },15);
+  });
+
+  document.addEventListener('click',e=>{
+    if(e.target.closest('#hltb'))return;
+    const mark=e.target.closest('mark');
+    if(mark&&['hy','hg','hp','hb'].some(c=>mark.classList.contains(c))){
+      aHLMark=mark;sRange=null;positionTB(e.clientX,e.clientY,tb);return;
+    }
+    tb.classList.remove('show');
+  });
+}
+
+function positionTB(cx,cy,tb){
+  tb.classList.add('show');
+  const tw=tb.offsetWidth||155,th=tb.offsetHeight||185;
+  let lx=cx-tw/2,ly=cy-th-16;
+  if(ly<8)ly=cy+20;
+  lx=Math.max(8,Math.min(window.innerWidth-tw-8,lx));
+  tb.style.left=lx+'px';tb.style.top=ly+'px';
+}
+
+function applyHL(c){
+  const tb=document.getElementById('hltb');
+  if(aHLMark){aHLMark.className='h'+c;aHLMark=null;}
+  else if(sRange){
+    const m=document.createElement('mark');m.className='h'+c;
+    try{sRange.surroundContents(m);}
+    catch{const f=sRange.extractContents();m.appendChild(f);sRange.insertNode(m);}
+    sRange=null;
+  }
+  window.getSelection()?.removeAllRanges();
+  tb.classList.remove('show');
+}
+function removeHL(){
+  const tb=document.getElementById('hltb');
+  if(aHLMark){const p=aHLMark.parentNode;while(aHLMark.firstChild)p.insertBefore(aHLMark.firstChild,aHLMark);p.removeChild(aHLMark);p.normalize();aHLMark=null;}
+  tb.classList.remove('show');
+}
+function clearAllHL(){
+  document.querySelectorAll('mark.hy,mark.hg,mark.hp,mark.hb').forEach(m=>{const p=m.parentNode;while(m.firstChild)p.insertBefore(m.firstChild,m);p.removeChild(m);p.normalize();});
+  document.getElementById('hltb').classList.remove('show');
+}
+
+function toggleExpl(n){
+  const b=document.getElementById('expl-'+n);
+  if(b)b.classList.toggle('show');
+}
+
+// PREMIUM: click-to-reveal glossary for unusual/less-common words
+// Uses event delegation (not per-span listeners) because highlightPassages() rewrites
+// paragraph innerHTML after Check Answers, which would destroy any listeners bound directly
+// to the original .gloss spans.
+function setupGlossary(){
+  document.addEventListener('click',function(e){
+    const w=e.target.closest('.gloss');
+    if(w){
+      if(!checked)return;
+      const sel=window.getSelection();
+      if(sel&&sel.toString().trim().length>0)return;
+      e.stopPropagation();
+      showGlossPopover(w);
+      return;
+    }
+    if(e.target.closest('#glossPop'))return;
+    hideGlossPopover();
+  });
+}
+function hideGlossPopover(){
+  const box=document.getElementById('glossPop');
+  if(box)box.classList.remove('show');
+}
+function showGlossPopover(el){
+  let box=document.getElementById('glossPop');
+  if(!box){box=document.createElement('div');box.id='glossPop';document.body.appendChild(box);}
+  const syn=el.dataset.syn?('<div class="gp-syn">Synonyms: <b>'+el.dataset.syn+'</b></div>'):'';
+  const uz=el.dataset.uz?('<div class="gp-uz">🇺🇿 <b>'+el.dataset.uz+'</b></div>'):'';
+  box.innerHTML='<div class="gp-word">'+el.textContent+'</div><div class="gp-def">'+el.dataset.def+'</div>'+syn+uz;
+  box.classList.add('show');
+  const r=el.getBoundingClientRect();
+  let x=r.left+window.scrollX, y=r.bottom+window.scrollY+6;
+  x=Math.max(8,Math.min(x,window.scrollX+document.documentElement.clientWidth-box.offsetWidth-8));
+  box.style.left=x+'px';box.style.top=y+'px';
+}
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName))return;
+  if(e.altKey&&e.key==='1')switchPart(1);
+  if(e.altKey&&e.key==='2')switchPart(2);
+  if(e.altKey&&e.key==='3')switchPart(3);
+  if(e.key==='ArrowLeft')prevQ();
+  if(e.key==='ArrowRight')nextQ();
+});
+</script>
+</body>
+</html>

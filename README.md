@@ -10,6 +10,7 @@ complete, self-contained HTML file that already has its own timer and scoring.
    - Full volume Reading test → `public/tests/reading/volume-<N>/test-<M>.html`
    - Full volume Listening test → `public/tests/listening/volume-<N>/test-<M>.html`
    - Single-passage Lite practice → `public/tests/lite/<slug>.html`
+   - Single-passage Premium practice → `public/tests/premium/<slug>.html`
 3. Open `public/data/tests.json` and add one entry (copy an existing one of the
    same type and edit the fields). Example for a full-volume Reading test:
 
@@ -29,7 +30,20 @@ complete, self-contained HTML file that already has its own timer and scoring.
      "file": "lite/my-new-passage.html" }
    ```
 
+   Example for a single-passage Premium test (same shape, `tier: "premium-passage"`,
+   `file` under `premium/`):
+
+   ```json
+   { "id": "premium-my-new-passage", "section": "reading", "tier": "premium-passage",
+     "passageType": "Passage 2", "displayTitle": "My New Passage",
+     "status": "published", "questionCount": 13, "durationMinutes": 18,
+     "file": "premium/my-new-passage.html" }
+   ```
+
 4. Save, commit, push. That's it — no build command, nothing to install.
+
+Only ever add content that's actually yours (carries your `@bekhruzposts`
+branding/Telegram link) — never files sourced from other creators.
 
 Set `"status": "coming-soon"` (and `"file": null`) to list a volume before its
 files are ready — it shows up in the catalog with a disabled Start button.
