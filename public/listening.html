@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Listening Practice Tests | Bekhruz IELTS</title>
 <meta name="description" content="Free IELTS Listening practice tests with audio, timed like the real exam.">
 <link rel="stylesheet" href="/css/main.css">
@@ -20,6 +21,7 @@
     </nav>
     <div class="hdr-actions">
       <a class="tg-follow" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">📣 @bekhruzposts</a>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">🌙</button>
       <span id="auth-slot"><a class="btn-login" href="/login.html">Log in</a></span>
     </div>
   </div>
@@ -31,7 +33,10 @@
     <p>Full 40-question listening tests with audio — put your headphones on and press Start.</p>
   </div>
 
+  <input type="search" id="search-box" class="search-box" placeholder="Search by title…">
+
   <div class="filter-bar" id="filter-bar"></div>
+  <div class="filter-bar" id="qtype-bar"></div>
 
   <div id="catalog-root" data-section="listening">
     <p class="empty-note">Loading tests…</p>
@@ -46,5 +51,6 @@
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
 <script src="/js/catalog.js"></script>
+<script src="/js/theme-toggle.js"></script>
 </body>
 </html>
