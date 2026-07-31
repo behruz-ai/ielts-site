@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Log in — Bekhruz IELTS</title>
+<link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+
+<header class="site-hdr">
+  <div class="hdr-inner">
+    <a class="brand" href="/"><span class="brand-mark">Bekhruz</span> IELTS</a>
+    <nav class="main-nav">
+      <a href="/">Home</a>
+      <a href="/reading.html">Reading</a>
+      <a href="/listening.html">Listening</a>
+    </nav>
+    <div class="hdr-actions">
+      <a class="tg-follow" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">📣 @bekhruzposts</a>
+    </div>
+  </div>
+</header>
+
+<div class="auth-wrap">
+  <div class="hero-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+  </div>
+  <div class="auth-card">
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login">Log in</button>
+      <button class="auth-tab" id="tab-signup">Sign up</button>
+    </div>
+
+    <div id="panel-login">
+      <h1>Welcome back</h1>
+      <p class="auth-sub">Log in to track your practice progress.</p>
+      <form id="form-login">
+        <div class="auth-field"><label>Email</label><input type="email" required autocomplete="email"></div>
+        <div class="auth-field"><label>Password</label><input type="password" required autocomplete="current-password"></div>
+        <button class="auth-submit" type="submit">Log in</button>
+      </form>
+    </div>
+
+    <div id="panel-signup" style="display:none">
+      <h1>Create your account</h1>
+      <p class="auth-sub">Free — track scores and pick up where you left off.</p>
+      <form id="form-signup">
+        <div class="auth-field"><label>Email</label><input type="email" required autocomplete="email"></div>
+        <div class="auth-field"><label>Password</label><input type="password" required autocomplete="new-password" minlength="6"></div>
+        <button class="auth-submit" type="submit">Create account</button>
+      </form>
+    </div>
+
+    <div class="auth-note">⚙️ Accounts are being connected right now — this form isn't live yet. Check back soon, or follow <a href="https://t.me/bekhruzposts" target="_blank" rel="noopener" style="color:#fde68a;font-weight:700">@bekhruzposts</a> for the announcement.</div>
+    <a class="auth-back" href="/">← Back to practice tests (no account needed)</a>
+  </div>
+</div>
+
+<script>
+  const tabLogin = document.getElementById('tab-login');
+  const tabSignup = document.getElementById('tab-signup');
+  const panelLogin = document.getElementById('panel-login');
+  const panelSignup = document.getElementById('panel-signup');
+  tabLogin.addEventListener('click', () => {
+    tabLogin.classList.add('active'); tabSignup.classList.remove('active');
+    panelLogin.style.display = ''; panelSignup.style.display = 'none';
+  });
+  tabSignup.addEventListener('click', () => {
+    tabSignup.classList.add('active'); tabLogin.classList.remove('active');
+    panelSignup.style.display = ''; panelLogin.style.display = 'none';
+  });
+  document.getElementById('form-login').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Login isn\'t connected yet — check back soon!');
+  });
+  document.getElementById('form-signup').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('Sign-up isn\'t connected yet — check back soon!');
+  });
+</script>
+</body>
+</html>

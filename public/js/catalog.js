@@ -122,7 +122,7 @@
     const meta = `${t.questionCount} questions · ${t.durationMinutes} min`;
     const startBtn = soon
       ? '<span class="tc-start">Coming soon</span>'
-      : `<a class="tc-start" href="/tests/${t.file}" target="_blank" rel="noopener">Start Test →</a>`;
+      : `<a class="tc-start" href="/tests/${t.file}">Start Test →</a>`;
 
     return `<div class="test-card${soon ? ' soon' : ''}">
       ${badge}
