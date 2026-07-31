@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<title>Listening Practice Tests | Bekhruz IELTS</title>
-<meta name="description" content="Free IELTS Listening practice tests with audio, timed like the real exam.">
+<title>Listening Section Practice | Bekhruz IELTS</title>
+<meta name="description" content="IELTS Listening practice by section — Section 1 to 4 — coming soon.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -15,11 +15,12 @@
     <a class="brand" href="/"><span class="brand-mark">Bekhruz</span> IELTS</a>
     <nav class="main-nav">
       <a href="/">Home</a>
-      <a href="/reading.html">Reading</a>
-      <a href="/listening.html" class="active">Listening</a>
+      <div class="nav-item has-dropdown"><button class="nav-trigger active" type="button">Listening <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/listening.html?section=1">Section 1</a><a href="/listening.html?section=2">Section 2</a><a href="/listening.html?section=3">Section 3</a><a href="/listening.html?section=4">Section 4</a><a href="/listening.html?full=1">Full Test</a></div></div>
+      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a></div></div>
       <a href="/speaking.html">Speaking</a>
       <a href="/writing.html">Writing</a>
       <a href="/vocabulary.html">Vocabulary</a>
+      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Volumes <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/volumes-reading.html">Reading</a><a href="/volumes-listening.html">Listening</a></div></div>
       <a href="/mock.html">Mock</a>
       <a href="/books.html">Books</a>
       <a href="/premium.html">✨ Premium</a>
@@ -34,17 +35,54 @@
 
 <div class="catalog-wrap">
   <div class="catalog-hdr">
-    <h1>Listening Practice</h1>
-    <p>Full 40-question listening tests with audio — put your headphones on and press Start.</p>
+    <div>
+      <h1>Listening Section Practice</h1>
+      <p>Single-section drills (Section 1–4) are in development. Looking for a full 40-question test today? Try <a href="/volumes-listening.html" style="color:#7fb3ff">Listening Volumes</a>.</p>
+    </div>
   </div>
 
-  <input type="search" id="search-box" class="search-box" placeholder="Search by title…">
+  <div class="module-grid" style="margin-bottom:20px">
+    <div class="module-card soon">
+      <span class="module-icon">1️⃣</span>
+      <span class="badge-soon">SECTION 1</span>
+      <h3>Section 1</h3>
+      <p>Everyday conversation, form completion</p>
+      <span class="module-btn">Coming soon</span>
+    </div>
+    <div class="module-card soon">
+      <span class="module-icon">2️⃣</span>
+      <span class="badge-soon">SECTION 2</span>
+      <h3>Section 2</h3>
+      <p>Monologue in a social context</p>
+      <span class="module-btn">Coming soon</span>
+    </div>
+    <div class="module-card soon">
+      <span class="module-icon">3️⃣</span>
+      <span class="badge-soon">SECTION 3</span>
+      <h3>Section 3</h3>
+      <p>Academic discussion, up to 4 speakers</p>
+      <span class="module-btn">Coming soon</span>
+    </div>
+    <div class="module-card soon">
+      <span class="module-icon">4️⃣</span>
+      <span class="badge-soon">SECTION 4</span>
+      <h3>Section 4</h3>
+      <p>Academic lecture, one speaker</p>
+      <span class="module-btn">Coming soon</span>
+    </div>
+    <a class="module-card" href="/volumes-listening.html">
+      <span class="module-icon">🎧</span>
+      <span class="badge-tier">AVAILABLE NOW</span>
+      <h3>Full Test (Volumes)</h3>
+      <p>77 complete tests across 9 volumes</p>
+      <span class="module-btn">Open Volumes →</span>
+    </a>
+  </div>
 
-  <div class="filter-bar" id="filter-bar"></div>
-  <div class="filter-bar" id="qtype-bar"></div>
-
-  <div id="catalog-root" data-section="listening">
-    <p class="empty-note">Loading tests…</p>
+  <div class="gate-note" style="margin:0 auto">
+    <h2>Want section drills sooner?</h2>
+    <p>Follow the Telegram channel — new content ships there first.</p>
+    <a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">Follow @bekhruzposts</a>
   </div>
 </div>
 
@@ -55,7 +93,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
-<script src="/js/catalog.js"></script>
+<script src="/js/nav-dropdown.js"></script>
 <script src="/js/theme-toggle.js"></script>
 </body>
 </html>

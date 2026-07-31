@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<title>Vocabulary — Bekhruz IELTS</title>
-<meta name="description" content="Vocabulary practice is coming soon to Bekhruz IELTS.">
+<title>Reading Volumes | Bekhruz IELTS</title>
+<meta name="description" content="Free full-length IELTS Reading practice tests, organized by volume — 40 questions, 60 minutes, exam format.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -19,7 +19,7 @@
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a></div></div>
       <a href="/speaking.html">Speaking</a>
       <a href="/writing.html">Writing</a>
-      <a href="/vocabulary.html" class="active">Vocabulary</a>
+      <a href="/vocabulary.html">Vocabulary</a>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Volumes <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/volumes-reading.html">Reading</a><a href="/volumes-listening.html">Listening</a></div></div>
       <a href="/mock.html">Mock</a>
       <a href="/books.html">Books</a>
@@ -33,11 +33,19 @@
   </div>
 </header>
 
-<div class="page-wrap" style="max-width:640px">
-  <div class="gate-note" style="margin:70px auto">
-    <h2>🧠 Vocabulary — coming soon</h2>
-    <p>Topic-based word lists and flashcard-style quizzes pulled straight from the passages and audioscripts in this library — in development.</p>
-    <a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">Follow @bekhruzposts for updates</a>
+<div class="catalog-wrap">
+  <div class="catalog-hdr">
+    <div>
+      <h1>Reading Volumes</h1>
+      <p>Full 40-question tests, 60 minutes each, exactly like the real exam — always free.</p>
+    </div>
+    <button class="random-btn" id="random-test-btn" type="button">🎲 Choose for me</button>
+  </div>
+
+  <div class="filter-bar" id="volume-shortcuts"></div>
+
+  <div id="catalog-root" data-section="reading">
+    <p class="empty-note">Loading tests…</p>
   </div>
 </div>
 
@@ -49,6 +57,7 @@
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
+<script src="/js/volumes-catalog.js"></script>
 <script src="/js/theme-toggle.js"></script>
 </body>
 </html>

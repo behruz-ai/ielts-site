@@ -15,11 +15,12 @@
     <a class="brand" href="/"><span class="brand-mark">Bekhruz</span> IELTS</a>
     <nav class="main-nav">
       <a href="/" class="active">Home</a>
-      <a href="/reading.html">Reading</a>
-      <a href="/listening.html">Listening</a>
+      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Listening <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/listening.html?section=1">Section 1</a><a href="/listening.html?section=2">Section 2</a><a href="/listening.html?section=3">Section 3</a><a href="/listening.html?section=4">Section 4</a><a href="/listening.html?full=1">Full Test</a></div></div>
+      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a></div></div>
       <a href="/speaking.html">Speaking</a>
       <a href="/writing.html">Writing</a>
       <a href="/vocabulary.html">Vocabulary</a>
+      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Volumes <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/volumes-reading.html">Reading</a><a href="/volumes-listening.html">Listening</a></div></div>
       <a href="/mock.html">Mock</a>
       <a href="/books.html">Books</a>
       <a href="/premium.html">✨ Premium</a>
@@ -59,14 +60,14 @@
     <p>Reading and Listening are live now — the rest are on the way.</p>
   </div>
   <div class="module-grid">
-    <a class="module-card" href="/listening.html">
+    <a class="module-card" href="/volumes-listening.html">
       <span class="module-icon">🎧</span>
       <span class="badge-tier">AUDIO</span>
       <h3>Listening</h3>
       <p id="listening-count">Loading…</p>
       <span class="module-btn">Open Section →</span>
     </a>
-    <a class="module-card" href="/reading.html">
+    <a class="module-card" href="/volumes-reading.html">
       <span class="module-icon">📖</span>
       <span class="badge-tier">TEXTS</span>
       <h3>Reading</h3>
@@ -134,6 +135,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
+<script src="/js/nav-dropdown.js"></script>
 <script src="/js/home.js"></script>
 <script src="/js/theme-toggle.js"></script>
 </body>

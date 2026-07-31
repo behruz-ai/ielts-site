@@ -1,14 +1,13 @@
-// Renders a catalog page (Reading or Listening) from data/tests.json.
-// Zero-build: this fetches the manifest at runtime and builds the DOM client-side.
-// To add a new test: add one object to data/tests.json and drop the file under tests/<section>/...
-// No rebuild step, no template to touch.
+// Renders the Reading catalog — Premium single-passage practice only.
+// Full-volume tests live on /volumes-reading.html now (see volumes-catalog.js);
+// search and question-type filtering are a passage-practice concept, not
+// something that applies to full exam-length volumes.
 
 (function () {
   const root = document.getElementById('catalog-root');
   if (!root) return;
-  const section = root.dataset.section; // "reading" | "listening"
 
-  const state = { tier: 'all', volume: 'all', isPremiumUser: false, search: '', qtypes: new Set(), attemptsByPath: null };
+  const state = { isPremiumUser: false, search: '', qtypes: new Set(), attemptsByPath: null, passageType: 'all' };
 
   const premiumStatus = (typeof supabaseClient === 'undefined')
     ? Promise.resolve(false)
@@ -35,14 +34,14 @@
       const pct = r.total ? r.score / r.total : 0;
       const existing = map[r.test_path];
       const count = (existing ? existing.count : 0) + 1;
-      if (!existing || pct > existing.pct) {
-        map[r.test_path] = { score: r.score, total: r.total, pct, count };
-      } else {
-        existing.count = count;
-      }
+      if (!existing || pct > existing.pct) map[r.test_path] = { score: r.score, total: r.total, pct, count };
+      else existing.count = count;
     });
     return map;
   }
+
+  const params = new URLSearchParams(location.search);
+  const isFullReading = params.get('full') === '1';
 
   Promise.all([
     fetch('/data/tests.json').then((r) => r.json()),
@@ -52,7 +51,7 @@
     .then(([all, isPremiumUser, attemptsByPath]) => {
       state.isPremiumUser = isPremiumUser;
       state.attemptsByPath = attemptsByPath;
-      const items = all.filter((t) => t.section === section);
+      const items = all.filter((t) => t.section === 'reading' && t.tier === 'premium-passage');
       init(items);
     })
     .catch((err) => {
@@ -61,7 +60,20 @@
     });
 
   function init(items) {
-    buildFilterBar(items);
+    if (isFullReading) {
+      root.innerHTML = '<div class="gate-note"><h2>Full Reading — coming soon</h2>' +
+        '<p>Complete non-Volume Reading tests are on the way. Meanwhile, ' +
+        '<a href="/volumes-reading.html" style="color:#7fb3ff">Reading Volumes</a> has full exam-length tests today.</p></div>';
+      const bar = document.getElementById('filter-bar');
+      const qbar = document.getElementById('qtype-bar');
+      const box = document.getElementById('search-box');
+      if (bar) bar.style.display = 'none';
+      if (qbar) qbar.style.display = 'none';
+      if (box) box.style.display = 'none';
+      return;
+    }
+
+    buildPassageTypeBar(items);
     buildQtypeBar(items);
     buildSearchBox(items);
     render(items);
@@ -76,6 +88,36 @@
     });
   }
 
+  function buildPassageTypeBar(items) {
+    const bar = document.getElementById('filter-bar');
+    if (!bar) return;
+
+    const preselect = new URLSearchParams(location.search).get('type');
+    const types = uniq(items.map((t) => t.passageType)).sort();
+    if (preselect && types.includes(preselect)) state.passageType = preselect;
+
+    const counts = {};
+    types.forEach((pt) => { counts[pt] = items.filter((t) => t.passageType === pt).length; });
+
+    const chips = [chip('All', 'all')];
+    types.forEach((pt) => chips.push(chip(`${pt} (${counts[pt]})`, pt)));
+    bar.innerHTML = chips.join('');
+
+    bar.querySelectorAll('.filter-chip').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        bar.querySelectorAll('.filter-chip').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        state.passageType = btn.dataset.value;
+        render(items);
+      });
+    });
+  }
+
+  function chip(label, value) {
+    const active = state.passageType === value;
+    return `<button class="filter-chip${active ? ' active' : ''}" data-value="${escapeHtml(value)}">${escapeHtml(label)}</button>`;
+  }
+
   function buildQtypeBar(items) {
     const bar = document.getElementById('qtype-bar');
     if (!bar) return;
@@ -83,8 +125,6 @@
     const allTypes = uniq(items.flatMap((t) => t.questionTypes || [])).sort();
     if (!allTypes.length) { bar.style.display = 'none'; return; }
 
-    // Deep-link support: /reading.html?qtype=Matching%20Headings pre-selects
-    // that filter chip (used by the Insights page's "Practice this" links).
     const preselect = new URLSearchParams(location.search).get('qtype');
     if (preselect && allTypes.includes(preselect)) state.qtypes.add(preselect);
 
@@ -102,42 +142,13 @@
     });
   }
 
-  function buildFilterBar(items) {
-    const bar = document.getElementById('filter-bar');
-    if (!bar) return;
-
-    const tiers = uniq(items.map((t) => t.tier));
-    const tierLabel = {
-      'full-volume': 'Full Volume Tests',
-      'premium-passage': 'Premium Passages',
-    };
-
-    const chips = [];
-    chips.push(chip('All', 'all', 'tier', true));
-    tiers.forEach((t) => chips.push(chip(tierLabel[t] || t, t, 'tier', false)));
-    bar.innerHTML = chips.join('');
-
-    bar.querySelectorAll('.filter-chip').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        bar.querySelectorAll('.filter-chip').forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        state.tier = btn.dataset.value;
-        render(items);
-      });
-    });
-  }
-
-  function chip(label, value, group, active) {
-    return `<button class="filter-chip${active ? ' active' : ''}" data-group="${group}" data-value="${value}">${label}</button>`;
-  }
-
   function uniq(arr) {
     return [...new Set(arr)];
   }
 
   function render(items) {
     let filtered = items;
-    if (state.tier !== 'all') filtered = filtered.filter((t) => t.tier === state.tier);
+    if (state.passageType !== 'all') filtered = filtered.filter((t) => t.passageType === state.passageType);
     if (state.qtypes.size) {
       filtered = filtered.filter((t) => (t.questionTypes || []).some((qt) => state.qtypes.has(qt)));
     }
@@ -150,50 +161,30 @@
     }
 
     if (!filtered.length) {
-      root.innerHTML = '<p class="empty-note">Nothing here yet — check back soon.</p>';
+      root.innerHTML = '<p class="empty-note">Nothing matches — try a different filter or search term.</p>';
       return;
     }
 
-    const fullVolume = filtered.filter((t) => t.tier === 'full-volume');
-    const premiumPassage = filtered.filter((t) => t.tier === 'premium-passage');
-
+    const types = uniq(filtered.map((t) => t.passageType)).sort();
     let html = '';
-
-    if (fullVolume.length) {
-      const volumes = uniq(fullVolume.map((t) => t.volume)).sort((a, b) => a - b);
-      volumes.forEach((v) => {
-        const tests = fullVolume
-          .filter((t) => t.volume === v)
-          .sort((a, b) => (a.testNumber || 999) - (b.testNumber || 999));
-        html += `<div class="vol-group"><h2>Volume ${v}</h2><div class="test-grid">`;
-        html += tests.map(cardHtml).join('');
-        html += `</div></div>`;
-      });
-    }
-
-    if (premiumPassage.length) {
-      const types = uniq(premiumPassage.map((t) => t.passageType)).sort();
-      types.forEach((pt) => {
-        const tests = premiumPassage.filter((t) => t.passageType === pt);
-        html += `<div class="vol-group"><h2>${pt} — Premium</h2><div class="test-grid">`;
-        html += tests.map(cardHtml).join('');
-        html += `</div></div>`;
-      });
-    }
+    types.forEach((pt) => {
+      const tests = filtered.filter((t) => t.passageType === pt);
+      html += `<div class="vol-group"><h2>${escapeHtml(pt)}</h2><div class="test-grid">`;
+      html += tests.map(cardHtml).join('');
+      html += `</div></div>`;
+    });
 
     root.innerHTML = html;
   }
 
   function cardHtml(t) {
     const soon = t.status === 'coming-soon';
-    const locked = t.tier === 'premium-passage' && t.access === 'premium' && !state.isPremiumUser;
+    const locked = t.access === 'premium' && !state.isPremiumUser;
     const badge = soon
       ? '<span class="badge-soon">Coming soon</span>'
-      : t.tier === 'premium-passage'
-      ? (t.access === 'free'
+      : (t.access === 'free'
           ? `<span class="badge-tier badge-premium">✨ ${escapeHtml(t.passageType || '')} · Free sample</span>`
-          : `<span class="badge-tier badge-premium">🔒 ${escapeHtml(t.passageType || '')} Premium</span>`)
-      : '';
+          : `<span class="badge-tier badge-premium">🔒 ${escapeHtml(t.passageType || '')} Premium</span>`);
     const meta = `${t.questionCount} questions · ${t.durationMinutes} min`;
     const needsLogin = state.attemptsByPath === null;
     const startBtn = soon
@@ -205,7 +196,7 @@
       : `<a class="tc-start" href="/tests/${t.file}">Start Test →</a>`;
 
     let doneBadge = '';
-    if (!soon && state.attemptsByPath) {
+    if (!soon && !locked && state.attemptsByPath) {
       const attempt = state.attemptsByPath['/tests/' + t.file];
       doneBadge = attempt
         ? `<span class="badge-done">✓ Completed · ${attempt.score}/${attempt.total}${attempt.count > 1 ? ' · best of ' + attempt.count : ''}</span>`
