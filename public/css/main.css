@@ -241,7 +241,11 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 .vol-group h2{
   font-size:14px; font-weight:800; text-transform:uppercase; letter-spacing:.6px; color:var(--subtext);
   margin:0 0 14px; padding-bottom:10px; border-bottom:1px solid var(--border);
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
 }
+.vol-progress{display:inline-flex; align-items:center; gap:7px; font-size:11.5px; font-weight:700; color:var(--subtext); text-transform:none; letter-spacing:0}
+.vol-progress-track{display:inline-block; width:64px; height:6px; border-radius:9999px; background:var(--pill); overflow:hidden}
+.vol-progress-fill{display:block; height:100%; background:var(--grad); border-radius:9999px}
 .test-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:15px}
 .test-card{
   background-color:var(--panel); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
@@ -352,6 +356,23 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 }
 .gate-note h2{font-size:19px; margin:0 0 10px}
 .gate-note p{color:var(--subtext); font-size:14px; margin:0 0 18px}
+
+/* post-test feedback toast */
+.feedback-toast{
+  position:fixed; bottom:20px; right:20px; max-width:320px; padding:18px 20px;
+  background-color:var(--panel-solid); border:1px solid var(--border-strong); border-radius:16px;
+  box-shadow:0 20px 50px var(--shadow-color); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+  z-index:9999; animation:toast-in .25s ease;
+}
+@keyframes toast-in{from{transform:translateY(16px); opacity:0}to{transform:translateY(0); opacity:1}}
+.feedback-toast-close{
+  position:absolute; top:10px; right:12px; border:none; background:none; color:var(--subtext);
+  font-size:18px; line-height:1; cursor:pointer; padding:2px; font-family:inherit;
+}
+.feedback-toast-close:hover{color:var(--text)}
+@media (max-width:480px){
+  .feedback-toast{left:16px; right:16px; bottom:16px; max-width:none}
+}
 
 /* footer */
 footer.site-ftr{

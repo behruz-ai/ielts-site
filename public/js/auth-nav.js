@@ -13,10 +13,8 @@
   function renderLoggedIn(email, role, isPremium) {
     const short = email.length > 20 ? email.slice(0, 18) + '…' : email;
     const adminLink = role === 'admin' ? '<a class="nav-link-sm" href="/admin.html">Admin</a>' : '';
-    const analyticsLink = isPremium ? '<a class="nav-link-sm" href="/analytics.html">✨ Insights</a>' : '';
     slot.innerHTML =
       adminLink +
-      analyticsLink +
       '<a class="nav-link-sm" href="/progress.html">My Progress</a>' +
       '<span class="user-chip" title="' + escapeHtml(email) + '">👤 ' + escapeHtml(short) + '</span>' +
       '<button class="btn-logout" id="logout-btn" type="button">Log out</button>';

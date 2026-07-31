@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>My Progress — Bekhruz IELTS</title>
+<meta name="description" content="Your test history, band scores, and (Premium) a weak-area breakdown with suggestions.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -45,6 +46,7 @@
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
 <script src="/js/theme-toggle.js"></script>
+<script src="/js/ielts-band.js"></script>
 <script>
   const content = document.getElementById('content');
 
@@ -64,6 +66,24 @@
     return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) +
       ' ' + d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
   }
+  function pct(n) { return Math.round(n * 100); }
+  function barColor(p) {
+    if (p >= 75) return '#86efac';
+    if (p >= 50) return '#fde047';
+    return '#fca5a5';
+  }
+  function barRow(label, p, sub, link) {
+    return '<div style="margin-bottom:16px">' +
+      '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">' +
+        '<span style="font-weight:700;font-size:14.5px">' + escapeHtml(label) + '</span>' +
+        '<span style="font-size:12.5px;color:var(--subtext)">' + escapeHtml(sub) + '</span>' +
+      '</div>' +
+      '<div style="background:var(--pill);border-radius:9999px;height:10px;overflow:hidden">' +
+        '<div style="width:' + p + '%;height:100%;background:' + barColor(p) + ';border-radius:9999px"></div>' +
+      '</div>' +
+      (link ? '<a href="' + link + '" style="display:inline-block;margin-top:6px;font-size:12.5px;font-weight:700;color:#7fb3ff">Practice this →</a>' : '') +
+    '</div>';
+  }
 
   async function render() {
     const { data: sessionData } = await supabaseClient.auth.getSession();
@@ -71,14 +91,16 @@
       content.innerHTML =
         '<div class="gate-note"><h2>Log in to see your progress</h2>' +
         '<p>Every test you complete while logged in gets saved here automatically.</p>' +
-        '<a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="/login.html">Log in / Sign up</a></div>';
+        '<a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="/login.html?next=/progress.html">Log in / Sign up</a></div>';
       return;
     }
 
-    const { data: attempts, error } = await supabaseClient
-      .from('test_attempts')
-      .select('*')
-      .order('completed_at', { ascending: false });
+    const [{ data: profile }, { data: attempts, error }, manifest] = await Promise.all([
+      supabaseClient.from('profiles').select('is_premium').eq('id', sessionData.session.user.id).maybeSingle(),
+      supabaseClient.from('test_attempts').select('*').order('completed_at', { ascending: false }),
+      fetch('/data/tests.json').then((r) => r.json()),
+    ]);
+    const isPremium = !!(profile && profile.is_premium);
 
     if (error) {
       content.innerHTML = '<div class="gate-note"><h2>Couldn\'t load your progress</h2><p>' + escapeHtml(error.message) + '</p></div>';
@@ -86,28 +108,109 @@
     }
 
     const total = attempts.length;
-    const avgPct = total
-      ? Math.round(attempts.reduce((s, a) => s + (a.total ? a.score / a.total : 0), 0) / total * 100)
-      : 0;
 
     let html = '<div class="page-wrap"><h1>My Progress</h1><p class="page-sub">Every test you\'ve completed while logged in.</p>';
+
+    if (!total) {
+      html += '<div class="gate-note"><h2>No attempts yet</h2><p>Complete a test while logged in and it\'ll show up here.</p></div></div>';
+      content.innerHTML = html;
+      return;
+    }
+
+    // --- Summary stats ---
+    const avgPct = pct(attempts.reduce((s, a) => s + (a.total ? a.score / a.total : 0), 0) / total);
+    const bandedAttempts = attempts.filter((a) => window.ieltsBand(a.score, a.total) !== null);
+    const avgBand = bandedAttempts.length
+      ? (bandedAttempts.reduce((s, a) => s + window.ieltsBand(a.score, a.total), 0) / bandedAttempts.length).toFixed(1)
+      : null;
+
+    const bySection = { reading: { sum: 0, count: 0 }, listening: { sum: 0, count: 0 } };
+    attempts.forEach((a) => {
+      if (!a.total || !bySection[a.section]) return;
+      bySection[a.section].sum += a.score / a.total; bySection[a.section].count++;
+    });
+    const readingPct = bySection.reading.count ? pct(bySection.reading.sum / bySection.reading.count) : null;
+    const listeningPct = bySection.listening.count ? pct(bySection.listening.sum / bySection.listening.count) : null;
+
     html += '<div class="summary-row">' +
       '<div class="stat-box"><div class="num">' + total + '</div><div class="lbl">Tests completed</div></div>' +
       '<div class="stat-box"><div class="num">' + avgPct + '%</div><div class="lbl">Average score</div></div>' +
+      '<div class="stat-box"><div class="num">' + (avgBand === null ? '–' : avgBand) + '</div><div class="lbl">Average band (full tests)</div></div>' +
+      '<div class="stat-box"><div class="num">' + (readingPct === null ? '–' : readingPct + '%') + '</div><div class="lbl">Reading average</div></div>' +
+      '<div class="stat-box"><div class="num">' + (listeningPct === null ? '–' : listeningPct + '%') + '</div><div class="lbl">Listening average</div></div>' +
       '</div>';
 
-    if (!total) {
-      html += '<div class="gate-note"><h2>No attempts yet</h2><p>Complete a test while logged in and it\'ll show up here.</p></div>';
+    // --- Insights: free users get a teaser, Premium gets the real breakdown ---
+    const fileToTest = {};
+    manifest.forEach((t) => { if (t.file) fileToTest['/tests/' + t.file] = t; });
+    const byType = {};
+    attempts.forEach((a) => {
+      if (!a.total) return;
+      const p = a.score / a.total;
+      const test = fileToTest[a.test_path];
+      if (test && test.questionTypes) {
+        test.questionTypes.forEach((qt) => {
+          if (!byType[qt]) byType[qt] = { sum: 0, count: 0 };
+          byType[qt].sum += p; byType[qt].count++;
+        });
+      }
+    });
+    const typeRows = Object.keys(byType)
+      .map((qt) => ({ qt, pct: pct(byType[qt].sum / byType[qt].count), count: byType[qt].count }))
+      .sort((a, b) => a.pct - b.pct);
+
+    if (!isPremium) {
+      html += '<div class="gate-note" style="margin:0 0 30px;text-align:left">' +
+        '<h2 style="margin-bottom:8px">Insights ✨ <span style="font-size:12px;font-weight:700;color:var(--premium)">Premium</span></h2>' +
+        '<p style="margin-bottom:14px">See exactly which question types are costing you marks, plus suggestions on what to practice next.</p>' +
+        '<a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="/premium.html">Get Premium</a>' +
+        '</div>';
     } else {
-      html += '<table class="data-table"><thead><tr><th>Test</th><th>Section</th><th>Score</th><th>Date</th></tr></thead><tbody>';
-      attempts.forEach((a) => {
-        html += '<tr><td>' + escapeHtml(a.test_title || a.test_path) + '</td>' +
-          '<td>' + escapeHtml(a.section || '') + '</td>' +
-          '<td><span class="score-pill ' + scoreClass(a.score, a.total) + '">' + a.score + ' / ' + a.total + '</span></td>' +
-          '<td>' + fmtDate(a.completed_at) + '</td></tr>';
-      });
-      html += '</tbody></table>';
+      const suggestions = [];
+      if (readingPct !== null && listeningPct !== null) {
+        if (Math.abs(readingPct - listeningPct) >= 5) {
+          const weaker = readingPct < listeningPct ? 'Reading' : 'Listening';
+          const weakerPct = Math.min(readingPct, listeningPct);
+          suggestions.push('Your ' + weaker + ' average (' + weakerPct + '%) is noticeably behind your other section — worth spending more practice time there.');
+        } else {
+          suggestions.push('Your Reading and Listening averages are close (' + readingPct + '% vs ' + listeningPct + '%) — fairly balanced so far.');
+        }
+      }
+      if (typeRows.length) {
+        const weakest = typeRows[0];
+        suggestions.push('Across Reading question types, <strong>' + escapeHtml(weakest.qt) + '</strong> is your weakest at ' + weakest.pct + '% (based on ' + weakest.count + ' test' + (weakest.count === 1 ? '' : 's') + ') — the practice link below jumps straight to more of it.');
+      }
+
+      html += '<h2 style="font-size:16px;margin:0 0 14px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Insights ✨</h2>';
+      if (suggestions.length) {
+        html += '<div class="gate-note" style="margin:0 0 24px;text-align:left"><h2 style="margin-bottom:10px;font-size:16px">Suggestions</h2>' +
+          suggestions.map((s) => '<p style="margin:0 0 8px">' + s + '</p>').join('') + '</div>';
+      }
+      if (typeRows.length) {
+        html += '<div style="margin-bottom:30px">' +
+          typeRows.map((r) => barRow(
+            r.qt, r.pct, r.pct + '% avg · ' + r.count + ' test' + (r.count === 1 ? '' : 's'),
+            '/reading.html?qtype=' + encodeURIComponent(r.qt)
+          )).join('') +
+          '</div>';
+      } else {
+        html += '<div class="gate-note" style="margin-bottom:30px"><h2>No Reading data yet</h2><p>Complete a Reading test to see a question-type breakdown here.</p></div>';
+      }
     }
+
+    // --- Attempt history ---
+    html += '<h2 style="font-size:16px;margin:0 0 14px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Test history</h2>';
+    html += '<table class="data-table"><thead><tr><th>Test</th><th>Section</th><th>Score</th><th>Band</th><th>Date</th></tr></thead><tbody>';
+    attempts.forEach((a) => {
+      const band = window.ieltsBand(a.score, a.total);
+      html += '<tr><td>' + escapeHtml(a.test_title || a.test_path) + '</td>' +
+        '<td>' + escapeHtml(a.section || '') + '</td>' +
+        '<td><span class="score-pill ' + scoreClass(a.score, a.total) + '">' + a.score + ' / ' + a.total + '</span></td>' +
+        '<td>' + (band === null ? '–' : band) + '</td>' +
+        '<td>' + fmtDate(a.completed_at) + '</td></tr>';
+    });
+    html += '</tbody></table>';
+
     html += '</div>';
     content.innerHTML = html;
   }

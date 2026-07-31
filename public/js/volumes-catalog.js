@@ -84,11 +84,20 @@
     let html = '';
     volumes.forEach((v) => {
       const tests = items.filter((t) => t.volume === v).sort((a, b) => (a.testNumber || 999) - (b.testNumber || 999));
-      html += `<div class="vol-group" id="vol-${v}"><h2>Volume ${v}</h2><div class="test-grid">`;
+      html += `<div class="vol-group" id="vol-${v}"><h2>Volume ${v}${volumeProgressHtml(tests)}</h2><div class="test-grid">`;
       html += tests.map(cardHtml).join('');
       html += `</div></div>`;
     });
     root.innerHTML = html;
+  }
+
+  function volumeProgressHtml(tests) {
+    if (state.attemptsByPath === null) return ''; // signed out — can't know progress
+    const published = tests.filter((t) => t.status === 'published');
+    if (!published.length) return '';
+    const done = published.filter((t) => state.attemptsByPath['/tests/' + t.file]).length;
+    const pct = Math.round((done / published.length) * 100);
+    return ` <span class="vol-progress">${pct}% complete <span class="vol-progress-track"><span class="vol-progress-fill" style="width:${pct}%"></span></span></span>`;
   }
 
   function cardHtml(t) {
