@@ -63,7 +63,7 @@
       if (!data.session) return; // not logged in — nothing to report
 
       const section = location.pathname.includes('/listening/') ? 'listening' : 'reading';
-      await supabaseClient.from('test_attempts').insert({
+      const { error } = await supabaseClient.from('test_attempts').insert({
         user_id: data.session.user.id,
         test_path: location.pathname,
         test_title: document.title,
@@ -71,6 +71,13 @@
         score: parsed.score,
         total: parsed.total,
       });
+      // Supabase inserts resolve with { error } rather than throwing, so a
+      // silent RLS/permissions failure would otherwise go completely
+      // unnoticed — score not saved, but no error surfaced anywhere.
+      if (error) {
+        console.error('Saving test attempt failed:', error);
+        return;
+      }
       showFeedbackToast(parsed, data.session.user.id);
     } catch (err) {
       console.warn('Progress reporting failed (test result itself is unaffected):', err);
