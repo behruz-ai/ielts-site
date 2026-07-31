@@ -140,6 +140,39 @@
       '<div class="stat-box"><div class="num">' + (listeningPct === null ? '–' : listeningPct + '%') + '</div><div class="lbl">Listening average</div></div>' +
       '</div>';
 
+    // --- Band scores by skill (latest + best ever) ---
+    // attempts is already ordered newest-first, so [0] of a filtered list is the latest.
+    function skillBand(section) {
+      const banded = attempts.filter((a) => a.section === section && window.ieltsBand(a.score, a.total) !== null);
+      if (!banded.length) return null;
+      const latest = window.ieltsBand(banded[0].score, banded[0].total);
+      const best = Math.max(...banded.map((a) => window.ieltsBand(a.score, a.total)));
+      return { latest, best };
+    }
+    const readingBand = skillBand('reading');
+    const listeningBand = skillBand('listening');
+
+    function skillRow(label, bandInfo, available) {
+      if (!available) {
+        return '<tr><td>' + label + '</td><td colspan="2" style="color:var(--subtext)">Coming soon — no ' + label.toLowerCase() + ' tests yet</td></tr>';
+      }
+      if (!bandInfo) {
+        return '<tr><td>' + label + '</td><td colspan="2" style="color:var(--subtext)">Complete a full ' + label + ' test to see this</td></tr>';
+      }
+      return '<tr><td>' + label + '</td><td><span class="score-pill good">' + bandInfo.latest + '</span></td><td><span class="score-pill good">' + bandInfo.best + '</span></td></tr>';
+    }
+
+    html += '<h2 style="font-size:16px;margin:0 0 14px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Band scores by skill</h2>';
+    html += '<table class="data-table" style="margin-bottom:30px"><thead><tr><th>Skill</th><th>Latest band</th><th>Best band</th></tr></thead><tbody>' +
+      skillRow('Reading', readingBand, true) +
+      skillRow('Listening', listeningBand, true) +
+      skillRow('Writing', null, false) +
+      skillRow('Speaking', null, false) +
+      '</tbody></table>';
+
+    html += '<h2 style="font-size:16px;margin:0 0 14px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Mock test results</h2>';
+    html += '<div class="gate-note" style="margin-bottom:30px"><h2>Coming soon</h2><p>Once full Mock Tests are live, your overall band score (averaged across Reading, Listening, Writing &amp; Speaking) will appear here after each attempt, alongside your best result to date.</p></div>';
+
     // --- Insights: free users get a teaser, Premium gets the real breakdown ---
     const fileToTest = {};
     manifest.forEach((t) => { if (t.file) fileToTest['/tests/' + t.file] = t; });
