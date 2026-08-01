@@ -7,26 +7,28 @@
   const root = document.getElementById('catalog-root');
   if (!root) return;
 
-  const state = { isPremiumUser: false, search: '', qtypes: new Set(), attemptsByPath: null, passageType: 'all' };
+  const state = { isPremiumUser: false, search: '', qtypes: new Set(), attemptsByPath: null, passageType: 'all', items: null };
 
-  const premiumStatus = (typeof supabaseClient === 'undefined')
-    ? Promise.resolve(false)
-    : supabaseClient.auth.getSession().then(({ data }) => {
-        if (!data.session) return false;
-        return supabaseClient.from('profiles').select('is_premium').eq('id', data.session.user.id)
-          .maybeSingle().then(({ data: profile }) => !!(profile && profile.is_premium));
-      }).catch(() => false);
+  function fetchPremiumStatus() {
+    if (typeof supabaseClient === 'undefined') return Promise.resolve(false);
+    return supabaseClient.auth.getSession().then(({ data }) => {
+      if (!data.session) return false;
+      return supabaseClient.from('profiles').select('is_premium').eq('id', data.session.user.id)
+        .maybeSingle().then(({ data: profile }) => !!(profile && profile.is_premium));
+    }).catch(() => false);
+  }
 
   // null = signed out (completion status unknown, no badge shown); an object
   // (possibly empty) = signed in, so every card gets a Completed/Not started badge.
-  const attemptsStatus = (typeof supabaseClient === 'undefined')
-    ? Promise.resolve(null)
-    : supabaseClient.auth.getSession().then(({ data }) => {
-        if (!data.session) return null;
-        return supabaseClient.from('test_attempts').select('test_path, score, total')
-          .eq('user_id', data.session.user.id)
-          .then(({ data: rows }) => buildAttemptsMap(rows || []));
-      }).catch(() => null);
+  function fetchAttempts() {
+    if (typeof supabaseClient === 'undefined') return Promise.resolve(null);
+    return supabaseClient.auth.getSession().then(({ data }) => {
+      if (!data.session) return null;
+      return supabaseClient.from('test_attempts').select('test_path, score, total')
+        .eq('user_id', data.session.user.id)
+        .then(({ data: rows }) => buildAttemptsMap(rows || []));
+    }).catch(() => null);
+  }
 
   function buildAttemptsMap(rows) {
     const map = {};
@@ -45,19 +47,30 @@
 
   Promise.all([
     fetch('/data/tests.json').then((r) => r.json()),
-    premiumStatus,
-    attemptsStatus,
+    fetchPremiumStatus(),
+    fetchAttempts(),
   ])
     .then(([all, isPremiumUser, attemptsByPath]) => {
       state.isPremiumUser = isPremiumUser;
       state.attemptsByPath = attemptsByPath;
-      const items = all.filter((t) => t.section === 'reading' && t.tier === 'premium-passage');
-      init(items);
+      state.items = all.filter((t) => t.section === 'reading' && t.tier === 'premium-passage');
+      init(state.items);
     })
     .catch((err) => {
       root.innerHTML = '<p class="empty-note">Could not load the test catalog. Please refresh.</p>';
       console.error(err);
     });
+
+  // See volumes-catalog.js for why: bfcache-restored pages (browser Back)
+  // don't re-run any of the above, so completion badges go stale.
+  window.addEventListener('pageshow', (e) => {
+    if (!e.persisted || !state.items || isFullReading) return;
+    Promise.all([fetchPremiumStatus(), fetchAttempts()]).then(([isPremiumUser, attemptsByPath]) => {
+      state.isPremiumUser = isPremiumUser;
+      state.attemptsByPath = attemptsByPath;
+      render(state.items);
+    });
+  });
 
   function init(items) {
     if (isFullReading) {

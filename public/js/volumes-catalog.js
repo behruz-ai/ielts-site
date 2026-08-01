@@ -8,16 +8,17 @@
   if (!root) return;
   const section = root.dataset.section; // "reading" | "listening"
 
-  const state = { attemptsByPath: null };
+  const state = { attemptsByPath: null, items: null };
 
-  const attemptsStatus = (typeof supabaseClient === 'undefined')
-    ? Promise.resolve(null)
-    : supabaseClient.auth.getSession().then(({ data }) => {
-        if (!data.session) return null;
-        return supabaseClient.from('test_attempts').select('test_path, score, total')
-          .eq('user_id', data.session.user.id)
-          .then(({ data: rows }) => buildAttemptsMap(rows || []));
-      }).catch(() => null);
+  function fetchAttempts() {
+    if (typeof supabaseClient === 'undefined') return Promise.resolve(null);
+    return supabaseClient.auth.getSession().then(({ data }) => {
+      if (!data.session) return null;
+      return supabaseClient.from('test_attempts').select('test_path, score, total')
+        .eq('user_id', data.session.user.id)
+        .then(({ data: rows }) => buildAttemptsMap(rows || []));
+    }).catch(() => null);
+  }
 
   function buildAttemptsMap(rows) {
     const map = {};
@@ -33,37 +34,50 @@
 
   Promise.all([
     fetch('/data/tests.json').then((r) => r.json()),
-    attemptsStatus,
+    fetchAttempts(),
   ])
     .then(([all, attemptsByPath]) => {
       state.attemptsByPath = attemptsByPath;
-      const items = all.filter((t) => t.section === section && t.tier === 'full-volume');
-      init(items);
+      state.items = all.filter((t) => t.section === section && t.tier === 'full-volume');
+      init();
     })
     .catch((err) => {
       root.innerHTML = '<p class="empty-note">Could not load the test catalog. Please refresh.</p>';
       console.error(err);
     });
 
-  function init(items) {
-    buildShortcutBar(items);
-    wireRandomButton(items);
-    render(items);
+  // Browsers often restore a page from an in-memory snapshot (bfcache) on
+  // back/forward navigation instead of re-running any of the above — so
+  // completing a test, then hitting Back, showed stale Not Started badges
+  // and a stale volume-progress percentage. Re-fetch just the attempts
+  // (not the whole page setup) whenever that happens.
+  window.addEventListener('pageshow', (e) => {
+    if (!e.persisted || !state.items) return;
+    fetchAttempts().then((attemptsByPath) => {
+      state.attemptsByPath = attemptsByPath;
+      render();
+    });
+  });
+
+  function init() {
+    buildShortcutBar();
+    wireRandomButton();
+    render();
   }
 
   function uniq(arr) { return [...new Set(arr)]; }
 
-  function buildShortcutBar(items) {
+  function buildShortcutBar() {
     const bar = document.getElementById('volume-shortcuts');
     if (!bar) return;
-    const volumes = uniq(items.map((t) => t.volume)).sort((a, b) => a - b);
+    const volumes = uniq(state.items.map((t) => t.volume)).sort((a, b) => a - b);
     bar.innerHTML = volumes.map((v) => `<a href="#vol-${v}" class="filter-chip">Vol ${v}</a>`).join('');
   }
 
-  function wireRandomButton(items) {
+  function wireRandomButton() {
     const btn = document.getElementById('random-test-btn');
     if (!btn) return;
-    const published = items.filter((t) => t.status === 'published');
+    const published = state.items.filter((t) => t.status === 'published');
     if (!published.length) { btn.style.display = 'none'; return; }
     btn.addEventListener('click', () => {
       const pick = published[Math.floor(Math.random() * published.length)];
@@ -75,7 +89,8 @@
     });
   }
 
-  function render(items) {
+  function render() {
+    const items = state.items;
     if (!items.length) {
       root.innerHTML = '<p class="empty-note">Nothing here yet — check back soon.</p>';
       return;

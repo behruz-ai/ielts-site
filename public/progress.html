@@ -249,6 +249,9 @@
   }
 
   render();
+  // bfcache-restored pages (browser Back) don't re-run render() on their
+  // own, so a just-completed attempt wouldn't show up without this.
+  window.addEventListener('pageshow', (e) => { if (e.persisted) render(); });
 </script>
 </body>
 </html>
