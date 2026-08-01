@@ -7,7 +7,7 @@
   const root = document.getElementById('catalog-root');
   if (!root) return;
 
-  const state = { isPremiumUser: false, search: '', qtypes: new Set(), attemptsByPath: null, passageType: 'all', items: null };
+  const state = { isPremiumUser: false, search: '', qtypes: new Set(), attemptsByPath: null, completedPaths: null, passageType: 'all', items: null };
 
   function fetchPremiumStatus() {
     if (typeof supabaseClient === 'undefined') return Promise.resolve(false);
@@ -42,6 +42,22 @@
     return map;
   }
 
+  // Manual completion ticks — independent of automatic score detection,
+  // since that's proven unreliable across this many test-file generations.
+  // null = signed out; a Set (possibly empty) = signed in.
+  function fetchCompletions() {
+    if (typeof supabaseClient === 'undefined') return Promise.resolve(null);
+    return supabaseClient.auth.getSession().then(({ data }) => {
+      if (!data.session) return null;
+      return supabaseClient.from('completed_tests').select('test_path')
+        .eq('user_id', data.session.user.id)
+        .then(({ data: rows, error }) => {
+          if (error) { console.warn('[catalog] completed_tests fetch failed (has the migration been run?):', error); return new Set(); }
+          return new Set((rows || []).map((r) => r.test_path));
+        });
+    }).catch(() => null);
+  }
+
   const params = new URLSearchParams(location.search);
   const isFullReading = params.get('full') === '1';
 
@@ -49,10 +65,12 @@
     fetch('/data/tests.json').then((r) => r.json()),
     fetchPremiumStatus(),
     fetchAttempts(),
+    fetchCompletions(),
   ])
-    .then(([all, isPremiumUser, attemptsByPath]) => {
+    .then(([all, isPremiumUser, attemptsByPath, completedPaths]) => {
       state.isPremiumUser = isPremiumUser;
       state.attemptsByPath = attemptsByPath;
+      state.completedPaths = completedPaths;
       state.items = all.filter((t) => t.section === 'reading' && t.tier === 'premium-passage');
       init(state.items);
     })
@@ -65,11 +83,34 @@
   // don't re-run any of the above, so completion badges go stale.
   window.addEventListener('pageshow', (e) => {
     if (!e.persisted || !state.items || isFullReading) return;
-    Promise.all([fetchPremiumStatus(), fetchAttempts()]).then(([isPremiumUser, attemptsByPath]) => {
+    Promise.all([fetchPremiumStatus(), fetchAttempts(), fetchCompletions()]).then(([isPremiumUser, attemptsByPath, completedPaths]) => {
       state.isPremiumUser = isPremiumUser;
       state.attemptsByPath = attemptsByPath;
+      state.completedPaths = completedPaths;
       render(state.items);
     });
+  });
+
+  root.addEventListener('change', async (e) => {
+    const box = e.target.closest('.manual-check-input');
+    if (!box || typeof supabaseClient === 'undefined') return;
+    const path = box.dataset.path;
+    const { data } = await supabaseClient.auth.getSession();
+    if (!data.session) { box.checked = !box.checked; return; }
+
+    box.disabled = true;
+    if (box.checked) {
+      const { error } = await supabaseClient.from('completed_tests')
+        .insert({ user_id: data.session.user.id, test_path: path });
+      if (!error) state.completedPaths.add(path);
+      else console.error('[catalog] mark-done failed:', error);
+    } else {
+      const { error } = await supabaseClient.from('completed_tests')
+        .delete().eq('user_id', data.session.user.id).eq('test_path', path);
+      if (!error) state.completedPaths.delete(path);
+      else console.error('[catalog] unmark failed:', error);
+    }
+    render(state.items);
   });
 
   function init(items) {
@@ -209,11 +250,22 @@
       : `<a class="tc-start" href="/tests/${t.file}">Start Test →</a>`;
 
     let doneBadge = '';
+    let manualCheck = '';
     if (!soon && !locked && state.attemptsByPath) {
-      const attempt = state.attemptsByPath['/tests/' + t.file];
-      doneBadge = attempt
-        ? `<span class="badge-done">✓ Completed · ${attempt.score}/${attempt.total}${attempt.count > 1 ? ' · best of ' + attempt.count : ''}</span>`
-        : '<span class="badge-todo">○ Not started</span>';
+      const path = '/tests/' + t.file;
+      const attempt = state.attemptsByPath[path];
+      if (attempt) {
+        doneBadge = `<span class="badge-done">✓ Completed · ${attempt.score}/${attempt.total}${attempt.count > 1 ? ' · best of ' + attempt.count : ''}</span>`;
+      } else {
+        const manuallyDone = state.completedPaths && state.completedPaths.has(path);
+        doneBadge = manuallyDone
+          ? '<span class="badge-done">✓ Completed</span>'
+          : '<span class="badge-todo">○ Not started</span>';
+        manualCheck = `<label class="manual-check" title="Mark this test as done yourself">
+          <input type="checkbox" class="manual-check-input" data-path="${escapeHtml(path)}" ${manuallyDone ? 'checked' : ''}>
+          <span>${manuallyDone ? 'Marked done' : 'Mark as done'}</span>
+        </label>`;
+      }
     }
 
     const qtypesLine = (t.questionTypes && t.questionTypes.length)
@@ -226,6 +278,7 @@
       <div class="tc-meta"><span>${meta}</span></div>
       ${qtypesLine}
       ${startBtn}
+      ${manualCheck}
     </div>`;
   }
 

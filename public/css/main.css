@@ -261,6 +261,12 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
   border-radius:9px; transition:transform .15s,box-shadow .15s; box-shadow:0 4px 14px rgba(239,68,68,.25);
 }
 .test-card .tc-start:hover{transform:translateY(-1px); box-shadow:0 6px 20px rgba(239,68,68,.4)}
+.manual-check{
+  display:flex; align-items:center; gap:7px; margin-top:2px; font-size:12.5px; font-weight:600;
+  color:var(--subtext); cursor:pointer; user-select:none;
+}
+.manual-check input{width:15px; height:15px; accent-color:var(--accent); cursor:pointer; flex:none}
+.manual-check:hover{color:var(--text)}
 .test-card .tc-start.tc-locked{background-color:var(--premium-bg); color:var(--premium); box-shadow:none}
 .test-card .tc-start.tc-locked:hover{box-shadow:0 6px 20px rgba(167,139,250,.3)}
 .test-card.soon{opacity:.5}
