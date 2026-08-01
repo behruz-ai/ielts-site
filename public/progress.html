@@ -95,9 +95,25 @@
       return;
     }
 
+    // Admin viewing another student's progress: /progress.html?user=<id>.
+    // RLS already lets an admin session SELECT any profile/attempts row —
+    // this just decides whose id to query for. Falls back to your own
+    // progress if you're not actually an admin, no error shown either way.
+    const requestedUserId = new URLSearchParams(location.search).get('user');
+    let targetUserId = sessionData.session.user.id;
+    let viewingAsAdmin = false;
+    if (requestedUserId && requestedUserId !== targetUserId) {
+      const { data: myProfile } = await supabaseClient
+        .from('profiles').select('role').eq('id', sessionData.session.user.id).maybeSingle();
+      if (myProfile && myProfile.role === 'admin') {
+        targetUserId = requestedUserId;
+        viewingAsAdmin = true;
+      }
+    }
+
     const [{ data: profile }, { data: attempts, error }, manifest] = await Promise.all([
-      supabaseClient.from('profiles').select('is_premium').eq('id', sessionData.session.user.id).maybeSingle(),
-      supabaseClient.from('test_attempts').select('*').order('completed_at', { ascending: false }),
+      supabaseClient.from('profiles').select('email, is_premium').eq('id', targetUserId).maybeSingle(),
+      supabaseClient.from('test_attempts').select('*').eq('user_id', targetUserId).order('completed_at', { ascending: false }),
       fetch('/data/tests.json').then((r) => r.json()),
     ]);
     const isPremium = !!(profile && profile.is_premium);
@@ -109,10 +125,18 @@
 
     const total = attempts.length;
 
-    let html = '<div class="page-wrap"><h1>My Progress</h1><p class="page-sub">Every test you\'ve completed while logged in.</p>';
+    const adminBanner = viewingAsAdmin
+      ? '<div class="gate-note" style="margin:0 0 24px;text-align:left"><p style="margin:0">Viewing progress for <strong>' +
+        escapeHtml((profile && profile.email) || targetUserId) + '</strong> as admin. <a href="/admin.html" style="color:#7fb3ff">Back to Admin Dashboard</a></p></div>'
+      : '';
+
+    let html = '<div class="page-wrap"><h1>' + (viewingAsAdmin ? 'Student Progress' : 'My Progress') + '</h1>' +
+      '<p class="page-sub">Every test completed while logged in.</p>' + adminBanner;
 
     if (!total) {
-      html += '<div class="gate-note"><h2>No attempts yet</h2><p>Complete a test while logged in and it\'ll show up here.</p></div></div>';
+      html += '<div class="gate-note"><h2>No attempts yet</h2><p>' +
+        (viewingAsAdmin ? 'This student hasn\'t completed a test yet.' : 'Complete a test while logged in and it\'ll show up here.') +
+        '</p></div></div>';
       content.innerHTML = html;
       return;
     }

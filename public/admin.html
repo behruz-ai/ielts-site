@@ -147,7 +147,9 @@
         '<td>' + (r.bestBand === null ? '–' : '<span class="score-pill good">' + r.bestBand + '</span>') + '</td>' +
         '<td style="color:var(--subtext)">Coming soon</td>' +
         '<td>' + fmtDate(p.created_at) + '</td>' +
-        '<td><button class="btn-logout premium-toggle" data-id="' + p.id + '" data-current="' + (p.is_premium ? '1' : '0') + '" type="button">' +
+        '<td style="white-space:nowrap">' +
+        '<a class="nav-link-sm" href="/progress.html?user=' + encodeURIComponent(p.id) + '" style="margin-right:10px">View Progress</a>' +
+        '<button class="btn-logout premium-toggle" data-id="' + p.id + '" data-current="' + (p.is_premium ? '1' : '0') + '" type="button">' +
         (p.is_premium ? 'Revoke Premium' : 'Grant Premium') + '</button></td></tr>';
     });
     html += '</tbody></table>';
