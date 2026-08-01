@@ -2979,5 +2979,72 @@
       "Notes Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-deep-sea-discovery",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Deep Sea Discovery",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/deep-sea-discovery.html",
+    "questionTypes": [
+      "Notes Completion",
+      "True/False/Not Given"
+    ]
+  },
+  {
+    "id": "premium-roller-coaster",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Roller Coaster: The Great Fairground Attraction",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/roller-coaster.html",
+    "questionTypes": [
+      "Diagram Labelling",
+      "Summary Completion",
+      "True/False/Not Given"
+    ]
+  },
+  {
+    "id": "premium-life-on-mars",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Life on Mars?",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/life-on-mars.html",
+    "questionTypes": [
+      "Matching Information",
+      "Multiple Choice",
+      "Yes/No/Not Given"
+    ]
+  },
+  {
+    "id": "premium-tuatara",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Tuatara: Past and Future",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/tuatara.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Summary Completion"
+    ]
   }
 ]
