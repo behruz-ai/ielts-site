@@ -7,6 +7,7 @@
   const root = document.getElementById('catalog-root');
   if (!root) return;
 
+  const mode = root.dataset.mode === 'real-exam' ? 'real-exam' : 'reading';
   const state = { isPremiumUser: false, search: '', qtypes: new Set(), attemptsByPath: null, completedPaths: null, passageType: 'all', items: null };
 
   function fetchPremiumStatus() {
@@ -58,6 +59,20 @@
     }).catch(() => null);
   }
 
+  // Admin-editable Free/Premium/Real Exam categorization, layered over the
+  // static default in tests.json — see supabase-add-test-overrides.sql.
+  function fetchOverrides() {
+    if (typeof supabaseClient === 'undefined') return Promise.resolve({});
+    return supabaseClient.from('test_overrides').select('test_path, access')
+      .then(({ data: rows, error }) => {
+        if (error) { console.warn('[catalog] test_overrides fetch failed (has the migration been run?):', error); return {}; }
+        const map = {};
+        (rows || []).forEach((r) => { map[r.test_path] = r.access; });
+        return map;
+      })
+      .catch(() => ({}));
+  }
+
   const params = new URLSearchParams(location.search);
   const isFullReading = params.get('full') === '1';
 
@@ -66,12 +81,14 @@
     fetchPremiumStatus(),
     fetchAttempts(),
     fetchCompletions(),
+    fetchOverrides(),
   ])
-    .then(([all, isPremiumUser, attemptsByPath, completedPaths]) => {
+    .then(([all, isPremiumUser, attemptsByPath, completedPaths, overrides]) => {
+      state.rawAll = all;
       state.isPremiumUser = isPremiumUser;
       state.attemptsByPath = attemptsByPath;
       state.completedPaths = completedPaths;
-      state.items = all.filter((t) => t.section === 'reading' && t.tier === 'premium-passage');
+      state.items = applyOverrides(all, overrides);
       init(state.items);
     })
     .catch((err) => {
@@ -79,14 +96,24 @@
       console.error(err);
     });
 
+  function applyOverrides(all, overrides) {
+    const base = all
+      .filter((t) => t.section === 'reading' && t.tier === 'premium-passage')
+      .map((t) => ({ ...t, access: overrides['/tests/' + t.file] || t.access }));
+    return mode === 'real-exam'
+      ? base.filter((t) => t.access === 'real-exam')
+      : base.filter((t) => t.access !== 'real-exam');
+  }
+
   // See volumes-catalog.js for why: bfcache-restored pages (browser Back)
   // don't re-run any of the above, so completion badges go stale.
   window.addEventListener('pageshow', (e) => {
     if (!e.persisted || !state.items || isFullReading) return;
-    Promise.all([fetchPremiumStatus(), fetchAttempts(), fetchCompletions()]).then(([isPremiumUser, attemptsByPath, completedPaths]) => {
+    Promise.all([fetchPremiumStatus(), fetchAttempts(), fetchCompletions(), fetchOverrides()]).then(([isPremiumUser, attemptsByPath, completedPaths, overrides]) => {
       state.isPremiumUser = isPremiumUser;
       state.attemptsByPath = attemptsByPath;
       state.completedPaths = completedPaths;
+      state.items = applyOverrides(state.rawAll, overrides);
       render(state.items);
     });
   });
@@ -215,7 +242,11 @@
     }
 
     if (!filtered.length) {
-      root.innerHTML = '<p class="empty-note">Nothing matches — try a different filter or search term.</p>';
+      root.innerHTML = items.length
+        ? '<p class="empty-note">Nothing matches — try a different filter or search term.</p>'
+        : (mode === 'real-exam'
+            ? '<p class="empty-note">No Real Exam passages are up yet — check back soon.</p>'
+            : '<p class="empty-note">Nothing here yet — check back soon.</p>');
       return;
     }
 
@@ -233,11 +264,13 @@
 
   function cardHtml(t) {
     const soon = t.status === 'coming-soon';
-    const locked = t.access === 'premium' && !state.isPremiumUser;
+    const locked = t.access !== 'free' && !state.isPremiumUser;
     const badge = soon
       ? '<span class="badge-soon">Coming soon</span>'
       : (t.access === 'free'
           ? `<span class="badge-tier badge-premium">✨ ${escapeHtml(t.passageType || '')} · Free sample</span>`
+          : t.access === 'real-exam'
+          ? `<span class="badge-tier badge-premium">🔒 ${escapeHtml(t.passageType || '')} · Real Exam</span>`
           : `<span class="badge-tier badge-premium">🔒 ${escapeHtml(t.passageType || '')} Premium</span>`);
     const meta = `${t.questionCount} questions · ${t.durationMinutes} min`;
     const needsLogin = state.attemptsByPath === null;

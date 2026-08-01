@@ -365,6 +365,11 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 .data-table td{padding:13px 16px; border-bottom:1px solid var(--border); font-size:14px}
 .data-table tr:last-child td{border-bottom:none}
 .data-table tr:hover td{background-color:var(--row-hover)}
+.category-select{
+  background-color:var(--input-bg); color:var(--text); border:1px solid var(--border-strong); border-radius:8px;
+  padding:6px 10px; font-size:13.5px; font-weight:700; font-family:inherit; cursor:pointer;
+}
+.category-select:disabled{opacity:.6; cursor:wait}
 .score-pill{
   display:inline-flex; padding:3px 11px; border-radius:9999px; font-weight:800; font-size:12.5px;
 }

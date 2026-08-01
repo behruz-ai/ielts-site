@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<title>Listening Volumes | Bekhruz IELTS</title>
-<meta name="description" content="Free full-length IELTS Listening practice tests with audio, organized by volume — 40 questions, timed like the real exam.">
+<title>Real Exam Passages | Bekhruz IELTS</title>
+<meta name="description" content="Authentic real IELTS exam Reading passages, for Premium members — Passage 1, 2, and 3.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
     <nav class="main-nav">
       <a href="/">Home</a>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Listening <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/listening.html?section=1">Section 1</a><a href="/listening.html?section=2">Section 2</a><a href="/listening.html?section=3">Section 3</a><a href="/listening.html?section=4">Section 4</a><a href="/listening.html?full=1">Full Test</a></div></div>
-      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a><a href="/real-exam.html">✨ Real Exam Passages</a></div></div>
+      <div class="nav-item has-dropdown"><button class="nav-trigger active" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a><a href="/real-exam.html">✨ Real Exam Passages</a></div></div>
       <a href="/speaking.html">Speaking</a>
       <a href="/writing.html">Writing</a>
       <a href="/vocabulary.html">Vocabulary</a>
@@ -37,15 +37,17 @@
 <div class="catalog-wrap">
   <div class="catalog-hdr">
     <div>
-      <h1>Listening Volumes</h1>
-      <p>Full 40-question listening tests with audio, timed like the real exam — always free.</p>
+      <h1>Real Exam Passages</h1>
+      <p>Authentic passages taken from real past IELTS exams — a Premium perk, on top of the regular Premium passage library. Looking for the full practice library instead? Try <a href="/reading.html" style="color:#7fb3ff">Reading Passages</a>.</p>
     </div>
-    <button class="random-btn" id="random-test-btn" type="button">🎲 Choose for me</button>
   </div>
 
-  <div class="filter-bar" id="volume-shortcuts"></div>
+  <input type="search" id="search-box" class="search-box" placeholder="Search by title or question type (e.g. \"Matching Headings\")…">
 
-  <div id="catalog-root" data-section="listening">
+  <div class="filter-bar" id="filter-bar"></div>
+  <div class="filter-bar" id="qtype-bar"></div>
+
+  <div id="catalog-root" data-section="reading" data-mode="real-exam">
     <p class="empty-note">Loading tests…</p>
   </div>
 </div>
@@ -58,7 +60,7 @@
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
-<script src="/js/volumes-catalog.js"></script>
+<script src="/js/catalog.js"></script>
 <script src="/js/theme-toggle.js"></script>
 </body>
 </html>

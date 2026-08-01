@@ -21,7 +21,7 @@
     <nav class="main-nav">
       <a href="/">Home</a>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Listening <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/listening.html?section=1">Section 1</a><a href="/listening.html?section=2">Section 2</a><a href="/listening.html?section=3">Section 3</a><a href="/listening.html?section=4">Section 4</a><a href="/listening.html?full=1">Full Test</a></div></div>
-      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a></div></div>
+      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a><a href="/real-exam.html">✨ Real Exam Passages</a></div></div>
       <a href="/speaking.html">Speaking</a>
       <a href="/writing.html">Writing</a>
       <a href="/vocabulary.html">Vocabulary</a>
@@ -83,15 +83,31 @@
       return;
     }
 
-    const [{ data: attempts, error: attemptsErr }, { data: profiles, error: profilesErr }] = await Promise.all([
+    const [{ data: attempts, error: attemptsErr }, { data: profiles, error: profilesErr }, allTests, { data: overrideRows, error: overridesErr }] = await Promise.all([
       supabaseClient.from('test_attempts').select('*').order('completed_at', { ascending: false }),
       supabaseClient.from('profiles').select('id, email, role, is_premium, created_at'),
+      fetch('/data/tests.json').then((r) => r.json()),
+      supabaseClient.from('test_overrides').select('test_path, access'),
     ]);
     if (attemptsErr || profilesErr) {
       content.innerHTML = '<div class="gate-note"><h2>Couldn\'t load data</h2><p>' +
         escapeHtml((attemptsErr || profilesErr).message) + '</p></div>';
       return;
     }
+    if (overridesErr) console.warn('[admin] test_overrides fetch failed (has the migration been run?):', overridesErr);
+
+    // --- Passage content categorization: Free / Premium / Real Exam ---
+    // tests.json ships a default `access`; test_overrides lets the admin
+    // move any passage between the three buckets without a code deploy.
+    const overrideMap = {};
+    (overrideRows || []).forEach((r) => { overrideMap[r.test_path] = r.access; });
+    const passages = allTests
+      .filter((t) => t.section === 'reading' && t.tier === 'premium-passage')
+      .map((t) => {
+        const path = '/tests/' + t.file;
+        return { ...t, path, access: overrideMap[path] || t.access };
+      })
+      .sort((a, b) => (a.passageType || '').localeCompare(b.passageType || '') || a.displayTitle.localeCompare(b.displayTitle));
 
     const totalUsers = profiles.length;
     const totalAttempts = attempts.length;
@@ -153,6 +169,23 @@
         '<button class="btn-logout premium-toggle" data-id="' + p.id + '" data-current="' + (p.is_premium ? '1' : '0') + '" type="button">' +
         (p.is_premium ? 'Revoke Premium' : 'Grant Premium') + '</button></td></tr>';
     });
+    html += '<h2 style="font-size:16px;margin:0 0 12px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Passage content — Free / Premium / Real Exam</h2>';
+    html += '<p class="page-sub" style="margin:-6px 0 14px">Controls which catalog a passage shows up in: <a href="/reading.html" style="color:#7fb3ff">Reading</a> (Free + Premium) or <a href="/real-exam.html" style="color:#7fb3ff">Real Exam Passages</a>. Takes effect immediately for every visitor.</p>';
+    html += '<table class="data-table" style="margin-bottom:34px"><thead><tr>' +
+      '<th>Title</th><th>Type</th><th>Category</th><th></th>' +
+      '</tr></thead><tbody>';
+    passages.forEach((t) => {
+      html += '<tr>' +
+        '<td>' + escapeHtml(t.displayTitle) + '</td>' +
+        '<td>' + escapeHtml(t.passageType || '') + '</td>' +
+        '<td><select class="category-select" data-path="' + escapeHtml(t.path) + '">' +
+        ['free', 'premium', 'real-exam'].map((v) =>
+          '<option value="' + v + '"' + (t.access === v ? ' selected' : '') + '>' +
+          (v === 'free' ? 'Free' : v === 'premium' ? 'Premium' : 'Real Exam') + '</option>'
+        ).join('') +
+        '</select></td>' +
+        '<td class="category-status" style="color:var(--subtext);font-size:12.5px"></td></tr>';
+    });
     html += '</tbody></table>';
     html += '</div>';
     content.innerHTML = html;
@@ -169,6 +202,27 @@
           return;
         }
         render();
+      });
+    });
+
+    content.querySelectorAll('.category-select').forEach((sel) => {
+      sel.addEventListener('change', async () => {
+        const path = sel.dataset.path;
+        const status = sel.closest('tr').querySelector('.category-status');
+        sel.disabled = true;
+        if (status) status.textContent = 'Saving…';
+        const { error } = await supabaseClient.from('test_overrides')
+          .upsert({ test_path: path, access: sel.value, updated_at: new Date().toISOString() }, { onConflict: 'test_path' });
+        sel.disabled = false;
+        if (error) {
+          if (status) status.textContent = 'Failed to save';
+          console.error('[admin] category save failed:', error);
+          return;
+        }
+        if (status) {
+          status.textContent = 'Saved';
+          setTimeout(() => { if (status.textContent === 'Saved') status.textContent = ''; }, 2000);
+        }
       });
     });
   }
