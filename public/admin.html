@@ -45,6 +45,7 @@
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
 <script src="/js/theme-toggle.js"></script>
+<script src="/js/ielts-band.js"></script>
 <script>
   const content = document.getElementById('content');
 
@@ -91,47 +92,65 @@
       return;
     }
 
-    const emailById = {};
-    profiles.forEach((p) => { emailById[p.id] = p.email; });
-
     const totalUsers = profiles.length;
     const totalAttempts = attempts.length;
     const avgPct = totalAttempts
       ? Math.round(attempts.reduce((s, a) => s + (a.total ? a.score / a.total : 0), 0) / totalAttempts * 100)
       : 0;
 
-    let html = '<div class="page-wrap"><h1>Admin Dashboard</h1><p class="page-sub">All registered users and test activity.</p>';
+    // --- Per-user progress (mirrors what each student sees on their own My Progress) ---
+    const byUser = {};
+    attempts.forEach((a) => {
+      if (!byUser[a.user_id]) byUser[a.user_id] = [];
+      byUser[a.user_id].push(a);
+    });
+
+    const rows = profiles.map((p) => {
+      const userAttempts = byUser[p.id] || [];
+      const testsCount = userAttempts.length;
+      const avgScorePct = testsCount
+        ? Math.round(userAttempts.reduce((s, a) => s + (a.total ? a.score / a.total : 0), 0) / testsCount * 100)
+        : null;
+      const banded = userAttempts
+        .map((a) => window.ieltsBand(a.score, a.total))
+        .filter((b) => b !== null);
+      const avgBand = banded.length ? (banded.reduce((s, b) => s + b, 0) / banded.length) : null;
+      const bestBand = banded.length ? Math.max(...banded) : null;
+      return { profile: p, testsCount, avgScorePct, avgBand, bestBand };
+    });
+
+    // Ranking: best band descending: no-data users sink to the bottom, unranked.
+    rows.sort((a, b) => (b.bestBand || -1) - (a.bestBand || -1));
+    let rank = 0;
+
+    let html = '<div class="page-wrap"><h1>Admin Dashboard</h1><p class="page-sub">Every student\'s progress, ranked by their best band score.</p>';
     html += '<div class="summary-row">' +
       '<div class="stat-box"><div class="num">' + totalUsers + '</div><div class="lbl">Registered users</div></div>' +
       '<div class="stat-box"><div class="num">' + totalAttempts + '</div><div class="lbl">Tests completed</div></div>' +
-      '<div class="stat-box"><div class="num">' + avgPct + '%</div><div class="lbl">Average score</div></div>' +
+      '<div class="stat-box"><div class="num">' + avgPct + '%</div><div class="lbl">Average score (all students)</div></div>' +
       '</div>';
 
-    html += '<h2 style="font-size:16px;margin:0 0 12px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Registered users</h2>';
-    html += '<table class="data-table" style="margin-bottom:34px"><thead><tr><th>Email</th><th>Role</th><th>Premium</th><th>Joined</th><th></th></tr></thead><tbody>';
-    profiles.forEach((p) => {
-      html += '<tr><td>' + escapeHtml(p.email) + '</td><td>' + escapeHtml(p.role) + '</td>' +
+    html += '<h2 style="font-size:16px;margin:0 0 12px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Students — ranked by best band</h2>';
+    html += '<table class="data-table" style="margin-bottom:34px"><thead><tr>' +
+      '<th>#</th><th>Email</th><th>Premium</th><th>Tests</th><th>Avg score</th><th>Avg band</th><th>Best band</th><th>Best mock</th><th>Joined</th><th></th>' +
+      '</tr></thead><tbody>';
+    rows.forEach((r) => {
+      const p = r.profile;
+      if (r.bestBand !== null) rank++;
+      html += '<tr>' +
+        '<td>' + (r.bestBand !== null ? rank : '–') + '</td>' +
+        '<td>' + escapeHtml(p.email) + (p.role === 'admin' ? ' <span class="score-pill mid">admin</span>' : '') + '</td>' +
         '<td><span class="score-pill ' + (p.is_premium ? 'good' : 'low') + '">' + (p.is_premium ? 'Yes' : 'No') + '</span></td>' +
+        '<td>' + r.testsCount + '</td>' +
+        '<td>' + (r.avgScorePct === null ? '–' : r.avgScorePct + '%') + '</td>' +
+        '<td>' + (r.avgBand === null ? '–' : r.avgBand.toFixed(1)) + '</td>' +
+        '<td>' + (r.bestBand === null ? '–' : '<span class="score-pill good">' + r.bestBand + '</span>') + '</td>' +
+        '<td style="color:var(--subtext)">Coming soon</td>' +
         '<td>' + fmtDate(p.created_at) + '</td>' +
         '<td><button class="btn-logout premium-toggle" data-id="' + p.id + '" data-current="' + (p.is_premium ? '1' : '0') + '" type="button">' +
         (p.is_premium ? 'Revoke Premium' : 'Grant Premium') + '</button></td></tr>';
     });
     html += '</tbody></table>';
-
-    html += '<h2 style="font-size:16px;margin:0 0 12px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">All test attempts</h2>';
-    if (!totalAttempts) {
-      html += '<div class="gate-note"><h2>No attempts yet</h2><p>Once users start completing tests while logged in, they\'ll show up here.</p></div>';
-    } else {
-      html += '<table class="data-table"><thead><tr><th>User</th><th>Test</th><th>Section</th><th>Score</th><th>Date</th></tr></thead><tbody>';
-      attempts.forEach((a) => {
-        html += '<tr><td>' + escapeHtml(emailById[a.user_id] || a.user_id) + '</td>' +
-          '<td>' + escapeHtml(a.test_title || a.test_path) + '</td>' +
-          '<td>' + escapeHtml(a.section || '') + '</td>' +
-          '<td><span class="score-pill ' + scoreClass(a.score, a.total) + '">' + a.score + ' / ' + a.total + '</span></td>' +
-          '<td>' + fmtDate(a.completed_at) + '</td></tr>';
-      });
-      html += '</tbody></table>';
-    }
     html += '</div>';
     content.innerHTML = html;
 
