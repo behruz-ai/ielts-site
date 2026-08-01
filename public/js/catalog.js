@@ -246,8 +246,8 @@
       : locked
       ? '<a class="tc-start tc-locked" href="/premium.html">🔒 Get Premium →</a>'
       : needsLogin
-      ? `<a class="tc-start tc-locked" href="/login.html?next=${encodeURIComponent('/tests/' + t.file)}">🔒 Log in to start →</a>`
-      : `<a class="tc-start" href="/tests/${t.file}">Start Test →</a>`;
+      ? `<a class="tc-start tc-locked" href="/login.html?next=${encodeURIComponent('/tests/' + t.file)}" target="_blank" rel="noopener">🔒 Log in to start →</a>`
+      : `<a class="tc-start" href="/tests/${t.file}" target="_blank" rel="noopener">Start Test →</a>`;
 
     let doneBadge = '';
     let manualCheck = '';

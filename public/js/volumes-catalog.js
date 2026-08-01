@@ -101,11 +101,13 @@
     if (!published.length) { btn.style.display = 'none'; return; }
     btn.addEventListener('click', () => {
       const pick = published[Math.floor(Math.random() * published.length)];
-      if (state.attemptsByPath === null) {
-        window.location.href = '/login.html?next=' + encodeURIComponent('/tests/' + pick.file);
-      } else {
-        window.location.href = '/tests/' + pick.file;
-      }
+      // New tab: these test files have no shared "back to site" link built
+      // in, so closing via the tab's X (a very natural instinct) would
+      // otherwise take the whole site down with it in a single-tab flow.
+      const url = state.attemptsByPath === null
+        ? '/login.html?next=' + encodeURIComponent('/tests/' + pick.file)
+        : '/tests/' + pick.file;
+      window.open(url, '_blank', 'noopener');
     });
   }
 
@@ -173,8 +175,8 @@
     const startBtn = soon
       ? '<span class="tc-start">Coming soon</span>'
       : needsLogin
-      ? `<a class="tc-start tc-locked" href="/login.html?next=${encodeURIComponent('/tests/' + t.file)}">🔒 Log in to start →</a>`
-      : `<a class="tc-start" href="/tests/${t.file}">Start Test →</a>`;
+      ? `<a class="tc-start tc-locked" href="/login.html?next=${encodeURIComponent('/tests/' + t.file)}" target="_blank" rel="noopener">🔒 Log in to start →</a>`
+      : `<a class="tc-start" href="/tests/${t.file}" target="_blank" rel="noopener">Start Test →</a>`;
 
     let doneBadge = '';
     let manualCheck = '';
