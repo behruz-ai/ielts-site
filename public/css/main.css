@@ -36,15 +36,20 @@ header.site-hdr{
   position:sticky; top:0; z-index:100;
 }
 .hdr-inner{
-  max-width:1140px; margin:0 auto; padding:14px 20px;
-  display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
+  max-width:1140px; margin:0 auto; padding:12px 20px;
+  display:flex; flex-direction:column; gap:8px;
 }
-.brand{display:flex; align-items:center; gap:9px; font-weight:800; font-size:19px; color:var(--text); letter-spacing:-.2px}
+.hdr-top{display:flex; align-items:center; justify-content:space-between; gap:20px}
+.brand{display:flex; align-items:center; gap:9px; font-weight:800; font-size:19px; color:var(--text); letter-spacing:-.2px; flex:none}
+.brand-avatar{
+  width:32px; height:32px; border-radius:50%; object-fit:cover; flex:none;
+  border:1.5px solid var(--border-strong); box-shadow:0 2px 8px var(--shadow-color);
+}
 .brand-mark{
   background-image:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
   font-weight:900;
 }
-nav.main-nav{display:flex; gap:6px; align-items:center; flex-wrap:wrap}
+nav.main-nav{display:flex; gap:6px; align-items:center; justify-content:center; flex-wrap:wrap}
 nav.main-nav > a{
   padding:8px 16px; border-radius:9999px; font-weight:600; font-size:14.5px; color:var(--subtext);
   transition:background .15s,color .15s;
@@ -164,10 +169,20 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 
 /* about section on homepage */
 .about-section{border-top:1px solid var(--border); padding:60px 20px; position:relative; z-index:1}
-.about-inner{max-width:720px; margin:0 auto; text-align:center}
+.about-inner{max-width:800px; margin:0 auto; text-align:center}
 .about-inner h2{font-size:clamp(22px,3vw,28px); font-weight:900; margin:10px 0 20px; letter-spacing:-.4px}
 .about-inner p{color:var(--subtext); font-size:15px; line-height:1.75; margin:0 0 16px; text-align:left}
 .about-inner a{color:#7fb3ff; font-weight:700}
+.about-body{display:flex; gap:28px; align-items:flex-start; text-align:left}
+.about-photo{
+  flex:none; width:128px; height:128px; border-radius:50%; object-fit:cover;
+  border:1.5px solid var(--border-strong); box-shadow:0 10px 30px var(--shadow-color);
+}
+.about-text{min-width:0}
+@media (max-width:560px){
+  .about-body{flex-direction:column; align-items:center; text-align:center}
+  .about-body .about-text p{text-align:left}
+}
 
 /* section cards on homepage */
 .section-cards{
@@ -407,7 +422,7 @@ footer.site-ftr{
 footer.site-ftr a:hover{color:var(--text)}
 
 @media (max-width:640px){
-  .hdr-inner{flex-direction:column; align-items:stretch}
-  nav.main-nav{justify-content:center}
-  .hdr-actions{justify-content:center}
+  .hdr-top{flex-wrap:wrap; justify-content:center}
+  .brand{flex:none}
+  .hdr-actions{justify-content:center; flex-wrap:wrap}
 }

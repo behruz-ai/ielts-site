@@ -12,7 +12,13 @@
 
 <header class="site-hdr">
   <div class="hdr-inner">
-    <a class="brand" href="/"><span class="brand-mark">Bekhruz</span> IELTS</a>
+    <div class="hdr-top">
+      <a class="brand" href="/"><img class="brand-avatar" src="/img/bekhruz.jpg" alt="" onerror="this.style.display='none'"><span><span class="brand-mark">Bekhruz</span> IELTS</span></a>
+      <div class="hdr-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">🌙</button>
+        <span id="auth-slot"><a class="btn-login" href="/login.html">Log in</a></span>
+      </div>
+    </div>
     <nav class="main-nav">
       <a href="/" class="active">Home</a>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Listening <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/listening.html?section=1">Section 1</a><a href="/listening.html?section=2">Section 2</a><a href="/listening.html?section=3">Section 3</a><a href="/listening.html?section=4">Section 4</a><a href="/listening.html?full=1">Full Test</a></div></div>
@@ -25,11 +31,6 @@
       <a href="/books.html">Books</a>
       <a href="/premium.html">✨ Premium</a>
     </nav>
-    <div class="hdr-actions">
-      <a class="tg-follow" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">📣 @bekhruzposts</a>
-      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">🌙</button>
-      <span id="auth-slot"><a class="btn-login" href="/login.html">Log in</a></span>
-    </div>
   </div>
 </header>
 
@@ -123,8 +124,13 @@
   <div class="about-inner">
     <div class="eyebrow"><span class="dot"></span> About</div>
     <h2>Why this site exists</h2>
-    <p>Bekhruz IELTS is built and maintained by <strong>I. Bekhruz</strong> (<a href="https://t.me/bekhruzposts" target="_blank" rel="noopener">@bekhruzposts</a> on Telegram), turning a private collection of practice tests into a computer-delivered format close to the real exam — same timing, same interface, same answer review. Reading and Listening are fully built out across multiple volumes; Speaking, Writing, Vocabulary, a full Mock Test, and printable Books are actively in development.</p>
-    <p>Create a free account and every test you take is saved automatically, so you can go back afterwards and see exactly which questions — and which question types — you got wrong.</p>
+    <div class="about-body">
+      <img class="about-photo" src="/img/bekhruz.jpg" alt="I. Bekhruz" onerror="this.style.display='none'">
+      <div class="about-text">
+        <p>Bekhruz IELTS is built and maintained by <strong>I. Bekhruz</strong> (<a href="https://t.me/bekhruzposts" target="_blank" rel="noopener">@bekhruzposts</a> on Telegram), turning a private collection of practice tests into a computer-delivered format close to the real exam — same timing, same interface, same answer review. Reading and Listening are fully built out across multiple volumes; Speaking, Writing, Vocabulary, a full Mock Test, and printable Books are actively in development.</p>
+        <p>Create a free account and every test you take is saved automatically, so you can go back afterwards and see exactly which questions — and which question types — you got wrong.</p>
+      </div>
+    </div>
   </div>
 </div>
 
