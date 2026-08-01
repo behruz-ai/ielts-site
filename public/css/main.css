@@ -374,6 +374,25 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
   .feedback-toast{left:16px; right:16px; bottom:16px; max-width:none}
 }
 
+/* manual "save my result" fallback button */
+.manual-save-btn{
+  position:fixed; bottom:20px; left:20px; padding:11px 18px; border-radius:9999px; border:none;
+  background-color:var(--panel-solid); border:1px solid var(--border-strong); color:var(--text);
+  font-weight:700; font-size:13px; cursor:pointer; box-shadow:0 10px 30px var(--shadow-color);
+  backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); z-index:9998; font-family:inherit;
+}
+.manual-save-btn:hover{border-color:rgba(239,68,68,.5)}
+.manual-save-btn:disabled{opacity:.7; cursor:default}
+.manual-save-msg{
+  position:fixed; bottom:66px; left:20px; max-width:280px; padding:11px 14px; border-radius:12px;
+  background-color:var(--panel-solid); border:1px solid var(--border-strong); color:var(--subtext);
+  font-size:12.5px; line-height:1.5; box-shadow:0 10px 30px var(--shadow-color); z-index:9998;
+}
+@media (max-width:480px){
+  .manual-save-btn{left:16px; bottom:16px}
+  .manual-save-msg{left:16px; right:16px; max-width:none}
+}
+
 /* footer */
 footer.site-ftr{
   border-top:1px solid var(--border); padding:26px 20px; text-align:center;

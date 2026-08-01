@@ -43,15 +43,20 @@
     return null;
   }
 
+  function tryExtract() {
+    let parsed = extractFromDataTarget();
+    if (!parsed) {
+      const cnt = document.getElementById('cnt');
+      if (cnt) parsed = extractFromText(cnt.textContent || '');
+    }
+    if (!parsed) parsed = extractFromText(document.body.innerText || '');
+    return parsed;
+  }
+
   function checkNow(source) {
     if (reported) return;
     try {
-      let parsed = extractFromDataTarget();
-      if (!parsed) {
-        const cnt = document.getElementById('cnt');
-        if (cnt) parsed = extractFromText(cnt.textContent || '');
-      }
-      if (!parsed) parsed = extractFromText(document.body.innerText || '');
+      const parsed = tryExtract();
       if (parsed) {
         console.info('[report-progress] score detected via', source, '->', parsed);
         reported = true;
@@ -94,7 +99,7 @@
   async function reportProgress(parsed) {
     try {
       const { data } = await supabaseClient.auth.getSession();
-      if (!data.session) { console.warn('[report-progress] no session — not logged in, nothing saved'); return; }
+      if (!data.session) { console.warn('[report-progress] no session, not logged in, nothing saved'); return; }
 
       const section = location.pathname.includes('/listening/') ? 'listening' : 'reading';
       const { error } = await supabaseClient.from('test_attempts').insert({
@@ -128,6 +133,8 @@
   // given browser guesses its encoding.
   var EM_DASH = String.fromCharCode(0x2014);
   var ARROW = String.fromCharCode(0x2192);
+  var CHECKMARK = String.fromCharCode(0x2713);
+  var ELLIPSIS = String.fromCharCode(0x2026);
   var EMOJI_PARTY = '\u{1F389}';
   var EMOJI_THUMB = '\u{1F44D}';
   var EMOJI_BULB = '\u{1F4A1}';
@@ -212,6 +219,74 @@
       '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
     }[c]));
   }
+
+  // Manual fallback: a small always-visible button so a student can force a
+  // save if, for whatever reason, neither detection path above caught it.
+  // Tries to find your score if it's already on screen; if you haven't
+  // checked answers yet, tries clicking whatever looks like the test's own
+  // check/submit button on your behalf, waits, and tries again.
+  function setupManualButton() {
+    const btn = document.createElement('button');
+    btn.id = 'manual-save-btn';
+    btn.type = 'button';
+    btn.className = 'manual-save-btn';
+    btn.textContent = CHECKMARK + ' Save my result';
+    document.body.appendChild(btn);
+
+    const msg = document.createElement('div');
+    msg.id = 'manual-save-msg';
+    msg.className = 'manual-save-msg';
+    msg.style.display = 'none';
+    document.body.appendChild(msg);
+
+    function showMsg(text) {
+      msg.textContent = text;
+      msg.style.display = 'block';
+      setTimeout(() => { msg.style.display = 'none'; }, 5000);
+    }
+
+    btn.addEventListener('click', async () => {
+      if (reported) { showMsg('Already saved for this test.'); return; }
+      btn.disabled = true;
+      const original = btn.textContent;
+      btn.textContent = 'Checking' + ELLIPSIS;
+
+      let parsed = tryExtract();
+      if (!parsed) {
+        const trigger = [...document.querySelectorAll('button, a, [role="button"]')]
+          .find((el) => el !== btn && looksLikeCheckTrigger(el));
+        if (trigger) {
+          console.info('[report-progress] manual button auto-clicking', trigger);
+          trigger.click();
+          // That click alone may satisfy the automatic detection paths
+          // (mutation observer / delegated click listener) before this
+          // wait is even over — re-check "reported" below, not just at
+          // the top of this handler, or this could save a second row.
+          await new Promise((r) => setTimeout(r, 1500));
+          parsed = tryExtract();
+        }
+      }
+
+      if (reported) {
+        btn.textContent = CHECKMARK + ' Saved';
+        setTimeout(() => { btn.style.display = 'none'; }, 2000);
+        return;
+      }
+
+      if (parsed) {
+        reported = true;
+        observer.disconnect();
+        await reportProgress(parsed);
+        btn.textContent = CHECKMARK + ' Saved';
+        setTimeout(() => { btn.style.display = 'none'; }, 2000);
+      } else {
+        btn.disabled = false;
+        btn.textContent = original;
+        showMsg('Could not find a score yet ' + EM_DASH + ' check your answers within the test first, then try again.');
+      }
+    });
+  }
+  setupManualButton();
 
   const observer = new MutationObserver(scheduleCheck);
   observer.observe(document.body, { childList: true, subtree: true, characterData: true });
