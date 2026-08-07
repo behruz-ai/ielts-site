@@ -95,6 +95,33 @@ body.post-check .expl-btn{display:inline-flex}
 
 .qsec{display:none;padding:24px}
 .qsec.on{display:block}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:attr(data-q);color:var(--subtext);font-weight:700}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.dzone.dz-sm{min-width:46px;width:46px;padding:0 4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
 .qinst{font-size:14px;font-style:italic;color:var(--subtext);margin-bottom:4px}
 .qinst strong{font-style:normal}
 .qnum-head{font-size:14px;font-weight:700;color:var(--text);margin-bottom:10px;background:var(--phdr);border-radius:8px;padding:8px 12px;display:inline-block}
@@ -407,10 +434,22 @@ mark.uhl:hover{background:#FDE047}
 <div class="qitem"><p class="qprompt"><strong>36.</strong>&nbsp; Research on the impacts of interaction on learning outcomes has produced consistent results. <button class="expl-btn" onclick="toggleExpl(36)">💡 Why?</button></p><div class="rgroup" id="rg36"><label class="rlabel"><input type="radio" name="q36" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q36" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q36" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div><div class="expl-box" id="expl-36">🔑 Para 8: <span class="expl-kw">the relationship of actual measures of interaction and performance is mixed</span>. Answer: <b>NO</b>.<div class="expl-uz">🇺🇿 Matnda natijalar <span class="expl-kw-uz">"aralash (bir xil emas)"</span> ekani aytiladi. Javob: <b>NO</b>.</div></div></div>
 
 <p class="qnum-head" style="margin-top:14px"><em>Questions 37&ndash;40</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;F</strong>, below.</p>
-<div class="qitem"><p class="qprompt"><strong>37.</strong>&nbsp; The ability to succeed in an online course... <button class="expl-btn" onclick="toggleExpl(37)">💡 Why?</button></p><div class="rgroup" id="rg37"><label class="rlabel"><input type="radio" name="q37" value="A" onchange="upd()"> A&nbsp; is dependent on adapting to unfamiliar interaction formats.</label><label class="rlabel"><input type="radio" name="q37" value="B" onchange="upd()"> B&nbsp; is key in determining whether a student has a sense of belonging in a course.</label><label class="rlabel"><input type="radio" name="q37" value="C" onchange="upd()"> C&nbsp; is a subject that the writer believes will require more study.</label><label class="rlabel"><input type="radio" name="q37" value="D" onchange="upd()"> D&nbsp; is essential to excel in study and scholarship.</label><label class="rlabel"><input type="radio" name="q37" value="E" onchange="upd()"> E&nbsp; is key in determining whether a student feels they have learned something from a course.</label><label class="rlabel"><input type="radio" name="q37" value="F" onchange="upd()"> F&nbsp; is important for determining their validity.</label></div><div class="expl-box" id="expl-37">🔑 Para 2: <span class="expl-kw">effective web-based learning requires adjustments on the part of students and teachers</span>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Onlayn kursda muvaffaqiyat <span class="expl-kw-uz">"notanish o'zaro ta'sir shakllariga moslashish"</span>ga bog'liq. Javob: <b>A</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>38.</strong>&nbsp; The need to be mindful of the source of comments in an online discussion... <button class="expl-btn" onclick="toggleExpl(38)">💡 Why?</button></p><div class="rgroup" id="rg38"><label class="rlabel"><input type="radio" name="q38" value="A" onchange="upd()"> A&nbsp; is dependent on adapting to unfamiliar interaction formats.</label><label class="rlabel"><input type="radio" name="q38" value="B" onchange="upd()"> B&nbsp; is key in determining whether a student has a sense of belonging in a course.</label><label class="rlabel"><input type="radio" name="q38" value="C" onchange="upd()"> C&nbsp; is a subject that the writer believes will require more study.</label><label class="rlabel"><input type="radio" name="q38" value="D" onchange="upd()"> D&nbsp; is essential to excel in study and scholarship.</label><label class="rlabel"><input type="radio" name="q38" value="E" onchange="upd()"> E&nbsp; is key in determining whether a student feels they have learned something from a course.</label><label class="rlabel"><input type="radio" name="q38" value="F" onchange="upd()"> F&nbsp; is important for determining their validity.</label></div><div class="expl-box" id="expl-38">🔑 Para 4: <span class="expl-kw">students need to be more attentive to both the who and what of a discussion</span>. Answer: <b>F</b>.<div class="expl-uz">🇺🇿 Talabalar muhokamaning <span class="expl-kw-uz">"kim va nima"sini kuzatib borishi kerak</span> &mdash; manba haqiqiyligini aniqlash uchun. Javob: <b>F</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>39.</strong>&nbsp; In online courses, it is presence, rather than interaction, that... <button class="expl-btn" onclick="toggleExpl(39)">💡 Why?</button></p><div class="rgroup" id="rg39"><label class="rlabel"><input type="radio" name="q39" value="A" onchange="upd()"> A&nbsp; is dependent on adapting to unfamiliar interaction formats.</label><label class="rlabel"><input type="radio" name="q39" value="B" onchange="upd()"> B&nbsp; is key in determining whether a student has a sense of belonging in a course.</label><label class="rlabel"><input type="radio" name="q39" value="C" onchange="upd()"> C&nbsp; is a subject that the writer believes will require more study.</label><label class="rlabel"><input type="radio" name="q39" value="D" onchange="upd()"> D&nbsp; is essential to excel in study and scholarship.</label><label class="rlabel"><input type="radio" name="q39" value="E" onchange="upd()"> E&nbsp; is key in determining whether a student feels they have learned something from a course.</label><label class="rlabel"><input type="radio" name="q39" value="F" onchange="upd()"> F&nbsp; is important for determining their validity.</label></div><div class="expl-box" id="expl-39">🔑 Para 5: presence is defined as <span class="expl-kw">a sense of being in a place and belonging to a group</span>. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 "Presence" <span class="expl-kw-uz">"guruhga tegishlilik hissi"</span>ni belgilaydi. Javob: <b>B</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>40.</strong>&nbsp; The relationship between interaction and learning achievement... <button class="expl-btn" onclick="toggleExpl(40)">💡 Why?</button></p><div class="rgroup" id="rg40"><label class="rlabel"><input type="radio" name="q40" value="A" onchange="upd()"> A&nbsp; is dependent on adapting to unfamiliar interaction formats.</label><label class="rlabel"><input type="radio" name="q40" value="B" onchange="upd()"> B&nbsp; is key in determining whether a student has a sense of belonging in a course.</label><label class="rlabel"><input type="radio" name="q40" value="C" onchange="upd()"> C&nbsp; is a subject that the writer believes will require more study.</label><label class="rlabel"><input type="radio" name="q40" value="D" onchange="upd()"> D&nbsp; is essential to excel in study and scholarship.</label><label class="rlabel"><input type="radio" name="q40" value="E" onchange="upd()"> E&nbsp; is key in determining whether a student feels they have learned something from a course.</label><label class="rlabel"><input type="radio" name="q40" value="F" onchange="upd()"> F&nbsp; is important for determining their validity.</label></div><div class="expl-box" id="expl-40">🔑 Para 9: <span class="expl-kw">how interaction affects learning outcomes and what the relationships between the two are, is in need of further study</span>. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 Matnda bu bog'liqlik <span class="expl-kw-uz">"qo'shimcha tadqiqot talab qiladi"</span> deyiladi. Javob: <b>C</b>.</div></div></div>
+<div class="se-row"><span class="se-num">37</span><span class="se-stem">The ability to succeed in an online course</span><span class="dzone dz-sm" id="q37" data-q="37" data-bank="endings"></span> <button class="expl-btn" onclick="toggleExpl(37)">💡 Why?</button></div>
+<div class="expl-box" id="expl-37">🔑 Para 2: <span class="expl-kw">effective web-based learning requires adjustments on the part of students and teachers</span>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Onlayn kursda muvaffaqiyat <span class="expl-kw-uz">"notanish o'zaro ta'sir shakllariga moslashish"</span>ga bog'liq. Javob: <b>A</b>.</div></div>
+<div class="se-row"><span class="se-num">38</span><span class="se-stem">The need to be mindful of the source of comments in an online discussion</span><span class="dzone dz-sm" id="q38" data-q="38" data-bank="endings"></span> <button class="expl-btn" onclick="toggleExpl(38)">💡 Why?</button></div>
+<div class="expl-box" id="expl-38">🔑 Para 4: <span class="expl-kw">students need to be more attentive to both the who and what of a discussion</span>. Answer: <b>F</b>.<div class="expl-uz">🇺🇿 Talabalar muhokamaning <span class="expl-kw-uz">"kim va nima"sini kuzatib borishi kerak</span> &mdash; manba haqiqiyligini aniqlash uchun. Javob: <b>F</b>.</div></div>
+<div class="se-row"><span class="se-num">39</span><span class="se-stem">In online courses, it is presence, rather than interaction, that</span><span class="dzone dz-sm" id="q39" data-q="39" data-bank="endings"></span> <button class="expl-btn" onclick="toggleExpl(39)">💡 Why?</button></div>
+<div class="expl-box" id="expl-39">🔑 Para 5: presence is defined as <span class="expl-kw">a sense of being in a place and belonging to a group</span>. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 "Presence" <span class="expl-kw-uz">"guruhga tegishlilik hissi"</span>ni belgilaydi. Javob: <b>B</b>.</div></div>
+<div class="se-row"><span class="se-num">40</span><span class="se-stem">The relationship between interaction and learning achievement</span><span class="dzone dz-sm" id="q40" data-q="40" data-bank="endings"></span> <button class="expl-btn" onclick="toggleExpl(40)">💡 Why?</button></div>
+<div class="expl-box" id="expl-40">🔑 Para 9: <span class="expl-kw">how interaction affects learning outcomes and what the relationships between the two are, is in need of further study</span>. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 Matnda bu bog'liqlik <span class="expl-kw-uz">"qo'shimcha tadqiqot talab qiladi"</span> deyiladi. Javob: <b>C</b>.</div></div>
+<div class="wbank se-bank" data-bank="endings" data-show="letter">
+<div class="dchip" draggable="true" data-letter="A" data-word="is dependent on adapting to unfamiliar interaction formats"><span class="wk">A</span> is dependent on adapting to unfamiliar interaction formats.</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="is key in determining whether a student has a sense of belonging in a course"><span class="wk">B</span> is key in determining whether a student has a sense of belonging in a course.</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="is a subject that the writer believes will require more study"><span class="wk">C</span> is a subject that the writer believes will require more study.</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="is essential to excel in study and scholarship"><span class="wk">D</span> is essential to excel in study and scholarship.</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="is key in determining whether a student feels they have learned something from a course"><span class="wk">E</span> is key in determining whether a student feels they have learned something from a course.</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="is important for determining their validity"><span class="wk">F</span> is important for determining their validity.</div>
+</div>
 </div>
   </div>
 </div>
@@ -463,6 +502,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -565,6 +605,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -647,6 +688,92 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  document.querySelectorAll('.wbank').forEach(setupOneBank);
+}
+function setupOneBank(bank){
+  const bankId=bank.dataset.bank||'';
+  const chips=[...bank.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')].filter(z=>(z.dataset.bank||'')===bankId);
+  if(!chips.length||!zones.length)return;
+  const showMode=bank.dataset.show||'word';
+  let selChip=null;
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z&&(z.dataset.bank||'')===bankId));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      let z=el&&el.closest?el.closest('.dzone'):null;
+      if(z&&(z.dataset.bank||'')!==bankId) z=null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -683,6 +810,11 @@ function doCheck(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}
