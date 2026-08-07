@@ -102,7 +102,7 @@
     const overrideMap = {};
     (overrideRows || []).forEach((r) => { overrideMap[r.test_path] = r.access; });
     const passages = allTests
-      .filter((t) => t.section === 'reading' && t.tier === 'premium-passage')
+      .filter((t) => t.section === 'reading' && (t.tier === 'premium-passage' || t.tier === 'full-test'))
       .map((t) => {
         const path = '/tests/' + t.file;
         return { ...t, path, access: overrideMap[path] || t.access };

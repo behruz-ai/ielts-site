@@ -97,6 +97,11 @@
     });
 
   function applyOverrides(all, overrides) {
+    if (isFullReading) {
+      return all
+        .filter((t) => t.section === 'reading' && t.tier === 'full-test')
+        .map((t) => ({ ...t, access: overrides['/tests/' + t.file] || t.access }));
+    }
     const base = all
       .filter((t) => t.section === 'reading' && t.tier === 'premium-passage')
       .map((t) => ({ ...t, access: overrides['/tests/' + t.file] || t.access }));
@@ -108,7 +113,7 @@
   // See volumes-catalog.js for why: bfcache-restored pages (browser Back)
   // don't re-run any of the above, so completion badges go stale.
   window.addEventListener('pageshow', (e) => {
-    if (!e.persisted || !state.items || isFullReading) return;
+    if (!e.persisted || !state.items) return;
     Promise.all([fetchPremiumStatus(), fetchAttempts(), fetchCompletions(), fetchOverrides()]).then(([isPremiumUser, attemptsByPath, completedPaths, overrides]) => {
       state.isPremiumUser = isPremiumUser;
       state.attemptsByPath = attemptsByPath;
@@ -142,15 +147,13 @@
 
   function init(items) {
     if (isFullReading) {
-      root.innerHTML = '<div class="gate-note"><h2>Full Reading — coming soon</h2>' +
-        '<p>Complete non-Volume Reading tests are on the way. Meanwhile, ' +
-        '<a href="/volumes-reading.html" style="color:#7fb3ff">Reading Volumes</a> has full exam-length tests today.</p></div>';
       const bar = document.getElementById('filter-bar');
       const qbar = document.getElementById('qtype-bar');
       const box = document.getElementById('search-box');
       if (bar) bar.style.display = 'none';
       if (qbar) qbar.style.display = 'none';
       if (box) box.style.display = 'none';
+      render(items);
       return;
     }
 
@@ -242,11 +245,17 @@
     }
 
     if (!filtered.length) {
-      root.innerHTML = items.length
-        ? '<p class="empty-note">Nothing matches — try a different filter or search term.</p>'
-        : (mode === 'real-exam'
-            ? '<p class="empty-note">No Real Exam passages are up yet — check back soon.</p>'
-            : '<p class="empty-note">Nothing here yet — check back soon.</p>');
+      if (items.length) {
+        root.innerHTML = '<p class="empty-note">Nothing matches — try a different filter or search term.</p>';
+      } else if (isFullReading) {
+        root.innerHTML = '<div class="gate-note"><h2>Full Reading — coming soon</h2>' +
+          '<p>Complete non-Volume Reading tests are on the way. Meanwhile, ' +
+          '<a href="/volumes-reading.html" style="color:#7fb3ff">Reading Volumes</a> has full exam-length tests today.</p></div>';
+      } else if (mode === 'real-exam') {
+        root.innerHTML = '<p class="empty-note">No Real Exam passages are up yet — check back soon.</p>';
+      } else {
+        root.innerHTML = '<p class="empty-note">Nothing here yet — check back soon.</p>';
+      }
       return;
     }
 
