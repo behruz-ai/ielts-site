@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Books — Bekhruz IELTS</title>
-<meta name="description" content="Books practice is coming soon to Bekhruz IELTS.">
+<meta name="description" content="Printable PDF test booklets from Bekhruz IELTS — full tests with answer keys and bilingual explanations, formatted for offline practice.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -34,10 +34,22 @@
   </div>
 </header>
 
-<div class="page-wrap" style="max-width:640px">
-  <div class="gate-note" style="margin:70px auto">
-    <h2>📚 Books — coming soon</h2>
-    <p>Printable PDF test booklets — the same tests on this site, formatted for offline practice — in development.</p>
+<div class="page-wrap" style="max-width:900px">
+  <div class="vol-group">
+    <h2>Full Test Booklets</h2>
+    <div class="test-grid" id="book-grid">
+      <div class="test-card">
+        <div class="tc-badges"><span class="badge-tier badge-premium">🔒 Full Test Premium</span></div>
+        <div class="tc-title">Authentic Reading Mock</div>
+        <div class="tc-meta"><span>40 questions</span><span>3 passages</span><span>Printable PDF</span></div>
+        <div class="tc-qtypes"><span class="qtype-tag">Answer key</span><span class="qtype-tag">EN/UZ explanations</span><span class="qtype-tag">Vocabulary</span></div>
+        <span class="tc-start" id="book-btn">Checking access…</span>
+      </div>
+    </div>
+  </div>
+  <div class="gate-note" style="margin:40px auto">
+    <h2>📚 More books coming soon</h2>
+    <p>More printable PDF test booklets — the same tests on this site, formatted for offline practice — in development.</p>
     <a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">Follow @bekhruzposts for updates</a>
   </div>
 </div>
@@ -51,5 +63,32 @@
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
 <script src="/js/theme-toggle.js"></script>
+<script>
+(async function () {
+  const btn = document.getElementById('book-btn');
+  const pdfHref = '/books/authentic-reading-mock-premium.pdf';
+  function setLocked(href, label) {
+    btn.outerHTML = `<a class="tc-start tc-locked" id="book-btn" href="${href}">${label}</a>`;
+  }
+  function setUnlocked() {
+    btn.outerHTML = `<a class="tc-start" id="book-btn" href="${pdfHref}" target="_blank" rel="noopener">📥 Open PDF →</a>`;
+  }
+  try {
+    if (typeof supabaseClient === 'undefined') { setLocked('/premium.html', '🔒 Get Premium →'); return; }
+    const { data: sessionData } = await supabaseClient.auth.getSession();
+    if (!sessionData.session) {
+      setLocked(`/login.html?next=${encodeURIComponent('/books.html')}`, '🔒 Log in to view →');
+      return;
+    }
+    const { data: profile } = await supabaseClient
+      .from('profiles').select('is_premium').eq('id', sessionData.session.user.id).maybeSingle();
+    if (profile && profile.is_premium) setUnlocked();
+    else setLocked('/premium.html', '🔒 Get Premium →');
+  } catch (err) {
+    console.error('books access check failed:', err);
+    setLocked('/premium.html', '🔒 Get Premium →');
+  }
+})();
+</script>
 </body>
 </html>
