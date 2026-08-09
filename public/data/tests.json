@@ -3069,5 +3069,25 @@
       "Yes/No/Not Given",
       "Matching Sentence Endings"
     ]
+  },
+  {
+    "id": "full-test-authentic-reading-mock-2",
+    "section": "reading",
+    "tier": "full-test",
+    "access": "premium",
+    "passageType": "Full Test",
+    "displayTitle": "Authentic Reading Mock 2",
+    "status": "published",
+    "questionCount": 40,
+    "durationMinutes": 60,
+    "file": "reading/full-tests/authentic-reading-mock-2.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion",
+      "Matching Headings",
+      "Sentence Completion",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
   }
 ]
