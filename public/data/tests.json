@@ -3105,5 +3105,22 @@
       "Short Answer",
       "Matching Information"
     ]
+  },
+  {
+    "id": "premium-endangered-chocolate",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Endangered Chocolate",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/endangered-chocolate.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Matching Information",
+      "Notes Completion"
+    ]
   }
 ]
