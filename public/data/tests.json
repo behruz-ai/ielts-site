@@ -3122,5 +3122,22 @@
       "Matching Information",
       "Notes Completion"
     ]
+  },
+  {
+    "id": "premium-whats-happening-to-our-food",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "What's Happening to Our Food?",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/whats-happening-to-our-food.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching Features",
+      "Notes Completion"
+    ]
   }
 ]
