@@ -3089,5 +3089,21 @@
       "Summary Completion",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-moving-continents",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Moving Continents",
+    "status": "published",
+    "questionCount": 12,
+    "durationMinutes": 20,
+    "file": "premium/moving-continents.html",
+    "questionTypes": [
+      "Short Answer",
+      "Matching Information"
+    ]
   }
 ]
