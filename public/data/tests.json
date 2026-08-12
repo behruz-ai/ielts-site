@@ -3190,5 +3190,56 @@
       "Yes/No/Not Given",
       "Matching Sentence Endings"
     ]
+  },
+  {
+    "id": "premium-attine-ants",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Fascinating World of Attine Ants",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/attine-ants.html",
+    "questionTypes": [
+      "Matching Information",
+      "Classification",
+      "Multiple Choice"
+    ]
+  },
+  {
+    "id": "premium-history-of-lighting",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The History of Lighting",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/history-of-lighting.html",
+    "questionTypes": [
+      "Table Completion",
+      "True/False/Not Given",
+      "Multiple Choice"
+    ]
+  },
+  {
+    "id": "premium-what-if-everything-had-a-barcode",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "What if Everything Had a Barcode?",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/what-if-everything-had-a-barcode.html",
+    "questionTypes": [
+      "Note Completion",
+      "Flow-chart Completion",
+      "True/False/Not Given"
+    ]
   }
 ]
