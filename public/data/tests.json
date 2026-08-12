@@ -3139,5 +3139,39 @@
       "Matching Features",
       "Notes Completion"
     ]
+  },
+  {
+    "id": "premium-museum-blockbuster",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Museum Blockbuster",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/museum-blockbuster.html",
+    "questionTypes": [
+      "Matching Information",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
+  },
+  {
+    "id": "premium-cause-of-linguistic-change",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Cause of Linguistic Change",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/cause-of-linguistic-change.html",
+    "questionTypes": [
+      "Summary Completion",
+      "True/False/Not Given",
+      "Matching"
+    ]
   }
 ]
