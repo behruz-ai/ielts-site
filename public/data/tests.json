@@ -3409,5 +3409,22 @@
       "Summary Completion",
       "Matching Features"
     ]
+  },
+  {
+    "id": "premium-learning-to-be-bilingual",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Learning to be Bilingual",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/learning-to-be-bilingual.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Summary Completion",
+      "Yes/No/Not Given"
+    ]
   }
 ]
