@@ -3443,5 +3443,22 @@
       "Summary Completion",
       "Matching Information"
     ]
+  },
+  {
+    "id": "premium-hidden-benefits-of-regular-exercise",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Scientific Research Reveals Hidden Benefits of Regular Exercise",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/hidden-benefits-of-regular-exercise.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
   }
 ]
