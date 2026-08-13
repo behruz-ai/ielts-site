@@ -3426,5 +3426,22 @@
       "Summary Completion",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-left-or-right",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Left, or Right?",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/left-or-right.html",
+    "questionTypes": [
+      "Matching Sentence Endings",
+      "Summary Completion",
+      "Matching Information"
+    ]
   }
 ]
