@@ -3340,5 +3340,74 @@
       "Matching Sentence Endings",
       "Table Completion"
     ]
+  },
+  {
+    "id": "premium-biophilic-design",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Biophilic Design",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/biophilic-design.html",
+    "questionTypes": [
+      "Matching Information",
+      "Notes Completion",
+      "Multiple Choice"
+    ]
+  },
+  {
+    "id": "premium-neanderthal-technology",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Neanderthal Technology",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/neanderthal-technology.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Matching Features",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
+  },
+  {
+    "id": "premium-the-importance-of-law",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Importance of Law",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-importance-of-law.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Multiple Choice",
+      "Summary Completion"
+    ]
+  },
+  {
+    "id": "premium-mind-music",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Mind Music",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/mind-music.html",
+    "questionTypes": [
+      "Matching Information",
+      "Summary Completion",
+      "Matching Features"
+    ]
   }
 ]
