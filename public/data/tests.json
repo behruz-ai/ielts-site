@@ -3241,5 +3241,104 @@
       "Flow-chart Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-keeping-an-eye-on-shoppers",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Keeping an Eye on Shoppers",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/keeping-an-eye-on-shoppers.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching Features",
+      "Sentence Completion"
+    ]
+  },
+  {
+    "id": "premium-lets-all-be-friends",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Let's All Be Friends",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/lets-all-be-friends.html",
+    "questionTypes": [
+      "Summary Completion",
+      "Yes/No/Not Given",
+      "Note Completion"
+    ]
+  },
+  {
+    "id": "premium-lever-brothers-sunlight-soap",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Lever Brothers' Sunlight Soap",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/lever-brothers-sunlight-soap.html",
+    "questionTypes": [
+      "Matching Information",
+      "Note Completion"
+    ]
+  },
+  {
+    "id": "premium-how-tennis-rackets-have-changed",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "How Tennis Rackets Have Changed",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/how-tennis-rackets-have-changed.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
+  },
+  {
+    "id": "premium-biological-control-of-pests",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Biological Control of Pests",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/biological-control-of-pests.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Matching Sentence Endings"
+    ]
+  },
+  {
+    "id": "premium-telepathy",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Telepathy",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/telepathy.html",
+    "questionTypes": [
+      "Matching Sentence Endings",
+      "Table Completion"
+    ]
   }
 ]
