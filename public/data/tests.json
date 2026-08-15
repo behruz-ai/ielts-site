@@ -3562,5 +3562,39 @@
       "Summary Completion",
       "Classification"
     ]
+  },
+  {
+    "id": "premium-science-and-filmmaking",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Science and Filmmaking",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/science-and-filmmaking.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Summary Completion"
+    ]
+  },
+  {
+    "id": "premium-the-impact-of-invasive-species",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Impact of Invasive Species",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-impact-of-invasive-species.html",
+    "questionTypes": [
+      "Matching Information",
+      "Multiple Choice",
+      "Sentence Completion"
+    ]
   }
 ]
