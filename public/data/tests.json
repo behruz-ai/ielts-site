@@ -3477,5 +3477,56 @@
       "Yes/No/Not Given",
       "Matching Sentence Endings"
     ]
+  },
+  {
+    "id": "premium-how-do-plants-talk-to-each-other",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "How do Plants Talk to Each Other?",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/how-do-plants-talk-to-each-other.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Summary Completion",
+      "Matching Features"
+    ]
+  },
+  {
+    "id": "premium-the-return-of-monkey-life",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Return of Monkey Life",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-return-of-monkey-life.html",
+    "questionTypes": [
+      "Matching Information",
+      "Summary Completion",
+      "Matching Features"
+    ]
+  },
+  {
+    "id": "premium-living-dunes",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Living Dunes",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/living-dunes.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Multiple Choice",
+      "Summary Completion"
+    ]
   }
 ]
