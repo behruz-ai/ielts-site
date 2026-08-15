@@ -3528,5 +3528,39 @@
       "Multiple Choice",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-life-on-mars-terraforming",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Life on Mars? (Terraforming)",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/life-on-mars-terraforming.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Multiple Choice",
+      "Summary Completion"
+    ]
+  },
+  {
+    "id": "premium-try-it-and-see",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Try It and See",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/try-it-and-see.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Summary Completion",
+      "Classification"
+    ]
   }
 ]
