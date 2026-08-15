@@ -3460,5 +3460,22 @@
       "Summary Completion",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-how-green-is-your-planit-valley",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "How Green is your PlanIT Valley?",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/how-green-is-your-planit-valley.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Matching Sentence Endings"
+    ]
   }
 ]
