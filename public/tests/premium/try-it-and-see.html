@@ -132,6 +132,23 @@ body.post-check .expl-btn{display:inline-flex}
 .mx-cell.bad{background:#fef2f2!important}
 [data-theme=dark] .mx-cell.ok{background:#14532d!important}
 [data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
 .expl-row td{border-bottom:1px solid var(--border);padding:0 0 10px}
 .expl-cell .expl-box{margin:6px 8px 0}
 
@@ -294,12 +311,19 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
       <h2 class="ptitle">Try It and See</h2><p class="psub">In the social sciences, it is often supposed that there can be no such thing as a controlled experiment. Think again</p>
       <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
 <div class="excerpt-note" id="p3note"></div>
+<p class="mh-slot-line" data-para="p3-1" style="font-size:12.5px;color:var(--subtext);font-style:italic;padding:2px 0">Example &mdash; Paragraph A &mdash; Answer: <b>x</b></p>
 <p id="p3-1"><span class="pl">A</span>In the scientific pecking order, social scientists are usually looked down on by their peers in the natural sciences. Natural scientists do experiments to test their theories or, if they cannot, they try to look for natural phenomena that can act <span class="gloss" data-def="as a substitute for; in place of" data-syn="instead of, in place of" data-uz="o'rniga, evaziga">in lieu of</span> experiments. Social scientists, it is widely thought, do not subject their own hypotheses to any such rigorous treatment. Worse, they <span class="gloss" data-def="to promote or try to get something accepted, often insistently or without proper evidence" data-syn="promote, push" data-uz="tarqatmoq, singdirishga urinmoq">peddle</span> their untested hypotheses to governments and try to get them turned into policies.</p>
+<p class="mh-slot-line" data-para="p3-2"><span class="mh-drop-slot empty" id="q1" data-q="1" draggable="false">1</span></p>
 <p id="p3-2"><span class="pl">B</span>Governments require sellers of new medicines to demonstrate their safety and effectiveness. The accepted gold standard of evidence is a randomized control trial, in which a new drug is compared with the best existing therapy (or with a <span class="gloss" data-def="a substance with no therapeutic effect, given to a control group in a trial for comparison" data-syn="dummy treatment, sugar pill" data-uz="platsebo (davolash ta'siri yo'q dori)">placebo</span>, if no treatment is available). Patients are assigned to one arm or the other of such a study at random, ensuring that the only difference between the two groups is the new treatment. The best studies also ensure that neither patient nor physician knows which patient is allocated to which therapy. Drug trials must also include enough patients to make it unlikely that chance alone may determine the result.</p>
+<p class="mh-slot-line" data-para="p3-3"><span class="mh-drop-slot empty" id="q2" data-q="2" draggable="false">2</span></p>
 <p id="p3-3"><span class="pl">C</span>But few education programs or social initiatives are evaluated in carefully conducted studies prior to their introduction. A case in point is the 'whole-language' approach to reading, which swept much of the English-speaking world in the 1970s and 1980s. The whole-language theory holds that children learn to read best by absorbing contextual clues from texts, not by breaking individual words into their component parts and <span class="gloss" data-def="putting the parts of something back together" data-syn="rebuilding, recombining" data-uz="qayta yig'ish, birlashtirish">reassembling</span> them (a method known as phonics). Unfortunately, the educational theorists who pushed the whole-language notion so successfully did not wait for evidence from controlled randomized trials before advancing their claims. Had they done so, they might have concluded, as did an analysis of 52 randomized studies carried out by the US National Reading Panel in 2000, that effective reading instruction requires phonics.</p>
+<p class="mh-slot-line" data-para="p3-4"><span class="mh-drop-slot empty" id="q3" data-q="3" draggable="false">3</span></p>
 <p id="p3-4"><span class="pl">D</span>To avoid the widespread adoption of misguided ideas, the sensible thing is to experiment first and make policy later. This is the idea behind a trial of restorative justice which is taking place in the English courts. The experiment will include criminals who plead guilty to robbery. Those who agree to participate will be assigned randomly either to sentencing as normal or to participation in a conference in which the offender comes face-to-face with his victim and discusses how he may make emotional and material <span class="gloss" data-def="the act of making amends or compensating for a wrong done" data-syn="compensation, reparation" data-uz="qoplash, o'rnini to'ldirish (zarar uchun)">restitution</span>. The purpose of the trial is to assess whether such restorative justice limits re-offending. If it does, it might be adopted more widely.</p>
+<p class="mh-slot-line" data-para="p3-5"><span class="mh-drop-slot empty" id="q4" data-q="4" draggable="false">4</span></p>
 <p id="p3-5"><span class="pl">E</span>The idea of experimental evidence is not quite as new to the social sciences as sneering natural scientists might believe. In fact, randomized trials and systematic reviews of evidence were introduced into the social sciences long before they became common in medicine. An apparent example of random allocation is a study carried out in 1927 of how to persuade people to vote in elections. And randomized trials in social work were begun in the 1930s and 1940s. But enthusiasm later waned. This loss of interest can be attributed, at least in part, to the fact that early experiments produced little evidence of positive outcomes. Others suggest that much of the opposition to experimental evaluation stems from a common philosophical <span class="gloss" data-def="a vague or general feeling of unease, dissatisfaction, or discomfort" data-syn="unease, discomfort" data-uz="noxushlik, betoqatlik (umumiy)">malaise</span> among social scientists, who doubt the validity of the natural sciences, and therefore reject the potential of knowledge derived from controlled experiments. A more pragmatic factor limiting the growth of evidence-based education and social services may be limitations on the funds available for research.</p>
+<p class="mh-slot-line" data-para="p3-6"><span class="mh-drop-slot empty" id="q5" data-q="5" draggable="false">5</span></p>
 <p id="p3-6"><span class="pl">F</span>Nevertheless, some 11,000 experimental studies are known in the social sciences (compared with over 250,000 in the medical literature). Randomized trials have been used to evaluate the effectiveness of driver-education programs, job training schemes, classroom size, psychological counselling for post-traumatic stress disorder and increased investment in public housing. And where they are carried out, they seem to have a healthy <span class="gloss" data-def="reducing or moderating the intensity or effect of something" data-syn="moderating, tempering" data-uz="pasaytiruvchi, yumshatuvchi (ta'sir)">dampening</span> effect on otherwise rosy interpretations of the observations.</p>
+<p class="mh-slot-line" data-para="p3-7"><span class="mh-drop-slot empty" id="q6" data-q="6" draggable="false">6</span></p>
 <p id="p3-7"><span class="pl">G</span>The problem for policymakers is often not too few data, but what to make of multiple and conflicting studies. This is where a body called the Campbell Collaboration comes into its own. This independent non-profit organization is designed to evaluate existing studies, in a process known as a systematic review. This means attempting to identify every relevant trial of a given question (including studies that have never been published), choosing the best ones using clearly defined <span class="gloss" data-def="standards or principles by which something is judged or decided" data-syn="standards, benchmarks" data-uz="mezonlar, standartlar">criteria</span> for quality, and combining the results in a statistically valid way. An equivalent body, the Cochrane Collaboration, has produced more than 1,004 such reviews in medical fields. The hope is that rigorous review standards will allow Campbell, like Cochrane, to become a trusted and authoritative source of information.</p>
     </div>
   </div>
@@ -308,18 +332,28 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 
   <div id="right-pane">
 <div class="qsec on" id="qs3">
-<div class="qgroup" data-group="g1" data-paras="p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-7"><p class="qnum-head"><em>Questions 1&ndash;6</em></p><p class="qinst">Reading Passage 3 has seven paragraphs, <strong>A&ndash;G</strong>. Choose the correct heading for paragraphs <strong>B&ndash;G</strong> from the list of headings below.</p>
-<div class="fbox">
-<strong>List of Headings</strong>
-i&nbsp;&nbsp;Why some early social science methods lost popularity<br>ii&nbsp;&nbsp;The cost implications of research<br>iii&nbsp;&nbsp;Looking ahead to an unbiased assessment of research<br>iv&nbsp;&nbsp;A range of social issues that have been usefully studied<br>v&nbsp;&nbsp;An example of a poor decision that was made too quickly<br>vi&nbsp;&nbsp;What happens when the figures are wrong<br>vii&nbsp;&nbsp;One area of research that is rigorously carried out<br>viii&nbsp;&nbsp;The changing nature of medical trials<br>ix&nbsp;&nbsp;An investigative study that may lead to a new system<br>x&nbsp;&nbsp;Why some scientists' theories are considered second-rate
+<div class="qgroup" data-group="g1" data-paras="p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-7"><p class="qnum-head"><em>Questions 1&ndash;6</em></p><p class="qinst">Reading Passage 3 has seven paragraphs, <strong>A&ndash;G</strong>.</p><p class="qinst">Choose the correct heading for paragraphs <strong>B&ndash;G</strong> from the list of headings below. Drag a heading onto each numbered slot, or tap a heading then tap a slot.</p>
+<div class="headings-box" id="mhHeadings">
+<div class="mh-heading-card" draggable="true" data-code="i" data-label="Why some early social science methods lost popularity"><strong>i</strong>&nbsp;&nbsp;Why some early social science methods lost popularity</div>
+<div class="mh-heading-card" draggable="true" data-code="ii" data-label="The cost implications of research"><strong>ii</strong>&nbsp;&nbsp;The cost implications of research</div>
+<div class="mh-heading-card" draggable="true" data-code="iii" data-label="Looking ahead to an unbiased assessment of research"><strong>iii</strong>&nbsp;&nbsp;Looking ahead to an unbiased assessment of research</div>
+<div class="mh-heading-card" draggable="true" data-code="iv" data-label="A range of social issues that have been usefully studied"><strong>iv</strong>&nbsp;&nbsp;A range of social issues that have been usefully studied</div>
+<div class="mh-heading-card" draggable="true" data-code="v" data-label="An example of a poor decision that was made too quickly"><strong>v</strong>&nbsp;&nbsp;An example of a poor decision that was made too quickly</div>
+<div class="mh-heading-card" draggable="true" data-code="vi" data-label="What happens when the figures are wrong"><strong>vi</strong>&nbsp;&nbsp;What happens when the figures are wrong</div>
+<div class="mh-heading-card" draggable="true" data-code="vii" data-label="One area of research that is rigorously carried out"><strong>vii</strong>&nbsp;&nbsp;One area of research that is rigorously carried out</div>
+<div class="mh-heading-card" draggable="true" data-code="viii" data-label="The changing nature of medical trials"><strong>viii</strong>&nbsp;&nbsp;The changing nature of medical trials</div>
+<div class="mh-heading-card" draggable="true" data-code="ix" data-label="An investigative study that may lead to a new system"><strong>ix</strong>&nbsp;&nbsp;An investigative study that may lead to a new system</div>
+<div class="mh-heading-card" draggable="true" data-code="x" data-label="Why some scientists' theories are considered second-rate"><strong>x</strong>&nbsp;&nbsp;Why some scientists' theories are considered second-rate</div>
 </div>
-<p class="qprompt" style="font-style:italic;color:var(--subtext)"><strong>Example</strong>&nbsp; Paragraph A &nbsp;&mdash;&nbsp; Answer: <b>x</b></p>
-<div class="qitem"><p class="qprompt"><strong>1.</strong>&nbsp; Paragraph B <button class="expl-btn" onclick="toggleExpl(1)">💡 Why?</button></p><div class="rgroup" id="rg1"><label class="rlabel"><input type="radio" name="q1" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q1" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q1" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q1" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q1" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q1" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q1" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q1" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q1" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-1">🔑 <span class="expl-kw">The accepted gold standard of evidence is a randomized control trial, in which a new drug is compared with the best existing therapy</span>. Answer: <b>vii</b>.<div class="expl-uz">🇺🇿 Dori sinovlari <span class="expl-kw-uz">"qattiq nazorat ostida o'tkaziladi"</span>. Javob: <b>vii</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>2.</strong>&nbsp; Paragraph C <button class="expl-btn" onclick="toggleExpl(2)">💡 Why?</button></p><div class="rgroup" id="rg2"><label class="rlabel"><input type="radio" name="q2" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q2" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q2" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q2" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q2" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q2" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q2" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q2" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q2" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-2">🔑 <span class="expl-kw">the educational theorists who pushed the whole-language notion so successfully did not wait for evidence from controlled randomized trials before advancing their claims</span>. Answer: <b>v</b>.<div class="expl-uz">🇺🇿 Whole-language usuli dalilsiz <span class="expl-kw-uz">"shoshilinch qabul qilindi"</span>. Javob: <b>v</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>3.</strong>&nbsp; Paragraph D <button class="expl-btn" onclick="toggleExpl(3)">💡 Why?</button></p><div class="rgroup" id="rg3"><label class="rlabel"><input type="radio" name="q3" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q3" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q3" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q3" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q3" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q3" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q3" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q3" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q3" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-3">🔑 <span class="expl-kw">This is the idea behind a trial of restorative justice which is taking place in the English courts</span>, which "might be adopted more widely" if successful. Answer: <b>ix</b>.<div class="expl-uz">🇺🇿 Bu tadqiqot muvaffaqiyatli bo'lsa <span class="expl-kw-uz">"yangi tizimga olib kelishi mumkin"</span>. Javob: <b>ix</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>4.</strong>&nbsp; Paragraph E <button class="expl-btn" onclick="toggleExpl(4)">💡 Why?</button></p><div class="rgroup" id="rg4"><label class="rlabel"><input type="radio" name="q4" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q4" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q4" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q4" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q4" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q4" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q4" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q4" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q4" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-4">🔑 <span class="expl-kw">This loss of interest can be attributed, at least in part, to the fact that early experiments produced little evidence of positive outcomes</span>. Answer: <b>i</b>.<div class="expl-uz">🇺🇿 Ilk usullar <span class="expl-kw-uz">"nima uchun mashhurlikni yo'qotgani"</span> tushuntiriladi. Javob: <b>i</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>5.</strong>&nbsp; Paragraph F <button class="expl-btn" onclick="toggleExpl(5)">💡 Why?</button></p><div class="rgroup" id="rg5"><label class="rlabel"><input type="radio" name="q5" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q5" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q5" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q5" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q5" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q5" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q5" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q5" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q5" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-5">🔑 <span class="expl-kw">Randomized trials have been used to evaluate the effectiveness of driver-education programs, job training schemes, classroom size, psychological counselling for post-traumatic stress disorder and increased investment in public housing</span>. Answer: <b>iv</b>.<div class="expl-uz">🇺🇿 Turli ijtimoiy muammolar <span class="expl-kw-uz">"foydali tarzda o'rganilgan"</span>. Javob: <b>iv</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>6.</strong>&nbsp; Paragraph G <button class="expl-btn" onclick="toggleExpl(6)">💡 Why?</button></p><div class="rgroup" id="rg6"><label class="rlabel"><input type="radio" name="q6" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q6" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q6" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q6" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q6" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q6" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q6" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q6" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q6" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-6">🔑 <span class="expl-kw">This is where a body called the Campbell Collaboration comes into its own</span> &mdash; evaluating existing studies via systematic review. Answer: <b>iii</b>.<div class="expl-uz">🇺🇿 Campbell Collaboration <span class="expl-kw-uz">"xolis baholashni ko'zlaydi"</span>. Javob: <b>iii</b>.</div></div></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+<button class="expl-btn" onclick="toggleExpl(1)">💡 Why 1?</button><button class="expl-btn" onclick="toggleExpl(2)">💡 Why 2?</button><button class="expl-btn" onclick="toggleExpl(3)">💡 Why 3?</button><button class="expl-btn" onclick="toggleExpl(4)">💡 Why 4?</button><button class="expl-btn" onclick="toggleExpl(5)">💡 Why 5?</button><button class="expl-btn" onclick="toggleExpl(6)">💡 Why 6?</button>
+</div>
+<div class="expl-box" id="expl-1">🔑 <span class="expl-kw">The accepted gold standard of evidence is a randomized control trial, in which a new drug is compared with the best existing therapy</span>. Answer: <b>vii</b>.<div class="expl-uz">🇺🇿 Dori sinovlari <span class="expl-kw-uz">"qattiq nazorat ostida o'tkaziladi"</span>. Javob: <b>vii</b>.</div></div>
+<div class="expl-box" id="expl-2">🔑 <span class="expl-kw">the educational theorists who pushed the whole-language notion so successfully did not wait for evidence from controlled randomized trials before advancing their claims</span>. Answer: <b>v</b>.<div class="expl-uz">🇺🇿 Whole-language usuli dalilsiz <span class="expl-kw-uz">"shoshilinch qabul qilindi"</span>. Javob: <b>v</b>.</div></div>
+<div class="expl-box" id="expl-3">🔑 <span class="expl-kw">This is the idea behind a trial of restorative justice which is taking place in the English courts</span>, which "might be adopted more widely" if successful. Answer: <b>ix</b>.<div class="expl-uz">🇺🇿 Bu tadqiqot muvaffaqiyatli bo'lsa <span class="expl-kw-uz">"yangi tizimga olib kelishi mumkin"</span>. Javob: <b>ix</b>.</div></div>
+<div class="expl-box" id="expl-4">🔑 <span class="expl-kw">This loss of interest can be attributed, at least in part, to the fact that early experiments produced little evidence of positive outcomes</span>. Answer: <b>i</b>.<div class="expl-uz">🇺🇿 Ilk usullar <span class="expl-kw-uz">"nima uchun mashhurlikni yo'qotgani"</span> tushuntiriladi. Javob: <b>i</b>.</div></div>
+<div class="expl-box" id="expl-5">🔑 <span class="expl-kw">Randomized trials have been used to evaluate the effectiveness of driver-education programs, job training schemes, classroom size, psychological counselling for post-traumatic stress disorder and increased investment in public housing</span>. Answer: <b>iv</b>.<div class="expl-uz">🇺🇿 Turli ijtimoiy muammolar <span class="expl-kw-uz">"foydali tarzda o'rganilgan"</span>. Javob: <b>iv</b>.</div></div>
+<div class="expl-box" id="expl-6">🔑 <span class="expl-kw">This is where a body called the Campbell Collaboration comes into its own</span> &mdash; evaluating existing studies via systematic review. Answer: <b>iii</b>.<div class="expl-uz">🇺🇿 Campbell Collaboration <span class="expl-kw-uz">"xolis baholashni ko'zlaydi"</span>. Javob: <b>iii</b>.</div></div>
 </div>
 <div class="qgroup" data-group="g2" data-paras="p3-4"><p class="qnum-head" style="margin-top:14px"><em>Questions 7&ndash;10</em></p><p class="qinst">Complete the summary below. Choose <strong>NO MORE THAN TWO WORDS</strong> from the passage for each answer.</p>
 <div class="fbox">
@@ -399,6 +433,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   setupDrag();
   setupHLToolbar();
   setupGlossary();
+  setupMatchingHeadings();
   showWelcomePopup();
   document.getElementById('fsz-dn').disabled=fszIdx===0;
   document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
@@ -522,6 +557,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -548,14 +584,17 @@ function practiceMode(group){
     g.style.display=(group==='all'||g.dataset.group===group)?'':'none';
   });
   const allParas=[...document.querySelectorAll('#pc3 p[id^="p3-"]')];
+  const allSlots=[...document.querySelectorAll('#pc3 .mh-slot-line')];
   const note=document.getElementById('p3note');
   if(group==='all'){
     allParas.forEach(p=>p.style.display='');
+    allSlots.forEach(s=>s.style.display='');
     if(note)note.style.display='none';
   } else {
     const g=document.querySelector('#qs3 .qgroup[data-group="'+group+'"]');
     const paraIds=(g&&g.dataset.paras||'').split(',').filter(Boolean);
     allParas.forEach(p=>{p.style.display=paraIds.includes(p.id)?'':'none';});
+    allSlots.forEach(s=>{s.style.display=paraIds.includes(s.dataset.para)?'':'none';});
     if(note){
       note.innerHTML='📄 Showing only the excerpt needed for <b>'+(PTYPE_LABELS[group]||'this question type')+'</b> &mdash; not the full passage.';
       note.style.display='block';
@@ -630,6 +669,46 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    const bank=box.dataset.bank||'';
+    const cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    const slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    let armed=null;
+    function place(slot,code){
+      if(checked)return;
+      const card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      const old=slot.dataset.val;if(old){const c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    let ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -644,6 +723,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -694,6 +774,7 @@ function applyHL2(pEl, items){
   });
   items.forEach(({q,t})=>{
     pEl.querySelectorAll('p').forEach(p=>{
+      if(p.classList.contains('mh-slot-line'))return;
       const h=p.innerHTML;
       if(!h.toLowerCase().includes(t))return;
       const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
@@ -753,6 +834,11 @@ function launchConfetti(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}

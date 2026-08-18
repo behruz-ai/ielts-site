@@ -132,6 +132,23 @@ body.post-check .expl-btn{display:inline-flex}
 .mx-cell.bad{background:#fef2f2!important}
 [data-theme=dark] .mx-cell.ok{background:#14532d!important}
 [data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
 .expl-row td{border-bottom:1px solid var(--border);padding:0 0 10px}
 .expl-cell .expl-box{margin:6px 8px 0}
 
@@ -294,11 +311,17 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
       <h2 class="ptitle">How do Plants Talk to Each Other?</h2><p class="psub">Research shows that plants communicate and interact with each other in surprisingly subtle and sophisticated ways</p>
       <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
 <div class="excerpt-note" id="p2note"></div>
+<p class="mh-slot-line" data-para="p2-1"><span class="mh-drop-slot empty" id="q14" data-q="14" draggable="false">14</span></p>
 <p id="p2-1"><span class="pl">A</span>In 1983, plant scientists Jack Schultz and Ian Baldwin reported that the leaves of young maple trees increased their defense systems when exposed to maples that had been damaged by plant-eating (herbivorous) insects. The injured trees, they suggested, were alerting neighbors to the presence of a predator by releasing chemical signals into the air. But the plant research community did not accept this. The results were difficult to <span class="gloss" data-def="to reproduce or repeat an experiment or result exactly" data-syn="reproduce, repeat" data-uz="qayta takrorlamoq, ko'paytirmoq">replicate</span>, critics pointed out. Many also questioned how it could be evolutionarily stable if it benefited neighboring plants but not the plant releasing the signal. By the late 1980s, most ecologists felt that Schultz and Baldwin's idea had been discredited.</p>
+<p class="mh-slot-line" data-para="p2-2"><span class="mh-drop-slot empty" id="q15" data-q="15" draggable="false">15</span></p>
 <p id="p2-2"><span class="pl">B</span>A decade later, however, a number of more carefully designed experiments began to yield convincing indications to the contrary. In 2000, evolutionary ecologist Richard Karban showed that wild tobacco plants became resistant to herbivores when grown in close <span class="gloss" data-def="nearness in space or position" data-syn="nearness, closeness" data-uz="yaqinlik, yondoshlik">proximity</span> to sagebrush plants whose leaves had been damaged by cutting. This change appeared to be in response to chemicals &ndash; known as volatile organic compounds or VOCs &ndash; released by the sagebrush plants. Other researchers soon reported similar VOC-induced defense responses in several other plants, including lima bean, broad bean, barley, and corn. And in 2006, Karban showed that VOCs released by damaged sagebrush induce herbivore resistance in plants growing at distances of up to 60 cm, well within the range of sagebrush neighbors in nature.</p>
+<p class="mh-slot-line" data-para="p2-3"><span class="mh-drop-slot empty" id="q16" data-q="16" draggable="false">16</span></p>
 <p id="p2-3"><span class="pl">C</span>But the question still remains: 'Why should a plant waste valuable resources on a function which has no obvious advantage for it?' One hypothesis is that external communication channels are merely an extension of within-plant signaling. In sagebrush, lima bean, and poplar, VOCs released from damaged parts of a plant induce resistance in intact sections of the same plant, suggesting that each individual plant uses the signals to coordinate its own physiological responses to protect itself. Karban agrees, saying: 'The interplant signaling we see may be a result of plants co-opting that process.' Alternatively, VOC-based signaling between plants may have been favored because it enhances the 'extended fitness' of the sender by aiding related plants of the same species: a strategy known as kin selection.</p>
+<p class="mh-slot-line" data-para="p2-4"><span class="mh-drop-slot empty" id="q17" data-q="17" draggable="false">17</span></p>
 <p id="p2-4"><span class="pl">D</span>Over the past few years, a team led by Ariel Novoplansky of Ben-Gurion University of the Negev in Israel seems to have found proof that distress signals can be passed through the plants' roots. They planted garden pea plants in rows and subjected the first in each row to conditions similar to those experienced in a drought. They then evaluated the response by measuring the microscopic holes on leaves, known as pores, which react when there is a shortage of water. After fifteen minutes, the stressed plant was seen to be closing its pores, followed by all of its neighbors, one by one. Importantly, in a control setup where root contact between neighboring plants was blocked, pores stayed open. Meanwhile, David Johnson's team at the University of Aberdeen in Scotland have been studying the labyrinths of hair-like fungi that occur around the roots of most plants. These fungi are involved in an important two-way relationship: in exchange for sugars, they provide plants with much-needed phosphorus and nitrogen. Research in which broad bean plants were infested with aphids &ndash; small herbivorous insects &ndash; revealed that these networks also served as a channel for warning neighboring plants of the infestation.</p>
+<p class="mh-slot-line" data-para="p2-5"><span class="mh-drop-slot empty" id="q18" data-q="18" draggable="false">18</span></p>
 <p id="p2-5"><span class="pl">E</span>Monica Gagliano of the University of Western Australia believes that plants may even use sounds to alert their neighbors. In one study, she demonstrated that chili plants growing next to fennel plants developed more quickly than seedlings grown with other chili plants. Gagliano and her colleagues suspect the chili plants were compensating for the presence of the fennel, which is known to release chemicals that <span class="gloss" data-def="to hold back or prevent the growth or development of something" data-syn="hinder, restrain" data-uz="to'sqinlik qilmoq, cheklamoq">inhibit</span> the growth of other plants. Remarkably, however, when plant communication pathways &ndash; airborne volatiles, root contact, and common fungal networks &ndash; were blocked, the results begged for an alternative explanation. 'We think this other channel of communication might be acoustic,' says Gagliano. But behavioral ecologist Carel ten Cate of the University of Leiden in the Netherlands points out that taking advantage of such benefits would require sensory mechanisms yet to be described in plants. Despite widespread skepticism, Gagliano has received some encouragement. Richard Karban, for example, is <span class="gloss" data-def="in a careful and hesitant manner, showing caution" data-syn="carefully, hesitantly" data-uz="ehtiyotkorlik bilan">cautiously</span> enthusiastic. 'Whether or not the explanation she favors is the right one,' he says, 'I think that she's gotten results that, as a field, we need to come to grips with.'</p>
+<p class="mh-slot-line" data-para="p2-6"><span class="mh-drop-slot empty" id="q19" data-q="19" draggable="false">19</span></p>
 <p id="p2-6"><span class="pl">F</span>Researchers believe that knowledge of this phenomenon could eventually be applied to agriculture, and lead to the cultivation of hardier crops. But all agree that there is still much work to be done: applying our limited knowledge of plant-communication mechanisms to agriculture is a big jump, says Johnson, 'but it is definitely on the horizon.' Nevertheless, one message has emerged loud and clear from those studying this new <span class="gloss" data-def="a field, sphere, or domain of activity or interest" data-syn="field, domain" data-uz="soha, tarmoq">realm</span> of botanical interaction: despite not possessing eyes, ears, or a nervous system, plants are anything but uncommunicative. 'When I started my PhD (in the late 1980s), all this stuff was considered very weird,' recalls Ariel Novoplansky. 'Today, there is no doubt. We now recognise that plants are capable of some very sophisticated exchanges of information with other plants. This idea is not strange anymore.'</p>
     </div>
   </div>
@@ -307,17 +330,26 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 
   <div id="right-pane">
 <div class="qsec on" id="qs2">
-<div class="qgroup" data-group="g1" data-paras="p2-1,p2-2,p2-3,p2-4,p2-5,p2-6"><p class="qnum-head"><em>Questions 14&ndash;19</em></p><p class="qinst">Reading Passage 2 has six paragraphs, <strong>A&ndash;F</strong>. Choose the correct heading for each paragraph from the list of headings below.</p>
-<div class="fbox">
-<strong>List of Headings</strong>
-i&nbsp;&nbsp;Sending messages underground<br>ii&nbsp;&nbsp;Potential advantages for farmers<br>iii&nbsp;&nbsp;The widespread rejection of an idea<br>iv&nbsp;&nbsp;One species accelerating growth in another<br>v&nbsp;&nbsp;Some obstacles to plant communication<br>vi&nbsp;&nbsp;Evidence leading to renewed belief in a theory<br>vii&nbsp;&nbsp;New technologies which helped researchers<br>viii&nbsp;&nbsp;A suggested benefit to the sender of plant communication
+<div class="qgroup" data-group="g1" data-paras="p2-1,p2-2,p2-3,p2-4,p2-5,p2-6"><p class="qnum-head"><em>Questions 14&ndash;19</em></p><p class="qinst">Reading Passage 2 has six paragraphs, <strong>A&ndash;F</strong>.</p><p class="qinst">Choose the correct heading for each paragraph from the list of headings below. Drag a heading onto each numbered slot, or tap a heading then tap a slot.</p>
+<div class="headings-box" id="mhHeadings">
+<div class="mh-heading-card" draggable="true" data-code="i" data-label="Sending messages underground"><strong>i</strong>&nbsp;&nbsp;Sending messages underground</div>
+<div class="mh-heading-card" draggable="true" data-code="ii" data-label="Potential advantages for farmers"><strong>ii</strong>&nbsp;&nbsp;Potential advantages for farmers</div>
+<div class="mh-heading-card" draggable="true" data-code="iii" data-label="The widespread rejection of an idea"><strong>iii</strong>&nbsp;&nbsp;The widespread rejection of an idea</div>
+<div class="mh-heading-card" draggable="true" data-code="iv" data-label="One species accelerating growth in another"><strong>iv</strong>&nbsp;&nbsp;One species accelerating growth in another</div>
+<div class="mh-heading-card" draggable="true" data-code="v" data-label="Some obstacles to plant communication"><strong>v</strong>&nbsp;&nbsp;Some obstacles to plant communication</div>
+<div class="mh-heading-card" draggable="true" data-code="vi" data-label="Evidence leading to renewed belief in a theory"><strong>vi</strong>&nbsp;&nbsp;Evidence leading to renewed belief in a theory</div>
+<div class="mh-heading-card" draggable="true" data-code="vii" data-label="New technologies which helped researchers"><strong>vii</strong>&nbsp;&nbsp;New technologies which helped researchers</div>
+<div class="mh-heading-card" draggable="true" data-code="viii" data-label="A suggested benefit to the sender of plant communication"><strong>viii</strong>&nbsp;&nbsp;A suggested benefit to the sender of plant communication</div>
 </div>
-<div class="qitem"><p class="qprompt"><strong>14.</strong>&nbsp; Paragraph A <button class="expl-btn" onclick="toggleExpl(14)">💡 Why?</button></p><div class="rgroup" id="rg14"><label class="rlabel"><input type="radio" name="q14" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q14" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q14" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q14" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q14" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q14" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q14" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q14" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-14">🔑 <span class="expl-kw">By the late 1980s, most ecologists felt that Schultz and Baldwin's idea had been discredited</span>. Answer: <b>iii</b>.<div class="expl-uz">🇺🇿 Bu g'oya <span class="expl-kw-uz">"keng miqyosda rad etilgan"</span>. Javob: <b>iii</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>15.</strong>&nbsp; Paragraph B <button class="expl-btn" onclick="toggleExpl(15)">💡 Why?</button></p><div class="rgroup" id="rg15"><label class="rlabel"><input type="radio" name="q15" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q15" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q15" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q15" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q15" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q15" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q15" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q15" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-15">🔑 <span class="expl-kw">a number of more carefully designed experiments began to yield convincing indications to the contrary</span>. Answer: <b>vi</b>.<div class="expl-uz">🇺🇿 Yangi tajribalar nazariyaga <span class="expl-kw-uz">"qayta ishonchni tikladi"</span>. Javob: <b>vi</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>16.</strong>&nbsp; Paragraph C <button class="expl-btn" onclick="toggleExpl(16)">💡 Why?</button></p><div class="rgroup" id="rg16"><label class="rlabel"><input type="radio" name="q16" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q16" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q16" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q16" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q16" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q16" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q16" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q16" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-16">🔑 <span class="expl-kw">VOC-based signaling between plants may have been favored because it enhances the 'extended fitness' of the sender by aiding related plants</span>. Answer: <b>viii</b>.<div class="expl-uz">🇺🇿 Signal yuboruvchi o'simlik uchun <span class="expl-kw-uz">"foyda"</span> taklif qilinadi. Javob: <b>viii</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>17.</strong>&nbsp; Paragraph D <button class="expl-btn" onclick="toggleExpl(17)">💡 Why?</button></p><div class="rgroup" id="rg17"><label class="rlabel"><input type="radio" name="q17" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q17" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q17" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q17" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q17" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q17" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q17" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q17" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-17">🔑 <span class="expl-kw">distress signals can be passed through the plants' roots</span>. Answer: <b>i</b>.<div class="expl-uz">🇺🇿 Signallar <span class="expl-kw-uz">"ildizlar orqali yer ostida"</span> uzatiladi. Javob: <b>i</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>18.</strong>&nbsp; Paragraph E <button class="expl-btn" onclick="toggleExpl(18)">💡 Why?</button></p><div class="rgroup" id="rg18"><label class="rlabel"><input type="radio" name="q18" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q18" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q18" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q18" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q18" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q18" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q18" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q18" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-18">🔑 <span class="expl-kw">chili plants growing next to fennel plants developed more quickly than seedlings grown with other chili plants</span>. Answer: <b>iv</b>.<div class="expl-uz">🇺🇿 Bir tur ikkinchisining <span class="expl-kw-uz">"o'sishini tezlashtirmoqda"</span>. Javob: <b>iv</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>19.</strong>&nbsp; Paragraph F <button class="expl-btn" onclick="toggleExpl(19)">💡 Why?</button></p><div class="rgroup" id="rg19"><label class="rlabel"><input type="radio" name="q19" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q19" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q19" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q19" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q19" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q19" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q19" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q19" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-19">🔑 <span class="expl-kw">knowledge of this phenomenon could eventually be applied to agriculture, and lead to the cultivation of hardier crops</span>. Answer: <b>ii</b>.<div class="expl-uz">🇺🇿 Bu bilim <span class="expl-kw-uz">"fermerlar uchun potentsial foyda"</span>li bo'lishi mumkin. Javob: <b>ii</b>.</div></div></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+<button class="expl-btn" onclick="toggleExpl(14)">💡 Why 14?</button><button class="expl-btn" onclick="toggleExpl(15)">💡 Why 15?</button><button class="expl-btn" onclick="toggleExpl(16)">💡 Why 16?</button><button class="expl-btn" onclick="toggleExpl(17)">💡 Why 17?</button><button class="expl-btn" onclick="toggleExpl(18)">💡 Why 18?</button><button class="expl-btn" onclick="toggleExpl(19)">💡 Why 19?</button>
+</div>
+<div class="expl-box" id="expl-14">🔑 <span class="expl-kw">By the late 1980s, most ecologists felt that Schultz and Baldwin's idea had been discredited</span>. Answer: <b>iii</b>.<div class="expl-uz">🇺🇿 Bu g'oya <span class="expl-kw-uz">"keng miqyosda rad etilgan"</span>. Javob: <b>iii</b>.</div></div>
+<div class="expl-box" id="expl-15">🔑 <span class="expl-kw">a number of more carefully designed experiments began to yield convincing indications to the contrary</span>. Answer: <b>vi</b>.<div class="expl-uz">🇺🇿 Yangi tajribalar nazariyaga <span class="expl-kw-uz">"qayta ishonchni tikladi"</span>. Javob: <b>vi</b>.</div></div>
+<div class="expl-box" id="expl-16">🔑 <span class="expl-kw">VOC-based signaling between plants may have been favored because it enhances the 'extended fitness' of the sender by aiding related plants</span>. Answer: <b>viii</b>.<div class="expl-uz">🇺🇿 Signal yuboruvchi o'simlik uchun <span class="expl-kw-uz">"foyda"</span> taklif qilinadi. Javob: <b>viii</b>.</div></div>
+<div class="expl-box" id="expl-17">🔑 <span class="expl-kw">distress signals can be passed through the plants' roots</span>. Answer: <b>i</b>.<div class="expl-uz">🇺🇿 Signallar <span class="expl-kw-uz">"ildizlar orqali yer ostida"</span> uzatiladi. Javob: <b>i</b>.</div></div>
+<div class="expl-box" id="expl-18">🔑 <span class="expl-kw">chili plants growing next to fennel plants developed more quickly than seedlings grown with other chili plants</span>. Answer: <b>iv</b>.<div class="expl-uz">🇺🇿 Bir tur ikkinchisining <span class="expl-kw-uz">"o'sishini tezlashtirmoqda"</span>. Javob: <b>iv</b>.</div></div>
+<div class="expl-box" id="expl-19">🔑 <span class="expl-kw">knowledge of this phenomenon could eventually be applied to agriculture, and lead to the cultivation of hardier crops</span>. Answer: <b>ii</b>.<div class="expl-uz">🇺🇿 Bu bilim <span class="expl-kw-uz">"fermerlar uchun potentsial foyda"</span>li bo'lishi mumkin. Javob: <b>ii</b>.</div></div>
 </div>
 <div class="qgroup" data-group="g2" data-paras="p2-4"><p class="qnum-head" style="margin-top:14px"><em>Questions 20&ndash;23</em></p><p class="qinst">Complete the summary below. Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.</p>
 <div class="fbox">
@@ -397,6 +429,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   setupDrag();
   setupHLToolbar();
   setupGlossary();
+  setupMatchingHeadings();
   showWelcomePopup();
   document.getElementById('fsz-dn').disabled=fszIdx===0;
   document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
@@ -520,6 +553,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -546,14 +580,17 @@ function practiceMode(group){
     g.style.display=(group==='all'||g.dataset.group===group)?'':'none';
   });
   const allParas=[...document.querySelectorAll('#pc2 p[id^="p2-"]')];
+  const allSlots=[...document.querySelectorAll('#pc2 .mh-slot-line')];
   const note=document.getElementById('p2note');
   if(group==='all'){
     allParas.forEach(p=>p.style.display='');
+    allSlots.forEach(s=>s.style.display='');
     if(note)note.style.display='none';
   } else {
     const g=document.querySelector('#qs2 .qgroup[data-group="'+group+'"]');
     const paraIds=(g&&g.dataset.paras||'').split(',').filter(Boolean);
     allParas.forEach(p=>{p.style.display=paraIds.includes(p.id)?'':'none';});
+    allSlots.forEach(s=>{s.style.display=paraIds.includes(s.dataset.para)?'':'none';});
     if(note){
       note.innerHTML='📄 Showing only the excerpt needed for <b>'+(PTYPE_LABELS[group]||'this question type')+'</b> &mdash; not the full passage.';
       note.style.display='block';
@@ -628,6 +665,46 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    const bank=box.dataset.bank||'';
+    const cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    const slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    let armed=null;
+    function place(slot,code){
+      if(checked)return;
+      const card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      const old=slot.dataset.val;if(old){const c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    let ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -642,6 +719,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -692,6 +770,7 @@ function applyHL2(pEl, items){
   });
   items.forEach(({q,t})=>{
     pEl.querySelectorAll('p').forEach(p=>{
+      if(p.classList.contains('mh-slot-line'))return;
       const h=p.innerHTML;
       if(!h.toLowerCase().includes(t))return;
       const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
@@ -751,6 +830,11 @@ function launchConfetti(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}

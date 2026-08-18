@@ -119,6 +119,23 @@ body.post-check .expl-btn{display:inline-flex}
 .fbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:14px}
 .fbox strong{display:block;font-weight:700;font-size:15px;margin-bottom:10px;color:var(--text)}
 .fbox p{font-size:calc(14.5px * var(--txtscale,1));line-height:2.4;color:var(--text)}
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
 
 .inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:50%;background:var(--mdbg);border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text);margin:0 3px 0 6px;vertical-align:middle}
 .answer-input{border:none;border-bottom:2px solid var(--inpb);background:transparent;font-size:calc(14px * var(--txtscale,1));font-family:inherit;padding:2px 4px;width:130px;color:var(--text);outline:none}
@@ -279,11 +296,17 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
       <h2 class="ptitle">The Importance of Law</h2><p class="psub">Why legal understanding shapes almost every part of modern life &mdash; and why lawyers deserve a fairer hearing</p>
       <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
 <div class="excerpt-note" id="p2note"></div>
+<p class="mh-slot-line" data-para="p2-1"><span class="mh-drop-slot empty" id="q14" data-q="14" draggable="false">14</span></p>
 <p id="p2-1"><span class="pl">A</span>The law influences all of us virtually all the time, it governs almost all aspects of our behaviour, and even what happens to us when we are no longer alive. It affects us from the embryo onwards. It governs the air we breathe, the food and drink we consume, our travel, family relationships, and our property. It applies at the bottom of the ocean and in space. Each time we examine a label on a food product, engage in work as an employee or employer, travel on the roads, go to school to learn or to teach, stay in a hotel, borrow a library book, create or dissolve a commercial company, play sports, or engage the services of someone for anything from plumbing a sink to planning a city, we are in the world of law.</p>
+<p class="mh-slot-line" data-para="p2-2"><span class="mh-drop-slot empty" id="q15" data-q="15" draggable="false">15</span></p>
 <p id="p2-2"><span class="pl">B</span>Law has also become much more widely recognised as the standard by which behaviour needs to be judged. A very telling development in recent history is the way in which the idea of law has permeated all parts of social life. The universal standard of whether something is socially tolerated is progressively becoming whether it is legal, rather than something that has always been considered acceptable. In earlier times, most people were <span class="gloss" data-def="unable to read or write" data-syn="unlettered, uneducated" data-uz="savodsiz, o'qishni bilmaydigan">illiterate</span>. Today, by contrast, a vast number of people can read, and it is becoming easier for people to take an interest in law, and for the general population to help actually shape the law in many countries. However, law is a <span class="gloss" data-def="able to be used for many different purposes or in many different ways" data-syn="adaptable, flexible" data-uz="ko'p qirrali, moslashuvchan">versatile</span> instrument that can be used equally well for the improvement or the <span class="gloss" data-def="the process of being made worse, especially in terms of quality or moral standards" data-syn="deterioration, decline" data-uz="tanazzul, yomonlashuv">degradation</span> of humanity.</p>
+<p class="mh-slot-line" data-para="p2-3"><span class="mh-drop-slot empty" id="q16" data-q="16" draggable="false">16</span></p>
 <p id="p2-3"><span class="pl">C</span>This, of course, puts law in a very significant position. In our rapidly developing world, all sorts of skills and knowledge are valuable. Those people, for example, with knowledge of computers, the internet, and communications technology are relied upon by the rest of us. There is now someone with IT skills or an IT help desk in every UK school, every company, every hospital, every local and central government office. Without their knowledge, many parts of commercial and social life today would seize up in minutes. But legal understanding is just as vital and as universally needed. The American comedian Jerry Seinfeld put it like this, 'We are all throwing the dice, playing the game, moving our pieces around the board, but if there is a problem, the lawyer is the only person who has read the inside of the top of the box.' In other words, the lawyer is the only person who has read and made sense of the rules.</p>
+<p class="mh-slot-line" data-para="p2-4"><span class="mh-drop-slot empty" id="q17" data-q="17" draggable="false">17</span></p>
 <p id="p2-4"><span class="pl">D</span>The number of laws has never been greater. In the UK alone, about 35 new Acts of Parliament are produced every year, thereby delivering thousands of new rules. The legislative output of the British Parliament has more than doubled in recent times from 1,100 pages a year in the early 1970s, to over 2,500 pages a year today. Between 1997 and 2006, the legislature passed 365 Acts of Parliament and more than 32,000 legally binding <span class="gloss" data-def="required, permitted, or enacted by law" data-syn="legal, mandated" data-uz="qonuniy, majburiy">statutory</span> instruments. In a system with so much law, lawyers do a great deal not just to <span class="gloss" data-def="to clear from blame or suspicion, or to defend and support a right" data-syn="uphold, defend" data-uz="himoya qilmoq, tasdiqlamoq">vindicate</span> the rights of citizens and organizations but also to help develop the law through legal arguments, some of which are adapted by judges to become laws. Law courts can and do produce new law and revise old law, but they do so having heard the arguments of lawyers.</p>
+<p class="mh-slot-line" data-para="p2-5"><span class="mh-drop-slot empty" id="q18" data-q="18" draggable="false">18</span></p>
 <p id="p2-5"><span class="pl">E</span>However, despite their important role in developing the rules, lawyers are not universally admired. Anti-lawyer jokes have a long history going back to the ancient Greeks. More recently the son of a famous Hollywood actor was asked at his junior school what his father did for a living, to which he replied, 'My daddy is a movie actor, and sometimes he plays the good guy, and sometimes he plays the lawyer.' For balance, though, it is worth remembering that there are and have been many heroic and revered lawyers such as the Roman philosopher and politician Cicero and Mahatma Gandhi, the Indian campaigner for independence.</p>
+<p class="mh-slot-line" data-para="p2-6"><span class="mh-drop-slot empty" id="q19" data-q="19" draggable="false">19</span></p>
 <p id="p2-6"><span class="pl">F</span>People sometimes make comments that characterise lawyers as professionals whose concerns put personal reward above truth, or who gain financially from misfortune. There are undoubtedly lawyers that would fit that bill, just as there are some scientists, journalists and others in that category. But, in general, it is no more just to say that lawyers are bad because they make a living from people's problems than it is to make the same accusation in respect of nurses or IT consultants. A great many lawyers are involved in public law work, such as that involving civil liberties, housing and other issues. Such work is not lavishly <span class="gloss" data-def="paid for work or a service" data-syn="paid, compensated" data-uz="haq to'lanadigan, mukofotlanadigan">remunerated</span> and the quality of the service provided by these lawyers relies on considerable professional dedication. Moreover, much legal work has nothing to do with conflict or misfortune, but is primarily concerned with drafting documents. Another source of social <span class="gloss" data-def="a feeling of dissatisfaction or discontent" data-syn="discontent, dissatisfaction" data-uz="norozilik, qoniqmaslik">disaffection</span> for lawyers, and disaffection for the law, is a limited public understanding of how law works and how it could be changed. Greater clarity about these issues, maybe as a result of better public relations, would reduce many aspects of public dissatisfaction with the law.</p>
     </div>
   </div>
@@ -292,17 +315,26 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 
   <div id="right-pane">
 <div class="qsec on" id="qs2">
-<div class="qgroup" data-group="g1" data-paras="p2-1,p2-2,p2-3,p2-4,p2-5,p2-6"><p class="qnum-head"><em>Questions 14&ndash;19</em></p><p class="qinst">The Reading Passage has six paragraphs, <strong>A&ndash;F</strong>. Choose the correct heading for each paragraph from the list of headings below.</p>
-<div class="fbox">
-<strong>List of Headings</strong>
-i&nbsp;&nbsp;Different areas of professional expertise<br>ii&nbsp;&nbsp;A negative regard for lawyers<br>iii&nbsp;&nbsp;The disadvantages of the legal system<br>iv&nbsp;&nbsp;The law applies throughout our lives<br>v&nbsp;&nbsp;The law has affected historical events<br>vi&nbsp;&nbsp;Growth in laws<br>vii&nbsp;&nbsp;Public's increasing ability to influence the law<br>viii&nbsp;&nbsp;Reasons why it is unfair to criticise lawyers
+<div class="qgroup" data-group="g1" data-paras="p2-1,p2-2,p2-3,p2-4,p2-5,p2-6"><p class="qnum-head"><em>Questions 14&ndash;19</em></p><p class="qinst">The Reading Passage has six paragraphs, <strong>A&ndash;F</strong>.</p><p class="qinst">Choose the correct heading for each paragraph from the list of headings below. Drag a heading onto each numbered slot, or tap a heading then tap a slot.</p>
+<div class="headings-box" id="mhHeadings">
+<div class="mh-heading-card" draggable="true" data-code="i" data-label="Different areas of professional expertise"><strong>i</strong>&nbsp;&nbsp;Different areas of professional expertise</div>
+<div class="mh-heading-card" draggable="true" data-code="ii" data-label="A negative regard for lawyers"><strong>ii</strong>&nbsp;&nbsp;A negative regard for lawyers</div>
+<div class="mh-heading-card" draggable="true" data-code="iii" data-label="The disadvantages of the legal system"><strong>iii</strong>&nbsp;&nbsp;The disadvantages of the legal system</div>
+<div class="mh-heading-card" draggable="true" data-code="iv" data-label="The law applies throughout our lives"><strong>iv</strong>&nbsp;&nbsp;The law applies throughout our lives</div>
+<div class="mh-heading-card" draggable="true" data-code="v" data-label="The law has affected historical events"><strong>v</strong>&nbsp;&nbsp;The law has affected historical events</div>
+<div class="mh-heading-card" draggable="true" data-code="vi" data-label="Growth in laws"><strong>vi</strong>&nbsp;&nbsp;Growth in laws</div>
+<div class="mh-heading-card" draggable="true" data-code="vii" data-label="Public's increasing ability to influence the law"><strong>vii</strong>&nbsp;&nbsp;Public's increasing ability to influence the law</div>
+<div class="mh-heading-card" draggable="true" data-code="viii" data-label="Reasons why it is unfair to criticise lawyers"><strong>viii</strong>&nbsp;&nbsp;Reasons why it is unfair to criticise lawyers</div>
 </div>
-<div class="qitem"><p class="qprompt"><strong>14.</strong>&nbsp; Paragraph A <button class="expl-btn" onclick="toggleExpl(14)">💡 Why?</button></p><div class="rgroup" id="rg14"><label class="rlabel"><input type="radio" name="q14" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q14" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q14" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q14" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q14" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q14" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q14" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q14" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-14">🔑 <span class="expl-kw">The law influences all of us virtually all the time... It affects us from the embryo onwards</span>. Answer: <b>iv</b>.<div class="expl-uz">🇺🇿 Qonun <span class="expl-kw-uz">"embriondan boshlab"</span> hayotimizning har bir bosqichiga ta'sir qiladi. Javob: <b>iv</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>15.</strong>&nbsp; Paragraph B <button class="expl-btn" onclick="toggleExpl(15)">💡 Why?</button></p><div class="rgroup" id="rg15"><label class="rlabel"><input type="radio" name="q15" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q15" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q15" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q15" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q15" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q15" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q15" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q15" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-15">🔑 <span class="expl-kw">for the general population to help actually shape the law in many countries</span>. Answer: <b>vii</b>.<div class="expl-uz">🇺🇿 Aholi qonunni <span class="expl-kw-uz">"shakllantirishga yordam berishi"</span> mumkin bo'lmoqda. Javob: <b>vii</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>16.</strong>&nbsp; Paragraph C <button class="expl-btn" onclick="toggleExpl(16)">💡 Why?</button></p><div class="rgroup" id="rg16"><label class="rlabel"><input type="radio" name="q16" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q16" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q16" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q16" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q16" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q16" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q16" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q16" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-16">🔑 IT expertise is compared with legal expertise: <span class="expl-kw">But legal understanding is just as vital and as universally needed</span>. Answer: <b>i</b>.<div class="expl-uz">🇺🇿 IT bilimlari huquqiy bilimlar bilan solishtiriladi &mdash; <span class="expl-kw-uz">"huquqiy tushuncha ham xuddi shunday muhim"</span>. Javob: <b>i</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>17.</strong>&nbsp; Paragraph D <button class="expl-btn" onclick="toggleExpl(17)">💡 Why?</button></p><div class="rgroup" id="rg17"><label class="rlabel"><input type="radio" name="q17" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q17" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q17" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q17" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q17" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q17" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q17" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q17" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-17">🔑 <span class="expl-kw">The number of laws has never been greater</span>. Answer: <b>vi</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Qonunlar soni hech qachon bunchalik ko'p bo'lmagan"</span>. Javob: <b>vi</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>18.</strong>&nbsp; Paragraph E <button class="expl-btn" onclick="toggleExpl(18)">💡 Why?</button></p><div class="rgroup" id="rg18"><label class="rlabel"><input type="radio" name="q18" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q18" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q18" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q18" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q18" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q18" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q18" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q18" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-18">🔑 <span class="expl-kw">lawyers are not universally admired. Anti-lawyer jokes have a long history going back to the ancient Greeks</span>. Answer: <b>ii</b>.<div class="expl-uz">🇺🇿 Advokatlar <span class="expl-kw-uz">"hamma tomonidan hurmat qilinmaydi"</span> &mdash; qadimgi yunonlardan beri hazillar mavjud. Javob: <b>ii</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>19.</strong>&nbsp; Paragraph F <button class="expl-btn" onclick="toggleExpl(19)">💡 Why?</button></p><div class="rgroup" id="rg19"><label class="rlabel"><input type="radio" name="q19" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q19" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q19" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q19" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q19" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q19" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q19" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q19" value="viii" onchange="upd()"> viii</label></div><div class="expl-box" id="expl-19">🔑 <span class="expl-kw">it is no more just to say that lawyers are bad because they make a living from people's problems than it is to make the same accusation in respect of nurses or IT consultants</span>. Answer: <b>viii</b>.<div class="expl-uz">🇺🇿 Advokatlarni <span class="expl-kw-uz">"odamlarning muammolaridan pul topgani uchun ayblash adolatsiz"</span> &mdash; hamshiralar yoki IT mutaxassislariga ham xuddi shu ayb qo'yilishi mumkin. Javob: <b>viii</b>.</div></div></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+<button class="expl-btn" onclick="toggleExpl(14)">💡 Why 14?</button><button class="expl-btn" onclick="toggleExpl(15)">💡 Why 15?</button><button class="expl-btn" onclick="toggleExpl(16)">💡 Why 16?</button><button class="expl-btn" onclick="toggleExpl(17)">💡 Why 17?</button><button class="expl-btn" onclick="toggleExpl(18)">💡 Why 18?</button><button class="expl-btn" onclick="toggleExpl(19)">💡 Why 19?</button>
+</div>
+<div class="expl-box" id="expl-14">🔑 <span class="expl-kw">The law influences all of us virtually all the time... It affects us from the embryo onwards</span>. Answer: <b>iv</b>.<div class="expl-uz">🇺🇿 Qonun <span class="expl-kw-uz">"embriondan boshlab"</span> hayotimizning har bir bosqichiga ta'sir qiladi. Javob: <b>iv</b>.</div></div>
+<div class="expl-box" id="expl-15">🔑 <span class="expl-kw">for the general population to help actually shape the law in many countries</span>. Answer: <b>vii</b>.<div class="expl-uz">🇺🇿 Aholi qonunni <span class="expl-kw-uz">"shakllantirishga yordam berishi"</span> mumkin bo'lmoqda. Javob: <b>vii</b>.</div></div>
+<div class="expl-box" id="expl-16">🔑 IT expertise is compared with legal expertise: <span class="expl-kw">But legal understanding is just as vital and as universally needed</span>. Answer: <b>i</b>.<div class="expl-uz">🇺🇿 IT bilimlari huquqiy bilimlar bilan solishtiriladi &mdash; <span class="expl-kw-uz">"huquqiy tushuncha ham xuddi shunday muhim"</span>. Javob: <b>i</b>.</div></div>
+<div class="expl-box" id="expl-17">🔑 <span class="expl-kw">The number of laws has never been greater</span>. Answer: <b>vi</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Qonunlar soni hech qachon bunchalik ko'p bo'lmagan"</span>. Javob: <b>vi</b>.</div></div>
+<div class="expl-box" id="expl-18">🔑 <span class="expl-kw">lawyers are not universally admired. Anti-lawyer jokes have a long history going back to the ancient Greeks</span>. Answer: <b>ii</b>.<div class="expl-uz">🇺🇿 Advokatlar <span class="expl-kw-uz">"hamma tomonidan hurmat qilinmaydi"</span> &mdash; qadimgi yunonlardan beri hazillar mavjud. Javob: <b>ii</b>.</div></div>
+<div class="expl-box" id="expl-19">🔑 <span class="expl-kw">it is no more just to say that lawyers are bad because they make a living from people's problems than it is to make the same accusation in respect of nurses or IT consultants</span>. Answer: <b>viii</b>.<div class="expl-uz">🇺🇿 Advokatlarni <span class="expl-kw-uz">"odamlarning muammolaridan pul topgani uchun ayblash adolatsiz"</span> &mdash; hamshiralar yoki IT mutaxassislariga ham xuddi shu ayb qo'yilishi mumkin. Javob: <b>viii</b>.</div></div>
 </div>
 <div class="qgroup" data-group="g2" data-paras="p2-3"><p class="qnum-head" style="margin-top:14px"><em>Questions 20 and 21</em></p><p class="qinst">Choose <strong>TWO</strong> letters, <strong>A&ndash;E</strong>. Which <strong>TWO</strong> of the following statements does the writer make about legal skills in today's world?</p>
 <div class="qitem"><p class="qprompt"><strong>20.</strong> <button class="expl-btn" onclick="toggleExpl(20)">💡 Why?</button></p><div class="rgroup" id="rg20"><label class="rlabel"><input type="radio" name="q20" value="A" onchange="upd()"> <span class="opt-letter">A</span> There should be a person with legal training in every hospital.</label><label class="rlabel"><input type="radio" name="q20" value="B" onchange="upd()"> <span class="opt-letter">B</span> Lawyers with experience in commercial law are the most in demand.</label><label class="rlabel"><input type="radio" name="q20" value="C" onchange="upd()"> <span class="opt-letter">C</span> Knowledge of the law is as important as having computer skills.</label><label class="rlabel"><input type="radio" name="q20" value="D" onchange="upd()"> <span class="opt-letter">D</span> Society could not function effectively without legal experts.</label><label class="rlabel"><input type="radio" name="q20" value="E" onchange="upd()"> <span class="opt-letter">E</span> Schools should teach students about the law.</label></div></div>
@@ -373,6 +405,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   setupDrag();
   setupHLToolbar();
   setupGlossary();
+  setupMatchingHeadings();
   showWelcomePopup();
   document.getElementById('fsz-dn').disabled=fszIdx===0;
   document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
@@ -496,6 +529,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -522,14 +556,17 @@ function practiceMode(group){
     g.style.display=(group==='all'||g.dataset.group===group)?'':'none';
   });
   const allParas=[...document.querySelectorAll('#pc2 p[id^="p2-"]')];
+  const allSlots=[...document.querySelectorAll('#pc2 .mh-slot-line')];
   const note=document.getElementById('p2note');
   if(group==='all'){
     allParas.forEach(p=>p.style.display='');
+    allSlots.forEach(s=>s.style.display='');
     if(note)note.style.display='none';
   } else {
     const g=document.querySelector('#qs2 .qgroup[data-group="'+group+'"]');
     const paraIds=(g&&g.dataset.paras||'').split(',').filter(Boolean);
     allParas.forEach(p=>{p.style.display=paraIds.includes(p.id)?'':'none';});
+    allSlots.forEach(s=>{s.style.display=paraIds.includes(s.dataset.para)?'':'none';});
     if(note){
       note.innerHTML='📄 Showing only the excerpt needed for <b>'+(PTYPE_LABELS[group]||'this question type')+'</b> &mdash; not the full passage.';
       note.style.display='block';
@@ -604,6 +641,46 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    const bank=box.dataset.bank||'';
+    const cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    const slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    let armed=null;
+    function place(slot,code){
+      if(checked)return;
+      const card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      const old=slot.dataset.val;if(old){const c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    let ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -618,6 +695,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -668,6 +746,7 @@ function applyHL2(pEl, items){
   });
   items.forEach(({q,t})=>{
     pEl.querySelectorAll('p').forEach(p=>{
+      if(p.classList.contains('mh-slot-line'))return;
       const h=p.innerHTML;
       if(!h.toLowerCase().includes(t))return;
       const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
@@ -727,6 +806,11 @@ function launchConfetti(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}

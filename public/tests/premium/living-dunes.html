@@ -132,6 +132,23 @@ body.post-check .expl-btn{display:inline-flex}
 .mx-cell.bad{background:#fef2f2!important}
 [data-theme=dark] .mx-cell.ok{background:#14532d!important}
 [data-theme=dark] .mx-cell.bad{background:#5a1d1d!important}
+.mh-slot-line{margin:0 0 6px 0!important}
+.mh-drop-slot{display:inline-flex;align-items:center;gap:2px;min-height:32px;min-width:200px;max-width:100%;padding:6px 11px;border:2px dashed var(--inpb);border-radius:7px;background:var(--inp);color:var(--text);font-size:calc(13px * var(--txtscale,1));font-weight:600;line-height:1.3;cursor:pointer;user-select:none;vertical-align:middle}
+.mh-drop-slot.empty{color:var(--subtext);justify-content:center}
+.mh-drop-slot.filled{border-style:solid;border-color:#DC2626;justify-content:flex-start;text-align:left}
+.mh-drop-slot.dragover{border-color:#DC2626;background:var(--phdr)}
+.mh-drop-slot.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.mh-drop-slot.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+[data-theme=dark] .mh-drop-slot.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .mh-drop-slot.bad{background:#5a1d1d!important;color:#fecaca!important}
+.mh-corr{display:block;margin:4px 0 10px;color:#15803d;font-weight:700;font-size:13px}
+[data-theme=dark] .mh-corr{color:#bbf7d0}
+.headings-box{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:13px 15px;margin:4px 0 0}
+.mh-heading-card{background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:9px 12px;margin-bottom:8px;font-size:calc(13.5px * var(--txtscale,1));color:var(--text);line-height:1.35;cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s}
+.mh-heading-card:last-child{margin-bottom:0}
+.mh-heading-card:hover{border-color:#DC2626;background:var(--phdr)}
+.mh-heading-card.used{opacity:.4;cursor:not-allowed;pointer-events:none}
+.mh-heading-card.armed{border-color:#DC2626;background:var(--phdr);box-shadow:0 0 0 3px rgba(220,38,38,.15)}
 .expl-row td{border-bottom:1px solid var(--border);padding:0 0 10px}
 .expl-cell .expl-box{margin:6px 8px 0}
 
@@ -294,12 +311,19 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
       <h2 class="ptitle">Living Dunes</h2><p class="psub">The strange, restless life of the desert's giant sand dunes</p>
       <div class="hl-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9,12l2,2 4,-4"></path></svg>Select text to highlight, tap on it to clear</div>
 <div class="excerpt-note" id="p3note"></div>
+<p class="mh-slot-line" data-para="p3-1"><span class="mh-drop-slot empty" id="q27" data-q="27" draggable="false">27</span></p>
 <p id="p3-1"><span class="pl">A</span>Armies of giant sand dunes are advancing across the world's deserts, <span class="gloss" data-def="to swallow up or completely surround something" data-syn="swallowing, engulf" data-uz="yutib yuborish, qamrab olish">engulfing</span> anything that crosses their path. They are tens of metres tall and hundreds of metres long. Fortunately, they aren't going very fast. Even the smallest, speediest dunes only travel about 100 metres over the course of a year, while the bigger ones, which weigh something in the order of 10,000 tonnes, barely move one metre in that time. However, their insidious creep can have serious consequences if there is an oil installation or a railway line in their path.</p>
+<p class="mh-slot-line" data-para="p3-2"><span class="mh-drop-slot empty" id="q28" data-q="28" draggable="false">28</span></p>
 <p id="p3-2"><span class="pl">B</span>About 47% of the world's land mass, including Antarctica, most of Australia and large areas of Africa, is classified as arid or semi-arid desert. Only around 20% of that is sand-covered, however, and over half of that is classified as 'linear' sand dunes. These form in a long curving wave, as a result of wind blowing strongly from several quarters, flipping them from side to side. Although linear dunes are static, sand blowing off them can cause problems for desert villages, burying crops and buildings.</p>
+<p class="mh-slot-line" data-para="p3-3"><span class="mh-drop-slot empty" id="q29" data-q="29" draggable="false">29</span></p>
 <p id="p3-3"><span class="pl">C</span>Moving dunes make up just a small percentage of the rest, but they are of the most interest to scientists. They are known as 'barchans': heavy, crescent-shaped sand piles with a ridged crest and two <span class="gloss" data-def="stretched out, longer than usual in relation to width" data-syn="stretched, extended" data-uz="cho'zilgan, uzun shaklidagi">elongated</span> arms, one curving away to either side. 'Barchan dunes only tend to form where you have one-directional winds on the edge of sandy deserts near coastal areas,' says Giles Wiggs, a <span class="gloss" data-def="a scientist who studies the physical features of the Earth's surface and how they form" data-syn="earth-surface scientist" data-uz="geomorfolog (yer relyefini o'rganuvchi olim)">geomorphologist</span> at Oxford University, who has been studying the formation and movement of sand dunes for more than a decade.</p>
+<p class="mh-slot-line" data-para="p3-4"><span class="mh-drop-slot empty" id="q30" data-q="30" draggable="false">30</span></p>
 <p id="p3-4"><span class="pl">D</span>But even with strong winds, how can entire barchans move while retaining their form? That question was first answered in the mid-20th century by British explorer Ralph Alger Bagnold, and his answer hinges on the fact that dunes aren't solid, but granular. Bagnold figured out how barchan dunes are able to move grain by grain. Imagine a single grain of sand being blown up the back of a dune by the wind and deposited on the top. More grains follow the same pattern, until the accumulated weight of piled-up sand finally pushes the top down the dune face. The grain tumbles, then stops on the face until subsequent mini-avalanches bury it. Eventually, it reappears at the back of the dune, ready to repeat the process. As this happens to every grain of sand in the dune, the whole thing creeps in the direction of the <span class="gloss" data-def="most frequent or dominant, especially of a wind direction" data-syn="dominant, main" data-uz="hukmron, asosiy (shamol yo'nalishi)">prevailing</span> wind.</p>
+<p class="mh-slot-line" data-para="p3-5"><span class="mh-drop-slot empty" id="q31" data-q="31" draggable="false">31</span></p>
 <p id="p3-5"><span class="pl">E</span>The relationship between the wind and barchan dunes is complex. As a dune grows, it modifies the speed and course of the wind, which in turn alters how that dune and its neighbours evolve. 'Interestingly, the dune can regulate its own shape, and maintain it as it moves,' says Dr St&eacute;phane Douady, a physicist at Ecole Normale Sup&eacute;rieure (ENS) in France. 'Even when two dunes collide, they quickly take on their distinctive shapes again. It's like a living organism.'</p>
+<p class="mh-slot-line" data-para="p3-6"><span class="mh-drop-slot empty" id="q32" data-q="32" draggable="false">32</span></p>
 <p id="p3-6"><span class="pl">F</span>Douady and his colleagues have also been studying an even odder phenomenon than moving dunes: some barchans actually sing. Local legends attributed the sounds to dangerous spirits which were trying to trap unwary travellers. Douady is more pragmatic. 'It's a strong booming noise with a low frequency,' he explains, making a noise like a foghorn to demonstrate. 'It can last for a long time &mdash; up to several minutes. It's a very loud sound and you don't understand where it's coming from when you first hear it.' There are about 50 dunes distributed across 35 deserts round the world that are known to sing. Douady says the sound is caused by the way sand avalanches down the faces of particular dunes. Rather than tumbling randomly, the sand grains flow in <span class="gloss" data-def="the state of happening or moving together at the same time and rate" data-syn="unison, coordination" data-uz="sinxronlik, bir vaqtda harakatlanish">synchrony</span> and set each other vibrating like the membrane on a gigantic loudspeaker. The synchronisation causes the air to move in and out between the grains, creating a powerful sound wave.</p>
+<p class="mh-slot-line" data-para="p3-7"><span class="mh-drop-slot empty" id="q33" data-q="33" draggable="false">33</span></p>
 <p id="p3-7"><span class="pl">G</span>What really surprised the scientists, however, was that they were able to take samples of the singing sand back to France and replicate the sound at ENS, proving that it's the sand, not the dune shape, that causes the sound. Their studies show the grains are a uniform shape, well-rounded from years of striking each other, and that the variations in size affect the tone. Crucially, the grains are coated with a special <span class="gloss" data-def="a thin decorative or protective layer or coating on a surface" data-syn="coating, layer" data-uz="parda, yupqa qatlam (qoplama)">veneer</span>, which Douady calls 'desert glaze', made from a precise combination of minerals from surrounding rocks including iron, aluminium, manganese, silicon and calcium. The team found that after a month or so, the veneer wore off and the grains lost their 'voice'. 'We managed to reproduce the desert glaze and then the grains started to sing again,' says Douady. 'We tried putting the coating onto different grains, but they weren't round enough and it didn't work. But some American colleagues made some artificial grains and managed to make them sing, after covering them in desert glaze.' Douady has now made recordings of dunesong from all over the world which are to be made into a CD.</p>
     </div>
   </div>
@@ -308,18 +332,28 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 
   <div id="right-pane">
 <div class="qsec on" id="qs3">
-<div class="qgroup" data-group="g1" data-paras="p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-7"><p class="qnum-head"><em>Questions 27&ndash;33</em></p><p class="qinst">Reading Passage 3 has seven paragraphs, <strong>A&ndash;G</strong>. Choose the correct heading for each paragraph from the list of headings below.</p>
-<div class="fbox">
-<strong>List of Headings</strong>
-i&nbsp;&nbsp;Moving rapidly across the desert<br>ii&nbsp;&nbsp;Recreating the process in a laboratory<br>iii&nbsp;&nbsp;Strange music created by human movement<br>iv&nbsp;&nbsp;A potential threat to industry and communications<br>v&nbsp;&nbsp;Dunes coming together and re-forming<br>vi&nbsp;&nbsp;Needing a specific combination of conditions<br>vii&nbsp;&nbsp;A continuous cycle<br>viii&nbsp;&nbsp;The commonest type of dune<br>ix&nbsp;&nbsp;Old superstitions demystified
+<div class="qgroup" data-group="g1" data-paras="p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-7"><p class="qnum-head"><em>Questions 27&ndash;33</em></p><p class="qinst">Reading Passage 3 has seven paragraphs, <strong>A&ndash;G</strong>.</p><p class="qinst">Choose the correct heading for each paragraph from the list of headings below. Drag a heading onto each numbered slot, or tap a heading then tap a slot.</p>
+<div class="headings-box" id="mhHeadings">
+<div class="mh-heading-card" draggable="true" data-code="i" data-label="Moving rapidly across the desert"><strong>i</strong>&nbsp;&nbsp;Moving rapidly across the desert</div>
+<div class="mh-heading-card" draggable="true" data-code="ii" data-label="Recreating the process in a laboratory"><strong>ii</strong>&nbsp;&nbsp;Recreating the process in a laboratory</div>
+<div class="mh-heading-card" draggable="true" data-code="iii" data-label="Strange music created by human movement"><strong>iii</strong>&nbsp;&nbsp;Strange music created by human movement</div>
+<div class="mh-heading-card" draggable="true" data-code="iv" data-label="A potential threat to industry and communications"><strong>iv</strong>&nbsp;&nbsp;A potential threat to industry and communications</div>
+<div class="mh-heading-card" draggable="true" data-code="v" data-label="Dunes coming together and re-forming"><strong>v</strong>&nbsp;&nbsp;Dunes coming together and re-forming</div>
+<div class="mh-heading-card" draggable="true" data-code="vi" data-label="Needing a specific combination of conditions"><strong>vi</strong>&nbsp;&nbsp;Needing a specific combination of conditions</div>
+<div class="mh-heading-card" draggable="true" data-code="vii" data-label="A continuous cycle"><strong>vii</strong>&nbsp;&nbsp;A continuous cycle</div>
+<div class="mh-heading-card" draggable="true" data-code="viii" data-label="The commonest type of dune"><strong>viii</strong>&nbsp;&nbsp;The commonest type of dune</div>
+<div class="mh-heading-card" draggable="true" data-code="ix" data-label="Old superstitions demystified"><strong>ix</strong>&nbsp;&nbsp;Old superstitions demystified</div>
 </div>
-<div class="qitem"><p class="qprompt"><strong>27.</strong>&nbsp; Paragraph A <button class="expl-btn" onclick="toggleExpl(27)">💡 Why?</button></p><div class="rgroup" id="rg27"><label class="rlabel"><input type="radio" name="q27" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q27" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q27" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q27" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q27" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q27" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q27" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q27" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q27" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-27">🔑 <span class="expl-kw">their insidious creep can have serious consequences if there is an oil installation or a railway line in their path</span>. Answer: <b>iv</b>.<div class="expl-uz">🇺🇿 Dyunalar sanoat va aloqa uchun <span class="expl-kw-uz">"potentsial tahdid"</span> hisoblanadi. Javob: <b>iv</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>28.</strong>&nbsp; Paragraph B <button class="expl-btn" onclick="toggleExpl(28)">💡 Why?</button></p><div class="rgroup" id="rg28"><label class="rlabel"><input type="radio" name="q28" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q28" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q28" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q28" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q28" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q28" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q28" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q28" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q28" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-28">🔑 <span class="expl-kw">over half of that is classified as 'linear' sand dunes</span>. Answer: <b>viii</b>.<div class="expl-uz">🇺🇿 Linear qumtepalar <span class="expl-kw-uz">"eng keng tarqalgan tur"</span>. Javob: <b>viii</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>29.</strong>&nbsp; Paragraph C <button class="expl-btn" onclick="toggleExpl(29)">💡 Why?</button></p><div class="rgroup" id="rg29"><label class="rlabel"><input type="radio" name="q29" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q29" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q29" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q29" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q29" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q29" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q29" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q29" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q29" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-29">🔑 <span class="expl-kw">Barchan dunes only tend to form where you have one-directional winds on the edge of sandy deserts near coastal areas</span>. Answer: <b>vi</b>.<div class="expl-uz">🇺🇿 Barxanlar faqat <span class="expl-kw-uz">"muayyan sharoitlar birikmasi"</span>da hosil bo'ladi. Javob: <b>vi</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>30.</strong>&nbsp; Paragraph D <button class="expl-btn" onclick="toggleExpl(30)">💡 Why?</button></p><div class="rgroup" id="rg30"><label class="rlabel"><input type="radio" name="q30" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q30" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q30" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q30" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q30" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q30" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q30" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q30" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q30" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-30">🔑 <span class="expl-kw">The grain tumbles, then stops on the face until subsequent mini-avalanches bury it. Eventually, it reappears at the back of the dune, ready to repeat the process</span>. Answer: <b>vii</b>.<div class="expl-uz">🇺🇿 Bu <span class="expl-kw-uz">"uzluksiz tsikl"</span>. Javob: <b>vii</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>31.</strong>&nbsp; Paragraph E <button class="expl-btn" onclick="toggleExpl(31)">💡 Why?</button></p><div class="rgroup" id="rg31"><label class="rlabel"><input type="radio" name="q31" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q31" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q31" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q31" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q31" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q31" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q31" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q31" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q31" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-31">🔑 <span class="expl-kw">Even when two dunes collide, they quickly take on their distinctive shapes again</span>. Answer: <b>v</b>.<div class="expl-uz">🇺🇿 Dyunalar <span class="expl-kw-uz">"to'qnashib, qayta shakllanadi"</span>. Javob: <b>v</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>32.</strong>&nbsp; Paragraph F <button class="expl-btn" onclick="toggleExpl(32)">💡 Why?</button></p><div class="rgroup" id="rg32"><label class="rlabel"><input type="radio" name="q32" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q32" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q32" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q32" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q32" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q32" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q32" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q32" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q32" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-32">🔑 <span class="expl-kw">Local legends attributed the sounds to dangerous spirits which were trying to trap unwary travellers. Douady is more pragmatic</span>. Answer: <b>ix</b>.<div class="expl-uz">🇺🇿 Eski <span class="expl-kw-uz">"xurofotlarga ilmiy izoh"</span> beriladi. Javob: <b>ix</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>33.</strong>&nbsp; Paragraph G <button class="expl-btn" onclick="toggleExpl(33)">💡 Why?</button></p><div class="rgroup" id="rg33"><label class="rlabel"><input type="radio" name="q33" value="i" onchange="upd()"> i</label><label class="rlabel"><input type="radio" name="q33" value="ii" onchange="upd()"> ii</label><label class="rlabel"><input type="radio" name="q33" value="iii" onchange="upd()"> iii</label><label class="rlabel"><input type="radio" name="q33" value="iv" onchange="upd()"> iv</label><label class="rlabel"><input type="radio" name="q33" value="v" onchange="upd()"> v</label><label class="rlabel"><input type="radio" name="q33" value="vi" onchange="upd()"> vi</label><label class="rlabel"><input type="radio" name="q33" value="vii" onchange="upd()"> vii</label><label class="rlabel"><input type="radio" name="q33" value="viii" onchange="upd()"> viii</label><label class="rlabel"><input type="radio" name="q33" value="ix" onchange="upd()"> ix</label></div><div class="expl-box" id="expl-33">🔑 <span class="expl-kw">they were able to take samples of the singing sand back to France and replicate the sound at ENS</span>. Answer: <b>ii</b>.<div class="expl-uz">🇺🇿 Ovozni <span class="expl-kw-uz">"laboratoriyada qayta yaratish"</span>. Javob: <b>ii</b>.</div></div></div>
+<div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:6px">
+<button class="expl-btn" onclick="toggleExpl(27)">💡 Why 27?</button><button class="expl-btn" onclick="toggleExpl(28)">💡 Why 28?</button><button class="expl-btn" onclick="toggleExpl(29)">💡 Why 29?</button><button class="expl-btn" onclick="toggleExpl(30)">💡 Why 30?</button><button class="expl-btn" onclick="toggleExpl(31)">💡 Why 31?</button><button class="expl-btn" onclick="toggleExpl(32)">💡 Why 32?</button><button class="expl-btn" onclick="toggleExpl(33)">💡 Why 33?</button>
+</div>
+<div class="expl-box" id="expl-27">🔑 <span class="expl-kw">their insidious creep can have serious consequences if there is an oil installation or a railway line in their path</span>. Answer: <b>iv</b>.<div class="expl-uz">🇺🇿 Dyunalar sanoat va aloqa uchun <span class="expl-kw-uz">"potentsial tahdid"</span> hisoblanadi. Javob: <b>iv</b>.</div></div>
+<div class="expl-box" id="expl-28">🔑 <span class="expl-kw">over half of that is classified as 'linear' sand dunes</span>. Answer: <b>viii</b>.<div class="expl-uz">🇺🇿 Linear qumtepalar <span class="expl-kw-uz">"eng keng tarqalgan tur"</span>. Javob: <b>viii</b>.</div></div>
+<div class="expl-box" id="expl-29">🔑 <span class="expl-kw">Barchan dunes only tend to form where you have one-directional winds on the edge of sandy deserts near coastal areas</span>. Answer: <b>vi</b>.<div class="expl-uz">🇺🇿 Barxanlar faqat <span class="expl-kw-uz">"muayyan sharoitlar birikmasi"</span>da hosil bo'ladi. Javob: <b>vi</b>.</div></div>
+<div class="expl-box" id="expl-30">🔑 <span class="expl-kw">The grain tumbles, then stops on the face until subsequent mini-avalanches bury it. Eventually, it reappears at the back of the dune, ready to repeat the process</span>. Answer: <b>vii</b>.<div class="expl-uz">🇺🇿 Bu <span class="expl-kw-uz">"uzluksiz tsikl"</span>. Javob: <b>vii</b>.</div></div>
+<div class="expl-box" id="expl-31">🔑 <span class="expl-kw">Even when two dunes collide, they quickly take on their distinctive shapes again</span>. Answer: <b>v</b>.<div class="expl-uz">🇺🇿 Dyunalar <span class="expl-kw-uz">"to'qnashib, qayta shakllanadi"</span>. Javob: <b>v</b>.</div></div>
+<div class="expl-box" id="expl-32">🔑 <span class="expl-kw">Local legends attributed the sounds to dangerous spirits which were trying to trap unwary travellers. Douady is more pragmatic</span>. Answer: <b>ix</b>.<div class="expl-uz">🇺🇿 Eski <span class="expl-kw-uz">"xurofotlarga ilmiy izoh"</span> beriladi. Javob: <b>ix</b>.</div></div>
+<div class="expl-box" id="expl-33">🔑 <span class="expl-kw">they were able to take samples of the singing sand back to France and replicate the sound at ENS</span>. Answer: <b>ii</b>.<div class="expl-uz">🇺🇿 Ovozni <span class="expl-kw-uz">"laboratoriyada qayta yaratish"</span>. Javob: <b>ii</b>.</div></div>
 </div>
 <div class="qgroup" data-group="g2" data-paras="p3-2,p3-4,p3-5"><p class="qnum-head" style="margin-top:14px"><em>Questions 34&ndash;36</em></p><p class="qinst">Choose the correct letter, <strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>.</p>
 <div class="qitem"><p class="qprompt"><strong>34.</strong>&nbsp; What are we told about linear dunes? <button class="expl-btn" onclick="toggleExpl(34)">💡 Why?</button></p><div class="rgroup" id="rg34">
@@ -404,6 +438,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   setupDrag();
   setupHLToolbar();
   setupGlossary();
+  setupMatchingHeadings();
   showWelcomePopup();
   document.getElementById('fsz-dn').disabled=fszIdx===0;
   document.getElementById('fsz-up').disabled=fszIdx===FSZ_SCALES.length-1;
@@ -527,6 +562,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -553,14 +589,17 @@ function practiceMode(group){
     g.style.display=(group==='all'||g.dataset.group===group)?'':'none';
   });
   const allParas=[...document.querySelectorAll('#pc3 p[id^="p3-"]')];
+  const allSlots=[...document.querySelectorAll('#pc3 .mh-slot-line')];
   const note=document.getElementById('p3note');
   if(group==='all'){
     allParas.forEach(p=>p.style.display='');
+    allSlots.forEach(s=>s.style.display='');
     if(note)note.style.display='none';
   } else {
     const g=document.querySelector('#qs3 .qgroup[data-group="'+group+'"]');
     const paraIds=(g&&g.dataset.paras||'').split(',').filter(Boolean);
     allParas.forEach(p=>{p.style.display=paraIds.includes(p.id)?'':'none';});
+    allSlots.forEach(s=>{s.style.display=paraIds.includes(s.dataset.para)?'':'none';});
     if(note){
       note.innerHTML='📄 Showing only the excerpt needed for <b>'+(PTYPE_LABELS[group]||'this question type')+'</b> &mdash; not the full passage.';
       note.style.display='block';
@@ -635,6 +674,46 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupMatchingHeadings(){
+  document.querySelectorAll('.headings-box').forEach(function(box){
+    const bank=box.dataset.bank||'';
+    const cards=[].slice.call(box.querySelectorAll('.mh-heading-card'));
+    const slots=[].slice.call(document.querySelectorAll('.mh-drop-slot')).filter(function(s){return (s.dataset.bank||'')===bank;});
+    if(!cards.length||!slots.length)return;
+    let armed=null;
+    function place(slot,code){
+      if(checked)return;
+      const card=cards.find(function(c){return c.dataset.code===code;}); if(!card)return;
+      slots.forEach(function(s){if(s!==slot&&s.dataset.val===code)clr(s);});
+      if(slot.dataset.val)clr(slot);
+      slot.dataset.val=code;slot.innerHTML='<strong>'+code+'</strong>&nbsp;&nbsp;'+card.dataset.label;
+      slot.classList.remove('empty');slot.classList.add('filled');slot.setAttribute('draggable','true');
+      card.classList.add('used');upd();
+    }
+    function clr(slot){
+      const old=slot.dataset.val;if(old){const c=cards.find(function(x){return x.dataset.code===old;});if(c)c.classList.remove('used');}
+      slot.dataset.val='';slot.textContent=slot.dataset.q;slot.classList.add('empty');slot.classList.remove('filled','ok','bad');slot.setAttribute('draggable','false');upd();
+    }
+    cards.forEach(function(card){
+      card.addEventListener('dragstart',function(e){if(checked||card.classList.contains('used')){e.preventDefault();return;}e.dataTransfer.setData('text/plain',card.dataset.code);});
+      card.addEventListener('click',function(){if(checked||card.classList.contains('used'))return;const on=card.classList.contains('armed');cards.forEach(function(c){c.classList.remove('armed');});armed=on?null:card.dataset.code;if(!on)card.classList.add('armed');});
+    });
+    slots.forEach(function(slot){
+      slot.addEventListener('dragstart',function(e){if(checked||!slot.dataset.val){e.preventDefault();return;}e.dataTransfer.setData('text/plain',slot.dataset.val);});
+      slot.addEventListener('dragover',function(e){if(checked)return;e.preventDefault();slot.classList.add('dragover');});
+      slot.addEventListener('dragleave',function(){slot.classList.remove('dragover');});
+      slot.addEventListener('drop',function(e){e.preventDefault();slot.classList.remove('dragover');const code=e.dataTransfer.getData('text/plain');if(code)place(slot,code);});
+      slot.addEventListener('click',function(){if(checked)return;if(armed){place(slot,armed);armed=null;cards.forEach(function(c){c.classList.remove('armed');});}else if(slot.dataset.val)clr(slot);});
+    });
+    let ghost=null,tCard=null;
+    cards.forEach(function(card){
+      card.addEventListener('touchstart',function(e){if(checked||card.classList.contains('used'))return;tCard=card;const t=e.touches[0];ghost=card.cloneNode(true);ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';document.body.appendChild(ghost);},{passive:true});
+      card.addEventListener('touchmove',function(e){if(!ghost)return;e.preventDefault();const t=e.touches[0];ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.toggle('dragover',ss===s);});},{passive:false});
+      card.addEventListener('touchend',function(e){if(!ghost)return;const t=e.changedTouches[0];const el=document.elementFromPoint(t.clientX,t.clientY);const s=el&&el.closest?el.closest('.mh-drop-slot'):null;slots.forEach(function(ss){ss.classList.remove('dragover');});ghost.remove();ghost=null;if(s&&tCard&&(s.dataset.bank||'')===bank)place(s,tCard.dataset.code);tCard=null;});
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -649,6 +728,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.mh-heading-card').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -700,6 +780,7 @@ function applyHL2(pEl, items){
   });
   items.forEach(({q,t})=>{
     pEl.querySelectorAll('p').forEach(p=>{
+      if(p.classList.contains('mh-slot-line'))return;
       const h=p.innerHTML;
       if(!h.toLowerCase().includes(t))return;
       const re=new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
@@ -759,6 +840,11 @@ function launchConfetti(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('mh-drop-slot')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){const sp=document.createElement('span');sp.className='mh-corr';sp.innerHTML='➔ '+CAL[n];el.insertAdjacentElement('afterend',sp);}
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}
