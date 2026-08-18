@@ -143,6 +143,39 @@ body.post-check .expl-btn{display:inline-flex}
 .answer-input.ok{border-bottom-color:#16a34a;color:#15803d;font-weight:600}
 .answer-input.bad{border-bottom-color:#dc2626;color:#b91c1c;font-weight:600}
 
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.dz-sm{min-width:54px;width:54px;padding:0 4px}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.se-list{margin-top:4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto;color:var(--text)}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
 #nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
 .arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
 .arr:hover{background:var(--phdr)}
@@ -312,15 +345,29 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 
   <div id="right-pane">
 <div class="qsec on" id="qs3">
-<div class="qgroup" data-group="g1" data-paras="p3-3,p3-8,p3-9"><p class="qnum-head"><em>Questions 27&ndash;30</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;G</strong>, below.</p>
-<div class="fbox">
-<strong>List of Endings</strong>
-A&nbsp;&nbsp;the discovery of a mechanism for telepathy<br>B&nbsp;&nbsp;the need to create a suitable environment for telepathy<br>C&nbsp;&nbsp;their claims of a high success rate<br>D&nbsp;&nbsp;a solution to the problem posed by random guessing<br>E&nbsp;&nbsp;the significance of the ganzfeld experiments<br>F&nbsp;&nbsp;a more careful selection of subjects<br>G&nbsp;&nbsp;a need to keep altering conditions
+<div class="qgroup" data-group="g1" data-paras="p3-3,p3-8,p3-9"><p class="qnum-head"><em>Questions 27&ndash;30</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;G</strong>, below. Drag an ending into each gap, or tap an ending then tap a gap.</p>
+<div class="se-list">
+<div class="se-row"><span class="se-num">27</span><span class="se-stem">Researchers with differing attitudes towards telepathy agree on</span><span class="dzone dz-sm" id="q27" data-q="27"></span></div>
+<div class="se-row"><span class="se-num">28</span><span class="se-stem">Reports of experiences during meditation indicated</span><span class="dzone dz-sm" id="q28" data-q="28"></span></div>
+<div class="se-row"><span class="se-num">29</span><span class="se-stem">Attitudes to parapsychology would alter drastically with</span><span class="dzone dz-sm" id="q29" data-q="29"></span></div>
+<div class="se-row"><span class="se-num">30</span><span class="se-stem">Recent autoganzfeld trials suggest that success rates will improve with</span><span class="dzone dz-sm" id="q30" data-q="30"></span></div>
 </div>
-<div class="qitem"><p class="qprompt"><strong>27.</strong>&nbsp; Researchers with differing attitudes towards telepathy agree on <button class="expl-btn" onclick="toggleExpl(27)">💡 Why?</button></p><div class="rgroup" id="rg27"><label class="rlabel"><input type="radio" name="q27" value="A" onchange="upd()"> <span class="opt-letter">A</span> the discovery of a mechanism for telepathy.</label><label class="rlabel"><input type="radio" name="q27" value="B" onchange="upd()"> <span class="opt-letter">B</span> the need to create a suitable environment for telepathy.</label><label class="rlabel"><input type="radio" name="q27" value="C" onchange="upd()"> <span class="opt-letter">C</span> their claims of a high success rate.</label><label class="rlabel"><input type="radio" name="q27" value="D" onchange="upd()"> <span class="opt-letter">D</span> a solution to the problem posed by random guessing.</label><label class="rlabel"><input type="radio" name="q27" value="E" onchange="upd()"> <span class="opt-letter">E</span> the significance of the ganzfeld experiments.</label><label class="rlabel"><input type="radio" name="q27" value="F" onchange="upd()"> <span class="opt-letter">F</span> a more careful selection of subjects.</label><label class="rlabel"><input type="radio" name="q27" value="G" onchange="upd()"> <span class="opt-letter">G</span> a need to keep altering conditions.</label></div><div class="expl-box" id="expl-27">🔑 <span class="expl-kw">Sceptics and advocates alike do concur on one issue, however: that the most impressive evidence so far has come from the so-called 'ganzfeld' experiments</span>. Answer: <b>E</b>.<div class="expl-uz">🇺🇿 Shubhalanuvchilar va tarafdorlar faqat bitta narsaga rozi &mdash; <span class="expl-kw-uz">"ganzfeld tajribalari eng ta'sirli dalil"</span> ekaniga. Javob: <b>E</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>28.</strong>&nbsp; Reports of experiences during meditation indicated <button class="expl-btn" onclick="toggleExpl(28)">💡 Why?</button></p><div class="rgroup" id="rg28"><label class="rlabel"><input type="radio" name="q28" value="A" onchange="upd()"> <span class="opt-letter">A</span> the discovery of a mechanism for telepathy.</label><label class="rlabel"><input type="radio" name="q28" value="B" onchange="upd()"> <span class="opt-letter">B</span> the need to create a suitable environment for telepathy.</label><label class="rlabel"><input type="radio" name="q28" value="C" onchange="upd()"> <span class="opt-letter">C</span> their claims of a high success rate.</label><label class="rlabel"><input type="radio" name="q28" value="D" onchange="upd()"> <span class="opt-letter">D</span> a solution to the problem posed by random guessing.</label><label class="rlabel"><input type="radio" name="q28" value="E" onchange="upd()"> <span class="opt-letter">E</span> the significance of the ganzfeld experiments.</label><label class="rlabel"><input type="radio" name="q28" value="F" onchange="upd()"> <span class="opt-letter">F</span> a more careful selection of subjects.</label><label class="rlabel"><input type="radio" name="q28" value="G" onchange="upd()"> <span class="opt-letter">G</span> a need to keep altering conditions.</label></div><div class="expl-box" id="expl-28">🔑 such signals might be more easily detected by those experiencing meditation-like tranquillity <span class="expl-kw">in a relaxing 'whole field' of light, sound and warmth</span>. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 Signallarni <span class="expl-kw-uz">"yorug'lik, tovush va issiqlikdan iborat tinch muhit"</span>da aniqlash osonroq. Javob: <b>B</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>29.</strong>&nbsp; Attitudes to parapsychology would alter drastically with <button class="expl-btn" onclick="toggleExpl(29)">💡 Why?</button></p><div class="rgroup" id="rg29"><label class="rlabel"><input type="radio" name="q29" value="A" onchange="upd()"> <span class="opt-letter">A</span> the discovery of a mechanism for telepathy.</label><label class="rlabel"><input type="radio" name="q29" value="B" onchange="upd()"> <span class="opt-letter">B</span> the need to create a suitable environment for telepathy.</label><label class="rlabel"><input type="radio" name="q29" value="C" onchange="upd()"> <span class="opt-letter">C</span> their claims of a high success rate.</label><label class="rlabel"><input type="radio" name="q29" value="D" onchange="upd()"> <span class="opt-letter">D</span> a solution to the problem posed by random guessing.</label><label class="rlabel"><input type="radio" name="q29" value="E" onchange="upd()"> <span class="opt-letter">E</span> the significance of the ganzfeld experiments.</label><label class="rlabel"><input type="radio" name="q29" value="F" onchange="upd()"> <span class="opt-letter">F</span> a more careful selection of subjects.</label><label class="rlabel"><input type="radio" name="q29" value="G" onchange="upd()"> <span class="opt-letter">G</span> a need to keep altering conditions.</label></div><div class="expl-box" id="expl-29">🔑 the problem stems at least in part from the <span class="expl-kw">lack of any plausible mechanism for telepathy</span>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Muammo qisman telepatiya uchun <span class="expl-kw-uz">"ishonchli mexanizm yo'qligi"</span>dan kelib chiqadi. Javob: <b>A</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>30.</strong>&nbsp; Recent autoganzfeld trials suggest that success rates will improve with <button class="expl-btn" onclick="toggleExpl(30)">💡 Why?</button></p><div class="rgroup" id="rg30"><label class="rlabel"><input type="radio" name="q30" value="A" onchange="upd()"> <span class="opt-letter">A</span> the discovery of a mechanism for telepathy.</label><label class="rlabel"><input type="radio" name="q30" value="B" onchange="upd()"> <span class="opt-letter">B</span> the need to create a suitable environment for telepathy.</label><label class="rlabel"><input type="radio" name="q30" value="C" onchange="upd()"> <span class="opt-letter">C</span> their claims of a high success rate.</label><label class="rlabel"><input type="radio" name="q30" value="D" onchange="upd()"> <span class="opt-letter">D</span> a solution to the problem posed by random guessing.</label><label class="rlabel"><input type="radio" name="q30" value="E" onchange="upd()"> <span class="opt-letter">E</span> the significance of the ganzfeld experiments.</label><label class="rlabel"><input type="radio" name="q30" value="F" onchange="upd()"> <span class="opt-letter">F</span> a more careful selection of subjects.</label><label class="rlabel"><input type="radio" name="q30" value="G" onchange="upd()"> <span class="opt-letter">G</span> a need to keep altering conditions.</label></div><div class="expl-box" id="expl-30">🔑 researchers trying to identify people who are particularly successful in autoganzfeld trials &ndash; <span class="expl-kw">creative and artistic people do much better than average</span>. Answer: <b>F</b>.<div class="expl-uz">🇺🇿 Ijodkor va san'atkor odamlar <span class="expl-kw-uz">"o'rtachadan ancha yaxshi natija"</span> ko'rsatadi. Javob: <b>F</b>.</div></div></div>
+<p class="se-bank-label">List of Endings</p>
+<div class="wbank se-bank" id="wbankTele" data-show="letter">
+<div class="dchip" draggable="true" data-letter="A" data-word="the discovery of a mechanism for telepathy."><span class="wk">A</span>&nbsp; the discovery of a mechanism for telepathy.</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="the need to create a suitable environment for telepathy."><span class="wk">B</span>&nbsp; the need to create a suitable environment for telepathy.</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="their claims of a high success rate."><span class="wk">C</span>&nbsp; their claims of a high success rate.</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="a solution to the problem posed by random guessing."><span class="wk">D</span>&nbsp; a solution to the problem posed by random guessing.</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="the significance of the ganzfeld experiments."><span class="wk">E</span>&nbsp; the significance of the ganzfeld experiments.</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="a more careful selection of subjects."><span class="wk">F</span>&nbsp; a more careful selection of subjects.</div>
+<div class="dchip" draggable="true" data-letter="G" data-word="a need to keep altering conditions."><span class="wk">G</span>&nbsp; a need to keep altering conditions.</div>
+</div>
+<div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">27.</b><button class="expl-btn" onclick="toggleExpl(27)">💡 Why?</button><div class="expl-box" id="expl-27">🔑 <span class="expl-kw">Sceptics and advocates alike do concur on one issue, however: that the most impressive evidence so far has come from the so-called 'ganzfeld' experiments</span>. Answer: <b>E</b>.<div class="expl-uz">🇺🇿 Shubhalanuvchilar va tarafdorlar faqat bitta narsaga rozi &mdash; <span class="expl-kw-uz">"ganzfeld tajribalari eng ta'sirli dalil"</span> ekaniga. Javob: <b>E</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">28.</b><button class="expl-btn" onclick="toggleExpl(28)">💡 Why?</button><div class="expl-box" id="expl-28">🔑 such signals might be more easily detected by those experiencing meditation-like tranquillity <span class="expl-kw">in a relaxing 'whole field' of light, sound and warmth</span>. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 Signallarni <span class="expl-kw-uz">"yorug'lik, tovush va issiqlikdan iborat tinch muhit"</span>da aniqlash osonroq. Javob: <b>B</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">29.</b><button class="expl-btn" onclick="toggleExpl(29)">💡 Why?</button><div class="expl-box" id="expl-29">🔑 the problem stems at least in part from the <span class="expl-kw">lack of any plausible mechanism for telepathy</span>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Muammo qisman telepatiya uchun <span class="expl-kw-uz">"ishonchli mexanizm yo'qligi"</span>dan kelib chiqadi. Javob: <b>A</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">30.</b><button class="expl-btn" onclick="toggleExpl(30)">💡 Why?</button><div class="expl-box" id="expl-30">🔑 researchers trying to identify people who are particularly successful in autoganzfeld trials &ndash; <span class="expl-kw">creative and artistic people do much better than average</span>. Answer: <b>F</b>.<div class="expl-uz">🇺🇿 Ijodkor va san'atkor odamlar <span class="expl-kw-uz">"o'rtachadan ancha yaxshi natija"</span> ko'rsatadi. Javob: <b>F</b>.</div></div></div>
+</div>
 </div>
 <div class="qgroup" data-group="g2" data-paras="p3-4,p3-5"><p class="qnum-head" style="margin-top:14px"><em>Questions 31&ndash;35</em></p><p class="qinst">Complete the table below. Choose <strong>NO MORE THAN THREE WORDS</strong> from the passage for each answer.</p>
 <table class="comp-table"><thead><tr><th>Name / Date</th><th>Description</th><th>Result</th><th>Flaw</th></tr></thead><tbody>
@@ -391,6 +438,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -516,6 +564,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -624,6 +673,90 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -638,6 +771,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -748,6 +882,15 @@ function launchConfetti(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}
