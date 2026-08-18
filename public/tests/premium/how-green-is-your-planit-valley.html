@@ -119,6 +119,39 @@ body.post-check .expl-btn{display:inline-flex}
 .fbox strong{display:block;font-weight:700;font-size:15px;margin-bottom:10px;color:var(--text)}
 .fbox p{font-size:calc(14.5px * var(--txtscale,1));line-height:2.4;color:var(--text)}
 
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.dz-sm{min-width:54px;width:54px;padding:0 4px}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.se-list{margin-top:4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto;color:var(--text)}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
 #nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
 .arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
 .arr:hover{background:var(--phdr)}
@@ -301,15 +334,29 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 <div class="qitem"><p class="qprompt"><strong>9.</strong>&nbsp; Living PlanIT's idea of building a smart, environmentally-friendly city is original and unique. <button class="expl-btn" onclick="toggleExpl(9)">💡 Why?</button></p><div class="rgroup" id="rg9"><label class="rlabel"><input type="radio" name="q9" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q9" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q9" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div><div class="expl-box" id="expl-9">🔑 <span class="expl-kw">such techniques are not new, but they are rarely put into practice</span>. Answer: <b>NO</b>.<div class="expl-uz">🇺🇿 Bu texnikalar <span class="expl-kw-uz">"yangi emas"</span>, faqat kam qo'llaniladi. Javob: <b>NO</b>.</div></div></div>
 <div class="qitem"><p class="qprompt"><strong>10.</strong>&nbsp; Some of the technology in PlanIT Valley was probably inspired by science fiction stories. <button class="expl-btn" onclick="toggleExpl(10)">💡 Why?</button></p><div class="rgroup" id="rg10"><label class="rlabel"><input type="radio" name="q10" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q10" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q10" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div><div class="expl-box" id="expl-10">🔑 the technology <span class="expl-kw">may sound like something out of a science-fiction novel, but we are increasingly living in a science-fiction age</span> &mdash; a comparison, not a claim that sci-fi inspired it. Answer: <b>NOT GIVEN</b>.<div class="expl-uz">🇺🇿 Texnologiya fantastikaga <span class="expl-kw-uz">"o'xshaydi"</span> deyilgan, lekin undan ilhomlanganligi aytilmagan. Javob: <b>NOT GIVEN</b>.</div></div></div>
 </div>
-<div class="qgroup" data-group="g3" data-paras="p3-4,p3-6,p3-7,p3-8"><p class="qnum-head" style="margin-top:14px"><em>Questions 11&ndash;14</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;G</strong>, below.</p>
-<div class="fbox">
-<strong>List of Endings</strong>
-A&nbsp;&nbsp;technically possible<br>B&nbsp;&nbsp;underused<br>C&nbsp;&nbsp;difficult to avoid<br>D&nbsp;&nbsp;not valid<br>E&nbsp;&nbsp;inefficient<br>F&nbsp;&nbsp;too ambitious<br>G&nbsp;&nbsp;extremely challenging
+<div class="qgroup" data-group="g3" data-paras="p3-4,p3-6,p3-7,p3-8"><p class="qnum-head" style="margin-top:14px"><em>Questions 11&ndash;14</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;G</strong>, below. Drag an ending into each gap, or tap an ending then tap a gap.</p>
+<div class="se-list">
+<div class="se-row"><span class="se-num">11</span><span class="se-stem">The IT industry believes that, when it comes to putting up new buildings, IT is currently</span><span class="dzone dz-sm" id="q11" data-q="11"></span></div>
+<div class="se-row"><span class="se-num">12</span><span class="se-stem">Creating new technology for PlanIT Valley is</span><span class="dzone dz-sm" id="q12" data-q="12"></span></div>
+<div class="se-row"><span class="se-num">13</span><span class="se-stem">Steve Lewis believes that the economic arguments against green developments are</span><span class="dzone dz-sm" id="q13" data-q="13"></span></div>
+<div class="se-row"><span class="se-num">14</span><span class="se-stem">Some organisational aspects of the PlanIT Valley project are</span><span class="dzone dz-sm" id="q14" data-q="14"></span></div>
 </div>
-<div class="qitem"><p class="qprompt"><strong>11.</strong>&nbsp; The IT industry believes that, when it comes to putting up new buildings, IT is currently <button class="expl-btn" onclick="toggleExpl(11)">💡 Why?</button></p><div class="rgroup" id="rg11"><label class="rlabel"><input type="radio" name="q11" value="A" onchange="upd()"> <span class="opt-letter">A</span> technically possible</label><label class="rlabel"><input type="radio" name="q11" value="B" onchange="upd()"> <span class="opt-letter">B</span> underused</label><label class="rlabel"><input type="radio" name="q11" value="C" onchange="upd()"> <span class="opt-letter">C</span> difficult to avoid</label><label class="rlabel"><input type="radio" name="q11" value="D" onchange="upd()"> <span class="opt-letter">D</span> not valid</label><label class="rlabel"><input type="radio" name="q11" value="E" onchange="upd()"> <span class="opt-letter">E</span> inefficient</label><label class="rlabel"><input type="radio" name="q11" value="F" onchange="upd()"> <span class="opt-letter">F</span> too ambitious</label><label class="rlabel"><input type="radio" name="q11" value="G" onchange="upd()"> <span class="opt-letter">G</span> extremely challenging</label></div><div class="expl-box" id="expl-11">🔑 <span class="expl-kw">the IT industry has been complaining for a long time that the construction sector has failed to make adequate (if any) use of IT in its buildings</span>. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 Qurilish sohasi IT-dan <span class="expl-kw-uz">"yetarlicha foydalanmayapti"</span>. Javob: <b>B</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>12.</strong>&nbsp; Creating new technology for PlanIT Valley is <button class="expl-btn" onclick="toggleExpl(12)">💡 Why?</button></p><div class="rgroup" id="rg12"><label class="rlabel"><input type="radio" name="q12" value="A" onchange="upd()"> <span class="opt-letter">A</span> technically possible</label><label class="rlabel"><input type="radio" name="q12" value="B" onchange="upd()"> <span class="opt-letter">B</span> underused</label><label class="rlabel"><input type="radio" name="q12" value="C" onchange="upd()"> <span class="opt-letter">C</span> difficult to avoid</label><label class="rlabel"><input type="radio" name="q12" value="D" onchange="upd()"> <span class="opt-letter">D</span> not valid</label><label class="rlabel"><input type="radio" name="q12" value="E" onchange="upd()"> <span class="opt-letter">E</span> inefficient</label><label class="rlabel"><input type="radio" name="q12" value="F" onchange="upd()"> <span class="opt-letter">F</span> too ambitious</label><label class="rlabel"><input type="radio" name="q12" value="G" onchange="upd()"> <span class="opt-letter">G</span> extremely challenging</label></div><div class="expl-box" id="expl-12">🔑 <span class="expl-kw">almost all of the technology the company is planning to deploy in PlanIT Valley either already exists or is viable from a technical point of view</span>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Texnologiya <span class="expl-kw-uz">"texnik jihatdan amalga oshirilishi mumkin"</span>. Javob: <b>A</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>13.</strong>&nbsp; Steve Lewis believes that the economic arguments against green developments are <button class="expl-btn" onclick="toggleExpl(13)">💡 Why?</button></p><div class="rgroup" id="rg13"><label class="rlabel"><input type="radio" name="q13" value="A" onchange="upd()"> <span class="opt-letter">A</span> technically possible</label><label class="rlabel"><input type="radio" name="q13" value="B" onchange="upd()"> <span class="opt-letter">B</span> underused</label><label class="rlabel"><input type="radio" name="q13" value="C" onchange="upd()"> <span class="opt-letter">C</span> difficult to avoid</label><label class="rlabel"><input type="radio" name="q13" value="D" onchange="upd()"> <span class="opt-letter">D</span> not valid</label><label class="rlabel"><input type="radio" name="q13" value="E" onchange="upd()"> <span class="opt-letter">E</span> inefficient</label><label class="rlabel"><input type="radio" name="q13" value="F" onchange="upd()"> <span class="opt-letter">F</span> too ambitious</label><label class="rlabel"><input type="radio" name="q13" value="G" onchange="upd()"> <span class="opt-letter">G</span> extremely challenging</label></div><div class="expl-box" id="expl-13">🔑 <span class="expl-kw">cost concerns surrounding green developments are ill-founded</span>. Answer: <b>D</b>.<div class="expl-uz">🇺🇿 Iqtisodiy e'tirozlar <span class="expl-kw-uz">"asossiz"</span>. Javob: <b>D</b>.</div></div></div>
-<div class="qitem"><p class="qprompt"><strong>14.</strong>&nbsp; Some organisational aspects of the PlanIT Valley project are <button class="expl-btn" onclick="toggleExpl(14)">💡 Why?</button></p><div class="rgroup" id="rg14"><label class="rlabel"><input type="radio" name="q14" value="A" onchange="upd()"> <span class="opt-letter">A</span> technically possible</label><label class="rlabel"><input type="radio" name="q14" value="B" onchange="upd()"> <span class="opt-letter">B</span> underused</label><label class="rlabel"><input type="radio" name="q14" value="C" onchange="upd()"> <span class="opt-letter">C</span> difficult to avoid</label><label class="rlabel"><input type="radio" name="q14" value="D" onchange="upd()"> <span class="opt-letter">D</span> not valid</label><label class="rlabel"><input type="radio" name="q14" value="E" onchange="upd()"> <span class="opt-letter">E</span> inefficient</label><label class="rlabel"><input type="radio" name="q14" value="F" onchange="upd()"> <span class="opt-letter">F</span> too ambitious</label><label class="rlabel"><input type="radio" name="q14" value="G" onchange="upd()"> <span class="opt-letter">G</span> extremely challenging</label></div><div class="expl-box" id="expl-14">🔑 <span class="expl-kw">The PlanIT Valley project presents many problems in terms of project management and coordination</span>. Answer: <b>G</b>.<div class="expl-uz">🇺🇿 Loyiha boshqaruvi <span class="expl-kw-uz">"juda qiyin"</span> muammolarni keltirib chiqaradi. Javob: <b>G</b>.</div></div></div>
+<p class="se-bank-label">List of Endings</p>
+<div class="wbank se-bank" id="wbankPlanIT" data-show="letter">
+<div class="dchip" draggable="true" data-letter="A" data-word="technically possible"><span class="wk">A</span>&nbsp; technically possible</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="underused"><span class="wk">B</span>&nbsp; underused</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="difficult to avoid"><span class="wk">C</span>&nbsp; difficult to avoid</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="not valid"><span class="wk">D</span>&nbsp; not valid</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="inefficient"><span class="wk">E</span>&nbsp; inefficient</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="too ambitious"><span class="wk">F</span>&nbsp; too ambitious</div>
+<div class="dchip" draggable="true" data-letter="G" data-word="extremely challenging"><span class="wk">G</span>&nbsp; extremely challenging</div>
+</div>
+<div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">11.</b><button class="expl-btn" onclick="toggleExpl(11)">💡 Why?</button><div class="expl-box" id="expl-11">🔑 <span class="expl-kw">the IT industry has been complaining for a long time that the construction sector has failed to make adequate (if any) use of IT in its buildings</span>. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 Qurilish sohasi IT-dan <span class="expl-kw-uz">"yetarlicha foydalanmayapti"</span>. Javob: <b>B</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">12.</b><button class="expl-btn" onclick="toggleExpl(12)">💡 Why?</button><div class="expl-box" id="expl-12">🔑 <span class="expl-kw">almost all of the technology the company is planning to deploy in PlanIT Valley either already exists or is viable from a technical point of view</span>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Texnologiya <span class="expl-kw-uz">"texnik jihatdan amalga oshirilishi mumkin"</span>. Javob: <b>A</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">13.</b><button class="expl-btn" onclick="toggleExpl(13)">💡 Why?</button><div class="expl-box" id="expl-13">🔑 <span class="expl-kw">cost concerns surrounding green developments are ill-founded</span>. Answer: <b>D</b>.<div class="expl-uz">🇺🇿 Iqtisodiy e'tirozlar <span class="expl-kw-uz">"asossiz"</span>. Javob: <b>D</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">14.</b><button class="expl-btn" onclick="toggleExpl(14)">💡 Why?</button><div class="expl-box" id="expl-14">🔑 <span class="expl-kw">The PlanIT Valley project presents many problems in terms of project management and coordination</span>. Answer: <b>G</b>.<div class="expl-uz">🇺🇿 Loyiha boshqaruvi <span class="expl-kw-uz">"juda qiyin"</span> muammolarni keltirib chiqaradi. Javob: <b>G</b>.</div></div></div>
+</div>
 </div>
   </div>
   </div>
@@ -364,6 +411,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -489,6 +537,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -597,6 +646,90 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">\u00d7</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -611,6 +744,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -720,6 +854,15 @@ function launchConfetti(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' \u27a1 <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}

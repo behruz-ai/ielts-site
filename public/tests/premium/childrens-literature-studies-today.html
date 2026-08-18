@@ -134,6 +134,39 @@ body.post-check .expl-btn{display:inline-flex}
 .fbox{background:var(--phdr);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:14px}
 .fbox strong{display:block;font-weight:700;font-size:15px;margin-bottom:10px;color:var(--text)}
 
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.dz-sm{min-width:54px;width:54px;padding:0 4px}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.se-list{margin-top:4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto;color:var(--text)}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
 #nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
 .arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
 .arr:hover{background:var(--phdr)}
@@ -316,23 +349,32 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 <div class="qitem"><p class="qprompt"><strong>33.</strong>&nbsp; Adults may appreciate the appeal of illustrated stories better, if they have more information on how children read. <button class="expl-btn" onclick="toggleExpl(33)">💡 Why?</button></p><div class="rgroup" id="rg33"><label class="rlabel"><input type="radio" name="q33" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q33" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q33" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div><div class="expl-box" id="expl-33">🔑 Para 8: interpreting children&rsquo;s responses <span class="expl-kw">frequently lead(s) to an understanding of how picture books appeal to children</span>. Answer: <b>YES</b>.<div class="expl-uz">🇺🇿 Bolalar javoblarini tahlil qilish <span class="expl-kw-uz">"rasmli kitoblar bolalarga qanday yoqishini tushunishga olib keladi"</span>. Javob: <b>YES</b>.</div></div></div>
 <div class="qitem"><p class="qprompt"><strong>34.</strong>&nbsp; Children should be asked what features they would like digital games to include. <button class="expl-btn" onclick="toggleExpl(34)">💡 Why?</button></p><div class="rgroup" id="rg34"><label class="rlabel"><input type="radio" name="q34" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q34" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q34" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div><div class="expl-box" id="expl-34">🔑 Para 10 says the skill gap is why games feel harder &mdash; <span class="expl-kw">a particular set of skills is absent</span> &mdash; but never suggests asking children about desired game features. Answer: <b>NOT GIVEN</b>.<div class="expl-uz">🇺🇿 Matnda faqat <span class="expl-kw-uz">"ko'nikmalar yetishmasligi"</span> aytiladi, bolalardan o'yin xususiyatlari so'ralishi haqida gap yo'q. Javob: <b>NOT GIVEN</b>.</div></div></div>
 </div>
-<div class="qgroup" data-group="g3" data-paras="p3-9,p3-10"><p class="qnum-head" style="margin-top:14px"><em>Questions 35&ndash;39</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;H</strong>, below.</p>
-<div class="fbox">
-<strong>List of Endings</strong>
-A&nbsp;&nbsp;accepting that literature exists in a variety of forms today<br>B&nbsp;&nbsp;verbalising the words in their heads<br>C&nbsp;&nbsp;discovering the reading techniques used by others<br>D&nbsp;&nbsp;the style of written stories changing over time<br>E&nbsp;&nbsp;the lack of some specific abilities<br>F&nbsp;&nbsp;a deeper knowledge of the intricacies of reading<br>G&nbsp;&nbsp;children teaching adults to play computer games<br>H&nbsp;&nbsp;creating a variety of images in their minds
+<div class="qgroup" data-group="g3" data-paras="p3-9,p3-10"><p class="qnum-head" style="margin-top:14px"><em>Questions 35&ndash;39</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;H</strong>, below. Drag an ending into each gap, or tap an ending then tap a gap.</p>
+<div class="se-list">
+<div class="se-row"><span class="se-num">35</span><span class="se-stem">Young people&rsquo;s accounts of how they read lead to</span><span class="dzone dz-sm" id="q35" data-q="35"></span></div>
+<div class="se-row"><span class="se-num">36</span><span class="se-stem">The risk of solipsism is reduced by</span><span class="dzone dz-sm" id="q36" data-q="36"></span></div>
+<div class="se-row"><span class="se-num">37</span><span class="se-stem">Strong visualisers judge books on the basis that they are</span><span class="dzone dz-sm" id="q37" data-q="37"></span></div>
+<div class="se-row"><span class="se-num">38</span><span class="se-stem">Children&rsquo;s insights are important in</span><span class="dzone dz-sm" id="q38" data-q="38"></span></div>
+<div class="se-row"><span class="se-num">39</span><span class="se-stem">When adults read a book more easily than they play a digital game it simply suggests</span><span class="dzone dz-sm" id="q39" data-q="39"></span></div>
 </div>
-<div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead><tbody>
-<tr><td class="mx-stmt"><span class="mx-num">35</span> Young people&rsquo;s accounts of how they read lead to<button class="expl-btn" onclick="toggleExpl(35)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q35" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q35" value="H" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="9" class="expl-cell"><div class="expl-box" id="expl-35">🔑 Para 9: young people&rsquo;s accounts <span class="expl-kw">enable a more sophisticated description of many of the complex processes involved in reading</span>. Answer: <b>F</b>.<div class="expl-uz">🇺🇿 Yoshlarning hikoyalari o'qish jarayoni haqida <span class="expl-kw-uz">"chuqurroq bilim"</span>ga olib keladi. Javob: <b>F</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">36</span> The risk of solipsism is reduced by<button class="expl-btn" onclick="toggleExpl(36)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q36" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q36" value="H" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="9" class="expl-cell"><div class="expl-box" id="expl-36">🔑 Para 9: <span class="expl-kw">asking other readers how they read, however, reduces that risk</span>. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Boshqa o'quvchilardan qanday o'qishlarini so'rash"</span> xavfni kamaytiradi. Javob: <b>C</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">37</span> Strong visualisers judge books on the basis that they are<button class="expl-btn" onclick="toggleExpl(37)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q37" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q37" value="H" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="9" class="expl-cell"><div class="expl-box" id="expl-37">🔑 Para 9: I may judge books by <span class="expl-kw">their capacity to evoke a vivid visual response</span>. Answer: <b>H</b>.<div class="expl-uz">🇺🇿 Kuchli tasavvur qiluvchilar kitoblarni <span class="expl-kw-uz">"aqlda turli tasvirlar yarata olishi"</span>ga qarab baholaydi. Javob: <b>H</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">38</span> Children&rsquo;s insights are important in<button class="expl-btn" onclick="toggleExpl(38)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q38" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q38" value="H" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="9" class="expl-cell"><div class="expl-box" id="expl-38">🔑 Para 10: <span class="expl-kw">understanding the significance of print literature as one aspect of literary culture</span>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Bolalar tushunchasi adabiyotni <span class="expl-kw-uz">"bugungi kunda turli shakllarda mavjudligini qabul qilish"</span>da muhim. Javob: <b>A</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">39</span> When adults read a book more easily than they play a digital game it simply suggests<button class="expl-btn" onclick="toggleExpl(39)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q39" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q39" value="H" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="9" class="expl-cell"><div class="expl-box" id="expl-39">🔑 Para 10: <span class="expl-kw">many adults will probably never develop the automatic skills to process a game as readily as they can read a book</span> &mdash; not that books are better, but that a skill is missing. Answer: <b>E</b>.<div class="expl-uz">🇺🇿 Bu kitobning yaxshiroq ekanini emas, balki <span class="expl-kw-uz">"muayyan ko'nikma yetishmasligi"</span>ni bildiradi. Javob: <b>E</b>.</div></div></td></tr>
-</tbody></table></div>
+<p class="se-bank-label">List of Endings</p>
+<div class="wbank se-bank" id="wbankLit" data-show="letter">
+<div class="dchip" draggable="true" data-letter="A" data-word="accepting that literature exists in a variety of forms today"><span class="wk">A</span>&nbsp; accepting that literature exists in a variety of forms today</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="verbalising the words in their heads"><span class="wk">B</span>&nbsp; verbalising the words in their heads</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="discovering the reading techniques used by others"><span class="wk">C</span>&nbsp; discovering the reading techniques used by others</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="the style of written stories changing over time"><span class="wk">D</span>&nbsp; the style of written stories changing over time</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="the lack of some specific abilities"><span class="wk">E</span>&nbsp; the lack of some specific abilities</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="a deeper knowledge of the intricacies of reading"><span class="wk">F</span>&nbsp; a deeper knowledge of the intricacies of reading</div>
+<div class="dchip" draggable="true" data-letter="G" data-word="children teaching adults to play computer games"><span class="wk">G</span>&nbsp; children teaching adults to play computer games</div>
+<div class="dchip" draggable="true" data-letter="H" data-word="creating a variety of images in their minds"><span class="wk">H</span>&nbsp; creating a variety of images in their minds</div>
+</div>
+<div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">35.</b><button class="expl-btn" onclick="toggleExpl(35)">💡 Why?</button><div class="expl-box" id="expl-35">🔑 Para 9: young people&rsquo;s accounts <span class="expl-kw">enable a more sophisticated description of many of the complex processes involved in reading</span>. Answer: <b>F</b>.<div class="expl-uz">🇺🇿 Yoshlarning hikoyalari o'qish jarayoni haqida <span class="expl-kw-uz">"chuqurroq bilim"</span>ga olib keladi. Javob: <b>F</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">36.</b><button class="expl-btn" onclick="toggleExpl(36)">💡 Why?</button><div class="expl-box" id="expl-36">🔑 Para 9: <span class="expl-kw">asking other readers how they read, however, reduces that risk</span>. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Boshqa o'quvchilardan qanday o'qishlarini so'rash"</span> xavfni kamaytiradi. Javob: <b>C</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">37.</b><button class="expl-btn" onclick="toggleExpl(37)">💡 Why?</button><div class="expl-box" id="expl-37">🔑 Para 9: I may judge books by <span class="expl-kw">their capacity to evoke a vivid visual response</span>. Answer: <b>H</b>.<div class="expl-uz">🇺🇿 Kuchli tasavvur qiluvchilar kitoblarni <span class="expl-kw-uz">"aqlda turli tasvirlar yarata olishi"</span>ga qarab baholaydi. Javob: <b>H</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">38.</b><button class="expl-btn" onclick="toggleExpl(38)">💡 Why?</button><div class="expl-box" id="expl-38">🔑 Para 10: <span class="expl-kw">understanding the significance of print literature as one aspect of literary culture</span>. Answer: <b>A</b>.<div class="expl-uz">🇺🇿 Bolalar tushunchasi adabiyotni <span class="expl-kw-uz">"bugungi kunda turli shakllarda mavjudligini qabul qilish"</span>da muhim. Javob: <b>A</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">39.</b><button class="expl-btn" onclick="toggleExpl(39)">💡 Why?</button><div class="expl-box" id="expl-39">🔑 Para 10: <span class="expl-kw">many adults will probably never develop the automatic skills to process a game as readily as they can read a book</span> &mdash; not that books are better, but that a skill is missing. Answer: <b>E</b>.<div class="expl-uz">🇺🇿 Bu kitobning yaxshiroq ekanini emas, balki <span class="expl-kw-uz">"muayyan ko'nikma yetishmasligi"</span>ni bildiradi. Javob: <b>E</b>.</div></div></div>
+</div>
 </div>
 <div class="qgroup" data-group="g4" data-paras="p3-1,p3-2,p3-3,p3-4,p3-5,p3-6,p3-7,p3-8,p3-9,p3-10"><p class="qnum-head" style="margin-top:14px"><em>Question 40</em></p><p class="qinst">Choose the correct letter, <strong>A, B, C</strong> or <strong>D</strong>.</p>
 <div class="qitem"><p class="qprompt"><strong>40.</strong>&nbsp; What was the writer&rsquo;s main purpose in writing this article? <button class="expl-btn" onclick="toggleExpl(40)">💡 Why?</button></p><div class="rgroup" id="rg40"><label class="rlabel"><input type="radio" name="q40" value="A" onchange="upd()"> <span class="opt-letter">A</span> To evaluate how the process of reading fits into children&rsquo;s literature studies.</label><label class="rlabel"><input type="radio" name="q40" value="B" onchange="upd()"> <span class="opt-letter">B</span> To discuss the impact of the increasing commercial influence on children&rsquo;s literature studies.</label><label class="rlabel"><input type="radio" name="q40" value="C" onchange="upd()"> <span class="opt-letter">C</span> To review the challenges in the field of children&rsquo;s literature studies and suggest how to proceed.</label><label class="rlabel"><input type="radio" name="q40" value="D" onchange="upd()"> <span class="opt-letter">D</span> To provide arguments in favor of including computerized forms of children&rsquo;s literature studies.</label></div><div class="expl-box" id="expl-40">🔑 The article surveys multiple challenges (adult authorship, didacticism, commercialism, new media, disciplinary fragmentation) then, from para 7 onward, proposes a way forward: <span class="expl-kw">how is the value of the imaginative encounter with the work of literature sustained and honored</span> &mdash; asking child readers for help. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 Maqola bolalar adabiyoti sohasidagi bir nechta muammolarni ko'rib chiqib, keyin <span class="expl-kw-uz">"qanday davom etish kerakligini"</span> taklif qiladi. Javob: <b>C</b>.</div></div></div>
@@ -390,6 +432,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -516,6 +559,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -624,6 +668,90 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">\u00d7</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -638,6 +766,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -748,6 +877,15 @@ function launchConfetti(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' \u27a1 <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}

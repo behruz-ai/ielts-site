@@ -133,6 +133,39 @@ body.post-check .expl-btn{display:inline-flex}
 .expl-row td{border-bottom:1px solid var(--border);padding:0 0 10px}
 .expl-cell .expl-box{margin:6px 8px 0}
 
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.dz-sm{min-width:54px;width:54px;padding:0 4px}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.se-list{margin-top:4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto;color:var(--text)}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
 #nav{position:fixed;bottom:0;left:0;right:0;height:56px;background:var(--nav);border-top:1px solid var(--border);display:flex;align-items:center;padding:0 16px;gap:10px;z-index:200;transition:background .3s}
 .arr{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);cursor:pointer;color:var(--text);background:var(--tbg);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
 .arr:hover{background:var(--phdr)}
@@ -315,23 +348,33 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 <div class="qitem"><p class="qprompt"><strong>20.</strong>&nbsp; Biological control entails using synthetic chemicals to try and change the genetic make-up of the pests' offspring. <button class="expl-btn" onclick="toggleExpl(20)">💡 Why?</button></p><div class="rgroup" id="rg20"><label class="rlabel"><input type="radio" name="q20" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q20" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q20" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div><div class="expl-box" id="expl-20">🔑 biological control <span class="expl-kw">involving the selective use of natural enemies of the pest population</span> &ndash; not synthetic chemicals. Answer: <b>NO</b>.<div class="expl-uz">🇺🇿 Biologik nazorat sintetik kimyoviy moddalar emas, <span class="expl-kw-uz">"tabiiy dushmanlar"</span>dan foydalanadi. Javob: <b>NO</b>.</div></div></div>
 <div class="qitem"><p class="qprompt"><strong>21.</strong>&nbsp; Bio-control is free from danger under certain circumstances. <button class="expl-btn" onclick="toggleExpl(21)">💡 Why?</button></p><div class="rgroup" id="rg21"><label class="rlabel"><input type="radio" name="q21" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q21" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q21" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div><div class="expl-box" id="expl-21">🔑 <span class="expl-kw">when handled by experts, bio-control is safe</span>. Answer: <b>YES</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Mutaxassislar tomonidan qo'llanilganda"</span> bio-nazorat xavfsiz. Javob: <b>YES</b>.</div></div></div>
 </div>
-<div class="qgroup" data-group="g3" data-paras="p2-9,p2-10"><p class="qnum-head" style="margin-top:14px"><em>Questions 22&ndash;26</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;I</strong>, below.</p>
-<div class="fbox">
-<strong>List of Endings</strong>
-A&nbsp;&nbsp;forage grass<br>B&nbsp;&nbsp;rice fields<br>C&nbsp;&nbsp;coconut trees<br>D&nbsp;&nbsp;fruit trees<br>E&nbsp;&nbsp;water hyacinth<br>F&nbsp;&nbsp;parthenium weed<br>G&nbsp;&nbsp;Brazilian beetles<br>H&nbsp;&nbsp;grass-scale insects<br>I&nbsp;&nbsp;larval parasites
+<div class="qgroup" data-group="g3" data-paras="p2-9,p2-10"><p class="qnum-head" style="margin-top:14px"><em>Questions 22&ndash;26</em></p><p class="qinst">Complete each sentence with the correct ending, <strong>A&ndash;I</strong>, below. Drag an ending into each gap, or tap an ending then tap a gap.</p>
+<div class="se-list">
+<div class="se-row"><span class="se-num">22</span><span class="se-stem">Disapene scale insects feed on</span><span class="dzone dz-sm" id="q22" data-q="22"></span></div>
+<div class="se-row"><span class="se-num">23</span><span class="se-stem">Neodumetia sangawani ate</span><span class="dzone dz-sm" id="q23" data-q="23"></span></div>
+<div class="se-row"><span class="se-num">24</span><span class="se-stem">Leaf-mining hispides blighted</span><span class="dzone dz-sm" id="q24" data-q="24"></span></div>
+<div class="se-row"><span class="se-num">25</span><span class="se-stem">An Argentinian weevil may be successful in wiping out</span><span class="dzone dz-sm" id="q25" data-q="25"></span></div>
+<div class="se-row"><span class="se-num">26</span><span class="se-stem">Salvinia molesta plagues</span><span class="dzone dz-sm" id="q26" data-q="26"></span></div>
 </div>
-<div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th></tr></thead><tbody>
-<tr><td class="mx-stmt"><span class="mx-num">22</span> Disapene scale insects feed on<button class="expl-btn" onclick="toggleExpl(22)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q22" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q22" value="I" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-22">🔑 disapene scale insects &ndash; <span class="expl-kw">notorious defoliants of fruit trees</span>. Answer: <b>D</b>.<div class="expl-uz">🇺🇿 Bu hasharotlar <span class="expl-kw-uz">"meva daraxtlari"</span>ning barglarini yeydi. Javob: <b>D</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">23</span> Neodumetia sangawani ate<button class="expl-btn" onclick="toggleExpl(23)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q23" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q23" value="I" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-23">🔑 <span class="expl-kw">Neodumetia sangawani, was found useful in controlling the Rhodes grass-scale insect</span>. Answer: <b>H</b>.<div class="expl-uz">🇺🇿 Bu yirtqich <span class="expl-kw-uz">"o't-o'lan qobiqli hasharotlar"</span>ni nazorat qilishda foydali bo'lgan. Javob: <b>H</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">24</span> Leaf-mining hispides blighted<button class="expl-btn" onclick="toggleExpl(24)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q24" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q24" value="I" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-24">🔑 <span class="expl-kw">Sri Lanka's flourishing coconut groves were plagued by leaf-mining hispides</span>. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 Shri-Lankaning <span class="expl-kw-uz">"kokos o'rmonlari"</span> bu hasharotlar tomonidan zarar ko'rgan. Javob: <b>C</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">25</span> An Argentinian weevil may be successful in wiping out<button class="expl-btn" onclick="toggleExpl(25)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q25" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q25" value="I" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-25">🔑 <span class="expl-kw">an Argentinian weevil for the eradication of water hyacinth</span>. Answer: <b>E</b>.<div class="expl-uz">🇺🇿 Argentinalik qo'ng'iz <span class="expl-kw-uz">"suv gulxayrisi"</span>ni yo'q qilishda ishlatilmoqda. Javob: <b>E</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">26</span> Salvinia molesta plagues<button class="expl-btn" onclick="toggleExpl(26)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q26" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="H" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q26" value="I" onchange="upd()"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-26">🔑 <span class="expl-kw">About 30,000 hectares of rice fields in Kerala are infested by this weed</span>. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 Bu begona o't <span class="expl-kw-uz">"sholi maydonlari"</span>ni bosib olgan. Javob: <b>B</b>.</div></div></td></tr>
-</tbody></table></div>
+<p class="se-bank-label">List of Endings</p>
+<div class="wbank se-bank" id="wbankPests" data-show="letter">
+<div class="dchip" draggable="true" data-letter="A" data-word="forage grass"><span class="wk">A</span>&nbsp; forage grass</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="rice fields"><span class="wk">B</span>&nbsp; rice fields</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="coconut trees"><span class="wk">C</span>&nbsp; coconut trees</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="fruit trees"><span class="wk">D</span>&nbsp; fruit trees</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="water hyacinth"><span class="wk">E</span>&nbsp; water hyacinth</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="parthenium weed"><span class="wk">F</span>&nbsp; parthenium weed</div>
+<div class="dchip" draggable="true" data-letter="G" data-word="Brazilian beetles"><span class="wk">G</span>&nbsp; Brazilian beetles</div>
+<div class="dchip" draggable="true" data-letter="H" data-word="grass-scale insects"><span class="wk">H</span>&nbsp; grass-scale insects</div>
+<div class="dchip" draggable="true" data-letter="I" data-word="larval parasites"><span class="wk">I</span>&nbsp; larval parasites</div>
+</div>
+<div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">22.</b><button class="expl-btn" onclick="toggleExpl(22)">💡 Why?</button><div class="expl-box" id="expl-22">🔑 disapene scale insects &ndash; <span class="expl-kw">notorious defoliants of fruit trees</span>. Answer: <b>D</b>.<div class="expl-uz">🇺🇿 Bu hasharotlar <span class="expl-kw-uz">"meva daraxtlari"</span>ning barglarini yeydi. Javob: <b>D</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">23.</b><button class="expl-btn" onclick="toggleExpl(23)">💡 Why?</button><div class="expl-box" id="expl-23">🔑 <span class="expl-kw">Neodumetia sangawani, was found useful in controlling the Rhodes grass-scale insect</span>. Answer: <b>H</b>.<div class="expl-uz">🇺🇿 Bu yirtqich <span class="expl-kw-uz">"o't-o'lan qobiqli hasharotlar"</span>ni nazorat qilishda foydali bo'lgan. Javob: <b>H</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">24.</b><button class="expl-btn" onclick="toggleExpl(24)">💡 Why?</button><div class="expl-box" id="expl-24">🔑 <span class="expl-kw">Sri Lanka's flourishing coconut groves were plagued by leaf-mining hispides</span>. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 Shri-Lankaning <span class="expl-kw-uz">"kokos o'rmonlari"</span> bu hasharotlar tomonidan zarar ko'rgan. Javob: <b>C</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">25.</b><button class="expl-btn" onclick="toggleExpl(25)">💡 Why?</button><div class="expl-box" id="expl-25">🔑 <span class="expl-kw">an Argentinian weevil for the eradication of water hyacinth</span>. Answer: <b>E</b>.<div class="expl-uz">🇺🇿 Argentinalik qo'ng'iz <span class="expl-kw-uz">"suv gulxayrisi"</span>ni yo'q qilishda ishlatilmoqda. Javob: <b>E</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">26.</b><button class="expl-btn" onclick="toggleExpl(26)">💡 Why?</button><div class="expl-box" id="expl-26">🔑 <span class="expl-kw">About 30,000 hectares of rice fields in Kerala are infested by this weed</span>. Answer: <b>B</b>.<div class="expl-uz">🇺🇿 Bu begona o't <span class="expl-kw-uz">"sholi maydonlari"</span>ni bosib olgan. Javob: <b>B</b>.</div></div></div>
+</div>
 </div>
   </div>
   </div>
@@ -386,6 +429,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -511,6 +555,7 @@ function getQEl(n){
 
 function getAns(n){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -619,6 +664,90 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -633,6 +762,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -742,6 +872,15 @@ function launchConfetti(){
 
 function markQ(n,ok){
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
+    return;
+  }
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}
