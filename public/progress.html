@@ -256,6 +256,22 @@
       }
     }
 
+    // --- Course nudge: shown once a student has enough attempts that
+    // "just keep self-studying" is clearly not the whole answer. Independent
+    // of Premium status — a course is a different, bigger commitment than
+    // the site's own Premium tier, not a replacement for it.
+    if (total >= 3) {
+      const weakLine = typeRows.length
+        ? ' Right now your biggest gap is <strong>' + escapeHtml(typeRows[0].qt) + '</strong> (' + typeRows[0].pct + '% avg).'
+        : '';
+      html += '<div class="gate-note" style="margin:0 0 30px;text-align:left;border-color:rgba(250,204,21,.35)">' +
+        '<h2 style="margin-bottom:8px">🎓 Want this to move faster?</h2>' +
+        '<p style="margin-bottom:14px">' + total + ' tests in on your own is real progress' + weakLine +
+        ' If self-study has plateaued, I run small-group and 1:1 IELTS courses — message me on Telegram and I\'ll tell you honestly whether one would help at your level.</p>' +
+        '<a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">Message me on Telegram →</a>' +
+        '</div>';
+    }
+
     // --- Attempt history ---
     html += '<h2 style="font-size:16px;margin:0 0 14px;color:var(--subtext);text-transform:uppercase;letter-spacing:.4px;font-weight:800">Test history</h2>';
     html += '<table class="data-table"><thead><tr><th>Test</th><th>Section</th><th>Score</th><th>Band</th><th>Date</th></tr></thead><tbody>';

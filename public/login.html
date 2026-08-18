@@ -88,6 +88,7 @@
     panelSignup.style.display = ''; panelLogin.style.display = 'none';
     hideMessage();
   });
+  if (new URLSearchParams(location.search).get('tab') === 'signup') tabSignup.click();
 
   function showMessage(text, isError) {
     msgBox.textContent = text;
