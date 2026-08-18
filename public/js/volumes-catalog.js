@@ -197,11 +197,15 @@
       }
     }
     const badge = soon ? '<span class="badge-soon">Coming soon</span>' : '';
+    const qtypesLine = (t.questionTypes && t.questionTypes.length)
+      ? `<div class="tc-qtypes">${t.questionTypes.map((qt) => `<span class="qtype-tag">${escapeHtml(qt)}</span>`).join('')}</div>`
+      : '';
 
     return `<div class="test-card${soon ? ' soon' : ''}">
       <div class="tc-badges">${badge}${doneBadge}</div>
       <div class="tc-title">${escapeHtml(t.displayTitle)}</div>
       <div class="tc-meta"><span>${meta}</span></div>
+      ${qtypesLine}
       ${startBtn}
       ${manualCheck}
     </div>`;
