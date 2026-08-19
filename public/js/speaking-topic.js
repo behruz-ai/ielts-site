@@ -101,16 +101,23 @@
       return html;
     }
 
-    html += section('Useful Structures & Sentence Starters', structureHtml(t.structure));
-    html += section('Vocabulary, Collocations & Phrasal Verbs', vocabByTypeHtml(t.vocab));
     html += '<div class="sp-section"><p class="sp-model-label">🎤 Sample Answer</p>' +
       '<div class="sp-model-box"><span class="sp-model-quote">&ldquo;</span>' + highlight(q.model, t.vocab) + '</div></div>';
+    html += collapseSection('Useful Structures & Sentence Starters', structureHtml(t.structure));
+    html += collapseSection('Vocabulary, Collocations & Phrasal Verbs', vocabByTypeHtml(t.vocab));
     html += section(null, '<div class="sp-bandtip">' + escapeHtml(t.bandTip) + '</div>');
     return html;
   }
 
   function section(label, html) {
     return '<div class="sp-section">' + (label ? '<p class="sp-section-label">' + escapeHtml(label) + '</p>' : '') + html + '</div>';
+  }
+
+  function collapseSection(label, bodyHtml) {
+    return '<details class="sp-collapse">' +
+      '<summary class="sp-collapse-summary"><span class="sp-section-label">' + escapeHtml(label) + '</span><span class="sp-collapse-arrow">▾</span></summary>' +
+      '<div class="sp-collapse-body">' + bodyHtml + '</div>' +
+    '</details>';
   }
 
   function structureHtml(groups) {

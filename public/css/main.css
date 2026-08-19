@@ -368,6 +368,20 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
   font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--subtext);
   margin:0 0 10px;
 }
+
+.sp-collapse{margin-bottom:12px; border:1px solid var(--border); border-radius:12px; overflow:hidden}
+.sp-collapse:last-of-type{margin-bottom:20px}
+.sp-collapse[open]{border-color:rgba(239,68,68,.3)}
+.sp-collapse-summary{
+  list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between;
+  padding:13px 15px; user-select:none; background-color:var(--pill); transition:background-color .15s;
+}
+.sp-collapse-summary:hover{background-color:var(--row-hover)}
+.sp-collapse-summary::-webkit-details-marker{display:none}
+.sp-collapse-summary .sp-section-label{margin:0}
+.sp-collapse-arrow{color:var(--subtext); font-size:12px; transition:transform .2s; flex:none; margin-left:10px}
+.sp-collapse[open] .sp-collapse-arrow{transform:rotate(180deg)}
+.sp-collapse-body{padding:16px 15px}
 .sp-structure-groups{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px}
 .sp-structure-group{background-color:var(--pill); border-radius:12px; padding:13px 14px}
 .sp-structure-group-label{font-size:10.5px; font-weight:800; color:var(--accent2); text-transform:uppercase; letter-spacing:.4px; margin:0 0 8px}
