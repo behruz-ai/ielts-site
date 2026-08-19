@@ -162,10 +162,17 @@
     '</div>';
   }
 
-  function languageListHtml(phrases) {
-    return '<div class="sp-vocab-list">' + phrases.map((p) =>
-      '<div class="sp-vocab-item sp-vocab-item-plain"><div class="sp-vocab-term">' + escapeHtml(p) + '</div></div>'
-    ).join('') + '</div>';
+  function languageListHtml(items) {
+    return '<div class="sp-vocab-list">' + items.map((it) => {
+      const plain = typeof it === 'string';
+      const term = plain ? it : it.term;
+      const cls = plain ? ' sp-vocab-item-plain' : '';
+      const dataAttrs = plain ? '' : (
+        ' data-term="' + escapeHtml(it.term) + '" data-def="' + escapeHtml(it.meaning) + '"' +
+        (it.example ? ' data-example="' + escapeHtml(it.example) + '"' : '')
+      );
+      return '<div class="sp-vocab-item' + cls + '"' + dataAttrs + '><div class="sp-vocab-term">' + escapeHtml(term) + '</div></div>';
+    }).join('') + '</div>';
   }
 
   function vocabByTypeHtml(vocab) {
@@ -176,7 +183,7 @@
       html += '<div class="sp-vocab-group">' +
         '<p class="sp-vocab-group-label">' + escapeHtml(TYPE_LABELS[type]) + '</p>' +
         '<div class="sp-vocab-list">' + items.map((v) =>
-          '<div class="sp-vocab-item" data-term="' + escapeHtml(v.term) + '" data-type="' + escapeHtml(TYPE_LABELS[type]) + '" data-def="' + escapeHtml(v.meaning) + '">' +
+          '<div class="sp-vocab-item" data-term="' + escapeHtml(v.term) + '" data-type="' + escapeHtml(TYPE_LABELS[type]) + '" data-def="' + escapeHtml(v.meaning) + '" data-example="' + escapeHtml(v.example) + '">' +
             '<div class="sp-vocab-term">' + escapeHtml(v.term) + '</div>' +
             '<div class="sp-vocab-meaning">' + escapeHtml(v.meaning) + '</div>' +
             '<div class="sp-vocab-example">"' + highlight(v.example, [v]) + '"</div>' +
@@ -205,8 +212,9 @@
       const pattern = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
       const typeAttr = v.type ? ' data-type="' + escapeHtml(TYPE_LABELS[v.type] || '') + '"' : '';
       const defAttr = v.meaning ? ' data-def="' + escapeHtml(v.meaning) + '"' : '';
+      const exampleAttr = v.example ? ' data-example="' + escapeHtml(v.example) + '"' : '';
       escaped = escaped.replace(pattern, (m) =>
-        '<mark class="sp-hl" data-term="' + escapeHtml(v.term) + '"' + typeAttr + defAttr + '>' + m + '</mark>'
+        '<mark class="sp-hl" data-term="' + escapeHtml(v.term) + '"' + typeAttr + defAttr + exampleAttr + '>' + m + '</mark>'
       );
     });
     return escaped;
@@ -244,7 +252,8 @@
       pop.innerHTML =
         (target.dataset.type ? '<span class="pop-type">' + escapeHtml(target.dataset.type) + '</span>' : '') +
         '<div class="pop-term">' + escapeHtml(target.dataset.term) + '</div>' +
-        '<div class="pop-def">' + escapeHtml(target.dataset.def) + '</div>';
+        '<div class="pop-def">' + escapeHtml(target.dataset.def) + '</div>' +
+        (target.dataset.example ? '<div class="pop-example">"' + escapeHtml(target.dataset.example) + '"</div>' : '');
       const rect = target.getBoundingClientRect();
       pop.classList.add('show');
       const popRect = pop.getBoundingClientRect();

@@ -447,6 +447,7 @@ mark.sp-hl[data-def]:hover{background-color:rgba(167,139,250,.26)}
 }
 #sp-pop .pop-term{font-weight:800; color:var(--premium); font-size:14px; margin-bottom:4px}
 #sp-pop .pop-def{color:var(--text)}
+#sp-pop .pop-example{color:var(--subtext); font-style:italic; margin-top:6px; padding-top:6px; border-top:1px dashed var(--border)}
 
 .sp-locked{
   display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
