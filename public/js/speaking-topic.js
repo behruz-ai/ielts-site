@@ -73,6 +73,9 @@
 
     html += '<div class="sp-howto">' + HOWTO + '</div>';
 
+    const unlockedForTop = t.tier === 'free' || state.isPremiumUser;
+    if (t.topStructures && unlockedForTop) html += topStructuresHtml(t.topStructures);
+
     if (t.branches) {
       html += '<div class="sp-branch-tabs">' + t.branches.map((b) =>
         '<button class="filter-chip' + (b.id === state.branchId ? ' active' : '') + '" data-branch="' + escapeHtml(b.id) + '">' + escapeHtml(b.label) + '</button>'
@@ -139,6 +142,18 @@
         g.phrases.map((p) => '<p class="sp-structure-phrase">"' + escapeHtml(p) + '"</p>').join('') +
       '</div>'
     ).join('') + '</div>';
+  }
+
+  function topStructuresHtml(top) {
+    return '<div class="sp-top-structures">' +
+      '<p class="sp-top-structures-title">⭐ Most Useful Structures for This Topic</p>' +
+      (top.note ? '<p class="sp-top-structures-note">' + escapeHtml(top.note) + '</p>' : '') +
+      '<ol class="sp-top-structures-list">' + top.items.map((it) =>
+        '<li><span class="sp-top-structure-pattern">' + escapeHtml(it.pattern) + '</span>' +
+        '<span class="sp-top-structure-example">' + escapeHtml(it.example) + '</span></li>'
+      ).join('') + '</ol>' +
+      (top.closingNote ? '<p class="sp-top-structures-note">' + escapeHtml(top.closingNote) + '</p>' : '') +
+    '</div>';
   }
 
   function structureListHtml(phrases) {
