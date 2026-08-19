@@ -90,6 +90,40 @@ body.post-check .expl-btn{display:inline-flex}
 .expl-uz{margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);color:var(--subtext)}
 .expl-uz .expl-kw-uz{background:#ede9fe;padding:0 4px;border-radius:3px;font-weight:600;color:#5b21b6}
 [data-theme=dark] .expl-uz .expl-kw-uz,[data-theme=night] .expl-uz .expl-kw-uz{background:#2e1a4d;color:#c4b5fd}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
+/* drag & drop (word-list summary) */
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.dz-sm{min-width:54px;width:54px;padding:0 4px}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.se-list{margin-top:4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto;color:var(--text)}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
 
 .qsec{display:none;padding:24px}
 .qsec.on{display:block}
@@ -341,24 +375,33 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 <label class="rlabel"><input type="radio" name="q9" value="D" onchange="upd()"><span class="opt-letter">D</span> To demonstrate how straightforward it would be to terraform a planet.</label>
 </div><div class="expl-box" id="expl-9">🔑 the passage covers both WHY (population pressure, long-term survival) and HOW (three terraforming methods) &mdash; not just one, and it stresses difficulty, not ease. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 Matn Marsni <span class="expl-kw-uz">"nima uchun va qanday terraform qilish mumkinligini"</span> ko'rib chiqadi. Javob: <b>C</b>.</div></div></div>
 </div>
-<div class="qgroup" data-group="g3" data-paras="p3-6"><p class="qnum-head" style="margin-top:14px"><em>Questions 10&ndash;14</em></p><p class="qinst">Complete the summary below. Choose the correct word, <strong>A&ndash;I</strong>, from the box below.</p>
+<div class="qgroup" data-group="g3" data-paras="p3-6"><p class="qnum-head" style="margin-top:14px"><em>Questions 10&ndash;14</em></p><p class="qinst">Complete the summary using the list of words, <strong>A&ndash;I</strong>, below.</p>
+<div class="fbox">
+<strong>Word List</strong>
+A&nbsp;&nbsp;cover&nbsp;&nbsp; B&nbsp;&nbsp;create&nbsp;&nbsp; C&nbsp;&nbsp;hit&nbsp;&nbsp; D&nbsp;&nbsp;increase&nbsp;&nbsp; E&nbsp;&nbsp;land<br>F&nbsp;&nbsp;drive&nbsp;&nbsp; G&nbsp;&nbsp;power&nbsp;&nbsp; H&nbsp;&nbsp;rise&nbsp;&nbsp; I&nbsp;&nbsp;shoot
+</div>
 <div class="fbox">
 <strong>Zubrin and McKay's Asteroid Method</strong>
-<p>One method of terraforming Mars would be to <span class="inline-qno">10</span><input type="text" style="display:none" id="q10" value="" data-mx> asteroids at the planet. Rockets attached to an enormous asteroid would propel it towards Mars, taking ten years to <span class="inline-qno">11</span><input type="text" style="display:none" id="q11" value="" data-mx> the enormous distances required. The asteroid would <span class="inline-qno">12</span><input type="text" style="display:none" id="q12" value="" data-mx> the planet with incredible force and <span class="inline-qno">13</span><input type="text" style="display:none" id="q13" value="" data-mx> enough energy to <span class="inline-qno">14</span><input type="text" style="display:none" id="q14" value="" data-mx> the planet's temperature. The result would be a temperate climate and lots of water from melting ice caps.</p>
+<p>One method of terraforming Mars would be to <span class="dzone dz-sm" id="q10" data-q="10"></span> asteroids at the planet. Rockets attached to an enormous asteroid would propel it towards Mars, taking ten years to <span class="dzone dz-sm" id="q11" data-q="11"></span> the enormous distances required. The asteroid would <span class="dzone dz-sm" id="q12" data-q="12"></span> the planet with incredible force and <span class="dzone dz-sm" id="q13" data-q="13"></span> enough energy to <span class="dzone dz-sm" id="q14" data-q="14"></span> the planet's temperature. The result would be a temperate climate and lots of water from melting ice caps.</p>
 </div>
-<div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th></tr></thead><tbody>
-<tr><td class="mx-stmt"><span class="mx-num">10</span> would be to ___ asteroids at the planet<button class="expl-btn" onclick="toggleExpl(10)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq10" value="A" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="B" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="C" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="D" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="E" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="F" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="G" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="H" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="I" onchange="syncMx(10)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-10">🔑 <span class="expl-kw">firing large, ammonia-bearing asteroids at the planet</span>. "Firing" = <b>I shoot</b>.<div class="expl-uz">🇺🇿 Asteroidlarni sayyoraga <span class="expl-kw-uz">"otish (shoot)"</span>. Javob: <b>I</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">11</span> taking ten years to ___ the enormous distances<button class="expl-btn" onclick="toggleExpl(11)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq11" value="A" onchange="syncMx(11)"></label></td><td><label class="mx-cell"><input type="radio" name="mq11" value="B" onchange="syncMx(11)"></label></td><td><label class="mx-cell"><input type="radio" name="mq11" value="C" onchange="syncMx(11)"></label></td><td><label class="mx-cell"><input type="radio" name="mq11" value="D" onchange="syncMx(11)"></label></td><td><label class="mx-cell"><input type="radio" name="mq11" value="E" onchange="syncMx(11)"></label></td><td><label class="mx-cell"><input type="radio" name="mq11" value="F" onchange="syncMx(11)"></label></td><td><label class="mx-cell"><input type="radio" name="mq11" value="G" onchange="syncMx(11)"></label></td><td><label class="mx-cell"><input type="radio" name="mq11" value="H" onchange="syncMx(11)"></label></td><td><label class="mx-cell"><input type="radio" name="mq11" value="I" onchange="syncMx(11)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-11">🔑 <span class="expl-kw">it would take each asteroid about ten years to reach its destination</span>. "Reach" = <b>A cover</b>.<div class="expl-uz">🇺🇿 Masofani <span class="expl-kw-uz">"bosib o'tish (cover)"</span>ga o'n yil kerak. Javob: <b>A</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">12</span> would ___ the planet with incredible force<button class="expl-btn" onclick="toggleExpl(12)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq12" value="A" onchange="syncMx(12)"></label></td><td><label class="mx-cell"><input type="radio" name="mq12" value="B" onchange="syncMx(12)"></label></td><td><label class="mx-cell"><input type="radio" name="mq12" value="C" onchange="syncMx(12)"></label></td><td><label class="mx-cell"><input type="radio" name="mq12" value="D" onchange="syncMx(12)"></label></td><td><label class="mx-cell"><input type="radio" name="mq12" value="E" onchange="syncMx(12)"></label></td><td><label class="mx-cell"><input type="radio" name="mq12" value="F" onchange="syncMx(12)"></label></td><td><label class="mx-cell"><input type="radio" name="mq12" value="G" onchange="syncMx(12)"></label></td><td><label class="mx-cell"><input type="radio" name="mq12" value="H" onchange="syncMx(12)"></label></td><td><label class="mx-cell"><input type="radio" name="mq12" value="I" onchange="syncMx(12)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-12">🔑 one asteroid <span class="expl-kw">slamming into Mars' surface</span>. "Slamming into" = <b>C hit</b>.<div class="expl-uz">🇺🇿 Asteroid sayyorani <span class="expl-kw-uz">"urib o'tadi (hit)"</span>. Javob: <b>C</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">13</span> and ___ enough energy<button class="expl-btn" onclick="toggleExpl(13)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq13" value="A" onchange="syncMx(13)"></label></td><td><label class="mx-cell"><input type="radio" name="mq13" value="B" onchange="syncMx(13)"></label></td><td><label class="mx-cell"><input type="radio" name="mq13" value="C" onchange="syncMx(13)"></label></td><td><label class="mx-cell"><input type="radio" name="mq13" value="D" onchange="syncMx(13)"></label></td><td><label class="mx-cell"><input type="radio" name="mq13" value="E" onchange="syncMx(13)"></label></td><td><label class="mx-cell"><input type="radio" name="mq13" value="F" onchange="syncMx(13)"></label></td><td><label class="mx-cell"><input type="radio" name="mq13" value="G" onchange="syncMx(13)"></label></td><td><label class="mx-cell"><input type="radio" name="mq13" value="H" onchange="syncMx(13)"></label></td><td><label class="mx-cell"><input type="radio" name="mq13" value="I" onchange="syncMx(13)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-13">🔑 <span class="expl-kw">the energy produced by one asteroid</span>. "Produced" = <b>B create</b>.<div class="expl-uz">🇺🇿 Bitta asteroid ishlab chiqargan energiya &mdash; <span class="expl-kw-uz">"yaratish (create)"</span>. Javob: <b>B</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">14</span> enough energy to ___ the planet's temperature<button class="expl-btn" onclick="toggleExpl(14)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq14" value="A" onchange="syncMx(14)"></label></td><td><label class="mx-cell"><input type="radio" name="mq14" value="B" onchange="syncMx(14)"></label></td><td><label class="mx-cell"><input type="radio" name="mq14" value="C" onchange="syncMx(14)"></label></td><td><label class="mx-cell"><input type="radio" name="mq14" value="D" onchange="syncMx(14)"></label></td><td><label class="mx-cell"><input type="radio" name="mq14" value="E" onchange="syncMx(14)"></label></td><td><label class="mx-cell"><input type="radio" name="mq14" value="F" onchange="syncMx(14)"></label></td><td><label class="mx-cell"><input type="radio" name="mq14" value="G" onchange="syncMx(14)"></label></td><td><label class="mx-cell"><input type="radio" name="mq14" value="H" onchange="syncMx(14)"></label></td><td><label class="mx-cell"><input type="radio" name="mq14" value="I" onchange="syncMx(14)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-14">🔑 <span class="expl-kw">would raise the temperature of the planet by three degrees Celsius</span>. "Raise" = <b>D increase</b>.<div class="expl-uz">🇺🇿 Harorat &mdash; <span class="expl-kw-uz">"oshiradi (increase)"</span>. Javob: <b>D</b>.</div></div></td></tr>
-</tbody></table></div>
-<div class="fbox" style="margin-top:10px"><strong>Word List</strong>A&nbsp;cover&nbsp;&nbsp;B&nbsp;create&nbsp;&nbsp;C&nbsp;hit&nbsp;&nbsp;D&nbsp;increase&nbsp;&nbsp;E&nbsp;land&nbsp;&nbsp;F&nbsp;drive&nbsp;&nbsp;G&nbsp;power&nbsp;&nbsp;H&nbsp;rise&nbsp;&nbsp;I&nbsp;shoot</div>
+<div class="wbank se-bank" id="wbankG3" data-show="word">
+<div class="dchip" draggable="true" data-letter="A" data-word="cover"><span class="wk">A</span>&nbsp; cover</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="create"><span class="wk">B</span>&nbsp; create</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="hit"><span class="wk">C</span>&nbsp; hit</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="increase"><span class="wk">D</span>&nbsp; increase</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="land"><span class="wk">E</span>&nbsp; land</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="drive"><span class="wk">F</span>&nbsp; drive</div>
+<div class="dchip" draggable="true" data-letter="G" data-word="power"><span class="wk">G</span>&nbsp; power</div>
+<div class="dchip" draggable="true" data-letter="H" data-word="rise"><span class="wk">H</span>&nbsp; rise</div>
+<div class="dchip" draggable="true" data-letter="I" data-word="shoot"><span class="wk">I</span>&nbsp; shoot</div>
+</div>
+<div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">10.</b><button class="expl-btn" onclick="toggleExpl(10)">💡 Why?</button><div class="expl-box" id="expl-10">🔑 <span class="expl-kw">firing large, ammonia-bearing asteroids at the planet</span>. "Firing" = <b>I shoot</b>.<div class="expl-uz">🇺🇿 Asteroidlarni sayyoraga <span class="expl-kw-uz">"otish (shoot)"</span>. Javob: <b>I</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">11.</b><button class="expl-btn" onclick="toggleExpl(11)">💡 Why?</button><div class="expl-box" id="expl-11">🔑 <span class="expl-kw">it would take each asteroid about ten years to reach its destination</span>. "Reach" = <b>A cover</b>.<div class="expl-uz">🇺🇿 Masofani <span class="expl-kw-uz">"bosib o'tish (cover)"</span>ga o'n yil kerak. Javob: <b>A</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">12.</b><button class="expl-btn" onclick="toggleExpl(12)">💡 Why?</button><div class="expl-box" id="expl-12">🔑 one asteroid <span class="expl-kw">slamming into Mars' surface</span>. "Slamming into" = <b>C hit</b>.<div class="expl-uz">🇺🇿 Asteroid sayyorani <span class="expl-kw-uz">"urib o'tadi (hit)"</span>. Javob: <b>C</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">13.</b><button class="expl-btn" onclick="toggleExpl(13)">💡 Why?</button><div class="expl-box" id="expl-13">🔑 <span class="expl-kw">the energy produced by one asteroid</span>. "Produced" = <b>B create</b>.<div class="expl-uz">🇺🇿 Bitta asteroid ishlab chiqargan energiya &mdash; <span class="expl-kw-uz">"yaratish (create)"</span>. Javob: <b>B</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">14.</b><button class="expl-btn" onclick="toggleExpl(14)">💡 Why?</button><div class="expl-box" id="expl-14">🔑 <span class="expl-kw">would raise the temperature of the planet by three degrees Celsius</span>. "Raise" = <b>D increase</b>.<div class="expl-uz">🇺🇿 Harorat &mdash; <span class="expl-kw-uz">"oshiradi (increase)"</span>. Javob: <b>D</b>.</div></div></div>
+</div>
 </div>
   </div>
   </div>
@@ -399,13 +442,6 @@ const CA = {1:"NO",2:"YES",3:"YES",4:"NO",5:"YES",6:"D",7:"A",8:"C",9:"C",10:"I"
 const CAL = {1:"NO",2:"YES",3:"YES",4:"NO",5:"YES",6:"D",7:"A",8:"C",9:"C",10:"I",11:"A",12:"C",13:"B",14:"D"};
 const ALLQ=[1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 
-function syncMx(n){
-  const r=document.querySelector('input[name="mq'+n+'"]:checked');
-  const el=document.getElementById('q'+n);
-  if(el) el.value = r?r.value:'';
-  upd();
-}
-
 let curQ=1, timerS=1200, tInt=null, tRun=false;
 let mode='exam', elapsed=0;
 let checked=false, timeExpired=false;
@@ -420,6 +456,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -544,11 +581,8 @@ function getQEl(n){
 }
 
 function getAns(n){
-  if(n>=10&&n<=14){
-    const r=document.querySelector('input[name="mq'+n+'"]:checked');
-    return r?r.value:'';
-  }
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -657,6 +691,90 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -671,6 +789,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -779,16 +898,16 @@ function launchConfetti(){
 }
 
 function markQ(n,ok){
-  if(n>=10&&n<=14){
-    const cv=CA[n];
-    document.querySelectorAll('input[name="mq'+n+'"]').forEach(r=>{
-      const lb=r.closest('label');if(!lb)return;
-      if(r.value===cv)lb.classList.add('ok');
-      else if(r.checked&&!ok)lb.classList.add('bad');
-    });
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
     return;
   }
-  const el=document.getElementById('q'+n);
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}
