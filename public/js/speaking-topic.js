@@ -2,12 +2,17 @@
 // question list on the left, and a detail panel on the right (below on
 // mobile) showing that question's model answer plus the topic's shared
 // structure/vocabulary. Only one question's answer is shown at a time.
+// Highlighted vocab inside the model answer is clickable — it opens a
+// popover with the term's meaning, the same click-to-reveal pattern the
+// Premium Reading passages already use for their glossary.
 
 (function () {
   const root = document.getElementById('sp-topic-root');
   if (!root) return;
 
   const HOWTO = '💡 <strong>How to use this:</strong> Treat this as a model to adapt, not a script to memorize — examiners can tell when an answer sounds rehearsed. Swap in your own details and practice saying it in your own words rather than reciting it.';
+  const TYPE_LABELS = { collocation: 'Collocations', 'phrasal-verb': 'Phrasal Verbs', idiom: 'Idioms' };
+  const TYPE_ORDER = ['collocation', 'phrasal-verb', 'idiom'];
 
   const id = new URLSearchParams(location.search).get('id');
   const state = { topic: null, isPremiumUser: false, branchId: null, questionId: null };
@@ -38,6 +43,7 @@
       } else {
         state.questionId = state.topic.questions[0].id;
       }
+      setupPopover();
       render();
     })
     .catch((err) => {
@@ -95,9 +101,10 @@
       return html;
     }
 
-    html += section('Structure', structureHtml(t.structure));
-    html += section('Vocabulary & Collocations', vocabHtml(t.vocab));
-    html += section('Model Answer', '<div class="sp-model-text">' + highlight(q.model, t.vocab) + '</div>');
+    html += section('Useful Structures & Sentence Starters', structureHtml(t.structure));
+    html += section('Vocabulary, Collocations & Phrasal Verbs', vocabByTypeHtml(t.vocab));
+    html += '<div class="sp-section"><p class="sp-model-label">🎤 Sample Answer</p>' +
+      '<div class="sp-model-box"><span class="sp-model-quote">&ldquo;</span>' + highlight(q.model, t.vocab) + '</div></div>';
     html += section(null, '<div class="sp-bandtip">' + escapeHtml(t.bandTip) + '</div>');
     return html;
   }
@@ -106,32 +113,47 @@
     return '<div class="sp-section">' + (label ? '<p class="sp-section-label">' + escapeHtml(label) + '</p>' : '') + html + '</div>';
   }
 
-  function structureHtml(steps) {
-    return '<div class="sp-structure">' +
-      steps.map((s, i) => (i > 0 ? '<span class="sp-structure-arrow">→</span>' : '') + '<span class="sp-structure-step">' + escapeHtml(s) + '</span>').join('') +
-      '</div>';
-  }
-
-  function vocabHtml(vocab) {
-    return '<div class="sp-vocab-list">' + vocab.map((v) =>
-      '<div class="sp-vocab-item">' +
-        '<div class="sp-vocab-term">' + escapeHtml(v.term) + '</div>' +
-        '<div class="sp-vocab-meaning">' + escapeHtml(v.meaning) + '</div>' +
-        '<div class="sp-vocab-example">"' + highlight(v.example, [v]) + '"</div>' +
+  function structureHtml(groups) {
+    return '<div class="sp-structure-groups">' + groups.map((g) =>
+      '<div class="sp-structure-group">' +
+        '<p class="sp-structure-group-label">' + escapeHtml(g.label) + '</p>' +
+        g.phrases.map((p) => '<p class="sp-structure-phrase">"' + escapeHtml(p) + '"</p>').join('') +
       '</div>'
     ).join('') + '</div>';
   }
 
-  // Wraps every occurrence of a topic's vocab terms in <mark>, so students
-  // see exactly where the "important language" lands inside a natural
-  // sentence rather than only in a separate glossary list. Matches against
-  // already-escaped text/terms so escaping order never breaks matching.
+  function vocabByTypeHtml(vocab) {
+    let html = '';
+    TYPE_ORDER.forEach((type) => {
+      const items = vocab.filter((v) => v.type === type);
+      if (!items.length) return;
+      html += '<div class="sp-vocab-group">' +
+        '<p class="sp-vocab-group-label">' + escapeHtml(TYPE_LABELS[type]) + '</p>' +
+        '<div class="sp-vocab-list">' + items.map((v) =>
+          '<div class="sp-vocab-item" data-term="' + escapeHtml(v.term) + '" data-type="' + escapeHtml(TYPE_LABELS[type]) + '" data-def="' + escapeHtml(v.meaning) + '">' +
+            '<div class="sp-vocab-term">' + escapeHtml(v.term) + '</div>' +
+            '<div class="sp-vocab-meaning">' + escapeHtml(v.meaning) + '</div>' +
+            '<div class="sp-vocab-example">"' + highlight(v.example, [v]) + '"</div>' +
+          '</div>'
+        ).join('') + '</div>' +
+      '</div>';
+    });
+    return html;
+  }
+
+  // Wraps every occurrence of a topic's vocab terms in a clickable <mark>,
+  // so students see exactly where the "important language" lands inside a
+  // natural sentence rather than only in a separate glossary list. Matches
+  // against already-escaped text/terms so escaping order never breaks it.
   function highlight(text, vocab) {
     let escaped = escapeHtml(text);
-    const terms = vocab.map((v) => escapeHtml(v.term)).sort((a, b) => b.length - a.length);
-    terms.forEach((term) => {
+    const terms = vocab.slice().sort((a, b) => b.term.length - a.term.length);
+    terms.forEach((v) => {
+      const term = escapeHtml(v.term);
       const pattern = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-      escaped = escaped.replace(pattern, (m) => '<mark class="sp-hl">' + m + '</mark>');
+      escaped = escaped.replace(pattern, (m) =>
+        '<mark class="sp-hl" data-term="' + escapeHtml(v.term) + '" data-type="' + escapeHtml(TYPE_LABELS[v.type] || '') + '" data-def="' + escapeHtml(v.meaning) + '">' + m + '</mark>'
+      );
     });
     return escaped;
   }
@@ -151,6 +173,38 @@
         render();
       });
     });
+  }
+
+  // Event delegation on the root: mark/vocab-card elements get replaced
+  // wholesale on every render(), so the click listener is attached once
+  // here rather than per-element.
+  function setupPopover() {
+    const pop = document.createElement('div');
+    pop.id = 'sp-pop';
+    document.body.appendChild(pop);
+
+    root.addEventListener('click', (e) => {
+      const target = e.target.closest('mark.sp-hl, .sp-vocab-item');
+      if (!target) { pop.classList.remove('show'); return; }
+      e.stopPropagation();
+      pop.innerHTML =
+        (target.dataset.type ? '<span class="pop-type">' + escapeHtml(target.dataset.type) + '</span>' : '') +
+        '<div class="pop-term">' + escapeHtml(target.dataset.term) + '</div>' +
+        '<div class="pop-def">' + escapeHtml(target.dataset.def) + '</div>';
+      const rect = target.getBoundingClientRect();
+      pop.classList.add('show');
+      const popRect = pop.getBoundingClientRect();
+      let left = rect.left;
+      if (left + popRect.width > window.innerWidth - 12) left = window.innerWidth - popRect.width - 12;
+      if (left < 12) left = 12;
+      let top = rect.bottom + 8;
+      if (top + popRect.height > window.innerHeight - 12) top = rect.top - popRect.height - 8;
+      pop.style.left = left + 'px';
+      pop.style.top = top + 'px';
+    });
+
+    document.addEventListener('click', () => pop.classList.remove('show'));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') pop.classList.remove('show'); });
   }
 
   function escapeHtml(s) {

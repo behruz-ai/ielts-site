@@ -5,50 +5,54 @@
     "tier": "free",
     "theme": "Work & Study",
     "tag": "Schools, workplaces & study — always in use",
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "a steep learning curve", "meaning": "something difficult to learn quickly", "example": "The first few months were a steep learning curve, to be honest." },
-      { "term": "hands-on experience", "meaning": "practical, direct experience", "example": "I really value the hands-on experience I get, not just theory." },
-      { "term": "juggle multiple deadlines", "meaning": "manage several tasks due at the same time", "example": "During busy periods I'm constantly having to juggle multiple deadlines." },
-      { "term": "burn out", "meaning": "become exhausted from overwork", "example": "I did burn out a bit towards the end of last term, if I'm honest." },
-      { "term": "work-life balance", "meaning": "the balance between job/study and personal life", "example": "The work-life balance isn't always great during busy periods." },
-      { "term": "monotonous", "meaning": "repetitive and boring", "example": "Some of it can get pretty monotonous, if I'm honest." },
-      { "term": "a heavy workload", "meaning": "a large amount of work to complete", "example": "We've got a heavy workload around exam time, generally." },
-      { "term": "pay off in the long run", "meaning": "eventually prove worthwhile", "example": "It's hard now, but I think it'll pay off in the long run." }
+    "structure": [
+      { "label": "Direct answer", "phrases": ["I'd say...", "Honestly, yeah...", "To be fair, ..."] },
+      { "label": "Developing", "phrases": ["mainly because...", "the main reason is...", "if I'm being honest, ..."] },
+      { "label": "Example", "phrases": ["for instance, ...", "a good example of that would be...", "like, when..."] }
     ],
-    "bandTip": "🎯 Lexical Resource: notice the same toolkit of collocations (juggle multiple deadlines, burn out, monotonous) works whether you're a pupil, a student, or a working professional — Band 8+ isn't about having separate vocabulary for every scenario, it's applying a strong core vocabulary flexibly to whatever question you're actually asked.",
+    "vocab": [
+      { "term": "a steep learning curve", "type": "idiom", "meaning": "something difficult to learn quickly", "example": "The first few months were a steep learning curve, to be honest." },
+      { "term": "hands-on experience", "type": "collocation", "meaning": "practical, direct experience", "example": "I really value the hands-on experience I get, not just theory." },
+      { "term": "juggle multiple deadlines", "type": "collocation", "meaning": "manage several tasks due at the same time", "example": "During busy periods I'm constantly having to juggle multiple deadlines." },
+      { "term": "burn out", "type": "phrasal-verb", "meaning": "become exhausted from overwork", "example": "I did burn out a bit towards the end of last term, if I'm honest." },
+      { "term": "work-life balance", "type": "collocation", "meaning": "the balance between job/study and personal life", "example": "The work-life balance isn't always great during busy periods." },
+      { "term": "get pretty monotonous", "type": "collocation", "meaning": "become repetitive and boring", "example": "A few subjects just get pretty monotonous, if I'm honest." },
+      { "term": "a heavy workload", "type": "collocation", "meaning": "a large amount of work to complete", "example": "We've got a heavy workload around exam time, generally." },
+      { "term": "pay off in the long run", "type": "idiom", "meaning": "eventually prove worthwhile", "example": "It's hard now, but I think it'll pay off in the long run." }
+    ],
+    "bandTip": "🎯 Lexical Resource: the same toolkit of collocations (juggle multiple deadlines, burn out, a heavy workload) works whether you're a pupil, a student, or a working professional — Band 8+ isn't about having separate vocabulary for every scenario, it's applying a strong core vocabulary flexibly to whatever question you're actually asked.",
     "branches": [
       {
         "id": "pupil",
         "label": "School Pupil",
         "questions": [
-          { "id": "pupil-q1", "text": "Are you a student? What school do you go to?", "model": "Yeah, I'm still at school, actually, in my final year at a fairly average-sized secondary school in my city." },
-          { "id": "pupil-q2", "text": "What's your favourite subject at school?", "model": "Probably maths, if I'm honest, mainly because I find it satisfying once things click, even though it was a steep learning curve at first." },
-          { "id": "pupil-q3", "text": "Do you like your school?", "model": "I do, generally, yeah — the teachers are pretty supportive, though we've got a heavy workload around exam time." },
-          { "id": "pupil-q4", "text": "What do you dislike about school?", "model": "Probably just how monotonous some of the lessons can feel, if I'm honest, especially subjects I'm not that into." },
-          { "id": "pupil-q5", "text": "What do you want to do after you finish school?", "model": "I'm planning to go to university, actually, to study something science-related, though I haven't fully decided on the subject yet." }
+          { "id": "pupil-q1", "text": "Are you a student? What school do you go to?", "model": "Yeah, I'm still at school, actually, in my final year at a fairly average-sized secondary school back in my city. It's nothing particularly special, to be honest, just a standard state school, but the teachers there are genuinely pretty good." },
+          { "id": "pupil-q2", "text": "What's your favourite subject at school?", "model": "Probably maths, if I'm honest, which might sound like an odd choice since it was a steep learning curve for me at first. I think what changed things was finally having a teacher who explained it in a way that actually made sense, and now it's easily the subject I look forward to most." },
+          { "id": "pupil-q3", "text": "Do you like your school?", "model": "I do, generally, yeah — the teachers are pretty supportive, and there's a decent sense of community among the students. That said, we've got a heavy workload around exam time, which can make things stressful for a few weeks every year." },
+          { "id": "pupil-q4", "text": "What do you dislike about school?", "model": "Probably how monotonous some of the lessons can feel, if I'm honest — a few subjects just get pretty monotonous, especially when the teacher's just reading off slides. It's hard to stay engaged for fifty minutes straight in a class like that." },
+          { "id": "pupil-q5", "text": "What do you want to do after you finish school?", "model": "I'm planning to go to university, actually, most likely to study something science-related, though I haven't fully decided on the exact subject yet. A few of my teachers have encouraged me towards engineering specifically, so that's probably the direction I'll end up going in." }
         ]
       },
       {
         "id": "student",
         "label": "University Student",
         "questions": [
-          { "id": "student-q1", "text": "Are you a student? What are you studying?", "model": "Yes, I'm currently at university, studying business, in my second year now." },
-          { "id": "student-q2", "text": "Why did you choose to study that subject?", "model": "Honestly, it felt like a fairly practical choice, something that would keep a lot of career options open rather than narrowing things down too early." },
-          { "id": "student-q3", "text": "What do you like about your course?", "model": "I'd say the hands-on experience through group projects, mainly — it's a lot less monotonous than just sitting through lectures all day." },
-          { "id": "student-q4", "text": "Is there anything you dislike about your studies?", "model": "If I'm honest, it's having to juggle multiple deadlines around exam season — I did burn out a bit last term, to be truthful." },
-          { "id": "student-q5", "text": "What do you plan to do after you graduate?", "model": "I'm not entirely sure yet, though I'd like to get some hands-on experience in industry first — hopefully it'll pay off in the long run." }
+          { "id": "student-q1", "text": "Are you a student? What are you studying?", "model": "Yes, I'm currently at university, studying business, and I'm in my second year now. It's a fairly broad course, to be honest, covering everything from finance to marketing, which suits me since I wasn't totally sure what I wanted to specialise in." },
+          { "id": "student-q2", "text": "Why did you choose to study that subject?", "model": "Honestly, it felt like a fairly practical choice at the time — something that would keep a lot of career options open rather than narrowing things down too early. My parents also run a small business, so I'd grown up around that world a bit, which probably influenced me more than I realised." },
+          { "id": "student-q3", "text": "What do you like about your course?", "model": "I'd say the hands-on experience, mainly, through group projects and case studies rather than just sitting through lectures all day. It makes the whole thing feel a lot less monotonous, and honestly you learn more that way too, in my experience." },
+          { "id": "student-q4", "text": "Is there anything you dislike about your studies?", "model": "If I'm honest, it's having to juggle multiple deadlines around exam season — several assignments always seem to land in the same week. I did properly burn out for about a week last term, if I'm being truthful, which taught me to plan a lot further ahead now." },
+          { "id": "student-q5", "text": "What do you plan to do after you graduate?", "model": "I'm not entirely sure yet, to be honest, though I'd like to get some hands-on experience in industry before deciding on anything more specific. A few of my older classmates went straight into graduate schemes, so that's probably the route I'll look into first, hoping it'll pay off in the long run." }
         ]
       },
       {
         "id": "worker",
         "label": "Working Professional",
         "questions": [
-          { "id": "worker-q1", "text": "Do you work? What do you do?", "model": "I do, yeah — I work in marketing, for a mid-sized company back in my hometown." },
-          { "id": "worker-q2", "text": "Why did you choose that job?", "model": "Mostly because it let me be creative day to day, if I'm honest, rather than being stuck doing the same repetitive tasks." },
-          { "id": "worker-q3", "text": "What do you like about your job?", "model": "Probably the variety, really — no two days are quite the same, which keeps it from ever feeling too monotonous." },
-          { "id": "worker-q4", "text": "Is there anything you dislike about your job?", "model": "If I'm honest, having to juggle multiple deadlines at once sometimes — the work-life balance isn't always great during busy periods." },
-          { "id": "worker-q5", "text": "Do you think you'll stay in this job for a long time?", "model": "For now, yes, probably — though I wouldn't rule out trying to climb the career ladder somewhere else eventually." }
+          { "id": "worker-q1", "text": "Do you work? What do you do?", "model": "I do, yeah — I work in marketing, for a mid-sized company back in my hometown. I've been there for about three years now, moving up gradually from a fairly junior position when I first started." },
+          { "id": "worker-q2", "text": "Why did you choose that job?", "model": "Mostly because it let me be creative day to day, if I'm honest, rather than being stuck doing the same repetitive tasks constantly. I'd tried something more corporate straight out of university, and it just wasn't really for me, so I switched fairly early on." },
+          { "id": "worker-q3", "text": "What do you like about your job?", "model": "Probably the variety, really — no two days are quite the same, which keeps it from ever feeling too monotonous. I also work with a genuinely good team, which honestly makes a bigger difference to job satisfaction than people tend to expect." },
+          { "id": "worker-q4", "text": "Is there anything you dislike about your job?", "model": "If I'm honest, having to juggle multiple deadlines at once during busy periods — the work-life balance isn't always great when a few campaigns launch around the same time. It's manageable most of the year, but those few weeks can be pretty draining." },
+          { "id": "worker-q5", "text": "Do you think you'll stay in this job for a long time?", "model": "For now, yes, probably — I'm still learning a lot, and I don't feel like I've plateaued at all. That said, I wouldn't rule out trying to climb the career ladder somewhere else eventually, if the right opportunity came along." }
         ]
       }
     ]
@@ -59,32 +63,36 @@
     "tier": "free",
     "theme": "Hometown, Area You Live In",
     "tag": "Always in use",
-    "structure": ["Direct answer", "Reason", "Detail"],
+    "structure": [
+      { "label": "Direct answer", "phrases": ["It's...", "I'd say it's...", "Sure, it's..."] },
+      { "label": "Developing", "phrases": ["what I like most is...", "mainly because...", "the thing is, ..."] },
+      { "label": "Example", "phrases": ["for instance, ...", "a good example would be...", "like the time when..."] }
+    ],
     "vocab": [
-      { "term": "a stone's throw from", "meaning": "very close to", "example": "It's a stone's throw from the coast, actually." },
-      { "term": "sprawling suburb", "meaning": "a large, spread-out residential area", "example": "It's turned into a sprawling suburb over the last decade." },
-      { "term": "close-knit community", "meaning": "a tightly connected group of people who know each other well", "example": "What I like most is that close-knit community feel." },
-      { "term": "quiet backwater", "meaning": "a place seen as dull or unimportant", "example": "My grandparents live in a fairly quiet backwater, to be honest." },
-      { "term": "undergone significant changes", "meaning": "changed a great deal", "example": "The town centre has undergone significant changes since I was a kid." },
-      { "term": "born and raised", "meaning": "to have spent one's whole early life in a place", "example": "I was born and raised there, more or less." },
-      { "term": "picturesque scenery", "meaning": "beautiful natural views", "example": "It's known for its picturesque scenery, especially the riverside." },
-      { "term": "a far cry from", "meaning": "very different from", "example": "It's honestly a far cry from how I remember it as a kid." }
+      { "term": "a stone's throw from", "type": "idiom", "meaning": "very close to", "example": "It's a stone's throw from the coast, actually." },
+      { "term": "sprawling suburb", "type": "collocation", "meaning": "a large, spread-out residential area", "example": "It's turned into a sprawling suburb over the last decade." },
+      { "term": "close-knit community", "type": "collocation", "meaning": "a tightly connected group of people who know each other well", "example": "What I like most is that close-knit community feel." },
+      { "term": "quiet backwater", "type": "idiom", "meaning": "a place seen as dull or unimportant", "example": "My grandparents live in a fairly quiet backwater, to be honest." },
+      { "term": "undergone significant changes", "type": "collocation", "meaning": "changed a great deal", "example": "The town centre has undergone significant changes since I was a kid." },
+      { "term": "born and raised", "type": "idiom", "meaning": "to have spent one's whole early life in a place", "example": "I was born and raised there, more or less." },
+      { "term": "picturesque scenery", "type": "collocation", "meaning": "beautiful natural views", "example": "It's known for its picturesque scenery, especially the riverside." },
+      { "term": "a far cry from", "type": "idiom", "meaning": "very different from", "example": "It's honestly a far cry from how I remember it as a kid." }
     ],
     "bandTip": "🎯 Coherence: every answer here directly answers the specific question asked (size, duration, change, comparison) rather than reusing one generic hometown description — examiners notice immediately when a candidate gives the same rehearsed paragraph regardless of the actual question.",
     "questions": [
-      { "id": "q1", "text": "Please describe your hometown a little.", "model": "Sure — it's a fairly small city, a stone's throw from the coast actually, and I was born and raised there, more or less." },
-      { "id": "q2", "text": "What is your hometown well-known for?", "model": "Probably its picturesque scenery, if I'm honest, especially the riverside area, which draws a fair number of visitors." },
-      { "id": "q3", "text": "Do you like your hometown?", "model": "I do, generally, yeah — I'd say what I like most is that close-knit community feel, everyone kind of knows everyone." },
-      { "id": "q4", "text": "Is that a big city or a small place?", "model": "It's fairly small, actually, more of a large town than a proper city, if I'm honest." },
-      { "id": "q5", "text": "How long have you been living there?", "model": "My whole life, pretty much, aside from a couple of years away for university." },
-      { "id": "q6", "text": "Do you think you will continue living there for a long time?", "model": "Probably not forever, if I'm honest, though I'm not in any rush to leave either." },
-      { "id": "q7", "text": "Would you like to live in the countryside in the future?", "model": "Actually, yes, I think I would eventually — somewhere with a bit more picturesque scenery and a lot less noise." },
-      { "id": "q8", "text": "Have you ever lived in the countryside?", "model": "Not really, no — the closest I've come is visiting my grandparents, who live in a fairly quiet backwater, to be honest." },
-      { "id": "q9", "text": "Do you ever spend time in the countryside?", "model": "Occasionally, yeah, mostly visiting family — it's honestly a nice break from city life." },
-      { "id": "q10", "text": "What is the difference between living in the countryside and the city?", "model": "I'd say pace, mainly — the countryside's obviously a lot slower, whereas the city's constantly changing, always something new going on." },
-      { "id": "q11", "text": "What do people living in the countryside like to do?", "model": "From what I've seen, a lot of outdoor stuff, gardening, walking, that sort of thing — much more than people tend to do in the city." },
-      { "id": "q12", "text": "What do you like to do in the countryside?", "model": "Mostly just relax, honestly, go for long walks, completely unplug from everything for a few days." },
-      { "id": "q13", "text": "How has your town changed over the last 20 years?", "model": "Quite a lot, actually — it's undergone significant changes, what used to be farmland is basically a sprawling suburb now, a far cry from how I remember it as a kid." }
+      { "id": "q1", "text": "Please describe your hometown a little.", "model": "Sure — it's a fairly small city, a stone's throw from the coast actually, and I was born and raised there, more or less. It's got a nice mix of old and newer buildings, so it doesn't feel too modern or too run-down, if that makes sense." },
+      { "id": "q2", "text": "What is your hometown well-known for?", "model": "Probably its picturesque scenery, if I'm honest, especially the riverside area, which draws a fair number of visitors in summer. There's also a fairly well-known market that's been running for decades, which people travel a surprising distance for." },
+      { "id": "q3", "text": "Do you like your hometown?", "model": "I do, generally, yeah — I'd say what I like most is that close-knit community feel, everyone kind of knows everyone. It can occasionally feel a bit small, admittedly, but most of the time that closeness is honestly a nice thing to have." },
+      { "id": "q4", "text": "Is that a big city or a small place?", "model": "It's fairly small, actually, more of a large town than a proper city, if I'm honest. You can walk pretty much everywhere within about twenty minutes, which I've come to really appreciate compared to bigger places." },
+      { "id": "q5", "text": "How long have you been living there?", "model": "My whole life, pretty much, aside from a couple of years away for university in a different city. It was strange coming back at first, but it didn't take long to feel completely normal again." },
+      { "id": "q6", "text": "Do you think you will continue living there for a long time?", "model": "Probably not forever, if I'm honest, though I'm not in any particular rush to leave either. Career opportunities might eventually pull me elsewhere, but for now I'm genuinely happy staying put." },
+      { "id": "q7", "text": "Would you like to live in the countryside in the future?", "model": "Actually, yes, I think I would eventually — somewhere with a bit more picturesque scenery and considerably less noise than where I am now. It's not a priority right now, but I could see myself moving in that direction later in life." },
+      { "id": "q8", "text": "Have you ever lived in the countryside?", "model": "Not really, no — the closest I've come is visiting my grandparents, who live in a fairly quiet backwater, to be honest. It's peaceful, though I don't think I could handle quite how remote it is on a permanent basis." },
+      { "id": "q9", "text": "Do you ever spend time in the countryside?", "model": "Occasionally, yeah, mostly visiting family a couple of times a year. It's honestly a nice break from city life, even if it does get a little dull after more than a few days." },
+      { "id": "q10", "text": "What is the difference between living in the countryside and the city?", "model": "I'd say pace, mainly — the countryside's obviously a lot slower, whereas the city's constantly changing, with something new happening practically every week. There's also just a lot more going on socially in the city, for better or worse." },
+      { "id": "q11", "text": "What do people living in the countryside like to do?", "model": "From what I've seen, a lot of outdoor stuff, gardening, walking, that sort of thing, much more than people tend to do in the city. There's also a stronger sense of relying on neighbours for things, which you notice a lot less in urban areas." },
+      { "id": "q12", "text": "What do you like to do in the countryside?", "model": "Mostly just relax, honestly, go for long walks and completely unplug from everything for a few days. It's one of the only places I genuinely switch my phone off, which says a lot, probably." },
+      { "id": "q13", "text": "How has your town changed over the last 20 years?", "model": "Quite a lot, actually — it's undergone significant changes, and what used to be mostly farmland on the edge of town is basically a sprawling suburb now. It's honestly a far cry from how I remember it as a kid, for better and worse." }
     ]
   },
   {
@@ -93,29 +101,33 @@
     "tier": "free",
     "theme": "Home & Accommodation",
     "tag": "Always in use",
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "spacious", "meaning": "having a lot of room", "example": "It's not huge, but it feels fairly spacious for a two-bedroom flat." },
-      { "term": "a cosy feel", "meaning": "a warm, comfortable atmosphere", "example": "It's got a cosy feel, especially in winter." },
-      { "term": "fully furnished", "meaning": "already equipped with furniture", "example": "We moved into a fully furnished flat, which made things a lot easier." },
-      { "term": "natural light", "meaning": "daylight coming into a room", "example": "The living room gets loads of natural light in the mornings." },
-      { "term": "open-plan", "meaning": "a layout with few or no dividing walls", "example": "The kitchen and living room are open-plan, which I really like." },
-      { "term": "downsize", "meaning": "move to a smaller home", "example": "We might downsize once the kids move out." },
-      { "term": "a housewarming", "meaning": "a party celebrating a new home", "example": "We had a housewarming not long after we moved in." },
-      { "term": "make it feel like home", "meaning": "personalize a space so it feels comfortable and familiar", "example": "Small changes like that really help make it feel like home." }
+    "structure": [
+      { "label": "Direct answer", "phrases": ["I live in...", "It's...", "I'd describe it as..."] },
+      { "label": "Developing", "phrases": ["what I like most about it is...", "mainly because...", "the main reason is..."] },
+      { "label": "Example", "phrases": ["for instance, ...", "a good example is...", "like when..."] }
     ],
-    "bandTip": "🎯 Grammatical Range: notice short, natural contrast structures like \"it's not huge, but it feels fairly spacious\" — a simple \"not X, but Y\" pattern adds nuance to a Part 1 answer without needing complex grammar.",
+    "vocab": [
+      { "term": "plenty of space", "type": "collocation", "meaning": "a lot of room", "example": "It's not huge, but there's plenty of space for the two of us." },
+      { "term": "a cosy feel", "type": "collocation", "meaning": "a warm, comfortable atmosphere", "example": "It's got a cosy feel, especially in winter." },
+      { "term": "fully furnished", "type": "collocation", "meaning": "already equipped with furniture", "example": "We moved into a fully furnished flat, which made things a lot easier." },
+      { "term": "natural light", "type": "collocation", "meaning": "daylight coming into a room", "example": "The living room gets loads of natural light in the mornings." },
+      { "term": "open-plan", "type": "collocation", "meaning": "a layout with few or no dividing walls", "example": "The kitchen and living room are open-plan, which I really like." },
+      { "term": "settle in", "type": "phrasal-verb", "meaning": "become comfortable in a new place", "example": "It didn't take long to settle in once we'd unpacked everything." },
+      { "term": "a housewarming", "type": "collocation", "meaning": "a party celebrating a new home", "example": "We had a housewarming not long after we moved in." },
+      { "term": "make it feel like home", "type": "idiom", "meaning": "personalize a space so it feels comfortable and familiar", "example": "Small changes like that really help make it feel like home." }
+    ],
+    "bandTip": "🎯 Grammatical Range: notice short, natural contrast structures like \"it's not huge, but there's plenty of space\" — a simple \"not X, but Y\" pattern adds nuance to a Part 1 answer without needing complex grammar.",
     "questions": [
-      { "id": "q1", "text": "Can you describe the place where you live?", "model": "Sure — it's a fairly spacious two-bedroom flat, on the third floor of a fairly modern building." },
-      { "id": "q2", "text": "What kind of housing accommodation do you live in?", "model": "I live in a flat, actually, fully furnished when we first moved in, which honestly made things a lot easier." },
-      { "id": "q3", "text": "What do you like about your flat?", "model": "Probably the natural light, if I'm honest — the living room faces east, so it's really bright in the mornings." },
-      { "id": "q4", "text": "Which room does your family spend most of the time in?", "model": "Definitely the living room, mainly because it's open-plan with the kitchen, so everyone naturally ends up there." },
-      { "id": "q5", "text": "What can you see from the windows where you live?", "model": "Mostly rooftops and a bit of a park in the distance, nothing too exciting, if I'm honest." },
-      { "id": "q6", "text": "Do you prefer living in a house or a flat?", "model": "A flat, personally, mainly for practical reasons — less maintenance, and it's got a cosy feel despite being fairly small." },
-      { "id": "q7", "text": "What would you like to change in your flat?", "model": "Probably the kitchen, if I could — I'd love a proper open-plan layout eventually, small changes like that really help make it feel like home." },
-      { "id": "q8", "text": "What do you dislike about your flat?", "model": "Honestly, just the lack of storage — it's spacious enough day to day, but storage is definitely lacking." },
-      { "id": "q9", "text": "Who do you live with?", "model": "Just my partner at the moment — it's a fairly small place, so there's no need to downsize any further, if anything we'd like a bit more room eventually." },
-      { "id": "q10", "text": "How long have you lived there?", "model": "About three years now — we had a housewarming when we first moved in, actually, which feels like ages ago now." }
+      { "id": "q1", "text": "Can you describe the place where you live?", "model": "Sure — it's a two-bedroom flat with plenty of space for the two of us, on the third floor of a fairly modern building. Nothing too fancy, but it's comfortable, and it's in a pretty convenient location for getting into the city centre." },
+      { "id": "q2", "text": "What kind of housing accommodation do you live in?", "model": "I live in a flat, actually, which came fully furnished when we first moved in, honestly making things a lot easier at the time. We've swapped out a few pieces since then, but most of the original furniture's still there." },
+      { "id": "q3", "text": "What do you like about your flat?", "model": "Probably the natural light, if I'm honest — the living room faces east, so it's really bright first thing in the morning. It genuinely makes a difference to my mood, especially compared to my previous place, which felt fairly dark all day." },
+      { "id": "q4", "text": "Which room does your family spend most of the time in?", "model": "Definitely the living room, mainly because it's open-plan with the kitchen, so everyone naturally ends up there while someone's cooking. We rarely all sit in separate rooms, if I'm honest, unless someone specifically wants some quiet." },
+      { "id": "q5", "text": "What can you see from the windows where you live?", "model": "Mostly rooftops and a bit of a park in the distance, nothing too exciting, if I'm honest. On a clear day you can just about make out the hills on the edge of the city, which is a nice bonus." },
+      { "id": "q6", "text": "Do you prefer living in a house or a flat?", "model": "A flat, personally, mainly for practical reasons — less maintenance overall, and it's got a cosy feel despite being fairly small. Houses are nice in theory, but the upkeep's genuinely not something I'm ready to take on yet." },
+      { "id": "q7", "text": "What would you like to change in your flat?", "model": "Probably the kitchen, if I could — it's a bit outdated, and I'd love a proper open-plan layout eventually rather than the closed-off setup we've got now. Small changes like that really help make it feel like home, in my experience." },
+      { "id": "q8", "text": "What do you dislike about your flat?", "model": "Honestly, just the lack of storage — there's plenty of space day to day, but storage is definitely lacking, especially in the bedrooms. We've had to get creative with shelving just to keep things from feeling cluttered." },
+      { "id": "q9", "text": "Who do you live with?", "model": "Just my partner at the moment — it's a fairly small place, but that suits us fine for now. If anything, we'd like a bit more room eventually, once we're in a better position financially." },
+      { "id": "q10", "text": "How long have you lived there?", "model": "About three years now — we had a housewarming not long after we moved in, actually. It didn't take long to settle in and make it feel like home, if I'm honest, though the first few months felt a bit strange." }
     ]
   }
 ]
