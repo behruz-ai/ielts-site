@@ -314,30 +314,56 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 
 .empty-note{color:var(--subtext); font-size:14px; padding:30px 0; text-align:center}
 
-/* speaking bank */
-.sp-list{display:flex; flex-direction:column; gap:14px}
-.sp-card{
-  background-color:var(--panel); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-  border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:border-color .2s;
+/* speaking bank — topic list (speaking.html) */
+.sp-topic-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px}
+.sp-topic-card{
+  background-color:var(--panel); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border); border-radius:18px; padding:24px 24px 22px;
+  display:flex; flex-direction:column; gap:10px; position:relative; overflow:hidden;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
 }
-.sp-card[open]{border-color:rgba(239,68,68,.3)}
-.sp-summary{
-  list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:flex-start; gap:14px; flex-wrap:wrap;
-}
-.sp-summary::-webkit-details-marker{display:none}
-.sp-summary-main{flex:1; min-width:220px; display:flex; flex-direction:column; gap:8px}
-.sp-summary-top{display:flex; align-items:center; gap:9px; flex-wrap:wrap}
-.sp-theme{font-weight:800; font-size:16px; color:var(--text)}
-.sp-arrow{margin-left:auto; flex:none; color:var(--subtext); font-size:13px; transition:transform .2s; align-self:center}
-.sp-card[open] .sp-arrow{transform:rotate(180deg)}
-.sp-questions{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:4px}
-.sp-questions li{font-size:13.5px; color:var(--subtext)}
-.sp-questions li::before{content:"— "; color:var(--border-strong)}
-.sp-cue-points{margin:6px 0 0; padding-left:18px; font-size:13px; color:var(--subtext)}
-.sp-cue-points li{margin-bottom:2px}
+.sp-topic-card::before{content:''; position:absolute; inset:0; background-image:var(--grad); opacity:0; transition:opacity .25s; z-index:-1}
+.sp-topic-card:hover{transform:translateY(-4px); box-shadow:0 18px 44px rgba(239,68,68,.15); border-color:rgba(239,68,68,.4)}
+.sp-topic-icon{font-size:30px; filter:drop-shadow(0 0 12px rgba(239,68,68,.35))}
+.sp-topic-theme{font-size:19px; font-weight:800; margin:0; color:var(--text)}
+.sp-topic-tag{font-size:12.5px; color:var(--subtext); margin:0}
+.sp-topic-meta{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:auto; padding-top:10px}
+.sp-topic-count{font-size:12px; font-weight:700; color:var(--subtext)}
+.sp-topic-btn{margin-top:2px; font-size:13px; font-weight:800; color:var(--accent)}
 
-.sp-body{padding:0 20px 22px; border-top:1px solid var(--border); margin-top:2px}
-.sp-section{padding-top:18px}
+/* speaking bank — topic detail (speaking-topic.html) */
+.sp-detail-hdr{margin-bottom:10px}
+.sp-back-link{display:inline-flex; align-items:center; gap:5px; font-size:13px; font-weight:700; color:var(--subtext); margin-bottom:14px}
+.sp-back-link:hover{color:var(--text)}
+.sp-detail-hdr h1{font-size:27px; font-weight:900; margin:8px 0 4px; letter-spacing:-.4px}
+.sp-detail-tag{color:var(--subtext); font-size:14px; margin:0 0 18px}
+
+.sp-howto{
+  background-color:var(--accent-bg); border-radius:12px; padding:13px 16px; font-size:13px; line-height:1.6; color:var(--text);
+  margin-bottom:22px;
+}
+
+.sp-branch-tabs{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:20px}
+
+.sp-layout{display:grid; grid-template-columns:minmax(220px,300px) 1fr; gap:22px; align-items:flex-start}
+@media (max-width:760px){.sp-layout{grid-template-columns:1fr}}
+
+.sp-qlist{display:flex; flex-direction:column; gap:7px; position:sticky; top:86px}
+@media (max-width:760px){.sp-qlist{position:static}}
+.sp-qbtn{
+  text-align:left; padding:12px 15px; border-radius:12px; border:1.5px solid var(--border); background-color:var(--panel);
+  color:var(--text); font-family:inherit; font-size:13.5px; font-weight:600; cursor:pointer; transition:all .15s;
+}
+.sp-qbtn:hover{border-color:rgba(239,68,68,.4)}
+.sp-qbtn.active{background-image:var(--grad); border-color:transparent; color:#180a04; font-weight:800}
+
+.sp-panel{
+  background-color:var(--panel); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--border); border-radius:18px; padding:24px 26px;
+}
+.sp-panel-question{font-size:17px; font-weight:800; margin:0 0 20px; color:var(--text)}
+.sp-section{margin-bottom:20px}
+.sp-section:last-child{margin-bottom:0}
 .sp-section-label{
   font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--subtext);
   margin:0 0 10px;
@@ -349,27 +375,24 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 }
 .sp-structure-arrow{color:var(--subtext); font-size:12px}
 
-.sp-vocab-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px}
+.sp-vocab-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:10px}
 .sp-vocab-item{background-color:var(--pill); border-radius:10px; padding:10px 13px}
 .sp-vocab-term{font-weight:800; font-size:13.5px; color:var(--text)}
 .sp-vocab-meaning{font-size:12px; color:var(--subtext); margin:2px 0 5px}
 .sp-vocab-example{font-size:12.5px; color:var(--text); font-style:italic; opacity:.85}
 
-.sp-model{background-color:var(--pill); border-radius:12px; padding:14px 16px; margin-bottom:10px}
-.sp-model:last-child{margin-bottom:0}
-.sp-model-angle{font-size:11.5px; font-weight:800; color:var(--accent2); text-transform:uppercase; letter-spacing:.3px; margin-bottom:6px}
-.sp-model-text{font-size:14px; line-height:1.75; color:var(--text)}
+.sp-model-text{
+  background-color:var(--pill); border-radius:12px; padding:16px 18px; font-size:14.5px; line-height:1.8; color:var(--text);
+}
+mark.sp-hl{background-color:var(--premium-bg); color:var(--premium); border-radius:4px; padding:0 3px; font-weight:700}
 
 .sp-bandtip{
   background-color:var(--premium-bg); border-radius:12px; padding:13px 16px; font-size:13px; line-height:1.6; color:var(--text);
 }
-.sp-howto{
-  background-color:var(--accent-bg); border-radius:12px; padding:13px 16px; font-size:13px; line-height:1.6; color:var(--text);
-}
 
 .sp-locked{
   display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
-  background-color:var(--premium-bg); border-radius:12px; padding:16px 18px; margin-top:4px;
+  background-color:var(--premium-bg); border-radius:12px; padding:16px 18px;
 }
 .sp-locked p{margin:0; font-size:13.5px; color:var(--text)}
 .sp-locked a{

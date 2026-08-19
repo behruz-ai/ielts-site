@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Speaking Bank | Bekhruz IELTS</title>
-<meta name="description" content="IELTS Speaking Part 1 topics — real question clusters, topic vocabulary, and a model answer for every individual question, built around the real band criteria.">
+<meta name="description" content="IELTS Speaking topic — every question with its own model answer, plus shared vocabulary, collocations, and structure for the topic.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -34,15 +34,8 @@
   </div>
 </header>
 
-<div class="catalog-wrap">
-  <div class="catalog-hdr">
-    <div>
-      <h1>Speaking Bank</h1>
-      <p>Click a topic to open it, then click any question to see its structure, vocabulary, and a model answer built for that exact question. Part 1 is live now — Part 2 and 3 are on the way.</p>
-    </div>
-  </div>
-
-  <div id="sp-root"><p class="empty-note">Loading…</p></div>
+<div class="page-wrap" style="max-width:1140px">
+  <div id="sp-topic-root"><p class="empty-note">Loading…</p></div>
 </div>
 
 <footer class="site-ftr">
@@ -53,7 +46,7 @@
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
-<script src="/js/speaking-catalog.js"></script>
+<script src="/js/speaking-topic.js"></script>
 <script src="/js/theme-toggle.js"></script>
 </body>
 </html>

@@ -1,882 +1,121 @@
 [
   {
+    "id": "p1-work-study",
+    "part": 1,
+    "tier": "free",
+    "theme": "Work & Study",
+    "tag": "Schools, workplaces & study — always in use",
+    "structure": ["Direct answer", "Reason", "Detail"],
+    "vocab": [
+      { "term": "a steep learning curve", "meaning": "something difficult to learn quickly", "example": "The first few months were a steep learning curve, to be honest." },
+      { "term": "hands-on experience", "meaning": "practical, direct experience", "example": "I really value the hands-on experience I get, not just theory." },
+      { "term": "juggle multiple deadlines", "meaning": "manage several tasks due at the same time", "example": "During busy periods I'm constantly having to juggle multiple deadlines." },
+      { "term": "burn out", "meaning": "become exhausted from overwork", "example": "I did burn out a bit towards the end of last term, if I'm honest." },
+      { "term": "work-life balance", "meaning": "the balance between job/study and personal life", "example": "The work-life balance isn't always great during busy periods." },
+      { "term": "monotonous", "meaning": "repetitive and boring", "example": "Some of it can get pretty monotonous, if I'm honest." },
+      { "term": "a heavy workload", "meaning": "a large amount of work to complete", "example": "We've got a heavy workload around exam time, generally." },
+      { "term": "pay off in the long run", "meaning": "eventually prove worthwhile", "example": "It's hard now, but I think it'll pay off in the long run." }
+    ],
+    "bandTip": "🎯 Lexical Resource: notice the same toolkit of collocations (juggle multiple deadlines, burn out, monotonous) works whether you're a pupil, a student, or a working professional — Band 8+ isn't about having separate vocabulary for every scenario, it's applying a strong core vocabulary flexibly to whatever question you're actually asked.",
+    "branches": [
+      {
+        "id": "pupil",
+        "label": "School Pupil",
+        "questions": [
+          { "id": "pupil-q1", "text": "Are you a student? What school do you go to?", "model": "Yeah, I'm still at school, actually, in my final year at a fairly average-sized secondary school in my city." },
+          { "id": "pupil-q2", "text": "What's your favourite subject at school?", "model": "Probably maths, if I'm honest, mainly because I find it satisfying once things click, even though it was a steep learning curve at first." },
+          { "id": "pupil-q3", "text": "Do you like your school?", "model": "I do, generally, yeah — the teachers are pretty supportive, though we've got a heavy workload around exam time." },
+          { "id": "pupil-q4", "text": "What do you dislike about school?", "model": "Probably just how monotonous some of the lessons can feel, if I'm honest, especially subjects I'm not that into." },
+          { "id": "pupil-q5", "text": "What do you want to do after you finish school?", "model": "I'm planning to go to university, actually, to study something science-related, though I haven't fully decided on the subject yet." }
+        ]
+      },
+      {
+        "id": "student",
+        "label": "University Student",
+        "questions": [
+          { "id": "student-q1", "text": "Are you a student? What are you studying?", "model": "Yes, I'm currently at university, studying business, in my second year now." },
+          { "id": "student-q2", "text": "Why did you choose to study that subject?", "model": "Honestly, it felt like a fairly practical choice, something that would keep a lot of career options open rather than narrowing things down too early." },
+          { "id": "student-q3", "text": "What do you like about your course?", "model": "I'd say the hands-on experience through group projects, mainly — it's a lot less monotonous than just sitting through lectures all day." },
+          { "id": "student-q4", "text": "Is there anything you dislike about your studies?", "model": "If I'm honest, it's having to juggle multiple deadlines around exam season — I did burn out a bit last term, to be truthful." },
+          { "id": "student-q5", "text": "What do you plan to do after you graduate?", "model": "I'm not entirely sure yet, though I'd like to get some hands-on experience in industry first — hopefully it'll pay off in the long run." }
+        ]
+      },
+      {
+        "id": "worker",
+        "label": "Working Professional",
+        "questions": [
+          { "id": "worker-q1", "text": "Do you work? What do you do?", "model": "I do, yeah — I work in marketing, for a mid-sized company back in my hometown." },
+          { "id": "worker-q2", "text": "Why did you choose that job?", "model": "Mostly because it let me be creative day to day, if I'm honest, rather than being stuck doing the same repetitive tasks." },
+          { "id": "worker-q3", "text": "What do you like about your job?", "model": "Probably the variety, really — no two days are quite the same, which keeps it from ever feeling too monotonous." },
+          { "id": "worker-q4", "text": "Is there anything you dislike about your job?", "model": "If I'm honest, having to juggle multiple deadlines at once sometimes — the work-life balance isn't always great during busy periods." },
+          { "id": "worker-q5", "text": "Do you think you'll stay in this job for a long time?", "model": "For now, yes, probably — though I wouldn't rule out trying to climb the career ladder somewhere else eventually." }
+        ]
+      }
+    ]
+  },
+  {
     "id": "p1-hometown",
     "part": 1,
     "tier": "free",
-    "theme": "Hometown",
-    "linkedTo": null,
-    "questions": [
-      "Where is your hometown?",
-      "What do you like most about your hometown?",
-      "Has your hometown changed much since you were a child?"
-    ],
+    "theme": "Hometown, Area You Live In",
+    "tag": "Always in use",
     "structure": ["Direct answer", "Reason", "Detail"],
     "vocab": [
-      { "term": "a stone's throw from", "meaning": "very close to", "example": "My university is just a stone's throw from where I grew up." },
+      { "term": "a stone's throw from", "meaning": "very close to", "example": "It's a stone's throw from the coast, actually." },
       { "term": "sprawling suburb", "meaning": "a large, spread-out residential area", "example": "It's turned into a sprawling suburb over the last decade." },
-      { "term": "close-knit community", "meaning": "a tightly connected group of people who know each other well", "example": "What I love most is the close-knit community — everyone still knows everyone." },
-      { "term": "quiet backwater", "meaning": "a place seen as dull or unimportant", "example": "Growing up it felt like a quiet backwater, to be honest." },
+      { "term": "close-knit community", "meaning": "a tightly connected group of people who know each other well", "example": "What I like most is that close-knit community feel." },
+      { "term": "quiet backwater", "meaning": "a place seen as dull or unimportant", "example": "My grandparents live in a fairly quiet backwater, to be honest." },
       { "term": "undergone significant changes", "meaning": "changed a great deal", "example": "The town centre has undergone significant changes since I was a kid." },
-      { "term": "born and raised", "meaning": "to have spent one's whole early life in a place", "example": "I was born and raised there, so it's home in every sense." },
-      { "term": "picturesque scenery", "meaning": "beautiful natural views", "example": "It's known for its picturesque scenery, especially along the river." },
-      { "term": "a far cry from", "meaning": "very different from", "example": "The place now is a far cry from how I remember it as a kid." }
+      { "term": "born and raised", "meaning": "to have spent one's whole early life in a place", "example": "I was born and raised there, more or less." },
+      { "term": "picturesque scenery", "meaning": "beautiful natural views", "example": "It's known for its picturesque scenery, especially the riverside." },
+      { "term": "a far cry from", "meaning": "very different from", "example": "It's honestly a far cry from how I remember it as a kid." }
     ],
-    "models": [
-      { "angle": "Fond, still lives there", "text": "So I'm actually from a fairly small city, and I still live there now, honestly. I'd say what I like most about it is that it's a really close-knit community — everyone kind of knows everyone, which sounds a bit much but it's actually really nice, especially compared to bigger cities where you barely know your neighbours." },
-      { "angle": "Moved away, city has changed", "text": "I'm originally from a small town on the outskirts of the capital, though I don't live there anymore. Um, it's changed a lot, actually — when I go back now it's honestly a far cry from how I remember it as a kid, way more built up, so it barely feels like home sometimes." }
-    ],
-    "bandTip": "🎯 Lexical Resource: notice Model B doesn't just say \"it changed\" — it says \"undergone significant changes\" and \"a far cry from.\" Precise collocations like these, used naturally rather than forced in, are what separate Band 6-7 vocabulary from Band 8+."
-  },
-  {
-    "id": "p1-work-study",
-    "part": 1,
-    "tier": "premium",
-    "theme": "Work & Study",
-    "linkedTo": null,
+    "bandTip": "🎯 Coherence: every answer here directly answers the specific question asked (size, duration, change, comparison) rather than reusing one generic hometown description — examiners notice immediately when a candidate gives the same rehearsed paragraph regardless of the actual question.",
     "questions": [
-      "Do you work or are you a student?",
-      "What do you like about your job or course?",
-      "Is there anything you'd change about it?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "a steep learning curve", "meaning": "something difficult to learn quickly", "example": "The first few months were a steep learning curve, to put it mildly." },
-      { "term": "hands-on experience", "meaning": "practical, direct experience", "example": "What I value most is the hands-on experience — it's not just theory." },
-      { "term": "juggle multiple deadlines", "meaning": "manage several tasks due at the same time", "example": "During exam season I'm constantly juggling multiple deadlines." },
-      { "term": "a nine-to-five", "meaning": "a standard office job", "example": "I never really pictured myself in a nine-to-five, but here I am." },
-      { "term": "burn out", "meaning": "become exhausted from overwork", "example": "If I'm honest, I did burn out a bit in my final year." },
-      { "term": "climb the career ladder", "meaning": "advance professionally", "example": "I'm not in a huge rush to climb the career ladder just yet." },
-      { "term": "work-life balance", "meaning": "the balance between job and personal life", "example": "The work-life balance here is genuinely better than my last job." },
-      { "term": "monotonous", "meaning": "repetitive and boring", "example": "Some of the admin side can get pretty monotonous, not gonna lie." }
-    ],
-    "models": [
-      { "angle": "Studies, enjoys it", "text": "I'm currently a student, actually, studying business at university. I'd say what I enjoy most is the hands-on experience we get through group projects — it's not just sitting in lectures, we actually apply things, which makes it feel a lot less monotonous than I expected." },
-      { "angle": "Works, mixed feelings", "text": "I work full-time, in marketing. Honestly, the thing I like is the creative side of it, coming up with campaigns and so on — but if I'm being truthful, juggling multiple deadlines does mean the work-life balance isn't always great, so that's the one thing I'd probably change." }
-    ],
-    "bandTip": "🎯 Fluency & Coherence: \"if I'm being truthful\" and \"if I'm honest\" are hedging phrases that let you soften an opinion naturally mid-answer — examiners read this as confident, native-like discourse management, not hesitation."
+      { "id": "q1", "text": "Please describe your hometown a little.", "model": "Sure — it's a fairly small city, a stone's throw from the coast actually, and I was born and raised there, more or less." },
+      { "id": "q2", "text": "What is your hometown well-known for?", "model": "Probably its picturesque scenery, if I'm honest, especially the riverside area, which draws a fair number of visitors." },
+      { "id": "q3", "text": "Do you like your hometown?", "model": "I do, generally, yeah — I'd say what I like most is that close-knit community feel, everyone kind of knows everyone." },
+      { "id": "q4", "text": "Is that a big city or a small place?", "model": "It's fairly small, actually, more of a large town than a proper city, if I'm honest." },
+      { "id": "q5", "text": "How long have you been living there?", "model": "My whole life, pretty much, aside from a couple of years away for university." },
+      { "id": "q6", "text": "Do you think you will continue living there for a long time?", "model": "Probably not forever, if I'm honest, though I'm not in any rush to leave either." },
+      { "id": "q7", "text": "Would you like to live in the countryside in the future?", "model": "Actually, yes, I think I would eventually — somewhere with a bit more picturesque scenery and a lot less noise." },
+      { "id": "q8", "text": "Have you ever lived in the countryside?", "model": "Not really, no — the closest I've come is visiting my grandparents, who live in a fairly quiet backwater, to be honest." },
+      { "id": "q9", "text": "Do you ever spend time in the countryside?", "model": "Occasionally, yeah, mostly visiting family — it's honestly a nice break from city life." },
+      { "id": "q10", "text": "What is the difference between living in the countryside and the city?", "model": "I'd say pace, mainly — the countryside's obviously a lot slower, whereas the city's constantly changing, always something new going on." },
+      { "id": "q11", "text": "What do people living in the countryside like to do?", "model": "From what I've seen, a lot of outdoor stuff, gardening, walking, that sort of thing — much more than people tend to do in the city." },
+      { "id": "q12", "text": "What do you like to do in the countryside?", "model": "Mostly just relax, honestly, go for long walks, completely unplug from everything for a few days." },
+      { "id": "q13", "text": "How has your town changed over the last 20 years?", "model": "Quite a lot, actually — it's undergone significant changes, what used to be farmland is basically a sprawling suburb now, a far cry from how I remember it as a kid." }
+    ]
   },
   {
-    "id": "p1-technology",
+    "id": "p1-home-accommodation",
     "part": 1,
-    "tier": "premium",
-    "theme": "Technology & Internet Use",
-    "linkedTo": null,
-    "questions": [
-      "How much time do you spend online every day?",
-      "What do you mainly use the internet for?",
-      "Do you think you rely on technology too much?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "glued to my phone", "meaning": "using a phone constantly", "example": "If I'm honest, I'm pretty much glued to my phone most evenings." },
-      { "term": "streamline everyday tasks", "meaning": "make routine tasks quicker and easier", "example": "Apps like that really streamline everyday tasks, like banking or shopping." },
-      { "term": "doomscrolling", "meaning": "endlessly scrolling through negative news or content", "example": "I've had to actively stop myself doomscrolling before bed." },
-      { "term": "a digital detox", "meaning": "a period of avoiding screens/technology", "example": "I tried a digital detox last summer — lasted about two days." },
-      { "term": "heavily reliant on", "meaning": "very dependent on", "example": "I'd say I'm heavily reliant on my phone for pretty much everything now." },
-      { "term": "at the touch of a button", "meaning": "instantly and easily accessible", "example": "You can get almost any information at the touch of a button these days." },
-      { "term": "screen time", "meaning": "time spent using digital devices", "example": "My screen time report last week was honestly a bit alarming." },
-      { "term": "unplug", "meaning": "to disconnect from devices/technology", "example": "I try to unplug completely on Sundays, though it doesn't always work." }
-    ],
-    "models": [
-      { "angle": "Heavy user, self-aware", "text": "Probably too much, if I'm honest — I checked my screen time recently and it was well over five hours. Mostly it's for work messages and social media, though. I do think I'm heavily reliant on it, actually, to the point where I've started trying to unplug at least one evening a week." },
-      { "angle": "Moderate user, practical view", "text": "I'd say a few hours, mainly for practical stuff — banking, maps, that sort of thing. It streamlines everyday tasks so much that I don't really see it as a bad habit, as long as you're not doomscrolling for hours, which I try to avoid." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"to the point where I've started trying to unplug\" is a result clause — a Band 8+ grammar feature. Practice linking an idea to its consequence with \"to the point where\" instead of just saying \"so.\""
-  },
-  {
-    "id": "p1-hobbies",
-    "part": 1,
-    "tier": "premium",
-    "theme": "Hobbies & Free Time",
-    "linkedTo": null,
-    "questions": [
-      "What do you usually do in your free time?",
-      "Have your hobbies changed since you were younger?",
-      "Do you prefer hobbies you do alone or with others?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "unwind", "meaning": "relax after a period of work or stress", "example": "Reading is how I unwind after a long day." },
-      { "term": "pick something up", "meaning": "start a new hobby or skill", "example": "I picked up photography during the pandemic, actually." },
-      { "term": "fall by the wayside", "meaning": "be abandoned or neglected over time", "example": "Piano lessons kind of fell by the wayside once I started university." },
-      { "term": "a creative outlet", "meaning": "a way to express creativity", "example": "Painting's my creative outlet — I don't do it for anyone but myself." },
-      { "term": "recharge my batteries", "meaning": "rest and restore energy", "example": "Weekends are really about recharging my batteries." },
-      { "term": "an acquired taste", "meaning": "something you learn to enjoy over time", "example": "Running was honestly an acquired taste for me." },
-      { "term": "solitary activity", "meaning": "an activity done alone", "example": "I actually enjoy solitary activities more than team ones." },
-      { "term": "get into the swing of", "meaning": "become comfortable or established in something", "example": "It took a while to get into the swing of it, but I love it now." }
-    ],
-    "models": [
-      { "angle": "Changed over time", "text": "It's changed a fair bit, actually — as a kid it was mostly sport, but these days I'd say reading and cooking are my main hobbies. I think a lot of the sportier stuff just fell by the wayside once I got busier with work, but cooking's become a proper creative outlet for me." },
-      { "angle": "Prefers group activities", "text": "I'm someone who really needs other people involved, if I'm honest — solitary activities like reading never quite stuck for me. I play in a five-a-side football team every week, and it's less about the sport, really, more just a chance to unwind with friends." }
-    ],
-    "bandTip": "🎯 Coherence: notice both models open with a clear stance (\"it's changed a fair bit\" / \"I really need other people involved\") before explaining — always answer the question directly first, then justify. Examiners mark down answers that bury the actual answer in the middle."
-  },
-  {
-    "id": "p1-food",
-    "part": 1,
-    "tier": "premium",
-    "theme": "Food & Cooking",
-    "linkedTo": null,
-    "questions": [
-      "Do you enjoy cooking?",
-      "What's your favourite type of food?",
-      "Do you think eating habits in your country are changing?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "an adventurous eater", "meaning": "someone willing to try unusual foods", "example": "I'd call myself a fairly adventurous eater, to be honest." },
-      { "term": "comfort food", "meaning": "food that provides emotional comfort, often simple", "example": "On a bad day, it's straight to comfort food for me." },
-      { "term": "from scratch", "meaning": "made using raw ingredients, not pre-made", "example": "I try to cook from scratch as much as I can." },
-      { "term": "convenience food", "meaning": "pre-prepared food requiring little effort", "example": "People are relying more on convenience food than they used to." },
-      { "term": "acquired a taste for", "meaning": "developed a liking for something over time", "example": "I've genuinely acquired a taste for spicy food since moving abroad." },
-      { "term": "a far cry from healthy", "meaning": "not healthy at all", "example": "It's delicious, but it's a far cry from healthy, let's be honest." },
-      { "term": "on the go", "meaning": "while busy or moving around", "example": "A lot of people just eat on the go now, which wasn't the norm before." },
-      { "term": "home-cooked meal", "meaning": "a meal prepared at home, not bought", "example": "Nothing beats a proper home-cooked meal, honestly." }
-    ],
-    "models": [
-      { "angle": "Loves cooking, traditional food", "text": "I do, yeah, quite a lot actually — I find it really relaxing, oddly enough. I try to cook from scratch most nights rather than relying on convenience food. My favourite is probably traditional food from my region, it's just proper comfort food for me." },
-      { "angle": "Not a cook, notices changing habits", "text": "Not really, if I'm honest, I'm not the best cook. I'd say eating habits are definitely changing where I'm from, though — people eat on the go a lot more now, which is a far cry from how my grandparents used to eat, always sitting down together." }
-    ],
-    "bandTip": "🎯 Pronunciation: in Model B, stress \"definitely\" and \"a lot more\" — Part 1 examiners listen for natural sentence stress on the words carrying the opinion, not flat, even-weighted delivery."
-  },
-  {
-    "id": "p1-family",
-    "part": 1,
-    "tier": "premium",
-    "theme": "Family",
-    "linkedTo": null,
-    "questions": [
-      "Do you have a big family?",
-      "Who are you closest to in your family?",
-      "How often do you see your extended family?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "immediate family", "meaning": "parents, siblings, and children", "example": "My immediate family is fairly small, just the four of us." },
-      { "term": "extended family", "meaning": "relatives beyond parents/siblings, e.g. cousins", "example": "My extended family, on the other hand, is huge." },
-      { "term": "we're a close family", "meaning": "family members are emotionally close", "example": "We're a close family, we speak most days actually." },
-      { "term": "drift apart", "meaning": "gradually become less close", "example": "We did drift apart a bit once everyone moved to different cities." },
-      { "term": "the black sheep", "meaning": "a family member seen as different from the rest", "example": "I'm kind of the black sheep, I'm the only one who moved abroad." },
-      { "term": "look up to", "meaning": "admire and respect someone", "example": "I've always looked up to my older sister, if I'm honest." },
-      { "term": "keep in touch", "meaning": "maintain regular contact", "example": "We make an effort to keep in touch even though we're all busy." },
-      { "term": "a tight-knit family", "meaning": "a very close, connected family", "example": "We're a pretty tight-knit family, we get together most weekends." }
-    ],
-    "models": [
-      { "angle": "Close to a sibling", "text": "I'd say a medium-sized immediate family, and then a fairly huge extended family on my mum's side. I'm probably closest to my older sister — I've always looked up to her, honestly, and we still speak almost every day even though she doesn't live nearby anymore." },
-      { "angle": "Sees extended family rarely", "text": "My immediate family's fairly close, but my extended family, not so much, if I'm being honest — we did drift apart a bit once people started moving away for work. We try to keep in touch, but realistically I only see them once or twice a year now, maybe at a wedding or something." }
-    ],
-    "bandTip": "🎯 Lexical Resource: \"immediate family\" vs \"extended family\" is a precise distinction many candidates miss, saying just \"family\" for both. Using the correct term for each shows topic-specific vocabulary control."
-  },
-  {
-    "id": "p1-weather-seasons",
-    "part": 1,
-    "tier": "premium",
-    "theme": "Weather & Seasons",
-    "linkedTo": null,
-    "questions": [
-      "What's your favourite season?",
-      "Does the weather affect your mood?",
-      "What's the weather like where you live at the moment?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "a mild climate", "meaning": "moderate, not extreme temperatures", "example": "We're lucky, we've got a fairly mild climate here." },
-      { "term": "scorching heat", "meaning": "extremely hot weather", "example": "Summers can get to scorching heat, honestly unbearable at times." },
-      { "term": "bundle up", "meaning": "dress warmly", "example": "You really have to bundle up once winter kicks in." },
-      { "term": "under the weather", "meaning": "feeling slightly unwell", "example": "I always feel a bit under the weather when it's grey for weeks." },
-      { "term": "a change of season", "meaning": "the transition between seasons", "example": "I actually love the change of season, especially autumn coming in." },
-      { "term": "put a damper on", "meaning": "spoil or dampen an occasion or mood", "example": "Rain can really put a damper on weekend plans here." },
-      { "term": "seasonal affective disorder-ish", "meaning": "informally, feeling low during darker months", "example": "I get a bit low in winter, almost seasonal-affective-disorder-ish, honestly." },
-      { "term": "crisp autumn air", "meaning": "cool, fresh air typical of autumn", "example": "There's nothing like that crisp autumn air first thing in the morning." }
-    ],
-    "models": [
-      { "angle": "Loves autumn, weather affects mood", "text": "Autumn, hands down, for me. There's something about that crisp autumn air that just puts me in a good mood. And yeah, the weather does affect me quite a bit, actually — I definitely feel a bit under the weather, mood-wise, when it's grey and rainy for too long." },
-      { "angle": "Prefers summer, weather doesn't matter", "text": "Summer, without a doubt — I can't stand the cold, so bundling up all winter really isn't for me. Honestly though, I don't think the weather affects my mood that much, I try not to let it put a damper on things either way." }
-    ],
-    "bandTip": "🎯 Fluency: \"hands down\" and \"without a doubt\" are strong, natural intensifiers for a quick, confident Part 1 opinion — much more native-sounding than repeating \"I really like.\""
-  },
-  {
-    "id": "p1-daily-routine",
-    "part": 1,
-    "tier": "premium",
-    "theme": "Daily Routine",
-    "linkedTo": null,
-    "questions": [
-      "What does a typical day look like for you?",
-      "What part of your day do you enjoy most?",
-      "Would you like to change your routine?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "creature of habit", "meaning": "someone who likes routine", "example": "I'm a total creature of habit, same routine every day." },
-      { "term": "hit the ground running", "meaning": "start the day/task energetically and immediately", "example": "I like to hit the ground running as soon as I'm up." },
-      { "term": "wind down", "meaning": "relax before the end of the day", "example": "I usually wind down with a bit of reading before bed." },
-      { "term": "on autopilot", "meaning": "doing something automatically, without thinking", "example": "Honestly, my morning routine is basically on autopilot now." },
-      { "term": "squeeze in", "meaning": "fit an activity into a busy schedule", "example": "I try to squeeze in a short walk at lunchtime." },
-      { "term": "a slow starter", "meaning": "someone who takes time to become active/alert", "example": "I'm a bit of a slow starter, not a morning person at all." },
-      { "term": "shake things up", "meaning": "change routine to add variety", "example": "I'd honestly love to shake things up a bit more." },
-      { "term": "the same old routine", "meaning": "a repetitive, unchanging routine", "example": "It's the same old routine most days, if I'm honest." }
-    ],
-    "models": [
-      { "angle": "Structured, enjoys mornings", "text": "Pretty structured, actually — I'm up early, and I hit the ground running with a coffee and a bit of exercise before work. I'd say the morning's the part I enjoy most, oddly, it's the one part of the day that's actually mine before things get busy." },
-      { "angle": "Wants more variety", "text": "It's fairly repetitive, if I'm honest, the same old routine most days — work, home, wind down, repeat. I wouldn't mind shaking things up a bit, to be fair, maybe fitting in more time to squeeze in a proper hobby rather than just autopilot." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"the one part of the day that's actually mine\" uses a defining relative clause (\"that's actually mine\") to add precision — a small but effective way to sound more advanced than a flat list of activities."
-  },
-  {
-    "id": "p1-reading-books",
-    "part": 1,
-    "tier": "premium",
-    "theme": "Reading & Books",
-    "linkedTo": null,
-    "questions": [
-      "Do you enjoy reading?",
-      "What kind of books do you usually read?",
-      "Did you read more as a child than you do now?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "an avid reader", "meaning": "someone who reads a lot and enthusiastically", "example": "I wouldn't say I'm an avid reader, but I do enjoy it." },
-      { "term": "get lost in a book", "meaning": "become completely absorbed in reading", "example": "I love getting lost in a book on a rainy weekend." },
-      { "term": "a page-turner", "meaning": "a very exciting, hard-to-put-down book", "example": "The last thriller I read was a real page-turner." },
-      { "term": "fall out of the habit", "meaning": "stop doing something regularly", "example": "I definitely fell out of the habit once I started working full-time." },
-      { "term": "light reading", "meaning": "easy, undemanding reading material", "example": "After a long day I just want some light reading, honestly." },
-      { "term": "devour books", "meaning": "read books very quickly and eagerly", "example": "As a kid I used to devour books, one a week easily." },
-      { "term": "in my downtime", "meaning": "during free/relaxation time", "example": "I try to read a bit in my downtime, though it's rare these days." },
-      { "term": "non-fiction", "meaning": "factual, real-world writing", "example": "I've moved more towards non-fiction lately, oddly enough." }
-    ],
-    "models": [
-      { "angle": "Read more as a child", "text": "I do enjoy it, though probably not as much as I used to — as a kid I used to devour books, honestly, a new one every week or so. These days I've definitely fallen out of the habit a bit, mostly due to work, but I still try to get lost in a book on weekends." },
-      { "angle": "Reads more now, non-fiction", "text": "Actually, I'd say I read more now than I did as a child. Back then it was mostly whatever was assigned at school, but now I've genuinely gotten into non-fiction, history mostly, and I try to squeeze in a chapter or two in my downtime most evenings." }
-    ],
-    "bandTip": "🎯 Coherence: both models directly compare \"now\" vs \"as a child\" using time markers (\"back then,\" \"these days\") — a clean way to organize a before/after answer without losing the thread."
-  },
-  {
-    "id": "p1-music",
-    "part": 1,
-    "tier": "premium",
-    "theme": "Music",
-    "linkedTo": null,
-    "questions": [
-      "What kind of music do you like?",
-      "Did your taste in music change as you got older?",
-      "Do you listen to music while working or studying?"
-    ],
-    "structure": ["Direct answer", "Reason", "Detail"],
-    "vocab": [
-      { "term": "eclectic taste", "meaning": "a wide, varied range of preferences", "example": "I'd say I have pretty eclectic taste, honestly, a bit of everything." },
-      { "term": "background noise", "meaning": "sound in the background, not actively focused on", "example": "For me it's mostly background noise while I'm working." },
-      { "term": "grow out of", "meaning": "stop liking something as you mature", "example": "I thought I'd grow out of it, but I still love that genre." },
-      { "term": "a guilty pleasure", "meaning": "something enjoyed despite feeling it shouldn't be", "example": "Pop music from the 2000s is a bit of a guilty pleasure of mine." },
-      { "term": "unwind to", "meaning": "relax by listening to (music)", "example": "I usually unwind to something slower in the evening." },
-      { "term": "a soundtrack to my life", "meaning": "music strongly linked to personal memories", "example": "That album is basically the soundtrack to my teenage years." },
-      { "term": "distracting", "meaning": "taking attention away from a task", "example": "Music with lyrics is way too distracting for me when I'm studying." },
-      { "term": "an ear for music", "meaning": "a natural ability to appreciate/understand music", "example": "I wouldn't say I've got a great ear for music, but I enjoy it." }
-    ],
-    "models": [
-      { "angle": "Eclectic, taste changed", "text": "Pretty eclectic, honestly, a bit of everything depending on my mood. It's definitely changed over the years, though — as a teenager it was mostly pop, whereas now I've grown into more jazz and classical, which I never thought I'd say." },
-      { "angle": "Focused genre, needs it to work", "text": "I mostly listen to instrumental or classical, if I'm honest, especially when I'm working. Anything with lyrics is way too distracting for me — it has to just be background noise, otherwise I can't focus on what I'm doing at all." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"which I never thought I'd say\" is a non-defining relative clause adding a personal comment — a natural way to show self-reflection without a new sentence."
-  },
-  {
-    "id": "p2-person-inspired",
-    "part": 2,
     "tier": "free",
-    "theme": "A Person Who Inspired You",
-    "linkedTo": null,
-    "questions": [
-      "Describe a person who has inspired you."
-    ],
-    "cueCardPoints": [
-      "who this person is",
-      "how you know them",
-      "what they are like",
-      "and explain why this person inspired you"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
+    "theme": "Home & Accommodation",
+    "tag": "Always in use",
+    "structure": ["Direct answer", "Reason", "Detail"],
     "vocab": [
-      { "term": "lead by example", "meaning": "influence others through one's own actions", "example": "She always led by example rather than just telling us what to do." },
-      { "term": "down-to-earth", "meaning": "practical, modest, and approachable", "example": "Despite everything she'd achieved, she stayed really down-to-earth." },
-      { "term": "unwavering", "meaning": "steady and not weakening", "example": "What struck me most was her unwavering determination." },
-      { "term": "left a lasting impression", "meaning": "had a long-term effect on someone", "example": "That conversation left a lasting impression on me, honestly." },
-      { "term": "against all odds", "meaning": "despite very difficult circumstances", "example": "She built the business against all odds, really, from nothing." },
-      { "term": "a driving force behind", "meaning": "the main motivating influence for something", "example": "She's been a driving force behind pretty much every decision I've made since." },
-      { "term": "instil a sense of", "meaning": "gradually establish an attitude or feeling in someone", "example": "She instilled a real sense of discipline in all of us." },
-      { "term": "went above and beyond", "meaning": "did much more than expected", "example": "She went above and beyond for students who were struggling." }
+      { "term": "spacious", "meaning": "having a lot of room", "example": "It's not huge, but it feels fairly spacious for a two-bedroom flat." },
+      { "term": "a cosy feel", "meaning": "a warm, comfortable atmosphere", "example": "It's got a cosy feel, especially in winter." },
+      { "term": "fully furnished", "meaning": "already equipped with furniture", "example": "We moved into a fully furnished flat, which made things a lot easier." },
+      { "term": "natural light", "meaning": "daylight coming into a room", "example": "The living room gets loads of natural light in the mornings." },
+      { "term": "open-plan", "meaning": "a layout with few or no dividing walls", "example": "The kitchen and living room are open-plan, which I really like." },
+      { "term": "downsize", "meaning": "move to a smaller home", "example": "We might downsize once the kids move out." },
+      { "term": "a housewarming", "meaning": "a party celebrating a new home", "example": "We had a housewarming not long after we moved in." },
+      { "term": "make it feel like home", "meaning": "personalize a space so it feels comfortable and familiar", "example": "Small changes like that really help make it feel like home." }
     ],
-    "models": [
-      { "angle": "A teacher/mentor", "text": "I'd like to talk about my high school English teacher, someone called Mrs. Karimova, who genuinely changed the way I think about learning. I got to know her over three years, as she taught my class right through to graduation, and honestly, from the very first lesson she stood out — she was incredibly down-to-earth, never talked down to us, but at the same time she had this unwavering standard for effort that she somehow got everyone to live up to. What really left a lasting impression on me was one term when I was completely ready to give up on writing altogether — I just didn't think I was any good at it — and instead of just telling me to try harder, she sat down with me after class, more than once actually, and went through my work line by line, showing me exactly what was working and what wasn't. She never once made me feel stupid about it, which, looking back, is probably the hardest part of teaching to get right. I think what inspired me most, in the end, wasn't really the subject itself, it was watching someone go so far above and beyond for a student who wasn't even particularly remarkable at the time. It's honestly part of the reason I ended up choosing a career that involves teaching others myself." },
-      { "angle": "A family member", "text": "The person I want to talk about is my grandmother, who I was extremely close to growing up. I knew her my whole life, obviously, but I think I only really started to understand how remarkable she was once I got a bit older and heard more of her story. She built a small business from absolutely nothing, against all odds really, at a time when that wasn't exactly common or easy for women in her generation, and she did it while raising four children more or less on her own. What she was like, day to day, was actually quite quiet and unassuming — she wasn't the type to talk about her achievements at all, you'd have to ask her directly, and even then she'd downplay it. I think that's actually what makes her so inspiring to me, if I'm honest, that unwavering determination paired with almost no ego about it whatsoever. She's been a driving force behind how I approach setbacks in my own life, to be honest — whenever things get difficult, I sort of picture how she'd have handled it, and it puts things into perspective pretty quickly." }
-    ],
-    "bandTip": "🎯 Fluency & Coherence: both Part 2 models use sequencing signposts (\"What really left a lasting impression,\" \"What she was like, day to day\") to move between cue-card points smoothly — this replaces robotic \"firstly, secondly\" transitions and sounds far more natural over a full 2-minute turn."
-  },
-  {
-    "id": "p2-place-to-visit",
-    "part": 2,
-    "tier": "premium",
-    "theme": "A Place You Would Like to Visit",
-    "linkedTo": null,
+    "bandTip": "🎯 Grammatical Range: notice short, natural contrast structures like \"it's not huge, but it feels fairly spacious\" — a simple \"not X, but Y\" pattern adds nuance to a Part 1 answer without needing complex grammar.",
     "questions": [
-      "Describe a place you would like to visit in the future."
-    ],
-    "cueCardPoints": [
-      "where it is",
-      "how you found out about it",
-      "what you would do there",
-      "and explain why you want to visit this place"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "off the beaten track", "meaning": "not a typical, well-known tourist destination", "example": "It's fairly off the beaten track, not somewhere you hear about much." },
-      { "term": "a bucket-list destination", "meaning": "a place someone wants to visit before anything else", "example": "It's genuinely been a bucket-list destination of mine for years." },
-      { "term": "steeped in history", "meaning": "having a long, rich history", "example": "The whole region is steeped in history, apparently." },
-      { "term": "stumbled across", "meaning": "found something by chance", "example": "I actually stumbled across it while researching something else entirely." },
-      { "term": "unspoiled scenery", "meaning": "natural beauty untouched by development", "example": "From the photos, the scenery there looks completely unspoiled." },
-      { "term": "immerse myself in", "meaning": "become fully involved in an experience or culture", "example": "I'd love to immerse myself in the local culture properly." },
-      { "term": "on my radar", "meaning": "something one is aware of and considering", "example": "It's been on my radar since a friend went a couple of years back." },
-      { "term": "a once-in-a-lifetime trip", "meaning": "an extremely special, rare travel experience", "example": "For me, it would genuinely be a once-in-a-lifetime trip." }
-    ],
-    "models": [
-      { "angle": "A remote natural destination", "text": "I'd like to talk about a place called Patagonia, which is right down in the south of Argentina and Chile. I first found out about it, honestly, through a documentary I stumbled across a couple of years ago, completely by accident, and I just couldn't stop thinking about it afterwards. From what I've seen, the scenery there is genuinely unspoiled, huge glaciers, mountains, that sort of thing, so if I ever made it there, I think I'd mostly want to go hiking, spend a few days somewhere really remote with basically no phone signal, which sounds appealing more than anything else these days. The reason I want to visit, if I'm honest, isn't really about ticking off famous landmarks — it's more that it feels like one of the few places left that's genuinely off the beaten track, and I think experiencing somewhere that untouched would be a bit of a reset for me, mentally. It's become a proper bucket-list destination at this point, and I'd love to go before it changes too much, to be honest, the way a lot of places have." },
-      { "angle": "A culturally rich city", "text": "The place I want to describe is Kyoto, in Japan. It's been on my radar for years, really, ever since a colleague showed me photos from her trip there, all the temples and the gardens, and it just stuck with me. If I went, I think what I'd do is fairly simple, honestly — just wander, visit as many of the old temples as I could, and try to immerse myself in the culture rather than rushing around ticking off a checklist. What draws me to it specifically is that it's steeped in history in a way that's still really visible day to day, not just in museums, and I think for me that would genuinely be a once-in-a-lifetime trip, especially if I timed it for cherry blossom season, which apparently makes the whole city look completely different." }
-    ],
-    "bandTip": "🎯 Lexical Resource: \"steeped in history\" and \"off the beaten track\" are natural collocations examiners specifically listen for on Part 2 place topics — memorize a handful like these rather than relying on plain adjectives like \"old\" or \"quiet.\""
-  },
-  {
-    "id": "p2-important-object",
-    "part": 2,
-    "tier": "premium",
-    "theme": "An Object That Is Important to You",
-    "linkedTo": null,
-    "questions": [
-      "Describe an object that is important to you."
-    ],
-    "cueCardPoints": [
-      "what it is",
-      "how you got it",
-      "what you use it for",
-      "and explain why it is important to you"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "sentimental value", "meaning": "value based on personal/emotional attachment, not money", "example": "It's not worth much, but it has huge sentimental value for me." },
-      { "term": "a family heirloom", "meaning": "an object passed down through generations", "example": "It's actually a family heirloom, passed down from my grandfather." },
-      { "term": "worn out", "meaning": "damaged from long use", "example": "It's fairly worn out by now, but I'd never replace it." },
-      { "term": "hold onto", "meaning": "keep something, often for emotional reasons", "example": "I've held onto it through every move I've made since." },
-      { "term": "irreplaceable", "meaning": "impossible to replace with something equal", "example": "To me, it's completely irreplaceable, honestly." },
-      { "term": "a constant reminder of", "meaning": "something that continually recalls a memory or idea", "example": "It's a constant reminder of where I actually come from." },
-      { "term": "came into my possession", "meaning": "formal way of saying \"I got it\"", "example": "It came into my possession quite unexpectedly, actually." },
-      { "term": "carry a lot of weight", "meaning": "figuratively, to have great emotional significance", "example": "Such a small object, but it carries a lot of weight for me." }
-    ],
-    "models": [
-      { "angle": "A family heirloom", "text": "I'd like to talk about an old wristwatch that belonged to my grandfather. It's a proper family heirloom — it came into my possession when he passed away a few years ago, and my father gave it to me since apparently I'd always admired it as a kid. Honestly, I don't use it that often day to day, it's fairly worn out and not exactly reliable for telling the time anymore, but every so often, for something important, I'll wear it deliberately. The reason it matters so much to me is that it's a constant reminder of him, really, and of the kind of person he was — quite understated, never flashy, but incredibly consistent. Such a small object, but it genuinely carries a lot of weight for me, and I know I'll pass it on eventually, the same way he did." },
-      { "angle": "A practical, everyday object", "text": "The object I've chosen is actually just my laptop, which might sound like a strange or overly practical choice, but let me explain. I bought it myself, with my first proper salary, so it does have a bit of sentimental value beyond just being useful. I use it for pretty much everything, honestly — work, staying in touch with friends abroad, even just unwinding in the evening. What makes it important to me isn't really the object itself, if I'm being completely honest, it's more what it represents, that first step of being financially independent, which I hadn't really felt before that point. It's a bit worn out now, the battery barely holds a charge, but I'm oddly reluctant to replace it for exactly that reason." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"which might sound like a strange choice, but let me explain\" is a great Band 8+ technique — acknowledging an unusual answer and justifying it shows control and confidence, not just description."
-  },
-  {
-    "id": "p2-memorable-event",
-    "part": 2,
-    "tier": "premium",
-    "theme": "A Memorable Event or Celebration",
-    "linkedTo": null,
-    "questions": [
-      "Describe a memorable event or celebration you attended."
-    ],
-    "cueCardPoints": [
-      "what the event was",
-      "when and where it took place",
-      "who you were with",
-      "and explain why it was memorable"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "a joyous occasion", "meaning": "a happy celebratory event", "example": "It was such a joyous occasion, honestly, the whole street turned out." },
-      { "term": "in full swing", "meaning": "at the peak of activity", "example": "By the time we arrived, the celebration was already in full swing." },
-      { "term": "a once-off event", "meaning": "something that happens only once, non-recurring", "example": "It was very much a once-off event, nothing like it since." },
-      { "term": "sentimental", "meaning": "evoking emotion, tender feelings", "example": "It got fairly sentimental towards the end, if I'm honest." },
-      { "term": "stick in my memory", "meaning": "be remembered vividly", "example": "One particular moment really sticks in my memory." },
-      { "term": "a whirlwind of activity", "meaning": "a chaotic, fast-paced period", "example": "The whole day was just a whirlwind of activity, non-stop." },
-      { "term": "against a backdrop of", "meaning": "with something as the setting/context", "example": "It happened against a backdrop of quite a difficult year for the family." },
-      { "term": "an unforgettable atmosphere", "meaning": "a memorable, distinctive mood or feeling", "example": "There was just an unforgettable atmosphere in the room that night." }
-    ],
-    "models": [
-      { "angle": "A family wedding", "text": "I want to describe my cousin's wedding, which took place about two years ago, back in my hometown. It was a fairly large, traditional celebration, and I was there with pretty much my entire extended family, which doesn't happen often these days since everyone's so spread out now. By the time the evening reception started, things were already in full swing, music, dancing, the whole thing, and honestly there was just an unforgettable atmosphere the entire night. One particular moment that really sticks in my memory is my grandmother giving a short, completely unplanned speech, quite sentimental, about how proud she was to see the family together again, which I don't think there was a dry eye in the room for. It was memorable mainly because it reminded me how rarely we actually get everyone in one place anymore — it felt like a once-off event in that sense, even though weddings happen all the time." },
-      { "angle": "A public/national celebration", "text": "The event I'll talk about is a national holiday celebration I attended in the capital a few years back, with a couple of close friends. We'd travelled a fair distance for it, actually, and arrived to find the whole city centre already a whirlwind of activity, performances, fireworks later on, that sort of thing. What made it particularly memorable, I think, was the atmosphere more than any single moment — being surrounded by that many people all genuinely enjoying themselves, it was honestly quite moving, in a way I hadn't expected. It happened against a backdrop of a fairly tense period nationally, if I'm honest, so seeing everyone come together like that made it feel a lot more significant than just a typical celebration." }
-    ],
-    "bandTip": "🎯 Pronunciation: on longer Part 2 sentences like the second model's final one, pause briefly after \"if I'm honest\" — a short, deliberate pause there signals a genuine reflective comment rather than a rehearsed line."
-  },
-  {
-    "id": "p2-helped-someone",
-    "part": 2,
-    "tier": "premium",
-    "theme": "A Time You Helped Someone",
-    "linkedTo": null,
-    "questions": [
-      "Describe a time when you helped someone."
-    ],
-    "cueCardPoints": [
-      "who you helped",
-      "what the situation was",
-      "what you did to help",
-      "and explain how you felt about it afterwards"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "at a loss", "meaning": "confused, not knowing what to do", "example": "She was completely at a loss when I first spoke to her." },
-      { "term": "step in", "meaning": "intervene to help", "example": "I felt like I had to step in at that point." },
-      { "term": "go the extra mile", "meaning": "make extra effort beyond what's expected", "example": "It wasn't much, but I tried to go the extra mile for her." },
-      { "term": "a weight off someone's shoulders", "meaning": "relief from a burden or worry", "example": "You could see it was a weight off her shoulders afterwards." },
-      { "term": "put myself in their shoes", "meaning": "imagine another person's perspective", "example": "I just tried to put myself in their shoes, really." },
-      { "term": "make a real difference", "meaning": "have a significant positive impact", "example": "It felt like such a small thing, but it made a real difference." },
-      { "term": "lend a hand", "meaning": "help with a task", "example": "I just happened to be free to lend a hand that week." },
-      { "term": "it comes with the territory", "meaning": "an expected part of a role or situation", "example": "Helping out family, I think it just comes with the territory, honestly." }
-    ],
-    "models": [
-      { "angle": "Helped a stranger/neighbour", "text": "I'd like to talk about an elderly neighbour of mine, someone I didn't actually know that well at the time. The situation was that she'd recently moved in alone, and I noticed she was completely at a loss trying to set up her internet and a few other things at home, technology just wasn't her strong point at all. So I ended up stepping in, more or less, and spent an afternoon with her sorting it all out, showing her how to video call her daughter abroad, which turned out to matter a lot more to her than the internet itself, really. Looking back, I felt genuinely good about it afterwards, not in a self-congratulatory way, more that it was honestly such a small thing for me to do, an afternoon, but it clearly took a real weight off her shoulders, and I think that's stuck with me since." },
-      { "angle": "Helped a friend/colleague", "text": "The person I want to talk about is a close friend of mine from university, who was going through a genuinely difficult time with her coursework, right before a major deadline. I remember she called me completely overwhelmed, at a loss about where to even start, so I dropped what I was doing that weekend and basically sat with her for hours, helping her plan it all out and just talking through the material with her. It wasn't a huge sacrifice on my part, if I'm honest, but I did feel it was important to go the extra mile given how stressed she was. Afterwards, I felt quite satisfied, to be honest, less because of what I did and more because I could see it had genuinely made a real difference to how she was coping with everything." }
-    ],
-    "bandTip": "🎯 Fluency & Coherence: notice both models delay the reflection until the very end (\"looking back,\" \"afterwards\") — always keep the \"how you felt\" part for last, since jumping to feelings too early breaks the natural chronological flow examiners expect."
-  },
-  {
-    "id": "p2-skill-to-learn",
-    "part": 2,
-    "tier": "premium",
-    "theme": "A Skill You Would Like to Learn",
-    "linkedTo": null,
-    "questions": [
-      "Describe a skill you would like to learn."
-    ],
-    "cueCardPoints": [
-      "what the skill is",
-      "how you would learn it",
-      "how long it would take",
-      "and explain why you want to learn this skill"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "from square one", "meaning": "from the very beginning", "example": "I'd be starting completely from square one, to be honest." },
-      { "term": "a steep learning curve", "meaning": "something that takes significant effort to learn initially", "example": "I imagine it'll be a steep learning curve at first." },
-      { "term": "self-taught", "meaning": "learned without formal instruction", "example": "I'd probably try to be mostly self-taught, using online resources." },
-      { "term": "muscle memory", "meaning": "the body's learned physical familiarity with a task", "example": "It's really about building up muscle memory over time." },
-      { "term": "put in the hours", "meaning": "dedicate significant time to practice", "example": "You just have to put in the hours consistently, I think." },
-      { "term": "broaden my horizons", "meaning": "expand one's knowledge or experience", "example": "It would genuinely broaden my horizons, I think." },
-      { "term": "practical application", "meaning": "real-world usefulness of a skill", "example": "It also has really practical application, not just for fun." },
-      { "term": "take the plunge", "meaning": "decide to finally commit to doing something", "example": "I've been meaning to take the plunge for years, honestly." }
-    ],
-    "models": [
-      { "angle": "A practical/technical skill", "text": "I'd really like to learn how to code properly, something I've been putting off for years, if I'm honest. I think I'd start with online courses, self-taught mostly, since there's a huge amount of free material out there now, and maybe later join some kind of local group or workshop once I've got the basics down. Realistically, to get to a level where I could actually build something useful, I'd guess it would take a good year or so of consistently putting in the hours, evenings and weekends probably. The reason I want to learn it is partly practical — it has real practical application for pretty much any career these days — but also, honestly, I just think it would broaden my horizons in terms of how I think about problems generally." },
-      { "angle": "A creative/artistic skill", "text": "The skill I'd love to pick up is playing the guitar, something I never got round to as a kid despite always wanting to. I think I'd learn it fairly informally, to be honest, mostly through online tutorials, though I'd probably take the plunge eventually and get a few in-person lessons once I've built some muscle memory and got past the absolute beginner stage. It would probably take a couple of years to get genuinely good, from what I understand, starting completely from square one like that. Why I want to learn it, really, is less about performing for anyone and more just wanting a proper creative outlet, something completely unrelated to work that I can get lost in." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"something I've been putting off for years\" and \"something I never got round to\" both use a reduced relative clause after \"something\" — a compact, natural structure that avoids the repetitive \"which I...\" pattern."
-  },
-  {
-    "id": "p2-useful-technology",
-    "part": 2,
-    "tier": "premium",
-    "theme": "A Piece of Technology You Find Useful",
-    "linkedTo": null,
-    "questions": [
-      "Describe a piece of technology that you find useful in your daily life."
-    ],
-    "cueCardPoints": [
-      "what it is",
-      "how often you use it",
-      "what you use it for",
-      "and explain why you find it useful"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "an indispensable tool", "meaning": "something essential, impossible to do without", "example": "It's honestly become an indispensable tool in my daily life." },
-      { "term": "at my fingertips", "meaning": "readily and immediately available", "example": "I've got pretty much everything at my fingertips now." },
-      { "term": "streamline", "meaning": "make a process simpler and more efficient", "example": "It's really streamlined how I plan my whole week." },
-      { "term": "second nature", "meaning": "so familiar it requires no conscious thought", "example": "Using it has become second nature at this point." },
-      { "term": "a game-changer", "meaning": "something that significantly improves a situation", "example": "It's been a genuine game-changer for how I manage my time." },
-      { "term": "cut down on", "meaning": "reduce the amount of something", "example": "It's helped me cut down on wasted time massively." },
-      { "term": "sync across devices", "meaning": "keep information updated consistently on multiple devices", "example": "Everything syncs across devices automatically, which I love." },
-      { "term": "a lifesaver", "meaning": "something extremely helpful in a difficult situation", "example": "Honestly, it's been a lifesaver more times than I can count." }
-    ],
-    "models": [
-      { "angle": "A productivity app", "text": "I'd like to talk about a task-management app I use, something I honestly didn't think I'd rely on so much when I first downloaded it. I probably check it a dozen times a day, if I'm being truthful, and I use it mainly to keep track of work deadlines, but also smaller everyday things I'd otherwise forget entirely. What makes it so useful, for me, is that it syncs across devices automatically, so whether I add something on my phone or laptop, it's just there, at my fingertips, wherever I am. It's genuinely become an indispensable tool at this point, to the extent that using it feels like second nature — I honestly can't imagine managing my week without it anymore." },
-      { "angle": "A physical device", "text": "The piece of technology I want to describe is actually just my smartwatch, which I wear pretty much constantly. I use it throughout the day, honestly, for everything from tracking my sleep to getting quick notifications without having to pull my phone out every five minutes. It's turned out to be more useful than I expected, if I'm honest — it's helped me cut down significantly on how much time I spend scrolling on my actual phone, oddly enough, since it filters what I actually need to see. I'd say it's been a bit of a game-changer for my focus in particular, which isn't something I expected from what initially felt like a fairly unnecessary purchase." }
-    ],
-    "bandTip": "🎯 Lexical Resource: \"to the extent that\" is a precise way to link cause and result (\"it's indispensable, to the extent that using it feels like second nature\") — a stronger, more academic-sounding alternative to a simple \"so\" clause."
-  },
-  {
-    "id": "p2-book-enjoyed",
-    "part": 2,
-    "tier": "premium",
-    "theme": "A Book You Enjoyed",
-    "linkedTo": null,
-    "questions": [
-      "Describe a book you have read that you enjoyed."
-    ],
-    "cueCardPoints": [
-      "what the book was about",
-      "when you read it",
-      "why you decided to read it",
-      "and explain why you enjoyed it"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "a gripping read", "meaning": "an exciting, engaging book", "example": "It was honestly such a gripping read, I finished it in days." },
-      { "term": "came highly recommended", "meaning": "was strongly suggested by others", "example": "It came highly recommended by a close friend of mine." },
-      { "term": "thought-provoking", "meaning": "stimulating serious thought", "example": "It was genuinely thought-provoking in a way I didn't expect." },
-      { "term": "couldn't put it down", "meaning": "found a book impossible to stop reading", "example": "I honestly couldn't put it down once I'd started." },
-      { "term": "a plot twist", "meaning": "an unexpected turn in a story", "example": "There was one plot twist near the end I genuinely didn't see coming." },
-      { "term": "resonate with", "meaning": "connect meaningfully with, evoke a personal response", "example": "The main character's struggles really resonated with me." },
-      { "term": "a slow burn", "meaning": "something that starts slowly but builds", "example": "It's a bit of a slow burn at first, but it's worth sticking with." },
-      { "term": "stayed with me", "meaning": "had a lasting emotional or mental impact", "example": "That ending genuinely stayed with me for weeks afterwards." }
-    ],
-    "models": [
-      { "angle": "A novel", "text": "I'd like to talk about a novel I read a couple of years back, which follows a family across several generations dealing with quite a lot of change and hardship. I decided to read it because it came highly recommended by a close friend who has fairly similar taste to me, and it turned out to be a bit of a slow burn at the start, if I'm honest, but once it picked up, I genuinely couldn't put it down. What made it so enjoyable, for me, was how thought-provoking the themes were, family, identity, that sort of thing, and there was one particular plot twist about two-thirds through that I genuinely didn't see coming. It's the kind of book that stayed with me for a long time afterwards, to the point where I still think about certain scenes fairly often, even now." },
-      { "angle": "A non-fiction book", "text": "The book I want to describe is actually a non-fiction one, about the history and psychology of decision-making, which I picked up almost by accident while browsing a bookshop maybe a year ago. I decided to buy it mostly out of curiosity, if I'm honest, rather than any specific recommendation, and it turned out to be a genuinely gripping read, which surprised me a bit given it's non-fiction. What I enjoyed most was how directly it resonated with situations from my own life, decisions I'd made and, looking back, probably shouldn't have — it made me rethink quite a lot, actually. I'd say it's one of the few books that's genuinely changed how I approach things day to day, not just something I read and forgot." }
-    ],
-    "bandTip": "🎯 Coherence: notice the structure \"why you decided to read it\" always comes before \"why you enjoyed it\" in both models — keep cause (why you started) separate from effect (why you liked it), since mixing them up makes Part 2 answers feel disorganized."
-  },
-  {
-    "id": "p2-memorable-journey",
-    "part": 2,
-    "tier": "premium",
-    "theme": "A Memorable Journey or Trip",
-    "linkedTo": null,
-    "questions": [
-      "Describe a journey or trip you remember well."
-    ],
-    "cueCardPoints": [
-      "where you went",
-      "who you travelled with",
-      "how you got there",
-      "and explain why this journey was memorable"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "an eventful journey", "meaning": "a trip full of notable, often unexpected, occurrences", "example": "To put it mildly, it was an eventful journey." },
-      { "term": "off the beaten path", "meaning": "away from typical tourist routes", "example": "We ended up somewhere completely off the beaten path." },
-      { "term": "hit a snag", "meaning": "encounter an unexpected problem", "example": "We hit a snag almost immediately, actually, a missed connection." },
-      { "term": "make the most of it", "meaning": "use a situation to best advantage despite limitations", "example": "We just decided to make the most of it, honestly." },
-      { "term": "a whirlwind trip", "meaning": "a very fast-paced, brief trip", "example": "It was a bit of a whirlwind trip, only four days." },
-      { "term": "in hindsight", "meaning": "looking back, with the benefit of later knowledge", "example": "In hindsight, it was one of the best decisions we made." },
-      { "term": "a road less travelled", "meaning": "an unusual or less common route/choice", "example": "We took a bit of a road less travelled, and it paid off." },
-      { "term": "leave a mark", "meaning": "have a lasting effect or impression", "example": "That particular trip really left a mark on me, if I'm honest." }
-    ],
-    "models": [
-      { "angle": "A trip that went wrong but turned out well", "text": "I'd like to describe a trip I took to a fairly remote coastal town, a few years ago now, with two close friends from university. We drove there ourselves, actually, which in hindsight probably wasn't the best decision, because we hit a snag almost immediately, the car broke down about halfway, in the middle of nowhere with barely any phone signal. It was a stressful few hours, honestly, but we ended up just deciding to make the most of it while we waited for help, walking around this tiny, completely off the beaten path village nearby, which turned out to be one of the most memorable parts of the whole trip. What made it so memorable, really, wasn't the destination itself in the end, it was that unplanned detour — it's honestly the part of the trip we still talk about the most." },
-      { "angle": "A significant solo trip", "text": "The journey I want to talk about is a trip I took entirely on my own, to a country I'd never visited before, about two years ago. I travelled by train for most of it, actually, which I'd specifically chosen over flying since I wanted to properly see the landscape change along the way rather than just arriving. It was a fairly whirlwind trip, only about five days in total, but travelling completely alone meant I had to constantly figure things out for myself, which, looking back, genuinely built up my confidence in a way I hadn't expected before I left. It's memorable mainly for that reason, if I'm honest, less about any single place I saw and more about what it taught me about handling things independently." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"which in hindsight probably wasn't the best decision\" is a non-defining relative clause commenting on the whole previous idea, not just one noun — a genuinely advanced structure worth practicing deliberately."
-  },
-  {
-    "id": "p2-change-in-life",
-    "part": 2,
-    "tier": "premium",
-    "theme": "A Change You Would Like to Make in Your Life",
-    "linkedTo": null,
-    "questions": [
-      "Describe a change you would like to make in your life."
-    ],
-    "cueCardPoints": [
-      "what the change is",
-      "why you haven't made it yet",
-      "how you would make it happen",
-      "and explain how this change would affect your life"
-    ],
-    "structure": ["Hook", "Context", "Detail", "Reflection"],
-    "vocab": [
-      { "term": "a fresh start", "meaning": "a new beginning", "example": "I think I really need a fresh start, if I'm honest." },
-      { "term": "get stuck in a rut", "meaning": "become trapped in an unchanging, unsatisfying routine", "example": "I've felt fairly stuck in a rut for the past year or so." },
-      { "term": "take the leap", "meaning": "make a bold, decisive change", "example": "I just haven't quite worked up the courage to take the leap yet." },
-      { "term": "weigh up the pros and cons", "meaning": "carefully consider advantages and disadvantages", "example": "I've been weighing up the pros and cons for months now." },
-      { "term": "a comfort zone", "meaning": "a situation where one feels safe and at ease", "example": "It would definitely mean stepping outside my comfort zone." },
-      { "term": "put things off", "meaning": "delay or postpone action", "example": "I've put it off for far too long, if I'm honest." },
-      { "term": "a turning point", "meaning": "a moment of significant change", "example": "It could genuinely be a turning point for me, career-wise." },
-      { "term": "hold myself back", "meaning": "prevent oneself from acting or progressing", "example": "I think fear's mostly what's holding myself back, honestly." }
-    ],
-    "models": [
-      { "angle": "A career change", "text": "The change I'd like to talk about is switching careers entirely, moving from finance, which is what I currently do, into something more creative, possibly design. I haven't made the change yet mainly because of fairly practical concerns, if I'm honest, financial stability being the main one, and I think fear of starting from nothing is probably what's really holding me back beneath that. If I were to actually make it happen, I'd probably start by taking some evening courses first, testing the waters a bit before taking the leap fully and giving up a stable income altogether. I think it would affect my life quite significantly, to be honest, hopefully for the better in terms of day-to-day satisfaction, though I'm well aware it would mean stepping well outside my comfort zone for a while." },
-      { "angle": "A lifestyle change", "text": "I'd like to describe wanting to relocate to a different city, somewhere with a slower pace of life than where I currently live. I haven't done it yet mainly because of family ties, honestly, and a bit of comfort too, if I'm being truthful — I've got a solid routine here, even if I do feel stuck in a rut sometimes. To actually make it happen, I think I'd need to properly weigh up the pros and cons first, maybe visit a couple of times before committing to anything permanent. I think it would genuinely be a fresh start for me in a lot of ways, and could end up being a real turning point, though I'll admit I've been putting off making any actual decision for longer than I probably should have." }
-    ],
-    "bandTip": "🎯 Fluency & Coherence: the cue card asks \"why you haven't made it yet\" — a point weaker candidates skip. Both models address it head-on with \"mainly because,\" which directly answers every bullet point instead of drifting off-topic."
-  },
-  {
-    "id": "p3-role-models",
-    "part": 3,
-    "tier": "free",
-    "theme": "Role Models & Influence",
-    "linkedTo": "p2-person-inspired",
-    "questions": [
-      "What qualities make someone a good role model?",
-      "Do you think celebrities should be considered role models?",
-      "Has the idea of a 'role model' changed with social media?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "lead by example", "meaning": "influence through one's own actions, not just words", "example": "I think a good role model has to lead by example, above all." },
-      { "term": "hold considerable influence", "meaning": "have significant power to affect others", "example": "Public figures hold considerable influence over young people, whether they like it or not." },
-      { "term": "a double-edged sword", "meaning": "something with both benefits and drawbacks", "example": "Social media fame is a bit of a double-edged sword in that sense." },
-      { "term": "set a precedent", "meaning": "establish a pattern others may follow", "example": "It sets a precedent for how young people think success should look." },
-      { "term": "a curated image", "meaning": "a carefully constructed public persona", "example": "What we see online is often just a heavily curated image." },
-      { "term": "unfairly scrutinized", "meaning": "judged too harshly or closely", "example": "I think public figures are sometimes unfairly scrutinized for minor mistakes." },
-      { "term": "moral compass", "meaning": "an internal sense of right and wrong guiding behaviour", "example": "A genuine role model should have a strong moral compass, in my view." },
-      { "term": "conflate", "meaning": "mistakenly treat two different things as the same", "example": "I think people often conflate fame with actually being admirable." }
-    ],
-    "models": [
-      { "angle": "Qualities matter more than fame", "text": "I'd say the main quality is consistency, really — someone who leads by example rather than just saying the right things publicly. Take my earlier example of my old teacher; what made her a role model wasn't any single achievement, it was that her actions matched her words every single day, over years, not just in front of an audience. That said, I don't think fame automatically disqualifies someone either — plenty of well-known figures do genuinely lead by example. I suppose my real objection is when people conflate visibility with virtue, assuming someone's admirable purely because they're famous, which isn't necessarily true at all." },
-      { "angle": "Skeptical of celebrity role models", "text": "Honestly, I'm a bit skeptical about celebrities being treated as role models specifically because of the curated image thing — what we see is rarely the full picture, so it feels risky to base admiration on that alone. I think it's more sensible for people to look up to individuals they actually know, teachers, family members, people whose full character you can actually observe. Having said that, I'd concede that some public figures do use their platform responsibly, and for someone without access to strong role models nearby, even that filtered version can genuinely be positive, so it's not entirely black and white." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"That said\" and \"Having said that\" both introduce a counterpoint without a full new sentence structure — essential Part 3 phrases for showing you can see both sides of an issue, which examiners specifically reward at Band 7+."
-  },
-  {
-    "id": "p3-tourism-globalization",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Tourism & Globalisation",
-    "linkedTo": "p2-place-to-visit",
-    "questions": [
-      "Do you think tourism has a mostly positive or negative effect on local communities?",
-      "How has travel changed because of globalisation?",
-      "Should there be limits on how many tourists visit famous places?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "a double-edged sword", "meaning": "something with both benefits and drawbacks", "example": "Tourism is very much a double-edged sword for a lot of these towns." },
-      { "term": "overtourism", "meaning": "excessive numbers of tourists straining a destination", "example": "Overtourism has become a genuine problem in some famous cities." },
-      { "term": "an economic lifeline", "meaning": "a crucial source of income", "example": "For a lot of small communities, tourism is an economic lifeline." },
-      { "term": "erode local culture", "meaning": "gradually weaken traditional culture", "example": "There's a risk it can slowly erode local culture, too." },
-      { "term": "homogenise", "meaning": "make increasingly similar/uniform", "example": "Globalisation does tend to homogenise experiences a bit, honestly." },
-      { "term": "strike a balance", "meaning": "find an appropriate middle ground", "example": "It's really about striking a balance between access and preservation." },
-      { "term": "off-season travel", "meaning": "travelling outside peak tourist periods", "example": "Encouraging off-season travel could ease a lot of the pressure." },
-      { "term": "cultural exchange", "meaning": "the sharing of ideas/customs between cultures", "example": "At its best, it genuinely enables real cultural exchange." }
-    ],
-    "models": [
-      { "angle": "Mostly positive, with caveats", "text": "I'd lean towards saying it's mostly positive, on balance, mainly because for a lot of smaller communities tourism is a genuine economic lifeline, providing jobs that wouldn't otherwise exist. Going back to the place I mentioned earlier, Patagonia, tourism there has actually helped fund a fair amount of conservation work, which is a good example of it working well. That said, I'd have to admit it's a double-edged sword — overtourism in places like Venice has clearly caused real problems, overcrowding, rising costs for locals, so it's not universally positive by any means." },
-      { "angle": "More cautious/critical view", "text": "Honestly, I'm a bit more cautious about it, if I'm honest — I think there's a real risk that mass tourism can slowly erode local culture, turning genuine traditions into something performed mainly for visitors rather than lived authentically. You see this with certain festivals that have become almost entirely commercialised at this point. Having said that, I don't think tourism is inherently bad, it's more about scale and management — done thoughtfully, with limits in the busiest spots, it can genuinely enable real cultural exchange rather than just extraction." }
-    ],
-    "bandTip": "🎯 Coherence: notice both models reference the earlier Part 2 answer (\"going back to the place I mentioned earlier\") — linking Part 3 back to Part 2 naturally is exactly how the real exam flows, and examiners notice when candidates do this smoothly."
-  },
-  {
-    "id": "p3-materialism-technology",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Materialism & the Role of Objects",
-    "linkedTo": "p2-important-object",
-    "questions": [
-      "Do people today attach too much importance to material possessions?",
-      "Why do some objects have more emotional value than financial value?",
-      "Is it healthy to feel emotionally attached to objects?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "materialistic", "meaning": "excessively concerned with possessions and wealth", "example": "I do think society's become more materialistic overall, generally speaking." },
-      { "term": "consumer culture", "meaning": "a culture centred on buying and owning goods", "example": "A lot of it comes down to consumer culture, honestly." },
-      { "term": "sentimental attachment", "meaning": "emotional connection to something, often unrelated to value", "example": "It's purely sentimental attachment, nothing to do with what it's worth." },
-      { "term": "planned obsolescence", "meaning": "products deliberately designed to become outdated quickly", "example": "Planned obsolescence definitely plays into this, in my view." },
-      { "term": "intrinsic value", "meaning": "value inherent to something, not assigned externally", "example": "Some objects just carry intrinsic value that price can't capture." },
-      { "term": "a status symbol", "meaning": "an item signalling wealth or social standing", "example": "For some people it's less about function, more a status symbol." },
-      { "term": "detach from", "meaning": "become emotionally separate/disconnected from", "example": "It can be genuinely hard to detach from certain possessions." },
-      { "term": "keep things in perspective", "meaning": "maintain a balanced, realistic view of importance", "example": "I think it's mostly about keeping things in perspective, really." }
-    ],
-    "models": [
-      { "angle": "Society is too materialistic", "text": "I'd say, generally speaking, yes, society has become fairly materialistic, largely driven by consumer culture and constant advertising telling us we need the newest version of everything. Planned obsolescence plays into this too, in my view — products are often designed to feel outdated quickly, which just fuels the cycle further. That said, I wouldn't say all attachment to objects is materialistic in that sense — going back to my grandfather's watch, that's not about status or newness at all, it's pure sentimental attachment, which I think is a completely different thing." },
-      { "angle": "Distinguishes healthy vs unhealthy attachment", "text": "I think it depends heavily on the type of attachment, if I'm honest — wanting things purely as a status symbol is probably unhealthy, whereas valuing something for sentimental reasons, like a memory attached to it, seems perfectly natural to me. My laptop example is a good case of this, actually — its value to me has nothing to do with its price, it's intrinsic value based on what it represents. Having said that, I'd concede it can tip into something unhealthy if someone genuinely struggles to detach from possessions to the point where it affects their wellbeing, so keeping things in perspective really matters." }
-    ],
-    "bandTip": "🎯 Lexical Resource: \"intrinsic value\" vs \"a status symbol\" is a precise contrast that shows range on an abstract Part 3 topic — pairing an academic term with an everyday one in the same answer signals strong lexical flexibility."
-  },
-  {
-    "id": "p3-traditions-change",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Traditions & Social Change",
-    "linkedTo": "p2-memorable-event",
-    "questions": [
-      "Do you think traditional celebrations are becoming less important in modern society?",
-      "Why do some traditions survive while others disappear?",
-      "Is it important for younger generations to maintain traditions?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "fall out of fashion", "meaning": "become less popular or common over time", "example": "A lot of smaller local traditions have simply fallen out of fashion." },
-      { "term": "a sense of continuity", "meaning": "a feeling of connection across time", "example": "Traditions give people a real sense of continuity, generation to generation." },
-      { "term": "commercialised", "meaning": "made primarily about commercial profit", "example": "Some celebrations have become fairly commercialised these days." },
-      { "term": "generational shift", "meaning": "a change in attitudes/behaviour between generations", "example": "There's clearly been a generational shift in how people mark occasions now." },
-      { "term": "cultural identity", "meaning": "a sense of belonging to a particular culture", "example": "It's tied closely to a broader sense of cultural identity, I think." },
-      { "term": "watered down", "meaning": "weakened or diluted in significance", "example": "The meaning behind it has become a bit watered down, honestly." },
-      { "term": "adapt rather than disappear", "meaning": "change form instead of ending entirely", "example": "I think most traditions adapt rather than disappear completely." },
-      { "term": "pass down", "meaning": "transfer knowledge/customs to younger generations", "example": "It's really up to families to pass it down deliberately." }
-    ],
-    "models": [
-      { "angle": "Traditions are evolving, not disappearing", "text": "I don't think they're necessarily becoming less important, exactly, more that they're adapting rather than disappearing altogether. Going back to the wedding I described earlier, a lot of the traditional elements were still there, but blended with more modern touches too, which felt completely natural rather than a loss of tradition. That said, I'd admit some smaller, more local traditions genuinely have fallen out of fashion, especially in cities, where people are busier and more disconnected from extended family than previous generations were." },
-      { "angle": "More concerned about loss/commercialisation", "text": "Honestly, I do think there's a real risk that a lot of traditions are losing their original meaning, becoming a bit watered down or overly commercialised over time. Certain national celebrations, for instance, have shifted from being genuinely meaningful to feeling more like marketing opportunities, which is a shame, in my view. Having said that, I don't think it's inevitable — where families actively make the effort to pass things down deliberately, rather than assuming it'll happen automatically, traditions do seem to survive in a much more genuine form." }
-    ],
-    "bandTip": "🎯 Fluency & Coherence: \"more that\" (\"I don't think X, exactly, more that Y\") is a useful phrase for gently correcting or refining the question's framing before giving your real opinion — a subtle Band 8+ discourse move."
-  },
-  {
-    "id": "p3-community-volunteering",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Community & Volunteering",
-    "linkedTo": "p2-helped-someone",
-    "questions": [
-      "Do you think people today are less willing to help their neighbours than in the past?",
-      "What are the benefits of volunteering, for both individuals and society?",
-      "Should schools require students to do community service?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "a sense of community", "meaning": "a feeling of belonging and connection with others locally", "example": "I think a lot of neighbourhoods have lost that sense of community." },
-      { "term": "mutual support", "meaning": "people helping each other reciprocally", "example": "It used to run on mutual support a lot more than it does now." },
-      { "term": "give back", "meaning": "contribute positively in return for benefits received", "example": "Volunteering is really just a way of giving back, I think." },
-      { "term": "instil good values", "meaning": "establish positive principles, especially in young people", "example": "It can genuinely instil good values from a young age." },
-      { "term": "tokenistic", "meaning": "done for appearance rather than genuine commitment", "example": "Mandatory volunteering can end up feeling a bit tokenistic, honestly." },
-      { "term": "foster empathy", "meaning": "encourage the development of empathy", "example": "It really does foster empathy in a way classroom learning can't." },
-      { "term": "civic responsibility", "meaning": "a sense of duty towards one's community/society", "example": "It builds a stronger sense of civic responsibility, in theory." },
-      { "term": "genuine altruism", "meaning": "sincere, selfless concern for others' wellbeing", "example": "I'd question whether it comes from genuine altruism if it's forced." }
-    ],
-    "models": [
-      { "angle": "People are less connected now, but volunteering helps", "text": "I do think, generally, people are somewhat less connected to their immediate neighbours than in the past, largely because of how mobile and busy modern life has become — you might not even know who lives next door anymore. Going back to my earlier example, helping that elderly neighbour, that was actually fairly unusual for me, if I'm honest, precisely because that kind of casual mutual support isn't as automatic as it apparently used to be. That said, volunteering more formally does seem to be filling some of that gap — it fosters empathy and a genuine sense of community in a more structured way than relying on spontaneous neighbourliness." },
-      { "angle": "Skeptical of mandatory volunteering", "text": "In terms of schools requiring community service, I'm honestly a bit torn, if I'm truthful. On one hand, it can instil good values early and expose students to situations they wouldn't otherwise encounter, which is genuinely valuable. On the other hand, I do worry it can end up feeling fairly tokenistic if it's entirely mandatory, more about ticking a box than genuine altruism, which slightly undermines the whole point. I'd lean towards schools encouraging it strongly rather than strictly requiring it, so the motivation stays a bit more authentic." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"I'm honestly a bit torn\" followed by \"On one hand... On the other hand...\" is the cleanest structure for a genuinely balanced Part 3 answer — practice this exact frame for any question asking you to weigh two sides."
-  },
-  {
-    "id": "p3-lifelong-learning",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Lifelong Learning & Education",
-    "linkedTo": "p2-skill-to-learn",
-    "questions": [
-      "Do you think it's important for adults to keep learning new skills throughout their life?",
-      "How has the way people learn new skills changed in recent years?",
-      "Should companies be responsible for training their employees in new skills?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "lifelong learning", "meaning": "continuous learning throughout one's life", "example": "Lifelong learning's become almost essential now, honestly." },
-      { "term": "future-proof", "meaning": "prepare something to remain relevant despite change", "example": "It's really about future-proofing your career, in a sense." },
-      { "term": "democratised access", "meaning": "made something widely available to everyone", "example": "Online platforms have genuinely democratised access to learning." },
-      { "term": "upskill", "meaning": "learn new skills, often for career purposes", "example": "A lot of people are having to upskill just to stay competitive." },
-      { "term": "a moving target", "meaning": "something constantly changing, hard to keep up with", "example": "The job market's honestly become a bit of a moving target." },
-      { "term": "shared responsibility", "meaning": "a duty distributed between multiple parties", "example": "I'd say it's more of a shared responsibility, really." },
-      { "term": "self-directed learning", "meaning": "learning driven by the individual, not an institution", "example": "Self-directed learning's a lot more accessible than it used to be." },
-      { "term": "obsolete", "meaning": "no longer useful due to being outdated", "example": "Certain skills can become obsolete surprisingly quickly now." }
-    ],
-    "models": [
-      { "angle": "Strongly agrees, cites changing job market", "text": "Absolutely, I think it's become genuinely essential now, not just a nice-to-have — the job market's such a moving target these days that certain skills can become obsolete within a few years. Going back to wanting to learn coding, that's partly exactly this reasoning, future-proofing myself a bit rather than assuming my current skill set will stay relevant indefinitely. That said, I'd acknowledge not everyone has equal time or resources for this, so it's a slightly easier argument to make from a position of relative privilege, if I'm honest." },
-      { "angle": "Shared responsibility between individual and employer", "text": "I'd say it's mostly a shared responsibility, if I'm honest, rather than falling entirely on either side. Companies clearly benefit from a more skilled workforce, so there's a strong case for them investing in training directly. That said, individuals can't really just wait around for employers to provide everything — self-directed learning has become so much more accessible now, through online courses and so on, that I think there's an expectation on both sides to actually make the effort." }
-    ],
-    "bandTip": "🎯 Coherence: \"That said, I'd acknowledge...\" is a strong way to complicate your own opinion rather than just stating one side — Part 3 examiners specifically reward this kind of self-aware balance over a flat, one-sided answer."
-  },
-  {
-    "id": "p3-technology-society",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Technology's Impact on Society",
-    "linkedTo": "p2-useful-technology",
-    "questions": [
-      "How has technology changed the way people communicate with each other?",
-      "Do you think technology has made people more or less productive overall?",
-      "What are the risks of society becoming too dependent on technology?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "instant connectivity", "meaning": "the ability to communicate immediately, anywhere", "example": "Instant connectivity has genuinely reshaped how we stay in touch." },
-      { "term": "a trade-off", "meaning": "a balance between two desirable but conflicting things", "example": "It's really a trade-off between convenience and depth, I think." },
-      { "term": "superficial interaction", "meaning": "shallow, not deeply meaningful communication", "example": "A lot of it ends up being fairly superficial interaction, honestly." },
-      { "term": "diminishing returns", "meaning": "a point where extra input yields less added benefit", "example": "I think we're hitting a point of diminishing returns with some of it." },
-      { "term": "overreliance", "meaning": "excessive dependence on something", "example": "There's a genuine risk of overreliance on it, in my view." },
-      { "term": "erode attention spans", "meaning": "gradually weaken the ability to focus", "example": "Constant notifications can genuinely erode attention spans over time." },
-      { "term": "a productivity paradox", "meaning": "the phenomenon where added tools don't proportionally increase output", "example": "It's a bit of a productivity paradox, honestly — more tools, not necessarily more output." },
-      { "term": "digital literacy", "meaning": "the skills needed to use technology effectively and critically", "example": "Digital literacy's become just as important as traditional literacy now." }
-    ],
-    "models": [
-      { "angle": "Mixed effect on productivity", "text": "I'd say it's genuinely mixed, if I'm honest, rather than straightforwardly positive. Going back to my smartwatch example, that specific tool has helped my focus, but overall I think a lot of workplace technology creates a kind of productivity paradox — more tools and notifications, but not necessarily proportionally more output, since attention keeps getting fragmented. That said, for specific, well-defined tasks, technology's clearly made things dramatically faster than before, so it really depends heavily on how deliberately it's actually used." },
-      { "angle": "Concerned about communication quality", "text": "In terms of communication specifically, I do think there's a real trade-off happening — instant connectivity is obviously convenient, you can reach almost anyone instantly, but I'd argue a lot of that interaction ends up fairly superficial compared to, say, a proper phone call or meeting in person. There's also a genuine risk of overreliance, where people default to texting even for things that would honestly be resolved faster and more warmly face to face. Having said that, for maintaining long-distance relationships, family abroad and so on, I think it's been an unambiguous improvement, so it's not entirely negative either." }
-    ],
-    "bandTip": "🎯 Lexical Resource: \"a productivity paradox\" is a genuinely advanced, precise phrase for a Part 3 technology question — pair one strong abstract noun phrase like this with a plain-language explanation right after it, so the examiner hears range without losing clarity."
-  },
-  {
-    "id": "p3-reading-habits-media",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Reading Habits & Media Consumption",
-    "linkedTo": "p2-book-enjoyed",
-    "questions": [
-      "Do you think people read less now than in the past, because of the internet?",
-      "Is reading fiction as valuable as reading non-fiction?",
-      "How might reading habits change in the future?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "compete for attention", "meaning": "vie against other things for someone's focus", "example": "Books are now competing for attention with endless other content." },
-      { "term": "short-form content", "meaning": "brief media, e.g. short videos or posts", "example": "Short-form content has clearly reshaped people's attention spans." },
-      { "term": "sustained concentration", "meaning": "the ability to focus for an extended period", "example": "Reading a novel requires a level of sustained concentration, honestly." },
-      { "term": "escapism", "meaning": "using entertainment to mentally escape reality", "example": "Fiction offers a kind of escapism that's genuinely valuable, I think." },
-      { "term": "broaden empathy", "meaning": "increase one's capacity for understanding others' perspectives", "example": "Fiction specifically seems to broaden empathy in a way facts alone don't." },
-      { "term": "information overload", "meaning": "being overwhelmed by excessive available information", "example": "There's a real sense of information overload these days, honestly." },
-      { "term": "niche audience", "meaning": "a small, specific segment of an audience", "example": "Deep reading might become more of a niche audience thing, sadly." },
-      { "term": "a resurgence", "meaning": "a renewed increase in popularity", "example": "There's actually been a bit of a resurgence in physical book sales, interestingly." }
-    ],
-    "models": [
-      { "angle": "Reading is declining but adapting", "text": "I do think, generally, people read less in the traditional sense, largely because books are now competing for attention with so much short-form content that's designed to be far more immediately engaging. Going back to the non-fiction book I mentioned earlier, I actually had to consciously make time for it, which wasn't really necessary a generation or two ago, reading was simply the default form of entertainment. That said, I'd point out there's actually been a bit of a resurgence in physical book sales recently, so it's not a purely one-directional decline, interestingly enough." },
-      { "angle": "Values fiction highly, defends it", "text": "I'd actually push back a little on the idea that fiction is less valuable than non-fiction — in my view it broadens empathy in a way that pure facts often can't, since you're experiencing a perspective rather than just absorbing information about it. My earlier example, the novel about a family across generations, taught me more about historical hardship, emotionally, than any factual account probably could have. Having said that, I'd concede non-fiction has a clearer, more direct practical value in a lot of contexts, so I don't think it's really a competition between the two, more that they serve genuinely different purposes." }
-    ],
-    "bandTip": "🎯 Fluency & Coherence: \"I'd actually push back a little on...\" is a confident way to respectfully disagree with the premise of a question — far more sophisticated than simply answering \"no\" and moving on."
-  },
-  {
-    "id": "p3-travel-environment",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Travel & the Environment",
-    "linkedTo": "p2-memorable-journey",
-    "questions": [
-      "Do you think people should travel less for environmental reasons?",
-      "How can the tourism industry become more environmentally sustainable?",
-      "Is it hypocritical for individuals to worry about climate change but still travel frequently?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "a carbon footprint", "meaning": "the amount of carbon emissions caused by an activity/person", "example": "Flying has a fairly significant carbon footprint, obviously." },
-      { "term": "sustainable tourism", "meaning": "tourism managed with minimal environmental/social harm", "example": "Sustainable tourism's becoming a much bigger talking point now." },
-      { "term": "offset emissions", "meaning": "compensate for carbon output through other means", "example": "Some airlines now let you offset emissions, though it's debated how effective that is." },
-      { "term": "a moral dilemma", "meaning": "a difficult choice between competing ethical concerns", "example": "It genuinely creates a bit of a moral dilemma for a lot of people." },
-      { "term": "systemic issue", "meaning": "a problem rooted in the whole system, not individuals alone", "example": "I'd argue it's more of a systemic issue than an individual one." },
-      { "term": "greenwashing", "meaning": "misleadingly presenting something as more eco-friendly than it is", "example": "There's a fair bit of greenwashing in the travel industry, honestly." },
-      { "term": "responsible travel", "meaning": "travelling with consideration for environmental/social impact", "example": "I try to practise fairly responsible travel where I can, at least." },
-      { "term": "trade-off between access and impact", "meaning": "balancing the benefit of travel against its environmental cost", "example": "It's really a trade-off between access and impact, in the end." }
-    ],
-    "models": [
-      { "angle": "Individual choice matters but isn't the main issue", "text": "I don't think the responsibility should fall mainly on individuals, if I'm honest — it's more of a systemic issue, in my view, tied to how the aviation and tourism industries operate overall. That said, going back to my train trip earlier, I do think individual choices matter to some degree, choosing a train over a flight where realistically possible does reduce your carbon footprint. Having said that, I wouldn't call occasional travel hypocritical necessarily — it's more about being reasonably thoughtful than giving up travel altogether, which honestly feels like an unrealistic standard to hold most people to." },
-      { "angle": "More critical, favours real behavioural change", "text": "Honestly, I do think there's some truth to the hypocrisy argument, if I'm being completely candid — it's fairly easy to express concern about climate change while still travelling frequently for leisure, and I'd include myself in that to some extent. That said, I don't think the answer is necessarily travelling less across the board, more travelling more deliberately, fewer trips perhaps, but longer and more meaningful ones, rather than frequent short breaks purely for convenience. I'd also push back a bit on individuals shouldering all the blame, though, since the industry itself has been fairly slow to adopt genuinely sustainable practices." }
-    ],
-    "bandTip": "🎯 Grammatical Range: \"if I'm being completely candid\" is a stronger, less common variant of \"if I'm honest\" — rotating your hedging phrases across a full test (rather than repeating the same one) is a small detail examiners notice on Lexical Resource."
-  },
-  {
-    "id": "p3-personal-development",
-    "part": 3,
-    "tier": "premium",
-    "theme": "Personal Development & Change",
-    "linkedTo": "p2-change-in-life",
-    "questions": [
-      "Why do you think many people find it difficult to make significant changes in their lives?",
-      "Is it better to make big changes suddenly or gradually?",
-      "Do you think society puts too much pressure on people to constantly improve themselves?"
-    ],
-    "structure": ["Opinion", "Reason", "Example", "Counterpoint"],
-    "vocab": [
-      { "term": "inertia", "meaning": "a tendency to remain unchanged; resistance to change", "example": "I think a lot of it just comes down to inertia, honestly." },
-      { "term": "the fear of the unknown", "meaning": "anxiety about unfamiliar, uncertain situations", "example": "It's largely the fear of the unknown holding people back, I'd say." },
-      { "term": "incremental change", "meaning": "change that happens gradually, in small steps", "example": "Incremental change tends to be a lot more sustainable, in my experience." },
-      { "term": "sunk cost", "meaning": "past investment that irrationally influences current decisions", "example": "There's often a sunk-cost element too, years already invested in one path." },
-      { "term": "self-improvement culture", "meaning": "the widespread cultural focus on constantly bettering oneself", "example": "Self-improvement culture can honestly become a bit exhausting, if I'm honest." },
-      { "term": "burnout", "meaning": "exhaustion from prolonged stress or overexertion", "example": "Constant pressure to improve can genuinely lead to burnout." },
-      { "term": "external validation", "meaning": "approval sought from others rather than oneself", "example": "A lot of it's driven by external validation, sadly, rather than genuine desire." },
-      { "term": "a healthy dose of self-acceptance", "meaning": "a reasonable, balanced level of accepting oneself as is", "example": "I think people need a healthy dose of self-acceptance too, honestly." }
-    ],
-    "models": [
-      { "angle": "Fear and sunk cost as the main barriers", "text": "I think it mostly comes down to fear of the unknown, combined with a bit of a sunk-cost mentality — people have often invested years into a particular path, career especially, and walking away from that feels like wasting everything already put in, even when it's clearly not working anymore. Going back to my own example of wanting to switch careers, that's exactly the tension I'm dealing with, honestly. That said, I don't think fear is always irrational either — sometimes hesitation reflects a genuinely sensible caution about risk, not just inertia for its own sake." },
-      { "angle": "Concerned about self-improvement pressure", "text": "Honestly, I do think society puts a fairly excessive amount of pressure on people to constantly be improving, which can end up quite counterproductive, ironically — self-improvement culture, taken too far, can genuinely lead to a kind of burnout, or at least a persistent sense of never being quite good enough. That said, I wouldn't dismiss the value of striving to grow entirely, some of it is genuinely healthy and motivating. I just think it needs to be balanced with a fairly healthy dose of self-acceptance too, rather than treating change as constantly, urgently necessary." }
-    ],
-    "bandTip": "🎯 Pronunciation: on the word \"genuinely\" — used deliberately across these Part 3 answers to add sincerity — give it slightly more stress and a touch more length than surrounding words; examiners listening for natural stress patterns notice when emphasis words are actually emphasized, not flattened."
+      { "id": "q1", "text": "Can you describe the place where you live?", "model": "Sure — it's a fairly spacious two-bedroom flat, on the third floor of a fairly modern building." },
+      { "id": "q2", "text": "What kind of housing accommodation do you live in?", "model": "I live in a flat, actually, fully furnished when we first moved in, which honestly made things a lot easier." },
+      { "id": "q3", "text": "What do you like about your flat?", "model": "Probably the natural light, if I'm honest — the living room faces east, so it's really bright in the mornings." },
+      { "id": "q4", "text": "Which room does your family spend most of the time in?", "model": "Definitely the living room, mainly because it's open-plan with the kitchen, so everyone naturally ends up there." },
+      { "id": "q5", "text": "What can you see from the windows where you live?", "model": "Mostly rooftops and a bit of a park in the distance, nothing too exciting, if I'm honest." },
+      { "id": "q6", "text": "Do you prefer living in a house or a flat?", "model": "A flat, personally, mainly for practical reasons — less maintenance, and it's got a cosy feel despite being fairly small." },
+      { "id": "q7", "text": "What would you like to change in your flat?", "model": "Probably the kitchen, if I could — I'd love a proper open-plan layout eventually, small changes like that really help make it feel like home." },
+      { "id": "q8", "text": "What do you dislike about your flat?", "model": "Honestly, just the lack of storage — it's spacious enough day to day, but storage is definitely lacking." },
+      { "id": "q9", "text": "Who do you live with?", "model": "Just my partner at the moment — it's a fairly small place, so there's no need to downsize any further, if anything we'd like a bit more room eventually." },
+      { "id": "q10", "text": "How long have you lived there?", "model": "About three years now — we had a housewarming when we first moved in, actually, which feels like ages ago now." }
+    ]
   }
 ]
