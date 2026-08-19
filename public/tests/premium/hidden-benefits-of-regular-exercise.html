@@ -89,6 +89,40 @@ body.post-check .expl-btn{display:inline-flex}
 .expl-uz{margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);color:var(--subtext)}
 .expl-uz .expl-kw-uz{background:#ede9fe;padding:0 4px;border-radius:3px;font-weight:600;color:#5b21b6}
 [data-theme=dark] .expl-uz .expl-kw-uz,[data-theme=night] .expl-uz .expl-kw-uz{background:#2e1a4d;color:#c4b5fd}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
+/* drag & drop (word-list summary) */
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.dz-sm{min-width:54px;width:54px;padding:0 4px}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.se-list{margin-top:4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto;color:var(--text)}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
 
 .qsec{display:none;padding:24px}
 .qsec.on{display:block}
@@ -319,21 +353,26 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 <div class="qgroup" data-group="g2" data-paras="p3-4,p3-5"><p class="qnum-head" style="margin-top:14px"><em>Questions 6&ndash;10</em></p><p class="qinst">Complete the summary using the list of words, <strong>A&ndash;I</strong>, below.</p>
 <div class="fbox">
 <strong>Benefits of Exercise on the Brain</strong>
-<p>Dr Sigman believes that when children do physical exercise, they experience less <span class="inline-qno">6</span><input type="text" style="display:none" id="q6" value="" data-mx> as a result of a chemical change caused by increased blood and oxygen flow to the brain. Other researchers, such as Professor Art Kramer, think there is <span class="inline-qno">7</span><input type="text" style="display:none" id="q7" value="" data-mx> that some parts of the brain become bigger, and fit children are better than unfit children at doing complicated <span class="inline-qno">8</span><input type="text" style="display:none" id="q8" value="" data-mx> that require mental thought. Among other things, these scientific <span class="inline-qno">9</span><input type="text" style="display:none" id="q9" value="" data-mx> could be used to benefit the <span class="inline-qno">10</span><input type="text" style="display:none" id="q10" value="" data-mx> when it comes to fighting memory loss and keeping the skills that allow them to solve problems.</p>
+<p>Dr Sigman believes that when children do physical exercise, they experience less <span class="dzone dz-sm" id="q6" data-q="6"></span> as a result of a chemical change caused by increased blood and oxygen flow to the brain. Other researchers, such as Professor Art Kramer, think there is <span class="dzone dz-sm" id="q7" data-q="7"></span> that some parts of the brain become bigger, and fit children are better than unfit children at doing complicated <span class="dzone dz-sm" id="q8" data-q="8"></span> that require mental thought. Among other things, these scientific <span class="dzone dz-sm" id="q9" data-q="9"></span> could be used to benefit the <span class="dzone dz-sm" id="q10" data-q="10"></span> when it comes to fighting memory loss and keeping the skills that allow them to solve problems.</p>
 </div>
-<div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th></tr></thead><tbody>
-<tr><td class="mx-stmt"><span class="mx-num">6</span> children experience less ___<button class="expl-btn" onclick="toggleExpl(6)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq6" value="A" onchange="syncMx(6)"></label></td><td><label class="mx-cell"><input type="radio" name="mq6" value="B" onchange="syncMx(6)"></label></td><td><label class="mx-cell"><input type="radio" name="mq6" value="C" onchange="syncMx(6)"></label></td><td><label class="mx-cell"><input type="radio" name="mq6" value="D" onchange="syncMx(6)"></label></td><td><label class="mx-cell"><input type="radio" name="mq6" value="E" onchange="syncMx(6)"></label></td><td><label class="mx-cell"><input type="radio" name="mq6" value="F" onchange="syncMx(6)"></label></td><td><label class="mx-cell"><input type="radio" name="mq6" value="G" onchange="syncMx(6)"></label></td><td><label class="mx-cell"><input type="radio" name="mq6" value="H" onchange="syncMx(6)"></label></td><td><label class="mx-cell"><input type="radio" name="mq6" value="I" onchange="syncMx(6)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-6">🔑 <span class="expl-kw">This increases levels of chemicals like endorphin in the brain, which decrease stress and improve mood</span>. "Stress" = <b>B anxiety</b>.<div class="expl-uz">🇺🇿 Kimyoviy moddalar <span class="expl-kw-uz">"stressni kamaytiradi"</span>. Javob: <b>B</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">7</span> there is ___ that parts of the brain grow<button class="expl-btn" onclick="toggleExpl(7)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq7" value="A" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="B" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="C" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="D" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="E" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="F" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="G" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="H" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="I" onchange="syncMx(7)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-7">🔑 <span class="expl-kw">there is also evidence that certain parts of the brain become larger</span>. "Evidence" = <b>I proof</b>.<div class="expl-uz">🇺🇿 Miyaning ba'zi qismlari kattalashadi degan <span class="expl-kw-uz">"dalil"</span> mavjud. Javob: <b>I</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">8</span> fit children are better at complicated ___<button class="expl-btn" onclick="toggleExpl(8)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq8" value="A" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="B" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="C" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="D" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="E" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="F" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="G" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="H" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="I" onchange="syncMx(8)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-8">🔑 <span class="expl-kw">children who are fit also tend to be better at multi-tasking and performing difficult mental tasks than their unfit friends</span>. "Difficult mental tasks" = <b>E exercises</b>.<div class="expl-uz">🇺🇿 Jismonan tayyor bolalar <span class="expl-kw-uz">"aqliy mashqlar"</span>da yaxshiroq. Javob: <b>E</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">9</span> these scientific ___<button class="expl-btn" onclick="toggleExpl(9)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq9" value="A" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="B" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="C" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="D" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="E" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="F" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="G" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="H" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="I" onchange="syncMx(9)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-9">🔑 <span class="expl-kw">their findings could have important implications for improving children's performance at school</span>. "Findings" = <b>C discoveries</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Kashfiyotlar"</span> bolalar ta'limini yaxshilashda muhim. Javob: <b>C</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">10</span> benefit the ___<button class="expl-btn" onclick="toggleExpl(10)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq10" value="A" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="B" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="C" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="D" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="E" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="F" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="G" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="H" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="I" onchange="syncMx(10)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-10">🔑 it could help people <span class="expl-kw">combat memory loss and retain problem-solving skills in old age</span>. "Old age" = <b>D elderly</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Keksalarga"</span> foydali bo'lishi mumkin. Javob: <b>D</b>.</div></div></td></tr>
-</tbody></table></div>
-<div class="fbox" style="margin-top:10px"><strong>Word List</strong>A&nbsp;ancients&nbsp;&nbsp;B&nbsp;anxiety&nbsp;&nbsp;C&nbsp;discoveries&nbsp;&nbsp;D&nbsp;elderly&nbsp;&nbsp;E&nbsp;exercises&nbsp;&nbsp;F&nbsp;anger&nbsp;&nbsp;G&nbsp;performances&nbsp;&nbsp;H&nbsp;possibility&nbsp;&nbsp;I&nbsp;proof</div>
+<div class="wbank se-bank" id="wbankG2" data-show="word">
+<div class="dchip" draggable="true" data-letter="A" data-word="ancients"><span class="wk">A</span>&nbsp; ancients</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="anxiety"><span class="wk">B</span>&nbsp; anxiety</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="discoveries"><span class="wk">C</span>&nbsp; discoveries</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="elderly"><span class="wk">D</span>&nbsp; elderly</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="exercises"><span class="wk">E</span>&nbsp; exercises</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="anger"><span class="wk">F</span>&nbsp; anger</div>
+<div class="dchip" draggable="true" data-letter="G" data-word="performances"><span class="wk">G</span>&nbsp; performances</div>
+<div class="dchip" draggable="true" data-letter="H" data-word="possibility"><span class="wk">H</span>&nbsp; possibility</div>
+<div class="dchip" draggable="true" data-letter="I" data-word="proof"><span class="wk">I</span>&nbsp; proof</div>
+</div>
+<div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">6.</b><button class="expl-btn" onclick="toggleExpl(6)">💡 Why?</button><div class="expl-box" id="expl-6">🔑 <span class="expl-kw">This increases levels of chemicals like endorphin in the brain, which decrease stress and improve mood</span>. "Stress" = <b>B anxiety</b>.<div class="expl-uz">🇺🇿 Kimyoviy moddalar <span class="expl-kw-uz">"stressni kamaytiradi"</span>. Javob: <b>B</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">7.</b><button class="expl-btn" onclick="toggleExpl(7)">💡 Why?</button><div class="expl-box" id="expl-7">🔑 <span class="expl-kw">there is also evidence that certain parts of the brain become larger</span>. "Evidence" = <b>I proof</b>.<div class="expl-uz">🇺🇿 Miyaning ba'zi qismlari kattalashadi degan <span class="expl-kw-uz">"dalil"</span> mavjud. Javob: <b>I</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">8.</b><button class="expl-btn" onclick="toggleExpl(8)">💡 Why?</button><div class="expl-box" id="expl-8">🔑 <span class="expl-kw">children who are fit also tend to be better at multi-tasking and performing difficult mental tasks than their unfit friends</span>. "Difficult mental tasks" = <b>E exercises</b>.<div class="expl-uz">🇺🇿 Jismonan tayyor bolalar <span class="expl-kw-uz">"aqliy mashqlar"</span>da yaxshiroq. Javob: <b>E</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">9.</b><button class="expl-btn" onclick="toggleExpl(9)">💡 Why?</button><div class="expl-box" id="expl-9">🔑 <span class="expl-kw">their findings could have important implications for improving children's performance at school</span>. "Findings" = <b>C discoveries</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Kashfiyotlar"</span> bolalar ta'limini yaxshilashda muhim. Javob: <b>C</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">10.</b><button class="expl-btn" onclick="toggleExpl(10)">💡 Why?</button><div class="expl-box" id="expl-10">🔑 it could help people <span class="expl-kw">combat memory loss and retain problem-solving skills in old age</span>. "Old age" = <b>D elderly</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Keksalarga"</span> foydali bo'lishi mumkin. Javob: <b>D</b>.</div></div></div>
+</div>
 </div>
 <div class="qgroup" data-group="g3" data-paras="p3-6,p3-7,p3-9"><p class="qnum-head" style="margin-top:14px"><em>Questions 11&ndash;13</em></p><p class="qinst">Choose the correct letter, <strong>A, B, C</strong> or <strong>D</strong>.</p>
 <div class="qitem"><p class="qprompt"><strong>11.</strong>&nbsp; Which of the following is true, according to Professor Art Kramer? <button class="expl-btn" onclick="toggleExpl(11)">💡 Why?</button></p><div class="rgroup" id="rg11"><label class="rlabel"><input type="radio" name="q11" value="A" onchange="upd()"> <span class="opt-letter">A</span> People become less active as they grow older.</label><label class="rlabel"><input type="radio" name="q11" value="B" onchange="upd()"> <span class="opt-letter">B</span> Exercising is an effective way of preventing diseases like diabetes.</label><label class="rlabel"><input type="radio" name="q11" value="C" onchange="upd()"> <span class="opt-letter">C</span> One particular type of exercise is more effective than others.</label><label class="rlabel"><input type="radio" name="q11" value="D" onchange="upd()"> <span class="opt-letter">D</span> When exercising, you should take short breaks during the exercise period.</label></div><div class="expl-box" id="expl-11">🔑 <span class="expl-kw">Aerobic exercise is best for this</span> [improving cognition]. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Aerobika mashqlari"</span> bu borada eng yaxshisi. Javob: <b>C</b>.</div></div></div>
@@ -379,13 +418,6 @@ const CA = {1:"YES",2:"NO",3:"NO",4:"YES",5:"NOT GIVEN",6:"B",7:"I",8:"E",9:"C",
 const CAL = {1:"YES",2:"NO",3:"NO",4:"YES",5:"NOT GIVEN",6:"B",7:"I",8:"E",9:"C",10:"D",11:"C",12:"A",13:"D"};
 const ALLQ=[1,2,3,4,5,6,7,8,9,10,11,12,13];
 
-function syncMx(n){
-  const r=document.querySelector('input[name="mq'+n+'"]:checked');
-  const el=document.getElementById('q'+n);
-  if(el) el.value = r?r.value:'';
-  upd();
-}
-
 let curQ=1, timerS=1200, tInt=null, tRun=false;
 let mode='exam', elapsed=0;
 let checked=false, timeExpired=false;
@@ -400,6 +432,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -519,17 +552,13 @@ function nextQ(){const i=ALLQ.indexOf(curQ);goQ(ALLQ[Math.min(ALLQ.length-1,i+1)
 function prevQ(){const i=ALLQ.indexOf(curQ);goQ(ALLQ[Math.max(0,i-1)]);}
 
 function getQEl(n){
-  if(n>=6&&n<=10){ const r=document.querySelector('input[name="mq'+n+'"]'); return r; }
   return document.getElementById('q'+n)||
     document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
 }
 
 function getAns(n){
-  if(n>=6&&n<=10){
-    const r=document.querySelector('input[name="mq'+n+'"]:checked');
-    return r?r.value:'';
-  }
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -638,6 +667,90 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -652,6 +765,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -759,16 +873,16 @@ function launchConfetti(){
 }
 
 function markQ(n,ok){
-  if(n>=6&&n<=10){
-    const cv=CA[n];
-    document.querySelectorAll('input[name="mq'+n+'"]').forEach(r=>{
-      const lb=r.closest('label');if(!lb)return;
-      if(r.value===cv)lb.classList.add('ok');
-      else if(r.checked&&!ok)lb.classList.add('bad');
-    });
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
     return;
   }
-  const el=document.getElementById('q'+n);
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}

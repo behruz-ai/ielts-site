@@ -90,6 +90,40 @@ body.post-check .expl-btn{display:inline-flex}
 .expl-uz{margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);color:var(--subtext)}
 .expl-uz .expl-kw-uz{background:#ede9fe;padding:0 4px;border-radius:3px;font-weight:600;color:#5b21b6}
 [data-theme=dark] .expl-uz .expl-kw-uz,[data-theme=night] .expl-uz .expl-kw-uz{background:#2e1a4d;color:#c4b5fd}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
+/* drag & drop (word-list summary) */
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.dz-sm{min-width:54px;width:54px;padding:0 4px}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.se-list{margin-top:4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto;color:var(--text)}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
 
 .qsec{display:none;padding:24px}
 .qsec.on{display:block}
@@ -356,19 +390,25 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 <div class="qgroup" data-group="g3" data-paras="p3-3,p3-6"><p class="qnum-head" style="margin-top:14px"><em>Questions 37&ndash;40</em></p><p class="qinst">Complete the summary below. Choose the correct word, <strong>A&ndash;I</strong>, from the box below.</p>
 <div class="fbox">
 <strong>The work of Marschner and his colleagues</strong>
-<p>For many years, CGI characters did not appear entirely lifelike as their skin appeared plastic. Marschner and his colleagues were the first to apply an understanding of how <span class="inline-qno">37</span><input type="text" style="display:none" id="q37" value="" data-mx> interacts with human skin. Their CGI model is based on a novel application of principles of <span class="inline-qno">38</span><input type="text" style="display:none" id="q38" value="" data-mx>, which had previously been applied in other scientific research. The importance of CGI to the film industry has led to the <span class="inline-qno">39</span><input type="text" style="display:none" id="q39" value="" data-mx> of Marschner's model by special-effects studios. Marschner's model has led to the <span class="inline-qno">40</span><input type="text" style="display:none" id="q40" value="" data-mx> of cinematography.</p>
+<p>For many years, CGI characters did not appear entirely lifelike as their skin appeared plastic. Marschner and his colleagues were the first to apply an understanding of how <span class="dzone dz-sm" id="q37" data-q="37"></span> interacts with human skin. Their CGI model is based on a novel application of principles of <span class="dzone dz-sm" id="q38" data-q="38"></span>, which had previously been applied in other scientific research. The importance of CGI to the film industry has led to the <span class="dzone dz-sm" id="q39" data-q="39"></span> of Marschner's model by special-effects studios. Marschner's model has led to the <span class="dzone dz-sm" id="q40" data-q="40"></span> of cinematography.</p>
 </div>
-<div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th></tr></thead><tbody>
-<tr><td class="mx-stmt"><span class="mx-num">37</span> how ___ interacts with human skin<button class="expl-btn" onclick="toggleExpl(37)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq37" value="A" onchange="syncMx(37)"></label></td><td><label class="mx-cell"><input type="radio" name="mq37" value="B" onchange="syncMx(37)"></label></td><td><label class="mx-cell"><input type="radio" name="mq37" value="C" onchange="syncMx(37)"></label></td><td><label class="mx-cell"><input type="radio" name="mq37" value="D" onchange="syncMx(37)"></label></td><td><label class="mx-cell"><input type="radio" name="mq37" value="E" onchange="syncMx(37)"></label></td><td><label class="mx-cell"><input type="radio" name="mq37" value="F" onchange="syncMx(37)"></label></td><td><label class="mx-cell"><input type="radio" name="mq37" value="G" onchange="syncMx(37)"></label></td><td><label class="mx-cell"><input type="radio" name="mq37" value="H" onchange="syncMx(37)"></label></td><td><label class="mx-cell"><input type="radio" name="mq37" value="I" onchange="syncMx(37)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-37">🔑 this is when <span class="expl-kw">light penetrates skin and then scatters below the skin's surface before re-emerging</span>. Answer: <b>A light</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Yorug'lik"</span> teri bilan qanday ta'sirlashishini o'rganishgan. Javob: <b>A</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">38</span> a novel application of principles of ___<button class="expl-btn" onclick="toggleExpl(38)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq38" value="A" onchange="syncMx(38)"></label></td><td><label class="mx-cell"><input type="radio" name="mq38" value="B" onchange="syncMx(38)"></label></td><td><label class="mx-cell"><input type="radio" name="mq38" value="C" onchange="syncMx(38)"></label></td><td><label class="mx-cell"><input type="radio" name="mq38" value="D" onchange="syncMx(38)"></label></td><td><label class="mx-cell"><input type="radio" name="mq38" value="E" onchange="syncMx(38)"></label></td><td><label class="mx-cell"><input type="radio" name="mq38" value="F" onchange="syncMx(38)"></label></td><td><label class="mx-cell"><input type="radio" name="mq38" value="G" onchange="syncMx(38)"></label></td><td><label class="mx-cell"><input type="radio" name="mq38" value="H" onchange="syncMx(38)"></label></td><td><label class="mx-cell"><input type="radio" name="mq38" value="I" onchange="syncMx(38)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-38">🔑 <span class="expl-kw">the mathematics for the model goes back many decades to the time when it was used in astrophysics</span>. Answer: <b>E astrophysics</b>.<div class="expl-uz">🇺🇿 Matematik model ilgari <span class="expl-kw-uz">"astrofizikada"</span> qo'llanilgan. Javob: <b>E</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">39</span> the ___ of Marschner's model by special-effects studios<button class="expl-btn" onclick="toggleExpl(39)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq39" value="A" onchange="syncMx(39)"></label></td><td><label class="mx-cell"><input type="radio" name="mq39" value="B" onchange="syncMx(39)"></label></td><td><label class="mx-cell"><input type="radio" name="mq39" value="C" onchange="syncMx(39)"></label></td><td><label class="mx-cell"><input type="radio" name="mq39" value="D" onchange="syncMx(39)"></label></td><td><label class="mx-cell"><input type="radio" name="mq39" value="E" onchange="syncMx(39)"></label></td><td><label class="mx-cell"><input type="radio" name="mq39" value="F" onchange="syncMx(39)"></label></td><td><label class="mx-cell"><input type="radio" name="mq39" value="G" onchange="syncMx(39)"></label></td><td><label class="mx-cell"><input type="radio" name="mq39" value="H" onchange="syncMx(39)"></label></td><td><label class="mx-cell"><input type="radio" name="mq39" value="I" onchange="syncMx(39)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-39">🔑 <span class="expl-kw">all the major special-effects studios had incorporated it into their digital rendering systems</span>. Answer: <b>D use</b>.<div class="expl-uz">🇺🇿 Studiyalar modelni <span class="expl-kw-uz">"ishlatishga kiritishgan"</span>. Javob: <b>D</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">40</span> has led to the ___ of cinematography<button class="expl-btn" onclick="toggleExpl(40)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq40" value="A" onchange="syncMx(40)"></label></td><td><label class="mx-cell"><input type="radio" name="mq40" value="B" onchange="syncMx(40)"></label></td><td><label class="mx-cell"><input type="radio" name="mq40" value="C" onchange="syncMx(40)"></label></td><td><label class="mx-cell"><input type="radio" name="mq40" value="D" onchange="syncMx(40)"></label></td><td><label class="mx-cell"><input type="radio" name="mq40" value="E" onchange="syncMx(40)"></label></td><td><label class="mx-cell"><input type="radio" name="mq40" value="F" onchange="syncMx(40)"></label></td><td><label class="mx-cell"><input type="radio" name="mq40" value="G" onchange="syncMx(40)"></label></td><td><label class="mx-cell"><input type="radio" name="mq40" value="H" onchange="syncMx(40)"></label></td><td><label class="mx-cell"><input type="radio" name="mq40" value="I" onchange="syncMx(40)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-40">🔑 <span class="expl-kw">Cinematography will benefit from this</span>. Answer: <b>G improvement</b>.<div class="expl-uz">🇺🇿 Bu kinematografiyaning <span class="expl-kw-uz">"yaxshilanishi"</span>ga olib keladi. Javob: <b>G</b>.</div></div></td></tr>
-</tbody></table></div>
-<div class="fbox" style="margin-top:10px"><strong>List of Words</strong>A&nbsp;light&nbsp;&nbsp;B&nbsp;transparency&nbsp;&nbsp;C&nbsp;age&nbsp;&nbsp;D&nbsp;use&nbsp;&nbsp;E&nbsp;astrophysics&nbsp;&nbsp;F&nbsp;mathematics&nbsp;&nbsp;G&nbsp;improvement&nbsp;&nbsp;H&nbsp;colour&nbsp;&nbsp;I&nbsp;translucency</div>
+<div class="wbank se-bank" id="wbankG3" data-show="word">
+<div class="dchip" draggable="true" data-letter="A" data-word="light"><span class="wk">A</span>&nbsp; light</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="transparency"><span class="wk">B</span>&nbsp; transparency</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="age"><span class="wk">C</span>&nbsp; age</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="use"><span class="wk">D</span>&nbsp; use</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="astrophysics"><span class="wk">E</span>&nbsp; astrophysics</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="mathematics"><span class="wk">F</span>&nbsp; mathematics</div>
+<div class="dchip" draggable="true" data-letter="G" data-word="improvement"><span class="wk">G</span>&nbsp; improvement</div>
+<div class="dchip" draggable="true" data-letter="H" data-word="colour"><span class="wk">H</span>&nbsp; colour</div>
+<div class="dchip" draggable="true" data-letter="I" data-word="translucency"><span class="wk">I</span>&nbsp; translucency</div>
+</div>
+<div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">37.</b><button class="expl-btn" onclick="toggleExpl(37)">💡 Why?</button><div class="expl-box" id="expl-37">🔑 this is when <span class="expl-kw">light penetrates skin and then scatters below the skin's surface before re-emerging</span>. Answer: <b>A light</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Yorug'lik"</span> teri bilan qanday ta'sirlashishini o'rganishgan. Javob: <b>A</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">38.</b><button class="expl-btn" onclick="toggleExpl(38)">💡 Why?</button><div class="expl-box" id="expl-38">🔑 <span class="expl-kw">the mathematics for the model goes back many decades to the time when it was used in astrophysics</span>. Answer: <b>E astrophysics</b>.<div class="expl-uz">🇺🇿 Matematik model ilgari <span class="expl-kw-uz">"astrofizikada"</span> qo'llanilgan. Javob: <b>E</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">39.</b><button class="expl-btn" onclick="toggleExpl(39)">💡 Why?</button><div class="expl-box" id="expl-39">🔑 <span class="expl-kw">all the major special-effects studios had incorporated it into their digital rendering systems</span>. Answer: <b>D use</b>.<div class="expl-uz">🇺🇿 Studiyalar modelni <span class="expl-kw-uz">"ishlatishga kiritishgan"</span>. Javob: <b>D</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">40.</b><button class="expl-btn" onclick="toggleExpl(40)">💡 Why?</button><div class="expl-box" id="expl-40">🔑 <span class="expl-kw">Cinematography will benefit from this</span>. Answer: <b>G improvement</b>.<div class="expl-uz">🇺🇿 Bu kinematografiyaning <span class="expl-kw-uz">"yaxshilanishi"</span>ga olib keladi. Javob: <b>G</b>.</div></div></div>
+</div>
 </div>
   </div>
   </div>
@@ -409,13 +449,6 @@ const CA = {27:"D",28:"A",29:"A",30:"B",31:"B",32:"D",33:"YES",34:"NOT GIVEN",35
 const CAL = {27:"D",28:"A",29:"A",30:"B",31:"B",32:"D",33:"YES",34:"NOT GIVEN",35:"NO",36:"NO",37:"A",38:"E",39:"D",40:"G"};
 const ALLQ=[27,28,29,30,31,32,33,34,35,36,37,38,39,40];
 
-function syncMx(n){
-  const r=document.querySelector('input[name="mq'+n+'"]:checked');
-  const el=document.getElementById('q'+n);
-  if(el) el.value = r?r.value:'';
-  upd();
-}
-
 let curQ=27, timerS=1200, tInt=null, tRun=false;
 let mode='exam', elapsed=0;
 let checked=false, timeExpired=false;
@@ -430,6 +463,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -554,11 +588,8 @@ function getQEl(n){
 }
 
 function getAns(n){
-  if(n>=37&&n<=40){
-    const r=document.querySelector('input[name="mq'+n+'"]:checked');
-    return r?r.value:'';
-  }
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -667,6 +698,90 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -681,6 +796,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -789,16 +905,16 @@ function launchConfetti(){
 }
 
 function markQ(n,ok){
-  if(n>=37&&n<=40){
-    const cv=CA[n];
-    document.querySelectorAll('input[name="mq'+n+'"]').forEach(r=>{
-      const lb=r.closest('label');if(!lb)return;
-      if(r.value===cv)lb.classList.add('ok');
-      else if(r.checked&&!ok)lb.classList.add('bad');
-    });
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
     return;
   }
-  const el=document.getElementById('q'+n);
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}

@@ -89,6 +89,40 @@ body.post-check .expl-btn{display:inline-flex}
 .expl-uz{margin-top:6px;padding-top:6px;border-top:1px dashed var(--border);color:var(--subtext)}
 .expl-uz .expl-kw-uz{background:#ede9fe;padding:0 4px;border-radius:3px;font-weight:600;color:#5b21b6}
 [data-theme=dark] .expl-uz .expl-kw-uz,[data-theme=night] .expl-uz .expl-kw-uz{background:#2e1a4d;color:#c4b5fd}
+.wb-expl-list{margin-top:4px}
+.wb-expl-item{padding:8px 0;border-top:1px dashed var(--border)}
+.wb-expl-item:first-child{border-top:none}
+.wb-expl-item b.wb-qn{font-size:13px;color:var(--text)}
+
+/* drag & drop (word-list summary) */
+.dchip{display:inline-flex;align-items:center;gap:6px;background:var(--inp);border:1.5px solid var(--inpb);border-radius:8px;padding:6px 12px;font-size:calc(13.5px * var(--txtscale,1));font-weight:600;color:var(--text);cursor:grab;user-select:none;transition:background .14s,border-color .14s,opacity .14s,transform .1s}
+.dchip:hover{border-color:#DC2626;background:var(--phdr)}
+.dchip:active{cursor:grabbing}
+.dchip.dragging{opacity:.45}
+.dchip.sel{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.15)}
+.dchip.used{opacity:.34;pointer-events:none}
+.dchip .wk{font-weight:800;color:#DC2626}
+.dzone{display:inline-flex;align-items:center;justify-content:center;min-width:120px;height:30px;border:2px dashed var(--inpb);border-radius:6px;background:var(--inp);vertical-align:middle;margin:0 3px;padding:0 9px;font-size:calc(13.5px * var(--txtscale,1));font-weight:700;color:var(--text);position:relative;cursor:pointer;white-space:nowrap;transition:background .14s,border-color .14s}
+.dzone:empty::before{content:'\2026';color:var(--subtext);font-weight:400}
+.dzone.dz-sm{min-width:54px;width:54px;padding:0 4px}
+.dzone.over{border-color:#DC2626;background:var(--phdr)}
+.dzone.filled{border-style:solid;border-color:#DC2626;background:var(--phdr)}
+.dzone .dz-x{position:absolute;top:-9px;right:-9px;width:19px;height:19px;border-radius:50%;background:#DC2626;color:#fff;font-size:12px;font-weight:700;line-height:16px;text-align:center;cursor:pointer;border:2px solid var(--mdbg);box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dzone.ok{border-style:solid;border-color:#22c55e!important;background:#f0fdf4!important;color:#15803d!important}
+.dzone.bad{border-style:solid;border-color:#ef4444!important;background:#fef2f2!important;color:#b91c1c!important}
+.dzone.ok .dz-x,.dzone.bad .dz-x{display:none}
+.dzone.ok,.dzone.bad{cursor:default}
+[data-theme=dark] .dzone.ok{background:#14532d!important;color:#bbf7d0!important}
+[data-theme=dark] .dzone.bad{background:#5a1d1d!important;color:#fecaca!important}
+.wbank{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.se-list{margin-top:4px}
+.se-row{display:flex;align-items:center;flex-wrap:wrap;gap:7px;padding:9px 0;border-bottom:1px solid var(--border);font-size:calc(15px * var(--txtscale,1));line-height:1.5}
+.se-row:last-child{border-bottom:none}
+.se-num{font-weight:800;color:#DC2626;min-width:22px}
+.se-stem{flex:1 1 auto;color:var(--text)}
+.se-bank-label{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--subtext);margin:16px 0 8px}
+.wbank.se-bank{flex-direction:column;gap:7px}
+.se-bank .dchip{width:100%;align-items:flex-start;white-space:normal;line-height:1.45;text-align:left}
 
 .qsec{display:none;padding:24px}
 .qsec.on{display:block}
@@ -314,19 +348,25 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 <div class="qgroup" data-group="g2" data-paras="p3-5"><p class="qnum-head" style="margin-top:14px"><em>Questions 7&ndash;10</em></p><p class="qinst">Complete the summary using the list of words, <strong>A&ndash;I</strong>, below.</p>
 <div class="fbox">
 <strong>A bilingual child negotiates with her brother</strong>
-<p>Faced with her little brother's <span class="inline-qno">7</span><input type="text" style="display:none" id="q7" value="" data-mx> to let her play with his toys, a young bilingual child used all of her communication <span class="inline-qno">8</span><input type="text" style="display:none" id="q8" value="" data-mx> to change his mind. First, she expressed her <span class="inline-qno">9</span><input type="text" style="display:none" id="q9" value="" data-mx> in gentler, more polite language, and pretended to be about to cry. Having switched from English to Japanese, she exploited aspects of Japanese culture, such as reminding him of his <span class="inline-qno">10</span><input type="text" style="display:none" id="q10" value="" data-mx> to her as her brother. She succeeded in her attempts to convince him.</p>
+<p>Faced with her little brother's <span class="dzone dz-sm" id="q7" data-q="7"></span> to let her play with his toys, a young bilingual child used all of her communication <span class="dzone dz-sm" id="q8" data-q="8"></span> to change his mind. First, she expressed her <span class="dzone dz-sm" id="q9" data-q="9"></span> in gentler, more polite language, and pretended to be about to cry. Having switched from English to Japanese, she exploited aspects of Japanese culture, such as reminding him of his <span class="dzone dz-sm" id="q10" data-q="10"></span> to her as her brother. She succeeded in her attempts to convince him.</p>
 </div>
-<div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th><th>I</th></tr></thead><tbody>
-<tr><td class="mx-stmt"><span class="mx-num">7</span> her brother's ___ to let her play with his toys<button class="expl-btn" onclick="toggleExpl(7)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq7" value="A" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="B" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="C" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="D" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="E" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="F" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="G" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="H" onchange="syncMx(7)"></label></td><td><label class="mx-cell"><input type="radio" name="mq7" value="I" onchange="syncMx(7)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-7">🔑 <span class="expl-kw">Following firm rejections by her brother</span>, the girl drew on her communicative repertoire. "Firm rejections" = <b>H refusal</b>.<div class="expl-uz">🇺🇿 Ukasi <span class="expl-kw-uz">"qat'iy rad javob"</span> bergan. Javob: <b>H</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">8</span> her communication ___ to change his mind<button class="expl-btn" onclick="toggleExpl(8)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq8" value="A" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="B" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="C" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="D" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="E" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="F" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="G" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="H" onchange="syncMx(8)"></label></td><td><label class="mx-cell"><input type="radio" name="mq8" value="I" onchange="syncMx(8)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-8">🔑 <span class="expl-kw">the girl drew on her communicative repertoire to convince him</span>. "Repertoire" = <b>C strategies</b>.<div class="expl-uz">🇺🇿 Qiz o'z <span class="expl-kw-uz">"muloqot strategiyalari"</span>dan foydalangan. Javob: <b>C</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">9</span> her ___ in gentler, more polite language<button class="expl-btn" onclick="toggleExpl(9)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq9" value="A" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="B" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="C" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="D" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="E" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="F" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="G" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="H" onchange="syncMx(9)"></label></td><td><label class="mx-cell"><input type="radio" name="mq9" value="I" onchange="syncMx(9)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-9">🔑 <span class="expl-kw">She rephrased the question by using various polite forms</span>. "The question" = <b>A request</b>.<div class="expl-uz">🇺🇿 U <span class="expl-kw-uz">"o'z so'rovini"</span> muloyimroq shaklda qayta ifodalagan. Javob: <b>A</b>.</div></div></td></tr>
-<tr><td class="mx-stmt"><span class="mx-num">10</span> his ___ to her as her brother<button class="expl-btn" onclick="toggleExpl(10)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="mq10" value="A" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="B" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="C" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="D" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="E" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="F" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="G" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="H" onchange="syncMx(10)"></label></td><td><label class="mx-cell"><input type="radio" name="mq10" value="I" onchange="syncMx(10)"></label></td></tr>
-<tr class="expl-row"><td colspan="10" class="expl-cell"><div class="expl-box" id="expl-10">🔑 <span class="expl-kw">an assumed obligation to care on the part of the brother</span>. "Obligation to care" = <b>E responsibility</b>.<div class="expl-uz">🇺🇿 Akaning unga nisbatan <span class="expl-kw-uz">"mas'uliyati"</span>ni eslatgan. Javob: <b>E</b>.</div></div></td></tr>
-</tbody></table></div>
-<div class="fbox" style="margin-top:10px"><strong>Word List</strong>A&nbsp;request&nbsp;&nbsp;B&nbsp;attempts&nbsp;&nbsp;C&nbsp;strategies&nbsp;&nbsp;D&nbsp;misunderstandings&nbsp;&nbsp;E&nbsp;responsibility&nbsp;&nbsp;F&nbsp;agreement&nbsp;&nbsp;G&nbsp;judgement&nbsp;&nbsp;H&nbsp;refusal&nbsp;&nbsp;I&nbsp;behaviour</div>
+<div class="wbank se-bank" id="wbankG2" data-show="word">
+<div class="dchip" draggable="true" data-letter="A" data-word="request"><span class="wk">A</span>&nbsp; request</div>
+<div class="dchip" draggable="true" data-letter="B" data-word="attempts"><span class="wk">B</span>&nbsp; attempts</div>
+<div class="dchip" draggable="true" data-letter="C" data-word="strategies"><span class="wk">C</span>&nbsp; strategies</div>
+<div class="dchip" draggable="true" data-letter="D" data-word="misunderstandings"><span class="wk">D</span>&nbsp; misunderstandings</div>
+<div class="dchip" draggable="true" data-letter="E" data-word="responsibility"><span class="wk">E</span>&nbsp; responsibility</div>
+<div class="dchip" draggable="true" data-letter="F" data-word="agreement"><span class="wk">F</span>&nbsp; agreement</div>
+<div class="dchip" draggable="true" data-letter="G" data-word="judgement"><span class="wk">G</span>&nbsp; judgement</div>
+<div class="dchip" draggable="true" data-letter="H" data-word="refusal"><span class="wk">H</span>&nbsp; refusal</div>
+<div class="dchip" draggable="true" data-letter="I" data-word="behaviour"><span class="wk">I</span>&nbsp; behaviour</div>
+</div>
+<div class="wb-expl-list">
+<div class="wb-expl-item"><b class="wb-qn">7.</b><button class="expl-btn" onclick="toggleExpl(7)">💡 Why?</button><div class="expl-box" id="expl-7">🔑 <span class="expl-kw">Following firm rejections by her brother</span>, the girl drew on her communicative repertoire. "Firm rejections" = <b>H refusal</b>.<div class="expl-uz">🇺🇿 Ukasi <span class="expl-kw-uz">"qat'iy rad javob"</span> bergan. Javob: <b>H</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">8.</b><button class="expl-btn" onclick="toggleExpl(8)">💡 Why?</button><div class="expl-box" id="expl-8">🔑 <span class="expl-kw">the girl drew on her communicative repertoire to convince him</span>. "Repertoire" = <b>C strategies</b>.<div class="expl-uz">🇺🇿 Qiz o'z <span class="expl-kw-uz">"muloqot strategiyalari"</span>dan foydalangan. Javob: <b>C</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">9.</b><button class="expl-btn" onclick="toggleExpl(9)">💡 Why?</button><div class="expl-box" id="expl-9">🔑 <span class="expl-kw">She rephrased the question by using various polite forms</span>. "The question" = <b>A request</b>.<div class="expl-uz">🇺🇿 U <span class="expl-kw-uz">"o'z so'rovini"</span> muloyimroq shaklda qayta ifodalagan. Javob: <b>A</b>.</div></div></div>
+<div class="wb-expl-item"><b class="wb-qn">10.</b><button class="expl-btn" onclick="toggleExpl(10)">💡 Why?</button><div class="expl-box" id="expl-10">🔑 <span class="expl-kw">an assumed obligation to care on the part of the brother</span>. "Obligation to care" = <b>E responsibility</b>.<div class="expl-uz">🇺🇿 Akaning unga nisbatan <span class="expl-kw-uz">"mas'uliyati"</span>ni eslatgan. Javob: <b>E</b>.</div></div></div>
+</div>
 </div>
 <div class="qgroup" data-group="g3" data-paras="p3-6,p3-8"><p class="qnum-head" style="margin-top:14px"><em>Questions 11&ndash;14</em></p><p class="qinst">Do the following statements agree with the claims of the writer in Reading Passage 3?</p><p class="qinst">Write <strong>YES</strong> if the statement agrees with the claims of the writer, <strong>NO</strong> if it contradicts them, or <strong>NOT GIVEN</strong> if it is impossible to say what the writer thinks about this.</p>
 <div class="qitem"><p class="qprompt"><strong>11.</strong>&nbsp; Even people who speak only one language know how to adapt their way of communicating according to the situation. <button class="expl-btn" onclick="toggleExpl(11)">💡 Why?</button></p><div class="rgroup" id="rg11"><label class="rlabel"><input type="radio" name="q11" value="YES" onchange="upd()"> YES</label><label class="rlabel"><input type="radio" name="q11" value="NO" onchange="upd()"> NO</label><label class="rlabel"><input type="radio" name="q11" value="NOT GIVEN" onchange="upd()"> NOT GIVEN</label></div><div class="expl-box" id="expl-11">🔑 <span class="expl-kw">Whether bilingual or not, we all constantly select from our repertoire anything that will best serve our purpose</span>. Answer: <b>YES</b>.<div class="expl-uz">🇺🇿 <span class="expl-kw-uz">"Bilingual bo'ladimi yo'qmi"</span> hammamiz maqsadga mos so'zlarni tanlaymiz. Javob: <b>YES</b>.</div></div></div>
@@ -373,13 +413,6 @@ const CA = {1:"B",2:"C",3:"A",4:"D",5:"A",6:"C",7:"H",8:"C",9:"A",10:"E",11:"YES
 const CAL = {1:"B",2:"C",3:"A",4:"D",5:"A",6:"C",7:"H",8:"C",9:"A",10:"E",11:"YES",12:"NOT GIVEN",13:"NO",14:"NOT GIVEN"};
 const ALLQ=[1,2,3,4,5,6,7,8,9,10,11,12,13,14];
 
-function syncMx(n){
-  const r=document.querySelector('input[name="mq'+n+'"]:checked');
-  const el=document.getElementById('q'+n);
-  if(el) el.value = r?r.value:'';
-  upd();
-}
-
 let curQ=1, timerS=1200, tInt=null, tRun=false;
 let mode='exam', elapsed=0;
 let checked=false, timeExpired=false;
@@ -394,6 +427,7 @@ window.addEventListener('DOMContentLoaded',()=>{
   buildQRow();
   upd();
   setupDrag();
+  setupSummaryDnD();
   setupHLToolbar();
   setupGlossary();
   showWelcomePopup();
@@ -513,17 +547,13 @@ function nextQ(){const i=ALLQ.indexOf(curQ);goQ(ALLQ[Math.min(ALLQ.length-1,i+1)
 function prevQ(){const i=ALLQ.indexOf(curQ);goQ(ALLQ[Math.max(0,i-1)]);}
 
 function getQEl(n){
-  if(n>=7&&n<=10){ const r=document.querySelector('input[name="mq'+n+'"]'); return r; }
   return document.getElementById('q'+n)||
     document.querySelector('input[name="q'+n+'"]:first-of-type')||null;
 }
 
 function getAns(n){
-  if(n>=7&&n<=10){
-    const r=document.querySelector('input[name="mq'+n+'"]:checked');
-    return r?r.value:'';
-  }
   const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')) return el.dataset.val||'';
   if(el&&el.type==='text') return el.value.trim();
   const r=document.querySelector('input[name="q'+n+'"]:checked');
   return r?r.value:'';
@@ -632,6 +662,90 @@ function setupDrag(){
   document.addEventListener('mouseup',()=>{drag=false;d.classList.remove('on');document.body.style.cssText='';});
 }
 
+function setupSummaryDnD(){
+  const chips=[...document.querySelectorAll('.dchip')];
+  const zones=[...document.querySelectorAll('.dzone')];
+  if(!chips.length||!zones.length)return;
+  const showMode=(document.querySelector('.wbank')?.dataset.show)||'word';
+  let selChip=null;
+
+  const wordOf=L=>{const c=chips.find(c=>c.dataset.letter===L);return c?c.dataset.word:'';};
+  const dispOf=L=>showMode==='letter'?L:wordOf(L);
+  function refreshUsed(){
+    const used=new Set(zones.map(z=>z.dataset.val).filter(Boolean));
+    chips.forEach(c=>{ if(!checked) c.classList.toggle('used',used.has(c.dataset.letter)); });
+  }
+  function clearSel(){ if(selChip){selChip.classList.remove('sel');selChip=null;} }
+  function fill(zone,letter){
+    if(checked||!letter)return;
+    zones.forEach(z=>{ if(z.dataset.val===letter){z.dataset.val='';z.classList.remove('filled');z.innerHTML='';} });
+    zone.dataset.val=letter;zone.classList.add('filled');
+    zone.innerHTML='<span class="dz-w">'+dispOf(letter)+'</span><span class="dz-x" title="Clear">×</span>';
+    clearSel();refreshUsed();upd();
+  }
+  function empty(zone){
+    if(checked)return;
+    zone.dataset.val='';zone.classList.remove('filled');zone.innerHTML='';
+    refreshUsed();upd();
+  }
+
+  chips.forEach(chip=>{
+    chip.addEventListener('dragstart',e=>{
+      if(checked||chip.classList.contains('used')){e.preventDefault();return;}
+      e.dataTransfer.setData('text/plain',chip.dataset.letter);
+      e.dataTransfer.effectAllowed='move';
+      chip.classList.add('dragging');clearSel();
+    });
+    chip.addEventListener('dragend',()=>chip.classList.remove('dragging'));
+    chip.addEventListener('click',()=>{
+      if(checked||chip.classList.contains('used'))return;
+      if(selChip===chip)clearSel();
+      else{clearSel();selChip=chip;chip.classList.add('sel');}
+    });
+  });
+  zones.forEach(zone=>{
+    zone.addEventListener('dragover',e=>{if(checked)return;e.preventDefault();zone.classList.add('over');});
+    zone.addEventListener('dragleave',()=>zone.classList.remove('over'));
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();zone.classList.remove('over');
+      const L=e.dataTransfer.getData('text/plain');
+      if(L)fill(zone,L);
+    });
+    zone.addEventListener('click',e=>{
+      if(checked)return;
+      if(e.target.classList.contains('dz-x')){empty(zone);return;}
+      if(selChip)fill(zone,selChip.dataset.letter);
+    });
+  });
+
+  let ghost=null,tChip=null;
+  chips.forEach(chip=>{
+    chip.addEventListener('touchstart',e=>{
+      if(checked||chip.classList.contains('used'))return;
+      tChip=chip;const t=e.touches[0];
+      ghost=chip.cloneNode(true);
+      ghost.style.cssText='position:fixed;z-index:99999;pointer-events:none;opacity:.9;max-width:70%;left:'+t.clientX+'px;top:'+t.clientY+'px;transform:translate(-50%,-150%)';
+      document.body.appendChild(ghost);
+    },{passive:true});
+    chip.addEventListener('touchmove',e=>{
+      if(!ghost)return;e.preventDefault();const t=e.touches[0];
+      ghost.style.left=t.clientX+'px';ghost.style.top=t.clientY+'px';
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.toggle('over',zz===z));
+    },{passive:false});
+    chip.addEventListener('touchend',e=>{
+      if(!ghost)return;const t=e.changedTouches[0];
+      const el=document.elementFromPoint(t.clientX,t.clientY);
+      const z=el&&el.closest?el.closest('.dzone'):null;
+      zones.forEach(zz=>zz.classList.remove('over'));
+      ghost.remove();ghost=null;
+      if(z&&tChip)fill(z,tChip.dataset.letter);
+      tChip=null;
+    });
+  });
+}
+
 function norm(s){return s.toLowerCase().replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();}
 function isCorrect(n){
   const u=getAns(n),c=CA[n];
@@ -646,6 +760,7 @@ function doCheck(){
   document.body.classList.add('post-check');
 
   document.querySelectorAll('#right-pane input,#right-pane select').forEach(el=>el.disabled=true);
+  document.querySelectorAll('.dchip').forEach(c=>{c.draggable=false;c.classList.add('used');});
 
   const list=activeQList();
   let sc=0;
@@ -753,16 +868,16 @@ function launchConfetti(){
 }
 
 function markQ(n,ok){
-  if(n>=7&&n<=10){
-    const cv=CA[n];
-    document.querySelectorAll('input[name="mq'+n+'"]').forEach(r=>{
-      const lb=r.closest('label');if(!lb)return;
-      if(r.value===cv)lb.classList.add('ok');
-      else if(r.checked&&!ok)lb.classList.add('bad');
-    });
+  const el=document.getElementById('q'+n);
+  if(el&&el.classList&&el.classList.contains('dzone')){
+    el.classList.add(ok?'ok':'bad');
+    if(!ok){
+      const sp=document.createElement('span');
+      sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';
+      el.insertAdjacentElement('afterend',sp);
+    }
     return;
   }
-  const el=document.getElementById('q'+n);
   if(el&&el.type==='text'){
     el.classList.add(ok?'ok':'bad');
     if(!ok){const sp=document.createElement('span');sp.className='cad';sp.innerHTML=' ➜ <em>'+CAL[n]+'</em>';el.insertAdjacentElement('afterend',sp);}
