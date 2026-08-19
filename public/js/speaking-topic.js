@@ -101,11 +101,23 @@
       return html;
     }
 
+    // Two content formats coexist: hand-written per-question sets carry
+    // usefulLanguage/usefulStructure on the question itself; older topics
+    // still use one shared vocab/structure bank for the whole topic.
+    const perQuestion = !!q.usefulLanguage;
+    const highlightSource = perQuestion ? q.usefulLanguage : t.vocab;
+
     html += '<div class="sp-section"><p class="sp-model-label">🎤 Sample Answer</p>' +
-      '<div class="sp-model-box"><span class="sp-model-quote">&ldquo;</span>' + highlight(q.model, t.vocab) + '</div></div>';
-    html += collapseSection('Useful Structures & Sentence Starters', structureHtml(t.structure));
-    html += collapseSection('Vocabulary, Collocations & Phrasal Verbs', vocabByTypeHtml(t.vocab));
-    html += section(null, '<div class="sp-bandtip">' + escapeHtml(t.bandTip) + '</div>');
+      '<div class="sp-model-box"><span class="sp-model-quote">&ldquo;</span>' + highlight(q.model, highlightSource) + '</div></div>';
+
+    if (perQuestion) {
+      html += collapseSection('Useful Structure', structureListHtml(q.usefulStructure));
+      html += collapseSection('Most Useful Language', languageListHtml(q.usefulLanguage));
+    } else {
+      html += collapseSection('Useful Structures & Sentence Starters', structureHtml(t.structure));
+      html += collapseSection('Vocabulary, Collocations & Phrasal Verbs', vocabByTypeHtml(t.vocab));
+    }
+    if (t.bandTip) html += section(null, '<div class="sp-bandtip">' + escapeHtml(t.bandTip) + '</div>');
     return html;
   }
 
@@ -129,6 +141,18 @@
     ).join('') + '</div>';
   }
 
+  function structureListHtml(phrases) {
+    return '<div class="sp-structure-group">' +
+      phrases.map((p) => '<p class="sp-structure-phrase">"' + escapeHtml(p) + '"</p>').join('') +
+    '</div>';
+  }
+
+  function languageListHtml(phrases) {
+    return '<div class="sp-vocab-list">' + phrases.map((p) =>
+      '<div class="sp-vocab-item sp-vocab-item-plain"><div class="sp-vocab-term">' + escapeHtml(p) + '</div></div>'
+    ).join('') + '</div>';
+  }
+
   function vocabByTypeHtml(vocab) {
     let html = '';
     TYPE_ORDER.forEach((type) => {
@@ -148,18 +172,26 @@
     return html;
   }
 
-  // Wraps every occurrence of a topic's vocab terms in a clickable <mark>,
-  // so students see exactly where the "important language" lands inside a
-  // natural sentence rather than only in a separate glossary list. Matches
-  // against already-escaped text/terms so escaping order never breaks it.
-  function highlight(text, vocab) {
+  // Wraps every occurrence of a topic's vocab terms in <mark>, so students
+  // see exactly where the "important language" lands inside a natural
+  // sentence rather than only in a separate list. Accepts either full vocab
+  // objects ({term, type, meaning} — old shared-bank topics) or plain
+  // strings (hand-written per-question "useful language" lists, which have
+  // no separate definition, so those marks highlight but aren't clickable).
+  // Matches against already-escaped text/terms so escaping order never
+  // breaks it. Template fragments like "rather than + -ing" simply won't
+  // match anything literal in the answer and are silently skipped.
+  function highlight(text, items) {
     let escaped = escapeHtml(text);
-    const terms = vocab.slice().sort((a, b) => b.term.length - a.term.length);
+    const norm = (items || []).map((it) => (typeof it === 'string' ? { term: it } : it));
+    const terms = norm.slice().sort((a, b) => b.term.length - a.term.length);
     terms.forEach((v) => {
       const term = escapeHtml(v.term);
       const pattern = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      const typeAttr = v.type ? ' data-type="' + escapeHtml(TYPE_LABELS[v.type] || '') + '"' : '';
+      const defAttr = v.meaning ? ' data-def="' + escapeHtml(v.meaning) + '"' : '';
       escaped = escaped.replace(pattern, (m) =>
-        '<mark class="sp-hl" data-term="' + escapeHtml(v.term) + '" data-type="' + escapeHtml(TYPE_LABELS[v.type] || '') + '" data-def="' + escapeHtml(v.meaning) + '">' + m + '</mark>'
+        '<mark class="sp-hl" data-term="' + escapeHtml(v.term) + '"' + typeAttr + defAttr + '>' + m + '</mark>'
       );
     });
     return escaped;
@@ -192,7 +224,7 @@
 
     root.addEventListener('click', (e) => {
       const target = e.target.closest('mark.sp-hl, .sp-vocab-item');
-      if (!target) { pop.classList.remove('show'); return; }
+      if (!target || !target.dataset.def) { pop.classList.remove('show'); return; }
       e.stopPropagation();
       pop.innerHTML =
         (target.dataset.type ? '<span class="pop-type">' + escapeHtml(target.dataset.type) + '</span>' : '') +

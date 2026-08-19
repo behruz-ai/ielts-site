@@ -394,6 +394,8 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 .sp-vocab-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:10px}
 .sp-vocab-item{background-color:var(--pill); border-radius:10px; padding:10px 13px; cursor:pointer; transition:background-color .15s}
 .sp-vocab-item:hover{background-color:var(--premium-bg)}
+.sp-vocab-item.sp-vocab-item-plain{cursor:default}
+.sp-vocab-item.sp-vocab-item-plain:hover{background-color:var(--pill)}
 .sp-vocab-term{font-weight:800; font-size:13.5px; color:var(--text)}
 .sp-vocab-meaning{font-size:12px; color:var(--subtext); margin:2px 0 5px}
 .sp-vocab-example{font-size:12.5px; color:var(--text); font-style:italic; opacity:.85}
@@ -414,9 +416,9 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 .sp-model-quote{position:absolute; top:6px; left:12px; font-size:38px; font-weight:900; color:var(--accent); opacity:.4; line-height:1; font-family:Georgia,serif}
 mark.sp-hl{
   background-color:var(--premium-bg); color:var(--premium); border-radius:4px; padding:0 3px; font-weight:700;
-  cursor:pointer; border-bottom:1.5px dotted var(--premium);
 }
-mark.sp-hl:hover{background-color:rgba(167,139,250,.26)}
+mark.sp-hl[data-def]{cursor:pointer; border-bottom:1.5px dotted var(--premium)}
+mark.sp-hl[data-def]:hover{background-color:rgba(167,139,250,.26)}
 
 .sp-bandtip{
   background-color:var(--premium-bg); border-radius:12px; padding:13px 16px; font-size:13px; line-height:1.6; color:var(--text);
