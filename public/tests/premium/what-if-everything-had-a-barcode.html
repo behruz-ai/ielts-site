@@ -306,9 +306,9 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 <div class="fbox">
 <strong>Problems with taxonomy</strong>
 <ul class="notes-ul">
-<li>only <span class="inline-qno">1</span><input class="answer-input" id="q1" type="text"><button class="expl-btn" onclick="toggleExpl(1)">💡 Why?</button> species have been classified so far</li>
-<li>difficult to distinguish between species of certain creatures, for example <span class="inline-qno">2</span><input class="answer-input" id="q2" type="text"><button class="expl-btn" onclick="toggleExpl(2)">💡 Why?</button></li>
-<li>possibility of a large number of species of <span class="inline-qno">3</span><input class="answer-input" id="q3" type="text"><button class="expl-btn" onclick="toggleExpl(3)">💡 Why?</button> dying out soon</li>
+<li>only <span class="inline-qno">1</span><input class="answer-input" id="q1" type="text" onchange="upd()"><button class="expl-btn" onclick="toggleExpl(1)">💡 Why?</button> species have been classified so far</li>
+<li>difficult to distinguish between species of certain creatures, for example <span class="inline-qno">2</span><input class="answer-input" id="q2" type="text" onchange="upd()"><button class="expl-btn" onclick="toggleExpl(2)">💡 Why?</button></li>
+<li>possibility of a large number of species of <span class="inline-qno">3</span><input class="answer-input" id="q3" type="text" onchange="upd()"><button class="expl-btn" onclick="toggleExpl(3)">💡 Why?</button> dying out soon</li>
 </ul>
 </div>
 <div class="expl-box" id="expl-1">🔑 <span class="expl-kw">scientists have classified about 1.7 million organisms</span>, a small fraction of the total. Answer: <b>1.7 million</b>.<div class="expl-uz">🇺🇿 Olimlar hozirgacha <span class="expl-kw-uz">"1.7 million"</span> organizmni tasniflagan. Javob: <b>1.7 million</b>.</div></div>
@@ -317,15 +317,15 @@ body.post-check .gloss-list-btn{display:inline-flex;align-items:center;gap:5px}
 </div>
 <div class="qgroup" data-group="g2" data-paras="p1-6,p1-7,p1-8"><p class="qnum-head" style="margin-top:14px"><em>Questions 4&ndash;8</em></p><p class="qinst">Complete the flow-chart below.</p><p class="qinst">Choose <strong>NO MORE THAN THREE WORDS AND/OR A NUMBER</strong> from the passage for each answer.</p>
 <div class="flow-title">Hebert's system</div>
-<div class="flowbox">decided to create a device called a <span class="inline-qno">4</span><input class="answer-input" id="q4" type="text"><button class="expl-btn" onclick="toggleExpl(4)">💡 Why?</button>, like ones used in shops</div>
+<div class="flowbox">decided to create a device called a <span class="inline-qno">4</span><input class="answer-input" id="q4" type="text" onchange="upd()"><button class="expl-btn" onclick="toggleExpl(4)">💡 Why?</button>, like ones used in shops</div>
 <div class="flow-arrow">↓</div>
-<div class="flowbox">chose a <span class="inline-qno">5</span><input class="answer-input" id="q5" type="text"><button class="expl-btn" onclick="toggleExpl(5)">💡 Why?</button> that produces a substance called CO1</div>
+<div class="flowbox">chose a <span class="inline-qno">5</span><input class="answer-input" id="q5" type="text" onchange="upd()"><button class="expl-btn" onclick="toggleExpl(5)">💡 Why?</button> that produces a substance called CO1</div>
 <div class="flow-arrow">↓</div>
-<div class="flowbox">samples of CO1 read by the device and matched with those kept in the <span class="inline-qno">6</span><input class="answer-input" id="q6" type="text"><button class="expl-btn" onclick="toggleExpl(6)">💡 Why?</button></div>
+<div class="flowbox">samples of CO1 read by the device and matched with those kept in the <span class="inline-qno">6</span><input class="answer-input" id="q6" type="text" onchange="upd()"><button class="expl-btn" onclick="toggleExpl(6)">💡 Why?</button></div>
 <div class="flow-arrow">↓</div>
-<div class="flowbox">current results show that <span class="inline-qno">7</span><input class="answer-input" id="q7" type="text"><button class="expl-btn" onclick="toggleExpl(7)">💡 Why?</button> of animal species can be identified in this way</div>
+<div class="flowbox">current results show that <span class="inline-qno">7</span><input class="answer-input" id="q7" type="text" onchange="upd()"><button class="expl-btn" onclick="toggleExpl(7)">💡 Why?</button> of animal species can be identified in this way</div>
 <div class="flow-arrow">↓</div>
-<div class="flowbox">results show different species being identified, eg of <span class="inline-qno">8</span><input class="answer-input" id="q8" type="text"><button class="expl-btn" onclick="toggleExpl(8)">💡 Why?</button></div>
+<div class="flowbox">results show different species being identified, eg of <span class="inline-qno">8</span><input class="answer-input" id="q8" type="text" onchange="upd()"><button class="expl-btn" onclick="toggleExpl(8)">💡 Why?</button></div>
 <div class="expl-box" id="expl-4">🔑 He envisaged <span class="expl-kw">a 'DNA barcode reader', similar to the scanners at retail checkouts</span>. Answer: <b>DNA barcode reader</b>.<div class="expl-uz">🇺🇿 U do'kon kassalaridagi skanerlarga o'xshash <span class="expl-kw-uz">"DNK shtrix-kod o'qigich"</span>ni tasavvur qildi. Javob: <b>DNA barcode reader</b>.</div></div>
 <div class="expl-box" id="expl-5">🔑 <span class="expl-kw">He selected a gene that gives rise to an</span> enzyme known as CO1. Answer: <b>gene</b>.<div class="expl-uz">🇺🇿 U CO1 deb nomlanuvchi fermentni hosil qiluvchi <span class="expl-kw-uz">"genni"</span> tanladi. Javob: <b>gene</b>.</div></div>
 <div class="expl-box" id="expl-6">🔑 <span class="expl-kw">This information would be instantly relayed to a reference database</span>, a public library of DNA barcodes. Answer: <b>reference database</b>.<div class="expl-uz">🇺🇿 Bu ma'lumot bir zumda <span class="expl-kw-uz">"ma'lumotnoma bazasi"</span>ga uzatiladi. Javob: <b>reference database</b>.</div></div>
