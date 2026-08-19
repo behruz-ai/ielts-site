@@ -86,33 +86,31 @@
     "tier": "free",
     "theme": "Home & Accommodation",
     "tag": "Always in use",
-    "structure": [
-      { "label": "Direct answer", "phrases": ["I live in...", "It's...", "I'd describe it as..."] },
-      { "label": "Developing", "phrases": ["what I like most about it is...", "mainly because...", "the main reason is..."] },
-      { "label": "Example", "phrases": ["for instance, ...", "a good example is...", "like when..."] }
-    ],
-    "vocab": [
-      { "term": "plenty of space", "type": "collocation", "meaning": "a lot of room", "example": "It's not huge, but there's plenty of space for the two of us." },
-      { "term": "a cosy feel", "type": "collocation", "meaning": "a warm, comfortable atmosphere", "example": "It's got a cosy feel, especially in winter." },
-      { "term": "fully furnished", "type": "collocation", "meaning": "already equipped with furniture", "example": "We moved into a fully furnished flat, which made things a lot easier." },
-      { "term": "natural light", "type": "collocation", "meaning": "daylight coming into a room", "example": "The living room gets loads of natural light in the mornings." },
-      { "term": "open-plan", "type": "collocation", "meaning": "a layout with few or no dividing walls", "example": "The kitchen and living room are open-plan, which I really like." },
-      { "term": "settle in", "type": "phrasal-verb", "meaning": "become comfortable in a new place", "example": "It didn't take long to settle in once we'd unpacked everything." },
-      { "term": "a housewarming", "type": "collocation", "meaning": "a party celebrating a new home", "example": "We had a housewarming not long after we moved in." },
-      { "term": "make it feel like home", "type": "idiom", "meaning": "personalize a space so it feels comfortable and familiar", "example": "Small changes like that really help make it feel like home." }
-    ],
-    "bandTip": "🎯 Grammatical Range: notice short, natural contrast structures like \"it's not huge, but there's plenty of space\" — a simple \"not X, but Y\" pattern adds nuance to a Part 1 answer without needing complex grammar.",
+    "topStructures": {
+      "items": [
+        { "pattern": "I like the fact that...", "example": "I like the fact that it gets a lot of natural light." },
+        { "pattern": "I'd probably + verb", "example": "I'd probably make the kitchen bigger." },
+        { "pattern": "I could see myself + -ing", "example": "I could see myself moving into a house later on." },
+        { "pattern": "If I had to pick one thing, it would be...", "example": "If I had to pick one thing, it would be the lack of storage." },
+        { "pattern": "The downside is that...", "example": "The downside is that I have to do everything myself." },
+        { "pattern": "I've been + -ing + for...", "example": "I've been living here for a few months." },
+        { "pattern": "I'm still + -ing", "example": "I'm still getting used to the neighbourhood." },
+        { "pattern": "Apart from that, ...", "example": "Apart from that, I'm quite happy with the flat." },
+        { "pattern": "That said, ...", "example": "That said, I could see myself living in a house later on." },
+        { "pattern": "So far, ...", "example": "So far, I'm quite happy with it." }
+      ]
+    },
     "questions": [
-      { "id": "q1", "text": "Can you describe the place where you live?", "model": "Sure — it's a two-bedroom flat with plenty of space for the two of us, on the third floor of a fairly modern building. Nothing too fancy, but it's comfortable, and it's in a pretty convenient location for getting into the city centre." },
-      { "id": "q2", "text": "What kind of housing accommodation do you live in?", "model": "I live in a flat, actually, which came fully furnished when we first moved in, honestly making things a lot easier at the time. We've swapped out a few pieces since then, but most of the original furniture's still there." },
-      { "id": "q3", "text": "What do you like about your flat?", "model": "Probably the natural light, if I'm honest — the living room faces east, so it's really bright first thing in the morning. It genuinely makes a difference to my mood, especially compared to my previous place, which felt fairly dark all day." },
-      { "id": "q4", "text": "Which room does your family spend most of the time in?", "model": "Definitely the living room, mainly because it's open-plan with the kitchen, so everyone naturally ends up there while someone's cooking. We rarely all sit in separate rooms, if I'm honest, unless someone specifically wants some quiet." },
-      { "id": "q5", "text": "What can you see from the windows where you live?", "model": "Mostly rooftops and a bit of a park in the distance, nothing too exciting, if I'm honest. On a clear day you can just about make out the hills on the edge of the city, which is a nice bonus." },
-      { "id": "q6", "text": "Do you prefer living in a house or a flat?", "model": "A flat, personally, mainly for practical reasons — less maintenance overall, and it's got a cosy feel despite being fairly small. Houses are nice in theory, but the upkeep's genuinely not something I'm ready to take on yet." },
-      { "id": "q7", "text": "What would you like to change in your flat?", "model": "Probably the kitchen, if I could — it's a bit outdated, and I'd love a proper open-plan layout eventually rather than the closed-off setup we've got now. Small changes like that really help make it feel like home, in my experience." },
-      { "id": "q8", "text": "What do you dislike about your flat?", "model": "Honestly, just the lack of storage — there's plenty of space day to day, but storage is definitely lacking, especially in the bedrooms. We've had to get creative with shelving just to keep things from feeling cluttered." },
-      { "id": "q9", "text": "Who do you live with?", "model": "Just my partner at the moment — it's a fairly small place, but that suits us fine for now. If anything, we'd like a bit more room eventually, once we're in a better position financially." },
-      { "id": "q10", "text": "How long have you lived there?", "model": "About three years now — we had a housewarming not long after we moved in, actually. It didn't take long to settle in and make it feel like home, if I'm honest, though the first few months felt a bit strange." }
+      { "id": "q1", "text": "Can you describe the place where you live?", "model": "Sure. I live in a fairly modern flat in Tashkent. It's not particularly large, but there's enough space for everything I need, and I like the fact that it gets quite a lot of natural light during the day. It's also in a pretty convenient area, so most things I need are within easy reach.", "usefulLanguage": ["a fairly modern flat", "quite a lot of natural light", "within easy reach"], "usefulStructure": ["I like the fact that + clause", "It's not particularly + adjective, but..."] },
+      { "id": "q2", "text": "What kind of housing accommodation do you live in?", "model": "I live in a rented flat at the moment. It's a fairly typical apartment for the area, with a couple of bedrooms, a living room and a small kitchen. I think a flat suits me better than a house because it's easier to look after.", "usefulLanguage": ["a rented flat", "a couple of bedrooms", "suits me better than"], "usefulStructure": ["I think X suits me better because...", "It's + adjective + to + verb"] },
+      { "id": "q3", "text": "What do you like about your flat?", "model": "Probably the location. It's close to pretty much everything I need, so I don't have to spend a lot of time travelling around the city. I also like the living room because it's quite spacious and a nice place to unwind after a long day.", "usefulLanguage": ["close to pretty much everything", "spacious", "a nice place to unwind"], "usefulStructure": ["Probably the + noun.", "I also like... because..."] },
+      { "id": "q4", "text": "Which room does your family spend most of the time in?", "model": "Probably the living room. That's where we usually sit down and chat, watch TV or have something to eat together. It's also the most comfortable room in the flat, so it naturally becomes the main gathering place.", "usefulLanguage": ["sit down and chat", "have something to eat", "the main gathering place"], "usefulStructure": ["That's where we usually + verb...", "so it naturally becomes..."] },
+      { "id": "q5", "text": "What can you see from the windows where you live?", "model": "There's not much of a view, to be honest. I can mainly see the buildings and streets around us, and there are a few trees as well. It's nothing spectacular, but I do like having some greenery outside rather than just looking at concrete buildings.", "usefulLanguage": ["the buildings and streets around us", "nothing spectacular", "some greenery"], "usefulStructure": ["There's not much of a + noun.", "I do like + -ing, though.", "rather than + -ing"] },
+      { "id": "q6", "text": "Do you prefer living in a house or a flat?", "model": "I'd probably choose a flat, at least for now. I like the fact that everything is relatively easy to manage, and I don't have to worry about things like a garden or a large amount of maintenance. That said, I could see myself moving into a house later on, especially if I have a family.", "usefulLanguage": ["easy to manage", "maintenance", "later on", "move into a house"], "usefulStructure": ["I'd probably choose...", "I could see myself + -ing", "That said, ..."] },
+      { "id": "q7", "text": "What would you like to change in your flat?", "model": "I'd probably make the kitchen a bit bigger. It's perfectly fine as it is, but there isn't much room to move around, especially when more than one person is using it. I'd also like to add some more storage space because we tend to run out of space pretty quickly.", "usefulLanguage": ["there isn't much room to move around", "storage space", "run out of space"], "usefulStructure": ["I'd probably + verb...", "It's fine as it is, but..."] },
+      { "id": "q8", "text": "What do you dislike about your flat?", "model": "If I had to pick one thing, it would probably be the lack of storage. We have enough space overall, but there's nowhere to put some of the bigger things, so the flat can look a little cluttered. Apart from that, I'm quite happy with it.", "usefulLanguage": ["the lack of storage", "look cluttered", "Apart from that..."], "usefulStructure": ["If I had to pick one thing, it would be...", "Apart from that, ..."] },
+      { "id": "q9", "text": "Who do you live with?", "model": "At the moment, I live on my own. I actually quite like it because I have a lot more privacy and freedom, and I can organise my day however I want. The downside is that I have to do everything myself, but I'm pretty used to it now.", "usefulLanguage": ["live on my own", "privacy and freedom", "organise my day", "the downside is..."], "usefulStructure": ["I quite like it because...", "The downside is that..."] },
+      { "id": "q10", "text": "How long have you lived there?", "model": "I've been living there for a few months now. I moved in fairly recently, so I'm still getting used to the place and the neighbourhood. But so far, I'm quite happy with it, and I think I've settled in pretty well.", "usefulLanguage": ["for a few months now", "get used to something", "settle in"], "usefulStructure": ["I've been + -ing + for + period", "I'm still + -ing", "So far, ..."] }
     ]
   }
 ]
