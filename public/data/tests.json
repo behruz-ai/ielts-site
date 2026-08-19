@@ -3613,5 +3613,102 @@
       "Multiple Choice",
       "Sentence Completion"
     ]
+  },
+  {
+    "id": "premium-chili-peppers",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Chili Peppers",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/chili-peppers.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion"
+    ]
+  },
+  {
+    "id": "premium-flying-the-coast",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Flying the Coast",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/flying-the-coast.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion"
+    ]
+  },
+  {
+    "id": "premium-the-extinction-of-cave-bear",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Extinction of Cave Bear",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-extinction-of-cave-bear.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion"
+    ]
+  },
+  {
+    "id": "premium-new-zealands-early-crafts-and-traditions",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "New Zealand's Early Crafts and Traditions",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/new-zealands-early-crafts-and-traditions.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Table Completion"
+    ]
+  },
+  {
+    "id": "premium-the-development-of-plastics",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Development of Plastics",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-development-of-plastics.html",
+    "questionTypes": [
+      "Table Completion",
+      "True/False/Not Given"
+    ]
+  },
+  {
+    "id": "premium-the-role-of-mothers-in-the-origins-of-music",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Role of Mothers in the Origins of Music",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-role-of-mothers-in-the-origins-of-music.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching Features",
+      "Summary Completion"
+    ]
   }
 ]
