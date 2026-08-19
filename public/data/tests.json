@@ -3710,5 +3710,73 @@
       "Matching Features",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-seeing-the-colour-of-sounds",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Seeing the Colour of Sounds, Hearing the Colour of Numbers",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/seeing-the-colour-of-sounds.html",
+    "questionTypes": [
+      "Matching Features",
+      "Matching Information",
+      "True/False/Not Given"
+    ]
+  },
+  {
+    "id": "premium-a-new-look-for-talbot-park",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "A New Look for Talbot Park",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/a-new-look-for-talbot-park.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Matching Features",
+      "Summary Completion"
+    ]
+  },
+  {
+    "id": "premium-facial-expression",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Facial Expression",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/facial-expression.html",
+    "questionTypes": [
+      "Summary Completion",
+      "Matching Information",
+      "Multiple Choice"
+    ]
+  },
+  {
+    "id": "premium-termite-mounds",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Termite Mounds",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/termite-mounds.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Diagram Completion",
+      "Yes/No/Not Given"
+    ]
   }
 ]
