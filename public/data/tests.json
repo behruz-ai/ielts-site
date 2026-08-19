@@ -3778,5 +3778,156 @@
       "Diagram Completion",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-the-purpose-of-facial-expressions",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Purpose of Facial Expressions",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-purpose-of-facial-expressions.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching Features",
+      "Sentence Completion"
+    ]
+  },
+  {
+    "id": "premium-how-a-prehistoric-predator-took-to-the-skies",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "How a Prehistoric Predator Took to the Skies",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/how-a-prehistoric-predator-took-to-the-skies.html",
+    "questionTypes": [
+      "Summary with Word List",
+      "Yes/No/Not Given",
+      "Multiple Choice"
+    ]
+  },
+  {
+    "id": "premium-the-long-road-to-artificial-intelligence",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Long Road to Artificial Intelligence",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/the-long-road-to-artificial-intelligence.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Summary with Word List",
+      "Yes/No/Not Given"
+    ]
+  },
+  {
+    "id": "premium-the-art-of-deception",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Art of Deception",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/the-art-of-deception.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Summary with Word List",
+      "Yes/No/Not Given"
+    ]
+  },
+  {
+    "id": "premium-understanding-the-lessons-of-the-past",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Understanding the Lessons of the Past",
+    "status": "published",
+    "questionCount": 17,
+    "durationMinutes": 20,
+    "file": "premium/understanding-the-lessons-of-the-past.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Summary with Word List"
+    ]
+  },
+  {
+    "id": "premium-thomas-cole-american-nature-painter",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Thomas Cole: American Nature Painter",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/thomas-cole-american-nature-painter.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
+  },
+  {
+    "id": "premium-the-power-of-music",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Power of Music",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-power-of-music.html",
+    "questionTypes": [
+      "Matching Information",
+      "Summary Completion",
+      "Matching Features"
+    ]
+  },
+  {
+    "id": "premium-how-the-petri-dish-supports-scientific-advances",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "How the Petri Dish Supports Scientific Advances",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/how-the-petri-dish-supports-scientific-advances.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching Features",
+      "Summary Completion"
+    ]
+  },
+  {
+    "id": "premium-dyes-and-fabric-dyeing",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Dyes and Fabric Dyeing",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/dyes-and-fabric-dyeing.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
   }
 ]
