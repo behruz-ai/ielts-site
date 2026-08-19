@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<title>Speaking — Bekhruz IELTS</title>
-<meta name="description" content="Speaking practice is coming soon to Bekhruz IELTS.">
+<title>Speaking Bank | Bekhruz IELTS</title>
+<meta name="description" content="30 IELTS Speaking Part 1, 2 and 3 sets — question clusters, a reusable answer structure, topic vocabulary, and two model answers each, built around the real band criteria.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -34,12 +34,17 @@
   </div>
 </header>
 
-<div class="page-wrap" style="max-width:640px">
-  <div class="gate-note" style="margin:70px auto">
-    <h2>🎙️ Speaking — coming soon</h2>
-    <p>Part 1, 2 and 3 speaking prompts with model answers and a recording tool to practice your own responses — in development.</p>
-    <a class="auth-submit" style="display:inline-block;width:auto;padding:11px 26px;text-decoration:none" href="https://t.me/bekhruzposts" target="_blank" rel="noopener">Follow @bekhruzposts for updates</a>
+<div class="catalog-wrap">
+  <div class="catalog-hdr">
+    <div>
+      <h1>Speaking Bank</h1>
+      <p>30 Part 1, 2 &amp; 3 sets — questions, a reusable structure, topic vocabulary, and two model answers each, with tips tied to the real band criteria. 3 sets are free to try in full; the rest are Premium (questions are always free to see).</p>
+    </div>
   </div>
+
+  <div class="filter-bar" id="sp-part-bar"></div>
+
+  <div id="sp-root"><p class="empty-note">Loading…</p></div>
 </div>
 
 <footer class="site-ftr">
@@ -50,6 +55,7 @@
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
+<script src="/js/speaking-catalog.js"></script>
 <script src="/js/theme-toggle.js"></script>
 </body>
 </html>

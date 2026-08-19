@@ -314,6 +314,69 @@ nav.main-nav > a.active{background-image:var(--grad); color:#0a0a0f; font-weight
 
 .empty-note{color:var(--subtext); font-size:14px; padding:30px 0; text-align:center}
 
+/* speaking bank */
+.sp-list{display:flex; flex-direction:column; gap:14px}
+.sp-card{
+  background-color:var(--panel); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:border-color .2s;
+}
+.sp-card[open]{border-color:rgba(239,68,68,.3)}
+.sp-summary{
+  list-style:none; cursor:pointer; padding:18px 20px; display:flex; align-items:flex-start; gap:14px; flex-wrap:wrap;
+}
+.sp-summary::-webkit-details-marker{display:none}
+.sp-summary-main{flex:1; min-width:220px; display:flex; flex-direction:column; gap:8px}
+.sp-summary-top{display:flex; align-items:center; gap:9px; flex-wrap:wrap}
+.sp-theme{font-weight:800; font-size:16px; color:var(--text)}
+.sp-arrow{margin-left:auto; flex:none; color:var(--subtext); font-size:13px; transition:transform .2s; align-self:center}
+.sp-card[open] .sp-arrow{transform:rotate(180deg)}
+.sp-questions{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:4px}
+.sp-questions li{font-size:13.5px; color:var(--subtext)}
+.sp-questions li::before{content:"— "; color:var(--border-strong)}
+.sp-cue-points{margin:6px 0 0; padding-left:18px; font-size:13px; color:var(--subtext)}
+.sp-cue-points li{margin-bottom:2px}
+
+.sp-body{padding:0 20px 22px; border-top:1px solid var(--border); margin-top:2px}
+.sp-section{padding-top:18px}
+.sp-section-label{
+  font-size:11.5px; font-weight:800; text-transform:uppercase; letter-spacing:.5px; color:var(--subtext);
+  margin:0 0 10px;
+}
+.sp-structure{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+.sp-structure-step{
+  font-size:12.5px; font-weight:700; color:var(--text); background-color:var(--pill);
+  padding:6px 12px; border-radius:9999px;
+}
+.sp-structure-arrow{color:var(--subtext); font-size:12px}
+
+.sp-vocab-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px}
+.sp-vocab-item{background-color:var(--pill); border-radius:10px; padding:10px 13px}
+.sp-vocab-term{font-weight:800; font-size:13.5px; color:var(--text)}
+.sp-vocab-meaning{font-size:12px; color:var(--subtext); margin:2px 0 5px}
+.sp-vocab-example{font-size:12.5px; color:var(--text); font-style:italic; opacity:.85}
+
+.sp-model{background-color:var(--pill); border-radius:12px; padding:14px 16px; margin-bottom:10px}
+.sp-model:last-child{margin-bottom:0}
+.sp-model-angle{font-size:11.5px; font-weight:800; color:var(--accent2); text-transform:uppercase; letter-spacing:.3px; margin-bottom:6px}
+.sp-model-text{font-size:14px; line-height:1.75; color:var(--text)}
+
+.sp-bandtip{
+  background-color:var(--premium-bg); border-radius:12px; padding:13px 16px; font-size:13px; line-height:1.6; color:var(--text);
+}
+.sp-howto{
+  background-color:var(--accent-bg); border-radius:12px; padding:13px 16px; font-size:13px; line-height:1.6; color:var(--text);
+}
+
+.sp-locked{
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+  background-color:var(--premium-bg); border-radius:12px; padding:16px 18px; margin-top:4px;
+}
+.sp-locked p{margin:0; font-size:13.5px; color:var(--text)}
+.sp-locked a{
+  flex:none; display:inline-flex; align-items:center; gap:6px; padding:9px 18px; border-radius:9999px;
+  background-color:var(--premium); color:#fff; font-weight:800; font-size:13px; white-space:nowrap;
+}
+
 /* auth */
 .auth-wrap{
   min-height:calc(100vh - 70px); display:flex; align-items:center; justify-content:center; padding:40px 20px;
