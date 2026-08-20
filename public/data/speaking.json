@@ -388,6 +388,40 @@
     "theme": "A Tall Building in Your Town",
     "tag": "Cue card — always in use",
     "cueCardPoints": ["where this building is", "what it looks like", "what it is used for", "why you like or dislike it"],
+    "howToBuildTips": [
+      "Contrast expectations with reality to make your opening more interesting — \"I don't immediately think of modern skyscrapers... one of the most impressive ones is...\" — this shows range beyond just answering literally.",
+      "Balance physical description with meaning — don't just describe what the building looks like, explain what it represents to you (history, identity, change) for a stronger \"why you like it\" answer.",
+      "Give a genuine reservation, not just praise — \"That said, I'm not sure I'd actually want to live there\" — this makes an opinion sound honest rather than one-sided.",
+      "Close with a summarising phrase like \"In a nutshell\" or \"All in all\" to signal you're wrapping up — a small but effective way to show control over your 2-minute turn."
+    ],
+    "usefulStructure": [
+      { "pattern": "When I think of [topic], I don't immediately think of [X]. For me, one of the most impressive ones is [Y].", "example": "When I think of tall buildings in my hometown, I don't immediately think of modern skyscrapers. For me, one of the most impressive ones is the Minorai Kalon." },
+      { "pattern": "What I like most about it is that [X].", "example": "What I like most about it is that it has stood the test of time." },
+      { "pattern": "The main reason I like it is that [X].", "example": "The main reason I like it is that it gives the city a more modern identity." },
+      { "pattern": "That said, [counterpoint/reservation].", "example": "That said, I'm not sure I'd actually want to live in a building that tall." },
+      { "pattern": "In a nutshell / All in all, I like [X] because [Y].", "example": "In a nutshell, I like the Minorai Kalon because it's more than just a tall building." }
+    ],
+    "vocabGroups": [
+      { "label": "Describing the Building", "items": [
+        { "term": "a sleek glass exterior", "meaning": "a smooth, modern glass outer surface", "example": "The building has a sleek glass exterior." },
+        { "term": "stands out from the surrounding buildings", "meaning": "is noticeably different from nearby buildings", "example": "It really stands out from the surrounding buildings." },
+        { "term": "futuristic feel", "meaning": "a modern, forward-looking style or atmosphere", "example": "It has a much more futuristic feel to it." },
+        { "term": "keep its original character", "meaning": "retain its authentic, unchanged style despite renovations", "example": "It has managed to keep its original character." },
+        { "term": "the brickwork and the traditional design", "meaning": "the detailed brick construction and classic architectural style", "example": "You can really appreciate the brickwork and the traditional design." }
+      ] },
+      { "label": "Talking About Its Purpose", "items": [
+        { "term": "a historical landmark and tourist attraction", "meaning": "a famous old site people visit for its history", "example": "Today, it is mainly a historical landmark and tourist attraction." },
+        { "term": "a mixed-use development", "meaning": "a building combining several purposes, e.g. homes, offices, shops", "example": "It's a mixed-use development, which means people can actually live and work there." },
+        { "term": "admire the architecture", "meaning": "appreciate and look at the building's design", "example": "People go there to admire the architecture." }
+      ] },
+      { "label": "Giving Your Opinion", "items": [
+        { "term": "stood the test of time", "meaning": "has remained impressive or valuable over a long period", "example": "What I like most about it is that it has stood the test of time." },
+        { "term": "gives the city a more modern identity", "meaning": "makes the city feel more contemporary and forward-looking", "example": "It gives the city a more modern identity." },
+        { "term": "a bit boxed in", "meaning": "feeling confined or enclosed", "example": "I'd probably feel a bit boxed in." },
+        { "term": "hard to ignore", "meaning": "impossible not to notice", "example": "I like Nest One because it's hard to ignore." },
+        { "term": "the cityscape has changed", "meaning": "the overall appearance of the city's buildings has changed", "example": "It's interesting to see how much the cityscape has changed." }
+      ] }
+    ],
     "models": [
       { "version": "Version 1", "text": "When I think of tall buildings in my hometown, I don't immediately think of modern skyscrapers. For me, one of the most impressive ones is the Minorai Kalon, which is located in the historic centre of Bukhara. It's actually a huge historical tower, and it's probably one of the first landmarks that comes to mind when people think of the city.\n\nThe name \"Minorai Kalon\" basically means \"the big\" or \"great tower,\" and I think that's a pretty fitting name because the structure is surprisingly tall and impressive, especially considering how old it is. It has stood there for centuries, and although it has been reconstructed and restored several times, it has managed to keep its original character. From a distance, it looks quite simple, but when you get closer, you can really appreciate the brickwork and the traditional design.\n\nToday, it is mainly a historical landmark and tourist attraction. People go there to take pictures, learn about Bukhara's history, and admire the architecture. It's also surrounded by other important historical buildings, so the whole area has a really special atmosphere.\n\nWhat I like most about it is that it has stood the test of time. There are plenty of modern buildings that look impressive for a few years, but this tower has survived for centuries and still looks beautiful today. I find that quite amazing.\n\nIn a nutshell, I like the Minorai Kalon because it's more than just a tall building. It's a piece of history that has managed to survive through generations, and whenever I see it, it reminds me of how rich and fascinating Bukhara's past is." },
       { "version": "Version 2", "text": "When it comes to tall buildings in my city, there are quite a few modern ones that have sprung up in recent years, but the one that really catches my eye is Nest One, which is in the Tashkent City area.\n\nIt's a huge, modern skyscraper with a very striking design, and it's difficult to miss when you're anywhere nearby. The building has a sleek glass exterior, and because it's so tall, it really stands out from the surrounding buildings. What I find interesting is that it doesn't have that old-fashioned, boxy look that some high-rises have. It has a much more futuristic feel to it, which I think suits a growing city like Tashkent.\n\nAs far as I know, the building is mainly used for apartments, offices, and other commercial purposes, so it's not just there to look impressive. It's a mixed-use development, which means people can actually live and work there.\n\nThe main reason I like it is that it gives the city a more modern identity. When I was younger, I don't remember seeing many buildings like this in Tashkent, so it's interesting to see how much the cityscape has changed. It gives me the feeling that the city is moving forward and becoming more international.\n\nThat said, I'm not sure I'd actually want to live in a building that tall. I'd probably feel a bit boxed in, and I'd much rather have a spacious apartment with a nice view and some outdoor space.\n\nAll in all, though, I like Nest One because it's hard to ignore, it looks impressive, and to me, it represents how much my city has changed over the years." }
