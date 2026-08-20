@@ -15,7 +15,7 @@
   const TYPE_ORDER = ['collocation', 'phrasal-verb', 'idiom'];
 
   const id = new URLSearchParams(location.search).get('id');
-  const state = { topic: null, isPremiumUser: false, branchId: null, questionId: null };
+  const state = { topic: null, isPremiumUser: false, branchId: null, questionId: null, versionIndex: null };
 
   function fetchPremiumStatus() {
     if (typeof supabaseClient === 'undefined') return Promise.resolve(false);
@@ -40,8 +40,10 @@
       if (state.topic.branches) {
         state.branchId = state.topic.branches[0].id;
         state.questionId = state.topic.branches[0].questions[0].id;
-      } else {
+      } else if (state.topic.questions) {
         state.questionId = state.topic.questions[0].id;
+      } else if (state.topic.models) {
+        state.versionIndex = 0; // Part 2 cue-card topics: no questions, just answer versions
       }
       setupPopover();
       render();
@@ -61,20 +63,16 @@
 
   function render() {
     const t = state.topic;
+    if (t.models && !t.branches && !t.questions) { renderPart2(); return; }
+
     const unlocked = t.tier === 'free' || state.isPremiumUser;
     const questions = currentQuestions();
     const activeQ = questions.find((q) => q.id === state.questionId) || questions[0];
 
-    let html = '<div class="sp-detail-hdr">' +
-      '<a class="sp-back-link" href="/speaking.html">← Speaking Bank</a>' +
-      '<h1>' + escapeHtml(t.theme) + '</h1>' +
-      '<p class="sp-detail-tag">' + escapeHtml(t.tag || ('Part ' + t.part)) + '</p>' +
-      '</div>';
-
+    let html = detailHeaderHtml(t);
     html += '<div class="sp-howto">' + HOWTO + '</div>';
 
-    const unlockedForTop = t.tier === 'free' || state.isPremiumUser;
-    if (t.topStructures && unlockedForTop) html += topStructuresHtml(t.topStructures);
+    if (t.topStructures && unlocked) html += topStructuresHtml(t.topStructures);
 
     if (t.branches) {
       html += '<div class="sp-branch-tabs">' + t.branches.map((b) =>
@@ -91,6 +89,80 @@
 
     root.innerHTML = html;
     wireEvents();
+  }
+
+  function detailHeaderHtml(t) {
+    return '<div class="sp-detail-hdr">' +
+      '<a class="sp-back-link" href="/speaking.html">← Speaking Bank</a>' +
+      '<h1>' + escapeHtml(t.theme) + '</h1>' +
+      '<p class="sp-detail-tag">' + escapeHtml(t.tag || ('Part ' + t.part)) + '</p>' +
+    '</div>';
+  }
+
+  // Part 2 cue-card topics have a different shape from Part 1: one prompt
+  // with cue-card bullet points, shared vocab/structure for the whole
+  // topic, and multiple full-length answer *versions* rather than a list
+  // of separate questions to click through.
+  function renderPart2() {
+    const t = state.topic;
+    const unlocked = t.tier === 'free' || state.isPremiumUser;
+
+    let html = detailHeaderHtml(t);
+    html += '<div class="sp-howto">' + HOWTO + '</div>';
+
+    let panel = '<p class="sp-panel-question">Describe ' + escapeHtml(t.theme.charAt(0).toLowerCase() + t.theme.slice(1)) + '.</p>';
+    if (t.cueCardPoints) {
+      panel += '<ul class="sp-cue-points">' + t.cueCardPoints.map((c) => '<li>' + escapeHtml(c) + '</li>').join('') + '</ul>';
+    }
+
+    if (!unlocked) {
+      panel += '<div class="sp-locked">' +
+        '<p>The tips, structure, vocabulary, and model answers for this topic are Premium.</p>' +
+        '<a href="/premium.html">🔒 Get Premium →</a>' +
+      '</div>';
+      root.innerHTML = html + '<div class="sp-panel">' + panel + '</div>';
+      wireEvents();
+      return;
+    }
+
+    if (t.howToBuildTips) {
+      panel += '<div class="sp-section"><p class="sp-section-label">How to Build This Answer</p>' +
+        '<ol class="sp-tips-list">' + t.howToBuildTips.map((tip) => '<li>' + escapeHtml(tip) + '</li>').join('') + '</ol>' +
+      '</div>';
+    }
+
+    const activeModel = t.models[state.versionIndex] || t.models[0];
+    const highlightSource = (t.vocabGroups || []).flatMap((g) => g.items);
+    panel += '<div class="sp-version-tabs">' + t.models.map((m, i) =>
+      '<button class="filter-chip' + (i === state.versionIndex ? ' active' : '') + '" data-version="' + i + '">' + escapeHtml(m.version) + '</button>'
+    ).join('') + '</div>';
+    const paragraphs = highlight(activeModel.text, highlightSource).split('\n\n');
+    const modelHtml = paragraphs.map((p, i) =>
+      '<p>' + (i === 0 ? '<span class="sp-model-quote">&ldquo;</span>' : '') + p + '</p>'
+    ).join('');
+    panel += '<div class="sp-section"><p class="sp-model-label">🎤 Sample Answer</p>' +
+      '<div class="sp-model-box">' + modelHtml + '</div></div>';
+
+    if (t.usefulStructure) panel += collapseSection('Useful Structure', topStructureListHtml(t.usefulStructure));
+    if (t.vocabGroups) panel += collapseSection('Most Useful Language', vocabGroupsHtml(t.vocabGroups));
+
+    root.innerHTML = html + '<div class="sp-panel">' + panel + '</div>';
+    wireEvents();
+  }
+
+  function topStructureListHtml(items) {
+    return '<div class="sp-structure-group">' + items.map((it) =>
+      '<p class="sp-structure-phrase">"' + escapeHtml(it.pattern) + '"<br><span style="opacity:.7">e.g. ' + escapeHtml(it.example) + '</span></p>'
+    ).join('') + '</div>';
+  }
+
+  function vocabGroupsHtml(groups) {
+    return groups.map((g) =>
+      '<div class="sp-vocab-group">' +
+        '<p class="sp-vocab-group-label">' + escapeHtml(g.label) + '</p>' +
+        languageListHtml(g.items) +
+      '</div>'
+    ).join('');
   }
 
   function panelHtml(t, q, unlocked) {
@@ -232,6 +304,12 @@
     root.querySelectorAll('[data-qid]').forEach((btn) => {
       btn.addEventListener('click', () => {
         state.questionId = btn.dataset.qid;
+        render();
+      });
+    });
+    root.querySelectorAll('[data-version]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.versionIndex = Number(btn.dataset.version);
         render();
       });
     });

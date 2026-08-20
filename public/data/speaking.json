@@ -281,5 +281,58 @@
         { "term": "settle in", "meaning": "become comfortable and adjusted to a new place", "example": "I think I've settled in pretty well." }
       ], "usefulStructure": ["I've been + -ing + for + period", "I'm still + -ing", "So far, ..."] }
     ]
+  },
+  {
+    "id": "p2-place-free-time",
+    "part": 2,
+    "tier": "free",
+    "theme": "A Place You'd Like to Visit in Your Free Time",
+    "tag": "Cue card — always in use",
+    "cueCardPoints": ["where it is", "what you will do there", "how long you will stay there", "why you'd like to visit it"],
+    "howToBuildTips": [
+      "Don't answer the bullet points one by one — connect them into a natural story instead of a mechanical list (Situation → Place → Activities → Time → Reason → Feeling).",
+      "Open with your personal situation first: \"To be honest, + situation. So, if I had the chance, I'd probably...\" — this sounds spontaneous, not memorised.",
+      "Build activity chains instead of naming one activity: \"We'd probably..., then..., and after that...\" — this helps you speak for the full 2 minutes without repeating yourself.",
+      "Don't force idioms into the answer — using two or three naturally beats cramming in five just to show off vocabulary."
+    ],
+    "usefulStructure": [
+      { "pattern": "To be honest, [situation]. So, if I had the chance, I'd probably [answer].", "example": "To be honest, I barely have any free time these days. So, if I had the chance, I'd probably head out to the mountains." },
+      { "pattern": "It's located [place], and I'd probably [activity].", "example": "It's located just outside the city, and I'd probably go for a hike." },
+      { "pattern": "I'd stay there for [time] because [reason].", "example": "I'd stay there for the whole day because it's a long drive to get there." },
+      { "pattern": "What I like about it is [specific benefit].", "example": "What I like about it is how peaceful it feels." },
+      { "pattern": "It's less about [X] and more about [Y].", "example": "It's less about the place itself and more about having a chance to relax." },
+      { "pattern": "We'd probably..., then..., and after that...", "example": "We'd probably go for a hike, then have a picnic, and after that just relax." }
+    ],
+    "vocabGroups": [
+      { "label": "Free Time", "items": [
+        { "term": "carve out some time for myself", "meaning": "make an effort to create free time despite a busy schedule", "example": "I have to carve out some time for myself most weekends." },
+        { "term": "make time for myself", "meaning": "deliberately set aside time for one's own needs", "example": "I try to make time for myself at least once a week." },
+        { "term": "have some downtime", "meaning": "have a period of rest or relaxation", "example": "It's nice to have some downtime after a busy week." },
+        { "term": "take a break from my routine", "meaning": "pause one's usual daily activities for a while", "example": "I just want to take a break from my routine sometimes." }
+      ] },
+      { "label": "Going Somewhere", "items": [
+        { "term": "head out to", "meaning": "leave for or travel toward a place", "example": "We'd probably head out to the mountains early." },
+        { "term": "set off early", "meaning": "begin a journey early in the day", "example": "We set off early to avoid the traffic." },
+        { "term": "get away from it all", "meaning": "escape from everyday stress and responsibilities", "example": "Sometimes I just need to get away from it all." },
+        { "term": "get away from the hustle and bustle", "meaning": "escape the noise and busyness of daily life, especially in a city", "example": "It's nice to get away from the hustle and bustle for a day." }
+      ] },
+      { "label": "Relaxing", "items": [
+        { "term": "switch off", "meaning": "stop thinking about work and relax", "example": "It helps me switch off after a long week." },
+        { "term": "take it easy", "meaning": "relax and not do anything strenuous", "example": "We just took it easy for a couple of hours." },
+        { "term": "clear my head", "meaning": "think more clearly by relaxing or getting away from stress", "example": "A walk outside really helps clear my head." },
+        { "term": "let off some steam", "meaning": "release built-up stress or tension", "example": "I need to let off some steam after a busy week." },
+        { "term": "hit the reset button", "meaning": "start fresh, especially after feeling overwhelmed", "example": "Sometimes I feel like I need to hit the reset button." }
+      ] },
+      { "label": "Spending Time With People", "items": [
+        { "term": "catch up", "meaning": "talk with someone to share recent news, after not seeing them for a while", "example": "We sat around and caught up on everything." },
+        { "term": "hang out with", "meaning": "spend casual, relaxed time with someone", "example": "I like hanging out with close friends on weekends." },
+        { "term": "spend some quality time with", "meaning": "spend meaningful, focused time with someone", "example": "It's important to spend some quality time with friends." },
+        { "term": "have a chat", "meaning": "have an informal conversation", "example": "We just sat down and had a chat." }
+      ] }
+    ],
+    "models": [
+      { "version": "Version 1", "text": "To be honest, I barely have any free time these days. I work quite a lot, and I even work at the weekends, so I have to make a real effort to carve out some time for myself. I don't have one particular place that I always go to, but if I had a completely free day, I'd love to head out to the mountains with a few close friends.\n\nThe mountains aren't too far from my city, so we'd probably set off early in the morning and spend the whole day there. We wouldn't make any complicated plans. We'd probably go for a long hike, take some photos, have a picnic, and just take in the scenery. We might also find a quiet spot and sit around and catch up because we don't get to see each other very often.\n\nI'd probably stay there from morning until late afternoon, or even until sunset if we weren't too tired. I think a full day would be enough to get away from the hustle and bustle of everyday life without making the trip too exhausting.\n\nThe main reason I'd like to go is that my routine can get pretty repetitive. I'm constantly working, studying or dealing with one thing or another, so sometimes I feel like I need to hit the reset button. Being out in nature would help me clear my head, let off some steam, and simply enjoy being around people I care about.\n\nSo, for me, it's not really about finding some amazing tourist destination. It's about getting away from it all, slowing down for a while, and feeling alive again. That's probably what I'd value most in my free time." },
+      { "version": "Version 2", "text": "I'd say I barely have any free time these days, because I even work at the weekends, so finding time to relax can be a bit of a challenge. That said, I do try to spare some time for myself whenever I get the chance. I don't really have one specific place in mind, though. I usually prefer spending my free time with a few close friends, and we're pretty flexible about where we go.\n\nFor example, sometimes we head to a park and just sit around, have a chat, and catch up on what's been going on in our lives. We might grab something to eat or drink and simply take it easy for a couple of hours. At other times, we stay indoors and play computer games together. It's nothing special, but it helps me switch off after a long and tiring week.\n\nHowever, if I had a whole day free, I'd probably head out to the mountains with my friends. I'd love to go for a hike, enjoy the fresh air, take in the scenery, and just get away from it all. We'd probably stay there for the whole day, maybe from early morning until sunset. I think that would be enough time to clear my head without having to rush back.\n\nThe main reason I'd like to visit a place like this is that I sometimes feel like I'm stuck in the same routine. I really want to feel alive, forget about work for a while, and relieve some of the stress that builds up during the week. For me, it's less about the actual place and more about having a chance to breathe, recharge, and enjoy the moment." }
+    ]
   }
 ]

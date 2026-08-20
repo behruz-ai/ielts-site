@@ -15,7 +15,13 @@
     });
 
   function questionCount(t) {
-    return t.branches ? t.branches.reduce((n, b) => n + b.questions.length, 0) : t.questions.length;
+    if (t.branches) return t.branches.reduce((n, b) => n + b.questions.length, 0);
+    if (t.questions) return t.questions.length;
+    return 1; // Part 2 cue-card topics: one prompt, multiple answer versions
+  }
+
+  function metaLabel(t) {
+    return t.part === 2 ? ' cue card' : ' questions';
   }
 
   function render(items) {
@@ -32,6 +38,7 @@
       ? '<span class="badge-tier badge-premium">✨ Free</span>'
       : '<span class="badge-tier badge-premium">🔒 Premium</span>';
     const branchNote = t.branches ? '<span class="sp-topic-count">' + t.branches.length + ' branches</span>' : '';
+    const versionNote = t.models ? '<span class="sp-topic-count">' + t.models.length + ' sample answers</span>' : '';
 
     return '<a class="sp-topic-card" href="/speaking-topic.html?id=' + encodeURIComponent(t.id) + '">' +
       '<span class="sp-topic-icon">🎙️</span>' +
@@ -39,8 +46,8 @@
       '<p class="sp-topic-tag">' + escapeHtml(t.tag || ('Part ' + t.part)) + '</p>' +
       '<div class="sp-topic-meta">' +
         tierBadge +
-        '<span class="sp-topic-count">' + questionCount(t) + ' questions</span>' +
-        branchNote +
+        '<span class="sp-topic-count">' + questionCount(t) + metaLabel(t) + '</span>' +
+        branchNote + versionNote +
       '</div>' +
       '<span class="sp-topic-btn">Open topic →</span>' +
     '</a>';
