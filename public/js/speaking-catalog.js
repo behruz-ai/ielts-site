@@ -25,16 +25,16 @@
   }
 
   function render(items) {
-    if (!items.length) {
-      root.innerHTML = '<p class="empty-note">Nothing here yet — check back soon.</p>';
-      return;
-    }
-    const parts = uniq(items.map((t) => t.part)).sort((a, b) => a - b);
+    // Always show Part 1/2/3 sections, even before a part has any topics
+    // yet, so the nav dropdown's anchors never point at a missing id.
+    const parts = uniq([1, 2, 3].concat(items.map((t) => t.part))).sort((a, b) => a - b);
     let html = '';
     parts.forEach((p) => {
       const topicsInPart = items.filter((t) => t.part === p);
       html += '<div class="vol-group" id="part-' + p + '"><h2>Part ' + p + '</h2><div class="sp-topic-grid">' +
-        topicsInPart.map((t, i) => cardHtml(t, i + 1)).join('') +
+        (topicsInPart.length
+          ? topicsInPart.map((t, i) => cardHtml(t, i + 1)).join('')
+          : '<p class="empty-note">Coming soon.</p>') +
       '</div></div>';
     });
     root.innerHTML = html;
