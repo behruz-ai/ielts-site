@@ -3929,5 +3929,22 @@
       "True/False/Not Given",
       "Note Completion"
     ]
+  },
+  {
+    "id": "premium-the-plan-to-bring-an-asteroid-to-earth",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Plan to Bring an Asteroid to Earth",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-plan-to-bring-an-asteroid-to-earth.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Matching Features",
+      "Summary Completion"
+    ]
   }
 ]
