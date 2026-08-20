@@ -1,14 +1,27 @@
-// Renders the Speaking Bank topic list on speaking.html. Each card links
-// through to speaking-topic.html?id=... for the actual question-by-question
-// view — this page is just the browse/entry point.
+// Renders the topic list for one Speaking part on speaking-part.html?part=N.
+// Each card links through to speaking-topic.html?id=... for the actual
+// question-by-question view.
 
 (function () {
   const root = document.getElementById('sp-root');
   if (!root) return;
 
+  const PART_INFO = {
+    1: { label: 'Introduction & Interview', desc: 'Short, personal questions about familiar topics — work, study, your hometown, hobbies, and everyday life.' },
+    2: { label: 'Long Turn (Cue Card)', desc: 'A cue card with 1 minute to prepare, then speak for up to 2 minutes without interruption on the topic given.' },
+    3: { label: 'Discussion', desc: 'A deeper, more abstract discussion that follows on from your Part 2 topic.' },
+  };
+
+  const part = Number(new URLSearchParams(location.search).get('part')) || 1;
+  const info = PART_INFO[part] || PART_INFO[1];
+  const titleEl = document.getElementById('sp-part-title');
+  const descEl = document.getElementById('sp-part-desc');
+  if (titleEl) titleEl.textContent = 'Part ' + part + ' — ' + info.label;
+  if (descEl) descEl.textContent = info.desc;
+
   fetch('/data/speaking.json')
     .then((r) => r.json())
-    .then((items) => render(items))
+    .then((items) => render(items.filter((t) => t.part === part)))
     .catch((err) => {
       root.innerHTML = '<p class="empty-note">Could not load the Speaking Bank. Please refresh.</p>';
       console.error(err);
@@ -25,22 +38,12 @@
   }
 
   function render(items) {
-    // Always show Part 1/2/3 sections, even before a part has any topics
-    // yet, so the nav dropdown's anchors never point at a missing id.
-    const parts = uniq([1, 2, 3].concat(items.map((t) => t.part))).sort((a, b) => a - b);
-    let html = '';
-    parts.forEach((p) => {
-      const topicsInPart = items.filter((t) => t.part === p);
-      html += '<div class="vol-group" id="part-' + p + '"><h2>Part ' + p + '</h2><div class="sp-topic-grid">' +
-        (topicsInPart.length
-          ? topicsInPart.map((t, i) => cardHtml(t, i + 1)).join('')
-          : '<p class="empty-note">Coming soon.</p>') +
-      '</div></div>';
-    });
-    root.innerHTML = html;
+    if (!items.length) {
+      root.innerHTML = '<p class="empty-note">Coming soon — check back shortly.</p>';
+      return;
+    }
+    root.innerHTML = '<div class="sp-topic-grid">' + items.map((t, i) => cardHtml(t, i + 1)).join('') + '</div>';
   }
-
-  function uniq(arr) { return [...new Set(arr)]; }
 
   function cardHtml(t, num) {
     const tierBadge = t.tier === 'free'

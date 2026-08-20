@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<title>Reading Passage Practice | Bekhruz IELTS</title>
-<meta name="description" content="IELTS Reading passage practice — Passage 1, 2, and 3, searchable by question type.">
+<title>Speaking Bank | Bekhruz IELTS</title>
+<meta name="description" content="IELTS Speaking topics for one part of the test — structure, vocabulary, and model answers for every topic.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -22,8 +22,8 @@
     <nav class="main-nav">
       <a href="/">Home</a>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Listening <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/listening.html?section=1">Section 1</a><a href="/listening.html?section=2">Section 2</a><a href="/listening.html?section=3">Section 3</a><a href="/listening.html?section=4">Section 4</a><a href="/listening.html?full=1">Full Test</a></div></div>
-      <div class="nav-item has-dropdown"><button class="nav-trigger active" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a><a href="/real-exam.html">✨ Real Exam Passages</a><a href="/reading-mock.html">🎲 Random Reading Mock</a></div></div>
-      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Speaking <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/speaking.html">All Topics</a><a href="/speaking-part.html?part=1">Part 1</a><a href="/speaking-part.html?part=2">Part 2</a><a href="/speaking-part.html?part=3">Part 3</a></div></div>
+      <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a><a href="/real-exam.html">✨ Real Exam Passages</a><a href="/reading-mock.html">🎲 Random Reading Mock</a></div></div>
+      <div class="nav-item has-dropdown"><button class="nav-trigger active" type="button">Speaking <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/speaking.html">All Topics</a><a href="/speaking-part.html?part=1">Part 1</a><a href="/speaking-part.html?part=2">Part 2</a><a href="/speaking-part.html?part=3">Part 3</a></div></div>
       <a href="/writing.html">Writing</a>
       <a href="/vocabulary.html">Vocabulary</a>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Volumes <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/volumes-reading.html">Reading</a><a href="/volumes-listening.html">Listening</a></div></div>
@@ -37,19 +37,13 @@
 <div class="catalog-wrap">
   <div class="catalog-hdr">
     <div>
-      <h1>Reading Passages</h1>
-      <p>Practice one passage at a time — jump to a specific question type, or search by title. Looking for a full 40-question test? Try <a href="/volumes-reading.html" style="color:#7fb3ff">Reading Volumes</a>.</p>
+      <a class="sp-back-link" href="/speaking.html" style="margin-bottom:8px;display:inline-flex">← All Parts</a>
+      <h1 id="sp-part-title">Speaking</h1>
+      <p id="sp-part-desc">Loading…</p>
     </div>
   </div>
 
-  <input type="search" id="search-box" class="search-box" placeholder="Search by title or question type (e.g. \"Matching Headings\")…">
-
-  <div class="filter-bar" id="filter-bar"></div>
-  <div class="filter-bar" id="qtype-bar"></div>
-
-  <div id="catalog-root" data-section="reading">
-    <p class="empty-note">Loading tests…</p>
-  </div>
+  <div id="sp-root"><p class="empty-note">Loading…</p></div>
 </div>
 
 <footer class="site-ftr">
@@ -60,7 +54,7 @@
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
-<script src="/js/catalog.js"></script>
+<script src="/js/speaking-catalog.js"></script>
 <script src="/js/theme-toggle.js"></script>
 </body>
 </html>

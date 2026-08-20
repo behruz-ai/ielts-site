@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script>(function(){try{var t=localStorage.getItem('ielts-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>Speaking Bank | Bekhruz IELTS</title>
-<meta name="description" content="IELTS Speaking Part 1 topics — real question clusters, topic vocabulary, and a model answer for every individual question, built around the real band criteria.">
+<meta name="description" content="IELTS Speaking Part 1, 2 and 3 — choose a part to see its topics, each with structure, vocabulary, and model answers.">
 <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
       <a href="/">Home</a>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Listening <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/listening.html?section=1">Section 1</a><a href="/listening.html?section=2">Section 2</a><a href="/listening.html?section=3">Section 3</a><a href="/listening.html?section=4">Section 4</a><a href="/listening.html?full=1">Full Test</a></div></div>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Reading <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/reading.html">All Passages</a><a href="/reading.html?type=Passage%201">Passage 1</a><a href="/reading.html?type=Passage%202">Passage 2</a><a href="/reading.html?type=Passage%203">Passage 3</a><a href="/reading.html?full=1">Full Reading</a><a href="/real-exam.html">✨ Real Exam Passages</a><a href="/reading-mock.html">🎲 Random Reading Mock</a></div></div>
-      <div class="nav-item has-dropdown"><button class="nav-trigger active" type="button">Speaking <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/speaking.html">All Topics</a><a href="/speaking.html#part-1">Part 1</a><a href="/speaking.html#part-2">Part 2</a><a href="/speaking.html#part-3">Part 3</a></div></div>
+      <div class="nav-item has-dropdown"><button class="nav-trigger active" type="button">Speaking <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/speaking.html">All Topics</a><a href="/speaking-part.html?part=1">Part 1</a><a href="/speaking-part.html?part=2">Part 2</a><a href="/speaking-part.html?part=3">Part 3</a></div></div>
       <a href="/writing.html">Writing</a>
       <a href="/vocabulary.html">Vocabulary</a>
       <div class="nav-item has-dropdown"><button class="nav-trigger" type="button">Volumes <span class="caret">▾</span></button><div class="nav-dropdown"><a href="/volumes-reading.html">Reading</a><a href="/volumes-listening.html">Listening</a></div></div>
@@ -38,11 +38,13 @@
   <div class="catalog-hdr">
     <div>
       <h1>Speaking Bank</h1>
-      <p>Click a topic to open it, then explore the structure, vocabulary, and model answers built for it. Part 1 and Part 2 are live — Part 3 is on the way.</p>
+      <p>IELTS Speaking has three parts. Choose one below to see its topics — each comes with structure, vocabulary, and model answers.</p>
     </div>
   </div>
 
-  <div id="sp-root"><p class="empty-note">Loading…</p></div>
+  <div class="sp-part-grid" id="sp-part-grid">
+    <p class="empty-note">Loading…</p>
+  </div>
 </div>
 
 <footer class="site-ftr">
@@ -53,7 +55,7 @@
 <script src="/js/supabase-config.js"></script>
 <script src="/js/auth-nav.js"></script>
 <script src="/js/nav-dropdown.js"></script>
-<script src="/js/speaking-catalog.js"></script>
+<script src="/js/speaking-parts.js"></script>
 <script src="/js/theme-toggle.js"></script>
 </body>
 </html>
