@@ -29,11 +29,20 @@
       root.innerHTML = '<p class="empty-note">Nothing here yet — check back soon.</p>';
       return;
     }
-    const html = items.map(cardHtml).join('');
-    root.innerHTML = '<div class="sp-topic-grid">' + html + '</div>';
+    const parts = uniq(items.map((t) => t.part)).sort((a, b) => a - b);
+    let html = '';
+    parts.forEach((p) => {
+      const topicsInPart = items.filter((t) => t.part === p);
+      html += '<div class="vol-group" id="part-' + p + '"><h2>Part ' + p + '</h2><div class="sp-topic-grid">' +
+        topicsInPart.map((t, i) => cardHtml(t, i + 1)).join('') +
+      '</div></div>';
+    });
+    root.innerHTML = html;
   }
 
-  function cardHtml(t) {
+  function uniq(arr) { return [...new Set(arr)]; }
+
+  function cardHtml(t, num) {
     const tierBadge = t.tier === 'free'
       ? '<span class="badge-tier badge-premium">✨ Free</span>'
       : '<span class="badge-tier badge-premium">🔒 Premium</span>';
@@ -41,6 +50,7 @@
     const versionNote = t.models ? '<span class="sp-topic-count">' + t.models.length + ' sample answers</span>' : '';
 
     return '<a class="sp-topic-card" href="/speaking-topic.html?id=' + encodeURIComponent(t.id) + '">' +
+      '<span class="sp-topic-num">' + num + '</span>' +
       '<span class="sp-topic-icon">🎙️</span>' +
       '<h3 class="sp-topic-theme">' + escapeHtml(t.theme) + '</h3>' +
       '<p class="sp-topic-tag">' + escapeHtml(t.tag || ('Part ' + t.part)) + '</p>' +
