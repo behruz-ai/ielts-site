@@ -133,9 +133,11 @@
 
     const activeModel = t.models[state.versionIndex] || t.models[0];
     const highlightSource = (t.vocabGroups || []).flatMap((g) => g.items);
-    panel += '<div class="sp-version-tabs">' + t.models.map((m, i) =>
-      '<button class="filter-chip' + (i === state.versionIndex ? ' active' : '') + '" data-version="' + i + '">' + escapeHtml(m.version) + '</button>'
-    ).join('') + '</div>';
+    if (t.models.length > 1) {
+      panel += '<div class="sp-version-tabs">' + t.models.map((m, i) =>
+        '<button class="filter-chip' + (i === state.versionIndex ? ' active' : '') + '" data-version="' + i + '">' + escapeHtml(m.version) + '</button>'
+      ).join('') + '</div>';
+    }
     const paragraphs = highlight(activeModel.text, highlightSource).split('\n\n');
     const modelHtml = paragraphs.map((p, i) =>
       '<p>' + (i === 0 ? '<span class="sp-model-quote">&ldquo;</span>' : '') + p + '</p>'

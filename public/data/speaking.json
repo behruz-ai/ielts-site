@@ -334,5 +334,51 @@
       { "version": "Version 1", "text": "To be honest, I barely have any free time these days. I work quite a lot, and I even work at the weekends, so I have to make a real effort to carve out some time for myself. I don't have one particular place that I always go to, but if I had a completely free day, I'd love to head out to the mountains with a few close friends.\n\nThe mountains aren't too far from my city, so we'd probably set off early in the morning and spend the whole day there. We wouldn't make any complicated plans. We'd probably go for a long hike, take some photos, have a picnic, and just take in the scenery. We might also find a quiet spot and sit around and catch up because we don't get to see each other very often.\n\nI'd probably stay there from morning until late afternoon, or even until sunset if we weren't too tired. I think a full day would be enough to get away from the hustle and bustle of everyday life without making the trip too exhausting.\n\nThe main reason I'd like to go is that my routine can get pretty repetitive. I'm constantly working, studying or dealing with one thing or another, so sometimes I feel like I need to hit the reset button. Being out in nature would help me clear my head, let off some steam, and simply enjoy being around people I care about.\n\nSo, for me, it's not really about finding some amazing tourist destination. It's about getting away from it all, slowing down for a while, and feeling alive again. That's probably what I'd value most in my free time." },
       { "version": "Version 2", "text": "I'd say I barely have any free time these days, because I even work at the weekends, so finding time to relax can be a bit of a challenge. That said, I do try to spare some time for myself whenever I get the chance. I don't really have one specific place in mind, though. I usually prefer spending my free time with a few close friends, and we're pretty flexible about where we go.\n\nFor example, sometimes we head to a park and just sit around, have a chat, and catch up on what's been going on in our lives. We might grab something to eat or drink and simply take it easy for a couple of hours. At other times, we stay indoors and play computer games together. It's nothing special, but it helps me switch off after a long and tiring week.\n\nHowever, if I had a whole day free, I'd probably head out to the mountains with my friends. I'd love to go for a hike, enjoy the fresh air, take in the scenery, and just get away from it all. We'd probably stay there for the whole day, maybe from early morning until sunset. I think that would be enough time to clear my head without having to rush back.\n\nThe main reason I'd like to visit a place like this is that I sometimes feel like I'm stuck in the same routine. I really want to feel alive, forget about work for a while, and relieve some of the stress that builds up during the week. For me, it's less about the actual place and more about having a chance to breathe, recharge, and enjoy the moment." }
     ]
+  },
+  {
+    "id": "p2-special-cake",
+    "part": 2,
+    "tier": "free",
+    "theme": "A Special Cake You Received",
+    "tag": "Cue card — always in use",
+    "cueCardPoints": ["what kind of cake it was", "when you had it", "who you were with", "why it was special"],
+    "howToBuildTips": [
+      "Start with a personal fact before describing the cake itself — e.g. \"To be honest, I don't usually receive cakes as gifts\" — it makes the opening sound spontaneous, not memorised.",
+      "Describe the gift through the story, not its appearance — focus on who gave it, why, what they added, and your reaction, rather than describing the cake itself for 30 seconds.",
+      "For the \"why was it special\" part, use: \"What made it special wasn't really X. It was Y.\" — this gives a clear reason instead of just saying \"because I liked it.\"",
+      "When asked to go deeper, escalate: gift → meaning → personal impact, rather than stopping at the first, obvious answer."
+    ],
+    "usefulStructure": [
+      { "pattern": "To be honest, [personal fact].", "example": "To be honest, I don't usually receive cakes as gifts." },
+      { "pattern": "As far as I can remember, [detail].", "example": "As far as I can remember, I've only received one that really stands out." },
+      { "pattern": "What made it special wasn't really [X]. It was [Y].", "example": "What made the cake special wasn't really the taste or how fancy it looked. It was the personal message behind it." },
+      { "pattern": "[who gave it] → [why] → [what they added] → [your reaction]", "example": "My students gave it to me → to celebrate finishing the course → they also added a small souvenir → it genuinely caught me off guard." },
+      { "pattern": "It was special because [X]. → What made it special was [Y]. → It reminded me that [Z].", "example": "It was special because my students gave it to me. What made it special was the effort they'd put into it. It reminded me that my work had actually made a difference to them." }
+    ],
+    "vocabGroups": [
+      { "label": "Receiving a Gift", "items": [
+        { "term": "stands out", "meaning": "is noticeably different or memorable", "example": "It's the one cake that really stands out in my memory." },
+        { "term": "thoughtful touch", "meaning": "a small, considerate addition that shows care", "example": "The souvenir was a really thoughtful touch." },
+        { "term": "caught me off guard", "meaning": "surprised me unexpectedly", "example": "It genuinely caught me off guard." },
+        { "term": "have no idea something was coming", "meaning": "be completely unaware something was about to happen", "example": "I had no idea something like that was coming." }
+      ] },
+      { "label": "Talking About Emotions", "items": [
+        { "term": "a bit overwhelmed", "meaning": "slightly overcome by strong emotion", "example": "I remember feeling a bit overwhelmed, but in a really good way." },
+        { "term": "genuinely touched", "meaning": "sincerely moved emotionally", "example": "I was genuinely touched by the gesture." },
+        { "term": "really meant a lot to me", "meaning": "was very emotionally significant to someone", "example": "That gesture really meant a lot to me." },
+        { "term": "put a smile on my face", "meaning": "make someone happy or pleased", "example": "Reading their notes put a smile on my face." },
+        { "term": "a really good memory", "meaning": "a pleasant thing to remember", "example": "It's become a really good memory for me." }
+      ] },
+      { "label": "Talking About Memories", "items": [
+        { "term": "looking back", "meaning": "when reflecting on a past event", "example": "Looking back, that's what made the cake so memorable." },
+        { "term": "reminder that", "meaning": "something that makes you remember or realize a fact", "example": "It was a real reminder that my work had meant something to them." },
+        { "term": "has a special place in my memory", "meaning": "is particularly fondly remembered", "example": "This particular cake has a special place in my memory." },
+        { "term": "stick in my mind", "meaning": "be remembered vividly, hard to forget", "example": "That moment really sticks in my mind." },
+        { "term": "I'll always remember it", "meaning": "a way of saying something will never be forgotten", "example": "I'll always remember it, no matter how much time passes." }
+      ] }
+    ],
+    "models": [
+      { "version": "Sample Answer", "text": "To be honest, I don't usually receive cakes as gifts, and as far as I can remember, I've only received one that really stands out. It was probably last year, shortly before I finished teaching a group of students who were about to graduate.\n\nIt was a home-made birthday cake that my graduating students brought over to my house. They also gave me a small souvenir — a collectible model car — which was a really thoughtful touch. But what made the cake special wasn't really the taste or how fancy it looked. It was the personal message behind it.\n\nThe top of the cake was completely covered with little birthday wishes and thank-you notes from my students. They had written short messages about their time in my classes, thanked me for helping them, and wished me all the best. It genuinely caught me off guard, because I had no idea they were planning anything.\n\nI was with a few of my students when they gave it to me, and we spent some time having a laugh, taking pictures, and looking through all the messages. I remember feeling a bit overwhelmed, but in a really good way. Teaching can be exhausting, and there are definitely days when you wonder whether you're actually making a difference. So seeing those messages was a real reminder that my work had meant something to them.\n\nLooking back, that's what made the cake so memorable. It wasn't some expensive or luxurious gift. It was the thought and effort that went into it. Even now, I still remember that moment quite clearly, and I think that's why this particular cake has a special place in my memory." }
+    ]
   }
 ]

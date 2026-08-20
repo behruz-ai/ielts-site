@@ -50,7 +50,7 @@
       ? '<span class="badge-tier badge-premium">✨ Free</span>'
       : '<span class="badge-tier badge-premium">🔒 Premium</span>';
     const branchNote = t.branches ? '<span class="sp-topic-count">' + t.branches.length + ' branches</span>' : '';
-    const versionNote = t.models ? '<span class="sp-topic-count">' + t.models.length + ' sample answers</span>' : '';
+    const versionNote = t.models ? '<span class="sp-topic-count">' + t.models.length + (t.models.length === 1 ? ' sample answer' : ' sample answers') + '</span>' : '';
 
     return '<a class="sp-topic-card" href="/speaking-topic.html?id=' + encodeURIComponent(t.id) + '">' +
       '<span class="sp-topic-num">' + num + '</span>' +
