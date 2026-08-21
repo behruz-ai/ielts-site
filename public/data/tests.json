@@ -4267,5 +4267,23 @@
       "Yes/No/Not Given",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-the-work-of-caravaggio",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Work of Caravaggio",
+    "status": "published",
+    "questionCount": 17,
+    "durationMinutes": 20,
+    "file": "premium/the-work-of-caravaggio.html",
+    "questionTypes": [
+      "Matching Information",
+      "Multiple Choice (Pick Two)",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
   }
 ]
