@@ -4233,5 +4233,22 @@
       "Summary Completion",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-designed-to-last",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Designed to Last",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/designed-to-last.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "True/False/Not Given",
+      "Summary Completion"
+    ]
   }
 ]
