@@ -4115,5 +4115,22 @@
       "Summary Completion",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-business-innovation",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Business Innovation",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/business-innovation.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Matching People",
+      "Note Completion"
+    ]
   }
 ]
