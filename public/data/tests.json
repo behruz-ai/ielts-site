@@ -4098,5 +4098,22 @@
       "Yes/No/Not Given",
       "Matching Information"
     ]
+  },
+  {
+    "id": "premium-the-significant-role-of-mother-tongue-in-education",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Significant Role of Mother Tongue in Education",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/the-significant-role-of-mother-tongue-in-education.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Summary Completion",
+      "Yes/No/Not Given"
+    ]
   }
 ]
