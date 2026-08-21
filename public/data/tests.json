@@ -4132,5 +4132,21 @@
       "Matching People",
       "Note Completion"
     ]
+  },
+  {
+    "id": "premium-what-should-companies-do-to-survive",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "What Should Companies Do to Survive?",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/what-should-companies-do-to-survive.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Matching Information"
+    ]
   }
 ]
