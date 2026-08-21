@@ -3997,5 +3997,22 @@
       "Multiple Choice",
       "Matching Features"
     ]
+  },
+  {
+    "id": "premium-you-are-what-you-speak",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "You Are What You Speak",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/you-are-what-you-speak.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Matching Features",
+      "Summary Completion"
+    ]
   }
 ]
