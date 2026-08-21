@@ -4031,5 +4031,21 @@
       "Yes/No/Not Given",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-dressed-to-dazzle",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Dressed to Dazzle",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/dressed-to-dazzle.html",
+    "questionTypes": [
+      "Matching Information",
+      "Summary Completion"
+    ]
   }
 ]
