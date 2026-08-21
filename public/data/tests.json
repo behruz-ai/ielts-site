@@ -4199,5 +4199,22 @@
       "Yes/No/Not Given",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-the-placebo-effect",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Placebo Effect",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/the-placebo-effect.html",
+    "questionTypes": [
+      "Matching Sentence Endings",
+      "Multiple Choice",
+      "Yes/No/Not Given"
+    ]
   }
 ]
