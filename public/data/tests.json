@@ -4250,5 +4250,22 @@
       "True/False/Not Given",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-mite-harvestmen",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Value of Research into Mite Harvestmen",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/mite-harvestmen.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Summary Completion"
+    ]
   }
 ]
