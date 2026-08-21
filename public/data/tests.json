@@ -4014,5 +4014,22 @@
       "Matching Features",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-playing-psychological-games",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Playing Psychological Games",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/playing-psychological-games.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Yes/No/Not Given",
+      "Multiple Choice"
+    ]
   }
 ]
