@@ -4285,5 +4285,21 @@
       "Summary Completion",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-the-knowledge-society",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Knowledge Society",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-knowledge-society.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given"
+    ]
   }
 ]
