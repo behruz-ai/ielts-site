@@ -4182,5 +4182,22 @@
       "Matching Information",
       "Multiple Choice (Pick Three)"
     ]
+  },
+  {
+    "id": "premium-metropolis",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Metropolis",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/metropolis.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Summary Completion"
+    ]
   }
 ]
