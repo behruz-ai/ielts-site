@@ -4064,5 +4064,22 @@
       "Yes/No/Not Given",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-the-ingenuity-gap",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Ingenuity Gap",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/the-ingenuity-gap.html",
+    "questionTypes": [
+      "Matching Sentence Endings",
+      "Multiple Choice",
+      "Yes/No/Not Given"
+    ]
   }
 ]
