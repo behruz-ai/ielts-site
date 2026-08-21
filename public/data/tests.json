@@ -3946,5 +3946,22 @@
       "Matching Features",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-strictly-english",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Strictly English",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/strictly-english.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
   }
 ]
