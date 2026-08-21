@@ -4165,5 +4165,22 @@
       "Yes/No/Not Given",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-literacy-and-rural-communities-in-australia",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Literacy and Rural Communities in Australia",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/literacy-and-rural-communities-in-australia.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Matching Information",
+      "Multiple Choice (Pick Three)"
+    ]
   }
 ]
