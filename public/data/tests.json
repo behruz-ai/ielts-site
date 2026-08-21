@@ -4216,5 +4216,22 @@
       "Multiple Choice",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-assessing-the-risk",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Assessing the Risk",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/assessing-the-risk.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
   }
 ]
