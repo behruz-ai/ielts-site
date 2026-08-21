@@ -4081,5 +4081,22 @@
       "Multiple Choice",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-the-benefits-of-being-bilingual",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Benefits of Being Bilingual",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/the-benefits-of-being-bilingual.html",
+    "questionTypes": [
+      "Table Completion",
+      "Yes/No/Not Given",
+      "Matching Information"
+    ]
   }
 ]
