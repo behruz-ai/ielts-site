@@ -4421,5 +4421,22 @@
       "Multiple Choice",
       "Matching Information"
     ]
+  },
+  {
+    "id": "premium-the-dark-side-of-the-technological-boom",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Dark Side of the Technological Boom",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/the-dark-side-of-the-technological-boom.html",
+    "questionTypes": [
+      "Matching Sentence Endings",
+      "Matching People",
+      "True/False/Not Given"
+    ]
   }
 ]
