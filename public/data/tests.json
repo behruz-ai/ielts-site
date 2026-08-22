@@ -4438,5 +4438,22 @@
       "Matching People",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-improving-patient-safety",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Improving Patient Safety",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/improving-patient-safety.html",
+    "questionTypes": [
+      "Matching People",
+      "Note Completion",
+      "Multiple Choice"
+    ]
   }
 ]
