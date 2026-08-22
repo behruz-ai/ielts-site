@@ -4386,5 +4386,22 @@
       "Summary Completion",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-are-we-born-able-to-imitate",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Are We Born Able to Imitate?",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/are-we-born-able-to-imitate.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Summary Completion",
+      "Yes/No/Not Given"
+    ]
   }
 ]
