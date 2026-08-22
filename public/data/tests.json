@@ -4403,5 +4403,23 @@
       "Summary Completion",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-whale-culture",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Whale Culture",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/whale-culture.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Summary Completion",
+      "Multiple Choice",
+      "Matching Information"
+    ]
   }
 ]
