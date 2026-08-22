@@ -4301,5 +4301,22 @@
       "Multiple Choice",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-pacific-navigation-and-voyaging",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Pacific Navigation and Voyaging",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/pacific-navigation-and-voyaging.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Multiple Choice",
+      "Matching Sentence Endings"
+    ]
   }
 ]
