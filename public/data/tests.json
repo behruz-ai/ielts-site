@@ -4352,5 +4352,22 @@
       "Matching Information",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-sea-change-for-salinity",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Sea Change for Salinity",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/sea-change-for-salinity.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching Features",
+      "Multiple Choice"
+    ]
   }
 ]
