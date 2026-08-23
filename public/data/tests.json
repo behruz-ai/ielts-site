@@ -4521,5 +4521,22 @@
       "True/False/Not Given",
       "Notes Completion"
     ]
+  },
+  {
+    "id": "premium-the-tasmanian-tiger",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Tasmanian Tiger",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-tasmanian-tiger.html",
+    "questionTypes": [
+      "Summary Completion",
+      "Matching People",
+      "Multiple Choice"
+    ]
   }
 ]
