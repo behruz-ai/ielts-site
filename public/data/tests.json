@@ -4721,5 +4721,22 @@
       "Multiple Choice",
       "Matching People"
     ]
+  },
+  {
+    "id": "premium-conscious-and-unconscious-thought",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Conscious and Unconscious Thought",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/conscious-and-unconscious-thought.html",
+    "questionTypes": [
+      "Matching People",
+      "Summary Completion",
+      "True/False/Not Given"
+    ]
   }
 ]
