@@ -4571,5 +4571,22 @@
       "True/False/Not Given",
       "Notes Completion"
     ]
+  },
+  {
+    "id": "premium-achieving-a-work-life-balance",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Achieving a Work-life Balance",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/achieving-a-work-life-balance.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching People",
+      "Short Answer"
+    ]
   }
 ]
