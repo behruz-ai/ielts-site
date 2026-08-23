@@ -4822,5 +4822,22 @@
       "Summary Completion",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-skyscraper-farming",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Skyscraper Farming",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/skyscraper-farming.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Sentence Completion",
+      "Matching People"
+    ]
   }
 ]
