@@ -4957,5 +4957,22 @@
       "True/False/Not Given",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-farmers",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Farmers",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/farmers.html",
+    "questionTypes": [
+      "Matching Information",
+      "Sentence Completion",
+      "Matching People"
+    ]
   }
 ]
