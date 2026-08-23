@@ -4622,5 +4622,22 @@
       "Multiple Choice",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-the-history-and-production-of-chocolate",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The History and Production of Chocolate",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-history-and-production-of-chocolate.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion",
+      "Flow-Chart Completion"
+    ]
   }
 ]
