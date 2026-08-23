@@ -4705,5 +4705,21 @@
       "Matching People",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-early-approaches-to-organisational-design",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Early Approaches to Organisational Design",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/early-approaches-to-organisational-design.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Matching People"
+    ]
   }
 ]
