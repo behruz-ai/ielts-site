@@ -4655,5 +4655,21 @@
       "Matching Information",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-the-clipper-races",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Clipper Races",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-clipper-races.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion"
+    ]
   }
 ]
