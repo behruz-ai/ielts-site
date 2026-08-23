@@ -4472,5 +4472,21 @@
       "Multiple Choice",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-tunnelling-under-the-thames",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Tunnelling under the Thames",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/tunnelling-under-the-thames.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion"
+    ]
   }
 ]
