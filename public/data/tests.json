@@ -4538,5 +4538,22 @@
       "Matching People",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-sun-sand-and-seawater",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "Sun, Sand and Seawater",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/sun-sand-and-seawater.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Diagram Labelling",
+      "Summary Completion"
+    ]
   }
 ]
