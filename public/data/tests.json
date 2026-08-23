@@ -4688,5 +4688,22 @@
       "Matching Information",
       "Matching Features"
     ]
+  },
+  {
+    "id": "premium-living-in-a-noisy-world",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Living in a Noisy World",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/living-in-a-noisy-world.html",
+    "questionTypes": [
+      "Sentence Completion",
+      "Matching People",
+      "Multiple Choice"
+    ]
   }
 ]
