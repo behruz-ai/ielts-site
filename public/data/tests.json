@@ -4488,5 +4488,22 @@
       "True/False/Not Given",
       "Notes Completion"
     ]
+  },
+  {
+    "id": "premium-childrens-comprehension-of-television-advertising",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Children's Comprehension of Television Advertising",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/childrens-comprehension-of-television-advertising.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching Researchers",
+      "Summary Completion"
+    ]
   }
 ]
