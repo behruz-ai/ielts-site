@@ -4906,5 +4906,22 @@
       "Sentence Endings",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-ahead-of-its-time",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Ahead of its Time",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/ahead-of-its-time.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Flow-Chart Completion",
+      "Notes Completion"
+    ]
   }
 ]
