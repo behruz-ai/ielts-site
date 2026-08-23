@@ -4639,5 +4639,21 @@
       "Notes Completion",
       "Flow-Chart Completion"
     ]
+  },
+  {
+    "id": "premium-a-new-stage-in-the-study-and-teaching-of-history",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "A New Stage in the Study and Teaching of History",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/a-new-stage-in-the-study-and-teaching-of-history.html",
+    "questionTypes": [
+      "Matching Information",
+      "Yes/No/Not Given"
+    ]
   }
 ]
