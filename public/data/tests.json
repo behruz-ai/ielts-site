@@ -4872,5 +4872,22 @@
       "Notes Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-the-science-of-sleeping-on-it",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Science of Sleeping on It",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-science-of-sleeping-on-it.html",
+    "questionTypes": [
+      "Matching Information",
+      "Summary Completion",
+      "Matching People"
+    ]
   }
 ]
