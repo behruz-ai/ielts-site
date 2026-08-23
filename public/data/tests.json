@@ -4588,5 +4588,22 @@
       "Matching People",
       "Short Answer"
     ]
+  },
+  {
+    "id": "premium-the-peopling-of-patagonia",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "The Peopling of Patagonia",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/the-peopling-of-patagonia.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Summary Completion"
+    ]
   }
 ]
