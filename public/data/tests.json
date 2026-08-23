@@ -4923,5 +4923,22 @@
       "Flow-Chart Completion",
       "Notes Completion"
     ]
+  },
+  {
+    "id": "premium-the-gender-gap-in-nz-high-school-results",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Gender Gap in NZ High School Results",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-gender-gap-in-nz-high-school-results.html",
+    "questionTypes": [
+      "Summary Completion",
+      "Matching Information",
+      "Matching People"
+    ]
   }
 ]
