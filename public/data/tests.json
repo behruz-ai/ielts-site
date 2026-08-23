@@ -4505,5 +4505,21 @@
       "Matching Researchers",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-katherine-mansfield",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Katherine Mansfield",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/katherine-mansfield.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion"
+    ]
   }
 ]
