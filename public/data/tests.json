@@ -4755,5 +4755,22 @@
       "Notes Completion",
       "Table Completion"
     ]
+  },
+  {
+    "id": "premium-undoing-our-emotions",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Undoing Our Emotions",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/undoing-our-emotions.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching People",
+      "Sentence Completion"
+    ]
   }
 ]
