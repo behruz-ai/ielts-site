@@ -4839,5 +4839,22 @@
       "Sentence Completion",
       "Matching People"
     ]
+  },
+  {
+    "id": "premium-first-memories",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 3",
+    "displayTitle": "First Memories",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/first-memories.html",
+    "questionTypes": [
+      "Yes/No/Not Given",
+      "Multiple Choice",
+      "Matching"
+    ]
   }
 ]
