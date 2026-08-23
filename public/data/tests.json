@@ -4940,5 +4940,22 @@
       "Matching Information",
       "Matching People"
     ]
+  },
+  {
+    "id": "premium-coral-reefs",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Coral Reefs",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/coral-reefs.html",
+    "questionTypes": [
+      "Matching Information",
+      "True/False/Not Given",
+      "Multiple Choice"
+    ]
   }
 ]
