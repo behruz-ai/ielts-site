@@ -4789,5 +4789,21 @@
       "Summary Completion",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-the-trans-australian-railway",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Trans-Australian Railway",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-trans-australian-railway.html",
+    "questionTypes": [
+      "Table Completion",
+      "True/False/Not Given"
+    ]
   }
 ]
