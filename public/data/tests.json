@@ -4805,5 +4805,22 @@
       "Table Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-how-plants-fight-back",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "How Plants Fight Back",
+    "status": "published",
+    "questionCount": 14,
+    "durationMinutes": 20,
+    "file": "premium/how-plants-fight-back.html",
+    "questionTypes": [
+      "Matching Information",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
   }
 ]
