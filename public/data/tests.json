@@ -4555,5 +4555,21 @@
       "Diagram Labelling",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-the-national-parks-of-america",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The National Parks of America",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-national-parks-of-america.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion"
+    ]
   }
 ]
