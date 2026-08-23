@@ -4738,5 +4738,22 @@
       "Summary Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-the-burgess-shale-fossils",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Burgess Shale Fossils",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-burgess-shale-fossils.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Notes Completion",
+      "Table Completion"
+    ]
   }
 ]
