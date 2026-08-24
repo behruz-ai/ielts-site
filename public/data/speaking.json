@@ -471,5 +471,52 @@
     "models": [
       { "version": "Sample Answer", "text": "One occasion when I had to get up ridiculously early was quite recently, about two months ago, when one of my colleagues and groupmates got married. Some of my colleagues and close friends and I really wanted to make it to the wedding ceremony and celebrate the occasion with him. We were even planning to give him a fairly big group gift.\n\nThe problem was that he lived quite far from Tashkent. In Uzbekistan, wedding celebrations are often held at local restaurants, but since most of us live, study, or work in Tashkent, getting there was going to be quite a journey. By car or bus, it could easily take ten to twelve hours, which was simply too much for a single day.\n\nSo, after looking at our options, we decided to fly there instead. Unfortunately, there were only two flights on the day we wanted to travel: one in the early morning and another in the afternoon. The afternoon flight was out of the question because we would've risked missing the ceremony, so we basically had no choice but to take the early one.\n\nI remember setting my alarm for around 4 a.m., and honestly, getting out of bed was the hardest part. I was still half asleep, and I could barely keep my eyes open. But once I met up with my friends, we were all in the same boat, so we just joked about how exhausted we were and made our way to the airport.\n\nLooking back, I wouldn't say I enjoyed waking up that early, but it was definitely worth it. We made it to the wedding on time, gave our friend his gift, and had a great time celebrating with him. So, despite the lack of sleep, I'd do it all over again for a close friend." }
     ]
+  },
+  {
+    "id": "p2-new-law",
+    "part": 2,
+    "tier": "free",
+    "theme": "A New Law You Would Like to Introduce",
+    "tag": "Cue card — always in use",
+    "cueCardPoints": ["what law it is and what changes it brings", "whether it will be popular", "how you came up with the new law", "how you feel about it"],
+    "howToBuildTips": [
+      "Frame the law with what it does and what it deliberately avoids — \"I'm not talking about banning X altogether, but...\" shows nuance rather than an extreme, easy-to-argue-against position.",
+      "Ground the idea in a personal observation or experience — \"I came up with this idea after noticing...\" / \"partly because of my own experience\" — makes an abstract policy idea feel genuine, not textbook.",
+      "Give a balanced view on popularity — acknowledge who would resist it and why, not just \"everyone would love it\" — this shows you can consider more than one perspective.",
+      "Close by explaining what the idea represents, not just what it does — \"it's about leaving a cleaner place for the next generation\" — this is what makes an opinion answer memorable rather than just descriptive."
+    ],
+    "usefulStructure": [
+      { "pattern": "If I had the chance to introduce a new law, I'd probably introduce a law to [X].", "example": "If I had the chance to introduce a new law in my country, I'd probably introduce a law to reduce the use of single-use plastic." },
+      { "pattern": "I'm not talking about [extreme], but I'd like [X].", "example": "I'm not talking about banning plastic altogether, but I'd like shops and restaurants to cut back on unnecessary plastic." },
+      { "pattern": "I came up with this idea after/partly because of [X].", "example": "I actually came up with this idea after noticing how much plastic waste we produce in our everyday lives." },
+      { "pattern": "As for whether it would be popular, I think [X], though [counterpoint].", "example": "I think most employees would be all for it. Some managers might push back against it, though." },
+      { "pattern": "For me personally, this law would [X].", "example": "For me personally, this law would make a real difference." },
+      { "pattern": "In the long run / Overall, I'd rather [X] than [Y].", "example": "In the long run, I'd rather introduce a simple law that changes everyday behaviour than a complicated one that looks impressive on paper." }
+    ],
+    "vocabGroups": [
+      { "label": "Talking About the Law", "items": [
+        { "term": "single-use plastic", "meaning": "plastic items designed to be used once and thrown away", "example": "I'd probably introduce a law to reduce the use of single-use plastic." },
+        { "term": "cut back on", "meaning": "reduce the amount of something", "example": "I'd like shops and restaurants to cut back on unnecessary plastic." },
+        { "term": "reusable alternatives", "meaning": "options that can be used again instead of thrown away", "example": "Encourage people to use reusable alternatives." },
+        { "term": "the right to completely disconnect", "meaning": "the entitlement to be fully unreachable, e.g. from work", "example": "A law that gives employees the right to completely disconnect from work." },
+        { "term": "a genuine emergency", "meaning": "a real, serious urgent situation, not exaggerated", "example": "Unless it was a genuine emergency." }
+      ] },
+      { "label": "How the Idea Came About", "items": [
+        { "term": "came up with this idea", "meaning": "thought of or invented this idea", "example": "I actually came up with this idea after noticing how much plastic waste we produce." },
+        { "term": "caught myself doing the same thing", "meaning": "noticed I was doing something I was criticising in others", "example": "I've even caught myself doing the same thing." },
+        { "term": "puts me straight back into work mode", "meaning": "immediately returns someone's focus to work", "example": "It puts me straight back into work mode." },
+        { "term": "a healthier work-life balance", "meaning": "a better balance between job and personal life", "example": "Give them a healthier work-life balance." }
+      ] },
+      { "label": "Discussing Popularity & Impact", "items": [
+        { "term": "a bit of a mixed bag", "meaning": "a mix of positive and negative reactions", "example": "I think it would be a bit of a mixed bag at first." },
+        { "term": "push back against", "meaning": "resist or oppose something", "example": "Some managers and business owners might push back against it." },
+        { "term": "small changes can add up", "meaning": "minor improvements accumulate into a significant overall effect", "example": "I believe small changes can add up." },
+        { "term": "make a real difference", "meaning": "have a genuine, meaningful impact", "example": "This law would make a real difference." }
+      ] }
+    ],
+    "models": [
+      { "version": "Version 1", "text": "If I had the chance to introduce a new law in my country, I'd probably introduce a law to reduce the use of single-use plastic, especially plastic bags, cups, and bottles. I'm not talking about banning plastic altogether, but I'd like shops and restaurants to cut back on unnecessary plastic and encourage people to use reusable alternatives.\n\nThe law could, for example, require supermarkets to charge customers for plastic bags and encourage businesses to use paper, cloth, or other environmentally friendly options. I think even a small change like that could make a noticeable difference over time.\n\nI actually came up with this idea after noticing how much plastic waste we produce in our everyday lives. Whenever I go shopping, I see people taking several plastic bags even when they only have a few things to carry. More often than not, those bags are used once and then thrown away. I've even caught myself doing the same thing, so I think this is partly about changing our own habits rather than simply blaming other people.\n\nAs for whether it would be popular, I think it would be a bit of a mixed bag at first. Some people would probably complain that it's inconvenient or that environmentally friendly products cost more. But I think once people got used to it, most of them would accept it.\n\nPersonally, I'd feel really positive about introducing this law. I'm not expecting it to solve the whole environmental problem overnight, but I believe small changes can add up. To me, it's about leaving a cleaner place for the next generation and making people a little more conscious of what they throw away.\n\nIn the long run, I'd rather introduce a simple law that changes everyday behaviour than a complicated one that looks impressive on paper but has little real impact." },
+      { "version": "Version 2", "text": "If I could introduce one new law in my country, I'd probably introduce a law that gives employees the right to completely disconnect from work outside their working hours. Basically, employers wouldn't be allowed to call, text, or message their staff about work-related matters after work unless it was a genuine emergency.\n\nI came up with this idea partly because of my own experience. I work quite a lot, and there have been plenty of evenings when I've finally got home, sat down to relax, and then a work message pops up on my phone. Even if it only takes a few minutes to reply, it puts me straight back into work mode. Sometimes I even find myself thinking about work when I'm supposed to be relaxing.\n\nUnder this law, employees would have a clear right to switch off and enjoy their own time. Companies could still contact people in real emergencies, but ordinary requests would have to wait until the next working day. I think this would take some pressure off people and give them a healthier work-life balance.\n\nAs for whether it would be popular, I think most employees would be all for it, especially people with demanding jobs. Some managers and business owners might push back against it, though, because they could worry about losing flexibility.\n\nFor me personally, this law would make a real difference. I sometimes feel that work follows me home, even when I've officially finished for the day. I'd love to have a clearer boundary between my job and my personal life.\n\nOverall, I think it's a fairly simple idea, but it could have a big impact. People work hard, but they also need time to rest, spend time with the people they love, and switch off from the daily grind. I honestly think having that breathing space would make people happier and probably even better at their jobs." }
+    ]
   }
 ]
