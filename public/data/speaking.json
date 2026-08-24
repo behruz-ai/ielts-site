@@ -426,5 +426,50 @@
       { "version": "Version 1", "text": "When I think of tall buildings in my hometown, I don't immediately think of modern skyscrapers. For me, one of the most impressive ones is the Minorai Kalon, which is located in the historic centre of Bukhara. It's actually a huge historical tower, and it's probably one of the first landmarks that comes to mind when people think of the city.\n\nThe name \"Minorai Kalon\" basically means \"the big\" or \"great tower,\" and I think that's a pretty fitting name because the structure is surprisingly tall and impressive, especially considering how old it is. It has stood there for centuries, and although it has been reconstructed and restored several times, it has managed to keep its original character. From a distance, it looks quite simple, but when you get closer, you can really appreciate the brickwork and the traditional design.\n\nToday, it is mainly a historical landmark and tourist attraction. People go there to take pictures, learn about Bukhara's history, and admire the architecture. It's also surrounded by other important historical buildings, so the whole area has a really special atmosphere.\n\nWhat I like most about it is that it has stood the test of time. There are plenty of modern buildings that look impressive for a few years, but this tower has survived for centuries and still looks beautiful today. I find that quite amazing.\n\nIn a nutshell, I like the Minorai Kalon because it's more than just a tall building. It's a piece of history that has managed to survive through generations, and whenever I see it, it reminds me of how rich and fascinating Bukhara's past is." },
       { "version": "Version 2", "text": "When it comes to tall buildings in my city, there are quite a few modern ones that have sprung up in recent years, but the one that really catches my eye is Nest One, which is in the Tashkent City area.\n\nIt's a huge, modern skyscraper with a very striking design, and it's difficult to miss when you're anywhere nearby. The building has a sleek glass exterior, and because it's so tall, it really stands out from the surrounding buildings. What I find interesting is that it doesn't have that old-fashioned, boxy look that some high-rises have. It has a much more futuristic feel to it, which I think suits a growing city like Tashkent.\n\nAs far as I know, the building is mainly used for apartments, offices, and other commercial purposes, so it's not just there to look impressive. It's a mixed-use development, which means people can actually live and work there.\n\nThe main reason I like it is that it gives the city a more modern identity. When I was younger, I don't remember seeing many buildings like this in Tashkent, so it's interesting to see how much the cityscape has changed. It gives me the feeling that the city is moving forward and becoming more international.\n\nThat said, I'm not sure I'd actually want to live in a building that tall. I'd probably feel a bit boxed in, and I'd much rather have a spacious apartment with a nice view and some outdoor space.\n\nAll in all, though, I like Nest One because it's hard to ignore, it looks impressive, and to me, it represents how much my city has changed over the years." }
     ]
+  },
+  {
+    "id": "p2-got-up-early",
+    "part": 2,
+    "tier": "free",
+    "theme": "An Occasion When You Got Up Extremely Early",
+    "tag": "Cue card — always in use",
+    "cueCardPoints": ["when this happened", "what you needed to do on that day", "who you were with", "how you felt about getting up early on that day"],
+    "howToBuildTips": [
+      "Set the scene before explaining why you had to get up early — the situation/problem (distance, timing, options) should come first, so the early start feels like a natural consequence, not a random fact.",
+      "Use \"no choice but to...\" or \"was out of the question\" to show a decision was forced by circumstances, not just a preference.",
+      "Contrast the discomfort of the moment with the value of the outcome — \"I wouldn't say I enjoyed X, but it was definitely worth it\" — a strong Band 8+ pattern for reflecting on hardship.",
+      "End with a personal reflection that shows why it mattered (relationships, effort), not just a statement of facts."
+    ],
+    "usefulStructure": [
+      { "pattern": "One occasion when I had to [X] was [when], when [event].", "example": "One occasion when I had to get up ridiculously early was quite recently, about two months ago, when one of my colleagues got married." },
+      { "pattern": "The problem was that [X], so [consequence].", "example": "The problem was that he lived quite far from Tashkent, so getting there was going to be quite a journey." },
+      { "pattern": "We basically had no choice but to [X].", "example": "We basically had no choice but to take the early one." },
+      { "pattern": "I wouldn't say I enjoyed [X], but it was definitely worth it.", "example": "I wouldn't say I enjoyed waking up that early, but it was definitely worth it." },
+      { "pattern": "Despite [difficulty], I'd do it all over again for [reason].", "example": "Despite the lack of sleep, I'd do it all over again for a close friend." }
+    ],
+    "vocabGroups": [
+      { "label": "Getting Up Early & Tiredness", "items": [
+        { "term": "get up ridiculously early", "meaning": "wake up at an extremely, almost absurdly early time", "example": "One occasion when I had to get up ridiculously early was quite recently." },
+        { "term": "half asleep", "meaning": "not fully awake, still drowsy", "example": "I was still half asleep." },
+        { "term": "could barely keep my eyes open", "meaning": "was extremely tired, close to falling asleep", "example": "I could barely keep my eyes open." },
+        { "term": "in the same boat", "meaning": "in the same difficult situation as others", "example": "We were all in the same boat." },
+        { "term": "the lack of sleep", "meaning": "not having had enough sleep", "example": "Despite the lack of sleep, I'd do it all over again." }
+      ] },
+      { "label": "Making a Decision Under Pressure", "items": [
+        { "term": "quite a journey", "meaning": "a long or difficult trip", "example": "Getting there was going to be quite a journey." },
+        { "term": "was out of the question", "meaning": "was not a possible or acceptable option", "example": "The afternoon flight was out of the question." },
+        { "term": "no choice but to", "meaning": "forced into one option, nothing else possible", "example": "We basically had no choice but to take the early one." },
+        { "term": "risked missing", "meaning": "were in danger of not making it in time for something", "example": "We would've risked missing the ceremony." }
+      ] },
+      { "label": "Reflecting on the Experience", "items": [
+        { "term": "looking back", "meaning": "when reflecting on a past event", "example": "Looking back, I wouldn't say I enjoyed waking up that early." },
+        { "term": "was definitely worth it", "meaning": "the effort or discomfort was justified by the outcome", "example": "It was definitely worth it." },
+        { "term": "do it all over again", "meaning": "would repeat the same experience without regret", "example": "I'd do it all over again for a close friend." },
+        { "term": "made it to the wedding on time", "meaning": "arrived in time for the event despite the difficulty", "example": "We made it to the wedding on time." }
+      ] }
+    ],
+    "models": [
+      { "version": "Sample Answer", "text": "One occasion when I had to get up ridiculously early was quite recently, about two months ago, when one of my colleagues and groupmates got married. Some of my colleagues and close friends and I really wanted to make it to the wedding ceremony and celebrate the occasion with him. We were even planning to give him a fairly big group gift.\n\nThe problem was that he lived quite far from Tashkent. In Uzbekistan, wedding celebrations are often held at local restaurants, but since most of us live, study, or work in Tashkent, getting there was going to be quite a journey. By car or bus, it could easily take ten to twelve hours, which was simply too much for a single day.\n\nSo, after looking at our options, we decided to fly there instead. Unfortunately, there were only two flights on the day we wanted to travel: one in the early morning and another in the afternoon. The afternoon flight was out of the question because we would've risked missing the ceremony, so we basically had no choice but to take the early one.\n\nI remember setting my alarm for around 4 a.m., and honestly, getting out of bed was the hardest part. I was still half asleep, and I could barely keep my eyes open. But once I met up with my friends, we were all in the same boat, so we just joked about how exhausted we were and made our way to the airport.\n\nLooking back, I wouldn't say I enjoyed waking up that early, but it was definitely worth it. We made it to the wedding on time, gave our friend his gift, and had a great time celebrating with him. So, despite the lack of sleep, I'd do it all over again for a close friend." }
+    ]
   }
 ]
