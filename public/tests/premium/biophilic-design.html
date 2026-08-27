@@ -57,7 +57,7 @@ body{background:var(--bg);color:var(--text)}
 .pcontent{display:none;padding:24px}
 .pcontent.on{display:block}
 .ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
-.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.psub{font-style:italic;color:var(--subtext)!important;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
 .pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
 .pl{font-weight:800;margin-right:6px;color:#DC2626}
 .ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
@@ -137,7 +137,7 @@ body.post-check .expl-btn{display:inline-flex}
 .expl-cell .expl-box{margin:6px 8px 0}
 
 .inline-qno{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;border-radius:50%;background:var(--mdbg);border:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text);margin:0 3px 0 6px;vertical-align:middle}
-.answer-input{border:none;border-bottom:2px solid var(--inpb);background:transparent;font-size:calc(14px * var(--txtscale,1));font-family:inherit;padding:2px 4px;width:120px;color:var(--text);outline:none}
+.answer-input{border:none;border-bottom:2px solid var(--subtext);background:transparent;font-size:calc(14px * var(--txtscale,1));font-family:inherit;padding:2px 4px;width:120px;color:var(--text);outline:none}
 .answer-input:focus{border-bottom-color:#2563eb}
 .answer-input.ok{border-bottom-color:#16a34a;color:#15803d;font-weight:600}
 .answer-input.bad{border-bottom-color:#dc2626;color:#b91c1c;font-weight:600}

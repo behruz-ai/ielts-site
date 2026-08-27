@@ -58,7 +58,7 @@ body{background:var(--bg);color:var(--text)}
 .pcontent{display:none;padding:24px}
 .pcontent.on{display:block}
 .ptitle{font-size:calc(19px * var(--txtscale,1));font-weight:800;margin-bottom:6px;color:var(--text)}
-.psub{font-style:italic;color:var(--subtext);margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
+.psub{font-style:italic;color:var(--subtext)!important;margin-bottom:16px;font-size:calc(14px * var(--txtscale,1));padding-bottom:12px;border-bottom:1px solid var(--border)}
 .pcontent p{margin-bottom:1.1em;font-size:calc(15px * var(--txtscale,1));color:var(--text);text-align:justify;line-height:1.75}
 .ahl{background:rgba(34,197,94,.22);border-bottom:2px solid #16a34a;border-radius:2px;padding:0 1px;position:relative;color:inherit!important}
 .hl-tip{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;border-radius:9999px;padding:4px 12px;margin-bottom:14px}
@@ -123,7 +123,7 @@ body.post-check .expl-btn{display:inline-flex}
 .notes-ul li:last-child{margin-bottom:0}
 .notes-ul li::before{content:'•';position:absolute;left:0;color:var(--subtext);font-weight:700}
 .inline-qno{display:inline-block;border:1px solid var(--border);border-radius:6px;padding:1px 6px;background:var(--mdbg);font-size:calc(12.5px * var(--txtscale,1));font-weight:700;color:var(--text);margin-right:4px;vertical-align:middle}
-.answer-input{border:none;border-bottom:2px solid var(--inpb);background:transparent;font-size:calc(14px * var(--txtscale,1));font-weight:700;color:var(--text);padding:2px 6px;width:140px;text-align:center;font-family:inherit}
+.answer-input{border:none;border-bottom:2px solid var(--subtext);background:transparent;font-size:calc(14px * var(--txtscale,1));font-weight:700;color:var(--text);padding:2px 6px;width:140px;text-align:center;font-family:inherit}
 .answer-input:focus{outline:none;border-bottom-color:#DC2626}
 .answer-input.ok{border-bottom-color:#22c55e;color:#15803d;background:#f0fdf4}
 .answer-input.bad{border-bottom-color:#ef4444;color:#b91c1c;background:#fef2f2}
@@ -305,7 +305,6 @@ mark.uhl:hover{background:#FDE047}
 <li>According to experts, cuneiform was mainly used for <span class="inline-qno">12</span><input class="answer-input" id="q12" type="text" onchange="upd()">.<button class="expl-btn" onclick="toggleExpl(12)">💡 Why?</button><div class="expl-box" id="expl-12">🔑 Para 5: "linguists and historians agree cuneiform developed primarily as a tool for <b>accounting</b>". Answer: <b>accounting</b>.<div class="expl-uz">🇺🇿 Matndagi <span class="expl-kw-uz">"asosan hisob-kitob vositasi sifatida rivojlangan"</span> iborasi savolga mos keladi. Javob: <b>accounting</b>.</div></div></li>
 <li>In the 19th century, Rawlinson copied inscriptions onto <span class="inline-qno">13</span><input class="answer-input" id="q13" type="text" onchange="upd()">.<button class="expl-btn" onclick="toggleExpl(13)">💡 Why?</button><div class="expl-box" id="expl-13">🔑 Para 6: "Rawlinson made impressions of the marks on large pieces of <b>paper</b>". Answer: <b>paper</b>.<div class="expl-uz">🇺🇿 Matndagi <span class="expl-kw-uz">"belgilarning izlarini katta qog'oz varaqlariga tushirdi"</span> iborasi savolga mos keladi. Javob: <b>paper</b>.</div></div></li>
 </ul>
-</div>
 </div>
 </div>
   </div>
