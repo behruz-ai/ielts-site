@@ -82,6 +82,7 @@ body{background:var(--bg);color:var(--text)}
 [data-theme=night] .rlabel:has(input:checked){background:#3a3320}
 .rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
 .rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+.opt-letter{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:50%;background:#DC2626;color:#fff;font-weight:800;font-size:12.5px;flex-shrink:0;margin-right:2px}
 [data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
 [data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
 
@@ -328,7 +329,7 @@ mark.uhl:hover{background:#FDE047}
 </div>
 </div>
 <div class="qgroup" data-group="g3" data-paras="p2-5,p2-4,p2-7,p2-6"><p class="qnum-head" style="margin-top:14px"><em>Questions 10&ndash;13</em></p><p class="qinst">Look at the following statements (Questions 10&ndash;13) and the list of researchers below.</p><p class="qinst">Match each statement with the correct researcher, <strong>A, B, C, D</strong> or <strong>E</strong>.</p>
-<div class="fbox"><strong>List of Researchers</strong><br>A&nbsp;&nbsp;Sara Mednick&nbsp;&nbsp;&nbsp; B&nbsp;&nbsp;Robert Stickgold&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp;Mark Beeman&nbsp;&nbsp;&nbsp; D&nbsp;&nbsp;Kristin Sanders&nbsp;&nbsp;&nbsp; E&nbsp;&nbsp;Deirdre Barrett</div>
+<div class="fbox"><strong>List of Researchers</strong><br><span class="opt-letter">A</span>&nbsp;&nbsp;Sara Mednick<br><span class="opt-letter">B</span>&nbsp;&nbsp;Robert Stickgold<br><span class="opt-letter">C</span>&nbsp;&nbsp;Mark Beeman<br><span class="opt-letter">D</span>&nbsp;&nbsp;Kristin Sanders<br><span class="opt-letter">E</span>&nbsp;&nbsp;Deirdre Barrett</div>
 <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr></thead><tbody>
 <tr><td class="mx-stmt"><span class="mx-num">10</span> going over memories helps differentiate between useful and trivial information<button class="expl-btn" onclick="toggleExpl(10)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q10" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q10" value="E" onchange="upd()"></label></td></tr>
 <tr class="expl-row"><td colspan="6" class="expl-cell"><div class="expl-box" id="expl-10">🔑 <span class="expl-kw">this rehearsal appears to distinguish meaningful patterns from unhelpful "background noise"</span>. Answer: <b>C</b>.<div class="expl-uz">🇺🇿 Beeman: xotiralarni <span class="expl-kw-uz">"qayta ko'rib chiqish"</span> foydali va keraksiz ma'lumotni ajratadi. Javob: <b>C</b>.</div></div></td></tr>

@@ -82,6 +82,7 @@ body{background:var(--bg);color:var(--text)}
 [data-theme=night] .rlabel:has(input:checked){background:#3a3320}
 .rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
 .rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+.opt-letter{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:50%;background:#DC2626;color:#fff;font-weight:800;font-size:12.5px;flex-shrink:0;margin-right:2px}
 [data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
 [data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
 
@@ -317,8 +318,7 @@ mark.uhl:hover{background:#FDE047}
 </div>
 <div class="qgroup" data-group="g2" data-paras="p2-1,p2-2,p2-3,p2-4,p2-5,p2-6"><p class="qnum-head" style="margin-top:14px"><em>Questions 18&ndash;22</em></p><p class="qinst">Choose the correct person, <strong>A&ndash;F</strong>, for each statement.</p>
 <div class="fbox">
-<strong>List of People</strong><br>
-A&nbsp;&nbsp;Dr Gina McDowell&nbsp;&nbsp;&nbsp; B&nbsp;&nbsp;Carla Deng&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp;Ryan Schmidt<br>D&nbsp;&nbsp;Faisal Hadi&nbsp;&nbsp;&nbsp; E&nbsp;&nbsp;Dr Hannah Graham&nbsp;&nbsp;&nbsp; F&nbsp;&nbsp;Tane Robinson
+<strong>List of People</strong><br><span class="opt-letter">A</span>&nbsp;&nbsp;Dr Gina McDowell<br><span class="opt-letter">B</span>&nbsp;&nbsp;Carla Deng<br><span class="opt-letter">C</span>&nbsp;&nbsp;Ryan Schmidt<br><span class="opt-letter">D</span>&nbsp;&nbsp;Faisal Hadi<br><span class="opt-letter">E</span>&nbsp;&nbsp;Dr Hannah Graham<br><span class="opt-letter">F</span>&nbsp;&nbsp;Tane Robinson
 </div>
 <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead><tbody>
 <tr><td class="mx-stmt"><span class="mx-num">18</span> One expression that is commonly used today may not be helpful because it oversimplifies a complicated situation.<button class="expl-btn" onclick="toggleExpl(18)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q18" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q18" value="F" onchange="upd()"></label></td></tr>

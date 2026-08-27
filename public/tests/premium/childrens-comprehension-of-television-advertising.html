@@ -82,6 +82,7 @@ body{background:var(--bg);color:var(--text)}
 [data-theme=night] .rlabel:has(input:checked){background:#3a3320}
 .rlabel.ok{background:#f0fdf4!important;color:#15803d;font-weight:600}
 .rlabel.bad{background:#fef2f2!important;color:#b91c1c;font-weight:600}
+.opt-letter{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;border-radius:50%;background:#DC2626;color:#fff;font-weight:800;font-size:12.5px;flex-shrink:0;margin-right:2px}
 [data-theme=dark] .rlabel.ok{background:#14532d!important;color:#bbf7d0}
 [data-theme=dark] .rlabel.bad{background:#5a1d1d!important;color:#fecaca}
 
@@ -321,9 +322,7 @@ mark.uhl:hover{background:#FDE047}
 </div>
 <div class="qgroup" data-group="g2" data-paras="p2-2,p2-3,p2-4,p2-5"><p class="qnum-head" style="margin-top:14px"><em>Questions 19&ndash;22</em></p><p class="qinst">Look at the following statements (Questions 19&ndash;22) and the list of researchers below.</p><p class="qinst">Match each statement with the correct researcher(s), <strong>A&ndash;H</strong>.</p>
 <div class="fbox">
-<strong>List of Researchers</strong><br>
-A&nbsp;&nbsp;Kunkel&nbsp;&nbsp;&nbsp; B&nbsp;&nbsp;McNeal&nbsp;&nbsp;&nbsp; C&nbsp;&nbsp;Turow&nbsp;&nbsp;&nbsp; D&nbsp;&nbsp;Kunkel et al<br>
-E&nbsp;&nbsp;Greer et al&nbsp;&nbsp;&nbsp; F&nbsp;&nbsp;Liebert et al&nbsp;&nbsp;&nbsp; G&nbsp;&nbsp;Palmer &amp; McDowell&nbsp;&nbsp;&nbsp; H&nbsp;&nbsp;Geis
+<strong>List of Researchers</strong><br><span class="opt-letter">A</span>&nbsp;&nbsp;Kunkel<br><span class="opt-letter">B</span>&nbsp;&nbsp;McNeal<br><span class="opt-letter">C</span>&nbsp;&nbsp;Turow<br><span class="opt-letter">D</span>&nbsp;&nbsp;Kunkel et al<br><span class="opt-letter">E</span>&nbsp;&nbsp;Greer et al<br><span class="opt-letter">F</span>&nbsp;&nbsp;Liebert et al<br><span class="opt-letter">G</span>&nbsp;&nbsp;Palmer &amp; McDowell<br><span class="opt-letter">H</span>&nbsp;&nbsp;Geis
 </div>
 <div style="overflow-x:auto"><table class="matrix"><thead><tr><th class="mx-corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead><tbody>
 <tr><td class="mx-stmt"><span class="mx-num">19</span> Advertisements often aim to teach children that a brand is fun rather than telling them about what is being sold.<button class="expl-btn" onclick="toggleExpl(19)">💡 Why?</button></td><td><label class="mx-cell"><input type="radio" name="q19" value="A" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="B" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="C" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="D" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="E" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="F" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="G" onchange="upd()"></label></td><td><label class="mx-cell"><input type="radio" name="q19" value="H" onchange="upd()"></label></td></tr>
