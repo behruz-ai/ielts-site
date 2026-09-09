@@ -51,7 +51,7 @@
         <div class="auth-field"><label>Password</label>
           <div class="auth-password-wrap">
             <input type="password" id="login-password" required autocomplete="current-password">
-            <button type="button" class="auth-password-toggle" data-target="login-password" aria-label="Show password">👁️</button>
+            <button type="button" class="auth-password-toggle" data-target="login-password" aria-label="Show password"></button>
           </div>
         </div>
         <button class="auth-submit" type="submit" id="login-submit">Log in</button>
@@ -66,7 +66,7 @@
         <div class="auth-field"><label>Password</label>
           <div class="auth-password-wrap">
             <input type="password" id="signup-password" required autocomplete="new-password" minlength="6">
-            <button type="button" class="auth-password-toggle" data-target="signup-password" aria-label="Show password">👁️</button>
+            <button type="button" class="auth-password-toggle" data-target="signup-password" aria-label="Show password"></button>
           </div>
         </div>
         <button class="auth-submit" type="submit" id="signup-submit">Create account</button>
@@ -100,13 +100,25 @@
   });
   if (new URLSearchParams(location.search).get('tab') === 'signup') tabSignup.click();
 
+  // Eye = password hidden, click to show. Eye-with-slash = password shown,
+  // click to hide. Inline SVG (feather-style eye / eye-off) rather than an
+  // emoji pair, since there's no reliably-rendered "crossed-out eye" emoji
+  // across platforms.
+  const ICON_EYE = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+  const ICON_EYE_OFF = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.94 10.94 0 0 1 12 20c-7 0-11-8-11-8a18.5 18.5 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>';
+
+  function setPasswordToggleIcon(btn, shown) {
+    btn.innerHTML = shown ? ICON_EYE_OFF : ICON_EYE;
+    btn.setAttribute('aria-label', shown ? 'Hide password' : 'Show password');
+  }
+
   document.querySelectorAll('.auth-password-toggle').forEach((btn) => {
+    setPasswordToggleIcon(btn, false);
     btn.addEventListener('click', () => {
       const input = document.getElementById(btn.dataset.target);
       const shown = input.type === 'text';
       input.type = shown ? 'password' : 'text';
-      btn.setAttribute('aria-label', shown ? 'Show password' : 'Hide password');
-      btn.style.opacity = shown ? '' : '1';
+      setPasswordToggleIcon(btn, !shown);
     });
   });
 
