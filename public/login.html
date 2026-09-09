@@ -48,7 +48,12 @@
       <p class="auth-sub">Log in to start any test and track your progress.</p>
       <form id="form-login">
         <div class="auth-field"><label>Email</label><input type="email" id="login-email" required autocomplete="email"></div>
-        <div class="auth-field"><label>Password</label><input type="password" id="login-password" required autocomplete="current-password"></div>
+        <div class="auth-field"><label>Password</label>
+          <div class="auth-password-wrap">
+            <input type="password" id="login-password" required autocomplete="current-password">
+            <button type="button" class="auth-password-toggle" data-target="login-password" aria-label="Show password">👁️</button>
+          </div>
+        </div>
         <button class="auth-submit" type="submit" id="login-submit">Log in</button>
       </form>
     </div>
@@ -58,7 +63,12 @@
       <p class="auth-sub">Free, 30 seconds — required to start a test, so we can save your scores and mistakes for review.</p>
       <form id="form-signup">
         <div class="auth-field"><label>Email</label><input type="email" id="signup-email" required autocomplete="email"></div>
-        <div class="auth-field"><label>Password</label><input type="password" id="signup-password" required autocomplete="new-password" minlength="6"></div>
+        <div class="auth-field"><label>Password</label>
+          <div class="auth-password-wrap">
+            <input type="password" id="signup-password" required autocomplete="new-password" minlength="6">
+            <button type="button" class="auth-password-toggle" data-target="signup-password" aria-label="Show password">👁️</button>
+          </div>
+        </div>
         <button class="auth-submit" type="submit" id="signup-submit">Create account</button>
       </form>
     </div>
@@ -89,6 +99,16 @@
     hideMessage();
   });
   if (new URLSearchParams(location.search).get('tab') === 'signup') tabSignup.click();
+
+  document.querySelectorAll('.auth-password-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.target);
+      const shown = input.type === 'text';
+      input.type = shown ? 'password' : 'text';
+      btn.setAttribute('aria-label', shown ? 'Show password' : 'Hide password');
+      btn.style.opacity = shown ? '' : '1';
+    });
+  });
 
   function showMessage(text, isError) {
     msgBox.textContent = text;
