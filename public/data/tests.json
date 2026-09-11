@@ -5255,5 +5255,22 @@
       "True/False/Not Given",
       "Note Completion"
     ]
+  },
+  {
+    "id": "premium-the-seed-hunters",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Seed Hunters",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-seed-hunters.html",
+    "questionTypes": [
+      "Summary Completion",
+      "True/False/Not Given",
+      "Multiple Choice (Choose Two)"
+    ]
   }
 ]
