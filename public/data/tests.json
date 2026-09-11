@@ -5336,5 +5336,21 @@
       "True/False/Not Given",
       "Note Completion"
     ]
+  },
+  {
+    "id": "premium-the-terracotta-army",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Terracotta Army",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/the-terracotta-army.html",
+    "questionTypes": [
+      "Note Completion",
+      "True/False/Not Given"
+    ]
   }
 ]
