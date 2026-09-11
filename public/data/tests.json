@@ -5288,5 +5288,21 @@
       "True/False/Not Given",
       "Note Completion"
     ]
+  },
+  {
+    "id": "premium-manhattans-skyscrapers-race-to-the-top",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Manhattan's Skyscrapers Race to the Top",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/manhattans-skyscrapers-race-to-the-top.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Table Completion"
+    ]
   }
 ]
