@@ -5206,5 +5206,21 @@
       "Matching People",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-what-exactly-is-a-hoard",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "What Exactly Is a Hoard?",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/what-exactly-is-a-hoard.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
   }
 ]
