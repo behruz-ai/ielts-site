@@ -4991,5 +4991,22 @@
       "Yes/No/Not Given",
       "Sentence Endings"
     ]
+  },
+  {
+    "id": "premium-the-history-of-the-biro",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The History of the Biro",
+    "status": "published",
+    "questionCount": 12,
+    "durationMinutes": 20,
+    "file": "premium/the-history-of-the-biro.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Multiple Choice",
+      "Short Answer"
+    ]
   }
 ]
