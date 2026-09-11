@@ -5024,5 +5024,22 @@
       "Summary Completion",
       "Matching Sentence Endings"
     ]
+  },
+  {
+    "id": "premium-how-consumers-decide",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "How Consumers Decide",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/how-consumers-decide.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Multiple Choice",
+      "Summary Completion"
+    ]
   }
 ]
