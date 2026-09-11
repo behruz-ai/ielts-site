@@ -5222,5 +5222,22 @@
       "True/False/Not Given",
       "Note Completion"
     ]
+  },
+  {
+    "id": "premium-diagnosing-bridges",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Diagnosing Bridges",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/diagnosing-bridges.html",
+    "questionTypes": [
+      "Matching Information",
+      "Multiple Choice",
+      "Sentence Completion"
+    ]
   }
 ]
