@@ -5368,5 +5368,21 @@
       "True/False/Not Given",
       "Note Completion"
     ]
+  },
+  {
+    "id": "premium-bondi",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Bondi",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/bondi.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Short Answer"
+    ]
   }
 ]
