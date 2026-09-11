@@ -5074,5 +5074,22 @@
       "Matching Sentence Endings",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-temperature-rising",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Temperature Rising",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/temperature-rising.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Sentence Completion",
+      "Matching People"
+    ]
   }
 ]
