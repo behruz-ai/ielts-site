@@ -5352,5 +5352,21 @@
       "Note Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-gobekli-tepe-a-remarkable-discovery",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Gobekli Tepe: A Remarkable Discovery",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/gobekli-tepe-a-remarkable-discovery.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
   }
 ]
