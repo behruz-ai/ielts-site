@@ -5157,5 +5157,21 @@
       "Matching People",
       "Yes/No/Not Given"
     ]
+  },
+  {
+    "id": "premium-the-early-history-of-scott-and-bownes-cod-liver-oil",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Scott and Bowne's Cod Liver Oil",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/the-early-history-of-scott-and-bownes-cod-liver-oil.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
   }
 ]
