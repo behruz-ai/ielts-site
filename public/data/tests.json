@@ -5041,5 +5041,21 @@
       "Multiple Choice",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-the-giant-panda",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Giant Panda",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-giant-panda.html",
+    "questionTypes": [
+      "Classification",
+      "Sentence Completion"
+    ]
   }
 ]
