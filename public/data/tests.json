@@ -5320,5 +5320,21 @@
       "Note Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-an-early-cultural-tourist",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "An Early Cultural Tourist",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/an-early-cultural-tourist.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
   }
 ]
