@@ -5124,5 +5124,22 @@
       "Classification",
       "Pick Three"
     ]
+  },
+  {
+    "id": "premium-the-origins-of-laughter",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Origins of Laughter",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-origins-of-laughter.html",
+    "questionTypes": [
+      "Matching People",
+      "Summary Completion",
+      "True/False/Not Given"
+    ]
   }
 ]
