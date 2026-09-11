@@ -5091,5 +5091,21 @@
       "Sentence Completion",
       "Matching People"
     ]
+  },
+  {
+    "id": "premium-companies-try-out-a-new-marketing-practice",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Companies Try Out a New Marketing Practice",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/companies-try-out-a-new-marketing-practice.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Pick Three"
+    ]
   }
 ]
