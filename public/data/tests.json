@@ -5107,5 +5107,22 @@
       "Multiple Choice",
       "Pick Three"
     ]
+  },
+  {
+    "id": "premium-going-nowhere-fast",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Going Nowhere Fast",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/going-nowhere-fast.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Classification",
+      "Pick Three"
+    ]
   }
 ]
