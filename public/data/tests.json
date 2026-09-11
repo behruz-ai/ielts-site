@@ -5401,5 +5401,53 @@
       "True/False/Not Given",
       "Flow-Chart Completion"
     ]
+  },
+  {
+    "id": "premium-the-pyramid-of-cestius",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Pyramid of Cestius",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-pyramid-of-cestius.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
+  },
+  {
+    "id": "premium-a-look-at-the-history-of-poetry",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "A Look at the History of Poetry",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/a-look-at-the-history-of-poetry.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
+  },
+  {
+    "id": "premium-the-story-of-silk",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Story of Silk",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-story-of-silk.html",
+    "questionTypes": [
+      "Note Completion",
+      "True/False/Not Given"
+    ]
   }
 ]
