@@ -5384,5 +5384,22 @@
       "True/False/Not Given",
       "Short Answer"
     ]
+  },
+  {
+    "id": "premium-computer-games-for-preschoolers",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Computer Games for Preschoolers",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/computer-games-for-preschoolers.html",
+    "questionTypes": [
+      "Sentence Completion",
+      "True/False/Not Given",
+      "Flow-Chart Completion"
+    ]
   }
 ]
