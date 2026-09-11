@@ -5189,5 +5189,22 @@
       "Note Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-tickling-and-laughter",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Tickling and Laughter",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/tickling-and-laughter.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching People",
+      "Summary Completion"
+    ]
   }
 ]
