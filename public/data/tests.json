@@ -5141,5 +5141,21 @@
       "Summary Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-obesity",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Obesity: Do Citizens of Developed Countries Really Have a Choice?",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/obesity.html",
+    "questionTypes": [
+      "Matching People",
+      "Yes/No/Not Given"
+    ]
   }
 ]
