@@ -5173,5 +5173,21 @@
       "True/False/Not Given",
       "Note Completion"
     ]
+  },
+  {
+    "id": "premium-dmitri-mendeleev",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The Inventor of the Periodic Table",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/dmitri-mendeleev.html",
+    "questionTypes": [
+      "Note Completion",
+      "True/False/Not Given"
+    ]
   }
 ]
