@@ -5057,5 +5057,22 @@
       "Classification",
       "Sentence Completion"
     ]
+  },
+  {
+    "id": "premium-experience-versus-speed",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "Experience versus Speed",
+    "status": "published",
+    "questionCount": 12,
+    "durationMinutes": 20,
+    "file": "premium/experience-versus-speed.html",
+    "questionTypes": [
+      "Multiple Choice",
+      "Matching Sentence Endings",
+      "Summary Completion"
+    ]
   }
 ]
