@@ -5008,5 +5008,21 @@
       "Multiple Choice",
       "Short Answer"
     ]
+  },
+  {
+    "id": "premium-the-british-at-play",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "A Review of The British at Play",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-british-at-play.html",
+    "questionTypes": [
+      "Summary Completion",
+      "Matching Sentence Endings"
+    ]
   }
 ]
