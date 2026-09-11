@@ -5239,5 +5239,21 @@
       "Multiple Choice",
       "Sentence Completion"
     ]
+  },
+  {
+    "id": "premium-the-history-of-the-picnic",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 1",
+    "displayTitle": "The History of the Picnic",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/the-history-of-the-picnic.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion"
+    ]
   }
 ]
