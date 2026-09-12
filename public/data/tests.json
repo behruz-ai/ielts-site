@@ -5837,5 +5837,22 @@
       "Matching People",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-learning-from-the-romans",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Learning from the Romans",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/learning-from-the-romans.html",
+    "questionTypes": [
+      "Matching Information",
+      "Choose Two Letters",
+      "Summary Completion"
+    ]
   }
 ]
