@@ -5684,5 +5684,22 @@
       "Sentence Completion",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-sports-science",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Sports Science",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/sports-science.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching People",
+      "Diagram Labelling"
+    ]
   }
 ]
