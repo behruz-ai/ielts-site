@@ -1631,6 +1631,80 @@
     "file": null
   },
   {
+    "id": "reading-vol10-t1",
+    "section": "reading",
+    "tier": "full-volume",
+    "volume": 10,
+    "testNumber": 1,
+    "displayTitle": "Reading Test 1",
+    "status": "published",
+    "questionCount": 40,
+    "durationMinutes": 60,
+    "file": "reading/volume-10/test-1.html",
+    "questionTypes": [
+      "Matching Features",
+      "Matching Information",
+      "Multiple Choice",
+      "Summary Completion",
+      "True/False/Not Given",
+      "Yes/No/Not Given"
+    ]
+  },
+  {
+    "id": "reading-vol10-t2",
+    "section": "reading",
+    "tier": "full-volume",
+    "volume": 10,
+    "testNumber": 2,
+    "displayTitle": "Reading Test 2",
+    "status": "published",
+    "questionCount": 40,
+    "durationMinutes": 60,
+    "file": "reading/volume-10/test-2.html",
+    "questionTypes": [
+      "Matching Features",
+      "Matching Information",
+      "Multiple Choice",
+      "Notes Completion",
+      "Sentence Completion",
+      "Summary Completion",
+      "True/False/Not Given",
+      "Yes/No/Not Given"
+    ]
+  },
+  {
+    "id": "reading-vol10-t3",
+    "section": "reading",
+    "tier": "full-volume",
+    "volume": 10,
+    "testNumber": 3,
+    "displayTitle": "Reading Test 3",
+    "status": "published",
+    "questionCount": 40,
+    "durationMinutes": 60,
+    "file": "reading/volume-10/test-3.html",
+    "questionTypes": [
+      "Matching Features",
+      "Matching Headings",
+      "Matching Information",
+      "Multiple Choice",
+      "Notes Completion",
+      "True/False/Not Given"
+    ]
+  },
+  {
+    "id": "reading-vol10-soon",
+    "section": "reading",
+    "tier": "full-volume",
+    "volume": 10,
+    "testNumber": null,
+    "displayTitle": "Volume 10 — Tests 4–10",
+    "status": "coming-soon",
+    "questionCount": 40,
+    "durationMinutes": 60,
+    "file": null
+  },
+  {
     "id": "listening-vol1-t1",
     "section": "listening",
     "tier": "full-volume",
