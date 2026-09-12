@@ -5769,5 +5769,22 @@
       "Multiple Choice",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-stress-less",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Stress Less",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/stress-less.html",
+    "questionTypes": [
+      "Matching People",
+      "Multiple Choice",
+      "Summary Completion"
+    ]
   }
 ]
