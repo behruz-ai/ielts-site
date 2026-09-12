@@ -5650,5 +5650,22 @@
       "Choose Two Letters",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-australian-aboriginal-astronomy",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Australian Aboriginal Astronomy",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/australian-aboriginal-astronomy.html",
+    "questionTypes": [
+      "Matching Information",
+      "Matching People",
+      "Summary Completion"
+    ]
   }
 ]
