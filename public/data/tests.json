@@ -5515,5 +5515,22 @@
       "Short Answer",
       "Yes / No / Not Given"
     ]
+  },
+  {
+    "id": "premium-next-to-nature-but-what-is-art",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Next to Nature, But What Is Art?",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/next-to-nature-but-what-is-art.html",
+    "questionTypes": [
+      "Matching Information",
+      "Yes / No / Not Given",
+      "Multiple Choice"
+    ]
   }
 ]
