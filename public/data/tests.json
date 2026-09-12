@@ -5803,5 +5803,22 @@
       "Matching Features",
       "Sentence Completion"
     ]
+  },
+  {
+    "id": "premium-why-do-we-need-sleep",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Why Do We Need Sleep?",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/why-do-we-need-sleep.html",
+    "questionTypes": [
+      "Matching Information",
+      "Choose Two Letters",
+      "Sentence Completion"
+    ]
   }
 ]
