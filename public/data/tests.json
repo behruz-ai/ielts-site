@@ -5735,5 +5735,22 @@
       "Matching People",
       "Sentence Completion"
     ]
+  },
+  {
+    "id": "premium-the-study-of-laughter",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Study of Laughter",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-study-of-laughter.html",
+    "questionTypes": [
+      "Choose Two Letters",
+      "Yes / No / Not Given",
+      "Summary Completion"
+    ]
   }
 ]
