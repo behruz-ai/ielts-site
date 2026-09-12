@@ -5499,5 +5499,21 @@
       "Multiple Choice",
       "Yes / No / Not Given"
     ]
+  },
+  {
+    "id": "premium-waste-production",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Waste Production",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/waste-production.html",
+    "questionTypes": [
+      "Short Answer",
+      "Yes / No / Not Given"
+    ]
   }
 ]
