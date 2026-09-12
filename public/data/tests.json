@@ -5532,5 +5532,22 @@
       "Yes / No / Not Given",
       "Multiple Choice"
     ]
+  },
+  {
+    "id": "premium-the-mbuti-of-the-ituri-forest",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Mbuti of the Ituri Forest",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-mbuti-of-the-ituri-forest.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Classification",
+      "Sentence Completion"
+    ]
   }
 ]
