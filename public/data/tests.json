@@ -5820,5 +5820,22 @@
       "Choose Two Letters",
       "Sentence Completion"
     ]
+  },
+  {
+    "id": "premium-viking-ireland",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Viking Ireland",
+    "status": "published",
+    "questionCount": 15,
+    "durationMinutes": 20,
+    "file": "premium/viking-ireland.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Matching People",
+      "Summary Completion"
+    ]
   }
 ]
