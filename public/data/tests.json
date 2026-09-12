@@ -5549,5 +5549,22 @@
       "Classification",
       "Sentence Completion"
     ]
+  },
+  {
+    "id": "premium-tackling-hunger-in-msekeni",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Tackling Hunger in Msekeni",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/tackling-hunger-in-msekeni.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Sentence Completion",
+      "Choose Two Letters"
+    ]
   }
 ]
