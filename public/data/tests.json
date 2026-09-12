@@ -5449,5 +5449,21 @@
       "Note Completion",
       "True/False/Not Given"
     ]
+  },
+  {
+    "id": "premium-robotic-approach-to-crop-breeding",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "Robotic Approach to Crop Breeding",
+    "status": "published",
+    "questionCount": 12,
+    "durationMinutes": 20,
+    "file": "premium/robotic-approach-to-crop-breeding.html",
+    "questionTypes": [
+      "Sentence Completion",
+      "Matching Information"
+    ]
   }
 ]
