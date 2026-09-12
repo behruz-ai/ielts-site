@@ -5667,5 +5667,22 @@
       "Matching People",
       "Summary Completion"
     ]
+  },
+  {
+    "id": "premium-the-international-style",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The International Style",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-international-style.html",
+    "questionTypes": [
+      "Matching Information",
+      "Sentence Completion",
+      "Multiple Choice"
+    ]
   }
 ]
