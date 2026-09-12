@@ -5566,5 +5566,22 @@
       "Sentence Completion",
       "Choose Two Letters"
     ]
+  },
+  {
+    "id": "premium-the-lost-city",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Lost City",
+    "status": "published",
+    "questionCount": 13,
+    "durationMinutes": 20,
+    "file": "premium/the-lost-city.html",
+    "questionTypes": [
+      "Matching Information",
+      "Summary Completion",
+      "Multiple Choice"
+    ]
   }
 ]
