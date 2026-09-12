@@ -5633,5 +5633,22 @@
       "Summary Completion",
       "Choose Two Letters"
     ]
+  },
+  {
+    "id": "premium-how-babies-see-colour",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "How Babies See Colour",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/how-babies-see-colour.html",
+    "questionTypes": [
+      "Matching Headings",
+      "Choose Two Letters",
+      "Summary Completion"
+    ]
   }
 ]
