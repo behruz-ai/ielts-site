@@ -5701,5 +5701,22 @@
       "Matching People",
       "Diagram Labelling"
     ]
+  },
+  {
+    "id": "premium-the-shape-of-bird-eggs",
+    "section": "reading",
+    "tier": "premium-passage",
+    "access": "premium",
+    "passageType": "Passage 2",
+    "displayTitle": "The Shape of Bird Eggs",
+    "status": "published",
+    "questionCount": 16,
+    "durationMinutes": 20,
+    "file": "premium/the-shape-of-bird-eggs.html",
+    "questionTypes": [
+      "Matching Information",
+      "Choose Two Letters",
+      "Summary Completion"
+    ]
   }
 ]
