@@ -59,6 +59,13 @@
         <div class="tc-qtypes"><span class="qtype-tag">Answer key</span><span class="qtype-tag">Evidence citations</span></div>
         <span class="tc-start" id="book-btn-p2">Checking access…</span>
       </div>
+      <div class="test-card">
+        <div class="tc-badges"><span class="badge-tier badge-premium">🔒 Full Test Premium</span></div>
+        <div class="tc-title">Passage 3 Collection</div>
+        <div class="tc-meta"><span>70 passages</span><span>982 questions</span><span>Printable PDF</span></div>
+        <div class="tc-qtypes"><span class="qtype-tag">Answer key</span><span class="qtype-tag">Evidence citations</span></div>
+        <span class="tc-start" id="book-btn-p3">Checking access…</span>
+      </div>
     </div>
   </div>
   <div class="gate-note" style="margin:40px auto">
@@ -83,6 +90,7 @@
     { btnId: 'book-btn-mock', pdfHref: '/books/authentic-reading-mock-premium.pdf' },
     { btnId: 'book-btn-p1', pdfHref: '/books/passage-1-collection.pdf' },
     { btnId: 'book-btn-p2', pdfHref: '/books/passage-2-collection.pdf' },
+    { btnId: 'book-btn-p3', pdfHref: '/books/passage-3-collection.pdf' },
   ];
   function setLocked(btn, href, label) {
     btn.outerHTML = `<a class="tc-start tc-locked" id="${btn.id}" href="${href}">${label}</a>`;
