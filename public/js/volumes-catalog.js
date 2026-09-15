@@ -1,14 +1,13 @@
 // Renders the dedicated Volumes catalog (Reading or Listening) — full-volume
-// tier only, grouped by volume, with a shortcut nav and a random-test picker.
-// No search/question-type filtering here — that's a Premium-passage concept
-// (see catalog.js for reading.html), Volumes are meant to be browsed by number.
+// tier only, grouped by volume, with a shortcut nav, a search box (title /
+// volume / question type), and a random-test picker.
 
 (function () {
   const root = document.getElementById('catalog-root');
   if (!root) return;
   const section = root.dataset.section; // "reading" | "listening"
 
-  const state = { attemptsByPath: null, completedPaths: null, items: null };
+  const state = { attemptsByPath: null, completedPaths: null, items: null, search: '' };
 
   function fetchAttempts() {
     if (typeof supabaseClient === 'undefined') return Promise.resolve(null);
@@ -82,7 +81,28 @@
     buildShortcutBar();
     wireRandomButton();
     wireCompletionToggle();
+    wireSearchBox();
     render();
+  }
+
+  function wireSearchBox() {
+    const box = document.getElementById('search-box');
+    if (!box) return;
+    box.addEventListener('input', () => {
+      state.search = box.value.trim().toLowerCase();
+      render();
+    });
+  }
+
+  function matchesSearch(t) {
+    if (!state.search) return true;
+    const haystack = [
+      t.displayTitle,
+      'volume ' + t.volume,
+      'vol ' + t.volume,
+      ...(t.questionTypes || []),
+    ].join(' ').toLowerCase();
+    return haystack.includes(state.search);
   }
 
   function uniq(arr) { return [...new Set(arr)]; }
@@ -143,11 +163,19 @@
       root.innerHTML = '<p class="empty-note">Nothing here yet — check back soon.</p>';
       return;
     }
-    const volumes = uniq(items.map((t) => t.volume)).sort((a, b) => a - b);
+    const filtered = items.filter(matchesSearch);
+    if (!filtered.length) {
+      root.innerHTML = '<p class="empty-note">Nothing matches — try a different search term.</p>';
+      return;
+    }
+    const volumes = uniq(filtered.map((t) => t.volume)).sort((a, b) => a - b);
     let html = '';
     volumes.forEach((v) => {
-      const tests = items.filter((t) => t.volume === v).sort((a, b) => (a.testNumber || 999) - (b.testNumber || 999));
-      html += `<div class="vol-group" id="vol-${v}"><h2>Volume ${v}${volumeProgressHtml(tests)}</h2><div class="test-grid">`;
+      const tests = filtered.filter((t) => t.volume === v).sort((a, b) => (a.testNumber || 999) - (b.testNumber || 999));
+      // Volume-complete % should reflect the whole volume, not just what
+      // search happens to be showing right now.
+      const allInVolume = items.filter((t) => t.volume === v);
+      html += `<div class="vol-group" id="vol-${v}"><h2>Volume ${v}${volumeProgressHtml(allInVolume)}</h2><div class="test-grid">`;
       html += tests.map(cardHtml).join('');
       html += `</div></div>`;
     });
