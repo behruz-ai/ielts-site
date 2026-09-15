@@ -177,8 +177,34 @@
       window.location.href = nextUrl();
       return;
     }
-    showMessage('Account created! Check your email for a confirmation link before logging in.', false);
+    // Confirmation is required, and the link is usually opened on a
+    // different device (phone) than the one that signed up. That device
+    // can't push a session back to this one — session tokens only exist
+    // in whichever browser opens the confirmation link. Instead, keep
+    // quietly retrying the login this tab already has the password for;
+    // the moment the account is confirmed elsewhere, this succeeds and
+    // logs this tab in automatically, with no extra step for the user.
+    pollForConfirmation(email, password);
   });
+
+  function pollForConfirmation(email, password) {
+    showMessage('Account created! Check your email for a confirmation link — once you confirm it (on any device), this page will log you in automatically.', false);
+    const startedAt = Date.now();
+    const TIMEOUT_MS = 10 * 60 * 1000; // 10 minutes
+    const intervalId = setInterval(async () => {
+      if (Date.now() - startedAt > TIMEOUT_MS) {
+        clearInterval(intervalId);
+        showMessage('Still waiting on that confirmation link? Once you click it, just log in here with your email and password.', false);
+        return;
+      }
+      const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+      if (!error && data.session) {
+        clearInterval(intervalId);
+        showMessage('Confirmed! Logging you in…', false);
+        window.location.href = nextUrl();
+      }
+    }, 4000);
+  }
 </script>
 <script src="/js/nav-dropdown.js"></script>
 </body>
