@@ -3165,6 +3165,29 @@
     ]
   },
   {
+    "id": "full-test-authentic-reading-mock-3",
+    "section": "reading",
+    "tier": "full-test",
+    "access": "premium",
+    "passageType": "Full Test",
+    "displayTitle": "Authentic Reading Mock 3",
+    "status": "published",
+    "questionCount": 40,
+    "durationMinutes": 60,
+    "file": "reading/full-tests/authentic-reading-mock-3.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion",
+      "Flow-chart Completion",
+      "Matching Headings",
+      "Matching Features",
+      "Sentence Completion",
+      "Multiple Choice",
+      "Yes/No/Not Given",
+      "Matching Sentence Endings"
+    ]
+  },
+  {
     "id": "premium-moving-continents",
     "section": "reading",
     "tier": "premium-passage",
