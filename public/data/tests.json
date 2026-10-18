@@ -3188,6 +3188,46 @@
     ]
   },
   {
+    "id": "full-test-authentic-reading-mock-4",
+    "section": "reading",
+    "tier": "full-test",
+    "access": "premium",
+    "passageType": "Full Test",
+    "displayTitle": "Authentic Reading Mock 4",
+    "status": "published",
+    "questionCount": 40,
+    "durationMinutes": 60,
+    "file": "reading/full-tests/authentic-reading-mock-4.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion",
+      "Summary Completion",
+      "Short Answer"
+    ]
+  },
+  {
+    "id": "full-test-authentic-reading-mock-5",
+    "section": "reading",
+    "tier": "full-test",
+    "access": "premium",
+    "passageType": "Full Test",
+    "displayTitle": "Authentic Reading Mock 5",
+    "status": "published",
+    "questionCount": 40,
+    "durationMinutes": 60,
+    "file": "reading/full-tests/authentic-reading-mock-5.html",
+    "questionTypes": [
+      "True/False/Not Given",
+      "Note Completion",
+      "Matching Headings",
+      "Multiple Choice (Choose Two)",
+      "Sentence Completion",
+      "Matching Information",
+      "Yes/No/Not Given",
+      "Flow-chart Completion"
+    ]
+  },
+  {
     "id": "premium-moving-continents",
     "section": "reading",
     "tier": "premium-passage",
